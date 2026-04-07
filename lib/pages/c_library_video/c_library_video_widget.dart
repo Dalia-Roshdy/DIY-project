@@ -130,42 +130,81 @@ class _CLibraryVideoWidgetState extends State<CLibraryVideoWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .tertiary,
                                         ),
-                                        Row(
+                                        Column(
                                           mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 26.0, 0.0, 0.0),
-                                              child: Container(
-                                                width: 329.96,
-                                                height: 1188.9,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 26.0, 0.0, 0.0),
+                                                  child: Container(
+                                                    width: 329.96,
+                                                    height: 1188.9,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    child: wrapWithModel(
+                                                      model: _model
+                                                          .s14VideoLibraryLeftIndexModel,
+                                                      updateCallback: () =>
+                                                          safeSetState(() {}),
+                                                      child:
+                                                          S14VideoLibraryLeftIndexWidget(),
+                                                    ),
+                                                  ),
                                                 ),
-                                                child: wrapWithModel(
-                                                  model: _model
-                                                      .s14VideoLibraryLeftIndexModel,
-                                                  updateCallback: () =>
-                                                      safeSetState(() {}),
-                                                  child:
-                                                      S14VideoLibraryLeftIndexWidget(),
+                                                Expanded(
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    12.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: wrapWithModel(
+                                                          model: _model
+                                                              .s15VideoPlayerMainModel,
+                                                          updateCallback: () =>
+                                                              safeSetState(
+                                                                  () {}),
+                                                          child:
+                                                              S15VideoPlayerMainWidget(),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    12.0,
+                                                                    24.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: wrapWithModel(
+                                                          model: _model
+                                                              .s16SquaresVideosModel,
+                                                          updateCallback: () =>
+                                                              safeSetState(
+                                                                  () {}),
+                                                          child:
+                                                              S16SquaresVideosWidget(),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: wrapWithModel(
-                                                model: _model
-                                                    .s15VideoPlayerMainModel,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child:
-                                                    S15VideoPlayerMainWidget(),
-                                              ),
+                                              ],
                                             ),
                                           ],
                                         ),
@@ -173,11 +212,6 @@ class _CLibraryVideoWidgetState extends State<CLibraryVideoWidget> {
                                     ),
                                   ],
                                 ),
-                              ),
-                              wrapWithModel(
-                                model: _model.s16SquaresVideosModel,
-                                updateCallback: () => safeSetState(() {}),
-                                child: S16SquaresVideosWidget(),
                               ),
                               Divider(
                                 height: 1.0,

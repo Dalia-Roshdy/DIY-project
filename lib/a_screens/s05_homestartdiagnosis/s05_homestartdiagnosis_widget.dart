@@ -45,6 +45,32 @@ class _S05HomestartdiagnosisWidgetState
       _model.acMakeFiltered =
           FFAppState().acMakeList.toList().cast<AcMakeDTOStruct>();
       safeSetState(() {});
+      if (FFAppState().userAC.acMake?.id != null &&
+          FFAppState().userAC.acMake?.id != '') {
+        _model.acModelFiltered = FFAppState()
+            .acModelList
+            .where((e) => e.acMakeId?.id == FFAppState().userAC.acMake?.id)
+            .toList()
+            .sortedList(keyOf: (e) => e.name, desc: false)
+            .toList()
+            .cast<AcModelDTOStruct>();
+        _model.selectedACMake = FFAppState().userAC.acMake;
+        safeSetState(() {});
+        safeSetState(() {
+          _model.dropDownMakeValueController?.value =
+              FFAppState().userAC.acMake!.id;
+          _model.dropDownMakeValue = FFAppState().userAC.acMake!.id;
+        });
+        safeSetState(() {
+          _model.dropDownModelValueController?.value =
+              FFAppState().userAC.acModel!.id;
+          _model.dropDownModelValue = FFAppState().userAC.acModel!.id;
+        });
+        safeSetState(() {
+          _model.textFieldSNTextController?.text =
+              FFAppState().userAC.serialNumber;
+        });
+      }
     });
 
     _model.textFieldNameTextController ??= TextEditingController();
@@ -508,19 +534,6 @@ class _S05HomestartdiagnosisWidgetState
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          if (responsiveVisibility(
-                            context: context,
-                            phone: false,
-                            tablet: false,
-                            tabletLandscape: false,
-                            desktop: false,
-                          ))
-                            Container(
-                              constraints: BoxConstraints(
-                                maxHeight: 96.0,
-                              ),
-                              decoration: BoxDecoration(),
-                            ),
                           Expanded(
                             child: Align(
                               alignment: AlignmentDirectional(0.0, -1.0),
@@ -912,6 +925,10 @@ class _S05HomestartdiagnosisWidgetState
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .bodyMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 24.0,
                                                           letterSpacing: 0.0,
                                                           useGoogleFonts:
                                                               !FlutterFlowTheme
@@ -1365,16 +1382,18 @@ class _S05HomestartdiagnosisWidgetState
                                                                 searchHintTextStyle:
                                                                     FlutterFlowTheme.of(
                                                                             context)
-                                                                        .labelMedium
+                                                                        .labelSmall
                                                                         .override(
                                                                           fontFamily:
-                                                                              FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                              FlutterFlowTheme.of(context).labelSmallFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiary,
+                                                                          fontSize:
+                                                                              18.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
+                                                                              !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                         ),
                                                                 searchTextStyle:
                                                                     FlutterFlowTheme.of(
@@ -1383,6 +1402,10 @@ class _S05HomestartdiagnosisWidgetState
                                                                         .override(
                                                                           fontFamily:
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          fontSize:
+                                                                              18.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
@@ -1395,9 +1418,6 @@ class _S05HomestartdiagnosisWidgetState
                                                                       fontFamily:
                                                                           FlutterFlowTheme.of(context)
                                                                               .labelSmallFamily,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       useGoogleFonts:
@@ -1550,16 +1570,16 @@ class _S05HomestartdiagnosisWidgetState
                                                                       'SN-8832',
                                                                   hintStyle: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .labelSmall
+                                                                      .bodyLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                            FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .tertiary,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                            !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                       ),
                                                                   enabledBorder:
                                                                       InputBorder
