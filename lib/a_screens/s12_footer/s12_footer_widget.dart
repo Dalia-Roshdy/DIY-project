@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -105,8 +106,9 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                             itemBuilder: (context, index) {
                               return [
                                 () => FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button-HomeBtn pressed ...');
+                                      onPressed: () async {
+                                        context
+                                            .goNamed(AHomePageWidget.routeName);
                                       },
                                       text: 'HOME',
                                       options: FFButtonOptions(

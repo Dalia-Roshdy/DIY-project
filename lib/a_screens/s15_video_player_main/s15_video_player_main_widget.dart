@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 's15_video_player_main_model.dart';
 export 's15_video_player_main_model.dart';
@@ -52,7 +53,7 @@ class _S15VideoPlayerMainWidgetState extends State<S15VideoPlayerMainWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 0.0),
               child: Container(
-                width: 1050.33,
+                width: 1020.0,
                 constraints: BoxConstraints(
                   maxWidth: valueOrDefault<double>(
                     MediaQuery.sizeOf(context).width < kBreakpointLarge
@@ -60,7 +61,7 @@ class _S15VideoPlayerMainWidgetState extends State<S15VideoPlayerMainWidget> {
                         : 1000.0,
                     2000.0,
                   ),
-                  maxHeight: 2000.0,
+                  maxHeight: 570.0,
                 ),
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondary,
@@ -68,17 +69,65 @@ class _S15VideoPlayerMainWidgetState extends State<S15VideoPlayerMainWidget> {
                     width: 3.0,
                   ),
                 ),
-                child: Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: FlutterFlowVideoPlayer(
-                    path: 'https://assets.mixkit.co/videos/529/529-720.mp4',
-                    videoType: VideoType.network,
-                    autoPlay: false,
-                    looping: true,
-                    showControls: true,
-                    allowFullScreen: true,
-                    allowPlaybackSpeedMenu: false,
-                  ),
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: FlutterFlowVideoPlayer(
+                        path:
+                            'assets/videos/Video_Tutorial_Ready_On_Demand.mp4',
+                        videoType: VideoType.asset,
+                        autoPlay: false,
+                        looping: true,
+                        showControls: true,
+                        allowFullScreen: true,
+                        allowPlaybackSpeedMenu: false,
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 1.0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 0.0, 0.0, 120.0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'INITIATE PLAYBACK',
+                          icon: Icon(
+                            Icons.play_arrow,
+                            size: 42.0,
+                          ),
+                          options: FFButtonOptions(
+                            width: 120.0,
+                            height: 80.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 8.0, 0.0),
+                            color: FlutterFlowTheme.of(context).secondary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .labelLarge
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelLargeFamily,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 24.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelLargeIsCustom,
+                                ),
+                            elevation: 0.0,
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).secondary,
+                            ),
+                            borderRadius: BorderRadius.circular(0.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

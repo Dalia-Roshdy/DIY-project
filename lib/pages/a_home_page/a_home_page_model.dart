@@ -23,6 +23,8 @@ class AHomePageModel extends FlutterFlowModel<AHomePageWidget> {
   List<ACModelRecord>? acModelAct;
   // Stores action output result for [Custom Action - mapACMakeToDto] action in A-HomePage widget.
   List<AcMakeDTOStruct>? acMakeMap;
+  // Stores action output result for [Custom Action - mapACModelToDto] action in A-HomePage widget.
+  List<AcModelDTOStruct>? acModelMap;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for S02_Headlines component.

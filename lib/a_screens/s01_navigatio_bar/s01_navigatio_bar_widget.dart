@@ -110,8 +110,8 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   FFButtonWidget(
-                    onPressed: () {
-                      print('Button-HomeBtn pressed ...');
+                    onPressed: () async {
+                      context.goNamed(AHomePageWidget.routeName);
                     },
                     text: 'HOME',
                     options: FFButtonOptions(

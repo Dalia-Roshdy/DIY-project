@@ -1,10 +1,8 @@
 import '/a_screens/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
-import '/a_screens/s04_image/s04_image_widget.dart';
-import '/a_screens/s05_homestartdiagnosis/s05_homestartdiagnosis_widget.dart';
 import '/a_screens/s12_footer/s12_footer_widget.dart';
-import '/a_screens/s13_squares/s13_squares_widget.dart';
 import '/a_screens/s14_video_library_left_index/s14_video_library_left_index_widget.dart';
 import '/a_screens/s15_video_player_main/s15_video_player_main_widget.dart';
+import '/a_screens/s16_squares_videos/s16_squares_videos_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -121,7 +119,7 @@ class _CLibraryVideoWidgetState extends State<CLibraryVideoWidget> {
                                             MediaQuery.sizeOf(context).width <
                                                     kBreakpointSmall
                                                 ? 25.0
-                                                : 100.0,
+                                                : 60.0,
                                             100.0,
                                           ),
                                           decoration: BoxDecoration(),
@@ -137,21 +135,26 @@ class _CLibraryVideoWidgetState extends State<CLibraryVideoWidget> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Container(
-                                              width: 404.2,
-                                              height: 1188.89,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: wrapWithModel(
-                                                model: _model
-                                                    .s14VideoLibraryLeftIndexModel,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child:
-                                                    S14VideoLibraryLeftIndexWidget(),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 26.0, 0.0, 0.0),
+                                              child: Container(
+                                                width: 329.96,
+                                                height: 1188.9,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: wrapWithModel(
+                                                  model: _model
+                                                      .s14VideoLibraryLeftIndexModel,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child:
+                                                      S14VideoLibraryLeftIndexWidget(),
+                                                ),
                                               ),
                                             ),
                                             Expanded(
@@ -166,33 +169,20 @@ class _CLibraryVideoWidgetState extends State<CLibraryVideoWidget> {
                                             ),
                                           ],
                                         ),
-                                        wrapWithModel(
-                                          model:
-                                              _model.s05HomestartdiagnosisModel,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: S05HomestartdiagnosisWidget(),
-                                        ),
-                                        Divider(
-                                          height: 1.0,
-                                          thickness: 1.0,
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                        ),
                                       ],
                                     ),
                                   ],
                                 ),
                               ),
                               wrapWithModel(
-                                model: _model.s13SquaresModel,
+                                model: _model.s16SquaresVideosModel,
                                 updateCallback: () => safeSetState(() {}),
-                                child: S13SquaresWidget(),
+                                child: S16SquaresVideosWidget(),
                               ),
-                              wrapWithModel(
-                                model: _model.s04ImageModel,
-                                updateCallback: () => safeSetState(() {}),
-                                child: S04ImageWidget(),
+                              Divider(
+                                height: 1.0,
+                                thickness: 1.0,
+                                color: FlutterFlowTheme.of(context).tertiary,
                               ),
                               wrapWithModel(
                                 model: _model.s12FooterModel,

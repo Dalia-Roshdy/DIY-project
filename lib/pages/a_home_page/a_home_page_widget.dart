@@ -59,11 +59,17 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
         _model.acMakeMap = await actions.mapACMakeToDto(
           _model.acMakeAct!.toList(),
         );
+        _model.acModelMap = await actions.mapACModelToDto(
+          _model.acModelAct!.toList(),
+        );
         FFAppState().acMakeList = _model.acMakeMap!
             .sortedList(keyOf: (e) => e.name, desc: false)
             .toList()
             .cast<AcMakeDTOStruct>();
-        safeSetState(() {});
+        FFAppState().acModelList = _model.acModelMap!
+            .sortedList(keyOf: (e) => e.name, desc: false)
+            .toList()
+            .cast<AcModelDTOStruct>();
       }
     });
 
@@ -198,7 +204,9 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
                               wrapWithModel(
                                 model: _model.s07ServiceTitleModel,
                                 updateCallback: () => safeSetState(() {}),
-                                child: S07ServiceTitleWidget(),
+                                child: S07ServiceTitleWidget(
+                                  key: ValueKey('servicesSection'),
+                                ),
                               ),
                               wrapWithModel(
                                 model: _model.s07ServiceContentModel,

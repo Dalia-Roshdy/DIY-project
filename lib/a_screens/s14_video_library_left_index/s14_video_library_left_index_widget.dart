@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -60,8 +61,8 @@ class _S14VideoLibraryLeftIndexWidgetState
                 maxWidth: valueOrDefault<double>(
                   MediaQuery.sizeOf(context).width < kBreakpointLarge
                       ? double.infinity
-                      : 860.0,
-                  860.0,
+                      : 400.0,
+                  600.0,
                 ),
               ),
               decoration: BoxDecoration(
@@ -94,8 +95,8 @@ class _S14VideoLibraryLeftIndexWidgetState
                           maxWidth: valueOrDefault<double>(
                             MediaQuery.sizeOf(context).width < kBreakpointLarge
                                 ? double.infinity
-                                : 740.0,
-                            740.0,
+                                : 400.0,
+                            600.0,
                           ),
                         ),
                         decoration: BoxDecoration(),
@@ -107,6 +108,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Container(
+                                    width: 400.0,
                                     constraints: BoxConstraints(
                                       maxHeight: double.infinity,
                                     ),
@@ -131,34 +133,32 @@ class _S14VideoLibraryLeftIndexWidgetState
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      48.0, 28.0, 0.0, 18.0),
+                                                      24.0, 28.0, 0.0, 18.0),
                                               child: AutoSizeText(
                                                 'MANUFACTURER',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmallFamily,
-                                                      color: Color(0xE2202020),
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w300,
-                                                      lineHeight: 1.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmallIsCustom,
-                                                    ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          lineHeight: 1.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmallIsCustom,
+                                                        ),
                                               ),
                                             ),
                                           ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    48.0, 0.0, 0.0, 25.0),
+                                                    24.0, 0.0, 24.0, 25.0),
                                             child: FlutterFlowCheckboxGroup(
                                               options: [
                                                 'CARRIER // GLOBAL',
@@ -193,7 +193,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                         FlutterFlowTheme.of(
                                                                 context)
                                                             .bodyLargeFamily,
-                                                    fontSize: 24.0,
+                                                    fontSize: 18.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     useGoogleFonts:
@@ -214,8 +214,8 @@ class _S14VideoLibraryLeftIndexWidgetState
                                           ),
                                           Divider(
                                             thickness: 4.0,
-                                            indent: 50.0,
-                                            endIndent: 50.0,
+                                            indent: 24.0,
+                                            endIndent: 24.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
                                           ),
@@ -225,7 +225,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      48.0, 28.0, 0.0, 18.0),
+                                                      24.0, 28.0, 0.0, 18.0),
                                               child: AutoSizeText(
                                                 'SYSTEM TYPE',
                                                 style: FlutterFlowTheme.of(
@@ -237,6 +237,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                                   context)
                                                               .titleSmallFamily,
                                                       color: Color(0xE2202020),
+                                                      fontSize: 18.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w300,
@@ -252,11 +253,11 @@ class _S14VideoLibraryLeftIndexWidgetState
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    48.0, 0.0, 48.0, 10.0),
+                                                    24.0, 0.0, 24.0, 10.0),
                                             child: Container(
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
-                                                  0.08,
+                                                  0.064,
                                               constraints: BoxConstraints(
                                                 minHeight: 50.0,
                                                 maxHeight:
@@ -337,9 +338,12 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                                               context)
                                                                           .secondary,
                                                                       fontSize:
-                                                                          18.0,
+                                                                          16.0,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
                                                                       useGoogleFonts:
                                                                           !FlutterFlowTheme.of(context)
                                                                               .titleSmallIsCustom,
@@ -369,11 +373,11 @@ class _S14VideoLibraryLeftIndexWidgetState
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    48.0, 0.0, 48.0, 10.0),
+                                                    24.0, 0.0, 24.0, 10.0),
                                             child: Container(
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
-                                                  0.08,
+                                                  0.064,
                                               constraints: BoxConstraints(
                                                 minHeight: 50.0,
                                                 maxHeight:
@@ -457,7 +461,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                                               context)
                                                                           .primary,
                                                                       fontSize:
-                                                                          18.0,
+                                                                          16.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       useGoogleFonts:
@@ -489,11 +493,11 @@ class _S14VideoLibraryLeftIndexWidgetState
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    48.0, 0.0, 48.0, 10.0),
+                                                    24.0, 0.0, 24.0, 10.0),
                                             child: Container(
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
-                                                  0.08,
+                                                  0.064,
                                               constraints: BoxConstraints(
                                                 minHeight: 50.0,
                                                 maxHeight:
@@ -577,7 +581,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                                               context)
                                                                           .primary,
                                                                       fontSize:
-                                                                          18.0,
+                                                                          16.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       useGoogleFonts:
@@ -609,11 +613,11 @@ class _S14VideoLibraryLeftIndexWidgetState
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    48.0, 0.0, 48.0, 10.0),
+                                                    24.0, 0.0, 24.0, 10.0),
                                             child: Container(
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
-                                                  0.08,
+                                                  0.064,
                                               constraints: BoxConstraints(
                                                 minHeight: 50.0,
                                                 maxHeight:
@@ -697,7 +701,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                                               context)
                                                                           .primary,
                                                                       fontSize:
-                                                                          18.0,
+                                                                          16.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       useGoogleFonts:
@@ -734,12 +738,23 @@ class _S14VideoLibraryLeftIndexWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 64.0, 0.0, 0.0),
                                     child: Container(
+                                      width: 400.0,
                                       constraints: BoxConstraints(
                                         maxHeight: double.infinity,
                                       ),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.black,
+                                            offset: Offset(
+                                              10.0,
+                                              12.0,
+                                            ),
+                                            spreadRadius: 3.0,
+                                          )
+                                        ],
                                         border: Border.all(
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -755,14 +770,14 @@ class _S14VideoLibraryLeftIndexWidgetState
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      48.0, 24.0, 48.0, 24.0),
+                                                      20.0, 24.0, 20.0, 24.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Icon(
                                                     Icons.warning_sharp,
                                                     color: Color(0xC61A1A1A),
-                                                    size: 48.0,
+                                                    size: 36.0,
                                                   ),
                                                   Align(
                                                     alignment:
@@ -772,7 +787,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  18.0,
+                                                                  8.0,
                                                                   28.0,
                                                                   0.0,
                                                                   18.0),
@@ -788,6 +803,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                                       .titleSmallFamily,
                                                               color: Color(
                                                                   0xE2202020),
+                                                              fontSize: 20.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               fontWeight:
@@ -808,9 +824,10 @@ class _S14VideoLibraryLeftIndexWidgetState
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      48.0, 0.0, 48.0, 24.0),
+                                                      24.0, 0.0, 24.0, 24.0),
                                               child: Text(
                                                 'ALWAYS DISCONNECT MAIN POWER BREAKER BEFORE ATTEMPTING CALIBRATION. VOLTAGE SPIKES MAY OCCUR IN UNDERGROUND CHASIS.',
+                                                textAlign: TextAlign.center,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .titleSmall
@@ -826,6 +843,7 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xCE202020),
+                                                      fontSize: 18.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -835,6 +853,55 @@ class _S14VideoLibraryLeftIndexWidgetState
                                                               .titleSmall
                                                               .fontStyle,
                                                     ),
+                                              ),
+                                            ),
+                                            FFButtonWidget(
+                                              onPressed: () {
+                                                print('Button pressed ...');
+                                              },
+                                              text: 'DOWNLOAD MANUAL.PDF',
+                                              options: FFButtonOptions(
+                                                width: 120.0,
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        48.0, 0.0, 48.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .labelLarge
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelLargeFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelLargeIsCustom,
+                                                    ),
+                                                elevation: 0.0,
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  width: 3.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
                                               ),
                                             ),
                                           ],

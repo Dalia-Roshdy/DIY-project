@@ -49,15 +49,18 @@ class S05HomestartdiagnosisModel
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered1 = false;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
+  FocusNode? textFieldFocusNode;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for DropDown-Model widget.
+  String? dropDownModelValue;
+  FormFieldController<String>? dropDownModelValueController;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered2 = false;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
+  // State field(s) for TextField-SN widget.
+  FocusNode? textFieldSNFocusNode;
+  TextEditingController? textFieldSNTextController;
+  String? Function(BuildContext, String?)? textFieldSNTextControllerValidator;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered3 = false;
 
@@ -72,10 +75,10 @@ class S05HomestartdiagnosisModel
     textFieldNameFocusNode?.dispose();
     textFieldNameTextController?.dispose();
 
-    textFieldFocusNode1?.dispose();
+    textFieldFocusNode?.dispose();
     textController2?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController3?.dispose();
+    textFieldSNFocusNode?.dispose();
+    textFieldSNTextController?.dispose();
   }
 }
