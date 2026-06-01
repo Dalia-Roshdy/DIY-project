@@ -11,10 +11,16 @@ class AcModelDTOStruct extends FFFirebaseStruct {
     DocumentReference? id,
     DocumentReference? acMakeId,
     String? name,
+    DocumentReference? capacitorSpecsId,
+    DocumentReference? contactorSpecId,
+    DocumentReference? motorSpecId,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _acMakeId = acMakeId,
         _name = name,
+        _capacitorSpecsId = capacitorSpecsId,
+        _contactorSpecId = contactorSpecId,
+        _motorSpecId = motorSpecId,
         super(firestoreUtilData);
 
   // "id" field.
@@ -38,11 +44,35 @@ class AcModelDTOStruct extends FFFirebaseStruct {
 
   bool hasName() => _name != null;
 
+  // "capacitorSpecsId" field.
+  DocumentReference? _capacitorSpecsId;
+  DocumentReference? get capacitorSpecsId => _capacitorSpecsId;
+  set capacitorSpecsId(DocumentReference? val) => _capacitorSpecsId = val;
+
+  bool hasCapacitorSpecsId() => _capacitorSpecsId != null;
+
+  // "contactorSpecId" field.
+  DocumentReference? _contactorSpecId;
+  DocumentReference? get contactorSpecId => _contactorSpecId;
+  set contactorSpecId(DocumentReference? val) => _contactorSpecId = val;
+
+  bool hasContactorSpecId() => _contactorSpecId != null;
+
+  // "motorSpecId" field.
+  DocumentReference? _motorSpecId;
+  DocumentReference? get motorSpecId => _motorSpecId;
+  set motorSpecId(DocumentReference? val) => _motorSpecId = val;
+
+  bool hasMotorSpecId() => _motorSpecId != null;
+
   static AcModelDTOStruct fromMap(Map<String, dynamic> data) =>
       AcModelDTOStruct(
         id: data['id'] as DocumentReference?,
         acMakeId: data['acMakeId'] as DocumentReference?,
         name: data['name'] as String?,
+        capacitorSpecsId: data['capacitorSpecsId'] as DocumentReference?,
+        contactorSpecId: data['contactorSpecId'] as DocumentReference?,
+        motorSpecId: data['motorSpecId'] as DocumentReference?,
       );
 
   static AcModelDTOStruct? maybeFromMap(dynamic data) => data is Map
@@ -53,6 +83,9 @@ class AcModelDTOStruct extends FFFirebaseStruct {
         'id': _id,
         'acMakeId': _acMakeId,
         'name': _name,
+        'capacitorSpecsId': _capacitorSpecsId,
+        'contactorSpecId': _contactorSpecId,
+        'motorSpecId': _motorSpecId,
       }.withoutNulls;
 
   @override
@@ -68,6 +101,18 @@ class AcModelDTOStruct extends FFFirebaseStruct {
         'name': serializeParam(
           _name,
           ParamType.String,
+        ),
+        'capacitorSpecsId': serializeParam(
+          _capacitorSpecsId,
+          ParamType.DocumentReference,
+        ),
+        'contactorSpecId': serializeParam(
+          _contactorSpecId,
+          ParamType.DocumentReference,
+        ),
+        'motorSpecId': serializeParam(
+          _motorSpecId,
+          ParamType.DocumentReference,
         ),
       }.withoutNulls;
 
@@ -90,6 +135,24 @@ class AcModelDTOStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        capacitorSpecsId: deserializeParam(
+          data['capacitorSpecsId'],
+          ParamType.DocumentReference,
+          false,
+          collectionNamePath: ['CapacitorSpec'],
+        ),
+        contactorSpecId: deserializeParam(
+          data['contactorSpecId'],
+          ParamType.DocumentReference,
+          false,
+          collectionNamePath: ['ContactorSpec'],
+        ),
+        motorSpecId: deserializeParam(
+          data['motorSpecId'],
+          ParamType.DocumentReference,
+          false,
+          collectionNamePath: ['MotorSpec'],
+        ),
       );
 
   @override
@@ -100,17 +163,24 @@ class AcModelDTOStruct extends FFFirebaseStruct {
     return other is AcModelDTOStruct &&
         id == other.id &&
         acMakeId == other.acMakeId &&
-        name == other.name;
+        name == other.name &&
+        capacitorSpecsId == other.capacitorSpecsId &&
+        contactorSpecId == other.contactorSpecId &&
+        motorSpecId == other.motorSpecId;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([id, acMakeId, name]);
+  int get hashCode => const ListEquality().hash(
+      [id, acMakeId, name, capacitorSpecsId, contactorSpecId, motorSpecId]);
 }
 
 AcModelDTOStruct createAcModelDTOStruct({
   DocumentReference? id,
   DocumentReference? acMakeId,
   String? name,
+  DocumentReference? capacitorSpecsId,
+  DocumentReference? contactorSpecId,
+  DocumentReference? motorSpecId,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -120,6 +190,9 @@ AcModelDTOStruct createAcModelDTOStruct({
       id: id,
       acMakeId: acMakeId,
       name: name,
+      capacitorSpecsId: capacitorSpecsId,
+      contactorSpecId: contactorSpecId,
+      motorSpecId: motorSpecId,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

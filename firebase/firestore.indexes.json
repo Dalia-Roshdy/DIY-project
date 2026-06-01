@@ -1,3 +1,18 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "diagnosisVideoOption",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "diagnosisVideoRef",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "displayOrder",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
 }

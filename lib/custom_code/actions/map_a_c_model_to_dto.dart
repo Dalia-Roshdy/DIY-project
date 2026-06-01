@@ -21,9 +21,13 @@ Future<List<AcModelDTOStruct>> mapACModelToDto(
   final List<AcModelDTOStruct> acModelDTOList =
       acModelList.map((acModelRecord) {
     return AcModelDTOStruct(
-        id: acModelRecord.reference,
-        acMakeId: acModelRecord.acMakeId,
-        name: acModelRecord.name);
+      id: acModelRecord.reference,
+      acMakeId: acModelRecord.acMakeId,
+      name: acModelRecord.name,
+      motorSpecId: acModelRecord.motorSpecsId,
+      capacitorSpecsId: acModelRecord.capacitorSpecsId,
+      contactorSpecId: acModelRecord.contactorSpecId,
+    );
   }).toList();
 
   return acModelDTOList;

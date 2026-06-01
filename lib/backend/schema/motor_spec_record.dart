@@ -20,10 +20,10 @@ class MotorSpecRecord extends FirestoreRecord {
   String get id => _id ?? '';
   bool hasId() => _id != null;
 
-  // "shaftLenght" field.
-  bool? _shaftLenght;
-  bool get shaftLenght => _shaftLenght ?? false;
-  bool hasShaftLenght() => _shaftLenght != null;
+  // "shaftLength" field.
+  double? _shaftLength;
+  double get shaftLength => _shaftLength ?? 0.0;
+  bool hasShaftLength() => _shaftLength != null;
 
   // "rotationDirection" field.
   String? _rotationDirection;
@@ -90,39 +90,54 @@ class MotorSpecRecord extends FirestoreRecord {
   int get noOfPhases => _noOfPhases ?? 0;
   bool hasNoOfPhases() => _noOfPhases != null;
 
-  // "ambientTemp" field.
-  double? _ambientTemp;
-  double get ambientTemp => _ambientTemp ?? 0.0;
-  bool hasAmbientTemp() => _ambientTemp != null;
+  // "ambientTempC" field.
+  double? _ambientTempC;
+  double get ambientTempC => _ambientTempC ?? 0.0;
+  bool hasAmbientTempC() => _ambientTempC != null;
 
   // "enclosure" field.
   String? _enclosure;
   String get enclosure => _enclosure ?? '';
   bool hasEnclosure() => _enclosure != null;
 
-  // "specMetadata" field.
-  String? _specMetadata;
-  String get specMetadata => _specMetadata ?? '';
-  bool hasSpecMetadata() => _specMetadata != null;
+  // "motorType" field.
+  String? _motorType;
+  String get motorType => _motorType ?? '';
+  bool hasMotorType() => _motorType != null;
 
-  // "lastUpdatedBy" field.
-  DocumentReference? _lastUpdatedBy;
-  DocumentReference? get lastUpdatedBy => _lastUpdatedBy;
-  bool hasLastUpdatedBy() => _lastUpdatedBy != null;
+  // "mountingNotes" field.
+  String? _mountingNotes;
+  String get mountingNotes => _mountingNotes ?? '';
+  bool hasMountingNotes() => _mountingNotes != null;
 
   // "lastUpdatedAt" field.
   DateTime? _lastUpdatedAt;
   DateTime? get lastUpdatedAt => _lastUpdatedAt;
   bool hasLastUpdatedAt() => _lastUpdatedAt != null;
 
+  // "lastUpdatedBy" field.
+  DocumentReference? _lastUpdatedBy;
+  DocumentReference? get lastUpdatedBy => _lastUpdatedBy;
+  bool hasLastUpdatedBy() => _lastUpdatedBy != null;
+
   // "searchableKeywords" field.
   List<String>? _searchableKeywords;
   List<String> get searchableKeywords => _searchableKeywords ?? const [];
   bool hasSearchableKeywords() => _searchableKeywords != null;
 
+  // "Desc" field.
+  String? _desc;
+  String get desc => _desc ?? '';
+  bool hasDesc() => _desc != null;
+
+  // "wireLength" field.
+  double? _wireLength;
+  double get wireLength => _wireLength ?? 0.0;
+  bool hasWireLength() => _wireLength != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
-    _shaftLenght = snapshotData['shaftLenght'] as bool?;
+    _shaftLength = castToType<double>(snapshotData['shaftLength']);
     _rotationDirection = snapshotData['rotationDirection'] as String?;
     _volt = castToType<int>(snapshotData['volt']);
     _amp = castToType<double>(snapshotData['amp']);
@@ -137,12 +152,15 @@ class MotorSpecRecord extends FirestoreRecord {
     _noOfSpeeds = castToType<int>(snapshotData['noOfSpeeds']);
     _frameId = snapshotData['frameId'] as String?;
     _noOfPhases = castToType<int>(snapshotData['noOfPhases']);
-    _ambientTemp = castToType<double>(snapshotData['ambientTemp']);
+    _ambientTempC = castToType<double>(snapshotData['ambientTempC']);
     _enclosure = snapshotData['enclosure'] as String?;
-    _specMetadata = snapshotData['specMetadata'] as String?;
-    _lastUpdatedBy = snapshotData['lastUpdatedBy'] as DocumentReference?;
+    _motorType = snapshotData['motorType'] as String?;
+    _mountingNotes = snapshotData['mountingNotes'] as String?;
     _lastUpdatedAt = snapshotData['lastUpdatedAt'] as DateTime?;
+    _lastUpdatedBy = snapshotData['lastUpdatedBy'] as DocumentReference?;
     _searchableKeywords = getDataList(snapshotData['searchableKeywords']);
+    _desc = snapshotData['Desc'] as String?;
+    _wireLength = castToType<double>(snapshotData['wireLength']);
   }
 
   static CollectionReference get collection =>
@@ -181,7 +199,7 @@ class MotorSpecRecord extends FirestoreRecord {
 
 Map<String, dynamic> createMotorSpecRecordData({
   String? id,
-  bool? shaftLenght,
+  double? shaftLength,
   String? rotationDirection,
   int? volt,
   double? amp,
@@ -195,16 +213,19 @@ Map<String, dynamic> createMotorSpecRecordData({
   int? noOfSpeeds,
   String? frameId,
   int? noOfPhases,
-  double? ambientTemp,
+  double? ambientTempC,
   String? enclosure,
-  String? specMetadata,
-  DocumentReference? lastUpdatedBy,
+  String? motorType,
+  String? mountingNotes,
   DateTime? lastUpdatedAt,
+  DocumentReference? lastUpdatedBy,
+  String? desc,
+  double? wireLength,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id': id,
-      'shaftLenght': shaftLenght,
+      'shaftLength': shaftLength,
       'rotationDirection': rotationDirection,
       'volt': volt,
       'amp': amp,
@@ -218,11 +239,14 @@ Map<String, dynamic> createMotorSpecRecordData({
       'noOfSpeeds': noOfSpeeds,
       'frameId': frameId,
       'noOfPhases': noOfPhases,
-      'ambientTemp': ambientTemp,
+      'ambientTempC': ambientTempC,
       'enclosure': enclosure,
-      'specMetadata': specMetadata,
-      'lastUpdatedBy': lastUpdatedBy,
+      'motorType': motorType,
+      'mountingNotes': mountingNotes,
       'lastUpdatedAt': lastUpdatedAt,
+      'lastUpdatedBy': lastUpdatedBy,
+      'Desc': desc,
+      'wireLength': wireLength,
     }.withoutNulls,
   );
 
@@ -236,7 +260,7 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
   bool equals(MotorSpecRecord? e1, MotorSpecRecord? e2) {
     const listEquality = ListEquality();
     return e1?.id == e2?.id &&
-        e1?.shaftLenght == e2?.shaftLenght &&
+        e1?.shaftLength == e2?.shaftLength &&
         e1?.rotationDirection == e2?.rotationDirection &&
         e1?.volt == e2?.volt &&
         e1?.amp == e2?.amp &&
@@ -250,18 +274,21 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
         e1?.noOfSpeeds == e2?.noOfSpeeds &&
         e1?.frameId == e2?.frameId &&
         e1?.noOfPhases == e2?.noOfPhases &&
-        e1?.ambientTemp == e2?.ambientTemp &&
+        e1?.ambientTempC == e2?.ambientTempC &&
         e1?.enclosure == e2?.enclosure &&
-        e1?.specMetadata == e2?.specMetadata &&
-        e1?.lastUpdatedBy == e2?.lastUpdatedBy &&
+        e1?.motorType == e2?.motorType &&
+        e1?.mountingNotes == e2?.mountingNotes &&
         e1?.lastUpdatedAt == e2?.lastUpdatedAt &&
-        listEquality.equals(e1?.searchableKeywords, e2?.searchableKeywords);
+        e1?.lastUpdatedBy == e2?.lastUpdatedBy &&
+        listEquality.equals(e1?.searchableKeywords, e2?.searchableKeywords) &&
+        e1?.desc == e2?.desc &&
+        e1?.wireLength == e2?.wireLength;
   }
 
   @override
   int hash(MotorSpecRecord? e) => const ListEquality().hash([
         e?.id,
-        e?.shaftLenght,
+        e?.shaftLength,
         e?.rotationDirection,
         e?.volt,
         e?.amp,
@@ -275,12 +302,15 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
         e?.noOfSpeeds,
         e?.frameId,
         e?.noOfPhases,
-        e?.ambientTemp,
+        e?.ambientTempC,
         e?.enclosure,
-        e?.specMetadata,
-        e?.lastUpdatedBy,
+        e?.motorType,
+        e?.mountingNotes,
         e?.lastUpdatedAt,
-        e?.searchableKeywords
+        e?.lastUpdatedBy,
+        e?.searchableKeywords,
+        e?.desc,
+        e?.wireLength
       ]);
 
   @override

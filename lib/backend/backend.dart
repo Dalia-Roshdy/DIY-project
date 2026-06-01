@@ -8,7 +8,6 @@ import 'schema/util/firestore_util.dart';
 import 'schema/user_record.dart';
 import 'schema/a_c_make_record.dart';
 import 'schema/a_c_model_record.dart';
-import 'schema/motor_spec_record.dart';
 import 'schema/fan_spec_record.dart';
 import 'schema/contactor_spec_record.dart';
 import 'schema/misc_record.dart';
@@ -16,6 +15,12 @@ import 'schema/spec_misc_record.dart';
 import 'schema/items_record.dart';
 import 'schema/orders_record.dart';
 import 'schema/mail_record.dart';
+import 'schema/motor_spec_record.dart';
+import 'schema/capacitor_spec_record.dart';
+import 'schema/subscriber_record.dart';
+import 'schema/settings_record.dart';
+import 'schema/diagnosis_video_record.dart';
+import 'schema/diagnosis_video_option_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -27,7 +32,6 @@ export 'schema/util/schema_util.dart';
 export 'schema/user_record.dart';
 export 'schema/a_c_make_record.dart';
 export 'schema/a_c_model_record.dart';
-export 'schema/motor_spec_record.dart';
 export 'schema/fan_spec_record.dart';
 export 'schema/contactor_spec_record.dart';
 export 'schema/misc_record.dart';
@@ -35,6 +39,12 @@ export 'schema/spec_misc_record.dart';
 export 'schema/items_record.dart';
 export 'schema/orders_record.dart';
 export 'schema/mail_record.dart';
+export 'schema/motor_spec_record.dart';
+export 'schema/capacitor_spec_record.dart';
+export 'schema/subscriber_record.dart';
+export 'schema/settings_record.dart';
+export 'schema/diagnosis_video_record.dart';
+export 'schema/diagnosis_video_option_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -142,43 +152,6 @@ Future<List<ACModelRecord>> queryACModelRecordOnce({
     queryCollectionOnce(
       ACModelRecord.collection,
       ACModelRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query MotorSpecRecords (as a Stream and as a Future).
-Future<int> queryMotorSpecRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      MotorSpecRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<MotorSpecRecord>> queryMotorSpecRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      MotorSpecRecord.collection,
-      MotorSpecRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<MotorSpecRecord>> queryMotorSpecRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      MotorSpecRecord.collection,
-      MotorSpecRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
@@ -438,6 +411,228 @@ Future<List<MailRecord>> queryMailRecordOnce({
     queryCollectionOnce(
       MailRecord.collection,
       MailRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query MotorSpecRecords (as a Stream and as a Future).
+Future<int> queryMotorSpecRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      MotorSpecRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<MotorSpecRecord>> queryMotorSpecRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MotorSpecRecord.collection,
+      MotorSpecRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MotorSpecRecord>> queryMotorSpecRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MotorSpecRecord.collection,
+      MotorSpecRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CapacitorSpecRecords (as a Stream and as a Future).
+Future<int> queryCapacitorSpecRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CapacitorSpecRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CapacitorSpecRecord>> queryCapacitorSpecRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CapacitorSpecRecord.collection,
+      CapacitorSpecRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CapacitorSpecRecord>> queryCapacitorSpecRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CapacitorSpecRecord.collection,
+      CapacitorSpecRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query SubscriberRecords (as a Stream and as a Future).
+Future<int> querySubscriberRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      SubscriberRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<SubscriberRecord>> querySubscriberRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SubscriberRecord.collection,
+      SubscriberRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SubscriberRecord>> querySubscriberRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SubscriberRecord.collection,
+      SubscriberRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query SettingsRecords (as a Stream and as a Future).
+Future<int> querySettingsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      SettingsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<SettingsRecord>> querySettingsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SettingsRecord.collection,
+      SettingsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SettingsRecord>> querySettingsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SettingsRecord.collection,
+      SettingsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query DiagnosisVideoRecords (as a Stream and as a Future).
+Future<int> queryDiagnosisVideoRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      DiagnosisVideoRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<DiagnosisVideoRecord>> queryDiagnosisVideoRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      DiagnosisVideoRecord.collection,
+      DiagnosisVideoRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<DiagnosisVideoRecord>> queryDiagnosisVideoRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      DiagnosisVideoRecord.collection,
+      DiagnosisVideoRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query DiagnosisVideoOptionRecords (as a Stream and as a Future).
+Future<int> queryDiagnosisVideoOptionRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      DiagnosisVideoOptionRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<DiagnosisVideoOptionRecord>> queryDiagnosisVideoOptionRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      DiagnosisVideoOptionRecord.collection,
+      DiagnosisVideoOptionRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<DiagnosisVideoOptionRecord>> queryDiagnosisVideoOptionRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      DiagnosisVideoOptionRecord.collection,
+      DiagnosisVideoOptionRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

@@ -3,12 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
-const kThemeModeKey = '__theme_mode__';
-
-SharedPreferences? _prefs;
-
 enum DeviceSize {
   mobile,
   tablet,
@@ -18,27 +12,9 @@ enum DeviceSize {
 abstract class FlutterFlowTheme {
   static DeviceSize deviceSize = DeviceSize.mobile;
 
-  static Future initialize() async =>
-      _prefs = await SharedPreferences.getInstance();
-
-  static ThemeMode get themeMode {
-    final darkMode = _prefs?.getBool(kThemeModeKey);
-    return darkMode == null
-        ? ThemeMode.system
-        : darkMode
-            ? ThemeMode.dark
-            : ThemeMode.light;
-  }
-
-  static void saveThemeMode(ThemeMode mode) => mode == ThemeMode.system
-      ? _prefs?.remove(kThemeModeKey)
-      : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
-
   static FlutterFlowTheme of(BuildContext context) {
     deviceSize = getDeviceSize(context);
-    return Theme.of(context).brightness == Brightness.dark
-        ? DarkModeTheme()
-        : LightModeTheme();
+    return LightModeTheme();
   }
 
   @Deprecated('Use primary instead')
@@ -64,6 +40,35 @@ abstract class FlutterFlowTheme {
   late Color warning;
   late Color error;
   late Color info;
+
+  late Color grey30;
+  late Color grey20;
+  late Color grey10;
+  late Color lightGrey;
+  late Color grey40;
+  late Color grey;
+  late Color redLight;
+  late Color greenLight;
+  late Color rateColor;
+  late Color lightYellow;
+  late Color containerColor;
+  late Color white;
+  late Color textFieldFillColor;
+  late Color blackColor;
+  late Color borderColor;
+  late Color newColor;
+  late Color bgBorderColor;
+  late Color whiteGreyColor;
+  late Color grey30WhiteColor;
+  late Color redColor;
+  late Color onPrimary;
+  late Color onSecondary;
+  late Color onSurface;
+  late Color onError;
+  late Color transparent;
+  late Color background70;
+  late Color primary20;
+  late Color customColor2;
 
   FFDesignTokens get designToken => FFDesignTokens(this);
 
@@ -171,19 +176,48 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color primary = const Color(0xFF1A1A1A);
   late Color secondary = const Color(0xFFFFFFFF);
   late Color tertiary = const Color(0xFFCFCFCF);
-  late Color alternate = const Color(0xFFFFFFFF);
-  late Color primaryText = const Color(0xFF202020);
-  late Color secondaryText = const Color(0xFFFFFFFF);
-  late Color primaryBackground = const Color(0xFFF9FAFB);
+  late Color alternate = const Color(0xFF000000);
+  late Color primaryText = const Color(0xFF000000);
+  late Color secondaryText = const Color(0xFF4A4A4A);
+  late Color primaryBackground = const Color(0xFFFFFFFF);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
   late Color accent1 = const Color(0xFF0891B2);
   late Color accent2 = const Color(0x4D39D2C0);
-  late Color accent3 = const Color(0x4DEE8B60);
+  late Color accent3 = const Color(0xFF8E8E8E);
   late Color accent4 = const Color(0xCCFFFFFF);
-  late Color success = const Color(0xFF16A34A);
+  late Color success = const Color(0xFF2E5A2E);
   late Color warning = const Color(0xFFF9CF58);
-  late Color error = const Color(0xFFE11D48);
+  late Color error = const Color(0xFF990000);
   late Color info = const Color(0xFFFFFFFF);
+
+  late Color grey30 = const Color(0xFF999999);
+  late Color grey20 = const Color(0xFFDCDCDC);
+  late Color grey10 = const Color(0xFFE6E6E6);
+  late Color lightGrey = const Color(0xFFF7F7F7);
+  late Color grey40 = const Color(0xFF666666);
+  late Color grey = const Color(0xFFF0F0F0);
+  late Color redLight = const Color(0xFFFCEBEB);
+  late Color greenLight = const Color(0xFFE6F8EE);
+  late Color rateColor = const Color(0xFFF1A80F);
+  late Color lightYellow = const Color(0xFFFFFAF0);
+  late Color containerColor = const Color(0xFFD9D9D9);
+  late Color white = const Color(0xFFFFFFFF);
+  late Color textFieldFillColor = const Color(0x14FFFFFF);
+  late Color blackColor = const Color(0xFF010A09);
+  late Color borderColor = const Color(0xFFDCDCDC);
+  late Color newColor = const Color(0xFF989898);
+  late Color bgBorderColor = const Color(0xFFDCDCDC);
+  late Color whiteGreyColor = const Color(0xFFFFFFFF);
+  late Color grey30WhiteColor = const Color(0xFF999999);
+  late Color redColor = const Color(0xFFFF0000);
+  late Color onPrimary = const Color(0xFFFFFFFF);
+  late Color onSecondary = const Color(0xFFFFFFFF);
+  late Color onSurface = const Color(0xFF000000);
+  late Color onError = const Color(0xFFFFFFFF);
+  late Color transparent = const Color(0x00000000);
+  late Color background70 = const Color(0xB3FFFFFF);
+  late Color primary20 = const Color(0xFFA11414);
+  late Color customColor2 = const Color(0xFFB13168);
 }
 
 abstract class Typography {
@@ -243,21 +277,18 @@ class MobileTypography extends Typography {
   bool get displayLargeIsCustom => false;
   TextStyle get displayLarge => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 54.0,
       );
   String get displayMediumFamily => 'Archivo Black';
   bool get displayMediumIsCustom => false;
   TextStyle get displayMedium => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 50.0,
       );
   String get displaySmallFamily => 'Archivo Black';
   bool get displaySmallIsCustom => false;
   TextStyle get displaySmall => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 44.0,
       );
   String get headlineLargeFamily => 'Archivo Black';
@@ -266,6 +297,7 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
+        height: 1.1,
       );
   String get headlineMediumFamily => 'Archivo Black';
   bool get headlineMediumIsCustom => false;
@@ -273,12 +305,12 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 28.0,
+        height: 1.1,
       );
   String get headlineSmallFamily => 'Archivo Black';
   bool get headlineSmallIsCustom => false;
   TextStyle get headlineSmall => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 24.0,
       );
   String get titleLargeFamily => 'Archivo Black';
@@ -287,6 +319,7 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 20.0,
+        height: 1.2,
       );
   String get titleMediumFamily => 'Archivo Black';
   bool get titleMediumIsCustom => false;
@@ -294,12 +327,12 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 18.0,
+        height: 1.2,
       );
   String get titleSmallFamily => 'Archivo Black';
   bool get titleSmallIsCustom => false;
   TextStyle get titleSmall => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
   String get labelLargeFamily => 'Archivo Black';
@@ -308,6 +341,7 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 10.0,
+        height: 1.0,
       );
   String get labelMediumFamily => 'Outfit';
   bool get labelMediumIsCustom => false;
@@ -315,6 +349,7 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 18.0,
+        height: 1.0,
       );
   String get labelSmallFamily => 'Outfit';
   bool get labelSmallIsCustom => false;
@@ -322,6 +357,7 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
+        height: 1.0,
       );
   String get bodyLargeFamily => 'Outfit';
   bool get bodyLargeIsCustom => false;
@@ -329,6 +365,7 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
+        height: 1.5,
       );
   String get bodyMediumFamily => 'Outfit';
   bool get bodyMediumIsCustom => false;
@@ -336,6 +373,7 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
+        height: 1.4,
       );
   String get bodySmallFamily => 'Outfit';
   bool get bodySmallIsCustom => false;
@@ -343,6 +381,7 @@ class MobileTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 10.0,
+        height: 1.4,
       );
 }
 
@@ -362,14 +401,12 @@ class TabletTypography extends Typography {
   bool get displayMediumIsCustom => false;
   TextStyle get displayMedium => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 80.0,
       );
   String get displaySmallFamily => 'Archivo Black';
   bool get displaySmallIsCustom => false;
   TextStyle get displaySmall => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 68.0,
       );
   String get headlineLargeFamily => 'Archivo Black';
@@ -378,6 +415,7 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 52.0,
+        height: 1.1,
       );
   String get headlineMediumFamily => 'Archivo Black';
   bool get headlineMediumIsCustom => false;
@@ -385,12 +423,12 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 40.0,
+        height: 1.1,
       );
   String get headlineSmallFamily => 'Archivo Black';
   bool get headlineSmallIsCustom => false;
   TextStyle get headlineSmall => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 34.0,
       );
   String get titleLargeFamily => 'Archivo Black';
@@ -399,6 +437,7 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 28.0,
+        height: 1.2,
       );
   String get titleMediumFamily => 'Archivo Black';
   bool get titleMediumIsCustom => false;
@@ -406,12 +445,12 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 26.0,
+        height: 1.2,
       );
   String get titleSmallFamily => 'Archivo Black';
   bool get titleSmallIsCustom => false;
   TextStyle get titleSmall => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 20.0,
       );
   String get labelLargeFamily => 'Archivo Black';
@@ -420,6 +459,7 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
+        height: 1.0,
       );
   String get labelMediumFamily => 'Outfit';
   bool get labelMediumIsCustom => false;
@@ -427,6 +467,7 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 26.0,
+        height: 1.0,
       );
   String get labelSmallFamily => 'Outfit';
   bool get labelSmallIsCustom => false;
@@ -434,6 +475,7 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 20.0,
+        height: 1.0,
       );
   String get bodyLargeFamily => 'Outfit';
   bool get bodyLargeIsCustom => false;
@@ -441,6 +483,7 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 18.0,
+        height: 1.5,
       );
   String get bodyMediumFamily => 'Outfit';
   bool get bodyMediumIsCustom => false;
@@ -448,6 +491,7 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
+        height: 1.4,
       );
   String get bodySmallFamily => 'Outfit';
   bool get bodySmallIsCustom => false;
@@ -455,6 +499,7 @@ class TabletTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
+        height: 1.4,
       );
 }
 
@@ -467,21 +512,18 @@ class DesktopTypography extends Typography {
   bool get displayLargeIsCustom => false;
   TextStyle get displayLarge => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 128.0,
       );
   String get displayMediumFamily => 'Archivo Black';
   bool get displayMediumIsCustom => false;
   TextStyle get displayMedium => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 100.0,
       );
   String get displaySmallFamily => 'Archivo Black';
   bool get displaySmallIsCustom => false;
   TextStyle get displaySmall => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 84.0,
       );
   String get headlineLargeFamily => 'Archivo Black';
@@ -490,6 +532,7 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 64.0,
+        height: 1.1,
       );
   String get headlineMediumFamily => 'Archivo Black';
   bool get headlineMediumIsCustom => false;
@@ -497,12 +540,12 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 48.0,
+        height: 1.1,
       );
   String get headlineSmallFamily => 'Archivo Black';
   bool get headlineSmallIsCustom => false;
   TextStyle get headlineSmall => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 40.0,
       );
   String get titleLargeFamily => 'Archivo Black';
@@ -511,6 +554,7 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 34.0,
+        height: 1.2,
       );
   String get titleMediumFamily => 'Archivo Black';
   bool get titleMediumIsCustom => false;
@@ -518,12 +562,12 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
+        height: 1.2,
       );
   String get titleSmallFamily => 'Archivo Black';
   bool get titleSmallIsCustom => false;
   TextStyle get titleSmall => GoogleFonts.archivoBlack(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 24.0,
       );
   String get labelLargeFamily => 'Outfit';
@@ -532,6 +576,7 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
+        height: 1.0,
       );
   String get labelMediumFamily => 'Outfit';
   bool get labelMediumIsCustom => false;
@@ -539,6 +584,7 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
+        height: 1.0,
       );
   String get labelSmallFamily => 'Outfit';
   bool get labelSmallIsCustom => false;
@@ -546,6 +592,7 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 24.0,
+        height: 1.0,
       );
   String get bodyLargeFamily => 'Outfit';
   bool get bodyLargeIsCustom => false;
@@ -553,6 +600,7 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 20.0,
+        height: 1.5,
       );
   String get bodyMediumFamily => 'Outfit';
   bool get bodyMediumIsCustom => false;
@@ -560,6 +608,7 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
+        height: 1.4,
       );
   String get bodySmallFamily => 'Outfit';
   bool get bodySmallIsCustom => false;
@@ -567,33 +616,8 @@ class DesktopTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
+        height: 1.4,
       );
-}
-
-class DarkModeTheme extends FlutterFlowTheme {
-  @Deprecated('Use primary instead')
-  Color get primaryColor => primary;
-  @Deprecated('Use secondary instead')
-  Color get secondaryColor => secondary;
-  @Deprecated('Use tertiary instead')
-  Color get tertiaryColor => tertiary;
-
-  late Color primary = const Color(0xFFFFFFFF);
-  late Color secondary = const Color(0xFF9CA3AF);
-  late Color tertiary = const Color(0xFF4B5563);
-  late Color alternate = const Color(0xFF333333);
-  late Color primaryText = const Color(0xFFF3F4F6);
-  late Color secondaryText = const Color(0xFF9CA3AF);
-  late Color primaryBackground = const Color(0xFF000000);
-  late Color secondaryBackground = const Color(0xFF111111);
-  late Color accent1 = const Color(0xFF22D3EE);
-  late Color accent2 = const Color(0x4D39D2C0);
-  late Color accent3 = const Color(0x4DEE8B60);
-  late Color accent4 = const Color(0xB2262D34);
-  late Color success = const Color(0xFF4ADE80);
-  late Color warning = const Color(0xFFF9CF58);
-  late Color error = const Color(0xFFF43F5E);
-  late Color info = const Color(0xFFFFFFFF);
 }
 
 class FFDesignTokens {
@@ -606,43 +630,50 @@ class FFDesignTokens {
 
 class FFSpacing {
   const FFSpacing();
+  double get none => 0.0;
   double get xs => 4.0;
   double get sm => 8.0;
   double get md => 16.0;
   double get lg => 24.0;
   double get xl => 32.0;
+  double get xxl => 48.0;
+  double get xxxl => 64.0;
 }
 
 class FFRadius {
   const FFRadius();
-  double get sm => 8.0;
-  double get md => 16.0;
-  double get lg => 24.0;
-  double get full => 9999.0;
+  double get none => 0.0;
+  double get xs => 2.0;
+  double get sm => 0.0;
+  double get md => 0.0;
+  double get lg => 0.0;
+  double get xl => 24.0;
+  double get xxl => 32.0;
+  double get full => 0.0;
 }
 
 class FFShadows {
   const FFShadows(this.theme);
   final FlutterFlowTheme theme;
   BoxShadow get sm => const BoxShadow(
-      blurRadius: 3.0,
-      color: const Color(0x1A000000),
-      offset: const Offset(0.0, 1.0),
+      blurRadius: 0.0,
+      color: const Color(0x00000000),
+      offset: const Offset(0.0, 0.0),
       spreadRadius: 0.0);
   BoxShadow get md => const BoxShadow(
-      blurRadius: 6.0,
-      color: const Color(0x1A000000),
-      offset: const Offset(0.0, 3.0),
+      blurRadius: 0.0,
+      color: const Color(0x00000000),
+      offset: const Offset(0.0, 0.0),
       spreadRadius: 0.0);
   BoxShadow get lg => const BoxShadow(
-      blurRadius: 15.0,
-      color: const Color(0x1A000000),
-      offset: const Offset(0.0, 8.0),
+      blurRadius: 0.0,
+      color: const Color(0x00000000),
+      offset: const Offset(0.0, 0.0),
       spreadRadius: 0.0);
   BoxShadow get xl => const BoxShadow(
-      blurRadius: 25.0,
-      color: const Color(0x1A000000),
-      offset: const Offset(0.0, 16.0),
+      blurRadius: 0.0,
+      color: const Color(0x00000000),
+      offset: const Offset(0.0, 0.0),
       spreadRadius: 0.0);
 }
 

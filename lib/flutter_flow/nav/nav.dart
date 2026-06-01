@@ -1,14 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -79,29 +77,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : AHomePageWidget(),
+          appStateNotifier.loggedIn ? BDiagnosisWidget() : AHomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : AHomePageWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? BDiagnosisWidget()
+              : AHomePageWidget(),
         ),
         FFRoute(
           name: HomePageWidget.routeName,
           path: HomePageWidget.routePath,
           requireAuth: true,
           builder: (context, params) => HomePageWidget(),
-        ),
-        FFRoute(
-          name: LoginForTestWidget.routeName,
-          path: LoginForTestWidget.routePath,
-          builder: (context, params) => LoginForTestWidget(),
-        ),
-        FFRoute(
-          name: SignUpForTestWidget.routeName,
-          path: SignUpForTestWidget.routePath,
-          builder: (context, params) => SignUpForTestWidget(),
         ),
         FFRoute(
           name: AHomePageWidget.routeName,
@@ -126,7 +115,228 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: CLibraryVideoWidget.routeName,
           path: CLibraryVideoWidget.routePath,
+          requireAuth: true,
           builder: (context, params) => CLibraryVideoWidget(),
+        ),
+        FFRoute(
+          name: L01SignInPageWidget.routeName,
+          path: L01SignInPageWidget.routePath,
+          builder: (context, params) => L01SignInPageWidget(),
+        ),
+        FFRoute(
+          name: L02SingUpPageWidget.routeName,
+          path: L02SingUpPageWidget.routePath,
+          builder: (context, params) => L02SingUpPageWidget(),
+        ),
+        FFRoute(
+          name: L03ForgetPasswordWidget.routeName,
+          path: L03ForgetPasswordWidget.routePath,
+          builder: (context, params) => L03ForgetPasswordWidget(),
+        ),
+        FFRoute(
+          name: L05ForgetVerificationPageWidget.routeName,
+          path: L05ForgetVerificationPageWidget.routePath,
+          builder: (context, params) => L05ForgetVerificationPageWidget(),
+        ),
+        FFRoute(
+          name: L04ResetPasswordPageWidget.routeName,
+          path: L04ResetPasswordPageWidget.routePath,
+          builder: (context, params) => L04ResetPasswordPageWidget(),
+        ),
+        FFRoute(
+          name: L06VerificationPageWidget.routeName,
+          path: L06VerificationPageWidget.routePath,
+          builder: (context, params) => L06VerificationPageWidget(
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: SelectMotorMobile2Widget.routeName,
+          path: SelectMotorMobile2Widget.routePath,
+          builder: (context, params) => SelectMotorMobile2Widget(),
+        ),
+        FFRoute(
+          name: SelecProductDesktopWidget.routeName,
+          path: SelecProductDesktopWidget.routePath,
+          builder: (context, params) => SelecProductDesktopWidget(),
+        ),
+        FFRoute(
+          name: SelectMotorWidget.routeName,
+          path: SelectMotorWidget.routePath,
+          builder: (context, params) => SelectMotorWidget(),
+        ),
+        FFRoute(
+          name: SelectMotor2Widget.routeName,
+          path: SelectMotor2Widget.routePath,
+          builder: (context, params) => SelectMotor2Widget(),
+        ),
+        FFRoute(
+          name: SelectMotor3Widget.routeName,
+          path: SelectMotor3Widget.routePath,
+          builder: (context, params) => SelectMotor3Widget(),
+        ),
+        FFRoute(
+          name: OrderAndReviewSummaryWidget.routeName,
+          path: OrderAndReviewSummaryWidget.routePath,
+          builder: (context, params) => OrderAndReviewSummaryWidget(),
+        ),
+        FFRoute(
+          name: ReviewOrderFinalWidget.routeName,
+          path: ReviewOrderFinalWidget.routePath,
+          builder: (context, params) => ReviewOrderFinalWidget(),
+        ),
+        FFRoute(
+          name: EReviewYourOrderWidget.routeName,
+          path: EReviewYourOrderWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => EReviewYourOrderWidget(),
+        ),
+        FFRoute(
+          name: ReviewOrderWidget.routeName,
+          path: ReviewOrderWidget.routePath,
+          builder: (context, params) => ReviewOrderWidget(),
+        ),
+        FFRoute(
+          name: FSecurePaymentCheckoutDraftWidget.routeName,
+          path: FSecurePaymentCheckoutDraftWidget.routePath,
+          builder: (context, params) => FSecurePaymentCheckoutDraftWidget(),
+        ),
+        FFRoute(
+          name: SecureCheckoutWidget.routeName,
+          path: SecureCheckoutWidget.routePath,
+          builder: (context, params) => SecureCheckoutWidget(),
+        ),
+        FFRoute(
+          name: SecureCheckout2Widget.routeName,
+          path: SecureCheckout2Widget.routePath,
+          builder: (context, params) => SecureCheckout2Widget(),
+        ),
+        FFRoute(
+          name: GSecurePaymentCheckoutCopyWidget.routeName,
+          path: GSecurePaymentCheckoutCopyWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => GSecurePaymentCheckoutCopyWidget(),
+        ),
+        FFRoute(
+          name: LoadinIndicatorWidget.routeName,
+          path: LoadinIndicatorWidget.routePath,
+          builder: (context, params) => LoadinIndicatorWidget(
+            orderId: params.getParam(
+              'orderId',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['orders'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: DSelectProductRepairWidget.routeName,
+          path: DSelectProductRepairWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => DSelectProductRepairWidget(),
+        ),
+        FFRoute(
+          name: IAboutWidget.routeName,
+          path: IAboutWidget.routePath,
+          builder: (context, params) => IAboutWidget(),
+        ),
+        FFRoute(
+          name: HamburgerNavWidget.routeName,
+          path: HamburgerNavWidget.routePath,
+          builder: (context, params) => HamburgerNavWidget(),
+        ),
+        FFRoute(
+          name: LUserProfileWidget.routeName,
+          path: LUserProfileWidget.routePath,
+          builder: (context, params) => LUserProfileWidget(),
+        ),
+        FFRoute(
+          name: LPreviousOrdersWidget.routeName,
+          path: LPreviousOrdersWidget.routePath,
+          builder: (context, params) => LPreviousOrdersWidget(),
+        ),
+        FFRoute(
+          name: LShippingAddressEditWidget.routeName,
+          path: LShippingAddressEditWidget.routePath,
+          builder: (context, params) => LShippingAddressEditWidget(),
+        ),
+        FFRoute(
+          name: CLibraryVideoCopyWidget.routeName,
+          path: CLibraryVideoCopyWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => CLibraryVideoCopyWidget(),
+        ),
+        FFRoute(
+          name: VideoLibraryWidget.routeName,
+          path: VideoLibraryWidget.routePath,
+          builder: (context, params) => VideoLibraryWidget(),
+        ),
+        FFRoute(
+          name: CLibraryVideoFlowWidget.routeName,
+          path: CLibraryVideoFlowWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => CLibraryVideoFlowWidget(
+            currentVideoId: params.getParam(
+              'currentVideoId',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['DiagnosisVideo'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: AboutMobileRefinedWidget.routeName,
+          path: AboutMobileRefinedWidget.routePath,
+          builder: (context, params) => AboutMobileRefinedWidget(),
+        ),
+        FFRoute(
+          name: UnsubscribeWidget.routeName,
+          path: UnsubscribeWidget.routePath,
+          builder: (context, params) => UnsubscribeWidget(
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: HConfirmationCheckoutWidget.routeName,
+          path: HConfirmationCheckoutWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => HConfirmationCheckoutWidget(),
+        ),
+        FFRoute(
+          name: IAboutMobile02Widget.routeName,
+          path: IAboutMobile02Widget.routePath,
+          builder: (context, params) => IAboutMobile02Widget(),
+        ),
+        FFRoute(
+          name: OrderSuccessWidget.routeName,
+          path: OrderSuccessWidget.routePath,
+          builder: (context, params) => OrderSuccessWidget(),
+        ),
+        FFRoute(
+          name: ShippingAddressesWidget.routeName,
+          path: ShippingAddressesWidget.routePath,
+          builder: (context, params) => ShippingAddressesWidget(),
+        ),
+        FFRoute(
+          name: SomethingwentwrongWidget.routeName,
+          path: SomethingwentwrongWidget.routePath,
+          builder: (context, params) => SomethingwentwrongWidget(),
+        ),
+        FFRoute(
+          name: SomethingWentWrongWidget.routeName,
+          path: SomethingWentWrongWidget.routePath,
+          builder: (context, params) => SomethingWentWrongWidget(),
+        ),
+        FFRoute(
+          name: KContactWidget.routeName,
+          path: KContactWidget.routePath,
+          builder: (context, params) => KContactWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
@@ -314,14 +524,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitRotatingPlain(
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 50.0,
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/New_Screen_3_(Copy).png',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;

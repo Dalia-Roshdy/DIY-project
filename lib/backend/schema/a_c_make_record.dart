@@ -40,11 +40,6 @@ class ACMakeRecord extends FirestoreRecord {
   bool get approved => _approved ?? false;
   bool hasApproved() => _approved != null;
 
-  // "commonIssues" field.
-  List<String>? _commonIssues;
-  List<String> get commonIssues => _commonIssues ?? const [];
-  bool hasCommonIssues() => _commonIssues != null;
-
   // "lastUpdatedBy" field.
   DocumentReference? _lastUpdatedBy;
   DocumentReference? get lastUpdatedBy => _lastUpdatedBy;
@@ -61,7 +56,6 @@ class ACMakeRecord extends FirestoreRecord {
     _logoUrl = snapshotData['logoUrl'] as String?;
     _description = snapshotData['description'] as String?;
     _approved = snapshotData['approved'] as bool?;
-    _commonIssues = getDataList(snapshotData['commonIssues']);
     _lastUpdatedBy = snapshotData['lastUpdatedBy'] as DocumentReference?;
     _lastUpdatedAt = snapshotData['lastUpdatedAt'] as DateTime?;
   }
@@ -128,13 +122,11 @@ class ACMakeRecordDocumentEquality implements Equality<ACMakeRecord> {
 
   @override
   bool equals(ACMakeRecord? e1, ACMakeRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.id == e2?.id &&
         e1?.name == e2?.name &&
         e1?.logoUrl == e2?.logoUrl &&
         e1?.description == e2?.description &&
         e1?.approved == e2?.approved &&
-        listEquality.equals(e1?.commonIssues, e2?.commonIssues) &&
         e1?.lastUpdatedBy == e2?.lastUpdatedBy &&
         e1?.lastUpdatedAt == e2?.lastUpdatedAt;
   }
@@ -146,7 +138,6 @@ class ACMakeRecordDocumentEquality implements Equality<ACMakeRecord> {
         e?.logoUrl,
         e?.description,
         e?.approved,
-        e?.commonIssues,
         e?.lastUpdatedBy,
         e?.lastUpdatedAt
       ]);

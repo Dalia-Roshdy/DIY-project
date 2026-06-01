@@ -25,16 +25,6 @@ class ItemsRecord extends FirestoreRecord {
   String get specType => _specType ?? '';
   bool hasSpecType() => _specType != null;
 
-  // "motorSpecId" field.
-  DocumentReference? _motorSpecId;
-  DocumentReference? get motorSpecId => _motorSpecId;
-  bool hasMotorSpecId() => _motorSpecId != null;
-
-  // "fanSpecId" field.
-  DocumentReference? _fanSpecId;
-  DocumentReference? get fanSpecId => _fanSpecId;
-  bool hasFanSpecId() => _fanSpecId != null;
-
   // "contactorSpecId" field.
   DocumentReference? _contactorSpecId;
   DocumentReference? get contactorSpecId => _contactorSpecId;
@@ -69,11 +59,6 @@ class ItemsRecord extends FirestoreRecord {
   String? _description;
   String get description => _description ?? '';
   bool hasDescription() => _description != null;
-
-  // "image" field.
-  List<String>? _image;
-  List<String> get image => _image ?? const [];
-  bool hasImage() => _image != null;
 
   // "weight" field.
   double? _weight;
@@ -130,11 +115,64 @@ class ItemsRecord extends FirestoreRecord {
   String get stockStatus => _stockStatus ?? '';
   bool hasStockStatus() => _stockStatus != null;
 
+  // "motorSpecsId" field.
+  DocumentReference? _motorSpecsId;
+  DocumentReference? get motorSpecsId => _motorSpecsId;
+  bool hasMotorSpecsId() => _motorSpecsId != null;
+
+  // "capacitorSpecsId" field.
+  DocumentReference? _capacitorSpecsId;
+  DocumentReference? get capacitorSpecsId => _capacitorSpecsId;
+  bool hasCapacitorSpecsId() => _capacitorSpecsId != null;
+
+  // "vendor" field.
+  String? _vendor;
+  String get vendor => _vendor ?? '';
+  bool hasVendor() => _vendor != null;
+
+  // "lastPurchasePrice" field.
+  double? _lastPurchasePrice;
+  double get lastPurchasePrice => _lastPurchasePrice ?? 0.0;
+  bool hasLastPurchasePrice() => _lastPurchasePrice != null;
+
+  // "lastPurchaseDate" field.
+  DateTime? _lastPurchaseDate;
+  DateTime? get lastPurchaseDate => _lastPurchaseDate;
+  bool hasLastPurchaseDate() => _lastPurchaseDate != null;
+
+  // "upc" field.
+  String? _upc;
+  String get upc => _upc ?? '';
+  bool hasUpc() => _upc != null;
+
+  // "salePrice" field.
+  double? _salePrice;
+  double get salePrice => _salePrice ?? 0.0;
+  bool hasSalePrice() => _salePrice != null;
+
+  // "discountPrice" field.
+  double? _discountPrice;
+  double get discountPrice => _discountPrice ?? 0.0;
+  bool hasDiscountPrice() => _discountPrice != null;
+
+  // "taxPercentage" field.
+  double? _taxPercentage;
+  double get taxPercentage => _taxPercentage ?? 0.0;
+  bool hasTaxPercentage() => _taxPercentage != null;
+
+  // "isInStock" field.
+  bool? _isInStock;
+  bool get isInStock => _isInStock ?? false;
+  bool hasIsInStock() => _isInStock != null;
+
+  // "motorSpecId" field.
+  DocumentReference? _motorSpecId;
+  DocumentReference? get motorSpecId => _motorSpecId;
+  bool hasMotorSpecId() => _motorSpecId != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _specType = snapshotData['specType'] as String?;
-    _motorSpecId = snapshotData['motorSpecId'] as DocumentReference?;
-    _fanSpecId = snapshotData['fanSpecId'] as DocumentReference?;
     _contactorSpecId = snapshotData['contactorSpecId'] as DocumentReference?;
     _miscId = snapshotData['miscId'] as DocumentReference?;
     _partNumber = snapshotData['partNumber'] as String?;
@@ -142,7 +180,6 @@ class ItemsRecord extends FirestoreRecord {
     _make = snapshotData['make'] as String?;
     _model = snapshotData['model'] as String?;
     _description = snapshotData['description'] as String?;
-    _image = getDataList(snapshotData['image']);
     _weight = castToType<double>(snapshotData['weight']);
     _height = castToType<double>(snapshotData['height']);
     _width = castToType<double>(snapshotData['width']);
@@ -154,6 +191,17 @@ class ItemsRecord extends FirestoreRecord {
     _warehouseId = snapshotData['warehouseId'] as String?;
     _minStock = castToType<int>(snapshotData['minStock']);
     _stockStatus = snapshotData['stockStatus'] as String?;
+    _motorSpecsId = snapshotData['motorSpecsId'] as DocumentReference?;
+    _capacitorSpecsId = snapshotData['capacitorSpecsId'] as DocumentReference?;
+    _vendor = snapshotData['vendor'] as String?;
+    _lastPurchasePrice = castToType<double>(snapshotData['lastPurchasePrice']);
+    _lastPurchaseDate = snapshotData['lastPurchaseDate'] as DateTime?;
+    _upc = snapshotData['upc'] as String?;
+    _salePrice = castToType<double>(snapshotData['salePrice']);
+    _discountPrice = castToType<double>(snapshotData['discountPrice']);
+    _taxPercentage = castToType<double>(snapshotData['taxPercentage']);
+    _isInStock = snapshotData['isInStock'] as bool?;
+    _motorSpecId = snapshotData['motorSpecId'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -192,8 +240,6 @@ class ItemsRecord extends FirestoreRecord {
 Map<String, dynamic> createItemsRecordData({
   String? id,
   String? specType,
-  DocumentReference? motorSpecId,
-  DocumentReference? fanSpecId,
   DocumentReference? contactorSpecId,
   DocumentReference? miscId,
   String? partNumber,
@@ -210,13 +256,22 @@ Map<String, dynamic> createItemsRecordData({
   String? warehouseId,
   int? minStock,
   String? stockStatus,
+  DocumentReference? motorSpecsId,
+  DocumentReference? capacitorSpecsId,
+  String? vendor,
+  double? lastPurchasePrice,
+  DateTime? lastPurchaseDate,
+  String? upc,
+  double? salePrice,
+  double? discountPrice,
+  double? taxPercentage,
+  bool? isInStock,
+  DocumentReference? motorSpecId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id': id,
       'specType': specType,
-      'motorSpecId': motorSpecId,
-      'fanSpecId': fanSpecId,
       'contactorSpecId': contactorSpecId,
       'miscId': miscId,
       'partNumber': partNumber,
@@ -233,6 +288,17 @@ Map<String, dynamic> createItemsRecordData({
       'warehouseId': warehouseId,
       'minStock': minStock,
       'stockStatus': stockStatus,
+      'motorSpecsId': motorSpecsId,
+      'capacitorSpecsId': capacitorSpecsId,
+      'vendor': vendor,
+      'lastPurchasePrice': lastPurchasePrice,
+      'lastPurchaseDate': lastPurchaseDate,
+      'upc': upc,
+      'salePrice': salePrice,
+      'discountPrice': discountPrice,
+      'taxPercentage': taxPercentage,
+      'isInStock': isInStock,
+      'motorSpecId': motorSpecId,
     }.withoutNulls,
   );
 
@@ -247,8 +313,6 @@ class ItemsRecordDocumentEquality implements Equality<ItemsRecord> {
     const listEquality = ListEquality();
     return e1?.id == e2?.id &&
         e1?.specType == e2?.specType &&
-        e1?.motorSpecId == e2?.motorSpecId &&
-        e1?.fanSpecId == e2?.fanSpecId &&
         e1?.contactorSpecId == e2?.contactorSpecId &&
         e1?.miscId == e2?.miscId &&
         e1?.partNumber == e2?.partNumber &&
@@ -257,7 +321,6 @@ class ItemsRecordDocumentEquality implements Equality<ItemsRecord> {
         e1?.make == e2?.make &&
         e1?.model == e2?.model &&
         e1?.description == e2?.description &&
-        listEquality.equals(e1?.image, e2?.image) &&
         e1?.weight == e2?.weight &&
         e1?.height == e2?.height &&
         e1?.width == e2?.width &&
@@ -268,15 +331,24 @@ class ItemsRecordDocumentEquality implements Equality<ItemsRecord> {
         e1?.qtyIncoming == e2?.qtyIncoming &&
         e1?.warehouseId == e2?.warehouseId &&
         e1?.minStock == e2?.minStock &&
-        e1?.stockStatus == e2?.stockStatus;
+        e1?.stockStatus == e2?.stockStatus &&
+        e1?.motorSpecsId == e2?.motorSpecsId &&
+        e1?.capacitorSpecsId == e2?.capacitorSpecsId &&
+        e1?.vendor == e2?.vendor &&
+        e1?.lastPurchasePrice == e2?.lastPurchasePrice &&
+        e1?.lastPurchaseDate == e2?.lastPurchaseDate &&
+        e1?.upc == e2?.upc &&
+        e1?.salePrice == e2?.salePrice &&
+        e1?.discountPrice == e2?.discountPrice &&
+        e1?.taxPercentage == e2?.taxPercentage &&
+        e1?.isInStock == e2?.isInStock &&
+        e1?.motorSpecId == e2?.motorSpecId;
   }
 
   @override
   int hash(ItemsRecord? e) => const ListEquality().hash([
         e?.id,
         e?.specType,
-        e?.motorSpecId,
-        e?.fanSpecId,
         e?.contactorSpecId,
         e?.miscId,
         e?.partNumber,
@@ -284,7 +356,6 @@ class ItemsRecordDocumentEquality implements Equality<ItemsRecord> {
         e?.make,
         e?.model,
         e?.description,
-        e?.image,
         e?.weight,
         e?.height,
         e?.width,
@@ -295,7 +366,18 @@ class ItemsRecordDocumentEquality implements Equality<ItemsRecord> {
         e?.qtyIncoming,
         e?.warehouseId,
         e?.minStock,
-        e?.stockStatus
+        e?.stockStatus,
+        e?.motorSpecsId,
+        e?.capacitorSpecsId,
+        e?.vendor,
+        e?.lastPurchasePrice,
+        e?.lastPurchaseDate,
+        e?.upc,
+        e?.salePrice,
+        e?.discountPrice,
+        e?.taxPercentage,
+        e?.isInStock,
+        e?.motorSpecId
       ]);
 
   @override

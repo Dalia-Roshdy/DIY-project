@@ -19,6 +19,28 @@ enum PaymentStatus {
   canceled,
 }
 
+enum Parts {
+  MOTOR,
+  CONTRACTOR,
+  CAPACITOR,
+}
+
+enum SettingKeys {
+  super_admin,
+}
+
+enum ActionType {
+  navigate,
+  navigateWithData,
+  showVideo,
+}
+
+enum TargetPage {
+  needAssistant,
+  contactUs,
+  otherVideo,
+}
+
 extension FFEnumExtensions<T extends Enum> on T {
   String serialize() => name;
 }
@@ -34,6 +56,14 @@ T? deserializeEnum<T>(String? value) {
       return OrderStatus.values.deserialize(value) as T?;
     case (PaymentStatus):
       return PaymentStatus.values.deserialize(value) as T?;
+    case (Parts):
+      return Parts.values.deserialize(value) as T?;
+    case (SettingKeys):
+      return SettingKeys.values.deserialize(value) as T?;
+    case (ActionType):
+      return ActionType.values.deserialize(value) as T?;
+    case (TargetPage):
+      return TargetPage.values.deserialize(value) as T?;
     default:
       return null;
   }

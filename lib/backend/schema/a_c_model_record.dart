@@ -35,20 +35,10 @@ class ACModelRecord extends FirestoreRecord {
   String get description => _description ?? '';
   bool hasDescription() => _description != null;
 
-  // "motorSpecId" field.
-  DocumentReference? _motorSpecId;
-  DocumentReference? get motorSpecId => _motorSpecId;
-  bool hasMotorSpecId() => _motorSpecId != null;
-
   // "contactorSpecId" field.
   DocumentReference? _contactorSpecId;
   DocumentReference? get contactorSpecId => _contactorSpecId;
   bool hasContactorSpecId() => _contactorSpecId != null;
-
-  // "fanSpecId" field.
-  DocumentReference? _fanSpecId;
-  DocumentReference? get fanSpecId => _fanSpecId;
-  bool hasFanSpecId() => _fanSpecId != null;
 
   // "compressorMicroFarad" field.
   double? _compressorMicroFarad;
@@ -70,11 +60,6 @@ class ACModelRecord extends FirestoreRecord {
   bool get approved => _approved ?? false;
   bool hasApproved() => _approved != null;
 
-  // "commonIssues" field.
-  List<String>? _commonIssues;
-  List<String> get commonIssues => _commonIssues ?? const [];
-  bool hasCommonIssues() => _commonIssues != null;
-
   // "lastUpdatedBy" field.
   DocumentReference? _lastUpdatedBy;
   DocumentReference? get lastUpdatedBy => _lastUpdatedBy;
@@ -85,22 +70,31 @@ class ACModelRecord extends FirestoreRecord {
   DateTime? get lastUpdatedAt => _lastUpdatedAt;
   bool hasLastUpdatedAt() => _lastUpdatedAt != null;
 
+  // "motorSpecsId" field.
+  DocumentReference? _motorSpecsId;
+  DocumentReference? get motorSpecsId => _motorSpecsId;
+  bool hasMotorSpecsId() => _motorSpecsId != null;
+
+  // "capacitorSpecsId" field.
+  DocumentReference? _capacitorSpecsId;
+  DocumentReference? get capacitorSpecsId => _capacitorSpecsId;
+  bool hasCapacitorSpecsId() => _capacitorSpecsId != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _acMakeId = snapshotData['acMakeId'] as DocumentReference?;
     _name = snapshotData['name'] as String?;
     _description = snapshotData['description'] as String?;
-    _motorSpecId = snapshotData['motorSpecId'] as DocumentReference?;
     _contactorSpecId = snapshotData['contactorSpecId'] as DocumentReference?;
-    _fanSpecId = snapshotData['fanSpecId'] as DocumentReference?;
     _compressorMicroFarad =
         castToType<double>(snapshotData['compressorMicroFarad']);
     _capacitorShape = snapshotData['capacitorShape'] as String?;
     _image = getDataList(snapshotData['image']);
     _approved = snapshotData['approved'] as bool?;
-    _commonIssues = getDataList(snapshotData['commonIssues']);
     _lastUpdatedBy = snapshotData['lastUpdatedBy'] as DocumentReference?;
     _lastUpdatedAt = snapshotData['lastUpdatedAt'] as DateTime?;
+    _motorSpecsId = snapshotData['motorSpecsId'] as DocumentReference?;
+    _capacitorSpecsId = snapshotData['capacitorSpecsId'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -142,14 +136,14 @@ Map<String, dynamic> createACModelRecordData({
   DocumentReference? acMakeId,
   String? name,
   String? description,
-  DocumentReference? motorSpecId,
   DocumentReference? contactorSpecId,
-  DocumentReference? fanSpecId,
   double? compressorMicroFarad,
   String? capacitorShape,
   bool? approved,
   DocumentReference? lastUpdatedBy,
   DateTime? lastUpdatedAt,
+  DocumentReference? motorSpecsId,
+  DocumentReference? capacitorSpecsId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -157,14 +151,14 @@ Map<String, dynamic> createACModelRecordData({
       'acMakeId': acMakeId,
       'name': name,
       'description': description,
-      'motorSpecId': motorSpecId,
       'contactorSpecId': contactorSpecId,
-      'fanSpecId': fanSpecId,
       'compressorMicroFarad': compressorMicroFarad,
       'capacitorShape': capacitorShape,
       'approved': approved,
       'lastUpdatedBy': lastUpdatedBy,
       'lastUpdatedAt': lastUpdatedAt,
+      'motorSpecsId': motorSpecsId,
+      'capacitorSpecsId': capacitorSpecsId,
     }.withoutNulls,
   );
 
@@ -181,16 +175,15 @@ class ACModelRecordDocumentEquality implements Equality<ACModelRecord> {
         e1?.acMakeId == e2?.acMakeId &&
         e1?.name == e2?.name &&
         e1?.description == e2?.description &&
-        e1?.motorSpecId == e2?.motorSpecId &&
         e1?.contactorSpecId == e2?.contactorSpecId &&
-        e1?.fanSpecId == e2?.fanSpecId &&
         e1?.compressorMicroFarad == e2?.compressorMicroFarad &&
         e1?.capacitorShape == e2?.capacitorShape &&
         listEquality.equals(e1?.image, e2?.image) &&
         e1?.approved == e2?.approved &&
-        listEquality.equals(e1?.commonIssues, e2?.commonIssues) &&
         e1?.lastUpdatedBy == e2?.lastUpdatedBy &&
-        e1?.lastUpdatedAt == e2?.lastUpdatedAt;
+        e1?.lastUpdatedAt == e2?.lastUpdatedAt &&
+        e1?.motorSpecsId == e2?.motorSpecsId &&
+        e1?.capacitorSpecsId == e2?.capacitorSpecsId;
   }
 
   @override
@@ -199,16 +192,15 @@ class ACModelRecordDocumentEquality implements Equality<ACModelRecord> {
         e?.acMakeId,
         e?.name,
         e?.description,
-        e?.motorSpecId,
         e?.contactorSpecId,
-        e?.fanSpecId,
         e?.compressorMicroFarad,
         e?.capacitorShape,
         e?.image,
         e?.approved,
-        e?.commonIssues,
         e?.lastUpdatedBy,
-        e?.lastUpdatedAt
+        e?.lastUpdatedAt,
+        e?.motorSpecsId,
+        e?.capacitorSpecsId
       ]);
 
   @override

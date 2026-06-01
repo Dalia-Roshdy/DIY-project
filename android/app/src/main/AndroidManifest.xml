@@ -2,10 +2,10 @@
     package="com.mycompany.diyacweb"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
-        android:label="DIY-AC web"
+        android:label="DIY AC Repair"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -57,7 +57,7 @@
             android:value="2" />
 
 
-
+        <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>
 
     </application>
 </manifest>

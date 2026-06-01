@@ -1,0 +1,151 @@
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/d_select_product_repair/mobile/components/filter_item/filter_item_widget.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
+import 'serlect_product_mobile_widget.dart' show SerlectProductMobileWidget;
+import 'package:flutter/material.dart';
+
+class SerlectProductMobileModel
+    extends FlutterFlowModel<SerlectProductMobileWidget> {
+  ///  Local state fields for this component.
+
+  String? selectedPartCS = 'MOTOR';
+
+  List<PartCardDTOStruct> partsList = [];
+  void addToPartsList(PartCardDTOStruct item) => partsList.add(item);
+  void removeFromPartsList(PartCardDTOStruct item) => partsList.remove(item);
+  void removeAtIndexFromPartsList(int index) => partsList.removeAt(index);
+  void insertAtIndexInPartsList(int index, PartCardDTOStruct item) =>
+      partsList.insert(index, item);
+  void updatePartsListAtIndex(
+          int index, Function(PartCardDTOStruct) updateFn) =>
+      partsList[index] = updateFn(partsList[index]);
+
+  ///  State fields for stateful widgets in this component.
+
+  // Stores action output result for [Custom Action - filterMotorItems] action in Serlect_Product_Mobile widget.
+  List<PartCardDTOStruct>? motorItemsOnPageMob;
+  // Stores action output result for [Custom Action - filterContactorItems] action in Serlect_Product_Mobile widget.
+  List<PartCardDTOStruct>? contItemsOnPageMob;
+  // Stores action output result for [Custom Action - filterCapacitorItems] action in Serlect_Product_Mobile widget.
+  List<PartCardDTOStruct>? capacItemsOnPageMob;
+  // Model for FilterItem.
+  late FilterItemModel filterItemModel1;
+  // Stores action output result for [Custom Action - filterMotorItems] action in FilterItem widget.
+  List<PartCardDTOStruct>? motorItemsOnCallbackMob;
+  // Model for FilterItem.
+  late FilterItemModel filterItemModel2;
+  // Stores action output result for [Custom Action - filterCapacitorItems] action in FilterItem widget.
+  List<PartCardDTOStruct>? capacItemsOnCallbackMob;
+  // Model for FilterItem.
+  late FilterItemModel filterItemModel3;
+  // Stores action output result for [Custom Action - filterContactorItems] action in FilterItem widget.
+  List<PartCardDTOStruct>? contItemsOnCallbackMob;
+  // State field(s) for TextFieldVolt widget.
+  FocusNode? textFieldVoltFocusNode;
+  TextEditingController? textFieldVoltTextController;
+  String? Function(BuildContext, String?)? textFieldVoltTextControllerValidator;
+  // State field(s) for TextField-hp widget.
+  FocusNode? textFieldHpFocusNode;
+  TextEditingController? textFieldHpTextController;
+  String? Function(BuildContext, String?)? textFieldHpTextControllerValidator;
+  // State field(s) for TextField-rpm widget.
+  FocusNode? textFieldRpmFocusNode;
+  TextEditingController? textFieldRpmTextController;
+  String? Function(BuildContext, String?)? textFieldRpmTextControllerValidator;
+  // State field(s) for TextField-rotation widget.
+  FocusNode? textFieldRotationFocusNode;
+  TextEditingController? textFieldRotationTextController;
+  String? Function(BuildContext, String?)?
+      textFieldRotationTextControllerValidator;
+  // Stores action output result for [Custom Action - filterMotorItems] action in Button widget.
+  List<PartCardDTOStruct>? motorItemsFilterMob;
+  // State field(s) for TextField-Rvolt widget.
+  FocusNode? textFieldRvoltFocusNode;
+  TextEditingController? textFieldRvoltTextController;
+  String? Function(BuildContext, String?)?
+      textFieldRvoltTextControllerValidator;
+  // State field(s) for TextField-RAmp widget.
+  FocusNode? textFieldRAmpFocusNode;
+  TextEditingController? textFieldRAmpTextController;
+  String? Function(BuildContext, String?)? textFieldRAmpTextControllerValidator;
+  // State field(s) for TextField-CVolt widget.
+  FocusNode? textFieldCVoltFocusNode;
+  TextEditingController? textFieldCVoltTextController;
+  String? Function(BuildContext, String?)?
+      textFieldCVoltTextControllerValidator;
+  // State field(s) for TextField-nop widget.
+  FocusNode? textFieldNopFocusNode;
+  TextEditingController? textFieldNopTextController;
+  String? Function(BuildContext, String?)? textFieldNopTextControllerValidator;
+  // Stores action output result for [Custom Action - filterContactorItems] action in Button widget.
+  List<PartCardDTOStruct>? contItemsOnFilterMob;
+  // State field(s) for TextField-MDF1 widget.
+  FocusNode? textFieldMDF1FocusNode;
+  TextEditingController? textFieldMDF1TextController;
+  String? Function(BuildContext, String?)? textFieldMDF1TextControllerValidator;
+  // State field(s) for TextField-MDF2 widget.
+  FocusNode? textFieldMDF2FocusNode;
+  TextEditingController? textFieldMDF2TextController;
+  String? Function(BuildContext, String?)? textFieldMDF2TextControllerValidator;
+  // State field(s) for TextField-Cap-Volt widget.
+  FocusNode? textFieldCapVoltFocusNode;
+  TextEditingController? textFieldCapVoltTextController;
+  String? Function(BuildContext, String?)?
+      textFieldCapVoltTextControllerValidator;
+  // State field(s) for DropDown-type widget.
+  String? dropDownTypeValue;
+  FormFieldController<String>? dropDownTypeValueController;
+  // State field(s) for DropDown-shape widget.
+  String? dropDownShapeValue;
+  FormFieldController<String>? dropDownShapeValueController;
+  // Stores action output result for [Custom Action - filterCapacitorItems] action in Button widget.
+  List<PartCardDTOStruct>? capacItemsOnFilterMob;
+
+  @override
+  void initState(BuildContext context) {
+    filterItemModel1 = createModel(context, () => FilterItemModel());
+    filterItemModel2 = createModel(context, () => FilterItemModel());
+    filterItemModel3 = createModel(context, () => FilterItemModel());
+  }
+
+  @override
+  void dispose() {
+    filterItemModel1.dispose();
+    filterItemModel2.dispose();
+    filterItemModel3.dispose();
+    textFieldVoltFocusNode?.dispose();
+    textFieldVoltTextController?.dispose();
+
+    textFieldHpFocusNode?.dispose();
+    textFieldHpTextController?.dispose();
+
+    textFieldRpmFocusNode?.dispose();
+    textFieldRpmTextController?.dispose();
+
+    textFieldRotationFocusNode?.dispose();
+    textFieldRotationTextController?.dispose();
+
+    textFieldRvoltFocusNode?.dispose();
+    textFieldRvoltTextController?.dispose();
+
+    textFieldRAmpFocusNode?.dispose();
+    textFieldRAmpTextController?.dispose();
+
+    textFieldCVoltFocusNode?.dispose();
+    textFieldCVoltTextController?.dispose();
+
+    textFieldNopFocusNode?.dispose();
+    textFieldNopTextController?.dispose();
+
+    textFieldMDF1FocusNode?.dispose();
+    textFieldMDF1TextController?.dispose();
+
+    textFieldMDF2FocusNode?.dispose();
+    textFieldMDF2TextController?.dispose();
+
+    textFieldCapVoltFocusNode?.dispose();
+    textFieldCapVoltTextController?.dispose();
+  }
+}

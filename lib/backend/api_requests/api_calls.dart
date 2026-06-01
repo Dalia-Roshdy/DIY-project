@@ -43,6 +43,27 @@ class GetPaymentByIdCall {
       alwaysAllowBody: false,
     );
   }
+
+  String? paymentId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.id''',
+      ));
+  String? status(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  int? paidAt(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.created''',
+      ));
+  double? amount(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.amount_received''',
+      ));
+  String? currency(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.currency''',
+      ));
 }
 
 /// End Payments Group Code

@@ -7,6 +7,7 @@ import '/backend/schema/util/firestore_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
+/// Archived
 class FanSpecRecord extends FirestoreRecord {
   FanSpecRecord._(
     DocumentReference reference,
@@ -55,11 +56,6 @@ class FanSpecRecord extends FirestoreRecord {
   DateTime? get lastUpdatedAt => _lastUpdatedAt;
   bool hasLastUpdatedAt() => _lastUpdatedAt != null;
 
-  // "searchableKeywords" field.
-  List<String>? _searchableKeywords;
-  List<String> get searchableKeywords => _searchableKeywords ?? const [];
-  bool hasSearchableKeywords() => _searchableKeywords != null;
-
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _numberOfBlades = castToType<int>(snapshotData['numberOfBlades']);
@@ -69,7 +65,6 @@ class FanSpecRecord extends FirestoreRecord {
     _specMetadata = snapshotData['specMetadata'] as String?;
     _lastUpdatedBy = snapshotData['lastUpdatedBy'] as DocumentReference?;
     _lastUpdatedAt = snapshotData['lastUpdatedAt'] as DateTime?;
-    _searchableKeywords = getDataList(snapshotData['searchableKeywords']);
   }
 
   static CollectionReference get collection =>
@@ -137,7 +132,6 @@ class FanSpecRecordDocumentEquality implements Equality<FanSpecRecord> {
 
   @override
   bool equals(FanSpecRecord? e1, FanSpecRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.id == e2?.id &&
         e1?.numberOfBlades == e2?.numberOfBlades &&
         e1?.radius == e2?.radius &&
@@ -145,8 +139,7 @@ class FanSpecRecordDocumentEquality implements Equality<FanSpecRecord> {
         e1?.boreDiameter == e2?.boreDiameter &&
         e1?.specMetadata == e2?.specMetadata &&
         e1?.lastUpdatedBy == e2?.lastUpdatedBy &&
-        e1?.lastUpdatedAt == e2?.lastUpdatedAt &&
-        listEquality.equals(e1?.searchableKeywords, e2?.searchableKeywords);
+        e1?.lastUpdatedAt == e2?.lastUpdatedAt;
   }
 
   @override
@@ -158,8 +151,7 @@ class FanSpecRecordDocumentEquality implements Equality<FanSpecRecord> {
         e?.boreDiameter,
         e?.specMetadata,
         e?.lastUpdatedBy,
-        e?.lastUpdatedAt,
-        e?.searchableKeywords
+        e?.lastUpdatedAt
       ]);
 
   @override

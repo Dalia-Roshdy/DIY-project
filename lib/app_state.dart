@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -15,12 +17,26 @@ class FFAppState extends ChangeNotifier {
     _instance = FFAppState._internal();
   }
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      if (prefs.containsKey('ff_Cart')) {
+        try {
+          final serializedData = prefs.getString('ff_Cart') ?? '{}';
+          _Cart = CartStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
+
+  late SharedPreferences prefs;
 
   List<String> _imagesList = [
     'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/sqtvx5xxfwmu/Marquee_Image1.png',
@@ -132,4 +148,28 @@ class FFAppState extends ChangeNotifier {
   void updateUserACStruct(Function(UserACStruct) updateFn) {
     updateFn(_userAC);
   }
+
+  CartStruct _Cart = CartStruct();
+  CartStruct get Cart => _Cart;
+  set Cart(CartStruct value) {
+    _Cart = value;
+    prefs.setString('ff_Cart', value.serialize());
+  }
+
+  void updateCartStruct(Function(CartStruct) updateFn) {
+    updateFn(_Cart);
+    prefs.setString('ff_Cart', _Cart.serialize());
+  }
+}
+
+void _safeInit(Function() initializeField) {
+  try {
+    initializeField();
+  } catch (_) {}
+}
+
+Future _safeInitAsync(Function() initializeField) async {
+  try {
+    await initializeField();
+  } catch (_) {}
 }

@@ -11,10 +11,16 @@ class UserACStruct extends FFFirebaseStruct {
     DocumentReference? acMake,
     DocumentReference? acModel,
     String? serialNumber,
+    DocumentReference? motorSpecIdRef,
+    DocumentReference? capacitorSpecIdRef,
+    DocumentReference? contactorSpecIdRef,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _acMake = acMake,
         _acModel = acModel,
         _serialNumber = serialNumber,
+        _motorSpecIdRef = motorSpecIdRef,
+        _capacitorSpecIdRef = capacitorSpecIdRef,
+        _contactorSpecIdRef = contactorSpecIdRef,
         super(firestoreUtilData);
 
   // "acMake" field.
@@ -38,10 +44,34 @@ class UserACStruct extends FFFirebaseStruct {
 
   bool hasSerialNumber() => _serialNumber != null;
 
+  // "motorSpecIdRef" field.
+  DocumentReference? _motorSpecIdRef;
+  DocumentReference? get motorSpecIdRef => _motorSpecIdRef;
+  set motorSpecIdRef(DocumentReference? val) => _motorSpecIdRef = val;
+
+  bool hasMotorSpecIdRef() => _motorSpecIdRef != null;
+
+  // "capacitorSpecIdRef" field.
+  DocumentReference? _capacitorSpecIdRef;
+  DocumentReference? get capacitorSpecIdRef => _capacitorSpecIdRef;
+  set capacitorSpecIdRef(DocumentReference? val) => _capacitorSpecIdRef = val;
+
+  bool hasCapacitorSpecIdRef() => _capacitorSpecIdRef != null;
+
+  // "contactorSpecIdRef" field.
+  DocumentReference? _contactorSpecIdRef;
+  DocumentReference? get contactorSpecIdRef => _contactorSpecIdRef;
+  set contactorSpecIdRef(DocumentReference? val) => _contactorSpecIdRef = val;
+
+  bool hasContactorSpecIdRef() => _contactorSpecIdRef != null;
+
   static UserACStruct fromMap(Map<String, dynamic> data) => UserACStruct(
         acMake: data['acMake'] as DocumentReference?,
         acModel: data['acModel'] as DocumentReference?,
         serialNumber: data['serialNumber'] as String?,
+        motorSpecIdRef: data['motorSpecIdRef'] as DocumentReference?,
+        capacitorSpecIdRef: data['capacitorSpecIdRef'] as DocumentReference?,
+        contactorSpecIdRef: data['contactorSpecIdRef'] as DocumentReference?,
       );
 
   static UserACStruct? maybeFromMap(dynamic data) =>
@@ -51,6 +81,9 @@ class UserACStruct extends FFFirebaseStruct {
         'acMake': _acMake,
         'acModel': _acModel,
         'serialNumber': _serialNumber,
+        'motorSpecIdRef': _motorSpecIdRef,
+        'capacitorSpecIdRef': _capacitorSpecIdRef,
+        'contactorSpecIdRef': _contactorSpecIdRef,
       }.withoutNulls;
 
   @override
@@ -66,6 +99,18 @@ class UserACStruct extends FFFirebaseStruct {
         'serialNumber': serializeParam(
           _serialNumber,
           ParamType.String,
+        ),
+        'motorSpecIdRef': serializeParam(
+          _motorSpecIdRef,
+          ParamType.DocumentReference,
+        ),
+        'capacitorSpecIdRef': serializeParam(
+          _capacitorSpecIdRef,
+          ParamType.DocumentReference,
+        ),
+        'contactorSpecIdRef': serializeParam(
+          _contactorSpecIdRef,
+          ParamType.DocumentReference,
         ),
       }.withoutNulls;
 
@@ -88,6 +133,24 @@ class UserACStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        motorSpecIdRef: deserializeParam(
+          data['motorSpecIdRef'],
+          ParamType.DocumentReference,
+          false,
+          collectionNamePath: ['MotorSpec'],
+        ),
+        capacitorSpecIdRef: deserializeParam(
+          data['capacitorSpecIdRef'],
+          ParamType.DocumentReference,
+          false,
+          collectionNamePath: ['CapacitorSpec'],
+        ),
+        contactorSpecIdRef: deserializeParam(
+          data['contactorSpecIdRef'],
+          ParamType.DocumentReference,
+          false,
+          collectionNamePath: ['ContactorSpec'],
+        ),
       );
 
   @override
@@ -98,18 +161,30 @@ class UserACStruct extends FFFirebaseStruct {
     return other is UserACStruct &&
         acMake == other.acMake &&
         acModel == other.acModel &&
-        serialNumber == other.serialNumber;
+        serialNumber == other.serialNumber &&
+        motorSpecIdRef == other.motorSpecIdRef &&
+        capacitorSpecIdRef == other.capacitorSpecIdRef &&
+        contactorSpecIdRef == other.contactorSpecIdRef;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([acMake, acModel, serialNumber]);
+  int get hashCode => const ListEquality().hash([
+        acMake,
+        acModel,
+        serialNumber,
+        motorSpecIdRef,
+        capacitorSpecIdRef,
+        contactorSpecIdRef
+      ]);
 }
 
 UserACStruct createUserACStruct({
   DocumentReference? acMake,
   DocumentReference? acModel,
   String? serialNumber,
+  DocumentReference? motorSpecIdRef,
+  DocumentReference? capacitorSpecIdRef,
+  DocumentReference? contactorSpecIdRef,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -119,6 +194,9 @@ UserACStruct createUserACStruct({
       acMake: acMake,
       acModel: acModel,
       serialNumber: serialNumber,
+      motorSpecIdRef: motorSpecIdRef,
+      capacitorSpecIdRef: capacitorSpecIdRef,
+      contactorSpecIdRef: contactorSpecIdRef,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
