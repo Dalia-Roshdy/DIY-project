@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'part_row_model.dart';
 export 'part_row_model.dart';
@@ -28,7 +29,7 @@ class PartRowWidget extends StatefulWidget {
   final String price;
   final int? qty;
   final String title;
-  final String? itemId;
+  final DocumentReference? itemId;
 
   @override
   State<PartRowWidget> createState() => _PartRowWidgetState();
@@ -197,7 +198,10 @@ class _PartRowWidgetState extends State<PartRowWidget> {
                               widget.itemId!,
                               _model.countControllerValue!,
                             );
-                            await actions.calculateCartTotal();
+                            await actions.calculateCartTotal(
+                              null,
+                              null,
+                            );
                           },
                           stepSize: 1,
                           minimum: 1,
@@ -255,6 +259,11 @@ class _PartRowWidgetState extends State<PartRowWidget> {
                                 );
                               },
                             );
+
+                            if (Navigator.of(context).canPop()) {
+                              context.pop();
+                            }
+                            context.pushNamed(EReviewYourOrderWidget.routeName);
                           },
                         ),
                       ),

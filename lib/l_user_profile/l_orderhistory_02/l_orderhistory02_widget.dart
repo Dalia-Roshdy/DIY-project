@@ -70,6 +70,7 @@ class _LOrderhistory02WidgetState extends State<LOrderhistory02Widget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineLargeFamily,
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 40.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                                 lineHeight: 1.1,
@@ -106,8 +107,8 @@ class _LOrderhistory02WidgetState extends State<LOrderhistory02Widget> {
                           model: _model.statCardModel1,
                           updateCallback: () => safeSetState(() {}),
                           child: StatCardWidget(
-                            label: 'TOTAL ORDERS',
-                            value: '128',
+                            label: 'TOTAL SPENT',
+                            value: '\$14,290.50',
                           ),
                         ),
                       ),
@@ -117,8 +118,8 @@ class _LOrderhistory02WidgetState extends State<LOrderhistory02Widget> {
                           model: _model.statCardModel2,
                           updateCallback: () => safeSetState(() {}),
                           child: StatCardWidget(
-                            label: 'TOTAL SPENT',
-                            value: '\$14,290.50',
+                            label: 'AVG. DELIVERY',
+                            value: '2.4 DAYS',
                           ),
                         ),
                       ),
@@ -128,8 +129,8 @@ class _LOrderhistory02WidgetState extends State<LOrderhistory02Widget> {
                           model: _model.statCardModel3,
                           updateCallback: () => safeSetState(() {}),
                           child: StatCardWidget(
-                            label: 'AVG. DELIVERY',
-                            value: '2.4 DAYS',
+                            label: 'TOTAL ORDERS',
+                            value: '128',
                           ),
                         ),
                       ),

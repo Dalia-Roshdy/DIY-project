@@ -17,7 +17,7 @@ class KContactWidget extends StatefulWidget {
   const KContactWidget({super.key});
 
   static String routeName = 'K-Contact';
-  static String routePath = '/kContact';
+  static String routePath = '/contactus';
 
   @override
   State<KContactWidget> createState() => _KContactWidgetState();
@@ -91,7 +91,6 @@ class _KContactWidgetState extends State<KContactWidget> {
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
-            controller: _model.scrollColumnScrollController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -140,23 +139,7 @@ class _KContactWidgetState extends State<KContactWidget> {
                                     wrapWithModel(
                                       model: _model.s01NavigatioBarModel,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: S01NavigatioBarWidget(
-                                        goToSectionTap: (scrollTo) async {
-                                          if (scrollTo != '') {
-                                            await _model
-                                                .scrollColumnScrollController
-                                                ?.animateTo(
-                                              _model
-                                                  .scrollColumnScrollController!
-                                                  .position
-                                                  .maxScrollExtent,
-                                              duration:
-                                                  Duration(milliseconds: 100),
-                                              curve: Curves.ease,
-                                            );
-                                          }
-                                        },
-                                      ),
+                                      child: S01NavigatioBarWidget(),
                                     ),
                                     Divider(
                                       height: 1.0,
@@ -230,6 +213,8 @@ class _KContactWidgetState extends State<KContactWidget> {
                                     if (responsiveVisibility(
                                       context: context,
                                       phone: false,
+                                      tablet: false,
+                                      tabletLandscape: false,
                                     ))
                                       wrapWithModel(
                                         model: _model.s12FooterModel,

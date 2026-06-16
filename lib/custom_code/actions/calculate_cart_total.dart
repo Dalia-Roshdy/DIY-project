@@ -6,11 +6,12 @@ import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future calculateCartTotal() async {
+Future calculateCartTotal(String? shippingStr, String? taxStr) async {
   // Get the current payment/cart from app state
   final cart = FFAppState().Cart;
 
@@ -21,8 +22,10 @@ Future calculateCartTotal() async {
   }
 
   // Get shipping and tax from the current payment struct
-  final double shipping = cart.shipping ?? 0.0;
-  final double tax = cart.tax ?? 0.0;
+  final double shipping =
+      double.tryParse(shippingStr ?? '') ?? (cart.shipping ?? 0.0);
+
+  final double tax = double.tryParse(taxStr ?? '') ?? (cart.tax ?? 0.0);
 
   // Calculate total
   final double total = subtotal + shipping + tax;
@@ -30,5 +33,7 @@ Future calculateCartTotal() async {
   // Update the payment struct in app state with new subtotal and total
   FFAppState().updateCartStruct((c) => c
     ..subtotal = subtotal
-    ..total = total);
+    ..total = total
+    ..shipping = shipping
+    ..tax = tax);
 }

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -24,11 +25,6 @@ class MotorSpecRecord extends FirestoreRecord {
   double? _shaftLength;
   double get shaftLength => _shaftLength ?? 0.0;
   bool hasShaftLength() => _shaftLength != null;
-
-  // "rotationDirection" field.
-  String? _rotationDirection;
-  String get rotationDirection => _rotationDirection ?? '';
-  bool hasRotationDirection() => _rotationDirection != null;
 
   // "volt" field.
   int? _volt;
@@ -135,10 +131,14 @@ class MotorSpecRecord extends FirestoreRecord {
   double get wireLength => _wireLength ?? 0.0;
   bool hasWireLength() => _wireLength != null;
 
+  // "rotationDirection" field.
+  MotorRotationDirection? _rotationDirection;
+  MotorRotationDirection? get rotationDirection => _rotationDirection;
+  bool hasRotationDirection() => _rotationDirection != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _shaftLength = castToType<double>(snapshotData['shaftLength']);
-    _rotationDirection = snapshotData['rotationDirection'] as String?;
     _volt = castToType<int>(snapshotData['volt']);
     _amp = castToType<double>(snapshotData['amp']);
     _hp = castToType<double>(snapshotData['hp']);
@@ -161,6 +161,11 @@ class MotorSpecRecord extends FirestoreRecord {
     _searchableKeywords = getDataList(snapshotData['searchableKeywords']);
     _desc = snapshotData['Desc'] as String?;
     _wireLength = castToType<double>(snapshotData['wireLength']);
+    _rotationDirection =
+        snapshotData['rotationDirection'] is MotorRotationDirection
+            ? snapshotData['rotationDirection']
+            : deserializeEnum<MotorRotationDirection>(
+                snapshotData['rotationDirection']);
   }
 
   static CollectionReference get collection =>
@@ -200,7 +205,6 @@ class MotorSpecRecord extends FirestoreRecord {
 Map<String, dynamic> createMotorSpecRecordData({
   String? id,
   double? shaftLength,
-  String? rotationDirection,
   int? volt,
   double? amp,
   double? hp,
@@ -221,12 +225,12 @@ Map<String, dynamic> createMotorSpecRecordData({
   DocumentReference? lastUpdatedBy,
   String? desc,
   double? wireLength,
+  MotorRotationDirection? rotationDirection,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id': id,
       'shaftLength': shaftLength,
-      'rotationDirection': rotationDirection,
       'volt': volt,
       'amp': amp,
       'hp': hp,
@@ -247,6 +251,7 @@ Map<String, dynamic> createMotorSpecRecordData({
       'lastUpdatedBy': lastUpdatedBy,
       'Desc': desc,
       'wireLength': wireLength,
+      'rotationDirection': rotationDirection,
     }.withoutNulls,
   );
 
@@ -261,7 +266,6 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
     const listEquality = ListEquality();
     return e1?.id == e2?.id &&
         e1?.shaftLength == e2?.shaftLength &&
-        e1?.rotationDirection == e2?.rotationDirection &&
         e1?.volt == e2?.volt &&
         e1?.amp == e2?.amp &&
         e1?.hp == e2?.hp &&
@@ -282,14 +286,14 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
         e1?.lastUpdatedBy == e2?.lastUpdatedBy &&
         listEquality.equals(e1?.searchableKeywords, e2?.searchableKeywords) &&
         e1?.desc == e2?.desc &&
-        e1?.wireLength == e2?.wireLength;
+        e1?.wireLength == e2?.wireLength &&
+        e1?.rotationDirection == e2?.rotationDirection;
   }
 
   @override
   int hash(MotorSpecRecord? e) => const ListEquality().hash([
         e?.id,
         e?.shaftLength,
-        e?.rotationDirection,
         e?.volt,
         e?.amp,
         e?.hp,
@@ -310,7 +314,8 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
         e?.lastUpdatedBy,
         e?.searchableKeywords,
         e?.desc,
-        e?.wireLength
+        e?.wireLength,
+        e?.rotationDirection
       ]);
 
   @override

@@ -1,14 +1,22 @@
+import '/backend/backend.dart';
 import '/components/button35_widget.dart';
 import '/components/order_summary_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:lottie/lottie.dart';
 import 'g_confirmation_success_model.dart';
 export 'g_confirmation_success_model.dart';
 
 class GConfirmationSuccessWidget extends StatefulWidget {
-  const GConfirmationSuccessWidget({super.key});
+  const GConfirmationSuccessWidget({
+    super.key,
+    required this.order,
+  });
+
+  final OrdersRecord? order;
 
   @override
   State<GConfirmationSuccessWidget> createState() =>
@@ -29,6 +37,12 @@ class _GConfirmationSuccessWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => GConfirmationSuccessModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.order = widget.order;
+      safeSetState(() {});
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -108,21 +122,25 @@ class _GConfirmationSuccessWidgetState
                                     .headlineLargeIsCustom,
                               ),
                         ),
-                        Text(
-                          'Thank you for your purchase. Your order #8492 has been placed and is being processed.',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyLarge
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyLargeFamily,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.5,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodyLargeIsCustom,
-                              ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              32.0, 0.0, 32.0, 0.0),
+                          child: Text(
+                            'Thank you for your purchase. Your order #8492 has been placed and is being processed.',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyLargeFamily,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  letterSpacing: 0.0,
+                                  lineHeight: 1.5,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyLargeIsCustom,
+                                ),
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.all(32.0),
@@ -281,7 +299,9 @@ class _GConfirmationSuccessWidgetState
                                                     safeSetState(() {}),
                                                 child: OrderSummaryItemWidget(
                                                   label: 'Subtotal',
-                                                  value: '\$112.00',
+                                                  value: _model.order
+                                                      ?.totalsSnap.subtotal
+                                                      .toString(),
                                                 ),
                                               ),
                                               wrapWithModel(
@@ -291,7 +311,9 @@ class _GConfirmationSuccessWidgetState
                                                     safeSetState(() {}),
                                                 child: OrderSummaryItemWidget(
                                                   label: 'Shipping (Standard)',
-                                                  value: '\$12.50',
+                                                  value: _model.order
+                                                      ?.totalsSnap.shipping
+                                                      .toString(),
                                                 ),
                                               ),
                                               wrapWithModel(
@@ -301,7 +323,9 @@ class _GConfirmationSuccessWidgetState
                                                     safeSetState(() {}),
                                                 child: OrderSummaryItemWidget(
                                                   label: 'Tax',
-                                                  value: '\$0.00',
+                                                  value: _model
+                                                      .order?.totalsSnap.tax
+                                                      .toString(),
                                                 ),
                                               ),
                                               Divider(
@@ -343,7 +367,7 @@ class _GConfirmationSuccessWidgetState
                                                         ),
                                                   ),
                                                   Text(
-                                                    '\$124.50',
+                                                    '\$ ${_model.order?.totalsSnap.total.toString()}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleMedium
@@ -438,7 +462,11 @@ class _GConfirmationSuccessWidgetState
                                                         ),
                                                   ),
                                                   Text(
-                                                    'John Doe',
+                                                    valueOrDefault<String>(
+                                                      _model.order?.customerSnap
+                                                          .name,
+                                                      'John Doe',
+                                                    ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -458,7 +486,15 @@ class _GConfirmationSuccessWidgetState
                                                         ),
                                                   ),
                                                   Text(
-                                                    '123 Maple Street, Springfield, IL 62704',
+                                                    valueOrDefault<String>(
+                                                      widget
+                                                          .order
+                                                          ?.customerSnap
+                                                          .shippingAddress,
+                                                      '123 Maple Street, Springfield, IL 62704',
+                                                    ),
+                                                    textAlign: TextAlign.start,
+                                                    maxLines: 5,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodySmall
@@ -477,6 +513,8 @@ class _GConfirmationSuccessWidgetState
                                                                       .of(context)
                                                                   .bodySmallIsCustom,
                                                         ),
+                                                    overflow:
+                                                        TextOverflow.visible,
                                                   ),
                                                 ].divide(SizedBox(height: 4.0)),
                                               ),
@@ -495,39 +533,50 @@ class _GConfirmationSuccessWidgetState
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      wrapWithModel(
-                                        model: _model.buttonModel1,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: Button35Widget(
-                                          content: 'Track Order       ',
-                                          icon: Icon(
-                                            Icons.local_shipping_rounded,
-                                            color: Colors.white,
-                                            size: 16.0,
+                                      if (false)
+                                        wrapWithModel(
+                                          model: _model.buttonModel1,
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: Button35Widget(
+                                            content: 'Track Order       ',
+                                            icon: Icon(
+                                              Icons.local_shipping_rounded,
+                                              color: Colors.white,
+                                              size: 16.0,
+                                            ),
+                                            iconPresent: true,
+                                            iconEndPresent: false,
+                                            variant: 'primary',
+                                            size: 'medium',
+                                            fullWidth: true,
+                                            loading: false,
+                                            disabled: false,
                                           ),
-                                          iconPresent: true,
-                                          iconEndPresent: false,
-                                          variant: 'primary',
-                                          size: 'medium',
-                                          fullWidth: true,
-                                          loading: false,
-                                          disabled: false,
                                         ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.buttonModel2,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: Button35Widget(
-                                          content: 'Back to Home',
-                                          iconPresent: false,
-                                          iconEndPresent: false,
-                                          variant: 'outline',
-                                          size: 'medium',
-                                          fullWidth: true,
-                                          loading: false,
-                                          disabled: false,
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                              AHomePageWidget.routeName);
+                                        },
+                                        child: wrapWithModel(
+                                          model: _model.buttonModel2,
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: Button35Widget(
+                                            content: 'Back to Home',
+                                            iconPresent: false,
+                                            iconEndPresent: false,
+                                            variant: 'outline',
+                                            size: 'medium',
+                                            fullWidth: true,
+                                            loading: false,
+                                            disabled: false,
+                                          ),
                                         ),
                                       ),
                                     ].divide(SizedBox(height: 16.0)),

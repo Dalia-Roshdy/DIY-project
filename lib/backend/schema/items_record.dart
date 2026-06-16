@@ -33,7 +33,7 @@ class ItemsRecord extends FirestoreRecord {
   // "miscId" field.
   DocumentReference? _miscId;
   DocumentReference? get miscId => _miscId;
-  bool hasMiscId() => _miscId != null;
+  bool hasMiscIdField() => _miscId != null;
 
   // "partNumber" field.
   String? _partNumber;
@@ -170,6 +170,16 @@ class ItemsRecord extends FirestoreRecord {
   DocumentReference? get motorSpecId => _motorSpecId;
   bool hasMotorSpecId() => _motorSpecId != null;
 
+  // "hasMiscId" field.
+  bool? _hasMiscId;
+  bool get hasMiscId => _hasMiscId ?? false;
+  bool hasHasMiscId() => _hasMiscId != null;
+
+  // "isReturnable" field.
+  bool? _isReturnable;
+  bool get isReturnable => _isReturnable ?? false;
+  bool hasIsReturnable() => _isReturnable != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _specType = snapshotData['specType'] as String?;
@@ -202,6 +212,8 @@ class ItemsRecord extends FirestoreRecord {
     _taxPercentage = castToType<double>(snapshotData['taxPercentage']);
     _isInStock = snapshotData['isInStock'] as bool?;
     _motorSpecId = snapshotData['motorSpecId'] as DocumentReference?;
+    _hasMiscId = snapshotData['hasMiscId'] as bool?;
+    _isReturnable = snapshotData['isReturnable'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -267,6 +279,8 @@ Map<String, dynamic> createItemsRecordData({
   double? taxPercentage,
   bool? isInStock,
   DocumentReference? motorSpecId,
+  bool? hasMiscId,
+  bool? isReturnable,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -299,6 +313,8 @@ Map<String, dynamic> createItemsRecordData({
       'taxPercentage': taxPercentage,
       'isInStock': isInStock,
       'motorSpecId': motorSpecId,
+      'hasMiscId': hasMiscId,
+      'isReturnable': isReturnable,
     }.withoutNulls,
   );
 
@@ -342,7 +358,9 @@ class ItemsRecordDocumentEquality implements Equality<ItemsRecord> {
         e1?.discountPrice == e2?.discountPrice &&
         e1?.taxPercentage == e2?.taxPercentage &&
         e1?.isInStock == e2?.isInStock &&
-        e1?.motorSpecId == e2?.motorSpecId;
+        e1?.motorSpecId == e2?.motorSpecId &&
+        e1?.hasMiscId == e2?.hasMiscId &&
+        e1?.isReturnable == e2?.isReturnable;
   }
 
   @override
@@ -377,7 +395,9 @@ class ItemsRecordDocumentEquality implements Equality<ItemsRecord> {
         e?.discountPrice,
         e?.taxPercentage,
         e?.isInStock,
-        e?.motorSpecId
+        e?.motorSpecId,
+        e?.hasMiscId,
+        e?.isReturnable
       ]);
 
   @override

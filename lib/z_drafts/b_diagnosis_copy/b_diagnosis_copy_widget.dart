@@ -110,9 +110,7 @@ class _BDiagnosisCopyWidgetState extends State<BDiagnosisCopyWidget> {
                                           model: _model.s01NavigatioBarModel,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: S01NavigatioBarWidget(
-                                            goToSectionTap: (scrollTo) async {},
-                                          ),
+                                          child: S01NavigatioBarWidget(),
                                         ),
                                         Divider(
                                           height: 1.0,

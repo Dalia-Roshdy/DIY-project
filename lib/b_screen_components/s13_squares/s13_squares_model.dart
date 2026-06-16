@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 class S13SquaresModel extends FlutterFlowModel<S13SquaresWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for StaggeredView widget.
-  ScrollController? staggeredViewController;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered1 = false;
   // State field(s) for MouseRegion widget.
@@ -17,12 +15,8 @@ class S13SquaresModel extends FlutterFlowModel<S13SquaresWidget> {
   bool mouseRegionHovered4 = false;
 
   @override
-  void initState(BuildContext context) {
-    staggeredViewController = ScrollController();
-  }
+  void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    staggeredViewController?.dispose();
-  }
+  void dispose() {}
 }

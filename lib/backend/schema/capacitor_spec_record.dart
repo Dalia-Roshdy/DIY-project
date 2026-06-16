@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -20,11 +21,6 @@ class CapacitorSpecRecord extends FirestoreRecord {
   String get id => _id ?? '';
   bool hasId() => _id != null;
 
-  // "type" field.
-  String? _type;
-  String get type => _type ?? '';
-  bool hasType() => _type != null;
-
   // "microFarad1" field.
   double? _microFarad1;
   double get microFarad1 => _microFarad1 ?? 0.0;
@@ -39,11 +35,6 @@ class CapacitorSpecRecord extends FirestoreRecord {
   int? _volt;
   int get volt => _volt ?? 0;
   bool hasVolt() => _volt != null;
-
-  // "shape" field.
-  String? _shape;
-  String get shape => _shape ?? '';
-  bool hasShape() => _shape != null;
 
   // "diameter" field.
   double? _diameter;
@@ -95,13 +86,21 @@ class CapacitorSpecRecord extends FirestoreRecord {
   DateTime? get lastUpdatedAt => _lastUpdatedAt;
   bool hasLastUpdatedAt() => _lastUpdatedAt != null;
 
+  // "shape" field.
+  CapacitorShape? _shape;
+  CapacitorShape? get shape => _shape;
+  bool hasShape() => _shape != null;
+
+  // "type" field.
+  CapacitorType? _type;
+  CapacitorType? get type => _type;
+  bool hasType() => _type != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
-    _type = snapshotData['type'] as String?;
     _microFarad1 = castToType<double>(snapshotData['microFarad1']);
     _microFarad2 = castToType<double>(snapshotData['microFarad2']);
     _volt = castToType<int>(snapshotData['volt']);
-    _shape = snapshotData['shape'] as String?;
     _diameter = castToType<double>(snapshotData['diameter']);
     _height = castToType<double>(snapshotData['height']);
     _width = castToType<double>(snapshotData['width']);
@@ -112,6 +111,12 @@ class CapacitorSpecRecord extends FirestoreRecord {
     _desc = snapshotData['desc'] as String?;
     _lastUpdatedBy = snapshotData['lastUpdatedBy'] as DocumentReference?;
     _lastUpdatedAt = snapshotData['lastUpdatedAt'] as DateTime?;
+    _shape = snapshotData['shape'] is CapacitorShape
+        ? snapshotData['shape']
+        : deserializeEnum<CapacitorShape>(snapshotData['shape']);
+    _type = snapshotData['type'] is CapacitorType
+        ? snapshotData['type']
+        : deserializeEnum<CapacitorType>(snapshotData['type']);
   }
 
   static CollectionReference get collection =>
@@ -150,11 +155,9 @@ class CapacitorSpecRecord extends FirestoreRecord {
 
 Map<String, dynamic> createCapacitorSpecRecordData({
   String? id,
-  String? type,
   double? microFarad1,
   double? microFarad2,
   int? volt,
-  String? shape,
   double? diameter,
   double? height,
   double? width,
@@ -165,15 +168,15 @@ Map<String, dynamic> createCapacitorSpecRecordData({
   String? desc,
   DocumentReference? lastUpdatedBy,
   DateTime? lastUpdatedAt,
+  CapacitorShape? shape,
+  CapacitorType? type,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id': id,
-      'type': type,
       'microFarad1': microFarad1,
       'microFarad2': microFarad2,
       'volt': volt,
-      'shape': shape,
       'diameter': diameter,
       'height': height,
       'width': width,
@@ -184,6 +187,8 @@ Map<String, dynamic> createCapacitorSpecRecordData({
       'desc': desc,
       'lastUpdatedBy': lastUpdatedBy,
       'lastUpdatedAt': lastUpdatedAt,
+      'shape': shape,
+      'type': type,
     }.withoutNulls,
   );
 
@@ -197,11 +202,9 @@ class CapacitorSpecRecordDocumentEquality
   @override
   bool equals(CapacitorSpecRecord? e1, CapacitorSpecRecord? e2) {
     return e1?.id == e2?.id &&
-        e1?.type == e2?.type &&
         e1?.microFarad1 == e2?.microFarad1 &&
         e1?.microFarad2 == e2?.microFarad2 &&
         e1?.volt == e2?.volt &&
-        e1?.shape == e2?.shape &&
         e1?.diameter == e2?.diameter &&
         e1?.height == e2?.height &&
         e1?.width == e2?.width &&
@@ -211,17 +214,17 @@ class CapacitorSpecRecordDocumentEquality
         e1?.tempHigh == e2?.tempHigh &&
         e1?.desc == e2?.desc &&
         e1?.lastUpdatedBy == e2?.lastUpdatedBy &&
-        e1?.lastUpdatedAt == e2?.lastUpdatedAt;
+        e1?.lastUpdatedAt == e2?.lastUpdatedAt &&
+        e1?.shape == e2?.shape &&
+        e1?.type == e2?.type;
   }
 
   @override
   int hash(CapacitorSpecRecord? e) => const ListEquality().hash([
         e?.id,
-        e?.type,
         e?.microFarad1,
         e?.microFarad2,
         e?.volt,
-        e?.shape,
         e?.diameter,
         e?.height,
         e?.width,
@@ -231,7 +234,9 @@ class CapacitorSpecRecordDocumentEquality
         e?.tempHigh,
         e?.desc,
         e?.lastUpdatedBy,
-        e?.lastUpdatedAt
+        e?.lastUpdatedAt,
+        e?.shape,
+        e?.type
       ]);
 
   @override

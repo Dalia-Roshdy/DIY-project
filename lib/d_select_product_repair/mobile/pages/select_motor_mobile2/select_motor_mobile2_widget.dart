@@ -341,10 +341,8 @@ class _SelectMotorMobile2WidgetState extends State<SelectMotorMobile2Widget> {
                             img:
                                 'https://dimg.dreamflow.cloud/v1/image/industrial%20electric%20motor%20silver',
                             price: 189.00,
-                            rpm: '1075 RPM',
                             status: 'IN STOCK',
                             topRated: true,
-                            motorVoltage: '208-230V',
                             type: 'MOTOR',
                           ),
                         ),
@@ -357,10 +355,8 @@ class _SelectMotorMobile2WidgetState extends State<SelectMotorMobile2Widget> {
                             img:
                                 'https://dimg.dreamflow.cloud/v1/image/black%20circular%20fan%20motor',
                             price: 245.50,
-                            rpm: 'Auto-sensing',
                             status: 'FAST SHIP',
                             topRated: false,
-                            motorVoltage: '115/230V',
                             type: 'MOTOR',
                           ),
                         ),
@@ -373,10 +369,8 @@ class _SelectMotorMobile2WidgetState extends State<SelectMotorMobile2Widget> {
                             img:
                                 'https://dimg.dreamflow.cloud/v1/image/gray%20heavy%20duty%20ac%20motor',
                             price: 152.00,
-                            rpm: '1075/825 RPM',
                             status: 'LOW STOCK',
                             topRated: false,
-                            motorVoltage: '208-230V',
                             type: 'MOTOR',
                           ),
                         ),

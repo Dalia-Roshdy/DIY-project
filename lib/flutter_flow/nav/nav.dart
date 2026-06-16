@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -87,12 +88,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : AHomePageWidget(),
         ),
         FFRoute(
-          name: HomePageWidget.routeName,
-          path: HomePageWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => HomePageWidget(),
-        ),
-        FFRoute(
           name: AHomePageWidget.routeName,
           path: AHomePageWidget.routePath,
           builder: (context, params) => AHomePageWidget(),
@@ -111,17 +106,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: BDiagnosisCopyWidget.routeName,
           path: BDiagnosisCopyWidget.routePath,
           builder: (context, params) => BDiagnosisCopyWidget(),
-        ),
-        FFRoute(
-          name: CLibraryVideoWidget.routeName,
-          path: CLibraryVideoWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => CLibraryVideoWidget(),
-        ),
-        FFRoute(
-          name: L01SignInPageWidget.routeName,
-          path: L01SignInPageWidget.routePath,
-          builder: (context, params) => L01SignInPageWidget(),
         ),
         FFRoute(
           name: L02SingUpPageWidget.routeName,
@@ -164,11 +148,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SelecProductDesktopWidget(),
         ),
         FFRoute(
-          name: SelectMotorWidget.routeName,
-          path: SelectMotorWidget.routePath,
-          builder: (context, params) => SelectMotorWidget(),
-        ),
-        FFRoute(
           name: SelectMotor2Widget.routeName,
           path: SelectMotor2Widget.routePath,
           builder: (context, params) => SelectMotor2Widget(),
@@ -191,7 +170,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: EReviewYourOrderWidget.routeName,
           path: EReviewYourOrderWidget.routePath,
-          requireAuth: true,
           builder: (context, params) => EReviewYourOrderWidget(),
         ),
         FFRoute(
@@ -215,10 +193,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SecureCheckout2Widget(),
         ),
         FFRoute(
-          name: GSecurePaymentCheckoutCopyWidget.routeName,
-          path: GSecurePaymentCheckoutCopyWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => GSecurePaymentCheckoutCopyWidget(),
+          name: GSecurePaymentCheckoutWidget.routeName,
+          path: GSecurePaymentCheckoutWidget.routePath,
+          builder: (context, params) => GSecurePaymentCheckoutWidget(),
         ),
         FFRoute(
           name: LoadinIndicatorWidget.routeName,
@@ -235,8 +212,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: DSelectProductRepairWidget.routeName,
           path: DSelectProductRepairWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => DSelectProductRepairWidget(),
+          builder: (context, params) => DSelectProductRepairWidget(
+            part: params.getParam<Parts>(
+              'part',
+              ParamType.Enum,
+            ),
+          ),
         ),
         FFRoute(
           name: IAboutWidget.routeName,
@@ -264,12 +245,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LShippingAddressEditWidget(),
         ),
         FFRoute(
-          name: CLibraryVideoCopyWidget.routeName,
-          path: CLibraryVideoCopyWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => CLibraryVideoCopyWidget(),
-        ),
-        FFRoute(
           name: VideoLibraryWidget.routeName,
           path: VideoLibraryWidget.routePath,
           builder: (context, params) => VideoLibraryWidget(),
@@ -277,7 +252,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: CLibraryVideoFlowWidget.routeName,
           path: CLibraryVideoFlowWidget.routePath,
-          requireAuth: true,
           builder: (context, params) => CLibraryVideoFlowWidget(
             currentVideoId: params.getParam(
               'currentVideoId',
@@ -296,17 +270,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: UnsubscribeWidget.routeName,
           path: UnsubscribeWidget.routePath,
           builder: (context, params) => UnsubscribeWidget(
-            email: params.getParam(
-              'email',
-              ParamType.String,
+            subscriberId: params.getParam(
+              'subscriberId',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['subscriber'],
             ),
           ),
         ),
         FFRoute(
           name: HConfirmationCheckoutWidget.routeName,
           path: HConfirmationCheckoutWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => HConfirmationCheckoutWidget(),
+          builder: (context, params) => HConfirmationCheckoutWidget(
+            orderId: params.getParam(
+              'orderId',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['orders'],
+            ),
+          ),
         ),
         FFRoute(
           name: IAboutMobile02Widget.routeName,
@@ -337,6 +319,46 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: KContactWidget.routeName,
           path: KContactWidget.routePath,
           builder: (context, params) => KContactWidget(),
+        ),
+        FFRoute(
+          name: LRequestTechnicalWidget.routeName,
+          path: LRequestTechnicalWidget.routePath,
+          builder: (context, params) => LRequestTechnicalWidget(),
+        ),
+        FFRoute(
+          name: GTrackAndFindMyOrderWidget.routeName,
+          path: GTrackAndFindMyOrderWidget.routePath,
+          builder: (context, params) => GTrackAndFindMyOrderWidget(),
+        ),
+        FFRoute(
+          name: NewScreen1Widget.routeName,
+          path: NewScreen1Widget.routePath,
+          builder: (context, params) => NewScreen1Widget(),
+        ),
+        FFRoute(
+          name: NewScreen3Widget.routeName,
+          path: NewScreen3Widget.routePath,
+          builder: (context, params) => NewScreen3Widget(),
+        ),
+        FFRoute(
+          name: HOrderTrackingWidget.routeName,
+          path: HOrderTrackingWidget.routePath,
+          builder: (context, params) => HOrderTrackingWidget(),
+        ),
+        FFRoute(
+          name: NewScreen2Widget.routeName,
+          path: NewScreen2Widget.routePath,
+          builder: (context, params) => NewScreen2Widget(),
+        ),
+        FFRoute(
+          name: NewScreen4Widget.routeName,
+          path: NewScreen4Widget.routePath,
+          builder: (context, params) => NewScreen4Widget(),
+        ),
+        FFRoute(
+          name: L01SignInPageWidget.routeName,
+          path: L01SignInPageWidget.routePath,
+          builder: (context, params) => L01SignInPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
@@ -510,7 +532,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/aHomePage';
+            return '/home';
           }
           return null;
         },
@@ -524,13 +546,15 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Container(
-                  color: Colors.transparent,
-                  child: Image.asset(
-                    'assets/images/New_Screen_3_(Copy).png',
-                    fit: BoxFit.cover,
-                  ),
-                )
+              ? isWeb
+                  ? Container()
+                  : Container(
+                      color: Colors.transparent,
+                      child: Image.asset(
+                        'assets/images/New_Screen_3_(Copy).png',
+                        fit: BoxFit.cover,
+                      ),
+                    )
               : page;
 
           final transitionInfo = state.transitionInfo;

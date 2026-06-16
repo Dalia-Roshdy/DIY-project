@@ -34,7 +34,14 @@ class _AddCartSuccessDialogWidgetState
     _model = createModel(context, () => AddCartSuccessDialogModel());
 
     // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {});
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(
+        Duration(
+          milliseconds: 1000,
+        ),
+      );
+      Navigator.pop(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }

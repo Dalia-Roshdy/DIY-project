@@ -27,6 +27,9 @@ enum Parts {
 
 enum SettingKeys {
   super_admin,
+  shipping,
+  tax,
+  technical_admin,
 }
 
 enum ActionType {
@@ -39,6 +42,20 @@ enum TargetPage {
   needAssistant,
   contactUs,
   otherVideo,
+}
+
+enum MotorRotationDirection {
+  Reversible,
+}
+
+enum CapacitorShape {
+  Oval,
+  Round,
+}
+
+enum CapacitorType {
+  Single,
+  Dual,
 }
 
 extension FFEnumExtensions<T extends Enum> on T {
@@ -64,6 +81,12 @@ T? deserializeEnum<T>(String? value) {
       return ActionType.values.deserialize(value) as T?;
     case (TargetPage):
       return TargetPage.values.deserialize(value) as T?;
+    case (MotorRotationDirection):
+      return MotorRotationDirection.values.deserialize(value) as T?;
+    case (CapacitorShape):
+      return CapacitorShape.values.deserialize(value) as T?;
+    case (CapacitorType):
+      return CapacitorType.values.deserialize(value) as T?;
     default:
       return null;
   }

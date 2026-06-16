@@ -6,6 +6,7 @@ import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -113,22 +114,33 @@ Future<List<PartCardDTOStruct>> filterMotorItems(DocumentReference? acModelRef,
 
       // Build PartCardDTOStruct from item and motorSpec data
       final partCard = PartCardDTOStruct(
-        id: itemDoc.reference.id,
+        id: itemDoc.reference, // partCardDTO.id is now Doc Reference (Items)
         type: 'MOTOR',
         title: itemData['partNumber'] as String? ?? '',
         desc: itemData['description'] as String? ?? '',
         price: ((itemData['discountPrice'] as num?)?.toDouble() ?? 0) > 0
             ? (itemData['discountPrice'] as num).toDouble()
             : ((itemData['salePrice'] as num?)?.toDouble() ?? 0.0),
-        rpm: (motorSpecData['rpm'] as num?)?.toInt() ?? 0,
-        volt: (motorSpecData['volt'] as num?)?.toInt() ?? 0,
         image: itemData['image'] is List
             ? List<String>.from(itemData['image'])
-            : [itemData['image']],
-        ratedVolt: 0.0,
-        ratedAmp: 0.0,
-        mfd1: 0,
-        mfd2: 0,
+            : [itemData['image'] as String? ?? ''],
+        motorCard: MotorCardStruct(
+          motorRpm: (motorSpecData['rpm'] as num?)?.toInt() ?? 0,
+          motorVolt: (motorSpecData['volt'] as num?)?.toInt() ?? 0,
+          motorAmp: (motorSpecData['amp'] as num?)?.toDouble() ?? 0.0,
+          motorTemp: (motorSpecData['ambientTempC'] as num?)?.toDouble() ?? 0.0,
+          motorNOSpeeds: (motorSpecData['noOfSpeeds'] as num?)?.toInt() ?? 0,
+          motorRotation: motorSpecData['rotationDirection'] as String? ?? '',
+          motorHeight: (motorSpecData['bodyHeight'] as num?)?.toDouble() ?? 0.0,
+          motorAxleDiameter:
+              (motorSpecData['axleDiameter'] as num?)?.toDouble() ?? 0.0,
+          motorCapacitorMFD:
+              (motorSpecData['capacitorMicroFarad'] as num?)?.toDouble() ?? 0.0,
+          motorBodyDiameter:
+              (motorSpecData['bodyDiameter'] as num?)?.toDouble() ?? 0.0,
+        ),
+        capacitorCard: null,
+        contactorCard: null,
       );
 
       result.add(partCard);

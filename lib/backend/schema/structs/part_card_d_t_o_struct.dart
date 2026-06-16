@@ -3,7 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,37 +10,31 @@ import '/flutter_flow/flutter_flow_util.dart';
 class PartCardDTOStruct extends FFFirebaseStruct {
   PartCardDTOStruct({
     /// item id
-    String? id,
+    DocumentReference? id,
     String? type,
     String? title,
     String? desc,
     double? price,
-    int? rpm,
-    int? volt,
     List<String>? image,
-    double? ratedVolt,
-    double? ratedAmp,
-    double? mfd1,
-    double? mfd2,
+    MotorCardStruct? motorCard,
+    CapacitorCardStruct? capacitorCard,
+    ContactorCardStruct? contactorCard,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _type = type,
         _title = title,
         _desc = desc,
         _price = price,
-        _rpm = rpm,
-        _volt = volt,
         _image = image,
-        _ratedVolt = ratedVolt,
-        _ratedAmp = ratedAmp,
-        _mfd1 = mfd1,
-        _mfd2 = mfd2,
+        _motorCard = motorCard,
+        _capacitorCard = capacitorCard,
+        _contactorCard = contactorCard,
         super(firestoreUtilData);
 
   // "id" field.
-  String? _id;
-  String get id => _id ?? '';
-  set id(String? val) => _id = val;
+  DocumentReference? _id;
+  DocumentReference? get id => _id;
+  set id(DocumentReference? val) => _id = val;
 
   bool hasId() => _id != null;
 
@@ -75,24 +68,6 @@ class PartCardDTOStruct extends FFFirebaseStruct {
 
   bool hasPrice() => _price != null;
 
-  // "rpm" field.
-  int? _rpm;
-  int get rpm => _rpm ?? 0;
-  set rpm(int? val) => _rpm = val;
-
-  void incrementRpm(int amount) => rpm = rpm + amount;
-
-  bool hasRpm() => _rpm != null;
-
-  // "volt" field.
-  int? _volt;
-  int get volt => _volt ?? 0;
-  set volt(int? val) => _volt = val;
-
-  void incrementVolt(int amount) => volt = volt + amount;
-
-  bool hasVolt() => _volt != null;
-
   // "image" field.
   List<String>? _image;
   List<String> get image => _image ?? const [];
@@ -104,56 +79,58 @@ class PartCardDTOStruct extends FFFirebaseStruct {
 
   bool hasImage() => _image != null;
 
-  // "ratedVolt" field.
-  double? _ratedVolt;
-  double get ratedVolt => _ratedVolt ?? 0.0;
-  set ratedVolt(double? val) => _ratedVolt = val;
+  // "motorCard" field.
+  MotorCardStruct? _motorCard;
+  MotorCardStruct get motorCard => _motorCard ?? MotorCardStruct();
+  set motorCard(MotorCardStruct? val) => _motorCard = val;
 
-  void incrementRatedVolt(double amount) => ratedVolt = ratedVolt + amount;
+  void updateMotorCard(Function(MotorCardStruct) updateFn) {
+    updateFn(_motorCard ??= MotorCardStruct());
+  }
 
-  bool hasRatedVolt() => _ratedVolt != null;
+  bool hasMotorCard() => _motorCard != null;
 
-  // "ratedAmp" field.
-  double? _ratedAmp;
-  double get ratedAmp => _ratedAmp ?? 0.0;
-  set ratedAmp(double? val) => _ratedAmp = val;
+  // "capacitorCard" field.
+  CapacitorCardStruct? _capacitorCard;
+  CapacitorCardStruct get capacitorCard =>
+      _capacitorCard ?? CapacitorCardStruct();
+  set capacitorCard(CapacitorCardStruct? val) => _capacitorCard = val;
 
-  void incrementRatedAmp(double amount) => ratedAmp = ratedAmp + amount;
+  void updateCapacitorCard(Function(CapacitorCardStruct) updateFn) {
+    updateFn(_capacitorCard ??= CapacitorCardStruct());
+  }
 
-  bool hasRatedAmp() => _ratedAmp != null;
+  bool hasCapacitorCard() => _capacitorCard != null;
 
-  // "mfd1" field.
-  double? _mfd1;
-  double get mfd1 => _mfd1 ?? 0.0;
-  set mfd1(double? val) => _mfd1 = val;
+  // "contactorCard" field.
+  ContactorCardStruct? _contactorCard;
+  ContactorCardStruct get contactorCard =>
+      _contactorCard ?? ContactorCardStruct();
+  set contactorCard(ContactorCardStruct? val) => _contactorCard = val;
 
-  void incrementMfd1(double amount) => mfd1 = mfd1 + amount;
+  void updateContactorCard(Function(ContactorCardStruct) updateFn) {
+    updateFn(_contactorCard ??= ContactorCardStruct());
+  }
 
-  bool hasMfd1() => _mfd1 != null;
-
-  // "mfd2" field.
-  double? _mfd2;
-  double get mfd2 => _mfd2 ?? 0.0;
-  set mfd2(double? val) => _mfd2 = val;
-
-  void incrementMfd2(double amount) => mfd2 = mfd2 + amount;
-
-  bool hasMfd2() => _mfd2 != null;
+  bool hasContactorCard() => _contactorCard != null;
 
   static PartCardDTOStruct fromMap(Map<String, dynamic> data) =>
       PartCardDTOStruct(
-        id: data['id'] as String?,
+        id: data['id'] as DocumentReference?,
         type: data['type'] as String?,
         title: data['title'] as String?,
         desc: data['desc'] as String?,
         price: castToType<double>(data['price']),
-        rpm: castToType<int>(data['rpm']),
-        volt: castToType<int>(data['volt']),
         image: getDataList(data['image']),
-        ratedVolt: castToType<double>(data['ratedVolt']),
-        ratedAmp: castToType<double>(data['ratedAmp']),
-        mfd1: castToType<double>(data['mfd1']),
-        mfd2: castToType<double>(data['mfd2']),
+        motorCard: data['motorCard'] is MotorCardStruct
+            ? data['motorCard']
+            : MotorCardStruct.maybeFromMap(data['motorCard']),
+        capacitorCard: data['capacitorCard'] is CapacitorCardStruct
+            ? data['capacitorCard']
+            : CapacitorCardStruct.maybeFromMap(data['capacitorCard']),
+        contactorCard: data['contactorCard'] is ContactorCardStruct
+            ? data['contactorCard']
+            : ContactorCardStruct.maybeFromMap(data['contactorCard']),
       );
 
   static PartCardDTOStruct? maybeFromMap(dynamic data) => data is Map
@@ -166,20 +143,17 @@ class PartCardDTOStruct extends FFFirebaseStruct {
         'title': _title,
         'desc': _desc,
         'price': _price,
-        'rpm': _rpm,
-        'volt': _volt,
         'image': _image,
-        'ratedVolt': _ratedVolt,
-        'ratedAmp': _ratedAmp,
-        'mfd1': _mfd1,
-        'mfd2': _mfd2,
+        'motorCard': _motorCard?.toMap(),
+        'capacitorCard': _capacitorCard?.toMap(),
+        'contactorCard': _contactorCard?.toMap(),
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
         'id': serializeParam(
           _id,
-          ParamType.String,
+          ParamType.DocumentReference,
         ),
         'type': serializeParam(
           _type,
@@ -197,34 +171,22 @@ class PartCardDTOStruct extends FFFirebaseStruct {
           _price,
           ParamType.double,
         ),
-        'rpm': serializeParam(
-          _rpm,
-          ParamType.int,
-        ),
-        'volt': serializeParam(
-          _volt,
-          ParamType.int,
-        ),
         'image': serializeParam(
           _image,
           ParamType.String,
           isList: true,
         ),
-        'ratedVolt': serializeParam(
-          _ratedVolt,
-          ParamType.double,
+        'motorCard': serializeParam(
+          _motorCard,
+          ParamType.DataStruct,
         ),
-        'ratedAmp': serializeParam(
-          _ratedAmp,
-          ParamType.double,
+        'capacitorCard': serializeParam(
+          _capacitorCard,
+          ParamType.DataStruct,
         ),
-        'mfd1': serializeParam(
-          _mfd1,
-          ParamType.double,
-        ),
-        'mfd2': serializeParam(
-          _mfd2,
-          ParamType.double,
+        'contactorCard': serializeParam(
+          _contactorCard,
+          ParamType.DataStruct,
         ),
       }.withoutNulls;
 
@@ -232,8 +194,9 @@ class PartCardDTOStruct extends FFFirebaseStruct {
       PartCardDTOStruct(
         id: deserializeParam(
           data['id'],
-          ParamType.String,
+          ParamType.DocumentReference,
           false,
+          collectionNamePath: ['Items'],
         ),
         type: deserializeParam(
           data['type'],
@@ -255,40 +218,28 @@ class PartCardDTOStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
-        rpm: deserializeParam(
-          data['rpm'],
-          ParamType.int,
-          false,
-        ),
-        volt: deserializeParam(
-          data['volt'],
-          ParamType.int,
-          false,
-        ),
         image: deserializeParam<String>(
           data['image'],
           ParamType.String,
           true,
         ),
-        ratedVolt: deserializeParam(
-          data['ratedVolt'],
-          ParamType.double,
+        motorCard: deserializeStructParam(
+          data['motorCard'],
+          ParamType.DataStruct,
           false,
+          structBuilder: MotorCardStruct.fromSerializableMap,
         ),
-        ratedAmp: deserializeParam(
-          data['ratedAmp'],
-          ParamType.double,
+        capacitorCard: deserializeStructParam(
+          data['capacitorCard'],
+          ParamType.DataStruct,
           false,
+          structBuilder: CapacitorCardStruct.fromSerializableMap,
         ),
-        mfd1: deserializeParam(
-          data['mfd1'],
-          ParamType.double,
+        contactorCard: deserializeStructParam(
+          data['contactorCard'],
+          ParamType.DataStruct,
           false,
-        ),
-        mfd2: deserializeParam(
-          data['mfd2'],
-          ParamType.double,
-          false,
+          structBuilder: ContactorCardStruct.fromSerializableMap,
         ),
       );
 
@@ -304,13 +255,10 @@ class PartCardDTOStruct extends FFFirebaseStruct {
         title == other.title &&
         desc == other.desc &&
         price == other.price &&
-        rpm == other.rpm &&
-        volt == other.volt &&
         listEquality.equals(image, other.image) &&
-        ratedVolt == other.ratedVolt &&
-        ratedAmp == other.ratedAmp &&
-        mfd1 == other.mfd1 &&
-        mfd2 == other.mfd2;
+        motorCard == other.motorCard &&
+        capacitorCard == other.capacitorCard &&
+        contactorCard == other.contactorCard;
   }
 
   @override
@@ -320,28 +268,22 @@ class PartCardDTOStruct extends FFFirebaseStruct {
         title,
         desc,
         price,
-        rpm,
-        volt,
         image,
-        ratedVolt,
-        ratedAmp,
-        mfd1,
-        mfd2
+        motorCard,
+        capacitorCard,
+        contactorCard
       ]);
 }
 
 PartCardDTOStruct createPartCardDTOStruct({
-  String? id,
+  DocumentReference? id,
   String? type,
   String? title,
   String? desc,
   double? price,
-  int? rpm,
-  int? volt,
-  double? ratedVolt,
-  double? ratedAmp,
-  double? mfd1,
-  double? mfd2,
+  MotorCardStruct? motorCard,
+  CapacitorCardStruct? capacitorCard,
+  ContactorCardStruct? contactorCard,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -353,12 +295,11 @@ PartCardDTOStruct createPartCardDTOStruct({
       title: title,
       desc: desc,
       price: price,
-      rpm: rpm,
-      volt: volt,
-      ratedVolt: ratedVolt,
-      ratedAmp: ratedAmp,
-      mfd1: mfd1,
-      mfd2: mfd2,
+      motorCard: motorCard ?? (clearUnsetFields ? MotorCardStruct() : null),
+      capacitorCard:
+          capacitorCard ?? (clearUnsetFields ? CapacitorCardStruct() : null),
+      contactorCard:
+          contactorCard ?? (clearUnsetFields ? ContactorCardStruct() : null),
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -415,6 +356,30 @@ Map<String, dynamic> getPartCardDTOFirestoreData(
     return {};
   }
   final firestoreData = mapToFirestore(partCardDTO.toMap());
+
+  // Handle nested data for "motorCard" field.
+  addMotorCardStructData(
+    firestoreData,
+    partCardDTO.hasMotorCard() ? partCardDTO.motorCard : null,
+    'motorCard',
+    forFieldValue,
+  );
+
+  // Handle nested data for "capacitorCard" field.
+  addCapacitorCardStructData(
+    firestoreData,
+    partCardDTO.hasCapacitorCard() ? partCardDTO.capacitorCard : null,
+    'capacitorCard',
+    forFieldValue,
+  );
+
+  // Handle nested data for "contactorCard" field.
+  addContactorCardStructData(
+    firestoreData,
+    partCardDTO.hasContactorCard() ? partCardDTO.contactorCard : null,
+    'contactorCard',
+    forFieldValue,
+  );
 
   // Add any Firestore field values
   mapToFirestore(partCardDTO.firestoreUtilData.fieldValues)

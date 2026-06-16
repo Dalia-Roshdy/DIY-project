@@ -1,16 +1,11 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/h_about/about_page/about_page_widget.dart';
 import '/h_about/i_about_dektop/i_about_dektop_widget.dart';
 import '/h_about/i_about_mobile/i_about_mobile_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:provider/provider.dart';
 import 'i_about_model.dart';
 export 'i_about_model.dart';
 
@@ -18,7 +13,7 @@ class IAboutWidget extends StatefulWidget {
   const IAboutWidget({super.key});
 
   static String routeName = 'I-About';
-  static String routePath = '/iAbout';
+  static String routePath = '/about';
 
   @override
   State<IAboutWidget> createState() => _IAboutWidgetState();
@@ -34,40 +29,6 @@ class _IAboutWidgetState extends State<IAboutWidget> {
     super.initState();
     _model = createModel(context, () => IAboutModel());
 
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (!(FFAppState().acMakeList.isNotEmpty) ||
-          !(FFAppState().acModelList.isNotEmpty)) {
-        _model.acMakeAct = await queryACMakeRecordOnce(
-          queryBuilder: (aCMakeRecord) => aCMakeRecord.where(
-            'approved',
-            isEqualTo: true,
-          ),
-        );
-        _model.acModelAct = await queryACModelRecordOnce(
-          queryBuilder: (aCModelRecord) => aCModelRecord.where(
-            'approved',
-            isEqualTo: true,
-          ),
-        );
-        _model.acMakeMap = await actions.mapACMakeToDto(
-          _model.acMakeAct!.toList(),
-        );
-        _model.acModelMap = await actions.mapACModelToDto(
-          _model.acModelAct!.toList(),
-        );
-        FFAppState().acMakeList = _model.acMakeMap!
-            .sortedList(keyOf: (e) => e.name, desc: false)
-            .toList()
-            .cast<AcMakeDTOStruct>();
-        FFAppState().acModelList = _model.acModelMap!
-            .sortedList(keyOf: (e) => e.name, desc: false)
-            .toList()
-            .cast<AcModelDTOStruct>();
-      }
-      await actions.seedCartTestData();
-    });
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -80,8 +41,6 @@ class _IAboutWidgetState extends State<IAboutWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -93,7 +52,6 @@ class _IAboutWidgetState extends State<IAboutWidget> {
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
-            controller: _model.scrollColumnScrollController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -112,20 +70,7 @@ class _IAboutWidgetState extends State<IAboutWidget> {
                             16.0, 0.0, 16.0, 0.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.96,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: CachedNetworkImageProvider(
-                                valueOrDefault<String>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/snombgtjslh3/Lines_Phone.png'
-                                      : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
-                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
-                                ),
-                              ),
-                            ),
-                          ),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -142,23 +87,7 @@ class _IAboutWidgetState extends State<IAboutWidget> {
                                     wrapWithModel(
                                       model: _model.s01NavigatioBarModel,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: S01NavigatioBarWidget(
-                                        goToSectionTap: (scrollTo) async {
-                                          if (scrollTo != '') {
-                                            await _model
-                                                .scrollColumnScrollController
-                                                ?.animateTo(
-                                              _model
-                                                  .scrollColumnScrollController!
-                                                  .position
-                                                  .maxScrollExtent,
-                                              duration:
-                                                  Duration(milliseconds: 100),
-                                              curve: Curves.ease,
-                                            );
-                                          }
-                                        },
-                                      ),
+                                      child: S01NavigatioBarWidget(),
                                     ),
                                     Divider(
                                       height: 1.0,
@@ -207,6 +136,8 @@ class _IAboutWidgetState extends State<IAboutWidget> {
                                     if (responsiveVisibility(
                                       context: context,
                                       phone: false,
+                                      tablet: false,
+                                      tabletLandscape: false,
                                     ))
                                       wrapWithModel(
                                         model: _model.s12FooterModel,

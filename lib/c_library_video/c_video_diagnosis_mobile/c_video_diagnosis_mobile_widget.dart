@@ -17,7 +17,7 @@ export 'c_video_diagnosis_mobile_model.dart';
 class CVideoDiagnosisMobileWidget extends StatefulWidget {
   const CVideoDiagnosisMobileWidget({
     super.key,
-    required this.videoRecord,
+    this.videoRecord,
   });
 
   final DiagnosisVideoRecord? videoRecord;
@@ -82,7 +82,7 @@ class _CVideoDiagnosisMobileWidgetState
               child: Text(
                 valueOrDefault<String>(
                   widget.videoRecord?.title,
-                  'Title',
+                  'VIDEO TITLE',
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily:
@@ -160,23 +160,86 @@ class _CVideoDiagnosisMobileWidgetState
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
-              child: Text(
-                valueOrDefault<String>(
-                  _model.currentVideo?.description,
-                  'desc',
-                ),
-                textAlign: TextAlign.start,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                      fontSize: 18.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.normal,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+            Wrap(
+              spacing: 0.0,
+              runSpacing: 0.0,
+              alignment: WrapAlignment.start,
+              crossAxisAlignment: WrapCrossAlignment.start,
+              direction: Axis.horizontal,
+              runAlignment: WrapAlignment.start,
+              verticalDirection: VerticalDirection.down,
+              clipBehavior: Clip.none,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 24.0, 12.0, 0.0),
+                      child: RichText(
+                        textScaler: MediaQuery.of(context).textScaler,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Description:',
+                              style: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelMediumFamily,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .labelMediumIsCustom,
+                                  ),
+                            ),
+                            TextSpan(
+                              text: '\n',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    letterSpacing: 0.0,
+                                    decoration: TextDecoration.underline,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
+                                  ),
+                            ),
+                            TextSpan(
+                              text:
+                                  'Learn how to locate your AC model and serial number \nquickly. This information helps us recommend the\n correct parts and repair steps for your unit.',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
+                                  ),
+                            )
+                          ],
+                          style: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleLargeFamily,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleLargeIsCustom,
+                              ),
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
                     ),
-              ),
+                  ],
+                ),
+              ],
             ),
             Padding(
               padding: EdgeInsets.all(16.0),
@@ -206,16 +269,16 @@ class _CVideoDiagnosisMobileWidgetState
                               ),
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .bodyLarge
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    fontSize: 16.0,
+                                        .bodyLargeFamily,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w900,
                                     useGoogleFonts:
                                         !FlutterFlowTheme.of(context)
-                                            .bodyMediumIsCustom,
+                                            .bodyLargeIsCustom,
                                   ),
                             ),
                           ),
@@ -243,6 +306,7 @@ class _CVideoDiagnosisMobileWidgetState
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .labelMediumFamily,
+                                  fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: !FlutterFlowTheme.of(context)
                                       .labelMediumIsCustom,
@@ -259,7 +323,7 @@ class _CVideoDiagnosisMobileWidgetState
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                32.0, 24.0, 32.0, 24.0),
+                                2.0, 24.0, 0.0, 24.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -322,13 +386,21 @@ class _CVideoDiagnosisMobileWidgetState
                                               .selectedOption?.targetPage ==
                                           TargetPage.needAssistant) {
                                         context.pushNamed(
-                                            AHomePageWidget.routeName);
+                                            LRequestTechnicalWidget.routeName);
                                       }
                                     } else if (_model
                                             .selectedOption?.actionType ==
                                         ActionType.navigateWithData) {
                                       context.pushNamed(
-                                          DSelectProductRepairWidget.routeName);
+                                        DSelectProductRepairWidget.routeName,
+                                        queryParameters: {
+                                          'part': serializeParam(
+                                            _model
+                                                .selectedOption?.targetPartType,
+                                            ParamType.Enum,
+                                          ),
+                                        }.withoutNulls,
+                                      );
                                     }
                                   },
                                   text: 'Proceed',
@@ -369,29 +441,6 @@ class _CVideoDiagnosisMobileWidgetState
                       ),
                     ),
                   ],
-                ),
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.0, -1.0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                child: Text(
-                  valueOrDefault<String>(
-                    _model.currentVideo?.videoScript,
-                    'script',
-                  ),
-                  textAlign: TextAlign.center,
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).bodyMediumFamily,
-                        fontSize: 18.0,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.normal,
-                        fontStyle: FontStyle.italic,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
-                      ),
                 ),
               ),
             ),

@@ -18,10 +18,15 @@ import 'd_select_product_repair_model.dart';
 export 'd_select_product_repair_model.dart';
 
 class DSelectProductRepairWidget extends StatefulWidget {
-  const DSelectProductRepairWidget({super.key});
+  const DSelectProductRepairWidget({
+    super.key,
+    this.part,
+  });
+
+  final Parts? part;
 
   static String routeName = 'D-Select_Product_Repair';
-  static String routePath = '/dSelectProductRepair';
+  static String routePath = '/products';
 
   @override
   State<DSelectProductRepairWidget> createState() =>
@@ -41,10 +46,17 @@ class _DSelectProductRepairWidgetState
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.selectedPart = Parts.MOTOR.name;
-      _model.partList = [];
-      safeSetState(() {});
-      if (_model.selectedPart == Parts.MOTOR.name) {
+      if (widget.part != null) {
+        _model.selectedPart = widget.part;
+        _model.partList = [];
+        safeSetState(() {});
+      } else {
+        _model.selectedPart = Parts.MOTOR;
+        _model.partList = [];
+        safeSetState(() {});
+      }
+
+      if (_model.selectedPart == Parts.MOTOR) {
         _model.motorItemsOnPageLoad = await actions.filterMotorItems(
           FFAppState().userAC.acModel,
           null,
@@ -55,7 +67,7 @@ class _DSelectProductRepairWidgetState
         _model.partList =
             _model.motorItemsOnPageLoad!.toList().cast<PartCardDTOStruct>();
         safeSetState(() {});
-      } else if (_model.selectedPart == Parts.CONTRACTOR.name) {
+      } else if (_model.selectedPart == Parts.CONTRACTOR) {
         _model.contOnPageLoad = await actions.filterContactorItems(
           FFAppState().userAC.acModel,
           null,
@@ -68,7 +80,7 @@ class _DSelectProductRepairWidgetState
             .toList()
             .cast<PartCardDTOStruct>();
         safeSetState(() {});
-      } else if (_model.selectedPart == Parts.CAPACITOR.name) {
+      } else if (_model.selectedPart == Parts.CAPACITOR) {
         _model.capacOnPageLoad = await actions.filterCapacitorItems(
           FFAppState().userAC.acModel,
           null,
@@ -106,10 +118,12 @@ class _DSelectProductRepairWidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
+        resizeToAvoidBottomInset: false,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SingleChildScrollView(
+          primary: false,
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Align(
                 alignment: AlignmentDirectional(0.0, -1.0),
@@ -125,19 +139,17 @@ class _DSelectProductRepairWidgetState
                         ),
                       ),
                       child: SingleChildScrollView(
+                        primary: false,
                         child: Column(
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisSize: MainAxisSize.max,
                           children: [
                             wrapWithModel(
                               model: _model.s01NavigatioBarModel,
                               updateCallback: () => safeSetState(() {}),
-                              child: S01NavigatioBarWidget(
-                                goToSectionTap: (scrollTo) async {},
-                              ),
+                              child: S01NavigatioBarWidget(),
                             ),
                             if (responsiveVisibility(
                               context: context,
-                              tabletLandscape: false,
                               desktop: false,
                             ))
                               wrapWithModel(
@@ -151,6 +163,7 @@ class _DSelectProductRepairWidgetState
                               context: context,
                               phone: false,
                               tablet: false,
+                              tabletLandscape: false,
                             ))
                               Divider(
                                 height: 1.0,
@@ -161,6 +174,7 @@ class _DSelectProductRepairWidgetState
                               context: context,
                               phone: false,
                               tablet: false,
+                              tabletLandscape: false,
                             ))
                               ClipRRect(
                                 child: Container(
@@ -169,7 +183,7 @@ class _DSelectProductRepairWidgetState
                                             kBreakpointSmall
                                         ? 25.0
                                         : 60.0,
-                                    100.0,
+                                    25.0,
                                   ),
                                   decoration: BoxDecoration(),
                                 ),
@@ -178,6 +192,7 @@ class _DSelectProductRepairWidgetState
                               context: context,
                               phone: false,
                               tablet: false,
+                              tabletLandscape: false,
                             ))
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -186,7 +201,7 @@ class _DSelectProductRepairWidgetState
                                   model: _model.aHeaderSectionModel,
                                   updateCallback: () => safeSetState(() {}),
                                   child: AHeaderSectionWidget(
-                                    partParam: _model.selectedPart,
+                                    partParam: _model.selectedPart?.name,
                                   ),
                                 ),
                               ),
@@ -194,6 +209,7 @@ class _DSelectProductRepairWidgetState
                               context: context,
                               phone: false,
                               tablet: false,
+                              tabletLandscape: false,
                             ))
                               Divider(
                                 height: 1.0,
@@ -204,6 +220,7 @@ class _DSelectProductRepairWidgetState
                               context: context,
                               phone: false,
                               tablet: false,
+                              tabletLandscape: false,
                             ))
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -218,121 +235,126 @@ class _DSelectProductRepairWidgetState
                                         children: [
                                           Container(
                                             decoration: BoxDecoration(),
-                                            child: wrapWithModel(
-                                              model: _model
-                                                  .s18FilterRepairPartsDesktopModel,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child:
-                                                  S18FilterRepairPartsDesktopWidget(
-                                                selectedPartPram:
-                                                    _model.selectedPart,
-                                                onMotorSelected: (selectedPart,
-                                                    volt,
-                                                    hp,
-                                                    rpm,
-                                                    rotation) async {
-                                                  _model.selectedPart =
-                                                      Parts.MOTOR.name;
-                                                  _model.partList = [];
-                                                  safeSetState(() {});
-                                                  if (selectedPart ==
-                                                      Parts.MOTOR.name) {
-                                                    _model.motorItemsOnCallback =
-                                                        await actions
-                                                            .filterMotorItems(
-                                                      FFAppState()
-                                                          .userAC
-                                                          .acModel,
-                                                      volt,
-                                                      hp,
-                                                      rpm,
-                                                      rotation,
-                                                    );
-                                                    _model.partList = _model
-                                                        .motorItemsOnCallback!
-                                                        .toList()
-                                                        .cast<
-                                                            PartCardDTOStruct>();
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 24.0),
+                                              child: wrapWithModel(
+                                                model: _model
+                                                    .s18FilterRepairPartsDesktopModel,
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                updateOnChange: true,
+                                                child:
+                                                    S18FilterRepairPartsDesktopWidget(
+                                                  selectedPartPram:
+                                                      _model.selectedPart,
+                                                  onMotorSelected:
+                                                      (selectedPart, volt, hp,
+                                                          rpm, rotation) async {
+                                                    _model.selectedPart =
+                                                        Parts.MOTOR;
+                                                    _model.partList = [];
                                                     safeSetState(() {});
-                                                  }
+                                                    if (selectedPart ==
+                                                        Parts.MOTOR.name) {
+                                                      _model.motorItemsOnCallback =
+                                                          await actions
+                                                              .filterMotorItems(
+                                                        FFAppState()
+                                                            .userAC
+                                                            .acModel,
+                                                        volt,
+                                                        hp,
+                                                        rpm,
+                                                        rotation,
+                                                      );
+                                                      _model.partList = _model
+                                                          .motorItemsOnCallback!
+                                                          .toList()
+                                                          .cast<
+                                                              PartCardDTOStruct>();
+                                                      safeSetState(() {});
+                                                    }
 
-                                                  safeSetState(() {});
-                                                },
-                                                onContSelected: (rvolt,
-                                                    amp,
-                                                    cvoltage,
-                                                    nop,
-                                                    selectedPart) async {
-                                                  _model.partList = [];
-                                                  _model.selectedPart =
-                                                      Parts.CONTRACTOR.name;
-                                                  safeSetState(() {});
-                                                  if (selectedPart ==
-                                                      Parts.CONTRACTOR.name) {
-                                                    _model.contOnCallback =
-                                                        await actions
-                                                            .filterContactorItems(
-                                                      FFAppState()
-                                                          .userAC
-                                                          .acModel,
-                                                      rvolt,
+                                                    safeSetState(() {});
+                                                  },
+                                                  onContSelected: (rvolt,
                                                       amp,
                                                       cvoltage,
                                                       nop,
-                                                    );
-                                                    _model.partList = _model
-                                                        .contOnCallback!
-                                                        .sortedList(
-                                                            keyOf: (e) =>
-                                                                e.title,
-                                                            desc: false)
-                                                        .toList()
-                                                        .cast<
-                                                            PartCardDTOStruct>();
+                                                      selectedPart) async {
+                                                    _model.partList = [];
+                                                    _model.selectedPart =
+                                                        Parts.CONTRACTOR;
                                                     safeSetState(() {});
-                                                  }
+                                                    if (selectedPart ==
+                                                        Parts.CONTRACTOR.name) {
+                                                      _model.contOnCallback =
+                                                          await actions
+                                                              .filterContactorItems(
+                                                        FFAppState()
+                                                            .userAC
+                                                            .acModel,
+                                                        rvolt,
+                                                        amp,
+                                                        cvoltage,
+                                                        nop,
+                                                      );
+                                                      _model.partList = _model
+                                                          .contOnCallback!
+                                                          .sortedList(
+                                                              keyOf: (e) =>
+                                                                  e.title,
+                                                              desc: false)
+                                                          .toList()
+                                                          .cast<
+                                                              PartCardDTOStruct>();
+                                                      safeSetState(() {});
+                                                    }
 
-                                                  safeSetState(() {});
-                                                },
-                                                onCapatSelected: (selectedPart,
-                                                    mfd1,
-                                                    mfd2,
-                                                    volt,
-                                                    type,
-                                                    shape) async {
-                                                  _model.partList = [];
-                                                  _model.selectedPart =
-                                                      Parts.CAPACITOR.name;
-                                                  safeSetState(() {});
-                                                  if (selectedPart ==
-                                                      Parts.CAPACITOR.name) {
-                                                    _model.capacOnCallback =
-                                                        await actions
-                                                            .filterCapacitorItems(
-                                                      FFAppState()
-                                                          .userAC
-                                                          .acModel,
-                                                      mfd1,
-                                                      mfd2,
-                                                      volt,
-                                                      type,
-                                                      shape,
-                                                    );
-                                                    _model.partList = _model
-                                                        .capacOnCallback!
-                                                        .sortedList(
-                                                            keyOf: (e) =>
-                                                                e.title,
-                                                            desc: false)
-                                                        .toList()
-                                                        .cast<
-                                                            PartCardDTOStruct>();
                                                     safeSetState(() {});
-                                                  }
+                                                  },
+                                                  onCapatSelected:
+                                                      (selectedPart,
+                                                          mfd1,
+                                                          mfd2,
+                                                          volt,
+                                                          type,
+                                                          shape) async {
+                                                    _model.partList = [];
+                                                    _model.selectedPart =
+                                                        Parts.CAPACITOR;
+                                                    safeSetState(() {});
+                                                    if (selectedPart ==
+                                                        Parts.CAPACITOR.name) {
+                                                      _model.capacOnCallback =
+                                                          await actions
+                                                              .filterCapacitorItems(
+                                                        FFAppState()
+                                                            .userAC
+                                                            .acModel,
+                                                        mfd1,
+                                                        mfd2,
+                                                        volt,
+                                                        type,
+                                                        shape,
+                                                      );
+                                                      _model.partList = _model
+                                                          .capacOnCallback!
+                                                          .sortedList(
+                                                              keyOf: (e) =>
+                                                                  e.title,
+                                                              desc: false)
+                                                          .toList()
+                                                          .cast<
+                                                              PartCardDTOStruct>();
+                                                      safeSetState(() {});
+                                                    }
 
-                                                  safeSetState(() {});
-                                                },
+                                                    safeSetState(() {});
+                                                  },
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -376,15 +398,14 @@ class _DSelectProductRepairWidgetState
                                                       safeSetState(() {}),
                                                   child:
                                                       BSelectProductMainWidget(
-                                                    partParams:
-                                                        _model.selectedPart,
+                                                    partParams: _model
+                                                        .selectedPart?.name,
                                                     count:
                                                         _model.partList.length,
                                                     partList: _model.partList,
                                                     all: () {
                                                       if ((_model.selectedPart ==
-                                                              Parts.MOTOR
-                                                                  .name) &&
+                                                              Parts.MOTOR) &&
                                                           (FFAppState()
                                                                       .userAC
                                                                       .motorSpecIdRef
@@ -398,8 +419,8 @@ class _DSelectProductRepairWidgetState
                                                         return true;
                                                       } else if ((_model
                                                                   .selectedPart ==
-                                                              Parts.CAPACITOR
-                                                                  .name) &&
+                                                              Parts
+                                                                  .CAPACITOR) &&
                                                           (FFAppState()
                                                                       .userAC
                                                                       .capacitorSpecIdRef
@@ -413,8 +434,8 @@ class _DSelectProductRepairWidgetState
                                                         return true;
                                                       } else if ((_model
                                                                   .selectedPart ==
-                                                              Parts.CONTRACTOR
-                                                                  .name) &&
+                                                              Parts
+                                                                  .CONTRACTOR) &&
                                                           (FFAppState()
                                                                       .userAC
                                                                       .contactorSpecIdRef
@@ -451,6 +472,7 @@ class _DSelectProductRepairWidgetState
                 context: context,
                 phone: false,
                 tablet: false,
+                tabletLandscape: false,
               ))
                 Divider(
                   height: 1.0,
@@ -460,6 +482,8 @@ class _DSelectProductRepairWidgetState
               if (responsiveVisibility(
                 context: context,
                 phone: false,
+                tablet: false,
+                tabletLandscape: false,
               ))
                 wrapWithModel(
                   model: _model.s12FooterModel,

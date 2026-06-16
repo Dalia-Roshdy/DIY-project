@@ -1,6 +1,5 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/l_user_profile/l_order_histor_mobile/l_order_histor_mobile_widget.dart';
 import '/l_user_profile/l_orderhistory_02/l_orderhistory02_widget.dart';
@@ -10,16 +9,6 @@ import 'package:flutter/material.dart';
 class LPreviousOrdersModel extends FlutterFlowModel<LPreviousOrdersWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in L-Previous_Orders widget.
-  List<ACMakeRecord>? acMakeAct;
-  // Stores action output result for [Firestore Query - Query a collection] action in L-Previous_Orders widget.
-  List<ACModelRecord>? acModelAct;
-  // Stores action output result for [Custom Action - mapACMakeToDto] action in L-Previous_Orders widget.
-  List<AcMakeDTOStruct>? acMakeMap;
-  // Stores action output result for [Custom Action - mapACModelToDto] action in L-Previous_Orders widget.
-  List<AcModelDTOStruct>? acModelMap;
-  // State field(s) for ScrollColumn widget.
-  ScrollController? scrollColumnScrollController;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for L_orderhistory_02 component.
@@ -31,7 +20,6 @@ class LPreviousOrdersModel extends FlutterFlowModel<LPreviousOrdersWidget> {
 
   @override
   void initState(BuildContext context) {
-    scrollColumnScrollController = ScrollController();
     s01NavigatioBarModel = createModel(context, () => S01NavigatioBarModel());
     lOrderhistory02Model = createModel(context, () => LOrderhistory02Model());
     s12FooterModel = createModel(context, () => S12FooterModel());
@@ -41,7 +29,6 @@ class LPreviousOrdersModel extends FlutterFlowModel<LPreviousOrdersWidget> {
 
   @override
   void dispose() {
-    scrollColumnScrollController?.dispose();
     s01NavigatioBarModel.dispose();
     lOrderhistory02Model.dispose();
     s12FooterModel.dispose();

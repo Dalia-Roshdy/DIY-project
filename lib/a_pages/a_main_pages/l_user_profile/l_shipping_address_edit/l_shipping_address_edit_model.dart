@@ -1,6 +1,5 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/l_user_profile/l_shipping_address_desktop/l_shipping_address_desktop_widget.dart';
 import '/l_user_profile/l_shipping_address_mobile_02/l_shipping_address_mobile02_widget.dart';
@@ -12,16 +11,6 @@ class LShippingAddressEditModel
     extends FlutterFlowModel<LShippingAddressEditWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in L-Shipping_address_edit widget.
-  List<ACMakeRecord>? acMakeAct;
-  // Stores action output result for [Firestore Query - Query a collection] action in L-Shipping_address_edit widget.
-  List<ACModelRecord>? acModelAct;
-  // Stores action output result for [Custom Action - mapACMakeToDto] action in L-Shipping_address_edit widget.
-  List<AcMakeDTOStruct>? acMakeMap;
-  // Stores action output result for [Custom Action - mapACModelToDto] action in L-Shipping_address_edit widget.
-  List<AcModelDTOStruct>? acModelMap;
-  // State field(s) for ScrollColumn widget.
-  ScrollController? scrollColumnScrollController;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for L_shipping_address_desktop component.
@@ -35,7 +24,6 @@ class LShippingAddressEditModel
 
   @override
   void initState(BuildContext context) {
-    scrollColumnScrollController = ScrollController();
     s01NavigatioBarModel = createModel(context, () => S01NavigatioBarModel());
     lShippingAddressDesktopModel =
         createModel(context, () => LShippingAddressDesktopModel());
@@ -48,7 +36,6 @@ class LShippingAddressEditModel
 
   @override
   void dispose() {
-    scrollColumnScrollController?.dispose();
     s01NavigatioBarModel.dispose();
     lShippingAddressDesktopModel.dispose();
     lShippingaddress02Model.dispose();

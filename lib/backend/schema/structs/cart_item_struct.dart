@@ -8,7 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class CartItemStruct extends FFFirebaseStruct {
   CartItemStruct({
-    String? itemId,
+    DocumentReference? itemId,
     String? title,
 
     /// useful if you want to group motor / contactor / capacitor
@@ -20,6 +20,7 @@ class CartItemStruct extends FFFirebaseStruct {
     /// $$
     double? price,
     int? qty,
+    bool? isReturnable,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _itemId = itemId,
         _title = title,
@@ -27,12 +28,13 @@ class CartItemStruct extends FFFirebaseStruct {
         _desc = desc,
         _price = price,
         _qty = qty,
+        _isReturnable = isReturnable,
         super(firestoreUtilData);
 
   // "itemId" field.
-  String? _itemId;
-  String get itemId => _itemId ?? '';
-  set itemId(String? val) => _itemId = val;
+  DocumentReference? _itemId;
+  DocumentReference? get itemId => _itemId;
+  set itemId(DocumentReference? val) => _itemId = val;
 
   bool hasItemId() => _itemId != null;
 
@@ -75,13 +77,21 @@ class CartItemStruct extends FFFirebaseStruct {
 
   bool hasQty() => _qty != null;
 
+  // "isReturnable" field.
+  bool? _isReturnable;
+  bool get isReturnable => _isReturnable ?? false;
+  set isReturnable(bool? val) => _isReturnable = val;
+
+  bool hasIsReturnable() => _isReturnable != null;
+
   static CartItemStruct fromMap(Map<String, dynamic> data) => CartItemStruct(
-        itemId: data['itemId'] as String?,
+        itemId: data['itemId'] as DocumentReference?,
         title: data['title'] as String?,
         specType: data['specType'] as String?,
         desc: data['desc'] as String?,
         price: castToType<double>(data['price']),
         qty: castToType<int>(data['qty']),
+        isReturnable: data['isReturnable'] as bool?,
       );
 
   static CartItemStruct? maybeFromMap(dynamic data) =>
@@ -94,13 +104,14 @@ class CartItemStruct extends FFFirebaseStruct {
         'desc': _desc,
         'price': _price,
         'qty': _qty,
+        'isReturnable': _isReturnable,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
         'itemId': serializeParam(
           _itemId,
-          ParamType.String,
+          ParamType.DocumentReference,
         ),
         'title': serializeParam(
           _title,
@@ -122,14 +133,19 @@ class CartItemStruct extends FFFirebaseStruct {
           _qty,
           ParamType.int,
         ),
+        'isReturnable': serializeParam(
+          _isReturnable,
+          ParamType.bool,
+        ),
       }.withoutNulls;
 
   static CartItemStruct fromSerializableMap(Map<String, dynamic> data) =>
       CartItemStruct(
         itemId: deserializeParam(
           data['itemId'],
-          ParamType.String,
+          ParamType.DocumentReference,
           false,
+          collectionNamePath: ['Items'],
         ),
         title: deserializeParam(
           data['title'],
@@ -156,6 +172,11 @@ class CartItemStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        isReturnable: deserializeParam(
+          data['isReturnable'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -169,21 +190,23 @@ class CartItemStruct extends FFFirebaseStruct {
         specType == other.specType &&
         desc == other.desc &&
         price == other.price &&
-        qty == other.qty;
+        qty == other.qty &&
+        isReturnable == other.isReturnable;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([itemId, title, specType, desc, price, qty]);
+  int get hashCode => const ListEquality()
+      .hash([itemId, title, specType, desc, price, qty, isReturnable]);
 }
 
 CartItemStruct createCartItemStruct({
-  String? itemId,
+  DocumentReference? itemId,
   String? title,
   String? specType,
   String? desc,
   double? price,
   int? qty,
+  bool? isReturnable,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -196,6 +219,7 @@ CartItemStruct createCartItemStruct({
       desc: desc,
       price: price,
       qty: qty,
+      isReturnable: isReturnable,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

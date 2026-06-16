@@ -305,7 +305,7 @@ class _S04ImageWidgetState extends State<S04ImageWidget> {
                                               ),
                                         ),
                                         AutoSizeText(
-                                          'Enter symptoms to isolate failing components using our algorithmic binary tree.',
+                                          'Enter symptoms to isolate failing \ncomponents using our algorithmic \nbinary tree.',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -385,8 +385,8 @@ class _S04ImageWidgetState extends State<S04ImageWidget> {
                                                         .titleSmallIsCustom,
                                               ),
                                         ),
-                                        AutoSizeText(
-                                          'Compare your multireadings against factory-standard resistance curves.',
+                                        Text(
+                                          'Compare your multireadings \nagainst factory-standard resistance \ncurves.',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -394,6 +394,7 @@ class _S04ImageWidgetState extends State<S04ImageWidget> {
                                                 fontFamily:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMediumFamily,
+                                                fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 useGoogleFonts:
                                                     !FlutterFlowTheme.of(
@@ -464,8 +465,8 @@ class _S04ImageWidgetState extends State<S04ImageWidget> {
                                                         .titleSmallIsCustom,
                                               ),
                                         ),
-                                        AutoSizeText(
-                                          'Mandatory high-voltage discharge guides before every physical intervention.',
+                                        Text(
+                                          'Mandatory high-voltage discharge \nguides before every physical\n intervention.',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -473,6 +474,7 @@ class _S04ImageWidgetState extends State<S04ImageWidget> {
                                                 fontFamily:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMediumFamily,
+                                                fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 useGoogleFonts:
                                                     !FlutterFlowTheme.of(

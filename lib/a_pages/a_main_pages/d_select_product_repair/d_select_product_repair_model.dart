@@ -1,6 +1,7 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/backend/schema/structs/index.dart';
 import '/d_select_product_repair/desktop/components/b_select_product_main/b_select_product_main_widget.dart';
 import '/d_select_product_repair/desktop/components/components/a_header_section/a_header_section_widget.dart';
@@ -15,7 +16,7 @@ class DSelectProductRepairModel
     extends FlutterFlowModel<DSelectProductRepairWidget> {
   ///  Local state fields for this page.
 
-  String selectedPart = 'Motor';
+  Parts? selectedPart;
 
   List<PartCardDTOStruct> partList = [];
   void addToPartList(PartCardDTOStruct item) => partList.add(item);

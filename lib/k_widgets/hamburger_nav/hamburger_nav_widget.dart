@@ -146,16 +146,48 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  if (loggedIn == true) {
-                    context.goNamed(DSelectProductRepairWidget.routeName);
-                  } else {
-                    context.goNamed(L01SignInPageWidget.routeName);
-                  }
+                  context.goNamed(DSelectProductRepairWidget.routeName);
                 },
                 child: Container(
                   width: double.infinity,
+                  decoration: BoxDecoration(),
                   child: Text(
-                    'BUY PARTS',
+                    'ORDER PARTS',
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).headlineMediumFamily,
+                          letterSpacing: 0.0,
+                          lineHeight: 1.1,
+                          useGoogleFonts: !FlutterFlowTheme.of(context)
+                              .headlineMediumIsCustom,
+                        ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              width: 392.0,
+              height: 1.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).alternate,
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(24.0, 64.0, 0.0, 0.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.goNamed(GTrackAndFindMyOrderWidget.routeName);
+                },
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(),
+                  child: Text(
+                    'TRACK ORDERS',
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
                           fontFamily:
                               FlutterFlowTheme.of(context).headlineMediumFamily,
@@ -210,76 +242,78 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
                 shape: BoxShape.rectangle,
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24.0, 64.0, 0.0, 0.0),
-              child: Container(
-                width: double.infinity,
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    if (!loggedIn)
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.goNamed(L01SignInPageWidget.routeName);
-                        },
-                        child: Text(
-                          'LOG IN',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .headlineMediumFamily,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.1,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .headlineMediumIsCustom,
-                              ),
+            if (false)
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 64.0, 0.0, 0.0),
+                child: Container(
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      if (!loggedIn)
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.goNamed(L01SignInPageWidget.routeName);
+                          },
+                          child: Text(
+                            'LOG IN',
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineMediumFamily,
+                                  letterSpacing: 0.0,
+                                  lineHeight: 1.1,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineMediumIsCustom,
+                                ),
+                          ),
                         ),
-                      ),
-                    if (loggedIn)
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          GoRouter.of(context).prepareAuthEvent();
-                          await authManager.signOut();
-                          GoRouter.of(context).clearRedirectLocation();
+                      if (loggedIn)
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
 
-                          context.goNamedAuth(
-                              AHomePageWidget.routeName, context.mounted);
-                        },
-                        child: Text(
-                          'LOG OUT',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .headlineMediumFamily,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.1,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .headlineMediumIsCustom,
-                              ),
+                            context.goNamedAuth(
+                                AHomePageWidget.routeName, context.mounted);
+                          },
+                          child: Text(
+                            'LOG OUT',
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineMediumFamily,
+                                  letterSpacing: 0.0,
+                                  lineHeight: 1.1,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineMediumIsCustom,
+                                ),
+                          ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Container(
-              width: 392.0,
-              height: 1.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).alternate,
-                shape: BoxShape.rectangle,
+            if (false)
+              Container(
+                width: 392.0,
+                height: 1.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).alternate,
+                  shape: BoxShape.rectangle,
+                ),
               ),
-            ),
             Align(
               alignment: AlignmentDirectional(-1.0, 1.0),
               child: Padding(

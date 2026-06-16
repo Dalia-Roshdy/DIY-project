@@ -1,16 +1,12 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/l_user_profile/l_shipping_address_desktop/l_shipping_address_desktop_widget.dart';
 import '/l_user_profile/l_shipping_address_mobile_02/l_shipping_address_mobile02_widget.dart';
 import '/l_user_profile/l_shippingaddress_02/l_shippingaddress02_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:provider/provider.dart';
 import 'l_shipping_address_edit_model.dart';
 export 'l_shipping_address_edit_model.dart';
 
@@ -36,40 +32,6 @@ class _LShippingAddressEditWidgetState
     super.initState();
     _model = createModel(context, () => LShippingAddressEditModel());
 
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (!(FFAppState().acMakeList.isNotEmpty) ||
-          !(FFAppState().acModelList.isNotEmpty)) {
-        _model.acMakeAct = await queryACMakeRecordOnce(
-          queryBuilder: (aCMakeRecord) => aCMakeRecord.where(
-            'approved',
-            isEqualTo: true,
-          ),
-        );
-        _model.acModelAct = await queryACModelRecordOnce(
-          queryBuilder: (aCModelRecord) => aCModelRecord.where(
-            'approved',
-            isEqualTo: true,
-          ),
-        );
-        _model.acMakeMap = await actions.mapACMakeToDto(
-          _model.acMakeAct!.toList(),
-        );
-        _model.acModelMap = await actions.mapACModelToDto(
-          _model.acModelAct!.toList(),
-        );
-        FFAppState().acMakeList = _model.acMakeMap!
-            .sortedList(keyOf: (e) => e.name, desc: false)
-            .toList()
-            .cast<AcMakeDTOStruct>();
-        FFAppState().acModelList = _model.acModelMap!
-            .sortedList(keyOf: (e) => e.name, desc: false)
-            .toList()
-            .cast<AcModelDTOStruct>();
-      }
-      await actions.seedCartTestData();
-    });
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -82,8 +44,6 @@ class _LShippingAddressEditWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -95,7 +55,6 @@ class _LShippingAddressEditWidgetState
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
-            controller: _model.scrollColumnScrollController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -144,23 +103,7 @@ class _LShippingAddressEditWidgetState
                                     wrapWithModel(
                                       model: _model.s01NavigatioBarModel,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: S01NavigatioBarWidget(
-                                        goToSectionTap: (scrollTo) async {
-                                          if (scrollTo != '') {
-                                            await _model
-                                                .scrollColumnScrollController
-                                                ?.animateTo(
-                                              _model
-                                                  .scrollColumnScrollController!
-                                                  .position
-                                                  .maxScrollExtent,
-                                              duration:
-                                                  Duration(milliseconds: 100),
-                                              curve: Curves.ease,
-                                            );
-                                          }
-                                        },
-                                      ),
+                                      child: S01NavigatioBarWidget(),
                                     ),
                                     Divider(
                                       height: 1.0,

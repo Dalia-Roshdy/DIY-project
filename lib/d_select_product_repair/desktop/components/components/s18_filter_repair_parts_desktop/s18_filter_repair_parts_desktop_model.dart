@@ -1,3 +1,4 @@
+import '/backend/schema/enums/enums.dart';
 import '/components/button2_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -9,7 +10,7 @@ class S18FilterRepairPartsDesktopModel
     extends FlutterFlowModel<S18FilterRepairPartsDesktopWidget> {
   ///  Local state fields for this component.
 
-  String? selectedPart = 'MOTOR';
+  Parts? selectedPart;
 
   ///  State fields for stateful widgets in this component.
 
@@ -26,11 +27,9 @@ class S18FilterRepairPartsDesktopModel
   FocusNode? textFieldRpmFocusNode;
   TextEditingController? textFieldRpmTextController;
   String? Function(BuildContext, String?)? textFieldRpmTextControllerValidator;
-  // State field(s) for TextField-rotation widget.
-  FocusNode? textFieldRotationFocusNode;
-  TextEditingController? textFieldRotationTextController;
-  String? Function(BuildContext, String?)?
-      textFieldRotationTextControllerValidator;
+  // State field(s) for DropDown-rotation widget.
+  String? dropDownRotationValue;
+  FormFieldController<String>? dropDownRotationValueController;
   // Model for Button.
   late Button2Model buttonModel1;
   // State field(s) for TextField-Rvolt widget.
@@ -92,9 +91,6 @@ class S18FilterRepairPartsDesktopModel
 
     textFieldRpmFocusNode?.dispose();
     textFieldRpmTextController?.dispose();
-
-    textFieldRotationFocusNode?.dispose();
-    textFieldRotationTextController?.dispose();
 
     buttonModel1.dispose();
     textFieldRvoltFocusNode?.dispose();

@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/e_review_your_order/desktop/components/button5/button5_widget.dart';
 import '/e_review_your_order/desktop/components/checkout_breadcrumb/checkout_breadcrumb_widget.dart';
 import '/e_review_your_order/desktop/components/part_row_copy/part_row_copy_widget.dart';
@@ -10,6 +11,17 @@ import 'package:flutter/material.dart';
 
 class ReviewYourOrderDesktopModel
     extends FlutterFlowModel<ReviewYourOrderDesktopWidget> {
+  ///  Local state fields for this component.
+
+  List<ItemsRecord> toolsList = [];
+  void addToToolsList(ItemsRecord item) => toolsList.add(item);
+  void removeFromToolsList(ItemsRecord item) => toolsList.remove(item);
+  void removeAtIndexFromToolsList(int index) => toolsList.removeAt(index);
+  void insertAtIndexInToolsList(int index, ItemsRecord item) =>
+      toolsList.insert(index, item);
+  void updateToolsListAtIndex(int index, Function(ItemsRecord) updateFn) =>
+      toolsList[index] = updateFn(toolsList[index]);
+
   ///  State fields for stateful widgets in this component.
 
   // Model for CheckoutBreadcrumb.
@@ -17,7 +29,12 @@ class ReviewYourOrderDesktopModel
   // Model for PartRowCopy component.
   late PartRowCopyModel partRowCopyModel;
   // State field(s) for Checkbox widget.
-  bool? checkboxValue1;
+  Map<ItemsRecord, bool> checkboxValueMap1 = {};
+  List<ItemsRecord> get checkboxCheckedItems1 => checkboxValueMap1.entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toList();
+
   // State field(s) for Checkbox widget.
   bool? checkboxValue2;
   // Model for SummaryLine.

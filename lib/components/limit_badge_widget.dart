@@ -43,6 +43,7 @@ class _LimitBadgeWidgetState extends State<LimitBadgeWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 92.27,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         shape: BoxShape.rectangle,
@@ -54,38 +55,51 @@ class _LimitBadgeWidgetState extends State<LimitBadgeWidget> {
       child: Padding(
         padding: EdgeInsets.all(16.0),
         child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Wrap(
+            spacing: 0.0,
+            runSpacing: 0.0,
+            alignment: WrapAlignment.start,
+            crossAxisAlignment: WrapCrossAlignment.start,
+            direction: Axis.horizontal,
+            runAlignment: WrapAlignment.start,
+            verticalDirection: VerticalDirection.down,
+            clipBehavior: Clip.none,
             children: [
-              Icon(
-                Icons.cancel_outlined,
-                color: FlutterFlowTheme.of(context).error,
-                size: 20.0,
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  valueOrDefault<String>(
-                    widget.text,
-                    'DIRTY AIR FILTER (CHECK/REPLACE BEFORE DIAGNOSIS).',
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.cancel_outlined,
+                    color: FlutterFlowTheme.of(context).error,
+                    size: 20.0,
                   ),
-                  maxLines: 2,
-                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).labelSmallFamily,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.bold,
-                        lineHeight: 1.2,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      valueOrDefault<String>(
+                        widget.text,
+                        'DIRTY AIR FILTER (CHECK/REPLACE BEFORE DIAGNOSIS).',
                       ),
-                  overflow: TextOverflow.ellipsis,
-                ),
+                      maxLines: 4,
+                      style: FlutterFlowTheme.of(context).labelSmall.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelSmallFamily,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                            lineHeight: 1.2,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelSmallIsCustom,
+                          ),
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                ].divide(SizedBox(width: 16.0)),
               ),
-            ].divide(SizedBox(width: 16.0)),
+            ],
           ),
         ),
       ),

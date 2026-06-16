@@ -21,7 +21,7 @@ class CLibraryVideoFlowWidget extends StatefulWidget {
   final DocumentReference? currentVideoId;
 
   static String routeName = 'C-Library_Video_Flow';
-  static String routePath = '/cLibraryVideoFlow';
+  static String routePath = '/library';
 
   @override
   State<CLibraryVideoFlowWidget> createState() =>
@@ -137,10 +137,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                   _model.s01NavigatioBarModel,
                                               updateCallback: () =>
                                                   safeSetState(() {}),
-                                              child: S01NavigatioBarWidget(
-                                                goToSectionTap:
-                                                    (scrollTo) async {},
-                                              ),
+                                              child: S01NavigatioBarWidget(),
                                             ),
                                             Divider(
                                               height: 1.0,
@@ -185,8 +182,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          if ((_model.currentValue
-                                                                      ?.reference !=
+                                                          if ((_model.currentValue !=
                                                                   null) &&
                                                               responsiveVisibility(
                                                                 context:
@@ -205,7 +201,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                               child:
                                                                   CVideoDiagnosisMobileWidget(
                                                                 videoRecord: _model
-                                                                    .currentValue!,
+                                                                    .currentValue,
                                                               ),
                                                             ),
                                                           if ((_model.currentValue
@@ -245,6 +241,9 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                           if (responsiveVisibility(
                                                             context: context,
                                                             phone: false,
+                                                            tablet: false,
+                                                            tabletLandscape:
+                                                                false,
                                                           ))
                                                             wrapWithModel(
                                                               model: _model

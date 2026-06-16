@@ -28,7 +28,7 @@ class PartRow2Widget extends StatefulWidget {
   final String price;
   final int? qty;
   final bool last;
-  final String? itemId;
+  final DocumentReference? itemId;
 
   @override
   State<PartRow2Widget> createState() => _PartRow2WidgetState();
@@ -176,7 +176,10 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                                 widget.itemId!,
                                 _model.countControllerValue!,
                               );
-                              await actions.calculateCartTotal();
+                              await actions.calculateCartTotal(
+                                null,
+                                null,
+                              );
                             },
                             stepSize: 1,
                             minimum: 1,
@@ -235,7 +238,11 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                                 },
                               );
 
-                              context.goNamed(EReviewYourOrderWidget.routeName);
+                              if (Navigator.of(context).canPop()) {
+                                context.pop();
+                              }
+                              context
+                                  .pushNamed(EReviewYourOrderWidget.routeName);
                             },
                           ),
                         ),

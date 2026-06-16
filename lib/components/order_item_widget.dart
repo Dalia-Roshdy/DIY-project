@@ -122,8 +122,8 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                       Container(
                         decoration: BoxDecoration(
                           color: widget.status == 'delivered'
-                              ? FlutterFlowTheme.of(context).success
-                              : FlutterFlowTheme.of(context).error,
+                              ? Color(0xFF91BF91)
+                              : Color(0xFFFD9090),
                           shape: BoxShape.rectangle,
                           border: Border.all(
                             color: FlutterFlowTheme.of(context).primaryText,

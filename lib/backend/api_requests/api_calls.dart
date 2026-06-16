@@ -22,7 +22,7 @@ class PaymentsGroup {
 
 class GetPaymentByIdCall {
   Future<ApiCallResponse> call({
-    String? paymentIntentId = 'pi_3T6UUH0XCBpwpAtm07fGaDnC',
+    String? paymentIntentId = 'pi_3TgWUU0XCBpwpAtm0YzlHJKe',
   }) async {
     final baseUrl = PaymentsGroup.getBaseUrl();
 

@@ -9,12 +9,7 @@ import 's01_navigatio_bar_model.dart';
 export 's01_navigatio_bar_model.dart';
 
 class S01NavigatioBarWidget extends StatefulWidget {
-  const S01NavigatioBarWidget({
-    super.key,
-    required this.goToSectionTap,
-  });
-
-  final Future Function(String scrollTo)? goToSectionTap;
+  const S01NavigatioBarWidget({super.key});
 
   @override
   State<S01NavigatioBarWidget> createState() => _S01NavigatioBarWidgetState();
@@ -56,48 +51,61 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
         color: FlutterFlowTheme.of(context).primaryBackground,
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             height: double.infinity,
             decoration: BoxDecoration(),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
-                  child: Icon(
-                    Icons.settings_input_component_rounded,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 24.0,
+            child: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                context.pushNamed(AHomePageWidget.routeName);
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                    child: Icon(
+                      Icons.settings_input_component_rounded,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 24.0,
+                    ),
                   ),
-                ),
-                Text(
-                  'DIY AC REPAIR',
-                  style: FlutterFlowTheme.of(context).titleMedium.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).titleMediumFamily,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.w900,
-                        lineHeight: 1.4,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
-                      ),
-                ),
-              ].divide(SizedBox(width: 8.0)),
+                  Text(
+                    'DIY AC REPAIR',
+                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleMediumFamily,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w900,
+                          lineHeight: 1.4,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                        ),
+                  ),
+                ].divide(SizedBox(width: 8.0)),
+              ),
             ),
           ),
-          SizedBox(
-            height: 100.0,
-            child: VerticalDivider(
+          if (responsiveVisibility(
+            context: context,
+            phone: false,
+            tablet: false,
+            tabletLandscape: false,
+          ))
+            VerticalDivider(
               width: 1.0,
               thickness: 1.0,
               color: FlutterFlowTheme.of(context).primaryBackground,
             ),
-          ),
           Expanded(
             child: Container(
               width: 100.0,
@@ -108,64 +116,61 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  if (responsiveVisibility(
-                    context: context,
-                    tabletLandscape: false,
-                    desktop: false,
-                  ))
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        context.pushNamed(EReviewYourOrderWidget.routeName);
-                      },
-                      child: Icon(
-                        Icons.shopping_cart_rounded,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24.0,
+              child: Visibility(
+                visible: responsiveVisibility(
+                  context: context,
+                  desktop: false,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (loggedIn)
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(EReviewYourOrderWidget.routeName);
+                        },
+                        child: Icon(
+                          Icons.shopping_cart_rounded,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
+                        ),
                       ),
-                    ),
-                  if (responsiveVisibility(
-                    context: context,
-                    tabletLandscape: false,
-                    desktop: false,
-                  ))
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        if (loggedIn == true) {
+                    if (false)
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
                           context.pushNamed(LUserProfileWidget.routeName);
-                        } else {
-                          context.goNamed(L01SignInPageWidget.routeName);
-                        }
-                      },
-                      child: Icon(
-                        Icons.person,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24.0,
+                        },
+                        child: Icon(
+                          Icons.person,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
+                        ),
                       ),
-                    ),
-                ].divide(SizedBox(width: 12.0)),
+                  ].divide(SizedBox(width: 12.0)),
+                ),
               ),
             ),
           ),
-          SizedBox(
-            height: 100.0,
-            child: VerticalDivider(
+          if (responsiveVisibility(
+            context: context,
+            phone: false,
+            tablet: false,
+            tabletLandscape: false,
+          ))
+            VerticalDivider(
               width: 1.0,
               thickness: 1.0,
               color: FlutterFlowTheme.of(context).primaryBackground,
             ),
-          ),
           if (responsiveVisibility(
             context: context,
             phone: false,
@@ -188,7 +193,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                     options: FFButtonOptions(
                       height: double.infinity,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: Colors.transparent,
@@ -215,7 +220,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                     options: FFButtonOptions(
                       height: double.infinity,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: Colors.transparent,
@@ -236,17 +241,40 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   ),
                   FFButtonWidget(
                     onPressed: () async {
-                      if (loggedIn == true) {
-                        context.pushNamed(DSelectProductRepairWidget.routeName);
-                      } else {
-                        context.goNamed(L01SignInPageWidget.routeName);
-                      }
+                      context.pushNamed(DSelectProductRepairWidget.routeName);
                     },
                     text: 'ORDER PARTS',
                     options: FFButtonOptions(
                       height: double.infinity,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Colors.transparent,
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleSmallFamily,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleSmallIsCustom,
+                          ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(0.0),
+                      hoverTextColor: FlutterFlowTheme.of(context).tertiary,
+                    ),
+                    showLoadingIndicator: false,
+                  ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(GTrackAndFindMyOrderWidget.routeName);
+                    },
+                    text: 'TRACK ORDERS',
+                    options: FFButtonOptions(
+                      height: double.infinity,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: Colors.transparent,
@@ -273,7 +301,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                     options: FFButtonOptions(
                       height: 80.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: Colors.transparent,
@@ -293,8 +321,9 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                     showLoadingIndicator: false,
                   ),
                 ]
-                    .addToStart(SizedBox(width: 25.0))
-                    .addToEnd(SizedBox(width: 25.0)),
+                    .divide(SizedBox(width: 30.0))
+                    .addToStart(SizedBox(width: 20.0))
+                    .addToEnd(SizedBox(width: 20.0)),
               ),
             ),
           if (responsiveVisibility(
@@ -327,27 +356,30 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                 context.pushNamed(HamburgerNavWidget.routeName);
               },
             ),
-          if (loggedIn &&
-              responsiveVisibility(
-                context: context,
-                phone: false,
-              ))
+          if (responsiveVisibility(
+            context: context,
+            phone: false,
+            tablet: false,
+            tabletLandscape: false,
+          ))
             FlutterFlowIconButton(
               buttonSize: 80.0,
               fillColor: FlutterFlowTheme.of(context).primary,
               icon: Icon(
                 Icons.shopping_cart_rounded,
                 color: FlutterFlowTheme.of(context).primaryBackground,
-                size: 38.0,
+                size: 28.0,
               ),
               onPressed: () async {
                 context.pushNamed(EReviewYourOrderWidget.routeName);
               },
             ),
-          if (loggedIn &&
+          if (false &&
               responsiveVisibility(
                 context: context,
                 phone: false,
+                tablet: false,
+                tabletLandscape: false,
               ))
             FlutterFlowIconButton(
               buttonSize: 80.0,
@@ -355,16 +387,18 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
               icon: Icon(
                 Icons.person,
                 color: FlutterFlowTheme.of(context).primaryBackground,
-                size: 38.0,
+                size: 28.0,
               ),
               onPressed: () async {
                 context.pushNamed(LUserProfileWidget.routeName);
               },
             ),
-          if (!loggedIn &&
+          if (false &&
               responsiveVisibility(
                 context: context,
                 phone: false,
+                tablet: false,
+                tabletLandscape: false,
               ))
             FFButtonWidget(
               onPressed: () async {

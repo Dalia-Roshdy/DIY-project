@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/backend/schema/structs/index.dart';
 import '/d_select_product_repair/mobile/components/filter_item/filter_item_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,7 +11,7 @@ class SerlectProductMobileModel
     extends FlutterFlowModel<SerlectProductMobileWidget> {
   ///  Local state fields for this component.
 
-  String? selectedPartCS = 'MOTOR';
+  Parts? selectedPartCS;
 
   List<PartCardDTOStruct> partsList = [];
   void addToPartsList(PartCardDTOStruct item) => partsList.add(item);
@@ -54,11 +55,9 @@ class SerlectProductMobileModel
   FocusNode? textFieldRpmFocusNode;
   TextEditingController? textFieldRpmTextController;
   String? Function(BuildContext, String?)? textFieldRpmTextControllerValidator;
-  // State field(s) for TextField-rotation widget.
-  FocusNode? textFieldRotationFocusNode;
-  TextEditingController? textFieldRotationTextController;
-  String? Function(BuildContext, String?)?
-      textFieldRotationTextControllerValidator;
+  // State field(s) for DropDown-rotation widget.
+  String? dropDownRotationValue;
+  FormFieldController<String>? dropDownRotationValueController;
   // Stores action output result for [Custom Action - filterMotorItems] action in Button widget.
   List<PartCardDTOStruct>? motorItemsFilterMob;
   // State field(s) for TextField-Rvolt widget.
@@ -123,9 +122,6 @@ class SerlectProductMobileModel
 
     textFieldRpmFocusNode?.dispose();
     textFieldRpmTextController?.dispose();
-
-    textFieldRotationFocusNode?.dispose();
-    textFieldRotationTextController?.dispose();
 
     textFieldRvoltFocusNode?.dispose();
     textFieldRvoltTextController?.dispose();

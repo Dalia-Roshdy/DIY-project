@@ -1,6 +1,5 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/h_about/about_page/about_page_widget.dart';
 import '/h_about/i_about_dektop/i_about_dektop_widget.dart';
@@ -11,16 +10,6 @@ import 'package:flutter/material.dart';
 class IAboutModel extends FlutterFlowModel<IAboutWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in I-About widget.
-  List<ACMakeRecord>? acMakeAct;
-  // Stores action output result for [Firestore Query - Query a collection] action in I-About widget.
-  List<ACModelRecord>? acModelAct;
-  // Stores action output result for [Custom Action - mapACMakeToDto] action in I-About widget.
-  List<AcMakeDTOStruct>? acMakeMap;
-  // Stores action output result for [Custom Action - mapACModelToDto] action in I-About widget.
-  List<AcModelDTOStruct>? acModelMap;
-  // State field(s) for ScrollColumn widget.
-  ScrollController? scrollColumnScrollController;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for About_page component.
@@ -34,7 +23,6 @@ class IAboutModel extends FlutterFlowModel<IAboutWidget> {
 
   @override
   void initState(BuildContext context) {
-    scrollColumnScrollController = ScrollController();
     s01NavigatioBarModel = createModel(context, () => S01NavigatioBarModel());
     aboutPageModel = createModel(context, () => AboutPageModel());
     iAboutDektopModel = createModel(context, () => IAboutDektopModel());
@@ -44,7 +32,6 @@ class IAboutModel extends FlutterFlowModel<IAboutWidget> {
 
   @override
   void dispose() {
-    scrollColumnScrollController?.dispose();
     s01NavigatioBarModel.dispose();
     aboutPageModel.dispose();
     iAboutDektopModel.dispose();

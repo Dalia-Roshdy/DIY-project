@@ -1,12 +1,14 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s08_company_investors/s08_company_investors_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
+import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/e_review_your_order/desktop/components/review_your_order_desktop/review_your_order_desktop_widget.dart';
 import '/e_review_your_order/mobile/e_review_your_order_mobile/e_review_your_order_mobile_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'e_review_your_order_model.dart';
@@ -16,7 +18,7 @@ class EReviewYourOrderWidget extends StatefulWidget {
   const EReviewYourOrderWidget({super.key});
 
   static String routeName = 'E-Review_Your_Order';
-  static String routePath = '/eReviewYourOrder';
+  static String routePath = '/cart';
 
   @override
   State<EReviewYourOrderWidget> createState() => _EReviewYourOrderWidgetState();
@@ -34,7 +36,39 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.calculateCartTotal();
+      if (!(_model.tools.isNotEmpty)) {
+        _model.toolACT = await queryItemsRecordOnce(
+          queryBuilder: (itemsRecord) => itemsRecord.where(
+            'hasMiscId',
+            isEqualTo: true,
+          ),
+        );
+        _model.tools = _model.toolACT!
+            .where((e) => e.qtyOnHand > 0)
+            .toList()
+            .toList()
+            .cast<ItemsRecord>();
+        safeSetState(() {});
+      }
+      _model.shipping = await querySettingsRecordOnce(
+        queryBuilder: (settingsRecord) => settingsRecord.where(
+          'key',
+          isEqualTo: SettingKeys.shipping.name,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      _model.tax = await querySettingsRecordOnce(
+        queryBuilder: (settingsRecord) => settingsRecord.where(
+          'key',
+          isEqualTo: SettingKeys.tax.name,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      await actions.calculateCartTotal(
+        _model.shipping?.value,
+        _model.tax?.value,
+      );
+      safeSetState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -78,20 +112,7 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
                             16.0, 0.0, 16.0, 0.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.96,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: CachedNetworkImageProvider(
-                                valueOrDefault<String>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/snombgtjslh3/Lines_Phone.png'
-                                      : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
-                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
-                                ),
-                              ),
-                            ),
-                          ),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -108,9 +129,7 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
                                     wrapWithModel(
                                       model: _model.s01NavigatioBarModel,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: S01NavigatioBarWidget(
-                                        goToSectionTap: (scrollTo) async {},
-                                      ),
+                                      child: S01NavigatioBarWidget(),
                                     ),
                                     Divider(
                                       height: 1.0,
@@ -134,7 +153,10 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
                                             _model.reviewYourOrderDesktopModel,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: ReviewYourOrderDesktopWidget(),
+                                        updateOnChange: true,
+                                        child: ReviewYourOrderDesktopWidget(
+                                          toolsCS: _model.tools,
+                                        ),
                                       ),
                                     Divider(
                                       height: 1.0,
@@ -144,7 +166,6 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
                                     ),
                                     if (responsiveVisibility(
                                       context: context,
-                                      tablet: false,
                                       tabletLandscape: false,
                                       desktop: false,
                                     ))
@@ -153,7 +174,9 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
                                             _model.eReviewYourOrderMobileModel,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: EReviewYourOrderMobileWidget(),
+                                        child: EReviewYourOrderMobileWidget(
+                                          toolsC: _model.tools,
+                                        ),
                                       ),
                                   ],
                                 ),
@@ -171,6 +194,8 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
                               if (responsiveVisibility(
                                 context: context,
                                 phone: false,
+                                tablet: false,
+                                tabletLandscape: false,
                               ))
                                 wrapWithModel(
                                   model: _model.s12FooterModel,

@@ -29,6 +29,17 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      if (prefs.containsKey('ff_User')) {
+        try {
+          final serializedData = prefs.getString('ff_User') ?? '{}';
+          _User = UserAppStateStruct.fromSerializableMap(
+              jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -159,6 +170,18 @@ class FFAppState extends ChangeNotifier {
   void updateCartStruct(Function(CartStruct) updateFn) {
     updateFn(_Cart);
     prefs.setString('ff_Cart', _Cart.serialize());
+  }
+
+  UserAppStateStruct _User = UserAppStateStruct();
+  UserAppStateStruct get User => _User;
+  set User(UserAppStateStruct value) {
+    _User = value;
+    prefs.setString('ff_User', value.serialize());
+  }
+
+  void updateUserStruct(Function(UserAppStateStruct) updateFn) {
+    updateFn(_User);
+    prefs.setString('ff_User', _User.serialize());
   }
 }
 

@@ -130,7 +130,11 @@ class _AHeaderSectionWidgetState extends State<AHeaderSectionWidget> {
               ),
               TextSpan(
                 text: widget.partParam,
-                style: TextStyle(),
+                style: TextStyle(
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  fontSize: 64.0,
+                  height: 1.1,
+                ),
               )
             ],
             style: FlutterFlowTheme.of(context).headlineLarge.override(

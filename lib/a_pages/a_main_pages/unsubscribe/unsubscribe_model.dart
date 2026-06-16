@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class UnsubscribeModel extends FlutterFlowModel<UnsubscribeWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in unsubscribe widget.
+  // Stores action output result for [Backend Call - Read Document] action in unsubscribe widget.
   SubscriberRecord? subscDoc;
   // Model for StatusIllustration.
   late StatusIllustrationModel statusIllustrationModel;

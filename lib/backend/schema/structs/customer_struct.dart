@@ -12,11 +12,15 @@ class CustomerStruct extends FFFirebaseStruct {
     String? phone,
     String? shippingAddress,
     String? billingAddress,
+    String? name,
+    String? pin,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _email = email,
         _phone = phone,
         _shippingAddress = shippingAddress,
         _billingAddress = billingAddress,
+        _name = name,
+        _pin = pin,
         super(firestoreUtilData);
 
   // "email" field.
@@ -47,11 +51,27 @@ class CustomerStruct extends FFFirebaseStruct {
 
   bool hasBillingAddress() => _billingAddress != null;
 
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  set name(String? val) => _name = val;
+
+  bool hasName() => _name != null;
+
+  // "PIN" field.
+  String? _pin;
+  String get pin => _pin ?? '';
+  set pin(String? val) => _pin = val;
+
+  bool hasPin() => _pin != null;
+
   static CustomerStruct fromMap(Map<String, dynamic> data) => CustomerStruct(
         email: data['email'] as String?,
         phone: data['phone'] as String?,
         shippingAddress: data['shippingAddress'] as String?,
         billingAddress: data['billingAddress'] as String?,
+        name: data['name'] as String?,
+        pin: data['PIN'] as String?,
       );
 
   static CustomerStruct? maybeFromMap(dynamic data) =>
@@ -62,6 +82,8 @@ class CustomerStruct extends FFFirebaseStruct {
         'phone': _phone,
         'shippingAddress': _shippingAddress,
         'billingAddress': _billingAddress,
+        'name': _name,
+        'PIN': _pin,
       }.withoutNulls;
 
   @override
@@ -80,6 +102,14 @@ class CustomerStruct extends FFFirebaseStruct {
         ),
         'billingAddress': serializeParam(
           _billingAddress,
+          ParamType.String,
+        ),
+        'name': serializeParam(
+          _name,
+          ParamType.String,
+        ),
+        'PIN': serializeParam(
+          _pin,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -106,6 +136,16 @@ class CustomerStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        name: deserializeParam(
+          data['name'],
+          ParamType.String,
+          false,
+        ),
+        pin: deserializeParam(
+          data['PIN'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -117,12 +157,14 @@ class CustomerStruct extends FFFirebaseStruct {
         email == other.email &&
         phone == other.phone &&
         shippingAddress == other.shippingAddress &&
-        billingAddress == other.billingAddress;
+        billingAddress == other.billingAddress &&
+        name == other.name &&
+        pin == other.pin;
   }
 
   @override
   int get hashCode => const ListEquality()
-      .hash([email, phone, shippingAddress, billingAddress]);
+      .hash([email, phone, shippingAddress, billingAddress, name, pin]);
 }
 
 CustomerStruct createCustomerStruct({
@@ -130,6 +172,8 @@ CustomerStruct createCustomerStruct({
   String? phone,
   String? shippingAddress,
   String? billingAddress,
+  String? name,
+  String? pin,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -140,6 +184,8 @@ CustomerStruct createCustomerStruct({
       phone: phone,
       shippingAddress: shippingAddress,
       billingAddress: billingAddress,
+      name: name,
+      pin: pin,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

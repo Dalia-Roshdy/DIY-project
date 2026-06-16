@@ -74,6 +74,7 @@ class _StatCardWidgetState extends State<StatCardWidget> {
                         fontFamily:
                             FlutterFlowTheme.of(context).labelSmallFamily,
                         color: FlutterFlowTheme.of(context).secondaryText,
+                        fontSize: 28.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                         lineHeight: 1.2,
@@ -90,6 +91,7 @@ class _StatCardWidgetState extends State<StatCardWidget> {
                         fontFamily:
                             FlutterFlowTheme.of(context).headlineMediumFamily,
                         color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 28.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                         lineHeight: 1.2,

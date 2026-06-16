@@ -1,6 +1,24 @@
 {
   "indexes": [
     {
+      "collectionGroup": "orders",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "uid",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "diagnosisVideoOption",
       "queryScope": "COLLECTION",
       "fields": [
@@ -11,6 +29,28 @@
         {
           "fieldPath": "displayOrder",
           "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "orders",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "customerSnap.email",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "customerSnap.phone",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "customerSnap.PIN",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
         }
       ]
     }

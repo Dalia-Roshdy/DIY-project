@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/components/button13_widget.dart';
 import '/components/nav_tile_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,8 +6,14 @@ import 'abcde_widget.dart' show AbcdeWidget;
 import 'package:flutter/material.dart';
 
 class AbcdeModel extends FlutterFlowModel<AbcdeWidget> {
+  ///  Local state fields for this component.
+
+  OrdersRecord? activeOrder;
+
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in abcde widget.
+  OrdersRecord? activeOrders;
   // Model for Button.
   late Button13Model buttonModel1;
   // Model for Button.

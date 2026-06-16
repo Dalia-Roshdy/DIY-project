@@ -1,10 +1,12 @@
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -148,33 +150,14 @@ class _CVideoDiagnosisDesktopWidgetState
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 0.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              _model.currentVideo?.description,
-                              'desc',
-                            ),
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  fontSize: 18.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w900,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .bodyMediumIsCustom,
-                                ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(24.0),
                           child: Container(
+                            width: 320.93,
                             decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).secondary,
                               border: Border.all(
                                 width: 1.0,
                               ),
@@ -195,62 +178,94 @@ class _CVideoDiagnosisDesktopWidgetState
                                       ),
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyLarge
                                           .override(
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            fontSize: 16.0,
+                                                    .bodyLargeFamily,
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
+                                            fontWeight: FontWeight.w900,
                                             useGoogleFonts:
                                                 !FlutterFlowTheme.of(context)
-                                                    .bodyMediumIsCustom,
+                                                    .bodyLargeIsCustom,
                                           ),
                                     ),
                                   ),
-                                  FlutterFlowRadioButton(
-                                    options: _model.videoOptions
-                                        .map((e) => valueOrDefault<String>(
-                                              e.buttonText,
-                                              'option..',
-                                            ))
-                                        .toList(),
-                                    onChanged: (val) async {
-                                      safeSetState(() {});
-                                      _model.slectedOption = _model.videoOptions
-                                          .where((e) =>
-                                              e.buttonText ==
-                                              _model.radioButtonValue)
-                                          .toList()
-                                          .firstOrNull;
-                                      safeSetState(() {});
-                                    },
-                                    controller:
-                                        _model.radioButtonValueController ??=
-                                            FormFieldController<String>(null),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMediumFamily,
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
-                                                  .labelMediumIsCustom,
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          1.0, 0.0, 0.0, 14.0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          _model.currentVideo?.description,
+                                          'desc',
                                         ),
-                                    buttonPosition: RadioButtonPosition.left,
-                                    direction: Axis.vertical,
-                                    radioButtonColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    inactiveRadioButtonColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                    toggleable: false,
-                                    horizontalAlignment: WrapAlignment.start,
-                                    verticalAlignment: WrapCrossAlignment.start,
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              fontSize: 16.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 14.0),
+                                    child: FlutterFlowRadioButton(
+                                      options: _model.videoOptions
+                                          .map((e) => valueOrDefault<String>(
+                                                e.buttonText,
+                                                'option..',
+                                              ))
+                                          .toList(),
+                                      onChanged: (val) async {
+                                        safeSetState(() {});
+                                        _model.slectedOption = _model
+                                            .videoOptions
+                                            .where((e) =>
+                                                e.buttonText ==
+                                                _model.radioButtonValue)
+                                            .toList()
+                                            .firstOrNull;
+                                        safeSetState(() {});
+                                      },
+                                      controller:
+                                          _model.radioButtonValueController ??=
+                                              FormFieldController<String>(null),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
+                                          ),
+                                      buttonPosition: RadioButtonPosition.left,
+                                      direction: Axis.vertical,
+                                      radioButtonColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      inactiveRadioButtonColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                      toggleable: false,
+                                      horizontalAlignment: WrapAlignment.start,
+                                      verticalAlignment:
+                                          WrapCrossAlignment.start,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -259,113 +274,123 @@ class _CVideoDiagnosisDesktopWidgetState
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              32.0, 24.0, 32.0, 24.0),
+                              24.0, 0.0, 24.0, 24.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  FFButtonWidget(
-                                    onPressed: () async {
-                                      context.safePop();
-                                    },
-                                    text: 'Back',
-                                    icon: Icon(
-                                      Icons.arrow_back_sharp,
-                                      size: 15.0,
-                                    ),
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMediumFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts:
-                                                !FlutterFlowTheme.of(context)
-                                                    .labelMediumIsCustom,
-                                          ),
-                                      elevation: 0.0,
-                                      borderRadius: BorderRadius.circular(0.0),
-                                    ),
-                                  ),
-                                  FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
-                                    },
-                                    text: 'Proceed',
-                                    icon: Icon(
-                                      Icons.arrow_forward_sharp,
-                                      size: 15.0,
-                                    ),
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      iconAlignment: IconAlignment.end,
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMediumFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts:
-                                                !FlutterFlowTheme.of(context)
-                                                    .labelMediumIsCustom,
-                                          ),
-                                      elevation: 0.0,
-                                      borderRadius: BorderRadius.circular(0.0),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 12.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              _model.currentVideo?.videoScript,
-                              'script',
-                            ),
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                  fontStyle: FontStyle.italic,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .bodyMediumIsCustom,
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  context.safePop();
+                                },
+                                text: 'Back',
+                                icon: Icon(
+                                  Icons.arrow_back_sharp,
+                                  size: 15.0,
                                 ),
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).grey30,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelMediumIsCustom,
+                                      ),
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  hoverColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                  hoverBorderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
+                                  hoverTextColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              ),
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  if (_model.slectedOption?.actionType ==
+                                      ActionType.showVideo) {
+                                    context.pushNamed(
+                                      CLibraryVideoFlowWidget.routeName,
+                                      queryParameters: {
+                                        'currentVideoId': serializeParam(
+                                          _model.slectedOption?.nextStepKey,
+                                          ParamType.DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  } else if (_model.slectedOption?.actionType ==
+                                      ActionType.navigate) {
+                                    if (_model.slectedOption?.targetPage ==
+                                        TargetPage.contactUs) {
+                                      context
+                                          .pushNamed(KContactWidget.routeName);
+                                    } else if (_model
+                                            .slectedOption?.targetPage ==
+                                        TargetPage.needAssistant) {
+                                      context.pushNamed(
+                                          LRequestTechnicalWidget.routeName);
+                                    }
+                                  } else if (_model.slectedOption?.actionType ==
+                                      ActionType.navigateWithData) {
+                                    context.pushNamed(
+                                      DSelectProductRepairWidget.routeName,
+                                      queryParameters: {
+                                        'part': serializeParam(
+                                          _model.slectedOption?.targetPartType,
+                                          ParamType.Enum,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  }
+                                },
+                                text: 'Proceed',
+                                icon: Icon(
+                                  Icons.arrow_forward_sharp,
+                                  size: 15.0,
+                                ),
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconAlignment: IconAlignment.end,
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelMediumIsCustom,
+                                      ),
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  hoverColor: Color(0xFF3890A5),
+                                  hoverTextColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 115.0)),
                           ),
                         ),
                       ],

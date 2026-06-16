@@ -90,6 +90,7 @@ class _OrderRow12WidgetState extends State<OrderRow12Widget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleMediumFamily,
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 24.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                                 lineHeight: 1.4,
@@ -106,6 +107,7 @@ class _OrderRow12WidgetState extends State<OrderRow12Widget> {
                                     .labelSmallFamily,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
+                                fontSize: 18.0,
                                 letterSpacing: 0.0,
                                 lineHeight: 1.2,
                                 useGoogleFonts: !FlutterFlowTheme.of(context)
@@ -121,8 +123,8 @@ class _OrderRow12WidgetState extends State<OrderRow12Widget> {
                       width: 140.0,
                       decoration: BoxDecoration(
                         color: widget.status == 'delivered'
-                            ? FlutterFlowTheme.of(context).tertiary
-                            : FlutterFlowTheme.of(context).error,
+                            ? Color(0xFF91BF91)
+                            : Color(0xFFFD9090),
                         shape: BoxShape.rectangle,
                         border: Border.all(
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -138,7 +140,7 @@ class _OrderRow12WidgetState extends State<OrderRow12Widget> {
                             child: Text(
                               valueOrDefault<String>(
                                 widget.status,
-                                'delivered',
+                                'Delivered',
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
@@ -186,6 +188,7 @@ class _OrderRow12WidgetState extends State<OrderRow12Widget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).titleMediumFamily,
                             color: FlutterFlowTheme.of(context).primaryText,
+                            fontSize: 24.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             lineHeight: 1.4,

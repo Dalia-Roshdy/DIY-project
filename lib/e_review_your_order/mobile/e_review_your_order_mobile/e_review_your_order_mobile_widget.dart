@@ -1,18 +1,24 @@
-import '/auth/base_auth_user_provider.dart';
+import '/backend/backend.dart';
 import '/e_review_your_order/mobile/button6/button6_widget.dart';
-import '/e_review_your_order/mobile/installation_kit_card/installation_kit_card_widget.dart';
 import '/e_review_your_order/mobile/part_row2/part_row2_widget.dart';
 import '/e_review_your_order/mobile/summary_row/summary_row_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'e_review_your_order_mobile_model.dart';
 export 'e_review_your_order_mobile_model.dart';
 
 class EReviewYourOrderMobileWidget extends StatefulWidget {
-  const EReviewYourOrderMobileWidget({super.key});
+  const EReviewYourOrderMobileWidget({
+    super.key,
+    this.toolsC,
+  });
+
+  final List<ItemsRecord>? toolsC;
 
   @override
   State<EReviewYourOrderMobileWidget> createState() =>
@@ -33,6 +39,17 @@ class _EReviewYourOrderMobileWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => EReviewYourOrderMobileModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(
+        Duration(
+          milliseconds: 500,
+        ),
+      );
+      _model.toolsCS = widget.toolsC!.toList().cast<ItemsRecord>();
+      safeSetState(() {});
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -416,7 +433,7 @@ class _EReviewYourOrderMobileWidgetState
                                   price: cartListItemsItem.price.toString(),
                                   qty: cartListItemsItem.qty,
                                   last: false,
-                                  itemId: cartListItemsItem.itemId,
+                                  itemId: cartListItemsItem.itemId!,
                                 );
                               },
                             );
@@ -432,97 +449,382 @@ class _EReviewYourOrderMobileWidgetState
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 16.0),
             child: Container(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                  borderRadius: BorderRadius.circular(16.0),
-                  shape: BoxShape.rectangle,
-                  border: Border.all(
-                    color: FlutterFlowTheme.of(context).tertiary,
-                    width: 1.0,
+              child: Visibility(
+                visible: (_model.toolsCS.isNotEmpty) == true,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    borderRadius: BorderRadius.circular(16.0),
+                    shape: BoxShape.rectangle,
+                    border: Border.all(
+                      color: FlutterFlowTheme.of(context).tertiary,
+                      width: 1.0,
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(24.0),
-                  child: Container(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.auto_fix_high_rounded,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 20.0,
-                            ),
-                            Text(
-                              'Recommended Installation Kits',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleSmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .titleSmallIsCustom,
-                                  ),
-                            ),
-                          ].divide(SizedBox(width: 16.0)),
-                        ),
-                        Text(
-                          'Experts recommend these for a safer, easier repair.',
-                          style: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodySmallFamily,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.4,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodySmallIsCustom,
+                  child: Padding(
+                    padding: EdgeInsets.all(24.0),
+                    child: Container(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.auto_fix_high_rounded,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 20.0,
                               ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            wrapWithModel(
-                              model: _model.installationKitCardModel1,
-                              updateCallback: () => safeSetState(() {}),
-                              child: InstallationKitCardWidget(
-                                desc:
-                                    'Includes insulated pliers, terminals, and mounting straps.',
-                                name: 'Universal Capacitor Hardware Kit',
-                                price: '12.99',
-                                selected: true,
+                              Text(
+                                'order the loaner tools ',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleSmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 14.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleSmallIsCustom,
+                                    ),
+                                overflow: TextOverflow.visible,
+                              ),
+                            ].divide(SizedBox(width: 12.0)),
+                          ),
+                          Builder(
+                            builder: (context) {
+                              final toolsListDisplay = _model.toolsCS.toList();
+
+                              return Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: List.generate(toolsListDisplay.length,
+                                    (toolsListDisplayIndex) {
+                                  final toolsListDisplayItem =
+                                      toolsListDisplay[toolsListDisplayIndex];
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(16.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Theme(
+                                              data: ThemeData(
+                                                checkboxTheme:
+                                                    CheckboxThemeData(
+                                                  visualDensity:
+                                                      VisualDensity.compact,
+                                                  materialTapTargetSize:
+                                                      MaterialTapTargetSize
+                                                          .shrinkWrap,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4.0),
+                                                  ),
+                                                ),
+                                                unselectedWidgetColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                              ),
+                                              child: Checkbox(
+                                                value: _model.checkboxValueMap[
+                                                        toolsListDisplayItem] ??=
+                                                    (FFAppState()
+                                                            .Cart
+                                                            .cartItems
+                                                            .where((e) =>
+                                                                e.itemId ==
+                                                                toolsListDisplayItem
+                                                                    .reference)
+                                                            .toList()
+                                                            .isNotEmpty) ==
+                                                        true,
+                                                onChanged: ((FFAppState()
+                                                            .Cart
+                                                            .cartItems
+                                                            .where((e) =>
+                                                                e.itemId ==
+                                                                toolsListDisplayItem
+                                                                    .reference)
+                                                            .toList()
+                                                            .isNotEmpty) ==
+                                                        true)
+                                                    ? null
+                                                    : (newValue) async {
+                                                        safeSetState(() => _model
+                                                                    .checkboxValueMap[
+                                                                toolsListDisplayItem] =
+                                                            newValue!);
+                                                      },
+                                                side: (FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryText !=
+                                                        null)
+                                                    ? BorderSide(
+                                                        width: 2,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                      )
+                                                    : null,
+                                                activeColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                checkColor: ((FFAppState()
+                                                            .Cart
+                                                            .cartItems
+                                                            .where((e) =>
+                                                                e.itemId ==
+                                                                toolsListDisplayItem
+                                                                    .reference)
+                                                            .toList()
+                                                            .isNotEmpty) ==
+                                                        true)
+                                                    ? null
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground,
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        toolsListDisplayItem
+                                                            .description,
+                                                        maxLines: 1,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  lineHeight:
+                                                                      1.5,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
+                                                        overflow: TextOverflow
+                                                            .visible,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  if (toolsListDisplayItem
+                                                      .isReturnable)
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'can be rented ',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  lineHeight:
+                                                                      1.5,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      '\$${(toolsListDisplayItem.discountPrice != null) && (toolsListDisplayItem.discountPrice > 0.0) ? toolsListDisplayItem.discountPrice.toString() : toolsListDisplayItem.salePrice.toString()}',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            lineHeight: 1.5,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ].divide(SizedBox(width: 16.0)),
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(width: 16.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }).divide(SizedBox(height: 12.0)),
+                              );
+                            },
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                if (_model.checkboxCheckedItems.length > 0) {
+                                  for (int loop1Index = 0;
+                                      loop1Index <
+                                          _model.checkboxCheckedItems.length;
+                                      loop1Index++) {
+                                    final currentLoop1Item =
+                                        _model.checkboxCheckedItems[loop1Index];
+                                    if (!(FFAppState()
+                                        .Cart
+                                        .cartItems
+                                        .where((e) =>
+                                            e.itemId ==
+                                            currentLoop1Item.reference)
+                                        .toList()
+                                        .isNotEmpty)) {
+                                      FFAppState().updateCartStruct(
+                                        (e) => e
+                                          ..updateCartItems(
+                                            (e) => e.add(CartItemStruct(
+                                              itemId:
+                                                  currentLoop1Item.reference,
+                                              title:
+                                                  currentLoop1Item.description,
+                                              specType:
+                                                  currentLoop1Item.specType,
+                                              desc:
+                                                  currentLoop1Item.description,
+                                              price: (currentLoop1Item
+                                                              .discountPrice !=
+                                                          null) &&
+                                                      (currentLoop1Item
+                                                              .discountPrice >
+                                                          0.0)
+                                                  ? currentLoop1Item
+                                                      .discountPrice
+                                                  : currentLoop1Item.salePrice,
+                                              qty: 1,
+                                              isReturnable:
+                                                  currentLoop1Item.isReturnable,
+                                            )),
+                                          ),
+                                      );
+                                      safeSetState(() {});
+                                    }
+                                  }
+                                  if (Navigator.of(context).canPop()) {
+                                    context.pop();
+                                  }
+                                  context.pushNamed(
+                                      EReviewYourOrderWidget.routeName);
+                                }
+                              },
+                              text: 'Submit',
+                              options: FFButtonOptions(
+                                width: MediaQuery.sizeOf(context).width * 0.5,
+                                height: 50.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelMediumFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      fontSize: 28.0,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelMediumIsCustom,
+                                    ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
                             ),
-                            wrapWithModel(
-                              model: _model.installationKitCardModel2,
-                              updateCallback: () => safeSetState(() {}),
-                              child: InstallationKitCardWidget(
-                                desc:
-                                    'Prevents corrosion on aluminum-to-copper connections.',
-                                name: 'Anti-Oxidation Compound',
-                                price: '5.50',
-                                selected: true,
-                              ),
-                            ),
-                          ].divide(SizedBox(height: 8.0)),
-                        ),
-                      ].divide(SizedBox(height: 16.0)),
+                          ),
+                        ].divide(SizedBox(height: 16.0)),
+                      ),
                     ),
                   ),
                 ),
@@ -654,13 +956,8 @@ class _EReviewYourOrderMobileWidgetState
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             if (FFAppState().Cart.cartItems.isNotEmpty) {
-                              if (loggedIn) {
-                                context.pushNamed(
-                                    GSecurePaymentCheckoutCopyWidget.routeName);
-                              } else {
-                                context
-                                    .pushNamed(L01SignInPageWidget.routeName);
-                              }
+                              context.pushNamed(
+                                  GSecurePaymentCheckoutWidget.routeName);
                             }
                           },
                           child: wrapWithModel(

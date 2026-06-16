@@ -142,9 +142,7 @@ class _FSecurePaymentCheckoutDraftWidgetState
                                     wrapWithModel(
                                       model: _model.s01NavigatioBarModel,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: S01NavigatioBarWidget(
-                                        goToSectionTap: (scrollTo) async {},
-                                      ),
+                                      child: S01NavigatioBarWidget(),
                                     ),
                                     Divider(
                                       height: 1.0,

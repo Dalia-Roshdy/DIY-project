@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/components/button35_widget.dart';
 import '/components/order_summary_item_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -6,6 +7,10 @@ import 'package:flutter/material.dart';
 
 class GConfirmationSuccessModel
     extends FlutterFlowModel<GConfirmationSuccessWidget> {
+  ///  Local state fields for this component.
+
+  OrdersRecord? order;
+
   ///  State fields for stateful widgets in this component.
 
   // Model for OrderSummaryItem.

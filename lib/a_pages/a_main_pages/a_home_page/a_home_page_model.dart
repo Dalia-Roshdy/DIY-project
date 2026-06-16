@@ -17,8 +17,6 @@ class AHomePageModel extends FlutterFlowModel<AHomePageWidget> {
   List<AcMakeDTOStruct>? acMakeMap;
   // Stores action output result for [Custom Action - mapACModelToDto] action in A-HomePage widget.
   List<AcModelDTOStruct>? acModelMap;
-  // State field(s) for ScrollColumn widget.
-  ScrollController? scrollColumnScrollController;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for S02_Headlines component.
@@ -28,7 +26,6 @@ class AHomePageModel extends FlutterFlowModel<AHomePageWidget> {
 
   @override
   void initState(BuildContext context) {
-    scrollColumnScrollController = ScrollController();
     s01NavigatioBarModel = createModel(context, () => S01NavigatioBarModel());
     s02HeadlinesModel = createModel(context, () => S02HeadlinesModel());
     s12FooterModel = createModel(context, () => S12FooterModel());
@@ -36,7 +33,6 @@ class AHomePageModel extends FlutterFlowModel<AHomePageWidget> {
 
   @override
   void dispose() {
-    scrollColumnScrollController?.dispose();
     s01NavigatioBarModel.dispose();
     s02HeadlinesModel.dispose();
     s12FooterModel.dispose();

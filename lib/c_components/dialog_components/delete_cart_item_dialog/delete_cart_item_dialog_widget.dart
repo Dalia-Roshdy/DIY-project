@@ -15,7 +15,7 @@ class DeleteCartItemDialogWidget extends StatefulWidget {
     required this.itemId,
   });
 
-  final String? itemId;
+  final DocumentReference? itemId;
 
   @override
   State<DeleteCartItemDialogWidget> createState() =>
@@ -179,7 +179,10 @@ class _DeleteCartItemDialogWidgetState
                               ),
                           );
                           safeSetState(() {});
-                          await actions.calculateCartTotal();
+                          await actions.calculateCartTotal(
+                            FFAppState().Cart.shipping.toString(),
+                            FFAppState().Cart.tax.toString(),
+                          );
                           Navigator.pop(context);
                         },
                         text: 'Yes',

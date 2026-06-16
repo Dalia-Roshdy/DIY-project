@@ -42,19 +42,11 @@ class S05HomestartdiagnosisModel
 
   // Model for Asterisk component.
   late AsteriskModel asteriskModel;
-  // State field(s) for TextField-Name widget.
-  FocusNode? textFieldNameFocusNode;
-  TextEditingController? textFieldNameTextController;
-  String? Function(BuildContext, String?)? textFieldNameTextControllerValidator;
   // State field(s) for DropDown-Make widget.
   String? dropDownMakeValue;
   FormFieldController<String>? dropDownMakeValueController;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered1 = false;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for DropDown-Model widget.
   String? dropDownModelValue;
   FormFieldController<String>? dropDownModelValueController;
@@ -79,12 +71,6 @@ class S05HomestartdiagnosisModel
   @override
   void dispose() {
     asteriskModel.dispose();
-    textFieldNameFocusNode?.dispose();
-    textFieldNameTextController?.dispose();
-
-    textFieldFocusNode?.dispose();
-    textController2?.dispose();
-
     textFieldSNFocusNode?.dispose();
     textFieldSNTextController?.dispose();
 

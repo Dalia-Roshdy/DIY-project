@@ -64,20 +64,40 @@ class _OrderSummaryItemWidgetState extends State<OrderSummaryItemWidget> {
                     !FlutterFlowTheme.of(context).bodyMediumIsCustom,
               ),
         ),
-        Text(
-          valueOrDefault<String>(
-            widget.value,
-            '\$112.00',
-          ),
-          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                color: FlutterFlowTheme.of(context).primaryText,
-                letterSpacing: 0.0,
-                fontWeight: FontWeight.w600,
-                lineHeight: 1.5,
-                useGoogleFonts:
-                    !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+        RichText(
+          textScaler: MediaQuery.of(context).textScaler,
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: '\$',
+                style: TextStyle(),
               ),
+              TextSpan(
+                text: valueOrDefault<String>(
+                  widget.value,
+                  '0',
+                ),
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      letterSpacing: 0.0,
+                      fontWeight: FontWeight.w600,
+                      lineHeight: 1.5,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                    ),
+              )
+            ],
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w600,
+                  lineHeight: 1.5,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                ),
+          ),
         ),
       ],
     );

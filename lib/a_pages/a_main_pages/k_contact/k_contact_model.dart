@@ -18,8 +18,6 @@ class KContactModel extends FlutterFlowModel<KContactWidget> {
   List<AcMakeDTOStruct>? acMakeMap;
   // Stores action output result for [Custom Action - mapACModelToDto] action in K-Contact widget.
   List<AcModelDTOStruct>? acModelMap;
-  // State field(s) for ScrollColumn widget.
-  ScrollController? scrollColumnScrollController;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for S10_ContacUs component.
@@ -31,7 +29,6 @@ class KContactModel extends FlutterFlowModel<KContactWidget> {
 
   @override
   void initState(BuildContext context) {
-    scrollColumnScrollController = ScrollController();
     s01NavigatioBarModel = createModel(context, () => S01NavigatioBarModel());
     s10ContacUsModel = createModel(context, () => S10ContacUsModel());
     s11SocialsModel = createModel(context, () => S11SocialsModel());
@@ -40,7 +37,6 @@ class KContactModel extends FlutterFlowModel<KContactWidget> {
 
   @override
   void dispose() {
-    scrollColumnScrollController?.dispose();
     s01NavigatioBarModel.dispose();
     s10ContacUsModel.dispose();
     s11SocialsModel.dispose();

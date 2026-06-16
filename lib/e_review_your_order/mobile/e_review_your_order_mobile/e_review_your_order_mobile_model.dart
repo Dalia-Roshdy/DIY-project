@@ -1,5 +1,5 @@
+import '/backend/backend.dart';
 import '/e_review_your_order/mobile/button6/button6_widget.dart';
-import '/e_review_your_order/mobile/installation_kit_card/installation_kit_card_widget.dart';
 import '/e_review_your_order/mobile/summary_row/summary_row_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'e_review_your_order_mobile_widget.dart'
@@ -8,12 +8,24 @@ import 'package:flutter/material.dart';
 
 class EReviewYourOrderMobileModel
     extends FlutterFlowModel<EReviewYourOrderMobileWidget> {
+  ///  Local state fields for this component.
+
+  List<ItemsRecord> toolsCS = [];
+  void addToToolsCS(ItemsRecord item) => toolsCS.add(item);
+  void removeFromToolsCS(ItemsRecord item) => toolsCS.remove(item);
+  void removeAtIndexFromToolsCS(int index) => toolsCS.removeAt(index);
+  void insertAtIndexInToolsCS(int index, ItemsRecord item) =>
+      toolsCS.insert(index, item);
+  void updateToolsCSAtIndex(int index, Function(ItemsRecord) updateFn) =>
+      toolsCS[index] = updateFn(toolsCS[index]);
+
   ///  State fields for stateful widgets in this component.
 
-  // Model for InstallationKitCard.
-  late InstallationKitCardModel installationKitCardModel1;
-  // Model for InstallationKitCard.
-  late InstallationKitCardModel installationKitCardModel2;
+  // State field(s) for Checkbox widget.
+  Map<ItemsRecord, bool> checkboxValueMap = {};
+  List<ItemsRecord> get checkboxCheckedItems =>
+      checkboxValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
+
   // Model for SummaryRow.
   late SummaryRowModel summaryRowModel1;
   // Model for SummaryRow.
@@ -25,10 +37,6 @@ class EReviewYourOrderMobileModel
 
   @override
   void initState(BuildContext context) {
-    installationKitCardModel1 =
-        createModel(context, () => InstallationKitCardModel());
-    installationKitCardModel2 =
-        createModel(context, () => InstallationKitCardModel());
     summaryRowModel1 = createModel(context, () => SummaryRowModel());
     summaryRowModel2 = createModel(context, () => SummaryRowModel());
     summaryRowModel3 = createModel(context, () => SummaryRowModel());
@@ -37,8 +45,6 @@ class EReviewYourOrderMobileModel
 
   @override
   void dispose() {
-    installationKitCardModel1.dispose();
-    installationKitCardModel2.dispose();
     summaryRowModel1.dispose();
     summaryRowModel2.dispose();
     summaryRowModel3.dispose();

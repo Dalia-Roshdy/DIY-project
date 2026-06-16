@@ -4,11 +4,6 @@ import 'package:flutter/material.dart';
 
 class InstallationKitCardModel
     extends FlutterFlowModel<InstallationKitCardWidget> {
-  ///  State fields for stateful widgets in this component.
-
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue;
-
   @override
   void initState(BuildContext context) {}
 

@@ -127,7 +127,6 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                               fontFamily: FlutterFlowTheme.of(context)
                                   .headlineMediumFamily,
                               color: Color(0xDD000000),
-                              fontSize: 40.0,
                               letterSpacing: MediaQuery.sizeOf(context).width <
                                       kBreakpointSmall
                                   ? FFAppConstants.LetterSpacingM
@@ -316,6 +315,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                               fontFamily: FlutterFlowTheme.of(context)
                                   .labelMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 28.0,
                               letterSpacing: 0.0,
                               useGoogleFonts: !FlutterFlowTheme.of(context)
                                   .labelMediumIsCustom,
@@ -374,6 +374,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                             .titleLargeFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
+                                        fontSize: 28.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts:
                                             !FlutterFlowTheme.of(context)
@@ -390,9 +391,9 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                     size: valueOrDefault<double>(
                                       MediaQuery.sizeOf(context).width <
                                               kBreakpointSmall
-                                          ? 24.0
-                                          : 48.0,
-                                      48.0,
+                                          ? 20.0
+                                          : 44.0,
+                                      44.0,
                                     ),
                                   ).animateOnActionTrigger(
                                     animationsMap[

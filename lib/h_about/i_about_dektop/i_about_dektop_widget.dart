@@ -632,7 +632,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                               16.0, 4.0, 16.0, 4.0),
                           child: Container(
                             child: Text(
-                              'OUR_ROLE_MANIFESTO',
+                              'OUR ROLE',
                               style: FlutterFlowTheme.of(context)
                                   .labelSmall
                                   .override(
@@ -749,7 +749,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                               16.0, 4.0, 16.0, 4.0),
                           child: Container(
                             child: Text(
-                              'YOUR_ROLE_ACTION',
+                              'YOUR ROLE ACTION',
                               style: FlutterFlowTheme.of(context)
                                   .labelSmall
                                   .override(
@@ -883,10 +883,10 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                   Icon(
                                     Icons.warning_rounded,
                                     color: Colors.white,
-                                    size: 14.0,
+                                    size: 20.0,
                                   ),
                                   Text(
-                                    'OUT_OF_SCOPE_LIMITS',
+                                    'CATIOUS',
                                     style: FlutterFlowTheme.of(context)
                                         .labelSmall
                                         .override(
@@ -1080,6 +1080,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                     ].divide(SizedBox(width: 16.0)),
                                   ),
                                   Container(
+                                    height: 83.11,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -1093,40 +1094,57 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                     child: Padding(
                                       padding: EdgeInsets.all(16.0),
                                       child: Container(
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                        child: Wrap(
+                                          spacing: 0.0,
+                                          runSpacing: 0.0,
+                                          alignment: WrapAlignment.start,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
                                           children: [
-                                            Icon(
-                                              Icons.cancel_outlined,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.cancel_outlined,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
                                                       .error,
-                                              size: 20.0,
+                                                  size: 20.0,
+                                                ),
+                                                Text(
+                                                  'CONDENSER FAN TURNS BUT COPPER PIPE IS COLD AND NOT \nCOOLING (REFRIGERANT/TECHNICAL ISSUE).',
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                            fontSize: 18.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            lineHeight: 1.2,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallIsCustom,
+                                                          ),
+                                                ),
+                                              ].divide(SizedBox(width: 16.0)),
                                             ),
-                                            Text(
-                                              'CONDENSER FAN TURNS BUT COPPER PIPE IS COLD AND NOT COOLING (REFRIGERANT/TECHNICAL ISSUE).',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .labelSmall
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelSmallFamily,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    lineHeight: 1.2,
-                                                    useGoogleFonts:
-                                                        !FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelSmallIsCustom,
-                                                  ),
-                                            ),
-                                          ].divide(SizedBox(width: 16.0)),
+                                          ],
                                         ),
                                       ),
                                     ),

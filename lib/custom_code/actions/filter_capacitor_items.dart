@@ -6,6 +6,7 @@ import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -111,9 +112,7 @@ Future<List<PartCardDTOStruct>> filterCapacitorItems(
 
         // Map Firestore document to PartCardDTOStruct
         final partCard = PartCardDTOStruct(
-          // Map fields from Firestore document to PartCardDTOStruct
-          // Adjust field names based on your actual PartCardDTOStruct definition
-          id: itemDoc.id,
+          id: itemDoc.reference, // Doc Reference (Items)
           type: 'CAPACITOR',
           title: data['partNumber'] ?? '',
           desc: data['description'] ?? '',
@@ -122,13 +121,19 @@ Future<List<PartCardDTOStruct>> filterCapacitorItems(
               : ((data['salePrice'] as num?)?.toDouble() ?? 0.0),
           image: data['image'] is List
               ? List<String>.from(data['image'])
-              : [data['image']],
-          mfd1: (specData?['microFarad1'] as num?)?.toDouble(),
-          mfd2: (specData?['microFarad2'] as num?)?.toDouble(),
-          volt: (specData?['volt'] as num?)?.toInt() ?? 0,
-          rpm: 0,
-          ratedVolt: 0,
-          ratedAmp: 0,
+              : [data['image'] as String? ?? ''],
+          capacitorCard: CapacitorCardStruct(
+            capacMFD1: (specData?['microFarad1'] as num?)?.toDouble() ?? 0.0,
+            capacMFD2: (specData?['microFarad2'] as num?)?.toDouble() ?? 0.0,
+            capacDiameter: (specData?['diameter'] as num?)?.toDouble() ?? 0.0,
+            capacHeight: (specData?['height'] as num?)?.toDouble() ?? 0.0,
+            capacWidth: (specData?['width'] as num?)?.toDouble() ?? 0.0,
+            capacDepth: (specData?['depth'] as num?)?.toDouble() ?? 0.0,
+            capacTempLow: (specData?['tempLow'] as num?)?.toInt() ?? 0,
+            capacTempHigh: (specData?['tempHigh'] as num?)?.toInt() ?? 0,
+          ),
+          contactorCard: null,
+          motorCard: null,
         );
 
         results.add(partCard);

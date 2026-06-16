@@ -16,7 +16,7 @@ class AHomePageWidget extends StatefulWidget {
   const AHomePageWidget({super.key});
 
   static String routeName = 'A-HomePage';
-  static String routePath = '/aHomePage';
+  static String routePath = '/home';
 
   @override
   State<AHomePageWidget> createState() => _AHomePageWidgetState();
@@ -62,6 +62,7 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
             .sortedList(keyOf: (e) => e.name, desc: false)
             .toList()
             .cast<AcModelDTOStruct>();
+        FFAppState().update(() {});
       }
     });
 
@@ -90,7 +91,6 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
-            controller: _model.scrollColumnScrollController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -139,23 +139,7 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
                                     wrapWithModel(
                                       model: _model.s01NavigatioBarModel,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: S01NavigatioBarWidget(
-                                        goToSectionTap: (scrollTo) async {
-                                          if (scrollTo != '') {
-                                            await _model
-                                                .scrollColumnScrollController
-                                                ?.animateTo(
-                                              _model
-                                                  .scrollColumnScrollController!
-                                                  .position
-                                                  .maxScrollExtent,
-                                              duration:
-                                                  Duration(milliseconds: 100),
-                                              curve: Curves.ease,
-                                            );
-                                          }
-                                        },
-                                      ),
+                                      child: S01NavigatioBarWidget(),
                                     ),
                                     Divider(
                                       height: 1.0,
@@ -228,6 +212,8 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
                                     if (responsiveVisibility(
                                       context: context,
                                       phone: false,
+                                      tablet: false,
+                                      tabletLandscape: false,
                                     ))
                                       wrapWithModel(
                                         model: _model.s12FooterModel,

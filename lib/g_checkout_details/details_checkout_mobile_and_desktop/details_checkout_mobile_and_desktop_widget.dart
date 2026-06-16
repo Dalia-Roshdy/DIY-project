@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/backend/stripe/payment_manager.dart';
@@ -524,12 +525,14 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                 updateCallback: () =>
                                                     safeSetState(() {}),
                                                 child: FormLabel2Widget(
-                                                  label: 'Zip/Postal Code',
-                                                  isRequired: false,
+                                                  label:
+                                                      'Last 4 digits of your Card',
+                                                  isRequired: true,
                                                 ),
                                               ),
                                               wrapWithModel(
-                                                model: _model.textFieldZipModel,
+                                                model:
+                                                    _model.textFieldCardModel,
                                                 updateCallback: () =>
                                                     safeSetState(() {}),
                                                 child: TextField7Widget(
@@ -662,7 +665,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                         .set(createOrdersRecordData(
                                       createdAt: getCurrentTimestamp,
                                       updatedAt: getCurrentTimestamp,
-                                      status: OrderStatus.draft,
+                                      status: OrderStatus.submitted,
                                       totalsSnap: createTotalSnapStruct(
                                         subtotal: FFAppState().Cart.subtotal,
                                         shipping: FFAppState().Cart.shipping,
@@ -686,16 +689,21 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                             '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
                                         phone: _model.textFieldPhoneModel
                                             .inputTextController.text,
+                                        name: _model.textFieldNameModel
+                                            .inputTextController.text,
+                                        pin: _model.textFieldCardModel
+                                            .inputTextController.text,
                                         clearUnsetFields: false,
                                         create: true,
                                       ),
+                                      uid: currentUserReference,
                                     ));
                                     _model.order =
                                         OrdersRecord.getDocumentFromData(
                                             createOrdersRecordData(
                                               createdAt: getCurrentTimestamp,
                                               updatedAt: getCurrentTimestamp,
-                                              status: OrderStatus.draft,
+                                              status: OrderStatus.submitted,
                                               totalsSnap: createTotalSnapStruct(
                                                 subtotal:
                                                     FFAppState().Cart.subtotal,
@@ -728,9 +736,14 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                     .textFieldPhoneModel
                                                     .inputTextController
                                                     .text,
+                                                name: _model.textFieldNameModel
+                                                    .inputTextController.text,
+                                                pin: _model.textFieldCardModel
+                                                    .inputTextController.text,
                                                 clearUnsetFields: false,
                                                 create: true,
                                               ),
+                                              uid: currentUserReference,
                                             ),
                                             ordersRecordReference);
                                     _model.orderPS = _model.order?.reference;
@@ -753,6 +766,10 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                             .inputTextController.text,
                                         shippingAddress:
                                             '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
+                                        pin: _model.textFieldCardModel
+                                            .inputTextController.text,
+                                        name: _model.textFieldCardModel
+                                            .inputTextController.text,
                                         clearUnsetFields: false,
                                       ),
                                     ));
@@ -783,7 +800,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
 
                                   await Future.delayed(
                                     Duration(
-                                      milliseconds: 20,
+                                      milliseconds: 50,
                                     ),
                                   );
                                   if (_model.paymentId != null &&
@@ -797,7 +814,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                     ));
 
                                     context.pushNamed(
-                                      LoadinIndicatorWidget.routeName,
+                                      HConfirmationCheckoutWidget.routeName,
                                       queryParameters: {
                                         'orderId': serializeParam(
                                           _model.orderPS,
@@ -830,41 +847,42 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                   ),
                                 ),
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  wrapWithModel(
-                                    model: _model.paymentBadgeModel1,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: PaymentBadge3Widget(
-                                      name: 'VISA',
+                              if (false)
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    wrapWithModel(
+                                      model: _model.paymentBadgeModel1,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: PaymentBadge3Widget(
+                                        name: 'VISA',
+                                      ),
                                     ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.paymentBadgeModel2,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: PaymentBadge3Widget(
-                                      name: 'MC',
+                                    wrapWithModel(
+                                      model: _model.paymentBadgeModel2,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: PaymentBadge3Widget(
+                                        name: 'MC',
+                                      ),
                                     ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.paymentBadgeModel3,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: PaymentBadge3Widget(
-                                      name: 'AMEX',
+                                    wrapWithModel(
+                                      model: _model.paymentBadgeModel3,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: PaymentBadge3Widget(
+                                        name: 'AMEX',
+                                      ),
                                     ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.paymentBadgeModel4,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: PaymentBadge3Widget(
-                                      name: 'PAYPAL',
+                                    wrapWithModel(
+                                      model: _model.paymentBadgeModel4,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: PaymentBadge3Widget(
+                                        name: 'PAYPAL',
+                                      ),
                                     ),
-                                  ),
-                                ].divide(SizedBox(width: 16.0)),
-                              ),
+                                  ].divide(SizedBox(width: 16.0)),
+                                ),
                             ].divide(SizedBox(height: 32.0)),
                           ),
                         ),

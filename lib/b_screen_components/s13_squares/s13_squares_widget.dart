@@ -368,184 +368,195 @@ class _S13SquaresWidgetState extends State<S13SquaresWidget> {
                             child: Stack(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               children: [
-                                Padding(
-                                  padding:
-                                      EdgeInsets.all(valueOrDefault<double>(
-                                    MediaQuery.sizeOf(context).width <
-                                            kBreakpointSmall
-                                        ? 25.0
-                                        : 14.0,
-                                    50.0,
-                                  )),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Wrap(
-                                        spacing: 0.0,
-                                        runSpacing: 0.0,
-                                        alignment: WrapAlignment.start,
-                                        crossAxisAlignment:
-                                            WrapCrossAlignment.center,
-                                        direction: Axis.horizontal,
-                                        runAlignment: WrapAlignment.start,
-                                        verticalDirection:
-                                            VerticalDirection.down,
-                                        clipBehavior: Clip.none,
-                                        children: [
-                                          Icon(
-                                            Icons.video_chat,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 50.0,
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 0.0, 0.0),
-                                            child: Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.33,
-                                              constraints: BoxConstraints(
-                                                minWidth:
-                                                    valueOrDefault<double>(
-                                                  MediaQuery.sizeOf(context)
-                                                              .width <
-                                                          kBreakpointLarge
-                                                      ? 500.0
-                                                      : 430.0,
-                                                  430.0,
-                                                ),
-                                                maxHeight: 90.0,
-                                              ),
-                                              decoration: BoxDecoration(),
-                                              child: AutoSizeText(
-                                                'DIAGNOSIS VIDEOS',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineSmallFamily,
-                                                          letterSpacing: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? FFAppConstants
-                                                                  .LetterSpacingM
-                                                              : FFAppConstants
-                                                                  .LetterSpacingTD,
-                                                          lineHeight: 0.9,
-                                                          useGoogleFonts:
-                                                              !FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .headlineSmallIsCustom,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      AutoSizeText(
-                                        'Step-by-step technical teardowns and visual error code guides for every brand.',
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily:
+                                Align(
+                                  alignment: AlignmentDirectional(-1.77, -9.92),
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.all(valueOrDefault<double>(
+                                      MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall
+                                          ? 25.0
+                                          : 14.0,
+                                      50.0,
+                                    )),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Wrap(
+                                          spacing: 0.0,
+                                          runSpacing: 0.0,
+                                          alignment: WrapAlignment.start,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.center,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: [
+                                            Icon(
+                                              Icons.video_chat,
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyLargeFamily,
-                                              fontSize: 19.0,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .bodyLargeIsCustom,
+                                                      .primaryText,
+                                              size: 50.0,
                                             ),
-                                      ),
-                                      Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                        ),
-                                        child: MouseRegion(
-                                          opaque: false,
-                                          cursor: SystemMouseCursors.click ??
-                                              MouseCursor.defer,
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              context.pushNamed(
-                                                  CLibraryVideoWidget
-                                                      .routeName);
-                                            },
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -1.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'WATCH NOW',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .titleSmall
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 10.0, 0.0, 0.0),
+                                              child: Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.33,
+                                                constraints: BoxConstraints(
+                                                  minWidth:
+                                                      valueOrDefault<double>(
+                                                    MediaQuery.sizeOf(context)
+                                                                .width <
+                                                            kBreakpointLarge
+                                                        ? 500.0
+                                                        : 430.0,
+                                                    430.0,
+                                                  ),
+                                                  maxHeight: 90.0,
+                                                ),
+                                                decoration: BoxDecoration(),
+                                                child: AutoSizeText(
+                                                  'DIAGNOSIS VIDEOS',
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineSmall
                                                           .override(
                                                             fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .titleSmallFamily,
-                                                            fontSize: 18.0,
-                                                            letterSpacing: 0.0,
+                                                                    .headlineSmallFamily,
+                                                            letterSpacing: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width <
+                                                                    kBreakpointSmall
+                                                                ? FFAppConstants
+                                                                    .LetterSpacingM
+                                                                : FFAppConstants
+                                                                    .LetterSpacingTD,
+                                                            lineHeight: 0.9,
                                                             useGoogleFonts:
                                                                 !FlutterFlowTheme.of(
                                                                         context)
-                                                                    .titleSmallIsCustom,
+                                                                    .headlineSmallIsCustom,
                                                           ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        AutoSizeText(
+                                          'Step-by-step technical teardowns and visual error code guides for every brand.',
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLargeFamily,
+                                                fontSize: 19.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLargeIsCustom,
+                                              ),
+                                        ),
+                                        Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                          ),
+                                          child: MouseRegion(
+                                            opaque: false,
+                                            cursor: SystemMouseCursors.click ??
+                                                MouseCursor.defer,
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                    CLibraryVideoFlowWidget
+                                                        .routeName);
+                                              },
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'WATCH NOW',
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .titleSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily,
+                                                              fontSize: 18.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallIsCustom,
+                                                            ),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                Divider(
-                                                  thickness: 4.0,
-                                                  indent: 10.0,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                ),
-                                              ],
+                                                  Divider(
+                                                    thickness: 4.0,
+                                                    indent: 10.0,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                  ),
+                                                ],
+                                              ),
                                             ),
+                                            onEnter: ((event) async {
+                                              safeSetState(() => _model
+                                                  .mouseRegionHovered2 = true);
+                                            }),
+                                            onExit: ((event) async {
+                                              safeSetState(() => _model
+                                                  .mouseRegionHovered2 = false);
+                                            }),
                                           ),
-                                          onEnter: ((event) async {
-                                            safeSetState(() => _model
-                                                .mouseRegionHovered2 = true);
-                                          }),
-                                          onExit: ((event) async {
-                                            safeSetState(() => _model
-                                                .mouseRegionHovered2 = false);
-                                          }),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -982,17 +993,8 @@ class _S13SquaresWidgetState extends State<S13SquaresWidget> {
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pushNamed(
-                                                  AHomePageWidget.routeName);
-
-                                              await _model
-                                                  .staggeredViewController
-                                                  ?.animateTo(
-                                                _model.staggeredViewController!
-                                                    .position.maxScrollExtent,
-                                                duration:
-                                                    Duration(milliseconds: 100),
-                                                curve: Curves.ease,
-                                              );
+                                                  LRequestTechnicalWidget
+                                                      .routeName);
                                             },
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -1062,7 +1064,6 @@ class _S13SquaresWidgetState extends State<S13SquaresWidget> {
                   ),
             ][index]();
           },
-          controller: _model.staggeredViewController,
         ),
       ),
     );

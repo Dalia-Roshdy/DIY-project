@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'button8_model.dart';
@@ -208,7 +209,7 @@ class _Button8WidgetState extends State<Button8Widget> {
                       true,
                     ))
                       widget.icon!,
-                    Text(
+                    AutoSizeText(
                       valueOrDefault<String>(
                         widget.content,
                         'Pay Securely Now',
@@ -230,7 +231,7 @@ class _Button8WidgetState extends State<Button8Widget> {
                                 return FlutterFlowTheme.of(context).onPrimary;
                               }
                             }(),
-                            fontSize: 20.0,
+                            fontSize: 18.0,
                             letterSpacing: 0.0,
                             lineHeight: 1.3,
                             useGoogleFonts: !FlutterFlowTheme.of(context)

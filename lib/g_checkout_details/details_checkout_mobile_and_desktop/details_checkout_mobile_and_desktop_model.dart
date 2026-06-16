@@ -16,6 +16,15 @@ class DetailsCheckoutMobileAndDesktopModel
 
   DocumentReference? orderPS;
 
+  List<OrderLinesStruct> lines = [];
+  void addToLines(OrderLinesStruct item) => lines.add(item);
+  void removeFromLines(OrderLinesStruct item) => lines.remove(item);
+  void removeAtIndexFromLines(int index) => lines.removeAt(index);
+  void insertAtIndexInLines(int index, OrderLinesStruct item) =>
+      lines.insert(index, item);
+  void updateLinesAtIndex(int index, Function(OrderLinesStruct) updateFn) =>
+      lines[index] = updateFn(lines[index]);
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
@@ -41,8 +50,8 @@ class DetailsCheckoutMobileAndDesktopModel
   late TextField7Model textFieldStateModel;
   // Model for FormLabel.
   late FormLabel2Model formLabelModel6;
-  // Model for TextFieldZip.
-  late TextField7Model textFieldZipModel;
+  // Model for TextFieldCard.
+  late TextField7Model textFieldCardModel;
   // Model for FormLabel.
   late FormLabel2Model formLabelModel7;
   // Model for TextFieldPhone.
@@ -79,7 +88,7 @@ class DetailsCheckoutMobileAndDesktopModel
     formLabelModel5 = createModel(context, () => FormLabel2Model());
     textFieldStateModel = createModel(context, () => TextField7Model());
     formLabelModel6 = createModel(context, () => FormLabel2Model());
-    textFieldZipModel = createModel(context, () => TextField7Model());
+    textFieldCardModel = createModel(context, () => TextField7Model());
     formLabelModel7 = createModel(context, () => FormLabel2Model());
     textFieldPhoneModel = createModel(context, () => TextField7Model());
     buttonModel = createModel(context, () => Button8Model());
@@ -93,7 +102,8 @@ class DetailsCheckoutMobileAndDesktopModel
         _formTextFieldValidator3;
     textFieldCityModel.inputTextControllerValidator = _formTextFieldValidator4;
     textFieldStateModel.inputTextControllerValidator = _formTextFieldValidator5;
-    textFieldPhoneModel.inputTextControllerValidator = _formTextFieldValidator6;
+    textFieldCardModel.inputTextControllerValidator = _formTextFieldValidator6;
+    textFieldPhoneModel.inputTextControllerValidator = _formTextFieldValidator7;
   }
 
   @override
@@ -109,7 +119,7 @@ class DetailsCheckoutMobileAndDesktopModel
     formLabelModel5.dispose();
     textFieldStateModel.dispose();
     formLabelModel6.dispose();
-    textFieldZipModel.dispose();
+    textFieldCardModel.dispose();
     formLabelModel7.dispose();
     textFieldPhoneModel.dispose();
     buttonModel.dispose();
@@ -149,8 +159,8 @@ class DetailsCheckoutMobileAndDesktopModel
       return 'Address is required';
     }
 
-    if (val.length < 20) {
-      return 'Requires at least 20 characters.';
+    if (val.length < 2) {
+      return 'Requires at least 2 characters.';
     }
 
     return null;
@@ -181,6 +191,23 @@ class DetailsCheckoutMobileAndDesktopModel
   }
 
   String? _formTextFieldValidator6(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'value is required';
+    }
+
+    if (val.length < 4) {
+      return 'Requires at least 4 characters.';
+    }
+    if (val.length > 4) {
+      return 'Maximum 4 characters allowed, currently ${val.length}.';
+    }
+    if (!RegExp('^[0-9]+\$').hasMatch(val)) {
+      return 'Must be exactly 4 digits.';
+    }
+    return null;
+  }
+
+  String? _formTextFieldValidator7(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Phone is required';
     }

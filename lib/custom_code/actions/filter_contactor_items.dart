@@ -6,6 +6,7 @@ import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -134,7 +135,7 @@ Future<List<PartCardDTOStruct>> filterContactorItems(
         }
 
         final partCardDTO = PartCardDTOStruct(
-          id: itemDoc.reference.id,
+          id: itemDoc.reference, // Doc Reference (Items)
           type: 'CONTRACTOR',
           title: itemData['partNumber'] as String? ?? '',
           desc: itemData['description'] as String? ?? '',
@@ -143,13 +144,15 @@ Future<List<PartCardDTOStruct>> filterContactorItems(
               : ((itemData['salePrice'] as num?)?.toDouble() ?? 0.0),
           image: itemData['image'] is List
               ? List<String>.from(itemData['image'])
-              : [itemData['image']],
-          ratedVolt: (specData?['ratedVolt'] as num?)?.toDouble(),
-          ratedAmp: (specData?['ratedAmp'] as num?)?.toDouble(),
-          rpm: 0,
-          volt: 0,
-          mfd1: 0,
-          mfd2: 0,
+              : [itemData['image'] as String? ?? ''],
+          contactorCard: ContactorCardStruct(
+            contCoilVolt: (specData?['coilVoltage'] as num?)?.toDouble() ?? 0.0,
+            contratedVolt: (specData?['ratedVolt'] as num?)?.toDouble() ?? 0.0,
+            contratedAmp: (specData?['ratedAmp'] as num?)?.toDouble() ?? 0.0,
+            contLength: (specData?['length'] as num?)?.toDouble() ?? 0.0,
+            contWidth: (specData?['width'] as num?)?.toDouble() ?? 0.0,
+            contDepth: (specData?['depth'] as num?)?.toDouble() ?? 0.0,
+          ),
         );
 
         results.add(partCardDTO);
