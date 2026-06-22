@@ -6,7 +6,6 @@ import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
-import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -136,7 +135,7 @@ Future<List<PartCardDTOStruct>> filterContactorItems(
 
         final partCardDTO = PartCardDTOStruct(
           id: itemDoc.reference, // Doc Reference (Items)
-          type: 'CONTRACTOR',
+          type: 'CONTACTOR',
           title: itemData['partNumber'] as String? ?? '',
           desc: itemData['description'] as String? ?? '',
           price: ((itemData['discountPrice'] as num?)?.toDouble() ?? 0) > 0

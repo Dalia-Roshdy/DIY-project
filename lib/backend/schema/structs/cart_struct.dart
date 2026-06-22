@@ -14,12 +14,14 @@ class CartStruct extends FFFirebaseStruct {
     double? shipping,
     double? tax,
     double? total,
+    String? comment,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _cartItems = cartItems,
         _subtotal = subtotal,
         _shipping = shipping,
         _tax = tax,
         _total = total,
+        _comment = comment,
         super(firestoreUtilData);
 
   // "cartItems" field.
@@ -69,6 +71,13 @@ class CartStruct extends FFFirebaseStruct {
 
   bool hasTotal() => _total != null;
 
+  // "comment" field.
+  String? _comment;
+  String get comment => _comment ?? '';
+  set comment(String? val) => _comment = val;
+
+  bool hasComment() => _comment != null;
+
   static CartStruct fromMap(Map<String, dynamic> data) => CartStruct(
         cartItems: getStructList(
           data['cartItems'],
@@ -78,6 +87,7 @@ class CartStruct extends FFFirebaseStruct {
         shipping: castToType<double>(data['shipping']),
         tax: castToType<double>(data['tax']),
         total: castToType<double>(data['total']),
+        comment: data['comment'] as String?,
       );
 
   static CartStruct? maybeFromMap(dynamic data) =>
@@ -89,6 +99,7 @@ class CartStruct extends FFFirebaseStruct {
         'shipping': _shipping,
         'tax': _tax,
         'total': _total,
+        'comment': _comment,
       }.withoutNulls;
 
   @override
@@ -113,6 +124,10 @@ class CartStruct extends FFFirebaseStruct {
         'total': serializeParam(
           _total,
           ParamType.double,
+        ),
+        'comment': serializeParam(
+          _comment,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -144,6 +159,11 @@ class CartStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
+        comment: deserializeParam(
+          data['comment'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -157,12 +177,13 @@ class CartStruct extends FFFirebaseStruct {
         subtotal == other.subtotal &&
         shipping == other.shipping &&
         tax == other.tax &&
-        total == other.total;
+        total == other.total &&
+        comment == other.comment;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([cartItems, subtotal, shipping, tax, total]);
+  int get hashCode => const ListEquality()
+      .hash([cartItems, subtotal, shipping, tax, total, comment]);
 }
 
 CartStruct createCartStruct({
@@ -170,6 +191,7 @@ CartStruct createCartStruct({
   double? shipping,
   double? tax,
   double? total,
+  String? comment,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -180,6 +202,7 @@ CartStruct createCartStruct({
       shipping: shipping,
       tax: tax,
       total: total,
+      comment: comment,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

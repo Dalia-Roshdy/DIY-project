@@ -971,7 +971,7 @@ class _DMobileFilterWidgetState extends State<DMobileFilterWidget> {
                       ),
                     ),
                   ),
-                if (_model.selectedPartCS == Parts.CONTRACTOR.name)
+                if (_model.selectedPartCS == Parts.CONTACTOR.name)
                   Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Container(

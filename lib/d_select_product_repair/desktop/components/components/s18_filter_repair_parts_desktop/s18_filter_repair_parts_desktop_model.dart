@@ -19,14 +19,12 @@ class S18FilterRepairPartsDesktopModel
   FocusNode? textFieldVoltFocusNode;
   TextEditingController? textFieldVoltTextController;
   String? Function(BuildContext, String?)? textFieldVoltTextControllerValidator;
-  // State field(s) for TextField-hp widget.
-  FocusNode? textFieldHpFocusNode;
-  TextEditingController? textFieldHpTextController;
-  String? Function(BuildContext, String?)? textFieldHpTextControllerValidator;
-  // State field(s) for TextField-rpm widget.
-  FocusNode? textFieldRpmFocusNode;
-  TextEditingController? textFieldRpmTextController;
-  String? Function(BuildContext, String?)? textFieldRpmTextControllerValidator;
+  // State field(s) for DropDown-hp widget.
+  double? dropDownHpValue;
+  FormFieldController<double>? dropDownHpValueController;
+  // State field(s) for DropDown-rpm widget.
+  int? dropDownRpmValue;
+  FormFieldController<int>? dropDownRpmValueController;
   // State field(s) for DropDown-rotation widget.
   String? dropDownRotationValue;
   FormFieldController<String>? dropDownRotationValueController;
@@ -37,29 +35,23 @@ class S18FilterRepairPartsDesktopModel
   TextEditingController? textFieldRvoltTextController;
   String? Function(BuildContext, String?)?
       textFieldRvoltTextControllerValidator;
-  // State field(s) for TextField-apm widget.
-  FocusNode? textFieldApmFocusNode;
-  TextEditingController? textFieldApmTextController;
-  String? Function(BuildContext, String?)? textFieldApmTextControllerValidator;
-  // State field(s) for TextField-CoilV widget.
-  FocusNode? textFieldCoilVFocusNode;
-  TextEditingController? textFieldCoilVTextController;
-  String? Function(BuildContext, String?)?
-      textFieldCoilVTextControllerValidator;
-  // State field(s) for TextField-nop widget.
-  FocusNode? textFieldNopFocusNode;
-  TextEditingController? textFieldNopTextController;
-  String? Function(BuildContext, String?)? textFieldNopTextControllerValidator;
+  // State field(s) for DropDown-amp widget.
+  int? dropDownAmpValue;
+  FormFieldController<int>? dropDownAmpValueController;
+  // State field(s) for DropDown-Cvolt widget.
+  int? dropDownCvoltValue;
+  FormFieldController<int>? dropDownCvoltValueController;
+  // State field(s) for DropDown-nop widget.
+  int? dropDownNopValue;
+  FormFieldController<int>? dropDownNopValueController;
   // Model for Button.
   late Button2Model buttonModel2;
-  // State field(s) for TextField-MFD1 widget.
-  FocusNode? textFieldMFD1FocusNode;
-  TextEditingController? textFieldMFD1TextController;
-  String? Function(BuildContext, String?)? textFieldMFD1TextControllerValidator;
-  // State field(s) for TextField-MFD2 widget.
-  FocusNode? textFieldMFD2FocusNode;
-  TextEditingController? textFieldMFD2TextController;
-  String? Function(BuildContext, String?)? textFieldMFD2TextControllerValidator;
+  // State field(s) for DropDown-MFD1 widget.
+  double? dropDownMFD1Value;
+  FormFieldController<double>? dropDownMFD1ValueController;
+  // State field(s) for DropDown-MFD2 widget.
+  double? dropDownMFD2Value;
+  FormFieldController<double>? dropDownMFD2ValueController;
   // State field(s) for TextField-cap-volt widget.
   FocusNode? textFieldCapVoltFocusNode;
   TextEditingController? textFieldCapVoltTextController;
@@ -86,32 +78,11 @@ class S18FilterRepairPartsDesktopModel
     textFieldVoltFocusNode?.dispose();
     textFieldVoltTextController?.dispose();
 
-    textFieldHpFocusNode?.dispose();
-    textFieldHpTextController?.dispose();
-
-    textFieldRpmFocusNode?.dispose();
-    textFieldRpmTextController?.dispose();
-
     buttonModel1.dispose();
     textFieldRvoltFocusNode?.dispose();
     textFieldRvoltTextController?.dispose();
 
-    textFieldApmFocusNode?.dispose();
-    textFieldApmTextController?.dispose();
-
-    textFieldCoilVFocusNode?.dispose();
-    textFieldCoilVTextController?.dispose();
-
-    textFieldNopFocusNode?.dispose();
-    textFieldNopTextController?.dispose();
-
     buttonModel2.dispose();
-    textFieldMFD1FocusNode?.dispose();
-    textFieldMFD1TextController?.dispose();
-
-    textFieldMFD2FocusNode?.dispose();
-    textFieldMFD2TextController?.dispose();
-
     textFieldCapVoltFocusNode?.dispose();
     textFieldCapVoltTextController?.dispose();
 

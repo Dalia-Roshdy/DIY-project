@@ -67,7 +67,7 @@ class _DSelectProductRepairWidgetState
         _model.partList =
             _model.motorItemsOnPageLoad!.toList().cast<PartCardDTOStruct>();
         safeSetState(() {});
-      } else if (_model.selectedPart == Parts.CONTRACTOR) {
+      } else if (_model.selectedPart == Parts.CONTACTOR) {
         _model.contOnPageLoad = await actions.filterContactorItems(
           FFAppState().userAC.acModel,
           null,
@@ -286,10 +286,10 @@ class _DSelectProductRepairWidgetState
                                                       selectedPart) async {
                                                     _model.partList = [];
                                                     _model.selectedPart =
-                                                        Parts.CONTRACTOR;
+                                                        Parts.CONTACTOR;
                                                     safeSetState(() {});
                                                     if (selectedPart ==
-                                                        Parts.CONTRACTOR.name) {
+                                                        Parts.CONTACTOR.name) {
                                                       _model.contOnCallback =
                                                           await actions
                                                               .filterContactorItems(
@@ -435,7 +435,7 @@ class _DSelectProductRepairWidgetState
                                                       } else if ((_model
                                                                   .selectedPart ==
                                                               Parts
-                                                                  .CONTRACTOR) &&
+                                                                  .CONTACTOR) &&
                                                           (FFAppState()
                                                                       .userAC
                                                                       .contactorSpecIdRef

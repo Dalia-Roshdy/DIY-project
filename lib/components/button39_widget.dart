@@ -365,7 +365,7 @@ class _Button39WidgetState extends State<Button39Widget> {
                               }(),
                               Colors.white,
                             ),
-                            fontSize: 16.0,
+                            fontSize: 14.0,
                             letterSpacing: 0.0,
                             lineHeight: 1.2,
                             useGoogleFonts: !FlutterFlowTheme.of(context)

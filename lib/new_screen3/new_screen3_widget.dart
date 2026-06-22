@@ -346,6 +346,7 @@ class _NewScreen3WidgetState extends State<NewScreen3Widget> {
                         idNum: 'ORD-88291',
                         items: 'Replacement Capacitor, Service Valve Set',
                         status: 'DELIVERED',
+                        orderId: null,
                       ),
                     ),
                     wrapWithModel(
@@ -361,6 +362,7 @@ class _NewScreen3WidgetState extends State<NewScreen3Widget> {
                         idNum: 'ORD-90214',
                         items: 'HVAC Contactor (24V Coil)',
                         status: 'IN TRANSIT',
+                        orderId: null,
                       ),
                     ),
                   ].divide(SizedBox(height: 16.0)),

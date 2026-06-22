@@ -156,7 +156,9 @@ class _CancelBookingDialogWidgetState extends State<CancelBookingDialogWidget> {
                     ),
                     Expanded(
                       child: FFButtonWidget(
-                        onPressed: () async {},
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
                         text: 'Yes',
                         options: FFButtonOptions(
                           width: double.infinity,

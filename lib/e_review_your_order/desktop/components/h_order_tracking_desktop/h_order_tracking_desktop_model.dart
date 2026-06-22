@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/components/button40_widget.dart';
 import '/components/order_item_row3_widget.dart';
 import '/components/tracking_step_widget.dart';
@@ -7,6 +8,10 @@ import 'package:flutter/material.dart';
 
 class HOrderTrackingDesktopModel
     extends FlutterFlowModel<HOrderTrackingDesktopWidget> {
+  ///  Local state fields for this component.
+
+  OrdersRecord? orderDCS;
+
   ///  State fields for stateful widgets in this component.
 
   // Model for Button.
@@ -20,8 +25,6 @@ class HOrderTrackingDesktopModel
   // Model for TrackingStep.
   late TrackingStepModel trackingStepModel4;
   // Model for OrderItemRow.
-  late OrderItemRow3Model orderItemRowModel1;
-  // Model for OrderItemRow.
   late OrderItemRow3Model orderItemRowModel2;
 
   @override
@@ -31,7 +34,6 @@ class HOrderTrackingDesktopModel
     trackingStepModel2 = createModel(context, () => TrackingStepModel());
     trackingStepModel3 = createModel(context, () => TrackingStepModel());
     trackingStepModel4 = createModel(context, () => TrackingStepModel());
-    orderItemRowModel1 = createModel(context, () => OrderItemRow3Model());
     orderItemRowModel2 = createModel(context, () => OrderItemRow3Model());
   }
 
@@ -42,7 +44,6 @@ class HOrderTrackingDesktopModel
     trackingStepModel2.dispose();
     trackingStepModel3.dispose();
     trackingStepModel4.dispose();
-    orderItemRowModel1.dispose();
     orderItemRowModel2.dispose();
   }
 }

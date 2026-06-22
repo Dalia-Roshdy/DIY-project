@@ -66,239 +66,229 @@ class _MainComponentProductWidgetState extends State<MainComponentProductWidget>
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      splashColor: Colors.transparent,
-      focusColor: Colors.transparent,
-      hoverColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      onTap: () async {},
-      child: Container(
-        width: widget.width,
-        height: () {
-          if (MediaQuery.sizeOf(context).width < 810.0) {
-            return 235.0;
-          } else if ((MediaQuery.sizeOf(context).width >= 810.0) &&
-              (MediaQuery.sizeOf(context).width < 1280.0)) {
-            return 245.0;
-          } else if ((MediaQuery.sizeOf(context).width >= 1280.0) &&
-              (MediaQuery.sizeOf(context).width < 2560.0)) {
-            return 255.0;
-          } else {
-            return 265.0;
-          }
-        }(),
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).whiteGreyColor,
-          borderRadius: BorderRadius.circular(valueOrDefault<double>(
-            FFAppConstants.radius2XI,
-            0.0,
-          )),
-          border: Border.all(
-            color: FlutterFlowTheme.of(context).bgBorderColor,
-            width: 1.0,
-          ),
+    return Container(
+      width: widget.width,
+      height: () {
+        if (MediaQuery.sizeOf(context).width < 810.0) {
+          return 235.0;
+        } else if ((MediaQuery.sizeOf(context).width >= 810.0) &&
+            (MediaQuery.sizeOf(context).width < 1280.0)) {
+          return 245.0;
+        } else if ((MediaQuery.sizeOf(context).width >= 1280.0) &&
+            (MediaQuery.sizeOf(context).width < 2560.0)) {
+          return 255.0;
+        } else {
+          return 265.0;
+        }
+      }(),
+      decoration: BoxDecoration(
+        color: FlutterFlowTheme.of(context).whiteGreyColor,
+        borderRadius: BorderRadius.circular(valueOrDefault<double>(
+          FFAppConstants.radius2XI,
+          0.0,
+        )),
+        border: Border.all(
+          color: FlutterFlowTheme.of(context).bgBorderColor,
+          width: 1.0,
         ),
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 14.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Stack(
-                    alignment: AlignmentDirectional(1.0, -1.0),
-                    children: [
-                      ClipRRect(
-                        borderRadius:
-                            BorderRadius.circular(valueOrDefault<double>(
-                          FFAppConstants.radius2XI,
-                          0.0,
-                        )),
-                        child: CachedNetworkImage(
-                          fadeInDuration: Duration(milliseconds: 200),
-                          fadeOutDuration: Duration(milliseconds: 200),
-                          imageUrl: '',
+      ),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 14.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: Stack(
+                  alignment: AlignmentDirectional(1.0, -1.0),
+                  children: [
+                    ClipRRect(
+                      borderRadius:
+                          BorderRadius.circular(valueOrDefault<double>(
+                        FFAppConstants.radius2XI,
+                        0.0,
+                      )),
+                      child: CachedNetworkImage(
+                        fadeInDuration: Duration(milliseconds: 200),
+                        fadeOutDuration: Duration(milliseconds: 200),
+                        imageUrl: '',
+                        width: double.infinity,
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                        errorWidget: (context, error, stackTrace) =>
+                            Image.asset(
+                          'assets/images/error_image.png',
                           width: double.infinity,
                           height: double.infinity,
                           fit: BoxFit.cover,
-                          errorWidget: (context, error, stackTrace) =>
-                              Image.asset(
-                            'assets/images/error_image.png',
-                            width: double.infinity,
-                            height: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 10.0, 10.0, 0.0),
-                        child: Container(
-                          width: 28.0,
-                          height: 28.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).tertiary,
-                            shape: BoxShape.circle,
-                          ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Builder(
-                            builder: (context) {
-                              if (false == false) {
-                                return Icon(
-                                  Icons.favorite_border,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 18.0,
-                                );
-                              } else {
-                                return Icon(
-                                  Icons.favorite,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 18.0,
-                                );
-                              }
-                            },
-                          ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 10.0, 0.0),
+                      child: Container(
+                        width: 28.0,
+                        height: 28.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          shape: BoxShape.circle,
+                        ),
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Builder(
+                          builder: (context) {
+                            if (false == false) {
+                              return Icon(
+                                Icons.favorite_border,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 18.0,
+                              );
+                            } else {
+                              return Icon(
+                                Icons.favorite,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 18.0,
+                              );
+                            }
+                          },
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '',
-                    textAlign: TextAlign.start,
-                    maxLines: 1,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.outfit(
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontStyle,
-                          ),
-                          fontSize: 15.0,
-                          letterSpacing: 0.0,
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '',
+                  textAlign: TextAlign.start,
+                  maxLines: 1,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        font: GoogleFonts.outfit(
                           fontWeight: FontWeight.w600,
                           fontStyle:
                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                          lineHeight: 1.33,
                         ),
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: SvgPicture.asset(
-                          'assets/images/start_yellow_gl.svg',
-                          width: 18.0,
-                          height: 18.0,
-                          fit: BoxFit.contain,
-                        ),
+                        fontSize: 15.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w600,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        lineHeight: 1.33,
                       ),
-                      Expanded(
-                        child: Text(
-                          '',
-                          textAlign: TextAlign.start,
-                          maxLines: 1,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                font: GoogleFonts.outfit(
-                                  fontWeight: FontWeight.normal,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 13.0,
-                                letterSpacing: 0.0,
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: SvgPicture.asset(
+                        'assets/images/start_yellow_gl.svg',
+                        width: 18.0,
+                        height: 18.0,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        '',
+                        textAlign: TextAlign.start,
+                        maxLines: 1,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              font: GoogleFonts.outfit(
                                 fontWeight: FontWeight.normal,
                                 fontStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .fontStyle,
-                                lineHeight: 1.46,
                               ),
-                        ),
-                      ),
-                    ].divide(SizedBox(width: 8.0)),
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(),
-                              child: Icon(
-                                Icons.access_time_rounded,
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 16.0,
-                              ),
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 13.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.normal,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                              lineHeight: 1.46,
                             ),
-                            Expanded(
-                              child: Text(
-                                '',
-                                textAlign: TextAlign.start,
-                                maxLines: 1,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.outfit(
-                                        fontWeight: FontWeight.normal,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                      fontSize: 15.0,
-                                      letterSpacing: 0.0,
+                      ),
+                    ),
+                  ].divide(SizedBox(width: 8.0)),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(),
+                            child: Icon(
+                              Icons.access_time_rounded,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 16.0,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              '',
+                              textAlign: TextAlign.start,
+                              maxLines: 1,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.outfit(
                                       fontWeight: FontWeight.normal,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .fontStyle,
-                                      lineHeight: 1.33,
                                     ),
-                              ),
+                                    fontSize: 15.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                    lineHeight: 1.33,
+                                  ),
                             ),
-                          ].divide(SizedBox(width: 8.0)),
-                        ),
+                          ),
+                        ].divide(SizedBox(width: 8.0)),
                       ),
-                      Text(
-                        '',
-                        textAlign: TextAlign.end,
-                        maxLines: 1,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.outfit(
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
-                              ),
-                              color: FlutterFlowTheme.of(context).primary,
-                              fontSize: 17.0,
-                              letterSpacing: 0.0,
+                    ),
+                    Text(
+                      '',
+                      textAlign: TextAlign.end,
+                      maxLines: 1,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.outfit(
                               fontWeight: FontWeight.w600,
                               fontStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .fontStyle,
-                              lineHeight: 1.5,
                             ),
-                      ),
-                    ].divide(SizedBox(width: 8.0)),
-                  ),
-                ].divide(SizedBox(height: 6.0)),
-              ),
-            ].divide(SizedBox(height: 8.0)),
-          ),
+                            color: FlutterFlowTheme.of(context).primary,
+                            fontSize: 17.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w600,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                            lineHeight: 1.5,
+                          ),
+                    ),
+                  ].divide(SizedBox(width: 8.0)),
+                ),
+              ].divide(SizedBox(height: 6.0)),
+            ),
+          ].divide(SizedBox(height: 8.0)),
         ),
       ),
     ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!);

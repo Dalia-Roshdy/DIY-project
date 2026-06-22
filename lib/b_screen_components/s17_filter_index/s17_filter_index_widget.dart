@@ -306,17 +306,17 @@ class _S17FilterIndexWidgetState extends State<S17FilterIndexWidget> {
                                                       onPressed: () async {
                                                         if (_model
                                                                 .selectedPart !=
-                                                            Parts.CONTRACTOR
+                                                            Parts.CONTACTOR
                                                                 .name) {
                                                           _model.selectedPart =
-                                                              Parts.CONTRACTOR
+                                                              Parts.CONTACTOR
                                                                   .name;
                                                           safeSetState(() {});
                                                           await widget
                                                               .onPartSelected
                                                               ?.call(
-                                                            Parts.CONTRACTOR
-                                                                .name,
+                                                            Parts
+                                                                .CONTACTOR.name,
                                                           );
                                                         }
                                                       },
@@ -349,7 +349,7 @@ class _S17FilterIndexWidgetState extends State<S17FilterIndexWidget> {
                                                                 .accent3,
                                                         color: _model
                                                                     .selectedPart ==
-                                                                Parts.CONTRACTOR
+                                                                Parts.CONTACTOR
                                                                     .name
                                                             ? FlutterFlowTheme
                                                                     .of(context)

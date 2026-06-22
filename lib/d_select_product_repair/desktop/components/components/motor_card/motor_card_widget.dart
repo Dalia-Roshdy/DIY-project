@@ -261,7 +261,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                           desc: widget.subtitle,
                                           price: widget.price,
                                           qty: 1,
-                                          isReturnable: true,
+                                          isReturnable: false,
                                         )),
                                       ),
                                   );
@@ -751,7 +751,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                         ),
                       ].divide(SizedBox(height: 8.0)),
                     ),
-                  if (widget.type == Parts.CONTRACTOR.name)
+                  if (widget.type == Parts.CONTACTOR.name)
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,

@@ -72,6 +72,11 @@ class OrdersRecord extends FirestoreRecord {
       _fulfillment ?? FulfillmentDataStruct();
   bool hasFulfillment() => _fulfillment != null;
 
+  // "comment" field.
+  String? _comment;
+  String get comment => _comment ?? '';
+  bool hasComment() => _comment != null;
+
   void _initializeFields() {
     _orderNumber = snapshotData['orderNumber'] as String?;
     _uid = snapshotData['uid'] as DocumentReference?;
@@ -99,6 +104,7 @@ class OrdersRecord extends FirestoreRecord {
     _fulfillment = snapshotData['fulfillment'] is FulfillmentDataStruct
         ? snapshotData['fulfillment']
         : FulfillmentDataStruct.maybeFromMap(snapshotData['fulfillment']);
+    _comment = snapshotData['comment'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -145,6 +151,7 @@ Map<String, dynamic> createOrdersRecordData({
   TotalSnapStruct? totalsSnap,
   PaymentDataStruct? payment,
   FulfillmentDataStruct? fulfillment,
+  String? comment,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -158,6 +165,7 @@ Map<String, dynamic> createOrdersRecordData({
       'totalsSnap': TotalSnapStruct().toMap(),
       'payment': PaymentDataStruct().toMap(),
       'fulfillment': FulfillmentDataStruct().toMap(),
+      'comment': comment,
     }.withoutNulls,
   );
 
@@ -195,7 +203,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         listEquality.equals(e1?.lines, e2?.lines) &&
         e1?.totalsSnap == e2?.totalsSnap &&
         e1?.payment == e2?.payment &&
-        e1?.fulfillment == e2?.fulfillment;
+        e1?.fulfillment == e2?.fulfillment &&
+        e1?.comment == e2?.comment;
   }
 
   @override
@@ -210,7 +219,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e?.lines,
         e?.totalsSnap,
         e?.payment,
-        e?.fulfillment
+        e?.fulfillment,
+        e?.comment
       ]);
 
   @override

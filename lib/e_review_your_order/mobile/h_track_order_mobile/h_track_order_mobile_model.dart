@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/components/button41_widget.dart';
 import '/components/order_item_row4_widget.dart';
 import '/components/tracking_step2_widget.dart';
@@ -6,6 +7,10 @@ import 'h_track_order_mobile_widget.dart' show HTrackOrderMobileWidget;
 import 'package:flutter/material.dart';
 
 class HTrackOrderMobileModel extends FlutterFlowModel<HTrackOrderMobileWidget> {
+  ///  Local state fields for this component.
+
+  OrdersRecord? orderMCS;
+
   ///  State fields for stateful widgets in this component.
 
   // Model for TrackingStep.
@@ -17,8 +22,6 @@ class HTrackOrderMobileModel extends FlutterFlowModel<HTrackOrderMobileWidget> {
   // Model for TrackingStep.
   late TrackingStep2Model trackingStepModel4;
   // Model for OrderItemRow.
-  late OrderItemRow4Model orderItemRowModel1;
-  // Model for OrderItemRow.
   late OrderItemRow4Model orderItemRowModel2;
   // Model for Button.
   late Button41Model buttonModel;
@@ -29,7 +32,6 @@ class HTrackOrderMobileModel extends FlutterFlowModel<HTrackOrderMobileWidget> {
     trackingStepModel2 = createModel(context, () => TrackingStep2Model());
     trackingStepModel3 = createModel(context, () => TrackingStep2Model());
     trackingStepModel4 = createModel(context, () => TrackingStep2Model());
-    orderItemRowModel1 = createModel(context, () => OrderItemRow4Model());
     orderItemRowModel2 = createModel(context, () => OrderItemRow4Model());
     buttonModel = createModel(context, () => Button41Model());
   }
@@ -40,7 +42,6 @@ class HTrackOrderMobileModel extends FlutterFlowModel<HTrackOrderMobileWidget> {
     trackingStepModel2.dispose();
     trackingStepModel3.dispose();
     trackingStepModel4.dispose();
-    orderItemRowModel1.dispose();
     orderItemRowModel2.dispose();
     buttonModel.dispose();
   }

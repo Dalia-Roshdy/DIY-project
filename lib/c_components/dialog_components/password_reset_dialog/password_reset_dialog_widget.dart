@@ -145,7 +145,9 @@ class _PasswordResetDialogWidgetState extends State<PasswordResetDialogWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(45.0, 0.0, 45.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: () async {},
+                    onPressed: () {
+                      print('Button pressed ...');
+                    },
                     text: 'Go to log in',
                     options: FFButtonOptions(
                       width: double.infinity,

@@ -54,6 +54,10 @@ class _ReviewYourOrderDesktopWidgetState
       safeSetState(() {});
     });
 
+    _model.textFieldMessageTextController ??=
+        TextEditingController(text: FFAppState().Cart.comment);
+    _model.textFieldMessageFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -1118,6 +1122,178 @@ class _ReviewYourOrderDesktopWidgetState
                                   ].divide(SizedBox(height: 8.0)),
                                 ),
                               ),
+                            ].divide(SizedBox(height: 16.0)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        borderRadius: BorderRadius.circular(8.0),
+                        shape: BoxShape.rectangle,
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 1.0,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(24.0),
+                        child: Container(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Text(
+                                'Additional Notes',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleMediumFamily,
+                                      fontSize: 28.0,
+                                      letterSpacing: 0.0,
+                                      lineHeight: 1.4,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleMediumIsCustom,
+                                    ),
+                              ),
+                              Container(
+                                height: 200.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  border: Border.all(
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(20.0),
+                                  child: TextFormField(
+                                    controller:
+                                        _model.textFieldMessageTextController,
+                                    focusNode: _model.textFieldMessageFocusNode,
+                                    autofocus: false,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      isDense: true,
+                                      hintText:
+                                          'Write Order Notes or Special Instructions',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelSmallFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            fontSize: 24.0,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelSmallIsCustom,
+                                          ),
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelSmallFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .labelSmallIsCustom,
+                                        ),
+                                    maxLines: null,
+                                    cursorColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    validator: _model
+                                        .textFieldMessageTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                'Please save it before continue. you can customize tools if you needed.',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyLargeFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                      lineHeight: 1.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyLargeIsCustom,
+                                    ),
+                              ),
+                              Container(
+                                height: 8.0,
+                              ),
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                              ))
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (_model.textFieldMessageTextController
+                                                  .text !=
+                                              '') {
+                                        FFAppState().updateCartStruct(
+                                          (e) => e
+                                            ..comment = _model
+                                                .textFieldMessageTextController
+                                                .text,
+                                        );
+                                        safeSetState(() {});
+                                      }
+                                    },
+                                    text: 'Save',
+                                    options: FFButtonOptions(
+                                      width: 150.0,
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            fontSize: 20.0,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
+                                          ),
+                                      elevation: 0.0,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                  ),
+                                ),
                             ].divide(SizedBox(height: 16.0)),
                           ),
                         ),

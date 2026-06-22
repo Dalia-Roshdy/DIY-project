@@ -1,14 +1,22 @@
+import '/backend/backend.dart';
 import '/components/button41_widget.dart';
 import '/components/order_item_row4_widget.dart';
 import '/components/tracking_step2_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'h_track_order_mobile_model.dart';
 export 'h_track_order_mobile_model.dart';
 
 class HTrackOrderMobileWidget extends StatefulWidget {
-  const HTrackOrderMobileWidget({super.key});
+  const HTrackOrderMobileWidget({
+    super.key,
+    required this.orderPram,
+  });
+
+  final OrdersRecord? orderPram;
 
   @override
   State<HTrackOrderMobileWidget> createState() =>
@@ -28,6 +36,12 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HTrackOrderMobileModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.orderMCS = widget.orderPram;
+      safeSetState(() {});
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -66,136 +80,172 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                           !FlutterFlowTheme.of(context).displaySmallIsCustom,
                     ),
               ),
-              Text(
-                'Placed on October 24, 2023 • Expected Delivery: Oct 27, 2023',
-                style: FlutterFlowTheme.of(context).bodySmall.override(
-                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                      letterSpacing: 0.0,
-                      lineHeight: 1.5,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).bodySmallIsCustom,
+              RichText(
+                textScaler: MediaQuery.of(context).textScaler,
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Placed on ',
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodySmallFamily,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            letterSpacing: 0.0,
+                            lineHeight: 1.5,
+                            useGoogleFonts:
+                                !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                          ),
                     ),
+                    TextSpan(
+                      text:
+                          dateTimeFormat("yMMMd", _model.orderMCS!.createdAt!),
+                      style: TextStyle(),
+                    ),
+                    TextSpan(
+                      text: ' • ',
+                      style: TextStyle(),
+                    ),
+                    TextSpan(
+                      text: 'Last Updated on ',
+                      style: TextStyle(),
+                    ),
+                    TextSpan(
+                      text:
+                          dateTimeFormat("yMMMd", _model.orderMCS!.updatedAt!),
+                      style: TextStyle(),
+                    )
+                  ],
+                  style: FlutterFlowTheme.of(context).bodySmall.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodySmallFamily,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        letterSpacing: 0.0,
+                        lineHeight: 1.5,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                      ),
+                ),
               ),
             ].divide(SizedBox(height: 4.0)),
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
-              shape: BoxShape.rectangle,
-              border: Border.all(
-                color: FlutterFlowTheme.of(context).alternate,
-                width: 1.0,
+          if (false)
+            Container(
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                shape: BoxShape.rectangle,
+                border: Border.all(
+                  color: FlutterFlowTheme.of(context).alternate,
+                  width: 1.0,
+                ),
               ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(24.0),
-              child: Container(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'SHIPPING PROGRESS',
-                      style: FlutterFlowTheme.of(context).labelLarge.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).labelLargeFamily,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            letterSpacing: 0.0,
-                            lineHeight: 1.2,
-                            useGoogleFonts: !FlutterFlowTheme.of(context)
-                                .labelLargeIsCustom,
-                          ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        wrapWithModel(
-                          model: _model.trackingStepModel1,
-                          updateCallback: () => safeSetState(() {}),
-                          child: TrackingStep2Widget(
-                            icon: Icon(
-                              Icons.check_circle_rounded,
-                              color: FlutterFlowTheme.of(context).secondary,
-                              size: 20.0,
+              child: Padding(
+                padding: EdgeInsets.all(24.0),
+                child: Container(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'SHIPPING PROGRESS',
+                        style: FlutterFlowTheme.of(context).labelLarge.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).labelLargeFamily,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
+                              lineHeight: 1.2,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .labelLargeIsCustom,
                             ),
-                            status: 'COMPLETED',
-                            subtitle: 'Oct 24, 10:30 AM',
-                            title: 'Order Submitted',
-                            desc:
-                                'order_verified_and_processed_for_fulfillment',
-                            last: false,
-                            active: true,
-                            completed: true,
-                          ),
-                        ),
-                        wrapWithModel(
-                          model: _model.trackingStepModel2,
-                          updateCallback: () => safeSetState(() {}),
-                          child: TrackingStep2Widget(
-                            icon: Icon(
-                              Icons.local_shipping_rounded,
-                              color: FlutterFlowTheme.of(context).secondary,
-                              size: 20.0,
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          wrapWithModel(
+                            model: _model.trackingStepModel1,
+                            updateCallback: () => safeSetState(() {}),
+                            child: TrackingStep2Widget(
+                              icon: Icon(
+                                Icons.check_circle_rounded,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 20.0,
+                              ),
+                              status: 'COMPLETED',
+                              subtitle: 'Oct 24, 10:30 AM',
+                              title: 'Order Submitted',
+                              desc:
+                                  'order_verified_and_processed_for_fulfillment',
+                              last: false,
+                              active: true,
+                              completed: true,
                             ),
-                            status: 'IN TRANSIT',
-                            subtitle: 'Oct 25, 2:00 PM',
-                            title: 'Shipped',
-                            desc:
-                                'order_verified_and_processed_for_fulfillment',
-                            last: false,
-                            active: true,
-                            completed: true,
                           ),
-                        ),
-                        wrapWithModel(
-                          model: _model.trackingStepModel3,
-                          updateCallback: () => safeSetState(() {}),
-                          child: TrackingStep2Widget(
-                            icon: Icon(
-                              Icons.home_rounded,
-                              color: FlutterFlowTheme.of(context).secondary,
-                              size: 20.0,
+                          wrapWithModel(
+                            model: _model.trackingStepModel2,
+                            updateCallback: () => safeSetState(() {}),
+                            child: TrackingStep2Widget(
+                              icon: Icon(
+                                Icons.local_shipping_rounded,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 20.0,
+                              ),
+                              status: 'IN TRANSIT',
+                              subtitle: 'Oct 25, 2:00 PM',
+                              title: 'Shipped',
+                              desc:
+                                  'order_verified_and_processed_for_fulfillment',
+                              last: false,
+                              active: true,
+                              completed: true,
                             ),
-                            status: 'PENDING',
-                            subtitle: 'Estimated Oct 27, 2023',
-                            title: 'Delivered',
-                            desc:
-                                'order_verified_and_processed_for_fulfillment',
-                            last: false,
-                            active: false,
-                            completed: true,
                           ),
-                        ),
-                        wrapWithModel(
-                          model: _model.trackingStepModel4,
-                          updateCallback: () => safeSetState(() {}),
-                          child: TrackingStep2Widget(
-                            icon: Icon(
-                              Icons.history_rounded,
-                              color: FlutterFlowTheme.of(context).secondary,
-                              size: 20.0,
+                          wrapWithModel(
+                            model: _model.trackingStepModel3,
+                            updateCallback: () => safeSetState(() {}),
+                            child: TrackingStep2Widget(
+                              icon: Icon(
+                                Icons.home_rounded,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 20.0,
+                              ),
+                              status: 'PENDING',
+                              subtitle: 'Estimated Oct 27, 2023',
+                              title: 'Delivered',
+                              desc:
+                                  'order_verified_and_processed_for_fulfillment',
+                              last: false,
+                              active: false,
+                              completed: true,
                             ),
-                            status: '',
-                            subtitle: 'Becomes available after delivery',
-                            title: 'Return Window',
-                            desc:
-                                'order_verified_and_processed_for_fulfillment',
-                            last: true,
-                            active: false,
-                            completed: true,
                           ),
-                        ),
-                      ],
-                    ),
-                  ].divide(SizedBox(height: 16.0)),
+                          wrapWithModel(
+                            model: _model.trackingStepModel4,
+                            updateCallback: () => safeSetState(() {}),
+                            child: TrackingStep2Widget(
+                              icon: Icon(
+                                Icons.history_rounded,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 20.0,
+                              ),
+                              status: '',
+                              subtitle: 'Becomes available after delivery',
+                              title: 'Return Window',
+                              desc:
+                                  'order_verified_and_processed_for_fulfillment',
+                              last: true,
+                              active: false,
+                              completed: true,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ].divide(SizedBox(height: 16.0)),
+                  ),
                 ),
               ),
             ),
-          ),
           Container(
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -210,20 +260,46 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 16.0, 24.0, 16.0),
-                        child: Container(
-                          child: Text(
-                            'ITEMS IN THIS ORDER (2)',
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          24.0, 16.0, 24.0, 16.0),
+                      child: Container(
+                        child: RichText(
+                          textScaler: MediaQuery.of(context).textScaler,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'ITEMS IN THIS ORDER (',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelLargeFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                      lineHeight: 1.2,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelLargeIsCustom,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: valueOrDefault<String>(
+                                  _model.orderMCS?.lines.length.toString(),
+                                  '0',
+                                ),
+                                style: TextStyle(),
+                              ),
+                              TextSpan(
+                                text: ')',
+                                style: TextStyle(),
+                              )
+                            ],
                             style: FlutterFlowTheme.of(context)
                                 .labelLarge
                                 .override(
@@ -239,41 +315,52 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                           ),
                         ),
                       ),
-                      Container(
-                        width: 261.9,
-                        height: 1.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          shape: BoxShape.rectangle,
-                        ),
+                    ),
+                    Container(
+                      width: 261.9,
+                      height: 1.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).alternate,
+                        shape: BoxShape.rectangle,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                wrapWithModel(
-                  model: _model.orderItemRowModel1,
-                  updateCallback: () => safeSetState(() {}),
-                  child: OrderItemRow4Widget(
-                    guide: true,
-                    imgDesc:
-                        'https://dimg.dreamflow.cloud/v1/image/capacitor%20part',
-                    name: 'Universal Dual Run Capacitor',
-                    price: '\$45.00',
-                    sku: 'SKU: AC-CAP-45-5',
-                  ),
+                Builder(
+                  builder: (context) {
+                    final items = _model.orderMCS?.lines.toList() ?? [];
+
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: List.generate(items.length, (itemsIndex) {
+                        final itemsItem = items[itemsIndex];
+                        return OrderItemRow4Widget(
+                          key: Key('Key5sn_${itemsIndex}_of_${items.length}'),
+                          guide: false,
+                          imgDesc:
+                              'https://dimg.dreamflow.cloud/v1/image/capacitor%20part',
+                          name: itemsItem.title,
+                          price: itemsItem.unitPrice.toString(),
+                          sku:
+                              '${itemsItem.lineId} | ${itemsItem.returnPolicySnapshot.returnable ? 'Returnable | ' : ''}${itemsItem.specType} | ${itemsItem.qty.toString()}',
+                        );
+                      }),
+                    );
+                  },
                 ),
-                wrapWithModel(
-                  model: _model.orderItemRowModel2,
-                  updateCallback: () => safeSetState(() {}),
-                  child: OrderItemRow4Widget(
-                    guide: false,
-                    imgDesc:
-                        'https://dimg.dreamflow.cloud/v1/image/contactor%20part',
-                    name: 'Heavy Duty Magnetic Contactor',
-                    price: '\$35.50',
-                    sku: 'SKU: AC-CON-30-24',
+                if (false)
+                  wrapWithModel(
+                    model: _model.orderItemRowModel2,
+                    updateCallback: () => safeSetState(() {}),
+                    child: OrderItemRow4Widget(
+                      guide: false,
+                      imgDesc:
+                          'https://dimg.dreamflow.cloud/v1/image/contactor%20part',
+                      name: 'Heavy Duty Magnetic Contactor',
+                      price: '\$35.50',
+                      sku: 'SKU: AC-CON-30-24',
+                    ),
                   ),
-                ),
               ],
             ),
           ),
@@ -292,7 +379,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.max,
@@ -320,77 +407,23 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                         ),
                       ].divide(SizedBox(width: 8.0)),
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Alex Johnson',
-                            style: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .titleSmallFamily,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 14.0,
-                                  letterSpacing: 0.0,
-                                  lineHeight: 1.2,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .titleSmallIsCustom,
-                                ),
-                          ),
-                          Text(
-                            '7832 Cloud Runner Lane',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  letterSpacing: 0.0,
-                                  lineHeight: 1.5,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .bodyMediumIsCustom,
-                                ),
-                          ),
-                          Text(
-                            'Priority Valley, TX 73001',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  letterSpacing: 0.0,
-                                  lineHeight: 1.5,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .bodyMediumIsCustom,
-                                ),
-                          ),
-                          Text(
-                            'United States',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  letterSpacing: 0.0,
-                                  lineHeight: 1.5,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .bodyMediumIsCustom,
-                                ),
-                          ),
-                        ].divide(SizedBox(height: 4.0)),
+                    Text(
+                      valueOrDefault<String>(
+                        _model.orderMCS?.customerSnap.shippingAddress,
+                        '7832 Cloud Runner Lane',
                       ),
+                      textAlign: TextAlign.start,
+                      maxLines: 5,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            letterSpacing: 0.0,
+                            lineHeight: 1.5,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
+                          ),
+                      overflow: TextOverflow.visible,
                     ),
                   ],
                 ),
@@ -454,7 +487,10 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                                   ),
                             ),
                             Text(
-                              '\$80.50',
+                              valueOrDefault<String>(
+                                '\$${_model.orderMCS?.totalsSnap.subtotal.toString()}',
+                                '\$87.14',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -493,7 +529,10 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                                   ),
                             ),
                             Text(
-                              'FREE',
+                              valueOrDefault<String>(
+                                '\$${_model.orderMCS?.totalsSnap.shipping.toString()}',
+                                '\$87.14',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -532,7 +571,10 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                                   ),
                             ),
                             Text(
-                              '\$6.64',
+                              valueOrDefault<String>(
+                                '\$${_model.orderMCS?.totalsSnap.tax.toString()}',
+                                '\$87.14',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -579,7 +621,10 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                               ),
                         ),
                         Text(
-                          '\$87.14',
+                          valueOrDefault<String>(
+                            '\$${_model.orderMCS?.totalsSnap.total.toString()}',
+                            '\$87.14',
+                          ),
                           style: FlutterFlowTheme.of(context)
                               .titleLarge
                               .override(
@@ -605,20 +650,47 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                           color: FlutterFlowTheme.of(context).secondaryText,
                           size: 16.0,
                         ),
-                        Text(
-                          'Paid via Visa ending in 4242',
-                          style: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodySmallFamily,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.5,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodySmallIsCustom,
+                        RichText(
+                          textScaler: MediaQuery.of(context).textScaler,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Paid using PIN ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodySmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      letterSpacing: 0.0,
+                                      lineHeight: 1.5,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodySmallIsCustom,
+                                    ),
                               ),
+                              TextSpan(
+                                text: valueOrDefault<String>(
+                                  _model.orderMCS?.customerSnap.pin,
+                                  '0000',
+                                ),
+                                style: TextStyle(),
+                              )
+                            ],
+                            style: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodySmallFamily,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  letterSpacing: 0.0,
+                                  lineHeight: 1.5,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
+                                ),
+                          ),
                         ),
                       ].divide(SizedBox(width: 8.0)),
                     ),
@@ -668,23 +740,32 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                                 !FlutterFlowTheme.of(context).bodySmallIsCustom,
                           ),
                     ),
-                    wrapWithModel(
-                      model: _model.buttonModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: Button41Widget(
-                        content: 'Browse Video Guides',
-                        icon: Icon(
-                          Icons.play_circle_outline_rounded,
-                          color: FlutterFlowTheme.of(context).secondary,
-                          size: 16.0,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(CLibraryVideoFlowWidget.routeName);
+                      },
+                      child: wrapWithModel(
+                        model: _model.buttonModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: Button41Widget(
+                          content: 'Browse Video Guides',
+                          icon: Icon(
+                            Icons.play_circle_outline_rounded,
+                            color: FlutterFlowTheme.of(context).secondary,
+                            size: 16.0,
+                          ),
+                          iconPresent: true,
+                          iconEndPresent: false,
+                          variant: 'ghost',
+                          size: 'small',
+                          fullWidth: false,
+                          loading: false,
+                          disabled: false,
                         ),
-                        iconPresent: true,
-                        iconEndPresent: false,
-                        variant: 'ghost',
-                        size: 'small',
-                        fullWidth: false,
-                        loading: false,
-                        disabled: false,
                       ),
                     ),
                   ].divide(SizedBox(height: 16.0)),

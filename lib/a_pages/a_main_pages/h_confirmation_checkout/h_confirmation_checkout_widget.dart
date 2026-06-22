@@ -80,6 +80,7 @@ class _HConfirmationCheckoutWidgetState
             status: OrderStatus.paid,
             updatedAt: getCurrentTimestamp,
           ));
+          FFAppState().Cart = CartStruct();
           _model.orderUpdatedAct =
               await OrdersRecord.getDocumentOnce(_model.orderAct!.reference);
           _model.order = _model.orderUpdatedAct;

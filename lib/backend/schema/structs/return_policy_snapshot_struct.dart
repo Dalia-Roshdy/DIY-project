@@ -19,7 +19,7 @@ class ReturnPolicySnapshotStruct extends FFFirebaseStruct {
 
   // "returnable" field.
   bool? _returnable;
-  bool get returnable => _returnable ?? false;
+  bool get returnable => _returnable ?? true;
   set returnable(bool? val) => _returnable = val;
 
   bool hasReturnable() => _returnable != null;

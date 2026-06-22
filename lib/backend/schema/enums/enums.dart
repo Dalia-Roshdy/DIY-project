@@ -21,7 +21,7 @@ enum PaymentStatus {
 
 enum Parts {
   MOTOR,
-  CONTRACTOR,
+  CONTACTOR,
   CAPACITOR,
 }
 
@@ -42,6 +42,7 @@ enum TargetPage {
   needAssistant,
   contactUs,
   otherVideo,
+  google,
 }
 
 enum MotorRotationDirection {

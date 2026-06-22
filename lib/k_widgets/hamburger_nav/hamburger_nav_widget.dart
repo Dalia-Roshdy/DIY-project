@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -250,57 +249,32 @@ class _HamburgerNavWidgetState extends State<HamburgerNavWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      if (!loggedIn)
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.goNamed(L01SignInPageWidget.routeName);
-                          },
-                          child: Text(
-                            'LOG IN',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineMediumFamily,
-                                  letterSpacing: 0.0,
-                                  lineHeight: 1.1,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .headlineMediumIsCustom,
-                                ),
-                          ),
-                        ),
-                      if (loggedIn)
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            GoRouter.of(context).prepareAuthEvent();
-                            await authManager.signOut();
-                            GoRouter.of(context).clearRedirectLocation();
-
-                            context.goNamedAuth(
-                                AHomePageWidget.routeName, context.mounted);
-                          },
-                          child: Text(
-                            'LOG OUT',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineMediumFamily,
-                                  letterSpacing: 0.0,
-                                  lineHeight: 1.1,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .headlineMediumIsCustom,
-                                ),
-                          ),
-                        ),
+                      Text(
+                        'LOG IN',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: FlutterFlowTheme.of(context)
+                                  .headlineMediumFamily,
+                              letterSpacing: 0.0,
+                              lineHeight: 1.1,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .headlineMediumIsCustom,
+                            ),
+                      ),
+                      Text(
+                        'LOG OUT',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: FlutterFlowTheme.of(context)
+                                  .headlineMediumFamily,
+                              letterSpacing: 0.0,
+                              lineHeight: 1.1,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .headlineMediumIsCustom,
+                            ),
+                      ),
                     ],
                   ),
                 ),

@@ -26,6 +26,11 @@ class EReviewYourOrderMobileModel
   List<ItemsRecord> get checkboxCheckedItems =>
       checkboxValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
 
+  // State field(s) for TextField-Message widget.
+  FocusNode? textFieldMessageFocusNode;
+  TextEditingController? textFieldMessageTextController;
+  String? Function(BuildContext, String?)?
+      textFieldMessageTextControllerValidator;
   // Model for SummaryRow.
   late SummaryRowModel summaryRowModel1;
   // Model for SummaryRow.
@@ -45,6 +50,9 @@ class EReviewYourOrderMobileModel
 
   @override
   void dispose() {
+    textFieldMessageFocusNode?.dispose();
+    textFieldMessageTextController?.dispose();
+
     summaryRowModel1.dispose();
     summaryRowModel2.dispose();
     summaryRowModel3.dispose();

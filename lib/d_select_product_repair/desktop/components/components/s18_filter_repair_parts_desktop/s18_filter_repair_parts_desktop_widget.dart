@@ -61,31 +61,11 @@ class _S18FilterRepairPartsDesktopWidgetState
     _model.textFieldVoltTextController ??= TextEditingController(text: '230');
     _model.textFieldVoltFocusNode ??= FocusNode();
 
-    _model.textFieldHpTextController ??= TextEditingController();
-    _model.textFieldHpFocusNode ??= FocusNode();
-
-    _model.textFieldRpmTextController ??= TextEditingController();
-    _model.textFieldRpmFocusNode ??= FocusNode();
-
-    _model.textFieldRvoltTextController ??= TextEditingController();
+    _model.textFieldRvoltTextController ??= TextEditingController(text: '230');
     _model.textFieldRvoltFocusNode ??= FocusNode();
 
-    _model.textFieldApmTextController ??= TextEditingController();
-    _model.textFieldApmFocusNode ??= FocusNode();
-
-    _model.textFieldCoilVTextController ??= TextEditingController();
-    _model.textFieldCoilVFocusNode ??= FocusNode();
-
-    _model.textFieldNopTextController ??= TextEditingController();
-    _model.textFieldNopFocusNode ??= FocusNode();
-
-    _model.textFieldMFD1TextController ??= TextEditingController();
-    _model.textFieldMFD1FocusNode ??= FocusNode();
-
-    _model.textFieldMFD2TextController ??= TextEditingController();
-    _model.textFieldMFD2FocusNode ??= FocusNode();
-
-    _model.textFieldCapVoltTextController ??= TextEditingController();
+    _model.textFieldCapVoltTextController ??=
+        TextEditingController(text: '230');
     _model.textFieldCapVoltFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -177,18 +157,11 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                 .textFieldVoltTextController
                                                 .text)
                                             : null,
-                                        _model.textFieldHpTextController
-                                                        .text !=
-                                                    ''
-                                            ? double.tryParse(_model
-                                                .textFieldHpTextController.text)
+                                        _model.dropDownHpValue != null
+                                            ? _model.dropDownHpValue
                                             : null,
-                                        _model.textFieldRpmTextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldRpmTextController
-                                                .text)
+                                        _model.dropDownRpmValue != null
+                                            ? _model.dropDownRpmValue
                                             : null,
                                         _model.dropDownRotationValue != null &&
                                                 _model.dropDownRotationValue !=
@@ -196,6 +169,37 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             ? _model.dropDownRotationValue
                                             : null,
                                       );
+                                      safeSetState(() {
+                                        _model.dropDownHpValueController
+                                            ?.reset();
+                                        _model.dropDownHpValue = null;
+                                        _model.dropDownRpmValueController
+                                            ?.reset();
+                                        _model.dropDownRpmValue = null;
+                                        _model.dropDownRotationValueController
+                                            ?.reset();
+                                        _model.dropDownRotationValue = null;
+                                        _model.dropDownAmpValueController
+                                            ?.reset();
+                                        _model.dropDownAmpValue = null;
+                                        _model.dropDownCvoltValueController
+                                            ?.reset();
+                                        _model.dropDownCvoltValue = null;
+                                        _model.dropDownNopValueController
+                                            ?.reset();
+                                        _model.dropDownNopValue = null;
+                                        _model.dropDownMFD1ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD1Value = null;
+                                        _model.dropDownMFD2ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD2Value = null;
+                                        _model.dropDownTypeValueController
+                                            ?.reset();
+                                        _model.dropDownTypeValue = null;
+                                        _model.dDShapValueController?.reset();
+                                        _model.dDShapValue = null;
+                                      });
                                     }
                                   },
                                   text:
@@ -252,8 +256,8 @@ class _S18FilterRepairPartsDesktopWidgetState
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     if (_model.selectedPart !=
-                                        Parts.CONTRACTOR) {
-                                      _model.selectedPart = Parts.CONTRACTOR;
+                                        Parts.CONTACTOR) {
+                                      _model.selectedPart = Parts.CONTACTOR;
                                       safeSetState(() {});
                                       await widget.onContSelected?.call(
                                         _model.textFieldRvoltTextController
@@ -263,29 +267,50 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                 .textFieldRvoltTextController
                                                 .text)
                                             : null,
-                                        _model.textFieldApmTextController
-                                                        .text !=
-                                                    ''
-                                            ? double.tryParse(_model
-                                                .textFieldApmTextController
-                                                .text)
+                                        _model.dropDownAmpValue != null
+                                            ? _model.dropDownAmpValue
+                                                ?.toDouble()
                                             : null,
-                                        _model.textFieldCoilVTextController
-                                                        .text !=
-                                                    ''
-                                            ? double.tryParse(_model
-                                                .textFieldCoilVTextController
-                                                .text)
+                                        _model.dropDownCvoltValue != null
+                                            ? _model.dropDownCvoltValue
+                                                ?.toDouble()
                                             : null,
-                                        _model.textFieldNopTextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldNopTextController
-                                                .text)
+                                        _model.dropDownNopValue != null
+                                            ? _model.dropDownNopValue
                                             : null,
-                                        Parts.CONTRACTOR.name,
+                                        Parts.CONTACTOR.name,
                                       );
+                                      safeSetState(() {
+                                        _model.dropDownHpValueController
+                                            ?.reset();
+                                        _model.dropDownHpValue = null;
+                                        _model.dropDownRpmValueController
+                                            ?.reset();
+                                        _model.dropDownRpmValue = null;
+                                        _model.dropDownRotationValueController
+                                            ?.reset();
+                                        _model.dropDownRotationValue = null;
+                                        _model.dropDownAmpValueController
+                                            ?.reset();
+                                        _model.dropDownAmpValue = null;
+                                        _model.dropDownCvoltValueController
+                                            ?.reset();
+                                        _model.dropDownCvoltValue = null;
+                                        _model.dropDownNopValueController
+                                            ?.reset();
+                                        _model.dropDownNopValue = null;
+                                        _model.dropDownMFD1ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD1Value = null;
+                                        _model.dropDownMFD2ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD2Value = null;
+                                        _model.dropDownTypeValueController
+                                            ?.reset();
+                                        _model.dropDownTypeValue = null;
+                                        _model.dDShapValueController?.reset();
+                                        _model.dDShapValue = null;
+                                      });
                                     }
                                   },
                                   text: 'CONTACTOR                  ',
@@ -303,7 +328,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     iconColor:
                                         FlutterFlowTheme.of(context).accent3,
                                     color: _model.selectedPart ==
-                                            Parts.CONTRACTOR
+                                            Parts.CONTACTOR
                                         ? FlutterFlowTheme.of(context).grey30
                                         : FlutterFlowTheme.of(context).grey20,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -346,20 +371,12 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         Parts.CAPACITOR) {
                                       _model.selectedPart = Parts.CAPACITOR;
                                       await widget.onCapatSelected?.call(
-                                        _model.selectedPart?.name,
-                                        _model.textFieldMFD1TextController
-                                                        .text !=
-                                                    ''
-                                            ? double.tryParse(_model
-                                                .textFieldMFD1TextController
-                                                .text)
+                                        Parts.CAPACITOR.name,
+                                        _model.dropDownMFD1Value != null
+                                            ? _model.dropDownMFD1Value
                                             : null,
-                                        _model.textFieldMFD2TextController
-                                                        .text !=
-                                                    ''
-                                            ? double.tryParse(_model
-                                                .textFieldMFD2TextController
-                                                .text)
+                                        _model.dropDownMFD2Value != null
+                                            ? _model.dropDownMFD2Value
                                             : null,
                                         _model.textFieldCapVoltTextController
                                                         .text !=
@@ -377,6 +394,37 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             ? _model.dDShapValue
                                             : null,
                                       );
+                                      safeSetState(() {
+                                        _model.dropDownRpmValueController
+                                            ?.reset();
+                                        _model.dropDownRpmValue = null;
+                                        _model.dropDownHpValueController
+                                            ?.reset();
+                                        _model.dropDownHpValue = null;
+                                        _model.dropDownRotationValueController
+                                            ?.reset();
+                                        _model.dropDownRotationValue = null;
+                                        _model.dropDownAmpValueController
+                                            ?.reset();
+                                        _model.dropDownAmpValue = null;
+                                        _model.dropDownCvoltValueController
+                                            ?.reset();
+                                        _model.dropDownCvoltValue = null;
+                                        _model.dropDownNopValueController
+                                            ?.reset();
+                                        _model.dropDownNopValue = null;
+                                        _model.dropDownMFD1ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD1Value = null;
+                                        _model.dropDownMFD2ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD2Value = null;
+                                        _model.dropDownTypeValueController
+                                            ?.reset();
+                                        _model.dropDownTypeValue = null;
+                                        _model.dDShapValueController?.reset();
+                                        _model.dDShapValue = null;
+                                      });
                                     }
                                   },
                                   text: 'CAPACITOR                          ',
@@ -711,105 +759,27 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             ),
                                             child: Padding(
                                               padding: EdgeInsets.all(4.0),
-                                              child: TextFormField(
+                                              child:
+                                                  FlutterFlowDropDown<double>(
                                                 controller: _model
-                                                    .textFieldHpTextController,
-                                                focusNode:
-                                                    _model.textFieldHpFocusNode,
-                                                autofocus: false,
-                                                enabled: true,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  isDense: true,
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                !FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumIsCustom,
-                                                          ),
-                                                  hintText: 'e.g. 0.25',
-                                                  hintStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                !FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumIsCustom,
-                                                          ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
+                                                        .dropDownHpValueController ??=
+                                                    FormFieldController<double>(
+                                                  _model.dropDownHpValue ??=
+                                                      null,
                                                 ),
-                                                style:
+                                                options: List<double>.from(
+                                                    [0.25, 0.5, 0.75]),
+                                                optionLabels: [
+                                                  '1/4',
+                                                  '1/2',
+                                                  '3/4'
+                                                ],
+                                                onChanged: (val) =>
+                                                    safeSetState(() => _model
+                                                        .dropDownHpValue = val),
+                                                width: 200.0,
+                                                height: 40.0,
+                                                textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
@@ -824,16 +794,29 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                                       .of(context)
                                                                   .bodyMediumIsCustom,
                                                         ),
-                                                keyboardType:
-                                                    TextInputType.number,
-                                                cursorColor:
+                                                hintText: 'Select...',
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 14.0,
+                                                ),
+                                                fillColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                enableInteractiveSelection:
-                                                    true,
-                                                validator: _model
-                                                    .textFieldHpTextControllerValidator
-                                                    .asValidator(context),
+                                                        .secondaryBackground,
+                                                elevation: 2.0,
+                                                borderColor: Colors.transparent,
+                                                borderWidth: 0.0,
+                                                borderRadius: 8.0,
+                                                margin: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 12.0, 0.0),
+                                                hidesUnderline: true,
+                                                isOverButton: false,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
                                               ),
                                             ),
                                           ),
@@ -895,105 +878,23 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             ),
                                             child: Padding(
                                               padding: EdgeInsets.all(4.0),
-                                              child: TextFormField(
+                                              child: FlutterFlowDropDown<int>(
                                                 controller: _model
-                                                    .textFieldRpmTextController,
-                                                focusNode: _model
-                                                    .textFieldRpmFocusNode,
-                                                autofocus: false,
-                                                enabled: true,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  isDense: true,
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                !FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumIsCustom,
-                                                          ),
-                                                  hintText: 'e.g. 1075',
-                                                  hintStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                !FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumIsCustom,
-                                                          ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
+                                                        .dropDownRpmValueController ??=
+                                                    FormFieldController<int>(
+                                                  _model.dropDownRpmValue ??=
+                                                      null,
                                                 ),
-                                                style:
+                                                options:
+                                                    List<int>.from([825, 1075]),
+                                                optionLabels: ['825', '1075'],
+                                                onChanged: (val) =>
+                                                    safeSetState(() => _model
+                                                            .dropDownRpmValue =
+                                                        val),
+                                                width: 200.0,
+                                                height: 40.0,
+                                                textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
@@ -1008,16 +909,29 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                                       .of(context)
                                                                   .bodyMediumIsCustom,
                                                         ),
-                                                keyboardType:
-                                                    TextInputType.number,
-                                                cursorColor:
+                                                hintText: 'Select...',
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 14.0,
+                                                ),
+                                                fillColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                enableInteractiveSelection:
-                                                    true,
-                                                validator: _model
-                                                    .textFieldRpmTextControllerValidator
-                                                    .asValidator(context),
+                                                        .secondaryBackground,
+                                                elevation: 2.0,
+                                                borderColor: Colors.transparent,
+                                                borderWidth: 0.0,
+                                                borderRadius: 8.0,
+                                                margin: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 12.0, 0.0),
+                                                hidesUnderline: true,
+                                                isOverButton: false,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
                                               ),
                                             ),
                                           ),
@@ -1147,17 +1061,11 @@ class _S18FilterRepairPartsDesktopWidgetState
                                           ? int.tryParse(_model
                                               .textFieldVoltTextController.text)
                                           : null,
-                                      _model.textFieldHpTextController
-                                                      .text !=
-                                                  ''
-                                          ? double.tryParse(_model
-                                              .textFieldHpTextController.text)
+                                      _model.dropDownHpValue != null
+                                          ? _model.dropDownHpValue
                                           : null,
-                                      _model.textFieldRpmTextController
-                                                      .text !=
-                                                  ''
-                                          ? int.tryParse(_model
-                                              .textFieldRpmTextController.text)
+                                      _model.dropDownRpmValue != null
+                                          ? _model.dropDownRpmValue
                                           : null,
                                       _model.dropDownRotationValue != null &&
                                               _model.dropDownRotationValue != ''
@@ -1187,7 +1095,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                       ),
                     ),
                   ),
-                if (_model.selectedPart == Parts.CONTRACTOR)
+                if (_model.selectedPart == Parts.CONTACTOR)
                   Container(
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).grey10,
@@ -1275,6 +1183,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                               _model.textFieldRvoltFocusNode,
                                           autofocus: false,
                                           enabled: true,
+                                          readOnly: true,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -1418,94 +1327,20 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.all(4.0),
-                                        child: TextFormField(
-                                          controller:
-                                              _model.textFieldApmTextController,
-                                          focusNode:
-                                              _model.textFieldApmFocusNode,
-                                          autofocus: false,
-                                          enabled: true,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
-                                            hintText: 'e.g. 35',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
+                                        child: FlutterFlowDropDown<int>(
+                                          controller: _model
+                                                  .dropDownAmpValueController ??=
+                                              FormFieldController<int>(
+                                            _model.dropDownAmpValue ??= null,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
+                                          options: List<int>.from([30, 40]),
+                                          optionLabels: ['30', '40'],
+                                          onChanged: (val) => safeSetState(() =>
+                                              _model.dropDownAmpValue = val),
+                                          width: 200.0,
+                                          height: 40.0,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily:
@@ -1518,14 +1353,27 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                             context)
                                                         .bodyMediumIsCustom,
                                               ),
-                                          keyboardType: TextInputType.number,
-                                          cursorColor:
+                                          hintText: 'Select...',
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 14.0,
+                                          ),
+                                          fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          enableInteractiveSelection: true,
-                                          validator: _model
-                                              .textFieldApmTextControllerValidator
-                                              .asValidator(context),
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor: Colors.transparent,
+                                          borderWidth: 0.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 12.0, 0.0),
+                                          hidesUnderline: true,
+                                          isOverButton: false,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
                                         ),
                                       ),
                                     ),
@@ -1581,114 +1429,57 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         ),
                                         child: Padding(
                                           padding: EdgeInsets.all(4.0),
-                                          child: TextFormField(
+                                          child: FlutterFlowDropDown<int>(
                                             controller: _model
-                                                .textFieldCoilVTextController,
-                                            focusNode:
-                                                _model.textFieldCoilVFocusNode,
-                                            autofocus: false,
-                                            enabled: true,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMediumFamily,
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMediumIsCustom,
-                                                      ),
-                                              hintText: 'e.g. 24',
-                                              hintStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumFamily,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    fontSize: 14.0,
-                                                    letterSpacing: 0.0,
-                                                    useGoogleFonts:
-                                                        !FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumIsCustom,
-                                                  ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              filled: true,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
+                                                    .dropDownCvoltValueController ??=
+                                                FormFieldController<int>(
+                                              _model.dropDownCvoltValue ??=
+                                                  null,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumIsCustom,
-                                                ),
-                                            keyboardType: TextInputType.number,
-                                            cursorColor:
+                                            options: List<int>.from([40]),
+                                            optionLabels: ['40'],
+                                            onChanged: (val) => safeSetState(
+                                                () => _model
+                                                    .dropDownCvoltValue = val),
+                                            width: 200.0,
+                                            height: 40.0,
+                                            textStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            enableInteractiveSelection: true,
-                                            validator: _model
-                                                .textFieldCoilVTextControllerValidator
-                                                .asValidator(context),
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
+                                            hintText: 'Select...',
+                                            icon: Icon(
+                                              Icons.keyboard_arrow_down_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 14.0,
+                                            ),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            elevation: 2.0,
+                                            borderColor: Colors.transparent,
+                                            borderWidth: 0.0,
+                                            borderRadius: 8.0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 12.0, 0.0),
+                                            hidesUnderline: true,
+                                            isOverButton: false,
+                                            isSearchable: false,
+                                            isMultiSelect: false,
                                           ),
                                         ),
                                       ),
@@ -1733,114 +1524,56 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         ),
                                         child: Padding(
                                           padding: EdgeInsets.all(4.0),
-                                          child: TextFormField(
+                                          child: FlutterFlowDropDown<int>(
                                             controller: _model
-                                                .textFieldNopTextController,
-                                            focusNode:
-                                                _model.textFieldNopFocusNode,
-                                            autofocus: false,
-                                            enabled: true,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMediumFamily,
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMediumIsCustom,
-                                                      ),
-                                              hintText: 'e.g. 1',
-                                              hintStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumFamily,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    fontSize: 14.0,
-                                                    letterSpacing: 0.0,
-                                                    useGoogleFonts:
-                                                        !FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumIsCustom,
-                                                  ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              filled: true,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
+                                                    .dropDownNopValueController ??=
+                                                FormFieldController<int>(
+                                              _model.dropDownNopValue ??= null,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumIsCustom,
-                                                ),
-                                            keyboardType: TextInputType.number,
-                                            cursorColor:
+                                            options: List<int>.from([1, 2]),
+                                            optionLabels: ['1', '2'],
+                                            onChanged: (val) => safeSetState(
+                                                () => _model.dropDownNopValue =
+                                                    val),
+                                            width: 200.0,
+                                            height: 40.0,
+                                            textStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            enableInteractiveSelection: true,
-                                            validator: _model
-                                                .textFieldNopTextControllerValidator
-                                                .asValidator(context),
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
+                                            hintText: 'Select...',
+                                            icon: Icon(
+                                              Icons.keyboard_arrow_down_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 14.0,
+                                            ),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            elevation: 2.0,
+                                            borderColor: Colors.transparent,
+                                            borderWidth: 0.0,
+                                            borderRadius: 8.0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 12.0, 0.0),
+                                            hidesUnderline: true,
+                                            isOverButton: false,
+                                            isSearchable: false,
+                                            isMultiSelect: false,
                                           ),
                                         ),
                                       ),
@@ -1862,23 +1595,14 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       ? double.tryParse(_model
                                           .textFieldRvoltTextController.text)
                                       : null,
-                                  _model.textFieldApmTextController
-                                                  .text !=
-                                              ''
-                                      ? double.tryParse(_model
-                                          .textFieldApmTextController.text)
+                                  _model.dropDownAmpValue != null
+                                      ? _model.dropDownAmpValue?.toDouble()
                                       : null,
-                                  _model.textFieldCoilVTextController
-                                                  .text !=
-                                              ''
-                                      ? double.tryParse(_model
-                                          .textFieldCoilVTextController.text)
+                                  _model.dropDownCvoltValue != null
+                                      ? _model.dropDownCvoltValue?.toDouble()
                                       : null,
-                                  _model.textFieldNopTextController
-                                                  .text !=
-                                              ''
-                                      ? int.tryParse(_model
-                                          .textFieldNopTextController.text)
+                                  _model.dropDownNopValue != null
+                                      ? _model.dropDownNopValue
                                       : null,
                                   _model.selectedPart?.name,
                                 );
@@ -1989,114 +1713,84 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         ),
                                         child: Padding(
                                           padding: EdgeInsets.all(4.0),
-                                          child: TextFormField(
+                                          child: FlutterFlowDropDown<double>(
                                             controller: _model
-                                                .textFieldMFD1TextController,
-                                            focusNode:
-                                                _model.textFieldMFD1FocusNode,
-                                            autofocus: false,
-                                            enabled: true,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMediumFamily,
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMediumIsCustom,
-                                                      ),
-                                              hintText: 'e.g. 10',
-                                              hintStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumFamily,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    fontSize: 14.0,
-                                                    letterSpacing: 0.0,
-                                                    useGoogleFonts:
-                                                        !FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumIsCustom,
-                                                  ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              filled: true,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
+                                                    .dropDownMFD1ValueController ??=
+                                                FormFieldController<double>(
+                                              _model.dropDownMFD1Value ??= null,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumIsCustom,
-                                                ),
-                                            keyboardType: TextInputType.number,
-                                            cursorColor:
+                                            options: List<double>.from([
+                                              5.0,
+                                              7.5,
+                                              10.0,
+                                              12.5,
+                                              15.0,
+                                              30.0,
+                                              35.0,
+                                              40.0,
+                                              45.0,
+                                              50.0,
+                                              55.0,
+                                              70.0,
+                                              80.0
+                                            ]),
+                                            optionLabels: [
+                                              '5',
+                                              '7.5',
+                                              '10',
+                                              '12.5',
+                                              '15',
+                                              '30',
+                                              '35',
+                                              '40',
+                                              '45',
+                                              '50',
+                                              '55',
+                                              '70',
+                                              '80'
+                                            ],
+                                            onChanged: (val) => safeSetState(
+                                                () => _model.dropDownMFD1Value =
+                                                    val),
+                                            width: 200.0,
+                                            height: 40.0,
+                                            textStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            enableInteractiveSelection: true,
-                                            validator: _model
-                                                .textFieldMFD1TextControllerValidator
-                                                .asValidator(context),
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
+                                            hintText: 'Select...',
+                                            icon: Icon(
+                                              Icons.keyboard_arrow_down_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 14.0,
+                                            ),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            elevation: 2.0,
+                                            borderColor: Colors.transparent,
+                                            borderWidth: 0.0,
+                                            borderRadius: 8.0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 12.0, 0.0),
+                                            hidesUnderline: true,
+                                            isOverButton: false,
+                                            isSearchable: false,
+                                            isMultiSelect: false,
                                           ),
                                         ),
                                       ),
@@ -2140,94 +1834,42 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.all(4.0),
-                                        child: TextFormField(
+                                        child: FlutterFlowDropDown<double>(
                                           controller: _model
-                                              .textFieldMFD2TextController,
-                                          focusNode:
-                                              _model.textFieldMFD2FocusNode,
-                                          autofocus: false,
-                                          enabled: true,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
-                                            hintText: 'e.g. 5',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
+                                                  .dropDownMFD2ValueController ??=
+                                              FormFieldController<double>(
+                                            _model.dropDownMFD2Value ??= null,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
+                                          options: List<double>.from([
+                                            25.0,
+                                            30.0,
+                                            35.0,
+                                            40.0,
+                                            45.0,
+                                            50.0,
+                                            55.0,
+                                            60.0,
+                                            70.0,
+                                            80.0
+                                          ]),
+                                          optionLabels: [
+                                            '25',
+                                            '30',
+                                            '35',
+                                            '40',
+                                            '45',
+                                            '50',
+                                            '55',
+                                            '60',
+                                            '70',
+                                            '80'
+                                          ],
+                                          onChanged: (val) => safeSetState(() =>
+                                              _model.dropDownMFD2Value = val),
+                                          width: 200.0,
+                                          height: 40.0,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily:
@@ -2240,14 +1882,27 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                             context)
                                                         .bodyMediumIsCustom,
                                               ),
-                                          keyboardType: TextInputType.number,
-                                          cursorColor:
+                                          hintText: 'Select...',
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 14.0,
+                                          ),
+                                          fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          enableInteractiveSelection: true,
-                                          validator: _model
-                                              .textFieldMFD2TextControllerValidator
-                                              .asValidator(context),
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor: Colors.transparent,
+                                          borderWidth: 0.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 12.0, 0.0),
+                                          hidesUnderline: true,
+                                          isOverButton: false,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
                                         ),
                                       ),
                                     ),
@@ -2323,24 +1978,10 @@ class _S18FilterRepairPartsDesktopWidgetState
                                               _model.textFieldCapVoltFocusNode,
                                           autofocus: false,
                                           enabled: true,
+                                          readOnly: true,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
                                             hintText: 'e.g. 230',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
@@ -2469,7 +2110,9 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         child: FlutterFlowDropDown<String>(
                                           controller: _model
                                                   .dropDownTypeValueController ??=
-                                              FormFieldController<String>(null),
+                                              FormFieldController<String>(
+                                            _model.dropDownTypeValue ??= null,
+                                          ),
                                           options: CapacitorType.values
                                               .map((e) => e.name)
                                               .toList(),
@@ -2567,7 +2210,8 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             controller:
                                                 _model.dDShapValueController ??=
                                                     FormFieldController<String>(
-                                                        null),
+                                              _model.dDShapValue ??= null,
+                                            ),
                                             options: CapacitorShape.values
                                                 .map((e) => e.name)
                                                 .toList(),
@@ -2631,17 +2275,11 @@ class _S18FilterRepairPartsDesktopWidgetState
                               onTap: () async {
                                 await widget.onCapatSelected?.call(
                                   _model.selectedPart?.name,
-                                  _model.textFieldMFD1TextController
-                                                  .text !=
-                                              ''
-                                      ? double.tryParse(_model
-                                          .textFieldMFD1TextController.text)
+                                  _model.dropDownMFD1Value != null
+                                      ? _model.dropDownMFD1Value
                                       : null,
-                                  _model.textFieldMFD2TextController
-                                                  .text !=
-                                              ''
-                                      ? double.tryParse(_model
-                                          .textFieldMFD2TextController.text)
+                                  _model.dropDownMFD2Value != null
+                                      ? _model.dropDownMFD2Value
                                       : null,
                                   _model.textFieldCapVoltTextController
                                                   .text !=

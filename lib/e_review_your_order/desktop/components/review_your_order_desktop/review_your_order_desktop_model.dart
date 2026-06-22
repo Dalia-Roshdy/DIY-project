@@ -22,6 +22,8 @@ class ReviewYourOrderDesktopModel
   void updateToolsListAtIndex(int index, Function(ItemsRecord) updateFn) =>
       toolsList[index] = updateFn(toolsList[index]);
 
+  String? comment;
+
   ///  State fields for stateful widgets in this component.
 
   // Model for CheckoutBreadcrumb.
@@ -47,6 +49,11 @@ class ReviewYourOrderDesktopModel
   late SummaryLineTotalModel summaryLineTotalModel;
   // Model for Button.
   late Button5Model buttonModel;
+  // State field(s) for TextField-Message widget.
+  FocusNode? textFieldMessageFocusNode;
+  TextEditingController? textFieldMessageTextController;
+  String? Function(BuildContext, String?)?
+      textFieldMessageTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
@@ -69,5 +76,7 @@ class ReviewYourOrderDesktopModel
     summaryLineModel3.dispose();
     summaryLineTotalModel.dispose();
     buttonModel.dispose();
+    textFieldMessageFocusNode?.dispose();
+    textFieldMessageTextController?.dispose();
   }
 }

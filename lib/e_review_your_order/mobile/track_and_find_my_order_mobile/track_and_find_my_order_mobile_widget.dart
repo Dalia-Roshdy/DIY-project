@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/components/button39_widget.dart';
 import '/components/order_card2_widget.dart';
 import '/components/text_field21_widget.dart';
@@ -123,139 +124,213 @@ class _TrackAndFindMyOrderMobileWidgetState
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              wrapWithModel(
-                                model: _model.textFieldModel1,
-                                updateCallback: () => safeSetState(() {}),
-                                child: TextField21Widget(
-                                  label: 'EMAIL ADDRESS',
-                                  labelPresent: true,
-                                  helper: '',
-                                  helperPresent: false,
-                                  hint: 'e.g. name@example.com',
-                                  value: '',
-                                  onChange: '',
-                                  onSubmit: '',
-                                  leadingIcon: Icon(
-                                    Icons.mail_outline_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: wrapWithModel(
+                                  model: _model.textFieldModel1,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: TextField21Widget(
+                                    label: 'EMAIL ADDRESS',
+                                    labelPresent: true,
+                                    helper: '',
+                                    helperPresent: false,
+                                    hint: 'e.g. name@example.com',
+                                    value: '',
+                                    onChange: '',
+                                    onSubmit: '',
+                                    leadingIcon: Icon(
+                                      Icons.mail_outline_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    leadingIconPresent: true,
+                                    trailingIconPresent: false,
+                                    variant: 'outlined',
+                                    error: false,
                                   ),
-                                  leadingIconPresent: true,
-                                  trailingIconPresent: false,
-                                  variant: 'outlined',
-                                  error: false,
                                 ),
                               ),
-                              wrapWithModel(
-                                model: _model.textFieldModel2,
-                                updateCallback: () => safeSetState(() {}),
-                                child: TextField21Widget(
-                                  label: 'PHONE NUMBER',
-                                  labelPresent: true,
-                                  helper: '',
-                                  helperPresent: false,
-                                  hint: '(555) 000-0000',
-                                  value: '',
-                                  onChange: '',
-                                  onSubmit: '',
-                                  leadingIcon: Icon(
-                                    Icons.phone_android_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: wrapWithModel(
+                                  model: _model.textFieldModel2,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: TextField21Widget(
+                                    label: 'PHONE NUMBER',
+                                    labelPresent: true,
+                                    helper: '',
+                                    helperPresent: false,
+                                    hint: '(555) 000-0000',
+                                    value: '',
+                                    onChange: '',
+                                    onSubmit: '',
+                                    leadingIcon: Icon(
+                                      Icons.phone_android_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    leadingIconPresent: true,
+                                    trailingIconPresent: false,
+                                    variant: 'outlined',
+                                    error: false,
                                   ),
-                                  leadingIconPresent: true,
-                                  trailingIconPresent: false,
-                                  variant: 'outlined',
-                                  error: false,
                                 ),
                               ),
-                              wrapWithModel(
-                                model: _model.textFieldModel3,
-                                updateCallback: () => safeSetState(() {}),
-                                child: TextField21Widget(
-                                  label: 'PIN',
-                                  labelPresent: true,
-                                  helper: '',
-                                  helperPresent: false,
-                                  hint: '0000',
-                                  value: '',
-                                  onChange: '',
-                                  onSubmit: '',
-                                  leadingIcon: Icon(
-                                    Icons.credit_card_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 18.0),
+                                child: wrapWithModel(
+                                  model: _model.textFieldModel3,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: TextField21Widget(
+                                    label: 'PIN',
+                                    labelPresent: true,
+                                    helper: '',
+                                    helperPresent: false,
+                                    hint: '0000',
+                                    value: '',
+                                    onChange: '',
+                                    onSubmit: '',
+                                    leadingIcon: Icon(
+                                      Icons.credit_card_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    leadingIconPresent: true,
+                                    trailingIconPresent: false,
+                                    variant: 'outlined',
+                                    error: false,
                                   ),
-                                  leadingIconPresent: true,
-                                  trailingIconPresent: false,
-                                  variant: 'outlined',
-                                  error: false,
                                 ),
                               ),
-                              wrapWithModel(
-                                model: _model.buttonModel1,
-                                updateCallback: () => safeSetState(() {}),
-                                child: Button39Widget(
-                                  content: 'SEARCH ORDERS',
-                                  icon: Icon(
-                                    Icons.search_rounded,
-                                    color: Colors.white,
-                                    size: 16.0,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 14.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    _model.formval = true;
+                                    if (_model.formKey.currentState == null ||
+                                        !_model.formKey.currentState!
+                                            .validate()) {
+                                      safeSetState(
+                                          () => _model.formval = false);
+                                      return;
+                                    }
+                                    _model.orderList =
+                                        await queryOrdersRecordOnce(
+                                      queryBuilder: (ordersRecord) =>
+                                          ordersRecord
+                                              .where(
+                                                'customerSnap.email',
+                                                isEqualTo: _model
+                                                    .textFieldModel1
+                                                    .inputTextController
+                                                    .text,
+                                              )
+                                              .where(
+                                                'customerSnap.phone',
+                                                isEqualTo: _model
+                                                    .textFieldModel2
+                                                    .inputTextController
+                                                    .text,
+                                              )
+                                              .where(
+                                                'customerSnap.PIN',
+                                                isEqualTo: _model
+                                                    .textFieldModel3
+                                                    .inputTextController
+                                                    .text,
+                                              )
+                                              .orderBy('createdAt',
+                                                  descending: true),
+                                    );
+                                    _model.orderListM = _model.orderList!
+                                        .toList()
+                                        .cast<OrdersRecord>();
+                                    if (_model.orderListM.length > 0) {
+                                      _model.zeroResult = false;
+                                      safeSetState(() {});
+                                    } else {
+                                      _model.zeroResult = true;
+                                      safeSetState(() {});
+                                    }
+
+                                    safeSetState(() {});
+                                  },
+                                  child: wrapWithModel(
+                                    model: _model.buttonModel1,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: Button39Widget(
+                                      content: 'SEARCH ORDERS',
+                                      icon: Icon(
+                                        Icons.search_rounded,
+                                        color: Colors.white,
+                                        size: 16.0,
+                                      ),
+                                      iconPresent: true,
+                                      iconEndPresent: false,
+                                      variant: 'primary',
+                                      size: 'large',
+                                      fullWidth: true,
+                                      loading: false,
+                                      disabled: false,
+                                    ),
                                   ),
-                                  iconPresent: true,
-                                  iconEndPresent: false,
-                                  variant: 'primary',
-                                  size: 'large',
-                                  fullWidth: true,
-                                  loading: false,
-                                  disabled: false,
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            shape: BoxShape.rectangle,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(
-                                Icons.info_outline_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 18.0,
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Text(
-                                  'No orders found with these credentials. Please check your information and try again.',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodySmall
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodySmallFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        letterSpacing: 0.0,
-                                        lineHeight: 1.5,
-                                        useGoogleFonts:
-                                            !FlutterFlowTheme.of(context)
-                                                .bodySmallIsCustom,
-                                      ),
+                        if (_model.zeroResult)
+                          Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              shape: BoxShape.rectangle,
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.info_outline_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 18.0,
                                 ),
-                              ),
-                            ].divide(SizedBox(width: 8.0)),
+                                Expanded(
+                                  flex: 1,
+                                  child: Text(
+                                    'No orders found with these credentials. Please check your information and try again.',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmallFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          letterSpacing: 0.0,
+                                          lineHeight: 1.5,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodySmallIsCustom,
+                                        ),
+                                  ),
+                                ),
+                              ].divide(SizedBox(width: 8.0)),
+                            ),
                           ),
-                        ),
                       ].divide(SizedBox(height: 16.0)),
                     ),
                   ),
@@ -263,91 +338,93 @@ class _TrackAndFindMyOrderMobileWidgetState
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(24.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'RECENT ORDERS (2)',
-                      style:
-                          FlutterFlowTheme.of(context).headlineSmall.override(
-                                font: GoogleFonts.anton(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontStyle,
-                                ),
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                letterSpacing: 0.0,
+          if (!_model.zeroResult)
+            Padding(
+              padding: EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Orders ( ${_model.orderListM.length.toString()} )',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineSmall
+                            .override(
+                              font: GoogleFonts.anton(
                                 fontWeight: FlutterFlowTheme.of(context)
                                     .headlineSmall
                                     .fontWeight,
                                 fontStyle: FlutterFlowTheme.of(context)
                                     .headlineSmall
                                     .fontStyle,
-                                lineHeight: 1.1,
                               ),
-                    ),
-                    Container(
-                      width: 120.0,
-                      child: Text(
-                        'Showing results for your account',
-                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).labelSmallFamily,
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: FlutterFlowTheme.of(context).primaryText,
                               letterSpacing: 0.0,
-                              fontStyle: FontStyle.italic,
-                              lineHeight: 1.2,
-                              useGoogleFonts: !FlutterFlowTheme.of(context)
-                                  .labelSmallIsCustom,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .fontStyle,
+                              lineHeight: 1.1,
                             ),
                       ),
-                    ),
-                  ],
-                ),
-                Divider(
-                  height: 16.0,
-                  thickness: 2.0,
-                  indent: 0.0,
-                  endIndent: 0.0,
-                  color: FlutterFlowTheme.of(context).alternate,
-                ),
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    wrapWithModel(
-                      model: _model.orderCardModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: OrderCard2Widget(
-                        date: 'October 12, 2023',
-                        iconName: Icon(
-                          Icons.inventory_2_outlined,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 24.0,
-                        ),
-                        idNum: 'ORD-88291',
-                        items: 'Replacement Capacitor, Service Valve Set',
-                        status: 'DELIVERED',
+                      Container(
+                        width: 120.0,
                       ),
-                    ),
-                  ],
-                ),
-              ].divide(SizedBox(height: 16.0)),
+                    ],
+                  ),
+                  Divider(
+                    height: 16.0,
+                    thickness: 2.0,
+                    indent: 0.0,
+                    endIndent: 0.0,
+                    color: FlutterFlowTheme.of(context).alternate,
+                  ),
+                  Builder(
+                    builder: (context) {
+                      final ordersListM = _model.orderListM.toList();
+
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: ordersListM.length,
+                        itemBuilder: (context, ordersListMIndex) {
+                          final ordersListMItem = ordersListM[ordersListMIndex];
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: OrderCard2Widget(
+                              key: Key(
+                                  'Key3pa_${ordersListMIndex}_of_${ordersListM.length}'),
+                              date: dateTimeFormat(
+                                  "yMMMd", ordersListMItem.createdAt),
+                              iconName: Icon(
+                                Icons.inventory_2_outlined,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 24.0,
+                              ),
+                              idNum: 'ORD-88291',
+                              items: 'Replacement Capacitor, Service Valve Set',
+                              status: ordersListMItem.status?.name,
+                              totalAmount: ordersListMItem.totalsSnap.total,
+                              orderId: ordersListMItem.reference,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ].divide(SizedBox(height: 16.0)),
+              ),
             ),
-          ),
           Padding(
             padding: EdgeInsets.all(24.0),
             child: Container(

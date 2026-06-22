@@ -159,25 +159,31 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                'EMAIL ADDRESS',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelSmallFamily,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          lineHeight: 1.2,
-                                                          useGoogleFonts:
-                                                              !FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelSmallIsCustom,
-                                                        ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'EMAIL ADDRESS',
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            lineHeight: 1.2,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallIsCustom,
+                                                          ),
+                                                ),
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
@@ -286,25 +292,31 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                'PIN',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelSmallFamily,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          lineHeight: 1.2,
-                                                          useGoogleFonts:
-                                                              !FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelSmallIsCustom,
-                                                        ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'PIN',
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            lineHeight: 1.2,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallIsCustom,
+                                                          ),
+                                                ),
                                               ),
                                               wrapWithModel(
                                                 model: _model.textFieldModel3,
@@ -434,20 +446,25 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    Icons.info_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 18.0,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 8.0, 0.0, 0.0),
+                                    child: Icon(
+                                      Icons.info_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 32.0,
+                                    ),
                                   ),
                                   Text(
-                                    'No orders found with these credentials. Please check your information and try again.',
+                                    'To return returnable items, Please follow the email sent to you during payments at checkout.',
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
                                                   .bodySmallFamily,
+                                          fontSize: 24.0,
                                           letterSpacing: 0.0,
                                           lineHeight: 1.5,
                                           useGoogleFonts:
@@ -493,7 +510,7 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                           ),
                                     ),
                                     Text(
-                                      'Showing results for your account',
+                                      'Showing results for yourorders',
                                       style: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(
@@ -519,11 +536,13 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                   builder: (context) {
                                     final ordersList = _model.orders.toList();
 
-                                    return ListView.builder(
+                                    return ListView.separated(
                                       padding: EdgeInsets.zero,
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount: ordersList.length,
+                                      separatorBuilder: (_, __) =>
+                                          SizedBox(height: 8.0),
                                       itemBuilder: (context, ordersListIndex) {
                                         final ordersListItem =
                                             ordersList[ordersListIndex];
@@ -553,6 +572,7 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                                 .payment.amountTotal
                                                 .toString(),
                                             status: ordersListItem.status?.name,
+                                            orderId: ordersListItem.reference,
                                           ),
                                         );
                                       },

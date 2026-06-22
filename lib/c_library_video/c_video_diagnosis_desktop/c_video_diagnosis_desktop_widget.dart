@@ -10,7 +10,6 @@ import '/index.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'c_video_diagnosis_desktop_model.dart';
 export 'c_video_diagnosis_desktop_model.dart';
 
@@ -83,8 +82,8 @@ class _CVideoDiagnosisDesktopWidgetState
             padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 0.0, 0.0),
             child: Text(
               valueOrDefault<String>(
-                _model.currentVideo?.title,
-                'title',
+                widget.videoRecord?.title,
+                'DIY WALKTHROUGH ',
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily:
@@ -106,18 +105,10 @@ class _CVideoDiagnosisDesktopWidgetState
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: 'We guide you step-by-step to',
-                    style: TextStyle(),
-                  ),
-                  TextSpan(
-                    text: ' fix your AC',
-                    style: GoogleFonts.archivoBlack(
-                      fontWeight: FontWeight.normal,
+                    text: valueOrDefault<String>(
+                      widget.videoRecord?.description,
+                      'desc',
                     ),
-                  ),
-                  TextSpan(
-                    text:
-                        ', choose the right parts, and get it done — fast and stress-free.',
                     style: TextStyle(),
                   )
                 ],

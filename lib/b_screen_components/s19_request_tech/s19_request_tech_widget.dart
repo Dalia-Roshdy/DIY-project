@@ -506,10 +506,10 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                           child: AutoSizeText(
                             'Need a technician? We\'ll send one to you.',
                             style: FlutterFlowTheme.of(context)
-                                .headlineMedium
+                                .displayMedium
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineMediumFamily,
+                                      .displayMediumFamily,
                                   letterSpacing:
                                       MediaQuery.sizeOf(context).width <
                                               kBreakpointSmall
@@ -517,7 +517,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                           : FFAppConstants.LetterSpacingTD,
                                   lineHeight: 1.0,
                                   useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .headlineMediumIsCustom,
+                                      .displayMediumIsCustom,
                                 ),
                           ),
                         ),

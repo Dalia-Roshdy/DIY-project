@@ -1,4 +1,3 @@
-import '/auth/base_auth_user_provider.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -125,21 +124,20 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    if (loggedIn)
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed(EReviewYourOrderWidget.routeName);
-                        },
-                        child: Icon(
-                          Icons.shopping_cart_rounded,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
-                        ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(EReviewYourOrderWidget.routeName);
+                      },
+                      child: Icon(
+                        Icons.shopping_cart_rounded,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 24.0,
                       ),
+                    ),
                     if (false)
                       InkWell(
                         splashColor: Colors.transparent,
@@ -401,8 +399,8 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                 tabletLandscape: false,
               ))
             FFButtonWidget(
-              onPressed: () async {
-                context.pushNamed(L01SignInPageWidget.routeName);
+              onPressed: () {
+                print('Button-GetStartedBtn pressed ...');
               },
               text: 'LOGIN',
               options: FFButtonOptions(

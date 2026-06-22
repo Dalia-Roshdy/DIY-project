@@ -47,14 +47,12 @@ class SerlectProductMobileModel
   FocusNode? textFieldVoltFocusNode;
   TextEditingController? textFieldVoltTextController;
   String? Function(BuildContext, String?)? textFieldVoltTextControllerValidator;
-  // State field(s) for TextField-hp widget.
-  FocusNode? textFieldHpFocusNode;
-  TextEditingController? textFieldHpTextController;
-  String? Function(BuildContext, String?)? textFieldHpTextControllerValidator;
-  // State field(s) for TextField-rpm widget.
-  FocusNode? textFieldRpmFocusNode;
-  TextEditingController? textFieldRpmTextController;
-  String? Function(BuildContext, String?)? textFieldRpmTextControllerValidator;
+  // State field(s) for DropDown-hp widget.
+  double? dropDownHpValue;
+  FormFieldController<double>? dropDownHpValueController;
+  // State field(s) for DropDown-rpm widget.
+  int? dropDownRpmValue;
+  FormFieldController<int>? dropDownRpmValueController;
   // State field(s) for DropDown-rotation widget.
   String? dropDownRotationValue;
   FormFieldController<String>? dropDownRotationValueController;
@@ -65,29 +63,23 @@ class SerlectProductMobileModel
   TextEditingController? textFieldRvoltTextController;
   String? Function(BuildContext, String?)?
       textFieldRvoltTextControllerValidator;
-  // State field(s) for TextField-RAmp widget.
-  FocusNode? textFieldRAmpFocusNode;
-  TextEditingController? textFieldRAmpTextController;
-  String? Function(BuildContext, String?)? textFieldRAmpTextControllerValidator;
-  // State field(s) for TextField-CVolt widget.
-  FocusNode? textFieldCVoltFocusNode;
-  TextEditingController? textFieldCVoltTextController;
-  String? Function(BuildContext, String?)?
-      textFieldCVoltTextControllerValidator;
-  // State field(s) for TextField-nop widget.
-  FocusNode? textFieldNopFocusNode;
-  TextEditingController? textFieldNopTextController;
-  String? Function(BuildContext, String?)? textFieldNopTextControllerValidator;
+  // State field(s) for DropDown-amp widget.
+  int? dropDownAmpValue;
+  FormFieldController<int>? dropDownAmpValueController;
+  // State field(s) for DropDown-Cvolt widget.
+  int? dropDownCvoltValue;
+  FormFieldController<int>? dropDownCvoltValueController;
+  // State field(s) for DropDown-nop widget.
+  int? dropDownNopValue;
+  FormFieldController<int>? dropDownNopValueController;
   // Stores action output result for [Custom Action - filterContactorItems] action in Button widget.
   List<PartCardDTOStruct>? contItemsOnFilterMob;
-  // State field(s) for TextField-MDF1 widget.
-  FocusNode? textFieldMDF1FocusNode;
-  TextEditingController? textFieldMDF1TextController;
-  String? Function(BuildContext, String?)? textFieldMDF1TextControllerValidator;
-  // State field(s) for TextField-MDF2 widget.
-  FocusNode? textFieldMDF2FocusNode;
-  TextEditingController? textFieldMDF2TextController;
-  String? Function(BuildContext, String?)? textFieldMDF2TextControllerValidator;
+  // State field(s) for DropDown-MFD1 widget.
+  double? dropDownMFD1Value;
+  FormFieldController<double>? dropDownMFD1ValueController;
+  // State field(s) for DropDown-MFD2 widget.
+  double? dropDownMFD2Value;
+  FormFieldController<double>? dropDownMFD2ValueController;
   // State field(s) for TextField-Cap-Volt widget.
   FocusNode? textFieldCapVoltFocusNode;
   TextEditingController? textFieldCapVoltTextController;
@@ -117,29 +109,8 @@ class SerlectProductMobileModel
     textFieldVoltFocusNode?.dispose();
     textFieldVoltTextController?.dispose();
 
-    textFieldHpFocusNode?.dispose();
-    textFieldHpTextController?.dispose();
-
-    textFieldRpmFocusNode?.dispose();
-    textFieldRpmTextController?.dispose();
-
     textFieldRvoltFocusNode?.dispose();
     textFieldRvoltTextController?.dispose();
-
-    textFieldRAmpFocusNode?.dispose();
-    textFieldRAmpTextController?.dispose();
-
-    textFieldCVoltFocusNode?.dispose();
-    textFieldCVoltTextController?.dispose();
-
-    textFieldNopFocusNode?.dispose();
-    textFieldNopTextController?.dispose();
-
-    textFieldMDF1FocusNode?.dispose();
-    textFieldMDF1TextController?.dispose();
-
-    textFieldMDF2FocusNode?.dispose();
-    textFieldMDF2TextController?.dispose();
 
     textFieldCapVoltFocusNode?.dispose();
     textFieldCapVoltTextController?.dispose();

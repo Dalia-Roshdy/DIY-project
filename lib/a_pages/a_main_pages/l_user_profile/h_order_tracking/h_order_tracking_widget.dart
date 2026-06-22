@@ -1,18 +1,25 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
+import '/backend/backend.dart';
 import '/e_review_your_order/desktop/components/h_order_tracking_desktop/h_order_tracking_desktop_widget.dart';
 import '/e_review_your_order/mobile/h_track_order_mobile/h_track_order_mobile_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'h_order_tracking_model.dart';
 export 'h_order_tracking_model.dart';
 
 class HOrderTrackingWidget extends StatefulWidget {
-  const HOrderTrackingWidget({super.key});
+  const HOrderTrackingWidget({
+    super.key,
+    required this.orderId,
+  });
+
+  final DocumentReference? orderId;
 
   static String routeName = 'H_Order_Tracking';
-  static String routePath = '/hOrderTracking';
+  static String routePath = '/track-order';
 
   @override
   State<HOrderTrackingWidget> createState() => _HOrderTrackingWidgetState();
@@ -27,6 +34,13 @@ class _HOrderTrackingWidgetState extends State<HOrderTrackingWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HOrderTrackingModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.orderAct1 = await OrdersRecord.getDocumentOnce(widget.orderId!);
+      _model.order = _model.orderAct1;
+      safeSetState(() {});
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -98,7 +112,6 @@ class _HOrderTrackingWidgetState extends State<HOrderTrackingWidget> {
                                       context: context,
                                       phone: false,
                                       tablet: false,
-                                      tabletLandscape: false,
                                     ))
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -108,7 +121,9 @@ class _HOrderTrackingWidgetState extends State<HOrderTrackingWidget> {
                                               _model.hOrderTrackingDesktopModel,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: HOrderTrackingDesktopWidget(),
+                                          child: HOrderTrackingDesktopWidget(
+                                            orderPram: _model.order!,
+                                          ),
                                         ),
                                       ),
                                     if (responsiveVisibility(
@@ -121,7 +136,9 @@ class _HOrderTrackingWidgetState extends State<HOrderTrackingWidget> {
                                           model: _model.hTrackOrderMobileModel,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: HTrackOrderMobileWidget(),
+                                          child: HTrackOrderMobileWidget(
+                                            orderPram: _model.order!,
+                                          ),
                                         ),
                                       ),
                                     Container(

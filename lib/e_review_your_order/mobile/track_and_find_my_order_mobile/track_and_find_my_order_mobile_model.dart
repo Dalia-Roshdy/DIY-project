@@ -1,6 +1,5 @@
 import '/backend/backend.dart';
 import '/components/button39_widget.dart';
-import '/components/order_card2_widget.dart';
 import '/components/text_field21_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'track_and_find_my_order_mobile_widget.dart'
@@ -13,14 +12,14 @@ class TrackAndFindMyOrderMobileModel
 
   bool zeroResult = false;
 
-  List<OrdersRecord> orderList = [];
-  void addToOrderList(OrdersRecord item) => orderList.add(item);
-  void removeFromOrderList(OrdersRecord item) => orderList.remove(item);
-  void removeAtIndexFromOrderList(int index) => orderList.removeAt(index);
-  void insertAtIndexInOrderList(int index, OrdersRecord item) =>
-      orderList.insert(index, item);
-  void updateOrderListAtIndex(int index, Function(OrdersRecord) updateFn) =>
-      orderList[index] = updateFn(orderList[index]);
+  List<OrdersRecord> orderListM = [];
+  void addToOrderListM(OrdersRecord item) => orderListM.add(item);
+  void removeFromOrderListM(OrdersRecord item) => orderListM.remove(item);
+  void removeAtIndexFromOrderListM(int index) => orderListM.removeAt(index);
+  void insertAtIndexInOrderListM(int index, OrdersRecord item) =>
+      orderListM.insert(index, item);
+  void updateOrderListMAtIndex(int index, Function(OrdersRecord) updateFn) =>
+      orderListM[index] = updateFn(orderListM[index]);
 
   ///  State fields for stateful widgets in this component.
 
@@ -33,8 +32,10 @@ class TrackAndFindMyOrderMobileModel
   late TextField21Model textFieldModel3;
   // Model for Button.
   late Button39Model buttonModel1;
-  // Model for OrderCard.
-  late OrderCard2Model orderCardModel;
+  // Stores action output result for [Validate Form] action in Button widget.
+  bool? formval;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<OrdersRecord>? orderList;
   // Model for Button.
   late Button39Model buttonModel2;
   // Model for Button.
@@ -46,7 +47,6 @@ class TrackAndFindMyOrderMobileModel
     textFieldModel2 = createModel(context, () => TextField21Model());
     textFieldModel3 = createModel(context, () => TextField21Model());
     buttonModel1 = createModel(context, () => Button39Model());
-    orderCardModel = createModel(context, () => OrderCard2Model());
     buttonModel2 = createModel(context, () => Button39Model());
     buttonModel3 = createModel(context, () => Button39Model());
     textFieldModel1.inputTextControllerValidator = _formTextFieldValidator1;
@@ -60,7 +60,6 @@ class TrackAndFindMyOrderMobileModel
     textFieldModel2.dispose();
     textFieldModel3.dispose();
     buttonModel1.dispose();
-    orderCardModel.dispose();
     buttonModel2.dispose();
     buttonModel3.dispose();
   }

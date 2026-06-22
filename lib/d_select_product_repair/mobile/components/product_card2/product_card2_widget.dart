@@ -701,7 +701,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                           ),
                         ].divide(SizedBox(height: 8.0)),
                       ),
-                    if (widget.type == Parts.CONTRACTOR.name)
+                    if (widget.type == Parts.CONTACTOR.name)
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,

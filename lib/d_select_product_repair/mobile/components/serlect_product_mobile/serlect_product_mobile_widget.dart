@@ -66,7 +66,7 @@ class _SerlectProductMobileWidgetState
             .toList()
             .cast<PartCardDTOStruct>();
         safeSetState(() {});
-      } else if (_model.selectedPartCS == Parts.CONTRACTOR) {
+      } else if (_model.selectedPartCS == Parts.CONTACTOR) {
         _model.contItemsOnPageMob = await actions.filterContactorItems(
           FFAppState().userAC.acModel,
           null,
@@ -74,7 +74,7 @@ class _SerlectProductMobileWidgetState
           null,
           null,
         );
-        _model.selectedPartCS = Parts.CONTRACTOR;
+        _model.selectedPartCS = Parts.CONTACTOR;
         _model.partsList = _model.contItemsOnPageMob!
             .sortedList(keyOf: (e) => e.title, desc: false)
             .toList()
@@ -101,31 +101,11 @@ class _SerlectProductMobileWidgetState
     _model.textFieldVoltTextController ??= TextEditingController(text: '230');
     _model.textFieldVoltFocusNode ??= FocusNode();
 
-    _model.textFieldHpTextController ??= TextEditingController();
-    _model.textFieldHpFocusNode ??= FocusNode();
-
-    _model.textFieldRpmTextController ??= TextEditingController();
-    _model.textFieldRpmFocusNode ??= FocusNode();
-
-    _model.textFieldRvoltTextController ??= TextEditingController();
+    _model.textFieldRvoltTextController ??= TextEditingController(text: '230');
     _model.textFieldRvoltFocusNode ??= FocusNode();
 
-    _model.textFieldRAmpTextController ??= TextEditingController();
-    _model.textFieldRAmpFocusNode ??= FocusNode();
-
-    _model.textFieldCVoltTextController ??= TextEditingController();
-    _model.textFieldCVoltFocusNode ??= FocusNode();
-
-    _model.textFieldNopTextController ??= TextEditingController();
-    _model.textFieldNopFocusNode ??= FocusNode();
-
-    _model.textFieldMDF1TextController ??= TextEditingController();
-    _model.textFieldMDF1FocusNode ??= FocusNode();
-
-    _model.textFieldMDF2TextController ??= TextEditingController();
-    _model.textFieldMDF2FocusNode ??= FocusNode();
-
-    _model.textFieldCapVoltTextController ??= TextEditingController();
+    _model.textFieldCapVoltTextController ??=
+        TextEditingController(text: '230');
     _model.textFieldCapVoltFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -249,6 +229,28 @@ class _SerlectProductMobileWidgetState
                             .toList()
                             .cast<PartCardDTOStruct>();
                         safeSetState(() {});
+                        safeSetState(() {
+                          _model.dropDownHpValueController?.reset();
+                          _model.dropDownHpValue = null;
+                          _model.dropDownRpmValueController?.reset();
+                          _model.dropDownRpmValue = null;
+                          _model.dropDownRotationValueController?.reset();
+                          _model.dropDownRotationValue = null;
+                          _model.dropDownAmpValueController?.reset();
+                          _model.dropDownAmpValue = null;
+                          _model.dropDownCvoltValueController?.reset();
+                          _model.dropDownCvoltValue = null;
+                          _model.dropDownNopValueController?.reset();
+                          _model.dropDownNopValue = null;
+                          _model.dropDownMFD1ValueController?.reset();
+                          _model.dropDownMFD1Value = null;
+                          _model.dropDownMFD2ValueController?.reset();
+                          _model.dropDownMFD2Value = null;
+                          _model.dropDownTypeValueController?.reset();
+                          _model.dropDownTypeValue = null;
+                          _model.dropDownShapeValueController?.reset();
+                          _model.dropDownShapeValue = null;
+                        });
                       }
 
                       safeSetState(() {});
@@ -288,6 +290,28 @@ class _SerlectProductMobileWidgetState
                           .toList()
                           .cast<PartCardDTOStruct>();
                       safeSetState(() {});
+                      safeSetState(() {
+                        _model.dropDownHpValueController?.reset();
+                        _model.dropDownHpValue = null;
+                        _model.dropDownRotationValueController?.reset();
+                        _model.dropDownRotationValue = null;
+                        _model.dropDownCvoltValueController?.reset();
+                        _model.dropDownCvoltValue = null;
+                        _model.dropDownAmpValueController?.reset();
+                        _model.dropDownAmpValue = null;
+                        _model.dropDownRpmValueController?.reset();
+                        _model.dropDownRpmValue = null;
+                        _model.dropDownMFD1ValueController?.reset();
+                        _model.dropDownMFD1Value = null;
+                        _model.dropDownNopValueController?.reset();
+                        _model.dropDownNopValue = null;
+                        _model.dropDownShapeValueController?.reset();
+                        _model.dropDownShapeValue = null;
+                        _model.dropDownTypeValueController?.reset();
+                        _model.dropDownTypeValue = null;
+                        _model.dropDownMFD2ValueController?.reset();
+                        _model.dropDownMFD2Value = null;
+                      });
                     }
 
                     safeSetState(() {});
@@ -312,7 +336,7 @@ class _SerlectProductMobileWidgetState
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      if (_model.selectedPartCS != Parts.CONTRACTOR) {
+                      if (_model.selectedPartCS != Parts.CONTACTOR) {
                         _model.contItemsOnCallbackMob =
                             await actions.filterContactorItems(
                           FFAppState().userAC.acModel,
@@ -321,12 +345,34 @@ class _SerlectProductMobileWidgetState
                           null,
                           null,
                         );
-                        _model.selectedPartCS = Parts.CONTRACTOR;
+                        _model.selectedPartCS = Parts.CONTACTOR;
                         _model.partsList = _model.contItemsOnCallbackMob!
                             .sortedList(keyOf: (e) => e.title, desc: false)
                             .toList()
                             .cast<PartCardDTOStruct>();
                         safeSetState(() {});
+                        safeSetState(() {
+                          _model.dropDownHpValueController?.reset();
+                          _model.dropDownHpValue = null;
+                          _model.dropDownRpmValueController?.reset();
+                          _model.dropDownRpmValue = null;
+                          _model.dropDownRotationValueController?.reset();
+                          _model.dropDownRotationValue = null;
+                          _model.dropDownAmpValueController?.reset();
+                          _model.dropDownAmpValue = null;
+                          _model.dropDownCvoltValueController?.reset();
+                          _model.dropDownCvoltValue = null;
+                          _model.dropDownMFD1ValueController?.reset();
+                          _model.dropDownMFD1Value = null;
+                          _model.dropDownMFD2ValueController?.reset();
+                          _model.dropDownMFD2Value = null;
+                          _model.dropDownTypeValueController?.reset();
+                          _model.dropDownTypeValue = null;
+                          _model.dropDownShapeValueController?.reset();
+                          _model.dropDownShapeValue = null;
+                          _model.dropDownNopValueController?.reset();
+                          _model.dropDownNopValue = null;
+                        });
                       }
 
                       safeSetState(() {});
@@ -339,7 +385,7 @@ class _SerlectProductMobileWidgetState
                         label: 'Contactor',
                         bg: FlutterFlowTheme.of(context).primaryText,
                         radius: 0.0,
-                        active: _model.selectedPartCS == Parts.CONTRACTOR,
+                        active: _model.selectedPartCS == Parts.CONTACTOR,
                       ),
                     ),
                   ),
@@ -665,128 +711,76 @@ class _SerlectProductMobileWidgetState
                                                         width: 1.0,
                                                       ),
                                                     ),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Padding(
-                                                        padding: EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 8.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0,
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 6.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0),
-                                                        child: TextFormField(
-                                                          controller: _model
-                                                              .textFieldHpTextController,
-                                                          focusNode: _model
-                                                              .textFieldHpFocusNode,
-                                                          autofocus: false,
-                                                          enabled: true,
-                                                          textInputAction:
-                                                              TextInputAction
-                                                                  .next,
-                                                          obscureText: false,
-                                                          decoration:
-                                                              InputDecoration(
-                                                            isDense: true,
-                                                            labelStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts:
-                                                                          !FlutterFlowTheme.of(context)
-                                                                              .labelSmallIsCustom,
-                                                                    ),
-                                                            hintText:
-                                                                'e.g. 0.25',
-                                                            hintStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts:
-                                                                          !FlutterFlowTheme.of(context)
-                                                                              .labelSmallIsCustom,
-                                                                    ),
-                                                            enabledBorder:
-                                                                InputBorder
-                                                                    .none,
-                                                            focusedBorder:
-                                                                InputBorder
-                                                                    .none,
-                                                            errorBorder:
-                                                                InputBorder
-                                                                    .none,
-                                                            focusedErrorBorder:
-                                                                InputBorder
-                                                                    .none,
-                                                            filled: true,
-                                                            fillColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondary,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelSmall
+                                                    child: FlutterFlowDropDown<
+                                                        double>(
+                                                      controller: _model
+                                                              .dropDownHpValueController ??=
+                                                          FormFieldController<
+                                                              double>(
+                                                        _model.dropDownHpValue ??=
+                                                            null,
+                                                      ),
+                                                      options:
+                                                          List<double>.from([
+                                                        0.25,
+                                                        0.5,
+                                                        0.75
+                                                      ]),
+                                                      optionLabels: [
+                                                        '1/4',
+                                                        '1/2',
+                                                        '3/4'
+                                                      ],
+                                                      onChanged: (val) =>
+                                                          safeSetState(() =>
+                                                              _model.dropDownHpValue =
+                                                                  val),
+                                                      width: 200.0,
+                                                      height: 40.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallFamily,
-                                                                fontSize: 16.0,
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 useGoogleFonts:
                                                                     !FlutterFlowTheme.of(
                                                                             context)
-                                                                        .labelSmallIsCustom,
+                                                                        .bodyMediumIsCustom,
                                                               ),
-                                                          cursorColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryText,
-                                                          enableInteractiveSelection:
-                                                              true,
-                                                          validator: _model
-                                                              .textFieldHpTextControllerValidator
-                                                              .asValidator(
-                                                                  context),
-                                                        ),
+                                                      hintText: 'Select...',
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
                                                       ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderWidth: 0.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  0.0,
+                                                                  12.0,
+                                                                  0.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: false,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
                                                     ),
                                                   ),
                                                 ),
@@ -877,121 +871,71 @@ class _SerlectProductMobileWidgetState
                                                           width: 1.0,
                                                         ),
                                                       ),
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Padding(
-                                                          padding: EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  valueOrDefault<
-                                                                      double>(
-                                                                    MediaQuery.sizeOf(context).width <
-                                                                            kBreakpointSmall
-                                                                        ? 8.0
-                                                                        : 25.0,
-                                                                    50.0,
-                                                                  ),
-                                                                  0.0,
-                                                                  valueOrDefault<
-                                                                      double>(
-                                                                    MediaQuery.sizeOf(context).width <
-                                                                            kBreakpointSmall
-                                                                        ? 6.0
-                                                                        : 25.0,
-                                                                    50.0,
-                                                                  ),
-                                                                  0.0),
-                                                          child: TextFormField(
-                                                            controller: _model
-                                                                .textFieldRpmTextController,
-                                                            focusNode: _model
-                                                                .textFieldRpmFocusNode,
-                                                            autofocus: false,
-                                                            enabled: true,
-                                                            textInputAction:
-                                                                TextInputAction
-                                                                    .next,
-                                                            obscureText: false,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              isDense: true,
-                                                              labelStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                                                                      ),
-                                                              hintText:
-                                                                  'e.g. 1075',
-                                                              hintStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .tertiary,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                                                                      ),
-                                                              enabledBorder:
-                                                                  InputBorder
-                                                                      .none,
-                                                              focusedBorder:
-                                                                  InputBorder
-                                                                      .none,
-                                                              errorBorder:
-                                                                  InputBorder
-                                                                      .none,
-                                                              focusedErrorBorder:
-                                                                  InputBorder
-                                                                      .none,
-                                                              filled: true,
-                                                              fillColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondary,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmall
+                                                      child:
+                                                          FlutterFlowDropDown<
+                                                              int>(
+                                                        controller: _model
+                                                                .dropDownRpmValueController ??=
+                                                            FormFieldController<
+                                                                int>(
+                                                          _model.dropDownRpmValue ??=
+                                                              null,
+                                                        ),
+                                                        options: List<int>.from(
+                                                            [825, 1075]),
+                                                        optionLabels: [
+                                                          '825',
+                                                          '1075'
+                                                        ],
+                                                        onChanged: (val) =>
+                                                            safeSetState(() =>
+                                                                _model.dropDownRpmValue =
+                                                                    val),
+                                                        width: 200.0,
+                                                        height: 40.0,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .labelSmallFamily,
-                                                                  fontSize:
-                                                                      16.0,
+                                                                      .bodyMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   useGoogleFonts:
                                                                       !FlutterFlowTheme.of(
                                                                               context)
-                                                                          .labelSmallIsCustom,
+                                                                          .bodyMediumIsCustom,
                                                                 ),
-                                                            cursorColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            enableInteractiveSelection:
-                                                                true,
-                                                            validator: _model
-                                                                .textFieldRpmTextControllerValidator
-                                                                .asValidator(
-                                                                    context),
-                                                          ),
+                                                        hintText: 'Select...',
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_down_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 24.0,
                                                         ),
+                                                        fillColor: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        elevation: 2.0,
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderWidth: 0.0,
+                                                        borderRadius: 8.0,
+                                                        margin:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    12.0,
+                                                                    0.0,
+                                                                    12.0,
+                                                                    0.0),
+                                                        hidesUnderline: true,
+                                                        isOverButton: false,
+                                                        isSearchable: false,
+                                                        isMultiSelect: false,
                                                       ),
                                                     ),
                                                   ),
@@ -1157,18 +1101,11 @@ class _SerlectProductMobileWidgetState
                                                 .textFieldVoltTextController
                                                 .text)
                                             : null,
-                                        _model.textFieldHpTextController
-                                                        .text !=
-                                                    ''
-                                            ? double.tryParse(_model
-                                                .textFieldHpTextController.text)
+                                        _model.dropDownHpValue != null
+                                            ? _model.dropDownHpValue
                                             : null,
-                                        _model.textFieldRpmTextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldRpmTextController
-                                                .text)
+                                        _model.dropDownRpmValue != null
+                                            ? _model.dropDownRpmValue
                                             : null,
                                         _model.dropDownRotationValue != null &&
                                                 _model.dropDownRotationValue !=
@@ -1224,7 +1161,7 @@ class _SerlectProductMobileWidgetState
                       ),
                     ),
                   ),
-                if (_model.selectedPartCS == Parts.CONTRACTOR)
+                if (_model.selectedPartCS == Parts.CONTACTOR)
                   Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
@@ -1377,6 +1314,7 @@ class _SerlectProductMobileWidgetState
                                                         textInputAction:
                                                             TextInputAction
                                                                 .next,
+                                                        readOnly: true,
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -1533,124 +1471,62 @@ class _SerlectProductMobileWidgetState
                                                     width: 1.0,
                                                   ),
                                                 ),
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 8.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0,
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 6.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0),
-                                                    child: TextFormField(
-                                                      controller: _model
-                                                          .textFieldRAmpTextController,
-                                                      focusNode: _model
-                                                          .textFieldRAmpFocusNode,
-                                                      autofocus: false,
-                                                      enabled: true,
-                                                      textInputAction:
-                                                          TextInputAction.next,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        isDense: true,
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        hintText: 'e.g. 35',
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        enabledBorder:
-                                                            InputBorder.none,
-                                                        focusedBorder:
-                                                            InputBorder.none,
-                                                        errorBorder:
-                                                            InputBorder.none,
-                                                        focusedErrorBorder:
-                                                            InputBorder.none,
-                                                        filled: true,
-                                                        fillColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelSmall
+                                                child: FlutterFlowDropDown<int>(
+                                                  controller: _model
+                                                          .dropDownAmpValueController ??=
+                                                      FormFieldController<int>(
+                                                    _model.dropDownAmpValue ??=
+                                                        null,
+                                                  ),
+                                                  options:
+                                                      List<int>.from([30, 40]),
+                                                  optionLabels: ['30', '40'],
+                                                  onChanged: (val) =>
+                                                      safeSetState(() => _model
+                                                              .dropDownAmpValue =
+                                                          val),
+                                                  width: 200.0,
+                                                  height: 40.0,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallFamily,
-                                                            fontSize: 16.0,
+                                                                    .bodyMediumFamily,
                                                             letterSpacing: 0.0,
                                                             useGoogleFonts:
                                                                 !FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallIsCustom,
+                                                                    .bodyMediumIsCustom,
                                                           ),
-                                                      cursorColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      enableInteractiveSelection:
-                                                          true,
-                                                      validator: _model
-                                                          .textFieldRAmpTextControllerValidator
-                                                          .asValidator(context),
-                                                    ),
+                                                  hintText: 'Select...',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
                                                   ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 0.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: false,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
                                                 ),
                                               ),
                                             ),
@@ -1736,124 +1612,61 @@ class _SerlectProductMobileWidgetState
                                                     width: 1.0,
                                                   ),
                                                 ),
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 8.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0,
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 6.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0),
-                                                    child: TextFormField(
-                                                      controller: _model
-                                                          .textFieldCVoltTextController,
-                                                      focusNode: _model
-                                                          .textFieldCVoltFocusNode,
-                                                      autofocus: false,
-                                                      enabled: true,
-                                                      textInputAction:
-                                                          TextInputAction.next,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        isDense: true,
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        hintText: 'e.g. 24',
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        enabledBorder:
-                                                            InputBorder.none,
-                                                        focusedBorder:
-                                                            InputBorder.none,
-                                                        errorBorder:
-                                                            InputBorder.none,
-                                                        focusedErrorBorder:
-                                                            InputBorder.none,
-                                                        filled: true,
-                                                        fillColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelSmall
+                                                child: FlutterFlowDropDown<int>(
+                                                  controller: _model
+                                                          .dropDownCvoltValueController ??=
+                                                      FormFieldController<int>(
+                                                    _model.dropDownCvoltValue ??=
+                                                        null,
+                                                  ),
+                                                  options: List<int>.from([40]),
+                                                  optionLabels: ['40'],
+                                                  onChanged: (val) =>
+                                                      safeSetState(() => _model
+                                                              .dropDownCvoltValue =
+                                                          val),
+                                                  width: 200.0,
+                                                  height: 40.0,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallFamily,
-                                                            fontSize: 16.0,
+                                                                    .bodyMediumFamily,
                                                             letterSpacing: 0.0,
                                                             useGoogleFonts:
                                                                 !FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallIsCustom,
+                                                                    .bodyMediumIsCustom,
                                                           ),
-                                                      cursorColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      enableInteractiveSelection:
-                                                          true,
-                                                      validator: _model
-                                                          .textFieldCVoltTextControllerValidator
-                                                          .asValidator(context),
-                                                    ),
+                                                  hintText: 'Select...',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
                                                   ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 0.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: false,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
                                                 ),
                                               ),
                                             ),
@@ -1928,124 +1741,62 @@ class _SerlectProductMobileWidgetState
                                                     width: 1.0,
                                                   ),
                                                 ),
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 8.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0,
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 6.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0),
-                                                    child: TextFormField(
-                                                      controller: _model
-                                                          .textFieldNopTextController,
-                                                      focusNode: _model
-                                                          .textFieldNopFocusNode,
-                                                      autofocus: false,
-                                                      enabled: true,
-                                                      textInputAction:
-                                                          TextInputAction.next,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        isDense: true,
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        hintText: 'e.g. 1',
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        enabledBorder:
-                                                            InputBorder.none,
-                                                        focusedBorder:
-                                                            InputBorder.none,
-                                                        errorBorder:
-                                                            InputBorder.none,
-                                                        focusedErrorBorder:
-                                                            InputBorder.none,
-                                                        filled: true,
-                                                        fillColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelSmall
+                                                child: FlutterFlowDropDown<int>(
+                                                  controller: _model
+                                                          .dropDownNopValueController ??=
+                                                      FormFieldController<int>(
+                                                    _model.dropDownNopValue ??=
+                                                        null,
+                                                  ),
+                                                  options:
+                                                      List<int>.from([1, 2]),
+                                                  optionLabels: ['1', '2'],
+                                                  onChanged: (val) =>
+                                                      safeSetState(() => _model
+                                                              .dropDownNopValue =
+                                                          val),
+                                                  width: 200.0,
+                                                  height: 40.0,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallFamily,
-                                                            fontSize: 16.0,
+                                                                    .bodyMediumFamily,
                                                             letterSpacing: 0.0,
                                                             useGoogleFonts:
                                                                 !FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallIsCustom,
+                                                                    .bodyMediumIsCustom,
                                                           ),
-                                                      cursorColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      enableInteractiveSelection:
-                                                          true,
-                                                      validator: _model
-                                                          .textFieldNopTextControllerValidator
-                                                          .asValidator(context),
-                                                    ),
+                                                  hintText: 'Select...',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
                                                   ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 0.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: false,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
                                                 ),
                                               ),
                                             ),
@@ -2073,27 +1824,16 @@ class _SerlectProductMobileWidgetState
                                                 .text)
                                             : null)
                                         ?.toDouble(),
-                                    (_model.textFieldRAmpTextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldRAmpTextController
-                                                .text)
+                                    (_model.dropDownAmpValue != null
+                                            ? _model.dropDownAmpValue
                                             : null)
                                         ?.toDouble(),
-                                    (_model.textFieldCVoltTextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldCVoltTextController
-                                                .text)
+                                    (_model.dropDownCvoltValue != null
+                                            ? _model.dropDownCvoltValue
                                             : null)
                                         ?.toDouble(),
-                                    _model.textFieldNopTextController
-                                                    .text !=
-                                                ''
-                                        ? int.tryParse(_model
-                                            .textFieldNopTextController.text)
+                                    _model.dropDownNopValue != null
+                                        ? _model.dropDownNopValue
                                         : null,
                                   );
                                   _model.partsList = _model
@@ -2253,124 +1993,91 @@ class _SerlectProductMobileWidgetState
                                                     width: 1.0,
                                                   ),
                                                 ),
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 8.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0,
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 6.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0),
-                                                    child: TextFormField(
-                                                      controller: _model
-                                                          .textFieldMDF1TextController,
-                                                      focusNode: _model
-                                                          .textFieldMDF1FocusNode,
-                                                      autofocus: false,
-                                                      enabled: true,
-                                                      textInputAction:
-                                                          TextInputAction.next,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        isDense: true,
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        hintText: 'e.g 10',
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        enabledBorder:
-                                                            InputBorder.none,
-                                                        focusedBorder:
-                                                            InputBorder.none,
-                                                        errorBorder:
-                                                            InputBorder.none,
-                                                        focusedErrorBorder:
-                                                            InputBorder.none,
-                                                        filled: true,
-                                                        fillColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelSmall
+                                                child:
+                                                    FlutterFlowDropDown<double>(
+                                                  controller: _model
+                                                          .dropDownMFD1ValueController ??=
+                                                      FormFieldController<
+                                                          double>(
+                                                    _model.dropDownMFD1Value ??=
+                                                        null,
+                                                  ),
+                                                  options: List<double>.from([
+                                                    5.0,
+                                                    7.5,
+                                                    10.0,
+                                                    12.5,
+                                                    15.0,
+                                                    30.0,
+                                                    35.0,
+                                                    40.0,
+                                                    45.0,
+                                                    50.0,
+                                                    55.0,
+                                                    70.0,
+                                                    80.0
+                                                  ]),
+                                                  optionLabels: [
+                                                    '5',
+                                                    '7.5',
+                                                    '10',
+                                                    '12.5',
+                                                    '15',
+                                                    '30',
+                                                    '35',
+                                                    '40',
+                                                    '45',
+                                                    '50',
+                                                    '55',
+                                                    '70',
+                                                    '80'
+                                                  ],
+                                                  onChanged: (val) =>
+                                                      safeSetState(() => _model
+                                                              .dropDownMFD1Value =
+                                                          val),
+                                                  width: 200.0,
+                                                  height: 40.0,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallFamily,
-                                                            fontSize: 16.0,
+                                                                    .bodyMediumFamily,
                                                             letterSpacing: 0.0,
                                                             useGoogleFonts:
                                                                 !FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallIsCustom,
+                                                                    .bodyMediumIsCustom,
                                                           ),
-                                                      cursorColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      enableInteractiveSelection:
-                                                          true,
-                                                      validator: _model
-                                                          .textFieldMDF1TextControllerValidator
-                                                          .asValidator(context),
-                                                    ),
+                                                  hintText: 'Select...',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
                                                   ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 0.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: false,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
                                                 ),
                                               ),
                                             ),
@@ -2445,124 +2152,85 @@ class _SerlectProductMobileWidgetState
                                                     width: 1.0,
                                                   ),
                                                 ),
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 8.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0,
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  MediaQuery.sizeOf(context)
-                                                                              .width <
-                                                                          kBreakpointSmall
-                                                                      ? 6.0
-                                                                      : 25.0,
-                                                                  50.0,
-                                                                ),
-                                                                0.0),
-                                                    child: TextFormField(
-                                                      controller: _model
-                                                          .textFieldMDF2TextController,
-                                                      focusNode: _model
-                                                          .textFieldMDF2FocusNode,
-                                                      autofocus: false,
-                                                      enabled: true,
-                                                      textInputAction:
-                                                          TextInputAction.next,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        isDense: true,
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        hintText: 'e.g 5',
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmallIsCustom,
-                                                                ),
-                                                        enabledBorder:
-                                                            InputBorder.none,
-                                                        focusedBorder:
-                                                            InputBorder.none,
-                                                        errorBorder:
-                                                            InputBorder.none,
-                                                        focusedErrorBorder:
-                                                            InputBorder.none,
-                                                        filled: true,
-                                                        fillColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelSmall
+                                                child:
+                                                    FlutterFlowDropDown<double>(
+                                                  controller: _model
+                                                          .dropDownMFD2ValueController ??=
+                                                      FormFieldController<
+                                                          double>(
+                                                    _model.dropDownMFD2Value ??=
+                                                        null,
+                                                  ),
+                                                  options: List<double>.from([
+                                                    25.0,
+                                                    30.0,
+                                                    35.0,
+                                                    40.0,
+                                                    45.0,
+                                                    50.0,
+                                                    55.0,
+                                                    60.0,
+                                                    70.0,
+                                                    80.0
+                                                  ]),
+                                                  optionLabels: [
+                                                    '25',
+                                                    '30',
+                                                    '35',
+                                                    '40',
+                                                    '45',
+                                                    '50',
+                                                    '55',
+                                                    '60',
+                                                    '70',
+                                                    '80'
+                                                  ],
+                                                  onChanged: (val) =>
+                                                      safeSetState(() => _model
+                                                              .dropDownMFD2Value =
+                                                          val),
+                                                  width: 200.0,
+                                                  height: 40.0,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallFamily,
-                                                            fontSize: 16.0,
+                                                                    .bodyMediumFamily,
                                                             letterSpacing: 0.0,
                                                             useGoogleFonts:
                                                                 !FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallIsCustom,
+                                                                    .bodyMediumIsCustom,
                                                           ),
-                                                      cursorColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      enableInteractiveSelection:
-                                                          true,
-                                                      validator: _model
-                                                          .textFieldMDF2TextControllerValidator
-                                                          .asValidator(context),
-                                                    ),
+                                                  hintText: 'Select...',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
                                                   ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 0.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: false,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
                                                 ),
                                               ),
                                             ),
@@ -2711,6 +2379,7 @@ class _SerlectProductMobileWidgetState
                                                       enabled: true,
                                                       textInputAction:
                                                           TextInputAction.next,
+                                                      readOnly: true,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -3075,22 +2744,12 @@ class _SerlectProductMobileWidgetState
                                   _model.capacItemsOnFilterMob =
                                       await actions.filterCapacitorItems(
                                     FFAppState().userAC.acModel,
-                                    (_model.textFieldMDF1TextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldMDF1TextController
-                                                .text)
-                                            : null)
-                                        ?.toDouble(),
-                                    (_model.textFieldMDF2TextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldMDF2TextController
-                                                .text)
-                                            : null)
-                                        ?.toDouble(),
+                                    _model.dropDownMFD1Value != null
+                                        ? _model.dropDownMFD1Value
+                                        : null,
+                                    _model.dropDownMFD2Value != null
+                                        ? _model.dropDownMFD2Value
+                                        : null,
                                     _model.textFieldCapVoltTextController
                                                     .text !=
                                                 ''
@@ -3177,7 +2836,7 @@ class _SerlectProductMobileWidgetState
                                           '')) {
                                 return true;
                               } else if ((_model.selectedPartCS ==
-                                      Parts.CONTRACTOR) &&
+                                      Parts.CONTACTOR) &&
                                   (FFAppState().userAC.contactorSpecIdRef?.id !=
                                           null &&
                                       FFAppState()

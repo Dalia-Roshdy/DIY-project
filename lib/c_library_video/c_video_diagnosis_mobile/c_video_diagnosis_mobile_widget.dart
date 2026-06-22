@@ -10,7 +10,6 @@ import '/index.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'c_video_diagnosis_mobile_model.dart';
 export 'c_video_diagnosis_mobile_model.dart';
 
@@ -82,7 +81,7 @@ class _CVideoDiagnosisMobileWidgetState
               child: Text(
                 valueOrDefault<String>(
                   widget.videoRecord?.title,
-                  'VIDEO TITLE',
+                  'DIY WALKTHROUGH ',
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily:
@@ -104,18 +103,10 @@ class _CVideoDiagnosisMobileWidgetState
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: 'We guide you step-by-step to',
-                      style: TextStyle(),
-                    ),
-                    TextSpan(
-                      text: ' fix your AC',
-                      style: GoogleFonts.archivoBlack(
-                        fontWeight: FontWeight.normal,
+                      text: valueOrDefault<String>(
+                        widget.videoRecord?.description,
+                        'desc',
                       ),
-                    ),
-                    TextSpan(
-                      text:
-                          ', choose the right parts, and get it done — fast and stress-free.',
                       style: TextStyle(),
                     )
                   ],
@@ -173,70 +164,71 @@ class _CVideoDiagnosisMobileWidgetState
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 24.0, 12.0, 0.0),
-                      child: RichText(
-                        textScaler: MediaQuery.of(context).textScaler,
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Description:',
-                              style: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .labelMediumFamily,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .labelMediumIsCustom,
-                                  ),
-                            ),
-                            TextSpan(
-                              text: '\n',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    letterSpacing: 0.0,
-                                    decoration: TextDecoration.underline,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .bodyMediumIsCustom,
-                                  ),
-                            ),
-                            TextSpan(
-                              text:
-                                  'Learn how to locate your AC model and serial number \nquickly. This information helps us recommend the\n correct parts and repair steps for your unit.',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .bodyMediumIsCustom,
-                                  ),
-                            )
-                          ],
-                          style: FlutterFlowTheme.of(context)
-                              .titleLarge
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .titleLargeFamily,
-                                letterSpacing: 0.0,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .titleLargeIsCustom,
+                    if (false)
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            12.0, 24.0, 12.0, 0.0),
+                        child: RichText(
+                          textScaler: MediaQuery.of(context).textScaler,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Description:',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelMediumFamily,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelMediumIsCustom,
+                                    ),
                               ),
+                              TextSpan(
+                                text: '\n',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      letterSpacing: 0.0,
+                                      decoration: TextDecoration.underline,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
+                                    ),
+                              ),
+                              TextSpan(
+                                text:
+                                    'Learn how to locate your AC model and serial number \nquickly. This information helps us recommend the\n correct parts and repair steps for your unit.',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      fontSize: 14.0,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
+                                    ),
+                              )
+                            ],
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleLargeFamily,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleLargeIsCustom,
+                                ),
+                          ),
+                          textAlign: TextAlign.start,
                         ),
-                        textAlign: TextAlign.start,
                       ),
-                    ),
                   ],
                 ),
               ],
@@ -263,6 +255,25 @@ class _CVideoDiagnosisMobileWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
                             child: Text(
+                              'Questions:',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w800,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
+                                  ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Text(
                               valueOrDefault<String>(
                                 _model.currentVideo?.videoQuestion,
                                 'q.',
@@ -275,51 +286,54 @@ class _CVideoDiagnosisMobileWidgetState
                                         .bodyLargeFamily,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w900,
+                                    fontWeight: FontWeight.normal,
                                     useGoogleFonts:
                                         !FlutterFlowTheme.of(context)
                                             .bodyLargeIsCustom,
                                   ),
                             ),
                           ),
-                          FlutterFlowRadioButton(
-                            options: _model.videoOptions
-                                .map((e) => valueOrDefault<String>(
-                                      e.buttonText,
-                                      'option 01',
-                                    ))
-                                .toList(),
-                            onChanged: (val) async {
-                              safeSetState(() {});
-                              _model.selectedOption = _model.videoOptions
-                                  .where((e) =>
-                                      e.buttonText == _model.radioButtonValue)
-                                  .toList()
-                                  .firstOrNull;
-                              safeSetState(() {});
-                            },
-                            controller: _model.radioButtonValueController ??=
-                                FormFieldController<String>(null),
-                            optionHeight: 32.0,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .labelMediumFamily,
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .labelMediumIsCustom,
-                                ),
-                            buttonPosition: RadioButtonPosition.left,
-                            direction: Axis.vertical,
-                            radioButtonColor:
-                                FlutterFlowTheme.of(context).primary,
-                            inactiveRadioButtonColor:
-                                FlutterFlowTheme.of(context).secondaryText,
-                            toggleable: false,
-                            horizontalAlignment: WrapAlignment.start,
-                            verticalAlignment: WrapCrossAlignment.start,
+                          Expanded(
+                            child: FlutterFlowRadioButton(
+                              options: _model.videoOptions
+                                  .map((e) => valueOrDefault<String>(
+                                        e.buttonText,
+                                        'option 01',
+                                      ))
+                                  .toList(),
+                              onChanged: (val) async {
+                                safeSetState(() {});
+                                _model.selectedOption = _model.videoOptions
+                                    .where((e) =>
+                                        e.buttonText == _model.radioButtonValue)
+                                    .toList()
+                                    .firstOrNull;
+                                safeSetState(() {});
+                              },
+                              controller: _model.radioButtonValueController ??=
+                                  FormFieldController<String>(null),
+                              optionHeight: 32.0,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelMediumFamily,
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .labelMediumIsCustom,
+                                  ),
+                              buttonPosition: RadioButtonPosition.left,
+                              direction: Axis.vertical,
+                              radioButtonColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              inactiveRadioButtonColor:
+                                  FlutterFlowTheme.of(context).secondaryText,
+                              toggleable: false,
+                              horizontalAlignment: WrapAlignment.start,
+                              verticalAlignment: WrapCrossAlignment.start,
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(

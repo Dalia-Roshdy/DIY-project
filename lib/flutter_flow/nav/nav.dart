@@ -98,116 +98,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => BDiagnosisWidget(),
         ),
         FFRoute(
-          name: AHomePageCopyWidget.routeName,
-          path: AHomePageCopyWidget.routePath,
-          builder: (context, params) => AHomePageCopyWidget(),
-        ),
-        FFRoute(
-          name: BDiagnosisCopyWidget.routeName,
-          path: BDiagnosisCopyWidget.routePath,
-          builder: (context, params) => BDiagnosisCopyWidget(),
-        ),
-        FFRoute(
-          name: L02SingUpPageWidget.routeName,
-          path: L02SingUpPageWidget.routePath,
-          builder: (context, params) => L02SingUpPageWidget(),
-        ),
-        FFRoute(
-          name: L03ForgetPasswordWidget.routeName,
-          path: L03ForgetPasswordWidget.routePath,
-          builder: (context, params) => L03ForgetPasswordWidget(),
-        ),
-        FFRoute(
-          name: L05ForgetVerificationPageWidget.routeName,
-          path: L05ForgetVerificationPageWidget.routePath,
-          builder: (context, params) => L05ForgetVerificationPageWidget(),
-        ),
-        FFRoute(
-          name: L04ResetPasswordPageWidget.routeName,
-          path: L04ResetPasswordPageWidget.routePath,
-          builder: (context, params) => L04ResetPasswordPageWidget(),
-        ),
-        FFRoute(
-          name: L06VerificationPageWidget.routeName,
-          path: L06VerificationPageWidget.routePath,
-          builder: (context, params) => L06VerificationPageWidget(
-            email: params.getParam(
-              'email',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: SelectMotorMobile2Widget.routeName,
-          path: SelectMotorMobile2Widget.routePath,
-          builder: (context, params) => SelectMotorMobile2Widget(),
-        ),
-        FFRoute(
-          name: SelecProductDesktopWidget.routeName,
-          path: SelecProductDesktopWidget.routePath,
-          builder: (context, params) => SelecProductDesktopWidget(),
-        ),
-        FFRoute(
-          name: SelectMotor2Widget.routeName,
-          path: SelectMotor2Widget.routePath,
-          builder: (context, params) => SelectMotor2Widget(),
-        ),
-        FFRoute(
-          name: SelectMotor3Widget.routeName,
-          path: SelectMotor3Widget.routePath,
-          builder: (context, params) => SelectMotor3Widget(),
-        ),
-        FFRoute(
-          name: OrderAndReviewSummaryWidget.routeName,
-          path: OrderAndReviewSummaryWidget.routePath,
-          builder: (context, params) => OrderAndReviewSummaryWidget(),
-        ),
-        FFRoute(
-          name: ReviewOrderFinalWidget.routeName,
-          path: ReviewOrderFinalWidget.routePath,
-          builder: (context, params) => ReviewOrderFinalWidget(),
-        ),
-        FFRoute(
           name: EReviewYourOrderWidget.routeName,
           path: EReviewYourOrderWidget.routePath,
           builder: (context, params) => EReviewYourOrderWidget(),
         ),
         FFRoute(
-          name: ReviewOrderWidget.routeName,
-          path: ReviewOrderWidget.routePath,
-          builder: (context, params) => ReviewOrderWidget(),
-        ),
-        FFRoute(
-          name: FSecurePaymentCheckoutDraftWidget.routeName,
-          path: FSecurePaymentCheckoutDraftWidget.routePath,
-          builder: (context, params) => FSecurePaymentCheckoutDraftWidget(),
-        ),
-        FFRoute(
-          name: SecureCheckoutWidget.routeName,
-          path: SecureCheckoutWidget.routePath,
-          builder: (context, params) => SecureCheckoutWidget(),
-        ),
-        FFRoute(
-          name: SecureCheckout2Widget.routeName,
-          path: SecureCheckout2Widget.routePath,
-          builder: (context, params) => SecureCheckout2Widget(),
-        ),
-        FFRoute(
           name: GSecurePaymentCheckoutWidget.routeName,
           path: GSecurePaymentCheckoutWidget.routePath,
           builder: (context, params) => GSecurePaymentCheckoutWidget(),
-        ),
-        FFRoute(
-          name: LoadinIndicatorWidget.routeName,
-          path: LoadinIndicatorWidget.routePath,
-          builder: (context, params) => LoadinIndicatorWidget(
-            orderId: params.getParam(
-              'orderId',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['orders'],
-            ),
-          ),
         ),
         FFRoute(
           name: DSelectProductRepairWidget.routeName,
@@ -245,11 +143,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LShippingAddressEditWidget(),
         ),
         FFRoute(
-          name: VideoLibraryWidget.routeName,
-          path: VideoLibraryWidget.routePath,
-          builder: (context, params) => VideoLibraryWidget(),
-        ),
-        FFRoute(
           name: CLibraryVideoFlowWidget.routeName,
           path: CLibraryVideoFlowWidget.routePath,
           builder: (context, params) => CLibraryVideoFlowWidget(
@@ -260,11 +153,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['DiagnosisVideo'],
             ),
           ),
-        ),
-        FFRoute(
-          name: AboutMobileRefinedWidget.routeName,
-          path: AboutMobileRefinedWidget.routePath,
-          builder: (context, params) => AboutMobileRefinedWidget(),
         ),
         FFRoute(
           name: UnsubscribeWidget.routeName,
@@ -291,24 +179,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: IAboutMobile02Widget.routeName,
-          path: IAboutMobile02Widget.routePath,
-          builder: (context, params) => IAboutMobile02Widget(),
-        ),
-        FFRoute(
-          name: OrderSuccessWidget.routeName,
-          path: OrderSuccessWidget.routePath,
-          builder: (context, params) => OrderSuccessWidget(),
-        ),
-        FFRoute(
           name: ShippingAddressesWidget.routeName,
           path: ShippingAddressesWidget.routePath,
           builder: (context, params) => ShippingAddressesWidget(),
-        ),
-        FFRoute(
-          name: SomethingwentwrongWidget.routeName,
-          path: SomethingwentwrongWidget.routePath,
-          builder: (context, params) => SomethingwentwrongWidget(),
         ),
         FFRoute(
           name: SomethingWentWrongWidget.routeName,
@@ -331,11 +204,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => GTrackAndFindMyOrderWidget(),
         ),
         FFRoute(
-          name: NewScreen1Widget.routeName,
-          path: NewScreen1Widget.routePath,
-          builder: (context, params) => NewScreen1Widget(),
-        ),
-        FFRoute(
           name: NewScreen3Widget.routeName,
           path: NewScreen3Widget.routePath,
           builder: (context, params) => NewScreen3Widget(),
@@ -343,7 +211,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: HOrderTrackingWidget.routeName,
           path: HOrderTrackingWidget.routePath,
-          builder: (context, params) => HOrderTrackingWidget(),
+          builder: (context, params) => HOrderTrackingWidget(
+            orderId: params.getParam(
+              'orderId',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['orders'],
+            ),
+          ),
         ),
         FFRoute(
           name: NewScreen2Widget.routeName,
@@ -354,11 +229,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: NewScreen4Widget.routeName,
           path: NewScreen4Widget.routePath,
           builder: (context, params) => NewScreen4Widget(),
-        ),
-        FFRoute(
-          name: L01SignInPageWidget.routeName,
-          path: L01SignInPageWidget.routePath,
-          builder: (context, params) => L01SignInPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

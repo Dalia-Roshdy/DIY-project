@@ -8,6 +8,7 @@ import '/components/text_field7_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/components/button8/button8_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -525,8 +526,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                 updateCallback: () =>
                                                     safeSetState(() {}),
                                                 child: FormLabel2Widget(
-                                                  label:
-                                                      'Last 4 digits of your Card',
+                                                  label: 'PIN',
                                                   isRequired: true,
                                                 ),
                                               ),
@@ -587,6 +587,22 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           ),
                                         ),
                                       ].divide(SizedBox(width: 16.0)),
+                                    ),
+                                    Text(
+                                      'Please remember your details  (Email, phone, PIN) to track and find your order.',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            color: Color(0xFFB85757),
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
+                                          ),
                                     ),
                                   ].divide(SizedBox(height: 16.0)),
                                 ),
@@ -658,94 +674,108 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                       safeSetState(() => _model.form01 = false);
                                       return;
                                     }
+                                    _model.linsACTC =
+                                        await actions.cartItemsToOrderLinesA(
+                                      FFAppState().Cart.cartItems.toList(),
+                                    );
 
                                     var ordersRecordReference =
                                         OrdersRecord.collection.doc();
-                                    await ordersRecordReference
-                                        .set(createOrdersRecordData(
-                                      createdAt: getCurrentTimestamp,
-                                      updatedAt: getCurrentTimestamp,
-                                      status: OrderStatus.submitted,
-                                      totalsSnap: createTotalSnapStruct(
-                                        subtotal: FFAppState().Cart.subtotal,
-                                        shipping: FFAppState().Cart.shipping,
-                                        tax: FFAppState().Cart.tax,
-                                        total: FFAppState().Cart.total,
-                                        clearUnsetFields: false,
-                                        create: true,
+                                    await ordersRecordReference.set({
+                                      ...createOrdersRecordData(
+                                        createdAt: getCurrentTimestamp,
+                                        updatedAt: getCurrentTimestamp,
+                                        status: OrderStatus.submitted,
+                                        totalsSnap: createTotalSnapStruct(
+                                          subtotal: FFAppState().Cart.subtotal,
+                                          shipping: FFAppState().Cart.shipping,
+                                          tax: FFAppState().Cart.tax,
+                                          total: FFAppState().Cart.total,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
+                                        payment: createPaymentDataStruct(
+                                          provider: 'Strip',
+                                          currency: 'usd',
+                                          status: PaymentStatus.pending.name,
+                                          amountTotal: FFAppState().Cart.total,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
+                                        customerSnap: createCustomerStruct(
+                                          email: _model.textFieldEmailModel
+                                              .inputTextController.text,
+                                          shippingAddress:
+                                              '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
+                                          phone: _model.textFieldPhoneModel
+                                              .inputTextController.text,
+                                          name: _model.textFieldNameModel
+                                              .inputTextController.text,
+                                          pin: _model.textFieldCardModel
+                                              .inputTextController.text,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
+                                        uid: currentUserReference,
+                                        comment: FFAppState().Cart.comment,
                                       ),
-                                      payment: createPaymentDataStruct(
-                                        provider: 'Strip',
-                                        currency: 'usd',
-                                        status: PaymentStatus.pending.name,
-                                        amountTotal: FFAppState().Cart.total,
-                                        clearUnsetFields: false,
-                                        create: true,
+                                      ...mapToFirestore(
+                                        {
+                                          'lines':
+                                              getOrderLinesListFirestoreData(
+                                            _model.linsACTC,
+                                          ),
+                                        },
                                       ),
-                                      customerSnap: createCustomerStruct(
-                                        email: _model.textFieldEmailModel
-                                            .inputTextController.text,
-                                        shippingAddress:
-                                            '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
-                                        phone: _model.textFieldPhoneModel
-                                            .inputTextController.text,
-                                        name: _model.textFieldNameModel
-                                            .inputTextController.text,
-                                        pin: _model.textFieldCardModel
-                                            .inputTextController.text,
-                                        clearUnsetFields: false,
-                                        create: true,
-                                      ),
-                                      uid: currentUserReference,
-                                    ));
+                                    });
                                     _model.order =
-                                        OrdersRecord.getDocumentFromData(
-                                            createOrdersRecordData(
-                                              createdAt: getCurrentTimestamp,
-                                              updatedAt: getCurrentTimestamp,
-                                              status: OrderStatus.submitted,
-                                              totalsSnap: createTotalSnapStruct(
-                                                subtotal:
-                                                    FFAppState().Cart.subtotal,
-                                                shipping:
-                                                    FFAppState().Cart.shipping,
-                                                tax: FFAppState().Cart.tax,
-                                                total: FFAppState().Cart.total,
-                                                clearUnsetFields: false,
-                                                create: true,
-                                              ),
-                                              payment: createPaymentDataStruct(
-                                                provider: 'Strip',
-                                                currency: 'usd',
-                                                status:
-                                                    PaymentStatus.pending.name,
-                                                amountTotal:
-                                                    FFAppState().Cart.total,
-                                                clearUnsetFields: false,
-                                                create: true,
-                                              ),
-                                              customerSnap:
-                                                  createCustomerStruct(
-                                                email: _model
-                                                    .textFieldEmailModel
-                                                    .inputTextController
-                                                    .text,
-                                                shippingAddress:
-                                                    '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
-                                                phone: _model
-                                                    .textFieldPhoneModel
-                                                    .inputTextController
-                                                    .text,
-                                                name: _model.textFieldNameModel
-                                                    .inputTextController.text,
-                                                pin: _model.textFieldCardModel
-                                                    .inputTextController.text,
-                                                clearUnsetFields: false,
-                                                create: true,
-                                              ),
-                                              uid: currentUserReference,
-                                            ),
-                                            ordersRecordReference);
+                                        OrdersRecord.getDocumentFromData({
+                                      ...createOrdersRecordData(
+                                        createdAt: getCurrentTimestamp,
+                                        updatedAt: getCurrentTimestamp,
+                                        status: OrderStatus.submitted,
+                                        totalsSnap: createTotalSnapStruct(
+                                          subtotal: FFAppState().Cart.subtotal,
+                                          shipping: FFAppState().Cart.shipping,
+                                          tax: FFAppState().Cart.tax,
+                                          total: FFAppState().Cart.total,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
+                                        payment: createPaymentDataStruct(
+                                          provider: 'Strip',
+                                          currency: 'usd',
+                                          status: PaymentStatus.pending.name,
+                                          amountTotal: FFAppState().Cart.total,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
+                                        customerSnap: createCustomerStruct(
+                                          email: _model.textFieldEmailModel
+                                              .inputTextController.text,
+                                          shippingAddress:
+                                              '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
+                                          phone: _model.textFieldPhoneModel
+                                              .inputTextController.text,
+                                          name: _model.textFieldNameModel
+                                              .inputTextController.text,
+                                          pin: _model.textFieldCardModel
+                                              .inputTextController.text,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
+                                        uid: currentUserReference,
+                                        comment: FFAppState().Cart.comment,
+                                      ),
+                                      ...mapToFirestore(
+                                        {
+                                          'lines':
+                                              getOrderLinesListFirestoreData(
+                                            _model.linsACTC,
+                                          ),
+                                        },
+                                      ),
+                                    }, ordersRecordReference);
                                     _model.orderPS = _model.order?.reference;
                                   } else {
                                     _model.form02 = true;
@@ -755,24 +785,38 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                       safeSetState(() => _model.form02 = false);
                                       return;
                                     }
+                                    _model.linsACTU =
+                                        await actions.cartItemsToOrderLinesA(
+                                      FFAppState().Cart.cartItems.toList(),
+                                    );
 
-                                    await _model.orderPS!
-                                        .update(createOrdersRecordData(
-                                      updatedAt: getCurrentTimestamp,
-                                      customerSnap: createCustomerStruct(
-                                        email: _model.textFieldEmailModel
-                                            .inputTextController.text,
-                                        phone: _model.textFieldPhoneModel
-                                            .inputTextController.text,
-                                        shippingAddress:
-                                            '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
-                                        pin: _model.textFieldCardModel
-                                            .inputTextController.text,
-                                        name: _model.textFieldCardModel
-                                            .inputTextController.text,
-                                        clearUnsetFields: false,
+                                    await _model.orderPS!.update({
+                                      ...createOrdersRecordData(
+                                        updatedAt: getCurrentTimestamp,
+                                        customerSnap: createCustomerStruct(
+                                          email: _model.textFieldEmailModel
+                                              .inputTextController.text,
+                                          phone: _model.textFieldPhoneModel
+                                              .inputTextController.text,
+                                          shippingAddress:
+                                              '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
+                                          pin: _model.textFieldCardModel
+                                              .inputTextController.text,
+                                          name: _model.textFieldCardModel
+                                              .inputTextController.text,
+                                          clearUnsetFields: false,
+                                        ),
+                                        comment: FFAppState().Cart.comment,
                                       ),
-                                    ));
+                                      ...mapToFirestore(
+                                        {
+                                          'lines':
+                                              getOrderLinesListFirestoreData(
+                                            _model.linsACTU,
+                                          ),
+                                        },
+                                      ),
+                                    });
                                   }
 
                                   final paymentResponse =

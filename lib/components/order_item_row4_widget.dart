@@ -173,10 +173,7 @@ class _OrderItemRow4WidgetState extends State<OrderItemRow4Widget> {
                     ),
                   ),
                   Text(
-                    valueOrDefault<String>(
-                      widget.price,
-                      '\$45.00',
-                    ),
+                    '\$${widget.price}',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
                           fontFamily:
                               FlutterFlowTheme.of(context).titleMediumFamily,

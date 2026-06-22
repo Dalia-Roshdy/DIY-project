@@ -1,21 +1,19 @@
-import 'dart:convert';
-import 'dart:math' as math;
-
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-import 'package:timeago/timeago.dart' as timeago;
-import 'lat_lng.dart';
-import 'place.dart';
-import 'uploaded_file.dart';
+// Automatic FlutterFlow imports
 import '/backend/backend.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/schema/enums/enums.dart';
-import '/auth/firebase_auth/auth_util.dart';
+import '/app_events/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'index.dart'; // Imports other custom actions
+import 'package:flutter/material.dart';
+// Begin custom action code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-List<OrderLinesStruct> cartItemsToOrderLines(List<CartItemStruct> cartItems) {
-  if (cartItems == null || cartItems.isEmpty) {
+Future<List<OrderLinesStruct>> cartItemsToOrderLinesA(
+  List<CartItemStruct> cartItems,
+) async {
+  if (cartItems.isEmpty) {
     return [];
   }
 
@@ -29,7 +27,7 @@ List<OrderLinesStruct> cartItemsToOrderLines(List<CartItemStruct> cartItems) {
       qty: qty,
       unitPrice: unitPrice,
       title: cartItem.title,
-      specType: cartItem.specType,
+      specType: cartItem.specType ?? 'tool',
       returnPolicySnapshot: ReturnPolicySnapshotStruct(
         returnable: cartItem.isReturnable,
       ),

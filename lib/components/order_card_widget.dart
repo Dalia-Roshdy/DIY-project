@@ -1,6 +1,7 @@
 import '/components/button38_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'order_card_model.dart';
@@ -14,6 +15,7 @@ class OrderCardWidget extends StatefulWidget {
     String? idNum,
     String? items,
     String? status,
+    required this.orderId,
   })  : this.date = date ?? 'October 12, 2023',
         this.idNum = idNum ?? 'ORD-88291',
         this.items = items ?? 'Replacement Capacitor, Service Valve Set',
@@ -24,6 +26,7 @@ class OrderCardWidget extends StatefulWidget {
   final String idNum;
   final String items;
   final String status;
+  final DocumentReference? orderId;
 
   @override
   State<OrderCardWidget> createState() => _OrderCardWidgetState();
@@ -197,18 +200,35 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                   ].divide(SizedBox(height: 4.0)),
                 ),
               ),
-              wrapWithModel(
-                model: _model.buttonModel,
-                updateCallback: () => safeSetState(() {}),
-                child: Button38Widget(
-                  content: 'VIEW DETAILS',
-                  iconPresent: false,
-                  iconEndPresent: false,
-                  variant: 'outline',
-                  size: 'small',
-                  fullWidth: false,
-                  loading: false,
-                  disabled: false,
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed(
+                    HOrderTrackingWidget.routeName,
+                    queryParameters: {
+                      'orderId': serializeParam(
+                        widget.orderId,
+                        ParamType.DocumentReference,
+                      ),
+                    }.withoutNulls,
+                  );
+                },
+                child: wrapWithModel(
+                  model: _model.buttonModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: Button38Widget(
+                    content: 'VIEW DETAILS',
+                    iconPresent: false,
+                    iconEndPresent: false,
+                    variant: 'outline',
+                    size: 'small',
+                    fullWidth: false,
+                    loading: false,
+                    disabled: false,
+                  ),
                 ),
               ),
             ].divide(SizedBox(width: 16.0)),

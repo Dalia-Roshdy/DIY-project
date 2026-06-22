@@ -172,20 +172,42 @@ class _OrderItemRow3WidgetState extends State<OrderItemRow3Widget> {
                       ].divide(SizedBox(height: 4.0)),
                     ),
                   ),
-                  Text(
-                    valueOrDefault<String>(
-                      widget.price,
-                      '\$45.00',
-                    ),
-                    style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).titleMediumFamily,
-                          fontSize: 24.0,
-                          letterSpacing: 0.0,
-                          lineHeight: 1.2,
-                          useGoogleFonts:
-                              !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                  RichText(
+                    textScaler: MediaQuery.of(context).textScaler,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '\$',
+                          style: TextStyle(),
                         ),
+                        TextSpan(
+                          text: valueOrDefault<String>(
+                            widget.price,
+                            '45.00',
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .titleMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleMediumFamily,
+                                fontSize: 24.0,
+                                letterSpacing: 0.0,
+                                lineHeight: 1.2,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleMediumIsCustom,
+                              ),
+                        )
+                      ],
+                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleMediumFamily,
+                            fontSize: 24.0,
+                            letterSpacing: 0.0,
+                            lineHeight: 1.2,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleMediumIsCustom,
+                          ),
+                    ),
                   ),
                 ].divide(SizedBox(width: 16.0)),
               ),

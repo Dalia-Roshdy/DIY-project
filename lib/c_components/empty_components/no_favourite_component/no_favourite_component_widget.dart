@@ -144,7 +144,9 @@ class _NoFavouriteComponentWidgetState
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(57.0, 0.0, 57.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: () async {},
+                    onPressed: () {
+                      print('Button pressed ...');
+                    },
                     text: 'Go to home',
                     options: FFButtonOptions(
                       width: double.infinity,
