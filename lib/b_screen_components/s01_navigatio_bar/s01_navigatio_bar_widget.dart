@@ -55,42 +55,46 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
           Container(
             height: double.infinity,
             decoration: BoxDecoration(),
-            child: InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                context.pushNamed(AHomePageWidget.routeName);
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
-                    child: Icon(
-                      Icons.settings_input_component_rounded,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 0.0, 4.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed(AHomePageWidget.routeName);
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        'assets/images/AYK_Logo.jpg',
+                        width: 47.98,
+                        height: 200.0,
+                        fit: BoxFit.contain,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'DIY AC REPAIR',
-                    style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).titleMediumFamily,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w900,
-                          lineHeight: 1.4,
-                          useGoogleFonts:
-                              !FlutterFlowTheme.of(context).titleMediumIsCustom,
-                        ),
-                  ),
-                ].divide(SizedBox(width: 8.0)),
+                    Text(
+                      'DIY AC REPAIR',
+                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleMediumFamily,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w900,
+                            lineHeight: 1.4,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleMediumIsCustom,
+                          ),
+                    ),
+                  ].divide(SizedBox(width: 8.0)),
+                ),
               ),
             ),
           ),
@@ -120,40 +124,43 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   context: context,
                   desktop: false,
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        context.pushNamed(EReviewYourOrderWidget.routeName);
-                      },
-                      child: Icon(
-                        Icons.shopping_cart_rounded,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24.0,
-                      ),
-                    ),
-                    if (false)
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
                       InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(LUserProfileWidget.routeName);
+                          context.pushNamed(EReviewYourOrderWidget.routeName);
                         },
                         child: Icon(
-                          Icons.person,
+                          Icons.shopping_cart_rounded,
                           color: FlutterFlowTheme.of(context).primaryText,
                           size: 24.0,
                         ),
                       ),
-                  ].divide(SizedBox(width: 12.0)),
+                      if (false)
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(LUserProfileWidget.routeName);
+                          },
+                          child: Icon(
+                            Icons.person,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                    ].divide(SizedBox(width: 12.0)),
+                  ),
                 ),
               ),
             ),
@@ -328,31 +335,34 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
             context: context,
             desktop: false,
           ))
-            FlutterFlowIconButton(
-              borderRadius: 0.0,
-              borderWidth: 0.0,
-              buttonSize: valueOrDefault<double>(
-                MediaQuery.sizeOf(context).width < kBreakpointSmall
-                    ? 40.0
-                    : 80.0,
-                80.0,
-              ),
-              fillColor: FlutterFlowTheme.of(context).primaryBackground,
-              hoverColor: FlutterFlowTheme.of(context).primaryBackground,
-              hoverIconColor: FlutterFlowTheme.of(context).tertiary,
-              icon: Icon(
-                Icons.menu,
-                color: FlutterFlowTheme.of(context).primary,
-                size: valueOrDefault<double>(
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderRadius: 0.0,
+                borderWidth: 0.0,
+                buttonSize: valueOrDefault<double>(
                   MediaQuery.sizeOf(context).width < kBreakpointSmall
-                      ? 20.0
-                      : 40.0,
-                  40.0,
+                      ? 40.0
+                      : 80.0,
+                  80.0,
                 ),
+                fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                hoverColor: FlutterFlowTheme.of(context).primaryBackground,
+                hoverIconColor: FlutterFlowTheme.of(context).tertiary,
+                icon: Icon(
+                  Icons.menu,
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: valueOrDefault<double>(
+                    MediaQuery.sizeOf(context).width < kBreakpointSmall
+                        ? 20.0
+                        : 40.0,
+                    40.0,
+                  ),
+                ),
+                onPressed: () async {
+                  context.pushNamed(HamburgerNavWidget.routeName);
+                },
               ),
-              onPressed: () async {
-                context.pushNamed(HamburgerNavWidget.routeName);
-              },
             ),
           if (responsiveVisibility(
             context: context,

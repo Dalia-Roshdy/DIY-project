@@ -1,8 +1,11 @@
+import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -179,11 +182,22 @@ class _DeleteCartItemDialogWidgetState
                               ),
                           );
                           safeSetState(() {});
+                          _model.tax = await querySettingsRecordOnce(
+                            queryBuilder: (settingsRecord) =>
+                                settingsRecord.where(
+                              'key',
+                              isEqualTo: SettingKeys.tax.name,
+                            ),
+                            singleRecord: true,
+                          ).then((s) => s.firstOrNull);
                           await actions.calculateCartTotal(
+                            _model.tax!.value,
                             FFAppState().Cart.shipping.toString(),
-                            FFAppState().Cart.tax.toString(),
+                            FFAppState().Cart.motorSLFees.toString(),
                           );
                           Navigator.pop(context);
+
+                          safeSetState(() {});
                         },
                         text: 'Yes',
                         options: FFButtonOptions(

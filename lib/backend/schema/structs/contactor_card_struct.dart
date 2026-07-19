@@ -9,18 +9,22 @@ import '/flutter_flow/flutter_flow_util.dart';
 class ContactorCardStruct extends FFFirebaseStruct {
   ContactorCardStruct({
     double? contCoilVolt,
-    double? contratedVolt,
     double? contratedAmp,
     double? contLength,
     double? contWidth,
     double? contDepth,
+    int? contNumberOfPoles,
+    String? contTerminalType,
+    String? contDescription,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _contCoilVolt = contCoilVolt,
-        _contratedVolt = contratedVolt,
         _contratedAmp = contratedAmp,
         _contLength = contLength,
         _contWidth = contWidth,
         _contDepth = contDepth,
+        _contNumberOfPoles = contNumberOfPoles,
+        _contTerminalType = contTerminalType,
+        _contDescription = contDescription,
         super(firestoreUtilData);
 
   // "contCoilVolt" field.
@@ -32,16 +36,6 @@ class ContactorCardStruct extends FFFirebaseStruct {
       contCoilVolt = contCoilVolt + amount;
 
   bool hasContCoilVolt() => _contCoilVolt != null;
-
-  // "contratedVolt" field.
-  double? _contratedVolt;
-  double get contratedVolt => _contratedVolt ?? 0.0;
-  set contratedVolt(double? val) => _contratedVolt = val;
-
-  void incrementContratedVolt(double amount) =>
-      contratedVolt = contratedVolt + amount;
-
-  bool hasContratedVolt() => _contratedVolt != null;
 
   // "contratedAmp" field.
   double? _contratedAmp;
@@ -80,14 +74,40 @@ class ContactorCardStruct extends FFFirebaseStruct {
 
   bool hasContDepth() => _contDepth != null;
 
+  // "contNumberOfPoles" field.
+  int? _contNumberOfPoles;
+  int get contNumberOfPoles => _contNumberOfPoles ?? 0;
+  set contNumberOfPoles(int? val) => _contNumberOfPoles = val;
+
+  void incrementContNumberOfPoles(int amount) =>
+      contNumberOfPoles = contNumberOfPoles + amount;
+
+  bool hasContNumberOfPoles() => _contNumberOfPoles != null;
+
+  // "contTerminalType" field.
+  String? _contTerminalType;
+  String get contTerminalType => _contTerminalType ?? '';
+  set contTerminalType(String? val) => _contTerminalType = val;
+
+  bool hasContTerminalType() => _contTerminalType != null;
+
+  // "contDescription" field.
+  String? _contDescription;
+  String get contDescription => _contDescription ?? '';
+  set contDescription(String? val) => _contDescription = val;
+
+  bool hasContDescription() => _contDescription != null;
+
   static ContactorCardStruct fromMap(Map<String, dynamic> data) =>
       ContactorCardStruct(
         contCoilVolt: castToType<double>(data['contCoilVolt']),
-        contratedVolt: castToType<double>(data['contratedVolt']),
         contratedAmp: castToType<double>(data['contratedAmp']),
         contLength: castToType<double>(data['contLength']),
         contWidth: castToType<double>(data['contWidth']),
         contDepth: castToType<double>(data['contDepth']),
+        contNumberOfPoles: castToType<int>(data['contNumberOfPoles']),
+        contTerminalType: data['contTerminalType'] as String?,
+        contDescription: data['contDescription'] as String?,
       );
 
   static ContactorCardStruct? maybeFromMap(dynamic data) => data is Map
@@ -96,21 +116,19 @@ class ContactorCardStruct extends FFFirebaseStruct {
 
   Map<String, dynamic> toMap() => {
         'contCoilVolt': _contCoilVolt,
-        'contratedVolt': _contratedVolt,
         'contratedAmp': _contratedAmp,
         'contLength': _contLength,
         'contWidth': _contWidth,
         'contDepth': _contDepth,
+        'contNumberOfPoles': _contNumberOfPoles,
+        'contTerminalType': _contTerminalType,
+        'contDescription': _contDescription,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
         'contCoilVolt': serializeParam(
           _contCoilVolt,
-          ParamType.double,
-        ),
-        'contratedVolt': serializeParam(
-          _contratedVolt,
           ParamType.double,
         ),
         'contratedAmp': serializeParam(
@@ -129,17 +147,24 @@ class ContactorCardStruct extends FFFirebaseStruct {
           _contDepth,
           ParamType.double,
         ),
+        'contNumberOfPoles': serializeParam(
+          _contNumberOfPoles,
+          ParamType.int,
+        ),
+        'contTerminalType': serializeParam(
+          _contTerminalType,
+          ParamType.String,
+        ),
+        'contDescription': serializeParam(
+          _contDescription,
+          ParamType.String,
+        ),
       }.withoutNulls;
 
   static ContactorCardStruct fromSerializableMap(Map<String, dynamic> data) =>
       ContactorCardStruct(
         contCoilVolt: deserializeParam(
           data['contCoilVolt'],
-          ParamType.double,
-          false,
-        ),
-        contratedVolt: deserializeParam(
-          data['contratedVolt'],
           ParamType.double,
           false,
         ),
@@ -163,6 +188,21 @@ class ContactorCardStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
+        contNumberOfPoles: deserializeParam(
+          data['contNumberOfPoles'],
+          ParamType.int,
+          false,
+        ),
+        contTerminalType: deserializeParam(
+          data['contTerminalType'],
+          ParamType.String,
+          false,
+        ),
+        contDescription: deserializeParam(
+          data['contDescription'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -172,31 +212,37 @@ class ContactorCardStruct extends FFFirebaseStruct {
   bool operator ==(Object other) {
     return other is ContactorCardStruct &&
         contCoilVolt == other.contCoilVolt &&
-        contratedVolt == other.contratedVolt &&
         contratedAmp == other.contratedAmp &&
         contLength == other.contLength &&
         contWidth == other.contWidth &&
-        contDepth == other.contDepth;
+        contDepth == other.contDepth &&
+        contNumberOfPoles == other.contNumberOfPoles &&
+        contTerminalType == other.contTerminalType &&
+        contDescription == other.contDescription;
   }
 
   @override
   int get hashCode => const ListEquality().hash([
         contCoilVolt,
-        contratedVolt,
         contratedAmp,
         contLength,
         contWidth,
-        contDepth
+        contDepth,
+        contNumberOfPoles,
+        contTerminalType,
+        contDescription
       ]);
 }
 
 ContactorCardStruct createContactorCardStruct({
   double? contCoilVolt,
-  double? contratedVolt,
   double? contratedAmp,
   double? contLength,
   double? contWidth,
   double? contDepth,
+  int? contNumberOfPoles,
+  String? contTerminalType,
+  String? contDescription,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -204,11 +250,13 @@ ContactorCardStruct createContactorCardStruct({
 }) =>
     ContactorCardStruct(
       contCoilVolt: contCoilVolt,
-      contratedVolt: contratedVolt,
       contratedAmp: contratedAmp,
       contLength: contLength,
       contWidth: contWidth,
       contDepth: contDepth,
+      contNumberOfPoles: contNumberOfPoles,
+      contTerminalType: contTerminalType,
+      contDescription: contDescription,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

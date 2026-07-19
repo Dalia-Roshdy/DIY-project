@@ -229,6 +229,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: NewScreen4Widget.routeName,
           path: NewScreen4Widget.routePath,
           builder: (context, params) => NewScreen4Widget(),
+        ),
+        FFRoute(
+          name: EReviewYourOrderDraftWidget.routeName,
+          path: EReviewYourOrderDraftWidget.routePath,
+          builder: (context, params) => EReviewYourOrderDraftWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

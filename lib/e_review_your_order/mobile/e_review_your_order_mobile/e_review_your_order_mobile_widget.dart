@@ -1,11 +1,13 @@
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/e_review_your_order/mobile/button6/button6_widget.dart';
 import '/e_review_your_order/mobile/part_row2/part_row2_widget.dart';
 import '/e_review_your_order/mobile/summary_row/summary_row_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -50,6 +52,10 @@ class _EReviewYourOrderMobileWidgetState
       _model.toolsCS = widget.toolsC!.toList().cast<ItemsRecord>();
       safeSetState(() {});
     });
+
+    _model.textFieldSLTextController ??=
+        TextEditingController(text: FFAppState().Cart.motorSLComment);
+    _model.textFieldSLFocusNode ??= FocusNode();
 
     _model.textFieldMessageTextController ??=
         TextEditingController(text: FFAppState().Cart.comment);
@@ -305,7 +311,7 @@ class _EReviewYourOrderMobileWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .onSurface,
-                                              fontSize: 14.0,
+                                              fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               lineHeight: 1.2,
@@ -329,7 +335,7 @@ class _EReviewYourOrderMobileWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .onSurface,
-                                              fontSize: 14.0,
+                                              fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               lineHeight: 1.2,
@@ -353,7 +359,7 @@ class _EReviewYourOrderMobileWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .onSurface,
-                                              fontSize: 14.0,
+                                              fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               lineHeight: 1.2,
@@ -384,7 +390,7 @@ class _EReviewYourOrderMobileWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .onSurface,
-                                                  fontSize: 14.0,
+                                                  fontSize: 12.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   lineHeight: 1.2,
@@ -416,8 +422,11 @@ class _EReviewYourOrderMobileWidgetState
                             24.0, 0.0, 14.0, 0.0),
                         child: Builder(
                           builder: (context) {
-                            final cartListItems =
-                                FFAppState().Cart.cartItems.toList();
+                            final cartListItems = FFAppState()
+                                .Cart
+                                .cartItems
+                                .where((e) => e.specType != Parts.TOOL.name)
+                                .toList();
 
                             return ListView.builder(
                               padding: EdgeInsets.zero,
@@ -473,35 +482,96 @@ class _EReviewYourOrderMobileWidgetState
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Row(
+                          Column(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(
-                                Icons.auto_fix_high_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 20.0,
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.auto_fix_high_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 20.0,
+                                  ),
+                                  Text(
+                                    'Recommended Items to add to order',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 13.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
+                                        ),
+                                    overflow: TextOverflow.visible,
+                                  ),
+                                ].divide(SizedBox(width: 4.0)),
                               ),
-                              Text(
-                                'order the loaner tools ',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .titleSmallFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 14.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                      useGoogleFonts:
-                                          !FlutterFlowTheme.of(context)
-                                              .titleSmallIsCustom,
-                                    ),
-                                overflow: TextOverflow.visible,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 0.0, 0.0),
+                                child: RichText(
+                                  textScaler: MediaQuery.of(context).textScaler,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: '✲ ',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18.0,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text:
+                                            'Refundable once returned with 7 days',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary20,
+                                              fontSize: 12.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w500,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      )
+                                    ],
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary20,
+                                          fontSize: 12.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w500,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
+                                        ),
+                                  ),
+                                ),
                               ),
-                            ].divide(SizedBox(width: 12.0)),
+                            ],
                           ),
                           Builder(
                             builder: (context) {
@@ -555,35 +625,122 @@ class _EReviewYourOrderMobileWidgetState
                                                         .secondaryText,
                                               ),
                                               child: Checkbox(
-                                                value: _model.checkboxValueMap[
+                                                value: _model.checkboxValueMap1[
                                                         toolsListDisplayItem] ??=
-                                                    (FFAppState()
-                                                            .Cart
-                                                            .cartItems
-                                                            .where((e) =>
-                                                                e.itemId ==
+                                                    FFAppState()
+                                                                .Cart
+                                                                .cartItems
+                                                                .where((e) =>
+                                                                    e.itemId ==
+                                                                    toolsListDisplayItem
+                                                                        .reference)
+                                                                .toList()
+                                                                .length ==
+                                                            1
+                                                        ? true
+                                                        : false,
+                                                onChanged: (newValue) async {
+                                                  safeSetState(() => _model
+                                                              .checkboxValueMap1[
+                                                          toolsListDisplayItem] =
+                                                      newValue!);
+                                                  if (newValue!) {
+                                                    FFAppState()
+                                                        .updateCartStruct(
+                                                      (e) => e
+                                                        ..updateCartItems(
+                                                          (e) => e.add(
+                                                              CartItemStruct(
+                                                            itemId:
                                                                 toolsListDisplayItem
-                                                                    .reference)
-                                                            .toList()
-                                                            .isNotEmpty) ==
-                                                        true,
-                                                onChanged: ((FFAppState()
-                                                            .Cart
-                                                            .cartItems
-                                                            .where((e) =>
-                                                                e.itemId ==
+                                                                    .reference,
+                                                            title:
                                                                 toolsListDisplayItem
-                                                                    .reference)
-                                                            .toList()
-                                                            .isNotEmpty) ==
-                                                        true)
-                                                    ? null
-                                                    : (newValue) async {
-                                                        safeSetState(() => _model
-                                                                    .checkboxValueMap[
-                                                                toolsListDisplayItem] =
-                                                            newValue!);
-                                                      },
+                                                                    .description,
+                                                            specType:
+                                                                Parts.TOOL.name,
+                                                            desc:
+                                                                toolsListDisplayItem
+                                                                    .description,
+                                                            price: (toolsListDisplayItem
+                                                                            .discountPrice !=
+                                                                        null) &&
+                                                                    (toolsListDisplayItem
+                                                                            .discountPrice >
+                                                                        0.0)
+                                                                ? toolsListDisplayItem
+                                                                    .discountPrice
+                                                                : toolsListDisplayItem
+                                                                    .salePrice,
+                                                            qty: 1,
+                                                            isReturnable:
+                                                                toolsListDisplayItem
+                                                                    .isReturnable,
+                                                          )),
+                                                        ),
+                                                    );
+                                                    safeSetState(() {});
+                                                    _model.tax =
+                                                        await querySettingsRecordOnce(
+                                                      queryBuilder:
+                                                          (settingsRecord) =>
+                                                              settingsRecord
+                                                                  .where(
+                                                        'key',
+                                                        isEqualTo: SettingKeys
+                                                            .tax.name,
+                                                      ),
+                                                      singleRecord: true,
+                                                    ).then((s) =>
+                                                            s.firstOrNull);
+                                                    _model.motorSl =
+                                                        await querySettingsRecordOnce(
+                                                      queryBuilder:
+                                                          (settingsRecord) =>
+                                                              settingsRecord
+                                                                  .where(
+                                                        'key',
+                                                        isEqualTo: SettingKeys
+                                                            .motor_shaft_length_fees
+                                                            .name,
+                                                      ),
+                                                      singleRecord: true,
+                                                    ).then((s) =>
+                                                            s.firstOrNull);
+                                                    await actions
+                                                        .calculateCartTotal(
+                                                      _model.tax!.value,
+                                                      null,
+                                                      _model.motorSl?.value,
+                                                    );
+                                                    _model.updatePage(() {});
+
+                                                    safeSetState(() {});
+                                                  } else {
+                                                    FFAppState()
+                                                        .updateCartStruct(
+                                                      (e) => e
+                                                        ..updateCartItems(
+                                                          (e) => e.remove(FFAppState()
+                                                              .Cart
+                                                              .cartItems
+                                                              .where((e) =>
+                                                                  toolsListDisplayItem
+                                                                      .reference ==
+                                                                  e.itemId)
+                                                              .toList()
+                                                              .firstOrNull),
+                                                        ),
+                                                    );
+                                                    await actions
+                                                        .calculateCartTotal(
+                                                      null,
+                                                      null,
+                                                      null,
+                                                    );
+                                                    _model.updatePage(() {});
+                                                  }
+                                                },
                                                 side: (FlutterFlowTheme.of(
                                                                 context)
                                                             .secondaryText !=
@@ -599,19 +756,8 @@ class _EReviewYourOrderMobileWidgetState
                                                 activeColor:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
-                                                checkColor: ((FFAppState()
-                                                            .Cart
-                                                            .cartItems
-                                                            .where((e) =>
-                                                                e.itemId ==
-                                                                toolsListDisplayItem
-                                                                    .reference)
-                                                            .toList()
-                                                            .isNotEmpty) ==
-                                                        true)
-                                                    ? null
-                                                    : FlutterFlowTheme.of(
-                                                            context)
+                                                checkColor:
+                                                    FlutterFlowTheme.of(context)
                                                         .primaryBackground,
                                               ),
                                             ),
@@ -638,29 +784,29 @@ class _EReviewYourOrderMobileWidgetState
                                                         toolsListDisplayItem
                                                             .description,
                                                         maxLines: 1,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMediumFamily,
-                                                                  color: FlutterFlowTheme.of(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                              fontSize: 10.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              lineHeight: 1.5,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  lineHeight:
-                                                                      1.5,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMediumIsCustom,
-                                                                ),
+                                                                      .bodyMediumIsCustom,
+                                                            ),
                                                         overflow: TextOverflow
                                                             .visible,
                                                       ),
@@ -677,7 +823,7 @@ class _EReviewYourOrderMobileWidgetState
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'can be rented ',
+                                                        '✲ ',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -688,7 +834,7 @@ class _EReviewYourOrderMobileWidgetState
                                                                       .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .primary20,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
@@ -744,92 +890,6 @@ class _EReviewYourOrderMobileWidgetState
                               );
                             },
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                if (_model.checkboxCheckedItems.length > 0) {
-                                  for (int loop1Index = 0;
-                                      loop1Index <
-                                          _model.checkboxCheckedItems.length;
-                                      loop1Index++) {
-                                    final currentLoop1Item =
-                                        _model.checkboxCheckedItems[loop1Index];
-                                    if (!(FFAppState()
-                                        .Cart
-                                        .cartItems
-                                        .where((e) =>
-                                            e.itemId ==
-                                            currentLoop1Item.reference)
-                                        .toList()
-                                        .isNotEmpty)) {
-                                      FFAppState().updateCartStruct(
-                                        (e) => e
-                                          ..updateCartItems(
-                                            (e) => e.add(CartItemStruct(
-                                              itemId:
-                                                  currentLoop1Item.reference,
-                                              title:
-                                                  currentLoop1Item.description,
-                                              specType: currentLoop1Item
-                                                              .specType !=
-                                                          ''
-                                                  ? currentLoop1Item.specType
-                                                  : 'tools',
-                                              desc:
-                                                  currentLoop1Item.description,
-                                              price: (currentLoop1Item
-                                                              .discountPrice !=
-                                                          null) &&
-                                                      (currentLoop1Item
-                                                              .discountPrice >
-                                                          0.0)
-                                                  ? currentLoop1Item
-                                                      .discountPrice
-                                                  : currentLoop1Item.salePrice,
-                                              qty: 1,
-                                              isReturnable:
-                                                  currentLoop1Item.isReturnable,
-                                            )),
-                                          ),
-                                      );
-                                      safeSetState(() {});
-                                    }
-                                  }
-                                  if (Navigator.of(context).canPop()) {
-                                    context.pop();
-                                  }
-                                  context.pushNamed(
-                                      EReviewYourOrderWidget.routeName);
-                                }
-                              },
-                              text: 'Submit',
-                              options: FFButtonOptions(
-                                width: MediaQuery.sizeOf(context).width * 0.5,
-                                height: 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .labelMediumFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      fontSize: 28.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts:
-                                          !FlutterFlowTheme.of(context)
-                                              .labelMediumIsCustom,
-                                    ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                            ),
-                          ),
                         ].divide(SizedBox(height: 16.0)),
                       ),
                     ),
@@ -841,6 +901,213 @@ class _EReviewYourOrderMobileWidgetState
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 24.0),
             child: Container(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  borderRadius: BorderRadius.circular(16.0),
+                  shape: BoxShape.rectangle,
+                  border: Border.all(
+                    color: FlutterFlowTheme.of(context).alternate,
+                    width: 1.0,
+                  ),
+                ),
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(14.0, 24.0, 14.0, 24.0),
+                  child: Container(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Need a custom Motor Shaft length?',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    lineHeight: 1.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
+                                  ),
+                            ),
+                            Theme(
+                              data: ThemeData(
+                                checkboxTheme: CheckboxThemeData(
+                                  visualDensity: VisualDensity.compact,
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(0.0),
+                                  ),
+                                ),
+                                unselectedWidgetColor:
+                                    FlutterFlowTheme.of(context).alternate,
+                              ),
+                              child: Checkbox(
+                                value: _model.checkboxValue2 ??=
+                                    FFAppState().Cart.motorSLComment !=
+                                                ''
+                                        ? true
+                                        : false,
+                                onChanged: (newValue) async {
+                                  safeSetState(
+                                      () => _model.checkboxValue2 = newValue!);
+                                  if (newValue!) {
+                                    _model.sl = await querySettingsRecordOnce(
+                                      queryBuilder: (settingsRecord) =>
+                                          settingsRecord.where(
+                                        'key',
+                                        isEqualTo: SettingKeys
+                                            .motor_shaft_length_fees.name,
+                                      ),
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
+                                    _model.taxOn =
+                                        await querySettingsRecordOnce(
+                                      queryBuilder: (settingsRecord) =>
+                                          settingsRecord.where(
+                                        'key',
+                                        isEqualTo: SettingKeys.tax.name,
+                                      ),
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
+                                    FFAppState().updateCartStruct(
+                                      (e) => e..motorSLEnabled = true,
+                                    );
+                                    safeSetState(() {});
+                                    await actions.calculateCartTotal(
+                                      _model.taxOn!.value,
+                                      null,
+                                      _model.sl?.value,
+                                    );
+                                    safeSetState(() {});
+
+                                    safeSetState(() {});
+                                  } else {
+                                    FFAppState().updateCartStruct(
+                                      (e) => e
+                                        ..motorSLComment = null
+                                        ..motorSLFees = null,
+                                    );
+                                    safeSetState(() {});
+                                    safeSetState(() {
+                                      _model.textFieldSLTextController?.text =
+                                          FFAppState().Cart.motorSLComment;
+                                    });
+                                    _model.taxOff =
+                                        await querySettingsRecordOnce(
+                                      queryBuilder: (settingsRecord) =>
+                                          settingsRecord.where(
+                                        'key',
+                                        isEqualTo: SettingKeys.tax.name,
+                                      ),
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
+                                    FFAppState().updateCartStruct(
+                                      (e) => e..motorSLEnabled = false,
+                                    );
+                                    safeSetState(() {});
+                                    await actions.calculateCartTotal(
+                                      _model.taxOff!.value,
+                                      null,
+                                      null,
+                                    );
+                                    _model.updatePage(() {});
+
+                                    safeSetState(() {});
+                                  }
+                                },
+                                side: (FlutterFlowTheme.of(context).alternate !=
+                                        null)
+                                    ? BorderSide(
+                                        width: 2,
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                      )
+                                    : null,
+                                activeColor:
+                                    FlutterFlowTheme.of(context).primary,
+                                checkColor: FlutterFlowTheme.of(context).info,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).tertiary,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(6.0),
+                            child: TextFormField(
+                              controller: _model.textFieldSLTextController,
+                              focusNode: _model.textFieldSLFocusNode,
+                              autofocus: false,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                isDense: true,
+                                hintText: 'Enter a custom Motor Shaft length.',
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .labelSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelSmallFamily,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelSmallIsCustom,
+                                    ),
+                                enabledBorder: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                focusedErrorBorder: InputBorder.none,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .labelSmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelSmallFamily,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 10.0,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .labelSmallIsCustom,
+                                  ),
+                              maxLines: null,
+                              cursorColor: FlutterFlowTheme.of(context).primary,
+                              validator: _model
+                                  .textFieldSLTextControllerValidator
+                                  .asValidator(context),
+                            ),
+                          ),
+                        ),
+                      ].divide(SizedBox(height: 14.0)),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 24.0),
+            child: Container(
+              decoration: BoxDecoration(),
               child: Container(
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -867,6 +1134,7 @@ class _EReviewYourOrderMobileWidgetState
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleMediumFamily,
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 14.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                                 lineHeight: 1.4,
@@ -883,7 +1151,7 @@ class _EReviewYourOrderMobileWidgetState
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(20.0),
+                            padding: EdgeInsets.all(6.0),
                             child: TextFormField(
                               controller: _model.textFieldMessageTextController,
                               focusNode: _model.textFieldMessageFocusNode,
@@ -918,7 +1186,7 @@ class _EReviewYourOrderMobileWidgetState
                                         .labelSmallFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
-                                    fontSize: 16.0,
+                                    fontSize: 10.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts:
                                         !FlutterFlowTheme.of(context)
@@ -929,72 +1197,6 @@ class _EReviewYourOrderMobileWidgetState
                               validator: _model
                                   .textFieldMessageTextControllerValidator
                                   .asValidator(context),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'Please save it before continue. you can customize tools if you needed.',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyMediumFamily,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.0,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodyMediumIsCustom,
-                              ),
-                        ),
-                        Container(
-                          height: 8.0,
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: FFButtonWidget(
-                            onPressed:
-                                (_model.textFieldMessageTextController
-                                                .text ==
-                                            '')
-                                    ? null
-                                    : () async {
-                                        if (_model.textFieldMessageTextController
-                                                    .text !=
-                                                '') {
-                                          FFAppState().updateCartStruct(
-                                            (e) => e
-                                              ..comment = _model
-                                                  .textFieldMessageTextController
-                                                  .text,
-                                          );
-                                          safeSetState(() {});
-                                        }
-                                      },
-                            text: 'Save',
-                            options: FFButtonOptions(
-                              width: MediaQuery.sizeOf(context).width * 0.5,
-                              height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .labelMediumFamily,
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    fontSize: 28.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .labelMediumIsCustom,
-                                  ),
-                              elevation: 0.0,
-                              borderRadius: BorderRadius.circular(12.0),
-                              disabledTextColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
                             ),
                           ),
                         ),
@@ -1035,6 +1237,7 @@ class _EReviewYourOrderMobileWidgetState
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleMediumFamily,
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 14.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                                 lineHeight: 1.4,
@@ -1055,20 +1258,30 @@ class _EReviewYourOrderMobileWidgetState
                                 value: FFAppState().Cart.subtotal.toString(),
                               ),
                             ),
-                            wrapWithModel(
-                              model: _model.summaryRowModel2,
-                              updateCallback: () => safeSetState(() {}),
-                              child: SummaryRowWidget(
-                                label: 'Shipping',
-                                value: FFAppState().Cart.shipping.toString(),
+                            if (_model.checkboxValue2 ?? true)
+                              wrapWithModel(
+                                model: _model.summaryRowModel2,
+                                updateCallback: () => safeSetState(() {}),
+                                child: SummaryRowWidget(
+                                  label: 'Motor Shaft Cut fee',
+                                  value:
+                                      FFAppState().Cart.motorSLFees.toString(),
+                                ),
                               ),
-                            ),
                             wrapWithModel(
                               model: _model.summaryRowModel3,
                               updateCallback: () => safeSetState(() {}),
                               child: SummaryRowWidget(
-                                label: 'Tax',
+                                label: 'Estimated Tax',
                                 value: FFAppState().Cart.tax.toString(),
+                              ),
+                            ),
+                            wrapWithModel(
+                              model: _model.summaryRowModel4,
+                              updateCallback: () => safeSetState(() {}),
+                              child: SummaryRowWidget(
+                                label: 'Shipping',
+                                value: FFAppState().Cart.shipping.toString(),
                               ),
                             ),
                           ].divide(SizedBox(height: 8.0)),
@@ -1094,6 +1307,7 @@ class _EReviewYourOrderMobileWidgetState
                                         .titleLargeFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w800,
                                     lineHeight: 1.3,
@@ -1111,6 +1325,7 @@ class _EReviewYourOrderMobileWidgetState
                                         .titleLargeFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w800,
                                     lineHeight: 1.3,
@@ -1144,7 +1359,7 @@ class _EReviewYourOrderMobileWidgetState
                               icon_end: Icon(
                                 Icons.arrow_forward_rounded,
                                 color: FlutterFlowTheme.of(context).onPrimary,
-                                size: 16.0,
+                                size: 14.0,
                               ),
                               icon_end_present: true,
                               variant: 'primary',
@@ -1196,7 +1411,7 @@ class _EReviewYourOrderMobileWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
-                                              fontSize: 12.0,
+                                              fontSize: 10.0,
                                               letterSpacing: 0.0,
                                               lineHeight: 1.2,
                                               useGoogleFonts:
@@ -1229,7 +1444,7 @@ class _EReviewYourOrderMobileWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
-                                              fontSize: 12.0,
+                                              fontSize: 10.0,
                                               letterSpacing: 0.0,
                                               lineHeight: 1.2,
                                               useGoogleFonts:

@@ -155,23 +155,6 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                                         height: 1.0,
                                         thickness: 1.0,
                                         color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                      ),
-                                      Container(
-                                        width: double.infinity,
-                                        height: valueOrDefault<double>(
-                                          MediaQuery.sizeOf(context).width <
-                                                  kBreakpointSmall
-                                              ? 25.0
-                                              : 100.0,
-                                          100.0,
-                                        ),
-                                        decoration: BoxDecoration(),
-                                      ),
-                                      Divider(
-                                        height: 1.0,
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
                                             .tertiary,
                                       ),
                                       wrapWithModel(
@@ -192,15 +175,24 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                                 ],
                               ),
                             ),
-                            wrapWithModel(
-                              model: _model.s13SquaresModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: S13SquaresWidget(),
-                            ),
                             if (responsiveVisibility(
                               context: context,
+                              phone: false,
                               tablet: false,
                               tabletLandscape: false,
+                              desktop: false,
+                            ))
+                              wrapWithModel(
+                                model: _model.s13SquaresModel,
+                                updateCallback: () => safeSetState(() {}),
+                                child: S13SquaresWidget(),
+                              ),
+                            if (responsiveVisibility(
+                              context: context,
+                              phone: false,
+                              tablet: false,
+                              tabletLandscape: false,
+                              desktop: false,
                             ))
                               wrapWithModel(
                                 model: _model.s04MobileModel,

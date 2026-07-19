@@ -1,12 +1,14 @@
+import '/b_screen_components/asterisk/asterisk_widget.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/z_drafts/enter_manually_serial_number/enter_manually_serial_number_widget.dart';
-import 's05_homestartdiagnosis_widget.dart' show S05HomestartdiagnosisWidget;
+import 's05_homestartdiagnosis_copy_widget.dart'
+    show S05HomestartdiagnosisCopyWidget;
 import 'package:flutter/material.dart';
 
-class S05HomestartdiagnosisModel
-    extends FlutterFlowModel<S05HomestartdiagnosisWidget> {
+class S05HomestartdiagnosisCopyModel
+    extends FlutterFlowModel<S05HomestartdiagnosisCopyWidget> {
   ///  Local state fields for this component.
 
   List<AcMakeDTOStruct> acMakeFiltered = [];
@@ -39,6 +41,8 @@ class S05HomestartdiagnosisModel
 
   ///  State fields for stateful widgets in this component.
 
+  // Model for Asterisk component.
+  late AsteriskModel asteriskModel;
   // State field(s) for DropDown-Make widget.
   String? dropDownMakeValue;
   FormFieldController<String>? dropDownMakeValueController;
@@ -60,12 +64,14 @@ class S05HomestartdiagnosisModel
 
   @override
   void initState(BuildContext context) {
+    asteriskModel = createModel(context, () => AsteriskModel());
     enterManuallySerialNumberModel =
         createModel(context, () => EnterManuallySerialNumberModel());
   }
 
   @override
   void dispose() {
+    asteriskModel.dispose();
     textFieldSNFocusNode?.dispose();
     textFieldSNTextController?.dispose();
 

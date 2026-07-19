@@ -72,8 +72,6 @@ class _DSelectProductRepairWidgetState
           FFAppState().userAC.acModel,
           null,
           null,
-          null,
-          null,
         );
         _model.partList = _model.contOnPageLoad!
             .sortedList(keyOf: (e) => e.title, desc: false)
@@ -83,7 +81,6 @@ class _DSelectProductRepairWidgetState
       } else if (_model.selectedPart == Parts.CAPACITOR) {
         _model.capacOnPageLoad = await actions.filterCapacitorItems(
           FFAppState().userAC.acModel,
-          null,
           null,
           null,
           null,
@@ -148,6 +145,16 @@ class _DSelectProductRepairWidgetState
                               updateCallback: () => safeSetState(() {}),
                               child: S01NavigatioBarWidget(),
                             ),
+                            if (responsiveVisibility(
+                              context: context,
+                              tablet: false,
+                              tabletLandscape: false,
+                            ))
+                              Divider(
+                                height: 1.0,
+                                thickness: 1.0,
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
                             if (responsiveVisibility(
                               context: context,
                               desktop: false,
@@ -279,10 +286,7 @@ class _DSelectProductRepairWidgetState
 
                                                     safeSetState(() {});
                                                   },
-                                                  onContSelected: (rvolt,
-                                                      amp,
-                                                      cvoltage,
-                                                      nop,
+                                                  onContSelected: (amp, nop,
                                                       selectedPart) async {
                                                     _model.partList = [];
                                                     _model.selectedPart =
@@ -296,9 +300,7 @@ class _DSelectProductRepairWidgetState
                                                         FFAppState()
                                                             .userAC
                                                             .acModel,
-                                                        rvolt,
                                                         amp,
-                                                        cvoltage,
                                                         nop,
                                                       );
                                                       _model.partList = _model
@@ -316,12 +318,8 @@ class _DSelectProductRepairWidgetState
                                                     safeSetState(() {});
                                                   },
                                                   onCapatSelected:
-                                                      (selectedPart,
-                                                          mfd1,
-                                                          mfd2,
-                                                          volt,
-                                                          type,
-                                                          shape) async {
+                                                      (selectedPart, mfd1, mfd2,
+                                                          type, shape) async {
                                                     _model.partList = [];
                                                     _model.selectedPart =
                                                         Parts.CAPACITOR;
@@ -336,7 +334,6 @@ class _DSelectProductRepairWidgetState
                                                             .acModel,
                                                         mfd1,
                                                         mfd2,
-                                                        volt,
                                                         type,
                                                         shape,
                                                       );
@@ -468,17 +465,6 @@ class _DSelectProductRepairWidgetState
                   ),
                 ),
               ),
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-                tablet: false,
-                tabletLandscape: false,
-              ))
-                Divider(
-                  height: 1.0,
-                  thickness: 1.0,
-                  color: FlutterFlowTheme.of(context).tertiary,
-                ),
               if (responsiveVisibility(
                 context: context,
                 phone: false,

@@ -39,3 +39,5 @@ export '/a_pages/a_main_pages/l_user_profile/h_order_tracking/h_order_tracking_w
     show HOrderTrackingWidget;
 export '/new_screen2/new_screen2_widget.dart' show NewScreen2Widget;
 export '/new_screen4/new_screen4_widget.dart' show NewScreen4Widget;
+export '/z_drafts/e_review_your_order_draft/e_review_your_order_draft_widget.dart'
+    show EReviewYourOrderDraftWidget;

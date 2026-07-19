@@ -123,7 +123,7 @@ class _ContactUsSuccessDialogWidgetState
                   ),
                 ),
                 AutoSizeText(
-                  '🚀 Thanks for reaching out! DIY AC Repair team will get back to you soon.',
+                  'Thanks for reaching out! \nDIY AC Repair team will get back to you soon.',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.outfit(

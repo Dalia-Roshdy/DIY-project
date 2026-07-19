@@ -1,7 +1,6 @@
 import '/components/industrial_badge_widget.dart';
 import '/components/objective_card2_widget.dart';
 import '/components/scope_item2_widget.dart';
-import '/components/technical_tag_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -86,7 +85,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                       ),
                 ),
                 Container(
-                  height: 300.0,
+                  height: 235.92,
                   child: Stack(
                     alignment: AlignmentDirectional(-1.0, -1.0),
                     children: [
@@ -99,23 +98,6 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                               'https://dimg.dreamflow.cloud/v1/image/industrial%20air%20conditioning%20ductwork%20pipes%20monochrome',
                           fit: BoxFit.cover,
                           alignment: Alignment(0.0, 0.0),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(1.0, 1.0),
-                        child: Container(
-                          child: Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Container(
-                              child: wrapWithModel(
-                                model: _model.technicalTagModel,
-                                updateCallback: () => safeSetState(() {}),
-                                child: TechnicalTagWidget(
-                                  label: 'DIAGNOSE_FAST.01',
-                                ),
-                              ),
-                            ),
-                          ),
                         ),
                       ),
                     ],
@@ -252,7 +234,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                     ),
                               ),
                               Text(
-                                'We send  parts and tools quickly so you can  restore cooling as soon as possible.',
+                                'We send customized parts and tools quickly so you can  restore cooling as soon as possible.',
                                 maxLines: 4,
                                 style: FlutterFlowTheme.of(context)
                                     .bodySmall
@@ -438,7 +420,9 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
                                                     .labelSmallFamily,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
                                             lineHeight: 1.2,
                                             useGoogleFonts:
                                                 !FlutterFlowTheme.of(context)
@@ -467,7 +451,9 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
                                                     .labelSmallFamily,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
                                             lineHeight: 1.2,
                                             useGoogleFonts:
                                                 !FlutterFlowTheme.of(context)
@@ -496,7 +482,9 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
                                                     .labelSmallFamily,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
                                             lineHeight: 1.2,
                                             useGoogleFonts:
                                                 !FlutterFlowTheme.of(context)
@@ -550,7 +538,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                 children: [
                                   Icon(
                                     Icons.chat_bubble_outline_rounded,
-                                    size: 18.0,
+                                    size: 16.0,
                                   ),
                                   Expanded(
                                     flex: 1,
@@ -562,7 +550,9 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
                                                     .labelSmallFamily,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
                                             lineHeight: 1.2,
                                             useGoogleFonts:
                                                 !FlutterFlowTheme.of(context)
@@ -579,7 +569,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                 children: [
                                   Icon(
                                     Icons.lightbulb_outline_rounded,
-                                    size: 18.0,
+                                    size: 16.0,
                                   ),
                                   Expanded(
                                     flex: 1,
@@ -591,8 +581,9 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
                                                     .labelSmallFamily,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
-                                            lineHeight: 1.2,
+                                            fontWeight: FontWeight.w600,
                                             useGoogleFonts:
                                                 !FlutterFlowTheme.of(context)
                                                     .labelSmallIsCustom,
@@ -616,6 +607,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .labelMediumFamily,
                                       letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w900,
                                       lineHeight: 1.2,
                                       useGoogleFonts:
                                           !FlutterFlowTheme.of(context)
@@ -656,25 +648,6 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.report_problem_rounded,
-                                    color: FlutterFlowTheme.of(context).error,
-                                    size: 16.0,
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.industrialBadgeModel3,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: IndustrialBadgeWidget(
-                                      label: 'OUT_OF_SCOPE_LIMITS',
-                                    ),
-                                  ),
-                                ].divide(SizedBox(width: 8.0)),
-                              ),
                               Text(
                                 'CRITICAL\nLIMITS',
                                 style: FlutterFlowTheme.of(context)
@@ -728,7 +701,9 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .labelSmallFamily,
+                                                  fontSize: 14.0,
                                                   letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
                                                   lineHeight: 1.2,
                                                   useGoogleFonts:
                                                       !FlutterFlowTheme.of(
@@ -779,7 +754,9 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .labelSmallFamily,
+                                                  fontSize: 14.0,
                                                   letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
                                                   lineHeight: 1.2,
                                                   useGoogleFonts:
                                                       !FlutterFlowTheme.of(

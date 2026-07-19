@@ -3,7 +3,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+import '/backend/schema/enums/enums.dart';
 
+import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class CapacitorCardStruct extends FFFirebaseStruct {
@@ -16,6 +19,11 @@ class CapacitorCardStruct extends FFFirebaseStruct {
     double? capacDepth,
     int? capacTempLow,
     int? capacTempHigh,
+    String? capacVolt,
+    double? capacTotalLength,
+    int? capacTolerance,
+    CapacitorShape? capacShape,
+    CapacitorType? capacType,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _capacMFD1 = capacMFD1,
         _capacMFD2 = capacMFD2,
@@ -25,6 +33,11 @@ class CapacitorCardStruct extends FFFirebaseStruct {
         _capacDepth = capacDepth,
         _capacTempLow = capacTempLow,
         _capacTempHigh = capacTempHigh,
+        _capacVolt = capacVolt,
+        _capacTotalLength = capacTotalLength,
+        _capacTolerance = capacTolerance,
+        _capacShape = capacShape,
+        _capacType = capacType,
         super(firestoreUtilData);
 
   // "capacMFD1" field.
@@ -103,6 +116,47 @@ class CapacitorCardStruct extends FFFirebaseStruct {
 
   bool hasCapacTempHigh() => _capacTempHigh != null;
 
+  // "capacVolt" field.
+  String? _capacVolt;
+  String get capacVolt => _capacVolt ?? '';
+  set capacVolt(String? val) => _capacVolt = val;
+
+  bool hasCapacVolt() => _capacVolt != null;
+
+  // "capacTotalLength" field.
+  double? _capacTotalLength;
+  double get capacTotalLength => _capacTotalLength ?? 0.0;
+  set capacTotalLength(double? val) => _capacTotalLength = val;
+
+  void incrementCapacTotalLength(double amount) =>
+      capacTotalLength = capacTotalLength + amount;
+
+  bool hasCapacTotalLength() => _capacTotalLength != null;
+
+  // "capacTolerance" field.
+  int? _capacTolerance;
+  int get capacTolerance => _capacTolerance ?? 0;
+  set capacTolerance(int? val) => _capacTolerance = val;
+
+  void incrementCapacTolerance(int amount) =>
+      capacTolerance = capacTolerance + amount;
+
+  bool hasCapacTolerance() => _capacTolerance != null;
+
+  // "capacShape" field.
+  CapacitorShape? _capacShape;
+  CapacitorShape? get capacShape => _capacShape;
+  set capacShape(CapacitorShape? val) => _capacShape = val;
+
+  bool hasCapacShape() => _capacShape != null;
+
+  // "capacType" field.
+  CapacitorType? _capacType;
+  CapacitorType? get capacType => _capacType;
+  set capacType(CapacitorType? val) => _capacType = val;
+
+  bool hasCapacType() => _capacType != null;
+
   static CapacitorCardStruct fromMap(Map<String, dynamic> data) =>
       CapacitorCardStruct(
         capacMFD1: castToType<double>(data['capacMFD1']),
@@ -113,6 +167,15 @@ class CapacitorCardStruct extends FFFirebaseStruct {
         capacDepth: castToType<double>(data['capacDepth']),
         capacTempLow: castToType<int>(data['capacTempLow']),
         capacTempHigh: castToType<int>(data['capacTempHigh']),
+        capacVolt: data['capacVolt'] as String?,
+        capacTotalLength: castToType<double>(data['capacTotalLength']),
+        capacTolerance: castToType<int>(data['capacTolerance']),
+        capacShape: data['capacShape'] is CapacitorShape
+            ? data['capacShape']
+            : deserializeEnum<CapacitorShape>(data['capacShape']),
+        capacType: data['capacType'] is CapacitorType
+            ? data['capacType']
+            : deserializeEnum<CapacitorType>(data['capacType']),
       );
 
   static CapacitorCardStruct? maybeFromMap(dynamic data) => data is Map
@@ -128,6 +191,11 @@ class CapacitorCardStruct extends FFFirebaseStruct {
         'capacDepth': _capacDepth,
         'capacTempLow': _capacTempLow,
         'capacTempHigh': _capacTempHigh,
+        'capacVolt': _capacVolt,
+        'capacTotalLength': _capacTotalLength,
+        'capacTolerance': _capacTolerance,
+        'capacShape': _capacShape?.serialize(),
+        'capacType': _capacType?.serialize(),
       }.withoutNulls;
 
   @override
@@ -163,6 +231,26 @@ class CapacitorCardStruct extends FFFirebaseStruct {
         'capacTempHigh': serializeParam(
           _capacTempHigh,
           ParamType.int,
+        ),
+        'capacVolt': serializeParam(
+          _capacVolt,
+          ParamType.String,
+        ),
+        'capacTotalLength': serializeParam(
+          _capacTotalLength,
+          ParamType.double,
+        ),
+        'capacTolerance': serializeParam(
+          _capacTolerance,
+          ParamType.int,
+        ),
+        'capacShape': serializeParam(
+          _capacShape,
+          ParamType.Enum,
+        ),
+        'capacType': serializeParam(
+          _capacType,
+          ParamType.Enum,
         ),
       }.withoutNulls;
 
@@ -208,6 +296,31 @@ class CapacitorCardStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        capacVolt: deserializeParam(
+          data['capacVolt'],
+          ParamType.String,
+          false,
+        ),
+        capacTotalLength: deserializeParam(
+          data['capacTotalLength'],
+          ParamType.double,
+          false,
+        ),
+        capacTolerance: deserializeParam(
+          data['capacTolerance'],
+          ParamType.int,
+          false,
+        ),
+        capacShape: deserializeParam<CapacitorShape>(
+          data['capacShape'],
+          ParamType.Enum,
+          false,
+        ),
+        capacType: deserializeParam<CapacitorType>(
+          data['capacType'],
+          ParamType.Enum,
+          false,
+        ),
       );
 
   @override
@@ -223,7 +336,12 @@ class CapacitorCardStruct extends FFFirebaseStruct {
         capacWidth == other.capacWidth &&
         capacDepth == other.capacDepth &&
         capacTempLow == other.capacTempLow &&
-        capacTempHigh == other.capacTempHigh;
+        capacTempHigh == other.capacTempHigh &&
+        capacVolt == other.capacVolt &&
+        capacTotalLength == other.capacTotalLength &&
+        capacTolerance == other.capacTolerance &&
+        capacShape == other.capacShape &&
+        capacType == other.capacType;
   }
 
   @override
@@ -235,7 +353,12 @@ class CapacitorCardStruct extends FFFirebaseStruct {
         capacWidth,
         capacDepth,
         capacTempLow,
-        capacTempHigh
+        capacTempHigh,
+        capacVolt,
+        capacTotalLength,
+        capacTolerance,
+        capacShape,
+        capacType
       ]);
 }
 
@@ -248,6 +371,11 @@ CapacitorCardStruct createCapacitorCardStruct({
   double? capacDepth,
   int? capacTempLow,
   int? capacTempHigh,
+  String? capacVolt,
+  double? capacTotalLength,
+  int? capacTolerance,
+  CapacitorShape? capacShape,
+  CapacitorType? capacType,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -262,6 +390,11 @@ CapacitorCardStruct createCapacitorCardStruct({
       capacDepth: capacDepth,
       capacTempLow: capacTempLow,
       capacTempHigh: capacTempHigh,
+      capacVolt: capacVolt,
+      capacTotalLength: capacTotalLength,
+      capacTolerance: capacTolerance,
+      capacShape: capacShape,
+      capacType: capacType,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

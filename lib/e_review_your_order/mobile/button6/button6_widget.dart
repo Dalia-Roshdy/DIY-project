@@ -230,6 +230,7 @@ class _Button6WidgetState extends State<Button6Widget> {
                                 return FlutterFlowTheme.of(context).onPrimary;
                               }
                             }(),
+                            fontSize: 14.0,
                             letterSpacing: 0.0,
                             lineHeight: 1.3,
                             useGoogleFonts: !FlutterFlowTheme.of(context)

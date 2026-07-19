@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'scope_item2_model.dart';
 export 'scope_item2_model.dart';
 
@@ -94,26 +93,6 @@ class _ScopeItem2WidgetState extends State<ScopeItem2Widget> {
                       lineHeight: 1.5,
                       useGoogleFonts:
                           !FlutterFlowTheme.of(context).bodyMediumIsCustom,
-                    ),
-              ),
-              Text(
-                valueOrDefault<String>(
-                  widget.subtitle,
-                  'CONDENSER COMPONENT',
-                ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      font: GoogleFonts.roboto(
-                        fontWeight: FontWeight.bold,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                      ),
-                      color: Color(0xCCFFFFFF),
-                      fontSize: 10.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.bold,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                      lineHeight: 1.5,
                     ),
               ),
             ].divide(SizedBox(height: 4.0)),

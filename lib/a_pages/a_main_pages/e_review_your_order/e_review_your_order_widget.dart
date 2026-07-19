@@ -64,9 +64,17 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      _model.motorSl = await querySettingsRecordOnce(
+        queryBuilder: (settingsRecord) => settingsRecord.where(
+          'key',
+          isEqualTo: SettingKeys.motor_shaft_length_fees.name,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
       await actions.calculateCartTotal(
+        _model.tax!.value,
         _model.shipping?.value,
-        _model.tax?.value,
+        _model.motorSl?.value,
       );
       safeSetState(() {});
     });

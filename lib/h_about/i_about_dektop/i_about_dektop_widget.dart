@@ -69,35 +69,6 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          shape: BoxShape.rectangle,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 4.0, 16.0, 4.0),
-                          child: Container(
-                            child: Text(
-                              'SYSTEM MANIFESTO  V1.0',
-                              style: FlutterFlowTheme.of(context)
-                                  .labelSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .labelSmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    lineHeight: 1.2,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .labelSmallIsCustom,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ),
                       Text(
                         'WHO ARE\nWE?',
                         style:
@@ -228,6 +199,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .labelSmallFamily,
+                                        fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         lineHeight: 1.2,
@@ -923,7 +895,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'CRITICAL\nLIMITS',
+                                    'ISSUES\nOUT OF SCOPE',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(

@@ -1,4 +1,3 @@
-import '/b_screen_components/asterisk/asterisk_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -120,13 +119,14 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
                       child: Text(
-                        'FIX YOUR AC WITHOUT THE GUESSWORK',
+                        'WE PROVIDE THE PARTS, TOOLS, AND KNOWLEDGE SO IT HELP YOU FIX YOUR A/C.',
                         style: FlutterFlowTheme.of(context)
                             .headlineMedium
                             .override(
                               fontFamily: FlutterFlowTheme.of(context)
                                   .headlineMediumFamily,
                               color: Color(0xDD000000),
+                              fontSize: 40.0,
                               letterSpacing: MediaQuery.sizeOf(context).width <
                                       kBreakpointSmall
                                   ? FFAppConstants.LetterSpacingM
@@ -198,7 +198,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 20.0, 10.0, 20.0),
                                   child: AutoSizeText(
-                                    'SOLUTIONS',
+                                    'QUICK DELIVERY',
                                     style: FlutterFlowTheme.of(context)
                                         .displayLarge
                                         .override(
@@ -222,7 +222,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 20.0, 10.0, 20.0),
                                   child: AutoSizeText(
-                                    'RESULTS',
+                                    'PARTS 2 SPECS',
                                     style: FlutterFlowTheme.of(context)
                                         .displayLarge
                                         .override(
@@ -246,7 +246,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 20.0, 10.0, 20.0),
                                   child: AutoSizeText(
-                                    'SUCCESS',
+                                    'LOANER TOOLS',
                                     style: FlutterFlowTheme.of(context)
                                         .displayLarge
                                         .override(
@@ -305,7 +305,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                           ),
                           TextSpan(
                             text:
-                                ', choose the right parts, and get it done — fast and stress-free.',
+                                ', choose the right parts, and get it done — faster and cheaper',
                             style: TextStyle(),
                           )
                         ],
@@ -315,7 +315,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                               fontFamily: FlutterFlowTheme.of(context)
                                   .labelMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 28.0,
+                              fontSize: 24.0,
                               letterSpacing: 0.0,
                               useGoogleFonts: !FlutterFlowTheme.of(context)
                                   .labelMediumIsCustom,
@@ -365,41 +365,45 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text(
+                                AutoSizeText(
                                   'LET’S GET STARTED!',
+                                  minFontSize: 12.0,
                                   style: FlutterFlowTheme.of(context)
-                                      .titleLarge
+                                      .titleMedium
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .titleLargeFamily,
+                                            .titleMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
-                                        fontSize: 28.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts:
                                             !FlutterFlowTheme.of(context)
-                                                .titleLargeIsCustom,
+                                                .titleMediumIsCustom,
                                       ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: Icon(
-                                    Icons.arrow_forward,
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    size: valueOrDefault<double>(
-                                      MediaQuery.sizeOf(context).width <
-                                              kBreakpointSmall
-                                          ? 20.0
-                                          : 44.0,
-                                      44.0,
+                                if (responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                ))
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      size: valueOrDefault<double>(
+                                        MediaQuery.sizeOf(context).width <
+                                                kBreakpointSmall
+                                            ? 20.0
+                                            : 44.0,
+                                        44.0,
+                                      ),
+                                    ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'iconOnActionTriggerAnimation']!,
                                     ),
-                                  ).animateOnActionTrigger(
-                                    animationsMap[
-                                        'iconOnActionTriggerAnimation']!,
                                   ),
-                                ),
                               ],
                             ),
                           ),
@@ -461,16 +465,6 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
               }(),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-              ),
-              child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: wrapWithModel(
-                  model: _model.asteriskModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: AsteriskWidget(
-                    asteriskColor: Color(0xD30891B2),
-                  ),
-                ),
               ),
             ),
           ],

@@ -6,6 +6,7 @@ import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -18,130 +19,154 @@ Future<List<PartCardDTOStruct>> filterCapacitorItems(
   DocumentReference? acModelRef,
   double? mfd1,
   double? mfd2,
-  int? volt,
   String? type,
   String? shape,
 ) async {
   try {
-    // Step 1: If acModelRef is provided, read ACModel and get capacitorSpecId filter
-    List<DocumentReference> capacitorSpecRefs = [];
+    final String normalizedType = type?.trim() ?? '';
+    final String normalizedShape = shape?.trim() ?? '';
 
-    // Step 2: Build query for CapacitorSpec collection with non-null filters
-    Query capacitorSpecQuery =
+    Query<Map<String, dynamic>> specQuery =
         FirebaseFirestore.instance.collection('CapacitorSpec');
 
-    if (mfd1 != null) {
-      capacitorSpecQuery =
-          capacitorSpecQuery.where('microFarad1', isEqualTo: mfd1);
-    }
-    if (mfd2 != null) {
-      capacitorSpecQuery =
-          capacitorSpecQuery.where('microFarad2', isEqualTo: mfd2);
-    }
-    if (shape != null && shape.isNotEmpty) {
-      capacitorSpecQuery = capacitorSpecQuery.where('shape', isEqualTo: shape);
-    }
-    if (type != null && type.isNotEmpty) {
-      capacitorSpecQuery = capacitorSpecQuery.where('type', isEqualTo: type);
-    }
-    if (volt != null) {
-      capacitorSpecQuery =
-          capacitorSpecQuery.where('voltageRating', isEqualTo: volt);
-    }
-
-    // If acModelRef is provided, get the capacitorSpecId from ACModel
+    // Filter by AC Model
     if (acModelRef != null) {
       final acModelSnapshot = await acModelRef.get();
-      if (acModelSnapshot.exists) {
-        final acModelData = acModelSnapshot.data() as Map<String, dynamic>?;
-        if (acModelData != null && acModelData.containsKey('capacitorSpecId')) {
-          final capacitorSpecId = acModelData['capacitorSpecId'];
-          if (capacitorSpecId != null) {
-            // Filter CapacitorSpec by the capacitorSpecId from ACModel
-            if (capacitorSpecId is DocumentReference) {
-              capacitorSpecQuery = capacitorSpecQuery
-                  .where(FieldPath.documentId, isEqualTo: capacitorSpecId.id);
-            } else if (capacitorSpecId is String) {
-              capacitorSpecQuery = capacitorSpecQuery
-                  .where(FieldPath.documentId, isEqualTo: capacitorSpecId);
-            }
-          }
-        }
+
+      if (!acModelSnapshot.exists) {
+        return [];
       }
+
+      final acModelData = acModelSnapshot.data() as Map<String, dynamic>?;
+
+      final dynamic rawCapSpecRef = acModelData?['capacitorSpecId'];
+
+      if (rawCapSpecRef is! DocumentReference) {
+        return [];
+      }
+
+      specQuery = specQuery.where(
+        FieldPath.documentId,
+        isEqualTo: rawCapSpecRef.id,
+      );
     }
 
-    // Execute CapacitorSpec query and collect refs
-    final capacitorSpecSnapshot = await capacitorSpecQuery.get();
-    Map<String, Map<String, dynamic>> specDataMap = {};
-
-    for (final doc in capacitorSpecSnapshot.docs) {
-      capacitorSpecRefs.add(doc.reference);
-      specDataMap[doc.id] = doc.data() as Map<String, dynamic>;
+    // Optional filters
+    if (mfd1 != null) {
+      specQuery = specQuery.where('microFarad1', isEqualTo: mfd1);
     }
 
-    // If no capacitor specs found, return empty list
-    if (capacitorSpecRefs.isEmpty) {
+    if (mfd2 != null) {
+      specQuery = specQuery.where('microFarad2', isEqualTo: mfd2);
+    }
+
+    if (normalizedType.isNotEmpty) {
+      specQuery = specQuery.where('type', isEqualTo: normalizedType);
+    }
+
+    if (normalizedShape.isNotEmpty) {
+      specQuery = specQuery.where('shape', isEqualTo: normalizedShape);
+    }
+
+    final specSnapshot = await specQuery.get();
+
+    if (specSnapshot.docs.isEmpty) {
       return [];
     }
+    // -----------
+    print(specSnapshot.docs.length);
 
-    // Step 3: Query Items where specType == "capacitor", capacitorSpecId in refs, isInStock == true
-    // Firestore 'whereIn' supports up to 30 items per query
-    List<PartCardDTOStruct> results = [];
+    final List<DocumentReference<Object?>> specRefs = [];
+    final Map<String, Map<String, dynamic>> specsById = {};
+
+    for (final specDoc in specSnapshot.docs) {
+      specRefs.add(specDoc.reference);
+      specsById[specDoc.id] = specDoc.data();
+    }
+
+    final List<PartCardDTOStruct> results = [];
+
     const int chunkSize = 30;
 
-    for (int i = 0; i < capacitorSpecRefs.length; i += chunkSize) {
-      final chunk = capacitorSpecRefs.sublist(
+    for (int i = 0; i < specRefs.length; i += chunkSize) {
+      final chunk = specRefs.sublist(
         i,
-        i + chunkSize > capacitorSpecRefs.length
-            ? capacitorSpecRefs.length
-            : i + chunkSize,
+        i + chunkSize > specRefs.length ? specRefs.length : i + chunkSize,
       );
 
       final itemsSnapshot = await FirebaseFirestore.instance
           .collection('Items')
           .where('specType', isEqualTo: 'CAPACITOR')
-          .where('capacitorSpecId', whereIn: chunk)
+          .where('capacitorSpecsId', whereIn: chunk)
           .where('isInStock', isEqualTo: true)
           .get();
 
       for (final itemDoc in itemsSnapshot.docs) {
-        final data = itemDoc.data();
-        final specRef = data['capacitorSpecId'] as DocumentReference?;
-        final specData = specRef != null ? specDataMap[specRef.id] : null;
+        final itemData = itemDoc.data();
 
-        // Map Firestore document to PartCardDTOStruct
-        final partCard = PartCardDTOStruct(
-          id: itemDoc.reference, // Doc Reference (Items)
-          type: 'CAPACITOR',
-          title: data['partNumber'] ?? '',
-          desc: data['description'] ?? '',
-          price: ((data['discountPrice'] as num?)?.toDouble() ?? 0) > 0
-              ? (data['discountPrice'] as num).toDouble()
-              : ((data['salePrice'] as num?)?.toDouble() ?? 0.0),
-          image: data['image'] is List
-              ? List<String>.from(data['image'])
-              : [data['image'] as String? ?? ''],
-          capacitorCard: CapacitorCardStruct(
-            capacMFD1: (specData?['microFarad1'] as num?)?.toDouble() ?? 0.0,
-            capacMFD2: (specData?['microFarad2'] as num?)?.toDouble() ?? 0.0,
-            capacDiameter: (specData?['diameter'] as num?)?.toDouble() ?? 0.0,
-            capacHeight: (specData?['height'] as num?)?.toDouble() ?? 0.0,
-            capacWidth: (specData?['width'] as num?)?.toDouble() ?? 0.0,
-            capacDepth: (specData?['depth'] as num?)?.toDouble() ?? 0.0,
-            capacTempLow: (specData?['tempLow'] as num?)?.toInt() ?? 0,
-            capacTempHigh: (specData?['tempHigh'] as num?)?.toInt() ?? 0,
+        final dynamic rawSpecRef = itemData['capacitorSpecsId'];
+
+        if (rawSpecRef is! DocumentReference) {
+          continue;
+        }
+
+        final specData = specsById[rawSpecRef.id];
+
+        if (specData == null) {
+          continue;
+        }
+
+        final double discountPrice =
+            (itemData['discountPrice'] as num?)?.toDouble() ?? 0.0;
+
+        final double salePrice =
+            (itemData['salePrice'] as num?)?.toDouble() ?? 0.0;
+
+        results.add(
+          PartCardDTOStruct(
+            id: itemDoc.reference,
+            type: 'CAPACITOR',
+            title: itemData['partNumber']?.toString() ?? '',
+            desc: itemData['description']?.toString() ?? '',
+            price: discountPrice > 0 ? discountPrice : salePrice,
+            image: itemData['image'] is List
+                ? List<String>.from(itemData['image'])
+                : [itemData['image'] as String? ?? ''],
+            capacitorCard: CapacitorCardStruct(
+              capacMFD1: (specData['microFarad1'] as num?)?.toDouble() ?? 0.0,
+              capacMFD2: (specData['microFarad2'] as num?)?.toDouble() ?? 0.0,
+              capacVolt: specData['volt']?.toString() ?? '',
+              capacShape: specData['shape'] == null
+                  ? null
+                  : deserializeEnum<CapacitorShape>(
+                      specData['shape'].toString(),
+                    ),
+              capacType: specData['type'] == null
+                  ? null
+                  : deserializeEnum<CapacitorType>(
+                      specData['type'].toString(),
+                    ),
+              capacDiameter: (specData['diameter'] as num?)?.toDouble() ?? 0.0,
+              capacHeight: (specData['height'] as num?)?.toDouble() ?? 0.0,
+              capacWidth: (specData['width'] as num?)?.toDouble() ?? 0.0,
+              capacDepth: (specData['depth'] as num?)?.toDouble() ?? 0.0,
+              capacTotalLength:
+                  (specData['totalLength'] as num?)?.toDouble() ?? 0.0,
+              capacTolerance: (specData['tolerance'] as num?)?.toInt() ?? 0,
+              capacTempLow: (specData['tempLow'] as num?)?.toInt() ?? 0,
+              capacTempHigh: (specData['tempHigh'] as num?)?.toInt() ?? 0,
+            ),
+            motorCard: null,
+            contactorCard: null,
           ),
-          contactorCard: null,
-          motorCard: null,
         );
-
-        results.add(partCard);
       }
     }
 
     return results;
-  } catch (e) {
-    debugPrint('Error in filterCapacitorItems: $e');
+  } on FirebaseException {
+    return [];
+  } catch (_) {
     return [];
   }
 }

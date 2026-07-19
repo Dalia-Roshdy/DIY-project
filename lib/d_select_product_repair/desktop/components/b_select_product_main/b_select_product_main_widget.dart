@@ -243,140 +243,145 @@ class _BSelectProductMainWidgetState extends State<BSelectProductMainWidget> {
               },
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primary,
-              borderRadius: BorderRadius.circular(4.0),
-              shape: BoxShape.rectangle,
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(32.0),
+          if (false)
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 48.0),
               child: Container(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).primary,
+                  borderRadius: BorderRadius.circular(4.0),
+                  shape: BoxShape.rectangle,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(32.0),
+                  child: Container(
+                    child: Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 48.0,
-                          height: 48.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primary,
-                            borderRadius: BorderRadius.circular(2.0),
-                            shape: BoxShape.rectangle,
-                            border: Border.all(
-                              color: FlutterFlowTheme.of(context).secondary,
-                              width: 0.5,
-                            ),
-                          ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Icon(
-                            Icons.verified_rounded,
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            size: 28.0,
-                          ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              'GUARANTEED FIT',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleMediumFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    lineHeight: 1.4,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .titleMediumIsCustom,
-                                  ),
+                            Container(
+                              width: 48.0,
+                              height: 48.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).primary,
+                                borderRadius: BorderRadius.circular(2.0),
+                                shape: BoxShape.rectangle,
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  width: 0.5,
+                                ),
+                              ),
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Icon(
+                                Icons.verified_rounded,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                size: 28.0,
+                              ),
                             ),
-                            Text(
-                              'We verify compatibility before shipping.',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodySmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .background70,
-                                    letterSpacing: 0.0,
-                                    lineHeight: 1.4,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .bodySmallIsCustom,
-                                  ),
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'GUARANTEED FIT',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                        lineHeight: 1.4,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleMediumIsCustom,
+                                      ),
+                                ),
+                                Text(
+                                  'We verify compatibility before shipping.',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodySmallFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .background70,
+                                        letterSpacing: 0.0,
+                                        lineHeight: 1.4,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
+                                      ),
+                                ),
+                              ].divide(SizedBox(height: 4.0)),
                             ),
-                          ].divide(SizedBox(height: 4.0)),
+                          ].divide(SizedBox(width: 24.0)),
                         ),
-                      ].divide(SizedBox(width: 24.0)),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Opacity(
+                              opacity: 0.0,
+                              child: wrapWithModel(
+                                model: _model.buttonModel1,
+                                updateCallback: () => safeSetState(() {}),
+                                child: ButtonWidget(
+                                  content: 'VIEW FULL SPECS',
+                                  iconPesent: false,
+                                  iconEndPresent: false,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  bg: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  variant: 'outline',
+                                  size: 'medium',
+                                  fullWidth: false,
+                                  loading: false,
+                                  disabled: false,
+                                ),
+                              ),
+                            ),
+                            Opacity(
+                              opacity: 0.0,
+                              child: wrapWithModel(
+                                model: _model.buttonModel2,
+                                updateCallback: () => safeSetState(() {}),
+                                child: ButtonWidget(
+                                  content: 'ADD TO PROJECT',
+                                  iconPesent: false,
+                                  iconEndPresent: false,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  bg: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  variant: 'primary',
+                                  size: 'medium',
+                                  fullWidth: false,
+                                  loading: false,
+                                  disabled: false,
+                                ),
+                              ),
+                            ),
+                          ].divide(SizedBox(width: 16.0)),
+                        ),
+                      ],
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Opacity(
-                          opacity: 0.0,
-                          child: wrapWithModel(
-                            model: _model.buttonModel1,
-                            updateCallback: () => safeSetState(() {}),
-                            child: ButtonWidget(
-                              content: 'VIEW FULL SPECS',
-                              iconPesent: false,
-                              iconEndPresent: false,
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              bg: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              variant: 'outline',
-                              size: 'medium',
-                              fullWidth: false,
-                              loading: false,
-                              disabled: false,
-                            ),
-                          ),
-                        ),
-                        Opacity(
-                          opacity: 0.0,
-                          child: wrapWithModel(
-                            model: _model.buttonModel2,
-                            updateCallback: () => safeSetState(() {}),
-                            child: ButtonWidget(
-                              content: 'ADD TO PROJECT',
-                              iconPesent: false,
-                              iconEndPresent: false,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              bg: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              variant: 'primary',
-                              size: 'medium',
-                              fullWidth: false,
-                              loading: false,
-                              disabled: false,
-                            ),
-                          ),
-                        ),
-                      ].divide(SizedBox(width: 16.0)),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
         ].divide(SizedBox(height: 24.0)),
       ),
     );

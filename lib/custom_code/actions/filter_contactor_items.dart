@@ -6,6 +6,7 @@ import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -18,9 +19,7 @@ import 'package:flutter/material.dart';
 
 Future<List<PartCardDTOStruct>> filterContactorItems(
   DocumentReference? acModelRef,
-  double? ratedVolt,
   double? ratedAmp,
-  double? coilVoltage,
   int? numberOfPoles,
 ) async {
   try {
@@ -41,15 +40,13 @@ Future<List<PartCardDTOStruct>> filterContactorItems(
     // Step 2: Query ContactorSpec collection with filters
     Query contactorSpecQuery =
         FirebaseFirestore.instance.collection('ContactorSpec');
+    if (contactorSpecRefFromModel != null) {
+      contactorSpecQuery = contactorSpecQuery.where(
+        FieldPath.documentId,
+        isEqualTo: contactorSpecRefFromModel.id,
+      );
+    }
 
-    if (ratedVolt != null) {
-      contactorSpecQuery =
-          contactorSpecQuery.where('ratedVolt', isEqualTo: ratedVolt);
-    }
-    if (coilVoltage != null) {
-      contactorSpecQuery =
-          contactorSpecQuery.where('coilVoltage', isEqualTo: coilVoltage);
-    }
     if (ratedAmp != null) {
       contactorSpecQuery =
           contactorSpecQuery.where('ratedAmp', isEqualTo: ratedAmp);
@@ -62,37 +59,18 @@ Future<List<PartCardDTOStruct>> filterContactorItems(
     final contactorSpecSnapshot = await contactorSpecQuery.get();
 
     // Step 3: Collect refs from query results
-    final Set<String> contactorSpecRefPaths = {};
+
+    final List<DocumentReference<Object?>> specRefs = [];
     final Map<String, Map<String, dynamic>> contactorSpecDataMap = {};
 
     for (final doc in contactorSpecSnapshot.docs) {
-      contactorSpecRefPaths.add(doc.reference.path);
-      contactorSpecDataMap[doc.reference.path] =
-          doc.data() as Map<String, dynamic>;
+      specRefs.add(doc.reference);
+      contactorSpecDataMap[doc.id] = doc.data() as Map<String, dynamic>;
     }
 
-    // Also include the ref from acModel if it exists and matches
-    if (contactorSpecRefFromModel != null) {
-      if (!contactorSpecRefPaths.contains(contactorSpecRefFromModel.path)) {
-        // Fetch this specific ContactorSpec doc
-        final specDoc = await contactorSpecRefFromModel.get();
-        if (specDoc.exists) {
-          contactorSpecRefPaths.add(contactorSpecRefFromModel.path);
-          contactorSpecDataMap[contactorSpecRefFromModel.path] =
-              specDoc.data() as Map<String, dynamic>;
-        }
-      }
-    }
-
-    if (contactorSpecRefPaths.isEmpty) {
+    if (specRefs.isEmpty) {
       return [];
     }
-
-    // Step 4: Collect DocumentReferences for the spec IDs
-    final List<DocumentReference> specRefs = contactorSpecRefPaths
-        .map((path) => FirebaseFirestore.instance.doc(path))
-        .toList();
-
     // Step 5: Query Items where specType == "contactor", contactorSpecId in refs, isInStock == true
     // Firestore 'whereIn' supports up to 30 items per query
     final List<PartCardDTOStruct> results = [];
@@ -106,7 +84,7 @@ Future<List<PartCardDTOStruct>> filterContactorItems(
 
       final itemsSnapshot = await FirebaseFirestore.instance
           .collection('Items')
-          .where('specType', isEqualTo: 'CONTRACTOR')
+          .where('specType', isEqualTo: 'CONTACTOR')
           .where('contactorSpecId', whereIn: chunk)
           .where('isInStock', isEqualTo: true)
           .get();
@@ -117,21 +95,10 @@ Future<List<PartCardDTOStruct>> filterContactorItems(
 
         final contactorSpecRef =
             itemData['contactorSpecId'] as DocumentReference?;
-        Map<String, dynamic>? specData;
 
-        if (contactorSpecRef != null) {
-          specData = contactorSpecDataMap[contactorSpecRef.path];
-          if (specData == null) {
-            // Fetch if not already in map
-            final specDoc = await contactorSpecRef.get();
-            if (specDoc.exists) {
-              specData = specDoc.data() as Map<String, dynamic>?;
-              if (specData != null) {
-                contactorSpecDataMap[contactorSpecRef.path] = specData;
-              }
-            }
-          }
-        }
+        final specData = contactorSpecRef != null
+            ? contactorSpecDataMap[contactorSpecRef.id]
+            : null;
 
         final partCardDTO = PartCardDTOStruct(
           id: itemDoc.reference, // Doc Reference (Items)
@@ -146,11 +113,14 @@ Future<List<PartCardDTOStruct>> filterContactorItems(
               : [itemData['image'] as String? ?? ''],
           contactorCard: ContactorCardStruct(
             contCoilVolt: (specData?['coilVoltage'] as num?)?.toDouble() ?? 0.0,
-            contratedVolt: (specData?['ratedVolt'] as num?)?.toDouble() ?? 0.0,
             contratedAmp: (specData?['ratedAmp'] as num?)?.toDouble() ?? 0.0,
             contLength: (specData?['length'] as num?)?.toDouble() ?? 0.0,
             contWidth: (specData?['width'] as num?)?.toDouble() ?? 0.0,
             contDepth: (specData?['depth'] as num?)?.toDouble() ?? 0.0,
+            contNumberOfPoles:
+                (specData?['numberOfPoles'] as num?)?.toInt() ?? 0,
+            contTerminalType: specData?['terminalType'] as String? ?? '',
+            contDescription: specData?['description'] as String? ?? '',
           ),
         );
 

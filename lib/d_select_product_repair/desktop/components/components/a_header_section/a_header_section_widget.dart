@@ -149,17 +149,44 @@ class _AHeaderSectionWidgetState extends State<AHeaderSectionWidget> {
           ),
         ),
         Container(
-          child: Text(
-            'Choose the specific motor that fits your AC unit model. All parts are certified for DIY installation.',
-            style: FlutterFlowTheme.of(context).bodyLarge.override(
-                  fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.w300,
-                  lineHeight: 1.6,
-                  useGoogleFonts:
-                      !FlutterFlowTheme.of(context).bodyLargeIsCustom,
+          child: RichText(
+            textScaler: MediaQuery.of(context).textScaler,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Choose the specific ',
+                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyLargeFamily,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w300,
+                        lineHeight: 1.6,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyLargeIsCustom,
+                      ),
                 ),
+                TextSpan(
+                  text: widget.partParam,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                TextSpan(
+                  text: ' that fits your AC unit model. ',
+                  style: TextStyle(),
+                )
+              ],
+              style: FlutterFlowTheme.of(context).bodyLarge.override(
+                    fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.w300,
+                    lineHeight: 1.6,
+                    useGoogleFonts:
+                        !FlutterFlowTheme.of(context).bodyLargeIsCustom,
+                  ),
+            ),
           ),
         ),
       ].divide(SizedBox(height: 16.0)),

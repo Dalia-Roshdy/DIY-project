@@ -97,7 +97,7 @@ class _BookingSuccessDialogWidgetState
                   ),
                 ),
                 AutoSizeText(
-                  'Yeeha! your booking has been succeesfully done!',
+                  'Perfect! your booking has been succeesfully done!',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.outfit(

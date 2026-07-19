@@ -18,6 +18,10 @@ class MotorCardStruct extends FFFirebaseStruct {
     double? motorAxleDiameter,
     double? motorCapacitorMFD,
     double? motorBodyDiameter,
+    double? motorHpMin,
+    double? motorHpMax,
+    double? motorWireLength,
+    double? motorShaftLength,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _motorRpm = motorRpm,
         _motorVolt = motorVolt,
@@ -29,6 +33,10 @@ class MotorCardStruct extends FFFirebaseStruct {
         _motorAxleDiameter = motorAxleDiameter,
         _motorCapacitorMFD = motorCapacitorMFD,
         _motorBodyDiameter = motorBodyDiameter,
+        _motorHpMin = motorHpMin,
+        _motorHpMax = motorHpMax,
+        _motorWireLength = motorWireLength,
+        _motorShaftLength = motorShaftLength,
         super(firestoreUtilData);
 
   // "motorRpm" field.
@@ -124,6 +132,44 @@ class MotorCardStruct extends FFFirebaseStruct {
 
   bool hasMotorBodyDiameter() => _motorBodyDiameter != null;
 
+  // "motorHpMin" field.
+  double? _motorHpMin;
+  double get motorHpMin => _motorHpMin ?? 0.0;
+  set motorHpMin(double? val) => _motorHpMin = val;
+
+  void incrementMotorHpMin(double amount) => motorHpMin = motorHpMin + amount;
+
+  bool hasMotorHpMin() => _motorHpMin != null;
+
+  // "motorHpMax" field.
+  double? _motorHpMax;
+  double get motorHpMax => _motorHpMax ?? 0.0;
+  set motorHpMax(double? val) => _motorHpMax = val;
+
+  void incrementMotorHpMax(double amount) => motorHpMax = motorHpMax + amount;
+
+  bool hasMotorHpMax() => _motorHpMax != null;
+
+  // "motorWireLength" field.
+  double? _motorWireLength;
+  double get motorWireLength => _motorWireLength ?? 0.0;
+  set motorWireLength(double? val) => _motorWireLength = val;
+
+  void incrementMotorWireLength(double amount) =>
+      motorWireLength = motorWireLength + amount;
+
+  bool hasMotorWireLength() => _motorWireLength != null;
+
+  // "motorShaftLength" field.
+  double? _motorShaftLength;
+  double get motorShaftLength => _motorShaftLength ?? 0.0;
+  set motorShaftLength(double? val) => _motorShaftLength = val;
+
+  void incrementMotorShaftLength(double amount) =>
+      motorShaftLength = motorShaftLength + amount;
+
+  bool hasMotorShaftLength() => _motorShaftLength != null;
+
   static MotorCardStruct fromMap(Map<String, dynamic> data) => MotorCardStruct(
         motorRpm: castToType<int>(data['motorRpm']),
         motorVolt: castToType<int>(data['motorVolt']),
@@ -135,6 +181,10 @@ class MotorCardStruct extends FFFirebaseStruct {
         motorAxleDiameter: castToType<double>(data['motorAxleDiameter']),
         motorCapacitorMFD: castToType<double>(data['motorCapacitorMFD']),
         motorBodyDiameter: castToType<double>(data['motorBodyDiameter']),
+        motorHpMin: castToType<double>(data['motorHpMin']),
+        motorHpMax: castToType<double>(data['motorHpMax']),
+        motorWireLength: castToType<double>(data['motorWireLength']),
+        motorShaftLength: castToType<double>(data['motorShaftLength']),
       );
 
   static MotorCardStruct? maybeFromMap(dynamic data) => data is Map
@@ -152,6 +202,10 @@ class MotorCardStruct extends FFFirebaseStruct {
         'motorAxleDiameter': _motorAxleDiameter,
         'motorCapacitorMFD': _motorCapacitorMFD,
         'motorBodyDiameter': _motorBodyDiameter,
+        'motorHpMin': _motorHpMin,
+        'motorHpMax': _motorHpMax,
+        'motorWireLength': _motorWireLength,
+        'motorShaftLength': _motorShaftLength,
       }.withoutNulls;
 
   @override
@@ -194,6 +248,22 @@ class MotorCardStruct extends FFFirebaseStruct {
         ),
         'motorBodyDiameter': serializeParam(
           _motorBodyDiameter,
+          ParamType.double,
+        ),
+        'motorHpMin': serializeParam(
+          _motorHpMin,
+          ParamType.double,
+        ),
+        'motorHpMax': serializeParam(
+          _motorHpMax,
+          ParamType.double,
+        ),
+        'motorWireLength': serializeParam(
+          _motorWireLength,
+          ParamType.double,
+        ),
+        'motorShaftLength': serializeParam(
+          _motorShaftLength,
           ParamType.double,
         ),
       }.withoutNulls;
@@ -250,6 +320,26 @@ class MotorCardStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
+        motorHpMin: deserializeParam(
+          data['motorHpMin'],
+          ParamType.double,
+          false,
+        ),
+        motorHpMax: deserializeParam(
+          data['motorHpMax'],
+          ParamType.double,
+          false,
+        ),
+        motorWireLength: deserializeParam(
+          data['motorWireLength'],
+          ParamType.double,
+          false,
+        ),
+        motorShaftLength: deserializeParam(
+          data['motorShaftLength'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -267,7 +357,11 @@ class MotorCardStruct extends FFFirebaseStruct {
         motorHeight == other.motorHeight &&
         motorAxleDiameter == other.motorAxleDiameter &&
         motorCapacitorMFD == other.motorCapacitorMFD &&
-        motorBodyDiameter == other.motorBodyDiameter;
+        motorBodyDiameter == other.motorBodyDiameter &&
+        motorHpMin == other.motorHpMin &&
+        motorHpMax == other.motorHpMax &&
+        motorWireLength == other.motorWireLength &&
+        motorShaftLength == other.motorShaftLength;
   }
 
   @override
@@ -281,7 +375,11 @@ class MotorCardStruct extends FFFirebaseStruct {
         motorHeight,
         motorAxleDiameter,
         motorCapacitorMFD,
-        motorBodyDiameter
+        motorBodyDiameter,
+        motorHpMin,
+        motorHpMax,
+        motorWireLength,
+        motorShaftLength
       ]);
 }
 
@@ -296,6 +394,10 @@ MotorCardStruct createMotorCardStruct({
   double? motorAxleDiameter,
   double? motorCapacitorMFD,
   double? motorBodyDiameter,
+  double? motorHpMin,
+  double? motorHpMax,
+  double? motorWireLength,
+  double? motorShaftLength,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -312,6 +414,10 @@ MotorCardStruct createMotorCardStruct({
       motorAxleDiameter: motorAxleDiameter,
       motorCapacitorMFD: motorCapacitorMFD,
       motorBodyDiameter: motorBodyDiameter,
+      motorHpMin: motorHpMin,
+      motorHpMax: motorHpMax,
+      motorWireLength: motorWireLength,
+      motorShaftLength: motorShaftLength,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

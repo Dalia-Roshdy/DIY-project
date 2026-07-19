@@ -1,3 +1,5 @@
+import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/c_components/dialog_components/delete_cart_item_dialog/delete_cart_item_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -5,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'part_row_model.dart';
 export 'part_row_model.dart';
@@ -150,7 +153,7 @@ class _PartRowWidgetState extends State<PartRowWidget> {
                       decoration: BoxDecoration(),
                       alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
-                        width: 80.0,
+                        width: 140.0,
                         height: 35.0,
                         decoration: BoxDecoration(
                           color:
@@ -164,14 +167,14 @@ class _PartRowWidgetState extends State<PartRowWidget> {
                             color: enabled
                                 ? FlutterFlowTheme.of(context).secondaryText
                                 : FlutterFlowTheme.of(context).alternate,
-                            size: 16.0,
+                            size: 24.0,
                           ),
                           incrementIconBuilder: (enabled) => Icon(
                             Icons.add_rounded,
                             color: enabled
                                 ? FlutterFlowTheme.of(context).primary
                                 : FlutterFlowTheme.of(context).alternate,
-                            size: 16.0,
+                            size: 24.0,
                           ),
                           countBuilder: (count) => Text(
                             count.toString(),
@@ -198,12 +201,23 @@ class _PartRowWidgetState extends State<PartRowWidget> {
                               widget.itemId!,
                               _model.countControllerValue!,
                             );
+                            _model.tax = await querySettingsRecordOnce(
+                              queryBuilder: (settingsRecord) =>
+                                  settingsRecord.where(
+                                'key',
+                                isEqualTo: SettingKeys.tax.name,
+                              ),
+                              singleRecord: true,
+                            ).then((s) => s.firstOrNull);
                             await actions.calculateCartTotal(
+                              _model.tax!.value,
                               null,
                               null,
                             );
+
+                            safeSetState(() {});
                           },
-                          stepSize: 1,
+                          stepSize: 2,
                           minimum: 1,
                           contentPadding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),

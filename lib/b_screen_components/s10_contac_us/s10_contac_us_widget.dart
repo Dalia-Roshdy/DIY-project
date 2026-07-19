@@ -662,7 +662,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .tertiary,
-                                                              fontSize: 24.0,
+                                                              fontSize: 18.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               useGoogleFonts:
@@ -691,6 +691,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts:
                                                             !FlutterFlowTheme
@@ -838,7 +839,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .tertiary,
-                                                              fontSize: 24.0,
+                                                              fontSize: 18.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               useGoogleFonts:
@@ -867,6 +868,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts:
                                                             !FlutterFlowTheme
@@ -1014,7 +1016,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .tertiary,
-                                                              fontSize: 24.0,
+                                                              fontSize: 18.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               useGoogleFonts:
@@ -1043,6 +1045,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts:
                                                             !FlutterFlowTheme
@@ -1099,7 +1102,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .tertiary,
-                                                    fontSize: 24.0,
+                                                    fontSize: 18.0,
                                                     letterSpacing: 0.0,
                                                     useGoogleFonts:
                                                         !FlutterFlowTheme.of(
@@ -1122,6 +1125,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  fontSize: 18.0,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts:
                                                       !FlutterFlowTheme.of(

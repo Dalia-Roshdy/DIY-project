@@ -123,7 +123,7 @@ class _SubscriptionSuccessDialogWidgetState
                   ),
                 ),
                 AutoSizeText(
-                  '🎉 Yeeha! Your subscription has been successfully activated!',
+                  'Perfect! Your subscription has been successfully activated!',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.outfit(

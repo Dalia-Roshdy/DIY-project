@@ -22,10 +22,10 @@ class S18FilterRepairPartsDesktopWidget extends StatefulWidget {
   final Future Function(String? selectedPart, int? volt, double? hp, int? rpm,
       String? rotation)? onMotorSelected;
   final Parts? selectedPartPram;
-  final Future Function(double? rvolt, double? amp, double? cvoltage, int? nop,
-      String? selectedPart)? onContSelected;
+  final Future Function(double? amp, int? nop, String? selectedPart)?
+      onContSelected;
   final Future Function(String? selectedPart, double? mfd1, double? mfd2,
-      int? volt, String? type, String? shape)? onCapatSelected;
+      String? type, String? shape)? onCapatSelected;
 
   @override
   State<S18FilterRepairPartsDesktopWidget> createState() =>
@@ -61,13 +61,6 @@ class _S18FilterRepairPartsDesktopWidgetState
     _model.textFieldVoltTextController ??= TextEditingController(text: '230');
     _model.textFieldVoltFocusNode ??= FocusNode();
 
-    _model.textFieldRvoltTextController ??= TextEditingController(text: '230');
-    _model.textFieldRvoltFocusNode ??= FocusNode();
-
-    _model.textFieldCapVoltTextController ??=
-        TextEditingController(text: '230');
-    _model.textFieldCapVoltFocusNode ??= FocusNode();
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -81,7 +74,7 @@ class _S18FilterRepairPartsDesktopWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 359.77,
+      width: 359.8,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondary,
         shape: BoxShape.rectangle,
@@ -182,9 +175,6 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         _model.dropDownAmpValueController
                                             ?.reset();
                                         _model.dropDownAmpValue = null;
-                                        _model.dropDownCvoltValueController
-                                            ?.reset();
-                                        _model.dropDownCvoltValue = null;
                                         _model.dropDownNopValueController
                                             ?.reset();
                                         _model.dropDownNopValue = null;
@@ -260,19 +250,8 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       _model.selectedPart = Parts.CONTACTOR;
                                       safeSetState(() {});
                                       await widget.onContSelected?.call(
-                                        _model.textFieldRvoltTextController
-                                                        .text !=
-                                                    ''
-                                            ? double.tryParse(_model
-                                                .textFieldRvoltTextController
-                                                .text)
-                                            : null,
                                         _model.dropDownAmpValue != null
                                             ? _model.dropDownAmpValue
-                                                ?.toDouble()
-                                            : null,
-                                        _model.dropDownCvoltValue != null
-                                            ? _model.dropDownCvoltValue
                                                 ?.toDouble()
                                             : null,
                                         _model.dropDownNopValue != null
@@ -293,9 +272,6 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         _model.dropDownAmpValueController
                                             ?.reset();
                                         _model.dropDownAmpValue = null;
-                                        _model.dropDownCvoltValueController
-                                            ?.reset();
-                                        _model.dropDownCvoltValue = null;
                                         _model.dropDownNopValueController
                                             ?.reset();
                                         _model.dropDownNopValue = null;
@@ -378,13 +354,6 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         _model.dropDownMFD2Value != null
                                             ? _model.dropDownMFD2Value
                                             : null,
-                                        _model.textFieldCapVoltTextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldCapVoltTextController
-                                                .text)
-                                            : null,
                                         _model.dropDownTypeValue != null &&
                                                 _model.dropDownTypeValue != ''
                                             ? _model.dropDownTypeValue
@@ -407,9 +376,6 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         _model.dropDownAmpValueController
                                             ?.reset();
                                         _model.dropDownAmpValue = null;
-                                        _model.dropDownCvoltValueController
-                                            ?.reset();
-                                        _model.dropDownCvoltValue = null;
                                         _model.dropDownNopValueController
                                             ?.reset();
                                         _model.dropDownNopValue = null;
@@ -538,7 +504,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),
                                   child: Row(
-                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment:
@@ -574,9 +540,6 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             width: 130.0,
                                             height: 45.0,
                                             decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
                                               shape: BoxShape.rectangle,
                                               border: Border.all(
                                                 color:
@@ -681,10 +644,6 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -696,6 +655,8 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                                   .bodyMediumFamily,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                           useGoogleFonts:
                                                               !FlutterFlowTheme
                                                                       .of(context)
@@ -767,10 +728,17 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                   _model.dropDownHpValue ??=
                                                       null,
                                                 ),
-                                                options: List<double>.from(
-                                                    [0.25, 0.5, 0.75]),
+                                                options: List<double>.from([
+                                                  0.166,
+                                                  0.25,
+                                                  0.33,
+                                                  0.5,
+                                                  0.75
+                                                ]),
                                                 optionLabels: [
+                                                  '1/6',
                                                   '1/4',
+                                                  '1/3',
                                                   '1/2',
                                                   '3/4'
                                                 ],
@@ -943,7 +911,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Rotation Direction :',
+                                            'Rotation :',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
                                                 .override(
@@ -954,7 +922,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
-                                                  fontSize: 15.0,
+                                                  fontSize: 10.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   lineHeight: 1.2,
@@ -1044,8 +1012,72 @@ class _S18FilterRepairPartsDesktopWidgetState
                                   ),
                                 ),
                                 Container(),
-                                Container(
-                                  height: 24.0,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Container(
+                                    height: 24.0,
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        safeSetState(() {
+                                          _model.dropDownHpValueController
+                                              ?.reset();
+                                          _model.dropDownHpValue = null;
+                                          _model.dropDownRpmValueController
+                                              ?.reset();
+                                          _model.dropDownRpmValue = null;
+                                          _model.dropDownRotationValueController
+                                              ?.reset();
+                                          _model.dropDownRotationValue = null;
+                                        });
+                                        await widget.onMotorSelected?.call(
+                                          _model.selectedPart?.name,
+                                          _model.textFieldVoltTextController
+                                                          .text !=
+                                                      ''
+                                              ? int.tryParse(_model
+                                                  .textFieldVoltTextController
+                                                  .text)
+                                              : null,
+                                          _model.dropDownHpValue != null
+                                              ? _model.dropDownHpValue
+                                              : null,
+                                          _model.dropDownRpmValue != null
+                                              ? _model.dropDownRpmValue
+                                              : null,
+                                          _model.dropDownRotationValue !=
+                                                      null &&
+                                                  _model.dropDownRotationValue !=
+                                                      ''
+                                              ? _model.dropDownRotationValue
+                                              : null,
+                                        );
+                                      },
+                                      child: Text(
+                                        'Clear Form',
+                                        textAlign: TextAlign.end,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                                 InkWell(
                                   splashColor: Colors.transparent,
@@ -1095,7 +1127,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                       ),
                     ),
                   ),
-                if (_model.selectedPart == Parts.CONTACTOR)
+                if (widget.selectedPartPram == Parts.CONTACTOR)
                   Container(
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).grey10,
@@ -1139,157 +1171,6 @@ class _S18FilterRepairPartsDesktopWidgetState
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Rated Volt :',
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLargeFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            lineHeight: 1.2,
-                                            useGoogleFonts:
-                                                !FlutterFlowTheme.of(context)
-                                                    .labelLargeIsCustom,
-                                          ),
-                                    ),
-                                    Container(
-                                      width: 130.0,
-                                      height: 45.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        shape: BoxShape.rectangle,
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          width: 2.0,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(4.0),
-                                        child: TextFormField(
-                                          controller: _model
-                                              .textFieldRvoltTextController,
-                                          focusNode:
-                                              _model.textFieldRvoltFocusNode,
-                                          autofocus: false,
-                                          enabled: true,
-                                          readOnly: true,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
-                                            hintText: 'e.g. 230',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                fontSize: 14.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts:
-                                                    !FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMediumIsCustom,
-                                              ),
-                                          keyboardType: TextInputType.number,
-                                          cursorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          enableInteractiveSelection: true,
-                                          validator: _model
-                                              .textFieldRvoltTextControllerValidator
-                                              .asValidator(context),
-                                        ),
-                                      ),
-                                    ),
-                                  ].divide(SizedBox(height: 4.0)),
-                                ),
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1379,207 +1260,139 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     ),
                                   ].divide(SizedBox(height: 4.0)),
                                 ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Number of Poles:',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLargeFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                            lineHeight: 1.2,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelLargeIsCustom,
+                                          ),
+                                    ),
+                                    Container(
+                                      width: 130.0,
+                                      height: 45.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        shape: BoxShape.rectangle,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(4.0),
+                                        child: FlutterFlowDropDown<int>(
+                                          controller: _model
+                                                  .dropDownNopValueController ??=
+                                              FormFieldController<int>(
+                                            _model.dropDownNopValue ??= null,
+                                          ),
+                                          options: List<int>.from([1, 2]),
+                                          optionLabels: ['1', '2'],
+                                          onChanged: (val) => safeSetState(() =>
+                                              _model.dropDownNopValue = val),
+                                          width: 200.0,
+                                          height: 40.0,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                fontSize: 14.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
+                                              ),
+                                          hintText: 'Select...',
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 14.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor: Colors.transparent,
+                                          borderWidth: 0.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 12.0, 0.0),
+                                          hidesUnderline: true,
+                                          isOverButton: false,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
+                                        ),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(height: 4.0)),
+                                ),
                               ].divide(SizedBox(width: 16.0)),
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 12.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Coil Voltage :',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLargeFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              lineHeight: 1.2,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .labelLargeIsCustom,
-                                            ),
+                            Container(
+                              height: 24.0,
+                              decoration: BoxDecoration(),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  safeSetState(() {
+                                    _model.dropDownAmpValueController?.reset();
+                                    _model.dropDownAmpValue = null;
+                                    _model.dropDownNopValueController?.reset();
+                                    _model.dropDownNopValue = null;
+                                  });
+                                  await widget.onContSelected?.call(
+                                    _model.dropDownAmpValue != null
+                                        ? _model.dropDownAmpValue?.toDouble()
+                                        : null,
+                                    _model.dropDownNopValue != null
+                                        ? _model.dropDownNopValue
+                                        : null,
+                                    _model.selectedPart?.name,
+                                  );
+                                },
+                                child: Text(
+                                  'Clear Form',
+                                  textAlign: TextAlign.end,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent1,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
-                                      Container(
-                                        width: 130.0,
-                                        height: 45.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.rectangle,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(4.0),
-                                          child: FlutterFlowDropDown<int>(
-                                            controller: _model
-                                                    .dropDownCvoltValueController ??=
-                                                FormFieldController<int>(
-                                              _model.dropDownCvoltValue ??=
-                                                  null,
-                                            ),
-                                            options: List<int>.from([40]),
-                                            optionLabels: ['40'],
-                                            onChanged: (val) => safeSetState(
-                                                () => _model
-                                                    .dropDownCvoltValue = val),
-                                            width: 200.0,
-                                            height: 40.0,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumIsCustom,
-                                                    ),
-                                            hintText: 'Select...',
-                                            icon: Icon(
-                                              Icons.keyboard_arrow_down_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 14.0,
-                                            ),
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            elevation: 2.0,
-                                            borderColor: Colors.transparent,
-                                            borderWidth: 0.0,
-                                            borderRadius: 8.0,
-                                            margin:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 12.0, 0.0),
-                                            hidesUnderline: true,
-                                            isOverButton: false,
-                                            isSearchable: false,
-                                            isMultiSelect: false,
-                                          ),
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(height: 4.0)),
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Number of Poles:',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLargeFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              lineHeight: 1.2,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .labelLargeIsCustom,
-                                            ),
-                                      ),
-                                      Container(
-                                        width: 130.0,
-                                        height: 45.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.rectangle,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(4.0),
-                                          child: FlutterFlowDropDown<int>(
-                                            controller: _model
-                                                    .dropDownNopValueController ??=
-                                                FormFieldController<int>(
-                                              _model.dropDownNopValue ??= null,
-                                            ),
-                                            options: List<int>.from([1, 2]),
-                                            optionLabels: ['1', '2'],
-                                            onChanged: (val) => safeSetState(
-                                                () => _model.dropDownNopValue =
-                                                    val),
-                                            width: 200.0,
-                                            height: 40.0,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumIsCustom,
-                                                    ),
-                                            hintText: 'Select...',
-                                            icon: Icon(
-                                              Icons.keyboard_arrow_down_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 14.0,
-                                            ),
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            elevation: 2.0,
-                                            borderColor: Colors.transparent,
-                                            borderWidth: 0.0,
-                                            borderRadius: 8.0,
-                                            margin:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 12.0, 0.0),
-                                            hidesUnderline: true,
-                                            isOverButton: false,
-                                            isSearchable: false,
-                                            isMultiSelect: false,
-                                          ),
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(height: 4.0)),
-                                  ),
-                                ].divide(SizedBox(width: 16.0)),
+                                ),
                               ),
                             ),
                             InkWell(
@@ -1589,17 +1402,8 @@ class _S18FilterRepairPartsDesktopWidgetState
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 await widget.onContSelected?.call(
-                                  _model.textFieldRvoltTextController
-                                                  .text !=
-                                              ''
-                                      ? double.tryParse(_model
-                                          .textFieldRvoltTextController.text)
-                                      : null,
                                   _model.dropDownAmpValue != null
                                       ? _model.dropDownAmpValue?.toDouble()
-                                      : null,
-                                  _model.dropDownCvoltValue != null
-                                      ? _model.dropDownCvoltValue?.toDouble()
                                       : null,
                                   _model.dropDownNopValue != null
                                       ? _model.dropDownNopValue
@@ -1669,7 +1473,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -1680,7 +1484,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'MFD :',
+                                        'MFD 1:',
                                         style: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -1797,6 +1601,103 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     ].divide(SizedBox(height: 4.0)),
                                   ),
                                 ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Single Vs Dual :',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLargeFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                            lineHeight: 1.2,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelLargeIsCustom,
+                                          ),
+                                    ),
+                                    Container(
+                                      width: 130.0,
+                                      height: 48.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        shape: BoxShape.rectangle,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(4.0),
+                                        child: FlutterFlowDropDown<String>(
+                                          controller: _model
+                                                  .dropDownTypeValueController ??=
+                                              FormFieldController<String>(
+                                            _model.dropDownTypeValue ??= null,
+                                          ),
+                                          options: CapacitorType.values
+                                              .map((e) => e.name)
+                                              .toList(),
+                                          onChanged: (val) => safeSetState(() =>
+                                              _model.dropDownTypeValue = val),
+                                          width: 200.0,
+                                          height: 40.0,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                fontSize: 14.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
+                                              ),
+                                          hintText: 'Select...',
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 14.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor: Colors.transparent,
+                                          borderWidth: 0.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 12.0, 0.0),
+                                          hidesUnderline: true,
+                                          isOverButton: false,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
+                                        ),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(height: 4.0)),
+                                ),
+                              ].divide(SizedBox(width: 16.0)),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1927,155 +1828,12 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     ),
                                   ].divide(SizedBox(height: 4.0)),
                                 ),
-                              ].divide(SizedBox(width: 16.0)),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Volt :',
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLargeFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            lineHeight: 1.2,
-                                            useGoogleFonts:
-                                                !FlutterFlowTheme.of(context)
-                                                    .labelLargeIsCustom,
-                                          ),
-                                    ),
-                                    Container(
-                                      width: 130.0,
-                                      height: 48.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        shape: BoxShape.rectangle,
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          width: 2.0,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(4.0),
-                                        child: TextFormField(
-                                          controller: _model
-                                              .textFieldCapVoltTextController,
-                                          focusNode:
-                                              _model.textFieldCapVoltFocusNode,
-                                          autofocus: false,
-                                          enabled: true,
-                                          readOnly: true,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            hintText: 'e.g. 230',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                fontSize: 14.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts:
-                                                    !FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMediumIsCustom,
-                                              ),
-                                          keyboardType: TextInputType.number,
-                                          cursorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          enableInteractiveSelection: true,
-                                          validator: _model
-                                              .textFieldCapVoltTextControllerValidator
-                                              .asValidator(context),
-                                        ),
-                                      ),
-                                    ),
-                                  ].divide(SizedBox(height: 4.0)),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Single Vs Dual :',
+                                      'Shape',
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -2108,16 +1866,16 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       child: Padding(
                                         padding: EdgeInsets.all(4.0),
                                         child: FlutterFlowDropDown<String>(
-                                          controller: _model
-                                                  .dropDownTypeValueController ??=
-                                              FormFieldController<String>(
-                                            _model.dropDownTypeValue ??= null,
+                                          controller:
+                                              _model.dDShapValueController ??=
+                                                  FormFieldController<String>(
+                                            _model.dDShapValue ??= null,
                                           ),
-                                          options: CapacitorType.values
+                                          options: CapacitorShape.values
                                               .map((e) => e.name)
                                               .toList(),
-                                          onChanged: (val) => safeSetState(() =>
-                                              _model.dropDownTypeValue = val),
+                                          onChanged: (val) => safeSetState(
+                                              () => _model.dDShapValue = val),
                                           width: 200.0,
                                           height: 40.0,
                                           textStyle: FlutterFlowTheme.of(
@@ -2139,7 +1897,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             Icons.keyboard_arrow_down_rounded,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
-                                            size: 14.0,
+                                            size: 16.0,
                                           ),
                                           fillColor:
                                               FlutterFlowTheme.of(context)
@@ -2163,109 +1921,60 @@ class _S18FilterRepairPartsDesktopWidgetState
                               ].divide(SizedBox(width: 16.0)),
                             ),
                             Container(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Shape :',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLargeFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              lineHeight: 1.2,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .labelLargeIsCustom,
-                                            ),
-                                      ),
-                                      Container(
-                                        width: double.infinity,
-                                        height: 48.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.rectangle,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(4.0),
-                                          child: FlutterFlowDropDown<String>(
-                                            controller:
-                                                _model.dDShapValueController ??=
-                                                    FormFieldController<String>(
-                                              _model.dDShapValue ??= null,
-                                            ),
-                                            options: CapacitorShape.values
-                                                .map((e) => e.name)
-                                                .toList(),
-                                            onChanged: (val) => safeSetState(
-                                                () => _model.dDShapValue = val),
-                                            width: 200.0,
-                                            height: 40.0,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumIsCustom,
-                                                    ),
-                                            hintText: 'Select...',
-                                            icon: Icon(
-                                              Icons.keyboard_arrow_down_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 16.0,
-                                            ),
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            elevation: 2.0,
-                                            borderColor: Colors.transparent,
-                                            borderWidth: 0.0,
-                                            borderRadius: 8.0,
-                                            margin:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 12.0, 0.0),
-                                            hidesUnderline: true,
-                                            isOverButton: false,
-                                            isSearchable: false,
-                                            isMultiSelect: false,
-                                          ),
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(height: 4.0)),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
                               height: 24.0,
+                              decoration: BoxDecoration(),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  safeSetState(() {
+                                    _model.dropDownMFD1ValueController?.reset();
+                                    _model.dropDownMFD1Value = null;
+                                    _model.dropDownMFD2ValueController?.reset();
+                                    _model.dropDownMFD2Value = null;
+                                    _model.dropDownTypeValueController?.reset();
+                                    _model.dropDownTypeValue = null;
+                                    _model.dDShapValueController?.reset();
+                                    _model.dDShapValue = null;
+                                  });
+                                  await widget.onCapatSelected?.call(
+                                    _model.selectedPart?.name,
+                                    _model.dropDownMFD1Value != null
+                                        ? _model.dropDownMFD1Value
+                                        : null,
+                                    _model.dropDownMFD2Value != null
+                                        ? _model.dropDownMFD2Value
+                                        : null,
+                                    _model.dropDownTypeValue != null &&
+                                            _model.dropDownTypeValue != ''
+                                        ? _model.dropDownTypeValue
+                                        : null,
+                                    _model.dDShapValue != null &&
+                                            _model.dDShapValue != ''
+                                        ? _model.dDShapValue
+                                        : null,
+                                  );
+                                },
+                                child: Text(
+                                  'Clear Form',
+                                  textAlign: TextAlign.end,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent1,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
+                                      ),
+                                ),
+                              ),
                             ),
                             InkWell(
                               splashColor: Colors.transparent,
@@ -2280,12 +1989,6 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       : null,
                                   _model.dropDownMFD2Value != null
                                       ? _model.dropDownMFD2Value
-                                      : null,
-                                  _model.textFieldCapVoltTextController
-                                                  .text !=
-                                              ''
-                                      ? int.tryParse(_model
-                                          .textFieldCapVoltTextController.text)
                                       : null,
                                   _model.dropDownTypeValue != null &&
                                           _model.dropDownTypeValue != ''

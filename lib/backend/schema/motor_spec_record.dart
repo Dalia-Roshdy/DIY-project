@@ -36,11 +36,6 @@ class MotorSpecRecord extends FirestoreRecord {
   double get amp => _amp ?? 0.0;
   bool hasAmp() => _amp != null;
 
-  // "hp" field.
-  double? _hp;
-  double get hp => _hp ?? 0.0;
-  bool hasHp() => _hp != null;
-
   // "rpm" field.
   int? _rpm;
   int get rpm => _rpm ?? 0;
@@ -136,12 +131,21 @@ class MotorSpecRecord extends FirestoreRecord {
   MotorRotationDirection? get rotationDirection => _rotationDirection;
   bool hasRotationDirection() => _rotationDirection != null;
 
+  // "hpMin" field.
+  double? _hpMin;
+  double get hpMin => _hpMin ?? 0.0;
+  bool hasHpMin() => _hpMin != null;
+
+  // "hpMax" field.
+  double? _hpMax;
+  double get hpMax => _hpMax ?? 0.0;
+  bool hasHpMax() => _hpMax != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _shaftLength = castToType<double>(snapshotData['shaftLength']);
     _volt = castToType<int>(snapshotData['volt']);
     _amp = castToType<double>(snapshotData['amp']);
-    _hp = castToType<double>(snapshotData['hp']);
     _rpm = castToType<int>(snapshotData['rpm']);
     _bodyDiameter = castToType<double>(snapshotData['bodyDiameter']);
     _bodyHeight = castToType<double>(snapshotData['bodyHeight']);
@@ -166,6 +170,8 @@ class MotorSpecRecord extends FirestoreRecord {
             ? snapshotData['rotationDirection']
             : deserializeEnum<MotorRotationDirection>(
                 snapshotData['rotationDirection']);
+    _hpMin = castToType<double>(snapshotData['hpMin']);
+    _hpMax = castToType<double>(snapshotData['hpMax']);
   }
 
   static CollectionReference get collection =>
@@ -207,7 +213,6 @@ Map<String, dynamic> createMotorSpecRecordData({
   double? shaftLength,
   int? volt,
   double? amp,
-  double? hp,
   int? rpm,
   double? bodyDiameter,
   double? bodyHeight,
@@ -226,6 +231,8 @@ Map<String, dynamic> createMotorSpecRecordData({
   String? desc,
   double? wireLength,
   MotorRotationDirection? rotationDirection,
+  double? hpMin,
+  double? hpMax,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -233,7 +240,6 @@ Map<String, dynamic> createMotorSpecRecordData({
       'shaftLength': shaftLength,
       'volt': volt,
       'amp': amp,
-      'hp': hp,
       'rpm': rpm,
       'bodyDiameter': bodyDiameter,
       'bodyHeight': bodyHeight,
@@ -252,6 +258,8 @@ Map<String, dynamic> createMotorSpecRecordData({
       'Desc': desc,
       'wireLength': wireLength,
       'rotationDirection': rotationDirection,
+      'hpMin': hpMin,
+      'hpMax': hpMax,
     }.withoutNulls,
   );
 
@@ -268,7 +276,6 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
         e1?.shaftLength == e2?.shaftLength &&
         e1?.volt == e2?.volt &&
         e1?.amp == e2?.amp &&
-        e1?.hp == e2?.hp &&
         e1?.rpm == e2?.rpm &&
         e1?.bodyDiameter == e2?.bodyDiameter &&
         e1?.bodyHeight == e2?.bodyHeight &&
@@ -287,7 +294,9 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
         listEquality.equals(e1?.searchableKeywords, e2?.searchableKeywords) &&
         e1?.desc == e2?.desc &&
         e1?.wireLength == e2?.wireLength &&
-        e1?.rotationDirection == e2?.rotationDirection;
+        e1?.rotationDirection == e2?.rotationDirection &&
+        e1?.hpMin == e2?.hpMin &&
+        e1?.hpMax == e2?.hpMax;
   }
 
   @override
@@ -296,7 +305,6 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
         e?.shaftLength,
         e?.volt,
         e?.amp,
-        e?.hp,
         e?.rpm,
         e?.bodyDiameter,
         e?.bodyHeight,
@@ -315,7 +323,9 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
         e?.searchableKeywords,
         e?.desc,
         e?.wireLength,
-        e?.rotationDirection
+        e?.rotationDirection,
+        e?.hpMin,
+        e?.hpMax
       ]);
 
   @override

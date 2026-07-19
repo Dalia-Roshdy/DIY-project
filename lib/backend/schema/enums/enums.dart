@@ -23,6 +23,7 @@ enum Parts {
   MOTOR,
   CONTACTOR,
   CAPACITOR,
+  TOOL,
 }
 
 enum SettingKeys {
@@ -30,6 +31,7 @@ enum SettingKeys {
   shipping,
   tax,
   technical_admin,
+  motor_shaft_length_fees,
 }
 
 enum ActionType {

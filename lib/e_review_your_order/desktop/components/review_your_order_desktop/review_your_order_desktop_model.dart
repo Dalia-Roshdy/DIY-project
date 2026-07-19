@@ -37,10 +37,14 @@ class ReviewYourOrderDesktopModel
       .map((e) => e.key)
       .toList();
 
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue2;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? tax;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? motorSl;
   // Model for SummaryLine.
   late SummaryLineModel summaryLineModel1;
+  // Model for SummaryLine-sl.
+  late SummaryLineModel summaryLineSlModel;
   // Model for SummaryLine.
   late SummaryLineModel summaryLineModel2;
   // Model for SummaryLine.
@@ -49,11 +53,24 @@ class ReviewYourOrderDesktopModel
   late SummaryLineTotalModel summaryLineTotalModel;
   // Model for Button.
   late Button5Model buttonModel;
-  // State field(s) for TextField-Message widget.
-  FocusNode? textFieldMessageFocusNode;
-  TextEditingController? textFieldMessageTextController;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue2;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? taxOff;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? sl;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? taxOn;
+  // State field(s) for TextField-Message-SL widget.
+  FocusNode? textFieldMessageSLFocusNode;
+  TextEditingController? textFieldMessageSLTextController;
   String? Function(BuildContext, String?)?
-      textFieldMessageTextControllerValidator;
+      textFieldMessageSLTextControllerValidator;
+  // State field(s) for TextField-Message-C widget.
+  FocusNode? textFieldMessageCFocusNode;
+  TextEditingController? textFieldMessageCTextController;
+  String? Function(BuildContext, String?)?
+      textFieldMessageCTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
@@ -61,6 +78,7 @@ class ReviewYourOrderDesktopModel
         createModel(context, () => CheckoutBreadcrumbModel());
     partRowCopyModel = createModel(context, () => PartRowCopyModel());
     summaryLineModel1 = createModel(context, () => SummaryLineModel());
+    summaryLineSlModel = createModel(context, () => SummaryLineModel());
     summaryLineModel2 = createModel(context, () => SummaryLineModel());
     summaryLineModel3 = createModel(context, () => SummaryLineModel());
     summaryLineTotalModel = createModel(context, () => SummaryLineTotalModel());
@@ -72,11 +90,15 @@ class ReviewYourOrderDesktopModel
     checkoutBreadcrumbModel.dispose();
     partRowCopyModel.dispose();
     summaryLineModel1.dispose();
+    summaryLineSlModel.dispose();
     summaryLineModel2.dispose();
     summaryLineModel3.dispose();
     summaryLineTotalModel.dispose();
     buttonModel.dispose();
-    textFieldMessageFocusNode?.dispose();
-    textFieldMessageTextController?.dispose();
+    textFieldMessageSLFocusNode?.dispose();
+    textFieldMessageSLTextController?.dispose();
+
+    textFieldMessageCFocusNode?.dispose();
+    textFieldMessageCTextController?.dispose();
   }
 }

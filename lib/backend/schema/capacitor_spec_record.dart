@@ -31,11 +31,6 @@ class CapacitorSpecRecord extends FirestoreRecord {
   double get microFarad2 => _microFarad2 ?? 0.0;
   bool hasMicroFarad2() => _microFarad2 != null;
 
-  // "volt" field.
-  int? _volt;
-  int get volt => _volt ?? 0;
-  bool hasVolt() => _volt != null;
-
   // "diameter" field.
   double? _diameter;
   double get diameter => _diameter ?? 0.0;
@@ -96,11 +91,25 @@ class CapacitorSpecRecord extends FirestoreRecord {
   CapacitorType? get type => _type;
   bool hasType() => _type != null;
 
+  // "totalLength" field.
+  double? _totalLength;
+  double get totalLength => _totalLength ?? 0.0;
+  bool hasTotalLength() => _totalLength != null;
+
+  // "tolerance" field.
+  double? _tolerance;
+  double get tolerance => _tolerance ?? 0.0;
+  bool hasTolerance() => _tolerance != null;
+
+  // "volt" field.
+  String? _volt;
+  String get volt => _volt ?? '';
+  bool hasVolt() => _volt != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _microFarad1 = castToType<double>(snapshotData['microFarad1']);
     _microFarad2 = castToType<double>(snapshotData['microFarad2']);
-    _volt = castToType<int>(snapshotData['volt']);
     _diameter = castToType<double>(snapshotData['diameter']);
     _height = castToType<double>(snapshotData['height']);
     _width = castToType<double>(snapshotData['width']);
@@ -117,6 +126,9 @@ class CapacitorSpecRecord extends FirestoreRecord {
     _type = snapshotData['type'] is CapacitorType
         ? snapshotData['type']
         : deserializeEnum<CapacitorType>(snapshotData['type']);
+    _totalLength = castToType<double>(snapshotData['totalLength']);
+    _tolerance = castToType<double>(snapshotData['tolerance']);
+    _volt = snapshotData['volt'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -157,7 +169,6 @@ Map<String, dynamic> createCapacitorSpecRecordData({
   String? id,
   double? microFarad1,
   double? microFarad2,
-  int? volt,
   double? diameter,
   double? height,
   double? width,
@@ -170,13 +181,15 @@ Map<String, dynamic> createCapacitorSpecRecordData({
   DateTime? lastUpdatedAt,
   CapacitorShape? shape,
   CapacitorType? type,
+  double? totalLength,
+  double? tolerance,
+  String? volt,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id': id,
       'microFarad1': microFarad1,
       'microFarad2': microFarad2,
-      'volt': volt,
       'diameter': diameter,
       'height': height,
       'width': width,
@@ -189,6 +202,9 @@ Map<String, dynamic> createCapacitorSpecRecordData({
       'lastUpdatedAt': lastUpdatedAt,
       'shape': shape,
       'type': type,
+      'totalLength': totalLength,
+      'tolerance': tolerance,
+      'volt': volt,
     }.withoutNulls,
   );
 
@@ -204,7 +220,6 @@ class CapacitorSpecRecordDocumentEquality
     return e1?.id == e2?.id &&
         e1?.microFarad1 == e2?.microFarad1 &&
         e1?.microFarad2 == e2?.microFarad2 &&
-        e1?.volt == e2?.volt &&
         e1?.diameter == e2?.diameter &&
         e1?.height == e2?.height &&
         e1?.width == e2?.width &&
@@ -216,7 +231,10 @@ class CapacitorSpecRecordDocumentEquality
         e1?.lastUpdatedBy == e2?.lastUpdatedBy &&
         e1?.lastUpdatedAt == e2?.lastUpdatedAt &&
         e1?.shape == e2?.shape &&
-        e1?.type == e2?.type;
+        e1?.type == e2?.type &&
+        e1?.totalLength == e2?.totalLength &&
+        e1?.tolerance == e2?.tolerance &&
+        e1?.volt == e2?.volt;
   }
 
   @override
@@ -224,7 +242,6 @@ class CapacitorSpecRecordDocumentEquality
         e?.id,
         e?.microFarad1,
         e?.microFarad2,
-        e?.volt,
         e?.diameter,
         e?.height,
         e?.width,
@@ -236,7 +253,10 @@ class CapacitorSpecRecordDocumentEquality
         e?.lastUpdatedBy,
         e?.lastUpdatedAt,
         e?.shape,
-        e?.type
+        e?.type,
+        e?.totalLength,
+        e?.tolerance,
+        e?.volt
       ]);
 
   @override

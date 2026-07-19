@@ -13,15 +13,21 @@ class CartStruct extends FFFirebaseStruct {
     double? subtotal,
     double? shipping,
     double? tax,
+    double? motorSLFees,
     double? total,
     String? comment,
+    String? motorSLComment,
+    bool? motorSLEnabled,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _cartItems = cartItems,
         _subtotal = subtotal,
         _shipping = shipping,
         _tax = tax,
+        _motorSLFees = motorSLFees,
         _total = total,
         _comment = comment,
+        _motorSLComment = motorSLComment,
+        _motorSLEnabled = motorSLEnabled,
         super(firestoreUtilData);
 
   // "cartItems" field.
@@ -62,6 +68,16 @@ class CartStruct extends FFFirebaseStruct {
 
   bool hasTax() => _tax != null;
 
+  // "motorSLFees" field.
+  double? _motorSLFees;
+  double get motorSLFees => _motorSLFees ?? 0.0;
+  set motorSLFees(double? val) => _motorSLFees = val;
+
+  void incrementMotorSLFees(double amount) =>
+      motorSLFees = motorSLFees + amount;
+
+  bool hasMotorSLFees() => _motorSLFees != null;
+
   // "total" field.
   double? _total;
   double get total => _total ?? 0.0;
@@ -78,6 +94,20 @@ class CartStruct extends FFFirebaseStruct {
 
   bool hasComment() => _comment != null;
 
+  // "motorSLComment" field.
+  String? _motorSLComment;
+  String get motorSLComment => _motorSLComment ?? '';
+  set motorSLComment(String? val) => _motorSLComment = val;
+
+  bool hasMotorSLComment() => _motorSLComment != null;
+
+  // "motorSLEnabled" field.
+  bool? _motorSLEnabled;
+  bool get motorSLEnabled => _motorSLEnabled ?? false;
+  set motorSLEnabled(bool? val) => _motorSLEnabled = val;
+
+  bool hasMotorSLEnabled() => _motorSLEnabled != null;
+
   static CartStruct fromMap(Map<String, dynamic> data) => CartStruct(
         cartItems: getStructList(
           data['cartItems'],
@@ -86,8 +116,11 @@ class CartStruct extends FFFirebaseStruct {
         subtotal: castToType<double>(data['subtotal']),
         shipping: castToType<double>(data['shipping']),
         tax: castToType<double>(data['tax']),
+        motorSLFees: castToType<double>(data['motorSLFees']),
         total: castToType<double>(data['total']),
         comment: data['comment'] as String?,
+        motorSLComment: data['motorSLComment'] as String?,
+        motorSLEnabled: data['motorSLEnabled'] as bool?,
       );
 
   static CartStruct? maybeFromMap(dynamic data) =>
@@ -98,8 +131,11 @@ class CartStruct extends FFFirebaseStruct {
         'subtotal': _subtotal,
         'shipping': _shipping,
         'tax': _tax,
+        'motorSLFees': _motorSLFees,
         'total': _total,
         'comment': _comment,
+        'motorSLComment': _motorSLComment,
+        'motorSLEnabled': _motorSLEnabled,
       }.withoutNulls;
 
   @override
@@ -121,6 +157,10 @@ class CartStruct extends FFFirebaseStruct {
           _tax,
           ParamType.double,
         ),
+        'motorSLFees': serializeParam(
+          _motorSLFees,
+          ParamType.double,
+        ),
         'total': serializeParam(
           _total,
           ParamType.double,
@@ -128,6 +168,14 @@ class CartStruct extends FFFirebaseStruct {
         'comment': serializeParam(
           _comment,
           ParamType.String,
+        ),
+        'motorSLComment': serializeParam(
+          _motorSLComment,
+          ParamType.String,
+        ),
+        'motorSLEnabled': serializeParam(
+          _motorSLEnabled,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -154,6 +202,11 @@ class CartStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
+        motorSLFees: deserializeParam(
+          data['motorSLFees'],
+          ParamType.double,
+          false,
+        ),
         total: deserializeParam(
           data['total'],
           ParamType.double,
@@ -162,6 +215,16 @@ class CartStruct extends FFFirebaseStruct {
         comment: deserializeParam(
           data['comment'],
           ParamType.String,
+          false,
+        ),
+        motorSLComment: deserializeParam(
+          data['motorSLComment'],
+          ParamType.String,
+          false,
+        ),
+        motorSLEnabled: deserializeParam(
+          data['motorSLEnabled'],
+          ParamType.bool,
           false,
         ),
       );
@@ -177,21 +240,36 @@ class CartStruct extends FFFirebaseStruct {
         subtotal == other.subtotal &&
         shipping == other.shipping &&
         tax == other.tax &&
+        motorSLFees == other.motorSLFees &&
         total == other.total &&
-        comment == other.comment;
+        comment == other.comment &&
+        motorSLComment == other.motorSLComment &&
+        motorSLEnabled == other.motorSLEnabled;
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([cartItems, subtotal, shipping, tax, total, comment]);
+  int get hashCode => const ListEquality().hash([
+        cartItems,
+        subtotal,
+        shipping,
+        tax,
+        motorSLFees,
+        total,
+        comment,
+        motorSLComment,
+        motorSLEnabled
+      ]);
 }
 
 CartStruct createCartStruct({
   double? subtotal,
   double? shipping,
   double? tax,
+  double? motorSLFees,
   double? total,
   String? comment,
+  String? motorSLComment,
+  bool? motorSLEnabled,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -201,8 +279,11 @@ CartStruct createCartStruct({
       subtotal: subtotal,
       shipping: shipping,
       tax: tax,
+      motorSLFees: motorSLFees,
       total: total,
       comment: comment,
+      motorSLComment: motorSLComment,
+      motorSLEnabled: motorSLEnabled,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

@@ -1,6 +1,7 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s08_company_investors/s08_company_investors_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/details_checkout_mobile_and_desktop/details_checkout_mobile_and_desktop_widget.dart';
 import 'g_secure_payment_checkout_widget.dart'
@@ -11,6 +12,8 @@ class GSecurePaymentCheckoutModel
     extends FlutterFlowModel<GSecurePaymentCheckoutWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in G-Secure_payment_checkout widget.
+  SettingsRecord? tax;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for Details_Checkout_mobile_and_desktop component.

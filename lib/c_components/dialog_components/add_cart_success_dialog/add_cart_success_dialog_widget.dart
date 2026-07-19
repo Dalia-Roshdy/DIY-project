@@ -34,14 +34,7 @@ class _AddCartSuccessDialogWidgetState
     _model = createModel(context, () => AddCartSuccessDialogModel());
 
     // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(
-        Duration(
-          milliseconds: 1000,
-        ),
-      );
-      Navigator.pop(context);
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -125,7 +118,7 @@ class _AddCartSuccessDialogWidgetState
                   ),
                 ),
                 AutoSizeText(
-                  'Yeeha! your item has been successfully added.',
+                  'Perfect! your item has been successfully added.',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.outfit(

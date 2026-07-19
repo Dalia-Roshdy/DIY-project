@@ -121,7 +121,7 @@ class _SuccessDialogWidgetState extends State<SuccessDialogWidget> {
                   ),
                 ),
                 AutoSizeText(
-                  '🎉 Yeeha! ',
+                  'Perfect! ',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.outfit(

@@ -1,4 +1,3 @@
-import '/b_screen_components/asterisk/asterisk_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 's02_headlines_widget.dart' show S02HeadlinesWidget;
@@ -13,16 +12,10 @@ class S02HeadlinesModel extends FlutterFlowModel<S02HeadlinesWidget> {
 
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered = false;
-  // Model for Asterisk component.
-  late AsteriskModel asteriskModel;
 
   @override
-  void initState(BuildContext context) {
-    asteriskModel = createModel(context, () => AsteriskModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    asteriskModel.dispose();
-  }
+  void dispose() {}
 }

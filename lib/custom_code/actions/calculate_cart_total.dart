@@ -6,33 +6,43 @@ import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future calculateCartTotal(String? shippingStr, String? taxStr) async {
-  // Get the current payment/cart from app state
+Future calculateCartTotal(
+    String taxStr, String? shippingStr, String? motorSLStr) async {
   final cart = FFAppState().Cart;
 
-  // Calculate subtotal by iterating through cart items
   double subtotal = 0.0;
   for (final item in cart.cartItems) {
     subtotal += (item.price * item.qty);
   }
+  subtotal = double.parse(subtotal.toStringAsFixed(2));
 
-  // Get shipping and tax from the current payment struct
+  final double taxPercent = double.tryParse(taxStr) ?? 0.0;
   final double shipping =
       double.tryParse(shippingStr ?? '') ?? (cart.shipping ?? 0.0);
 
-  final double tax = double.tryParse(taxStr ?? '') ?? (cart.tax ?? 0.0);
+  double motorSL =
+      double.tryParse(motorSLStr ?? '') ?? (cart.motorSLFees ?? 0.0);
 
-  // Calculate total
-  final double total = subtotal + shipping + tax;
+  // Gate on the checkbox flag, not the comment
+  if (!(cart.motorSLEnabled ?? false)) {
+    motorSL = 0.0;
+  }
 
-  // Update the payment struct in app state with new subtotal and total
+  final double tax = double.parse(
+      ((subtotal + motorSL) * taxPercent / 100).toStringAsFixed(2));
+
+  final double total =
+      double.parse((subtotal + shipping + tax + motorSL).toStringAsFixed(2));
+
   FFAppState().updateCartStruct((c) => c
     ..subtotal = subtotal
     ..total = total
     ..shipping = shipping
-    ..tax = tax);
+    ..tax = tax
+    ..motorSLFees = motorSL);
 }

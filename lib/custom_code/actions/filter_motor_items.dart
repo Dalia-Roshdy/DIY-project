@@ -6,6 +6,7 @@ import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -21,7 +22,6 @@ Future<List<PartCardDTOStruct>> filterMotorItems(DocumentReference? acModelRef,
   List<PartCardDTOStruct> result = [];
 
   try {
-    // Step 1: If acModelRef is provided, read the ACModel document to get motorSpecId
     DocumentReference? motorSpecIdRef;
 
     if (acModelRef != null) {
@@ -34,7 +34,6 @@ Future<List<PartCardDTOStruct>> filterMotorItems(DocumentReference? acModelRef,
       }
     }
 
-    // Step 2: Query MotorSpec collection with filters
     Query motorSpecQuery = FirebaseFirestore.instance.collection('MotorSpec');
 
     if (motorSpecIdRef != null) {
@@ -47,7 +46,9 @@ Future<List<PartCardDTOStruct>> filterMotorItems(DocumentReference? acModelRef,
     }
 
     if (hp != null) {
-      motorSpecQuery = motorSpecQuery.where('hp', isEqualTo: hp);
+      motorSpecQuery = motorSpecQuery.where('hpMin', isLessThanOrEqualTo: hp);
+      motorSpecQuery =
+          motorSpecQuery.where('hpMax', isGreaterThanOrEqualTo: hp);
     }
 
     if (rpm != null) {
@@ -59,24 +60,21 @@ Future<List<PartCardDTOStruct>> filterMotorItems(DocumentReference? acModelRef,
           motorSpecQuery.where('rotationDirection', isEqualTo: rotation);
     }
 
-    final motorSpecSnapshot = await motorSpecQuery.get();
+    final rawSnapshot = await motorSpecQuery.get();
+    List<QueryDocumentSnapshot> motorSpecDocs = rawSnapshot.docs;
 
-    if (motorSpecSnapshot.docs.isEmpty) {
+    if (motorSpecDocs.isEmpty) {
       return result;
     }
 
-    // Collect MotorSpec document references
     final List<DocumentReference> motorSpecRefs =
-        motorSpecSnapshot.docs.map((doc) => doc.reference).toList();
+        motorSpecDocs.map((doc) => doc.reference).toList();
 
-    // Build a map of motorSpecRef -> motorSpec data for quick lookup
     final Map<String, Map<String, dynamic>> motorSpecDataMap = {};
-    for (final doc in motorSpecSnapshot.docs) {
+    for (final doc in motorSpecDocs) {
       motorSpecDataMap[doc.reference.path] = doc.data() as Map<String, dynamic>;
     }
 
-    // Step 3: Query Items where specType == "motor" and motorSpecId in refs
-    // Firestore 'whereIn' supports up to 30 items per query
     const int chunkSize = 30;
     final List<QueryDocumentSnapshot> allItemDocs = [];
 
@@ -98,11 +96,8 @@ Future<List<PartCardDTOStruct>> filterMotorItems(DocumentReference? acModelRef,
       allItemDocs.addAll(itemSnapshot.docs);
     }
 
-    // Step 4: Map Item + MotorSpec data to PartCardDTOStruct
     for (final itemDoc in allItemDocs) {
       final itemData = itemDoc.data() as Map<String, dynamic>;
-
-      // Get the associated motorSpecId reference from the item
       final itemMotorSpecRef = itemData['motorSpecId'] as DocumentReference?;
 
       Map<String, dynamic> motorSpecData = {};
@@ -111,9 +106,8 @@ Future<List<PartCardDTOStruct>> filterMotorItems(DocumentReference? acModelRef,
         motorSpecData = motorSpecDataMap[itemMotorSpecRef.path]!;
       }
 
-      // Build PartCardDTOStruct from item and motorSpec data
-      final partCard = PartCardDTOStruct(
-        id: itemDoc.reference, // partCardDTO.id is now Doc Reference (Items)
+      result.add(PartCardDTOStruct(
+        id: itemDoc.reference,
         type: 'MOTOR',
         title: itemData['partNumber'] as String? ?? '',
         desc: itemData['description'] as String? ?? '',
@@ -137,12 +131,16 @@ Future<List<PartCardDTOStruct>> filterMotorItems(DocumentReference? acModelRef,
               (motorSpecData['capacitorMicroFarad'] as num?)?.toDouble() ?? 0.0,
           motorBodyDiameter:
               (motorSpecData['bodyDiameter'] as num?)?.toDouble() ?? 0.0,
+          motorHpMin: (motorSpecData['hpMin'] as num?)?.toDouble() ?? 0.0,
+          motorHpMax: (motorSpecData['hpMax'] as num?)?.toDouble() ?? 0.0,
+          motorShaftLength:
+              (motorSpecData['shaftLength'] as num?)?.toDouble() ?? 0.0,
+          motorWireLength:
+              (motorSpecData['wireLength'] as num?)?.toDouble() ?? 0.0,
         ),
         capacitorCard: null,
         contactorCard: null,
-      );
-
-      result.add(partCard);
+      ));
     }
   } catch (e) {
     debugPrint('Error in filterMotorItems: $e');

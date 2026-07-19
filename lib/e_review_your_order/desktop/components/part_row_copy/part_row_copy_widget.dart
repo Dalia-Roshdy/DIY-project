@@ -122,7 +122,7 @@ class _PartRowCopyWidgetState extends State<PartRowCopyWidget> {
                       width: 100.0,
                       alignment: AlignmentDirectional(1.0, -1.0),
                       child: Text(
-                        'Price',
+                        'Price/each',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyLargeFamily,
@@ -140,19 +140,30 @@ class _PartRowCopyWidgetState extends State<PartRowCopyWidget> {
                       width: 100.0,
                       decoration: BoxDecoration(),
                       alignment: AlignmentDirectional(1.0, -1.0),
-                      child: Text(
-                        'Actions',
-                        style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).bodyLargeFamily,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 18.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.bold,
-                              lineHeight: 1.6,
-                              useGoogleFonts: !FlutterFlowTheme.of(context)
-                                  .bodyLargeIsCustom,
-                            ),
+                      child: Visibility(
+                        visible: responsiveVisibility(
+                          context: context,
+                          phone: false,
+                          tablet: false,
+                          tabletLandscape: false,
+                          desktop: false,
+                        ),
+                        child: Text(
+                          'Actions',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyLarge
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyLargeFamily,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 18.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.bold,
+                                lineHeight: 1.6,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyLargeIsCustom,
+                              ),
+                        ),
                       ),
                     ),
                   ].divide(SizedBox(width: 16.0)),

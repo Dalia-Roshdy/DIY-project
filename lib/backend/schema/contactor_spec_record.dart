@@ -70,6 +70,16 @@ class ContactorSpecRecord extends FirestoreRecord {
   DateTime? get lastUpdatedAt => _lastUpdatedAt;
   bool hasLastUpdatedAt() => _lastUpdatedAt != null;
 
+  // "terminalType" field.
+  String? _terminalType;
+  String get terminalType => _terminalType ?? '';
+  bool hasTerminalType() => _terminalType != null;
+
+  // "description" field.
+  String? _description;
+  String get description => _description ?? '';
+  bool hasDescription() => _description != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _ratedVolt = castToType<double>(snapshotData['ratedVolt']);
@@ -82,6 +92,8 @@ class ContactorSpecRecord extends FirestoreRecord {
     _specMetadata = snapshotData['specMetadata'] as String?;
     _lastUpdatedBy = snapshotData['lastUpdatedBy'] as DocumentReference?;
     _lastUpdatedAt = snapshotData['lastUpdatedAt'] as DateTime?;
+    _terminalType = snapshotData['terminalType'] as String?;
+    _description = snapshotData['description'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -130,6 +142,8 @@ Map<String, dynamic> createContactorSpecRecordData({
   String? specMetadata,
   DocumentReference? lastUpdatedBy,
   DateTime? lastUpdatedAt,
+  String? terminalType,
+  String? description,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +158,8 @@ Map<String, dynamic> createContactorSpecRecordData({
       'specMetadata': specMetadata,
       'lastUpdatedBy': lastUpdatedBy,
       'lastUpdatedAt': lastUpdatedAt,
+      'terminalType': terminalType,
+      'description': description,
     }.withoutNulls,
   );
 
@@ -166,7 +182,9 @@ class ContactorSpecRecordDocumentEquality
         e1?.depth == e2?.depth &&
         e1?.specMetadata == e2?.specMetadata &&
         e1?.lastUpdatedBy == e2?.lastUpdatedBy &&
-        e1?.lastUpdatedAt == e2?.lastUpdatedAt;
+        e1?.lastUpdatedAt == e2?.lastUpdatedAt &&
+        e1?.terminalType == e2?.terminalType &&
+        e1?.description == e2?.description;
   }
 
   @override
@@ -181,7 +199,9 @@ class ContactorSpecRecordDocumentEquality
         e?.depth,
         e?.specMetadata,
         e?.lastUpdatedBy,
-        e?.lastUpdatedAt
+        e?.lastUpdatedAt,
+        e?.terminalType,
+        e?.description
       ]);
 
   @override

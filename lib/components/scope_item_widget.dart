@@ -96,20 +96,6 @@ class _ScopeItemWidgetState extends State<ScopeItemWidget> {
                           !FlutterFlowTheme.of(context).titleMediumIsCustom,
                     ),
               ),
-              Text(
-                valueOrDefault<String>(
-                  widget.subtitle,
-                  'CONDENSER COMPONENT',
-                ),
-                style: FlutterFlowTheme.of(context).labelSmall.override(
-                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                      color: Color(0xCCFFFFFF),
-                      letterSpacing: 0.0,
-                      lineHeight: 1.2,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                    ),
-              ),
             ].divide(SizedBox(height: 8.0)),
           ),
         ),

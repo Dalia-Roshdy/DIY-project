@@ -22,10 +22,28 @@ class EReviewYourOrderMobileModel
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Checkbox widget.
-  Map<ItemsRecord, bool> checkboxValueMap = {};
-  List<ItemsRecord> get checkboxCheckedItems =>
-      checkboxValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
+  Map<ItemsRecord, bool> checkboxValueMap1 = {};
+  List<ItemsRecord> get checkboxCheckedItems1 => checkboxValueMap1.entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toList();
 
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? tax;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? motorSl;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue2;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? taxOff;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? sl;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? taxOn;
+  // State field(s) for TextField-SL widget.
+  FocusNode? textFieldSLFocusNode;
+  TextEditingController? textFieldSLTextController;
+  String? Function(BuildContext, String?)? textFieldSLTextControllerValidator;
   // State field(s) for TextField-Message widget.
   FocusNode? textFieldMessageFocusNode;
   TextEditingController? textFieldMessageTextController;
@@ -37,6 +55,8 @@ class EReviewYourOrderMobileModel
   late SummaryRowModel summaryRowModel2;
   // Model for SummaryRow.
   late SummaryRowModel summaryRowModel3;
+  // Model for SummaryRow.
+  late SummaryRowModel summaryRowModel4;
   // Model for Button.
   late Button6Model buttonModel;
 
@@ -45,17 +65,22 @@ class EReviewYourOrderMobileModel
     summaryRowModel1 = createModel(context, () => SummaryRowModel());
     summaryRowModel2 = createModel(context, () => SummaryRowModel());
     summaryRowModel3 = createModel(context, () => SummaryRowModel());
+    summaryRowModel4 = createModel(context, () => SummaryRowModel());
     buttonModel = createModel(context, () => Button6Model());
   }
 
   @override
   void dispose() {
+    textFieldSLFocusNode?.dispose();
+    textFieldSLTextController?.dispose();
+
     textFieldMessageFocusNode?.dispose();
     textFieldMessageTextController?.dispose();
 
     summaryRowModel1.dispose();
     summaryRowModel2.dispose();
     summaryRowModel3.dispose();
+    summaryRowModel4.dispose();
     buttonModel.dispose();
   }
 }

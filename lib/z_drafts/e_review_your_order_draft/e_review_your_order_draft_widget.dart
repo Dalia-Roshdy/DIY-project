@@ -3,40 +3,62 @@ import '/b_screen_components/s08_company_investors/s08_company_investors_widget.
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/e_review_your_order/desktop/components/review_your_order_desktop/review_your_order_desktop_widget.dart';
+import '/e_review_your_order/mobile/e_review_your_order_mobile/e_review_your_order_mobile_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/g_checkout_details/details_checkout_mobile_and_desktop/details_checkout_mobile_and_desktop_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'g_secure_payment_checkout_model.dart';
-export 'g_secure_payment_checkout_model.dart';
+import 'e_review_your_order_draft_model.dart';
+export 'e_review_your_order_draft_model.dart';
 
-class GSecurePaymentCheckoutWidget extends StatefulWidget {
-  const GSecurePaymentCheckoutWidget({super.key});
+class EReviewYourOrderDraftWidget extends StatefulWidget {
+  const EReviewYourOrderDraftWidget({super.key});
 
-  static String routeName = 'G-Secure_payment_checkout';
-  static String routePath = '/checkout';
+  static String routeName = 'E-Review_Your_OrderDraft';
+  static String routePath = '/cartC';
 
   @override
-  State<GSecurePaymentCheckoutWidget> createState() =>
-      _GSecurePaymentCheckoutWidgetState();
+  State<EReviewYourOrderDraftWidget> createState() =>
+      _EReviewYourOrderDraftWidgetState();
 }
 
-class _GSecurePaymentCheckoutWidgetState
-    extends State<GSecurePaymentCheckoutWidget> {
-  late GSecurePaymentCheckoutModel _model;
+class _EReviewYourOrderDraftWidgetState
+    extends State<EReviewYourOrderDraftWidget> {
+  late EReviewYourOrderDraftModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => GSecurePaymentCheckoutModel());
+    _model = createModel(context, () => EReviewYourOrderDraftModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (!(_model.tools.isNotEmpty)) {
+        _model.toolACT = await queryItemsRecordOnce(
+          queryBuilder: (itemsRecord) => itemsRecord.where(
+            'hasMiscId',
+            isEqualTo: true,
+          ),
+        );
+        _model.tools = _model.toolACT!
+            .where((e) => e.qtyOnHand > 0)
+            .toList()
+            .toList()
+            .cast<ItemsRecord>();
+        safeSetState(() {});
+      }
+      _model.shipping = await querySettingsRecordOnce(
+        queryBuilder: (settingsRecord) => settingsRecord.where(
+          'key',
+          isEqualTo: SettingKeys.shipping.name,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
       _model.tax = await querySettingsRecordOnce(
         queryBuilder: (settingsRecord) => settingsRecord.where(
           'key',
@@ -44,11 +66,19 @@ class _GSecurePaymentCheckoutWidgetState
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      _model.motorSl = await querySettingsRecordOnce(
+        queryBuilder: (settingsRecord) => settingsRecord.where(
+          'key',
+          isEqualTo: SettingKeys.motor_shaft_length_fees.name,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
       await actions.calculateCartTotal(
         _model.tax!.value,
-        null,
-        null,
+        _model.shipping?.value,
+        _model.motorSl?.value,
       );
+      safeSetState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -94,7 +124,7 @@ class _GSecurePaymentCheckoutWidgetState
                           width: MediaQuery.sizeOf(context).width * 0.96,
                           decoration: BoxDecoration(),
                           child: Column(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Container(
                                 decoration: BoxDecoration(
@@ -123,19 +153,41 @@ class _GSecurePaymentCheckoutWidgetState
                                       color:
                                           FlutterFlowTheme.of(context).tertiary,
                                     ),
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                      tablet: false,
+                                    ))
+                                      wrapWithModel(
+                                        model:
+                                            _model.reviewYourOrderDesktopModel,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        updateOnChange: true,
+                                        child: ReviewYourOrderDesktopWidget(
+                                          toolsCS: _model.tools,
+                                        ),
+                                      ),
                                     Divider(
                                       height: 1.0,
                                       thickness: 1.0,
                                       color:
                                           FlutterFlowTheme.of(context).tertiary,
                                     ),
-                                    wrapWithModel(
-                                      model: _model
-                                          .detailsCheckoutMobileAndDesktopModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child:
-                                          DetailsCheckoutMobileAndDesktopWidget(),
-                                    ),
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
+                                      wrapWithModel(
+                                        model:
+                                            _model.eReviewYourOrderMobileModel,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: EReviewYourOrderMobileWidget(
+                                          toolsC: _model.tools,
+                                        ),
+                                      ),
                                   ],
                                 ),
                               ),

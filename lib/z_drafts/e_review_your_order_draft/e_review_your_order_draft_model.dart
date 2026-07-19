@@ -5,10 +5,11 @@ import '/backend/backend.dart';
 import '/e_review_your_order/desktop/components/review_your_order_desktop/review_your_order_desktop_widget.dart';
 import '/e_review_your_order/mobile/e_review_your_order_mobile/e_review_your_order_mobile_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'e_review_your_order_widget.dart' show EReviewYourOrderWidget;
+import 'e_review_your_order_draft_widget.dart' show EReviewYourOrderDraftWidget;
 import 'package:flutter/material.dart';
 
-class EReviewYourOrderModel extends FlutterFlowModel<EReviewYourOrderWidget> {
+class EReviewYourOrderDraftModel
+    extends FlutterFlowModel<EReviewYourOrderDraftWidget> {
   ///  Local state fields for this page.
 
   List<ItemsRecord> tools = [];
@@ -22,13 +23,13 @@ class EReviewYourOrderModel extends FlutterFlowModel<EReviewYourOrderWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_OrderDraft widget.
   List<ItemsRecord>? toolACT;
-  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_OrderDraft widget.
   SettingsRecord? shipping;
-  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_OrderDraft widget.
   SettingsRecord? tax;
-  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_OrderDraft widget.
   SettingsRecord? motorSl;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;

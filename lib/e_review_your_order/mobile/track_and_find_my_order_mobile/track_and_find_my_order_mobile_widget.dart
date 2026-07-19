@@ -210,7 +210,7 @@ class _TrackAndFindMyOrderMobileWidgetState
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 14.0),
+                                    0.0, 14.0, 0.0, 14.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
