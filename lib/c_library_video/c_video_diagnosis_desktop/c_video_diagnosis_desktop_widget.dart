@@ -347,6 +347,11 @@ class _CVideoDiagnosisDesktopWidgetState
                                           TargetPage.needAssistant) {
                                         context.pushNamed(
                                             LRequestTechnicalWidget.routeName);
+                                      } else if (_model
+                                              .slectedOption?.targetPage ==
+                                          TargetPage.diagnosis) {
+                                        context.pushNamed(
+                                            BDiagnosisWidget.routeName);
                                       }
                                     } else if (_model
                                             .slectedOption?.actionType ==

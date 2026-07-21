@@ -319,41 +319,44 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                       width: 1.0,
                     ),
                   ),
-                  child: Align(
-                    alignment: AlignmentDirectional(1.0, 0.0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          25.0, 20.0, 25.0, 20.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Image.asset(
-                            'assets/images/Logo_2.png',
-                            height: 20.0,
-                            fit: BoxFit.contain,
-                          ),
-                          Flexible(
-                            child: AutoSizeText(
-                              '© 2026 THE COMPANY. ALL RIGHTS RESERVED.',
-                              textAlign: TextAlign.end,
-                              style: FlutterFlowTheme.of(context)
-                                  .labelLarge
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .labelLargeFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .labelLargeIsCustom,
-                                  ),
+                  child: Visibility(
+                    visible: false,
+                    child: Align(
+                      alignment: AlignmentDirectional(1.0, 0.0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            25.0, 20.0, 25.0, 20.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Image.asset(
+                              'assets/images/Logo_2.png',
+                              height: 20.0,
+                              fit: BoxFit.contain,
                             ),
-                          ),
-                        ].divide(SizedBox(height: 5.0)),
+                            Flexible(
+                              child: AutoSizeText(
+                                '© 2026 THE COMPANY. ALL RIGHTS RESERVED.',
+                                textAlign: TextAlign.end,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelLargeFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelLargeIsCustom,
+                                    ),
+                              ),
+                            ),
+                          ].divide(SizedBox(height: 5.0)),
+                        ),
                       ),
                     ),
                   ),

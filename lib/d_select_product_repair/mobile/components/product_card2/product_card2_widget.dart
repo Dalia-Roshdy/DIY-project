@@ -104,7 +104,9 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: Image.network(
-                                  widget.img,
+                                  widget.img != ''
+                                      ? widget.img
+                                      : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/y2pjwpyum2n7/gettyimages-671795572-612x612.jpg',
                                 ).image,
                               ),
                             ),
@@ -760,7 +762,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                 text: TextSpan(
                                   children: [
                                     TextSpan(
-                                      text: 'Factor Shaft Length',
+                                      text: 'Factory Shaft Length',
                                       style: FlutterFlowTheme.of(context)
                                           .labelSmall
                                           .override(
@@ -1197,6 +1199,48 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
+                                'Single VS Dual',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelSmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      lineHeight: 1.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelSmallIsCustom,
+                                    ),
+                              ),
+                              Text(
+                                valueOrDefault<String>(
+                                  widget.capacitorCard?.capacType?.name,
+                                  'CapType',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .labelSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelSmallFamily,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      lineHeight: 1.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelSmallIsCustom,
+                                    ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
                                 'MFD1',
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
@@ -1253,7 +1297,15 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                     ),
                               ),
                               Text(
-                                widget.capacitorCard!.capacMFD2.toString(),
+                                valueOrDefault<String>(
+                                  (widget.capacitorCard?.capacMFD2 == 0.0) ||
+                                          (widget.capacitorCard?.capacMFD2 ==
+                                              null)
+                                      ? 'N/A'
+                                      : widget.capacitorCard?.capacMFD2
+                                          .toString(),
+                                  'N/A',
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(
@@ -1398,7 +1450,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Height',
+                                'Body Height',
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(

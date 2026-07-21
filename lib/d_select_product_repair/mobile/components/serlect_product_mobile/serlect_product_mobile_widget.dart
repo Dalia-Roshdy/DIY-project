@@ -178,6 +178,22 @@ class _SerlectProductMobileWidgetState
               ),
             ),
           ),
+          Container(
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).warning,
+            ),
+            child: Text(
+              'IMPORTANT: ALL MEASUREMENTS ARE IN INCHES (IN)',
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.bold,
+                    useGoogleFonts:
+                        !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                  ),
+            ),
+          ),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
             child: Container(

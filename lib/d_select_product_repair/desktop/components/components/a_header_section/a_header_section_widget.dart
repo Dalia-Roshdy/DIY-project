@@ -189,6 +189,21 @@ class _AHeaderSectionWidgetState extends State<AHeaderSectionWidget> {
             ),
           ),
         ),
+        Container(
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).warning,
+          ),
+          child: Text(
+            'IMPORTANT: ALL MEASUREMENTS ARE IN INCHES (IN)',
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.bold,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                ),
+          ),
+        ),
       ].divide(SizedBox(height: 16.0)),
     );
   }

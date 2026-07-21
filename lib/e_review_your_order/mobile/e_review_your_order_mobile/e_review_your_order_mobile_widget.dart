@@ -50,7 +50,7 @@ class _EReviewYourOrderMobileWidgetState
         ),
       );
       _model.toolsCS = widget.toolsC!.toList().cast<ItemsRecord>();
-      safeSetState(() {});
+      _model.updatePage(() {});
     });
 
     _model.textFieldSLTextController ??=
@@ -245,7 +245,7 @@ class _EReviewYourOrderMobileWidgetState
                                       size: 20.0,
                                     ),
                                     Text(
-                                      'Selected Parts',
+                                      'Order Items',
                                       style: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
@@ -348,7 +348,7 @@ class _EReviewYourOrderMobileWidgetState
                                     Container(
                                       width: 40.0,
                                       child: Text(
-                                        'Price',
+                                        'Price/each',
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
                                             .labelSmall
@@ -374,36 +374,9 @@ class _EReviewYourOrderMobileWidgetState
                                       child: Container(
                                         width: 50.0,
                                         decoration: BoxDecoration(),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(1.0, 0.0),
-                                          child: Text(
-                                            'Actions',
-                                            textAlign: TextAlign.end,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelSmall
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelSmallFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .onSurface,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  lineHeight: 1.2,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelSmallIsCustom,
-                                                ),
-                                          ),
-                                        ),
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 8.0)),
+                                  ].divide(SizedBox(width: 4.0)),
                                 ),
                               ),
                             ),
@@ -927,16 +900,16 @@ class _EReviewYourOrderMobileWidgetState
                               'Need a custom Motor Shaft length?',
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
-                                  .titleSmall
+                                  .bodyLarge
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
-                                        .titleSmallFamily,
-                                    fontSize: 14.0,
+                                        .bodyLargeFamily,
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
                                     lineHeight: 1.0,
                                     useGoogleFonts:
                                         !FlutterFlowTheme.of(context)
-                                            .titleSmallIsCustom,
+                                            .bodyLargeIsCustom,
                                   ),
                             ),
                             Theme(
@@ -1041,62 +1014,65 @@ class _EReviewYourOrderMobileWidgetState
                             ),
                           ],
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(
-                              color: FlutterFlowTheme.of(context).tertiary,
+                        if (_model.checkboxValue2 ?? true)
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).tertiary,
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(6.0),
-                            child: TextFormField(
-                              controller: _model.textFieldSLTextController,
-                              focusNode: _model.textFieldSLFocusNode,
-                              autofocus: false,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                hintText: 'Enter a custom Motor Shaft length.',
-                                hintStyle: FlutterFlowTheme.of(context)
+                            child: Padding(
+                              padding: EdgeInsets.all(6.0),
+                              child: TextFormField(
+                                controller: _model.textFieldSLTextController,
+                                focusNode: _model.textFieldSLFocusNode,
+                                autofocus: false,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  isDense: true,
+                                  hintText:
+                                      'Enter a custom Motor Shaft length.',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelSmallFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                        fontSize: 18.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelSmallIsCustom,
+                                      ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .labelSmallFamily,
-                                      color:
-                                          FlutterFlowTheme.of(context).tertiary,
-                                      fontSize: 18.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 10.0,
                                       letterSpacing: 0.0,
                                       useGoogleFonts:
                                           !FlutterFlowTheme.of(context)
                                               .labelSmallIsCustom,
                                     ),
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                focusedErrorBorder: InputBorder.none,
+                                maxLines: null,
+                                cursorColor:
+                                    FlutterFlowTheme.of(context).primary,
+                                validator: _model
+                                    .textFieldSLTextControllerValidator
+                                    .asValidator(context),
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .labelSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .labelSmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 10.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .labelSmallIsCustom,
-                                  ),
-                              maxLines: null,
-                              cursorColor: FlutterFlowTheme.of(context).primary,
-                              validator: _model
-                                  .textFieldSLTextControllerValidator
-                                  .asValidator(context),
                             ),
                           ),
-                        ),
                       ].divide(SizedBox(height: 14.0)),
                     ),
                   ),
@@ -1129,17 +1105,15 @@ class _EReviewYourOrderMobileWidgetState
                         Text(
                           'Additional Notes',
                           style: FlutterFlowTheme.of(context)
-                              .titleMedium
+                              .bodyLarge
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .titleMediumFamily,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 14.0,
+                                    .bodyLargeFamily,
                                 letterSpacing: 0.0,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w600,
                                 lineHeight: 1.4,
                                 useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .titleMediumIsCustom,
+                                    .bodyLargeIsCustom,
                               ),
                         ),
                         Container(

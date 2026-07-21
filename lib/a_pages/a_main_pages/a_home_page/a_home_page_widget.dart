@@ -42,27 +42,13 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
             isEqualTo: true,
           ),
         );
-        _model.acModelAct = await queryACModelRecordOnce(
-          queryBuilder: (aCModelRecord) => aCModelRecord.where(
-            'approved',
-            isEqualTo: true,
-          ),
-        );
         _model.acMakeMap = await actions.mapACMakeToDto(
           _model.acMakeAct!.toList(),
-        );
-        _model.acModelMap = await actions.mapACModelToDto(
-          _model.acModelAct!.toList(),
         );
         FFAppState().acMakeList = _model.acMakeMap!
             .sortedList(keyOf: (e) => e.name, desc: false)
             .toList()
             .cast<AcMakeDTOStruct>();
-        FFAppState().acModelList = _model.acModelMap!
-            .sortedList(keyOf: (e) => e.name, desc: false)
-            .toList()
-            .cast<AcModelDTOStruct>();
-        FFAppState().update(() {});
       }
     });
 

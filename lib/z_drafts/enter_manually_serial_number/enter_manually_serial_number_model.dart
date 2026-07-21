@@ -26,8 +26,6 @@ class EnterManuallySerialNumberModel
     return null;
   }
 
-  // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered1 = false;
   // State field(s) for TextField-Model widget.
   FocusNode? textFieldModelFocusNode;
   TextEditingController? textFieldModelTextController;
@@ -46,14 +44,12 @@ class EnterManuallySerialNumberModel
     return null;
   }
 
-  // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered2 = false;
   // State field(s) for TextField-SN widget.
   FocusNode? textFieldSNFocusNode;
   TextEditingController? textFieldSNTextController;
   String? Function(BuildContext, String?)? textFieldSNTextControllerValidator;
   // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered3 = false;
+  bool mouseRegionHovered = false;
   // Stores action output result for [Validate Form] action in Row widget.
   bool? form;
   // Stores action output result for [Backend Call - Create Document] action in Row widget.

@@ -810,7 +810,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: 'Factor Shaft Length',
+                                    text: 'Factory Shaft Length',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -1265,6 +1265,49 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
+                              'Single VS Dual',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    color: FlutterFlowTheme.of(context).grey30,
+                                    fontSize: 10.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    lineHeight: 1.1,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
+                                  ),
+                            ),
+                            Text(
+                              valueOrDefault<String>(
+                                widget.capacitorCard?.capacType?.name,
+                                'CapType',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyLargeFamily,
+                                    fontSize: 10.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    lineHeight: 1.1,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyLargeIsCustom,
+                                  ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
                               'MFD1',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -1322,7 +1365,15 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                   ),
                             ),
                             Text(
-                              widget.capacitorCard!.capacMFD2.toString(),
+                              valueOrDefault<String>(
+                                (widget.capacitorCard?.capacMFD2 == 0.0) ||
+                                        (widget.capacitorCard?.capacMFD2 ==
+                                            null)
+                                    ? 'N/A'
+                                    : widget.capacitorCard?.capacMFD2
+                                        .toString(),
+                                'N/A',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
@@ -1471,7 +1522,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Height',
+                              'Body Height',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

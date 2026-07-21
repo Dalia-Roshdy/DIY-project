@@ -45,6 +45,7 @@ enum TargetPage {
   contactUs,
   otherVideo,
   google,
+  diagnosis,
 }
 
 enum MotorRotationDirection {

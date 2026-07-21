@@ -37,24 +37,24 @@ class S05HomestartdiagnosisModel
 
   bool newAC = true;
 
+  DocumentReference? videoID;
+
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for DropDown-Make widget.
-  String? dropDownMakeValue;
-  FormFieldController<String>? dropDownMakeValueController;
-  // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered1 = false;
   // State field(s) for DropDown-Model widget.
   String? dropDownModelValue;
   FormFieldController<String>? dropDownModelValueController;
-  // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered2 = false;
+  // State field(s) for DropDown-Make widget.
+  String? dropDownMakeValue;
+  FormFieldController<String>? dropDownMakeValueController;
   // State field(s) for TextField-SN widget.
   FocusNode? textFieldSNFocusNode;
   TextEditingController? textFieldSNTextController;
   String? Function(BuildContext, String?)? textFieldSNTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in Text widget.
+  DiagnosisVideoRecord? videoidentify;
   // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered3 = false;
+  bool mouseRegionHovered = false;
   // Model for Enter_manuallySerial_Number component.
   late EnterManuallySerialNumberModel enterManuallySerialNumberModel;
 
