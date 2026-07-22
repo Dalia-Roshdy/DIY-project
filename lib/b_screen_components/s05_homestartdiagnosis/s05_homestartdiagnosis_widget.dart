@@ -572,274 +572,6 @@ class _S05HomestartdiagnosisWidgetState
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    12.0,
-                                                                    0.0,
-                                                                    10.0),
-                                                        child: Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondary,
-                                                            border: Border.all(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondary,
-                                                            ),
-                                                          ),
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.0, 0.0),
-                                                            child: Text(
-                                                              'Model Number (optional)',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                    fontSize:
-                                                                        valueOrDefault<
-                                                                            double>(
-                                                                      MediaQuery.sizeOf(context).width <
-                                                                              kBreakpointSmall
-                                                                          ? 12.0
-                                                                          : 18.0,
-                                                                      40.0,
-                                                                    ),
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    useGoogleFonts:
-                                                                        !FlutterFlowTheme.of(context)
-                                                                            .bodyMediumIsCustom,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, -1.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      20.0,
-                                                                      0.0,
-                                                                      20.0,
-                                                                      0.0),
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              border:
-                                                                  Border.all(
-                                                                width: 3.0,
-                                                              ),
-                                                            ),
-                                                            child: Padding(
-                                                              padding: EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      valueOrDefault<
-                                                                          double>(
-                                                                        MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointSmall
-                                                                            ? 8.0
-                                                                            : 25.0,
-                                                                        50.0,
-                                                                      ),
-                                                                      0.0,
-                                                                      valueOrDefault<
-                                                                          double>(
-                                                                        MediaQuery.sizeOf(context).width <
-                                                                                kBreakpointSmall
-                                                                            ? 8.0
-                                                                            : 25.0,
-                                                                        50.0,
-                                                                      ),
-                                                                      0.0),
-                                                              child:
-                                                                  FlutterFlowDropDown<
-                                                                      String>(
-                                                                controller: _model
-                                                                        .dropDownModelValueController ??=
-                                                                    FormFieldController<
-                                                                        String>(
-                                                                  _model
-                                                                      .dropDownModelValue ??= FFAppState().userAC.acModel?.id !=
-                                                                              null &&
-                                                                          FFAppState().userAC.acModel?.id !=
-                                                                              ''
-                                                                      ? FFAppState()
-                                                                          .userAC
-                                                                          .acModel
-                                                                          ?.id
-                                                                      : '',
-                                                                ),
-                                                                options: List<String>.from(_model
-                                                                    .acModelFiltered
-                                                                    .map((e) =>
-                                                                        e.id?.id)
-                                                                    .withoutNulls
-                                                                    .toList()),
-                                                                optionLabels: _model
-                                                                    .acModelFiltered
-                                                                    .map((e) =>
-                                                                        e.name)
-                                                                    .toList(),
-                                                                onChanged:
-                                                                    (val) async {
-                                                                  safeSetState(() =>
-                                                                      _model.dropDownModelValue =
-                                                                          val);
-                                                                  FFAppState()
-                                                                      .updateUserACStruct(
-                                                                    (e) => e
-                                                                      ..acModel = _model
-                                                                          .acModelFiltered
-                                                                          .where((e) =>
-                                                                              e.id?.id ==
-                                                                              _model.dropDownModelValue)
-                                                                          .toList()
-                                                                          .firstOrNull
-                                                                          ?.id
-                                                                      ..motorSpecIdRef = _model
-                                                                          .acModelFiltered
-                                                                          .where((e) =>
-                                                                              e.id?.id ==
-                                                                              _model.dropDownModelValue)
-                                                                          .toList()
-                                                                          .firstOrNull
-                                                                          ?.motorSpecId
-                                                                      ..capacitorSpecIdRef = _model
-                                                                          .acModelFiltered
-                                                                          .where((e) =>
-                                                                              e.id?.id ==
-                                                                              _model.dropDownModelValue)
-                                                                          .toList()
-                                                                          .firstOrNull
-                                                                          ?.capacitorSpecsId
-                                                                      ..contactorSpecIdRef = _model
-                                                                          .acModelFiltered
-                                                                          .where((e) =>
-                                                                              e.id?.id ==
-                                                                              _model.dropDownModelValue)
-                                                                          .toList()
-                                                                          .firstOrNull
-                                                                          ?.contactorSpecId,
-                                                                  );
-                                                                },
-                                                                height: 50.0,
-                                                                searchHintTextStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).tertiary,
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                                                                        ),
-                                                                searchTextStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).tertiary,
-                                                                          fontSize:
-                                                                              18.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
-                                                                        ),
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily,
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts:
-                                                                          !FlutterFlowTheme.of(context)
-                                                                              .labelSmallIsCustom,
-                                                                    ),
-                                                                hintText:
-                                                                    'e.g. M-90210',
-                                                                searchHintText:
-                                                                    'e.g. M-90210',
-                                                                icon: Icon(
-                                                                  Icons
-                                                                      .close_rounded,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  size: 24.0,
-                                                                ),
-                                                                fillColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                elevation: 2.0,
-                                                                borderColor: Colors
-                                                                    .transparent,
-                                                                borderWidth:
-                                                                    0.0,
-                                                                borderRadius:
-                                                                    8.0,
-                                                                margin: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        12.0,
-                                                                        0.0,
-                                                                        12.0,
-                                                                        0.0),
-                                                                hidesUnderline:
-                                                                    true,
-                                                                isOverButton:
-                                                                    false,
-                                                                isSearchable:
-                                                                    true,
-                                                                isMultiSelect:
-                                                                    false,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
@@ -1143,6 +875,274 @@ class _S05HomestartdiagnosisWidgetState
                                                         ),
                                                       ),
                                                     ),
+                                                  ),
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    20.0,
+                                                                    12.0,
+                                                                    0.0,
+                                                                    10.0),
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondary,
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondary,
+                                                            ),
+                                                          ),
+                                                          child: Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    -1.0, 0.0),
+                                                            child: Text(
+                                                              'Model Number (optional)',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    fontSize:
+                                                                        valueOrDefault<
+                                                                            double>(
+                                                                      MediaQuery.sizeOf(context).width <
+                                                                              kBreakpointSmall
+                                                                          ? 12.0
+                                                                          : 18.0,
+                                                                      40.0,
+                                                                    ),
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, -1.0),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      0.0,
+                                                                      20.0,
+                                                                      0.0),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              border:
+                                                                  Border.all(
+                                                                width: 3.0,
+                                                              ),
+                                                            ),
+                                                            child: Padding(
+                                                              padding: EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      valueOrDefault<
+                                                                          double>(
+                                                                        MediaQuery.sizeOf(context).width <
+                                                                                kBreakpointSmall
+                                                                            ? 8.0
+                                                                            : 25.0,
+                                                                        50.0,
+                                                                      ),
+                                                                      0.0,
+                                                                      valueOrDefault<
+                                                                          double>(
+                                                                        MediaQuery.sizeOf(context).width <
+                                                                                kBreakpointSmall
+                                                                            ? 8.0
+                                                                            : 25.0,
+                                                                        50.0,
+                                                                      ),
+                                                                      0.0),
+                                                              child:
+                                                                  FlutterFlowDropDown<
+                                                                      String>(
+                                                                controller: _model
+                                                                        .dropDownModelValueController ??=
+                                                                    FormFieldController<
+                                                                        String>(
+                                                                  _model
+                                                                      .dropDownModelValue ??= FFAppState().userAC.acModel?.id !=
+                                                                              null &&
+                                                                          FFAppState().userAC.acModel?.id !=
+                                                                              ''
+                                                                      ? FFAppState()
+                                                                          .userAC
+                                                                          .acModel
+                                                                          ?.id
+                                                                      : '',
+                                                                ),
+                                                                options: List<String>.from(_model
+                                                                    .acModelFiltered
+                                                                    .map((e) =>
+                                                                        e.id?.id)
+                                                                    .withoutNulls
+                                                                    .toList()),
+                                                                optionLabels: _model
+                                                                    .acModelFiltered
+                                                                    .map((e) =>
+                                                                        e.name)
+                                                                    .toList(),
+                                                                onChanged:
+                                                                    (val) async {
+                                                                  safeSetState(() =>
+                                                                      _model.dropDownModelValue =
+                                                                          val);
+                                                                  FFAppState()
+                                                                      .updateUserACStruct(
+                                                                    (e) => e
+                                                                      ..acModel = _model
+                                                                          .acModelFiltered
+                                                                          .where((e) =>
+                                                                              e.id?.id ==
+                                                                              _model.dropDownModelValue)
+                                                                          .toList()
+                                                                          .firstOrNull
+                                                                          ?.id
+                                                                      ..motorSpecIdRef = _model
+                                                                          .acModelFiltered
+                                                                          .where((e) =>
+                                                                              e.id?.id ==
+                                                                              _model.dropDownModelValue)
+                                                                          .toList()
+                                                                          .firstOrNull
+                                                                          ?.motorSpecId
+                                                                      ..capacitorSpecIdRef = _model
+                                                                          .acModelFiltered
+                                                                          .where((e) =>
+                                                                              e.id?.id ==
+                                                                              _model.dropDownModelValue)
+                                                                          .toList()
+                                                                          .firstOrNull
+                                                                          ?.capacitorSpecsId
+                                                                      ..contactorSpecIdRef = _model
+                                                                          .acModelFiltered
+                                                                          .where((e) =>
+                                                                              e.id?.id ==
+                                                                              _model.dropDownModelValue)
+                                                                          .toList()
+                                                                          .firstOrNull
+                                                                          ?.contactorSpecId,
+                                                                  );
+                                                                },
+                                                                height: 50.0,
+                                                                searchHintTextStyle:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).tertiary,
+                                                                          fontSize:
+                                                                              14.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                        ),
+                                                                searchTextStyle:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).tertiary,
+                                                                          fontSize:
+                                                                              18.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                        ),
+                                                                textStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelSmallFamily,
+                                                                      fontSize:
+                                                                          14.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelSmallIsCustom,
+                                                                    ),
+                                                                hintText:
+                                                                    'e.g. M-90210',
+                                                                searchHintText:
+                                                                    'e.g. M-90210',
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .close_rounded,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  size: 24.0,
+                                                                ),
+                                                                fillColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                elevation: 2.0,
+                                                                borderColor: Colors
+                                                                    .transparent,
+                                                                borderWidth:
+                                                                    0.0,
+                                                                borderRadius:
+                                                                    8.0,
+                                                                margin: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        12.0,
+                                                                        0.0,
+                                                                        12.0,
+                                                                        0.0),
+                                                                hidesUnderline:
+                                                                    true,
+                                                                isOverButton:
+                                                                    false,
+                                                                isSearchable:
+                                                                    true,
+                                                                isMultiSelect:
+                                                                    false,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),

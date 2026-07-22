@@ -148,14 +148,14 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                               color: enabled
                                   ? FlutterFlowTheme.of(context).secondaryText
                                   : FlutterFlowTheme.of(context).alternate,
-                              size: 10.0,
+                              size: 12.0,
                             ),
                             incrementIconBuilder: (enabled) => Icon(
                               Icons.add_rounded,
                               color: enabled
                                   ? FlutterFlowTheme.of(context).primary
                                   : FlutterFlowTheme.of(context).alternate,
-                              size: 10.0,
+                              size: 12.0,
                             ),
                             countBuilder: (count) => Text(
                               count.toString(),

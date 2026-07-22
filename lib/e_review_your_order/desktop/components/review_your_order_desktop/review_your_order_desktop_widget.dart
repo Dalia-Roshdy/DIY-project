@@ -629,14 +629,50 @@ class _ReviewYourOrderDesktopWidgetState
                                                                       .firstOrNull),
                                                                 ),
                                                             );
+                                                            _model.taxOffW =
+                                                                await querySettingsRecordOnce(
+                                                              queryBuilder:
+                                                                  (settingsRecord) =>
+                                                                      settingsRecord
+                                                                          .where(
+                                                                'key',
+                                                                isEqualTo:
+                                                                    SettingKeys
+                                                                        .tax
+                                                                        .name,
+                                                              ),
+                                                              singleRecord:
+                                                                  true,
+                                                            ).then((s) => s
+                                                                    .firstOrNull);
+                                                            _model.motorSlOffW =
+                                                                await querySettingsRecordOnce(
+                                                              queryBuilder:
+                                                                  (settingsRecord) =>
+                                                                      settingsRecord
+                                                                          .where(
+                                                                'key',
+                                                                isEqualTo:
+                                                                    SettingKeys
+                                                                        .motor_shaft_length_fees
+                                                                        .name,
+                                                              ),
+                                                              singleRecord:
+                                                                  true,
+                                                            ).then((s) => s
+                                                                    .firstOrNull);
                                                             await actions
                                                                 .calculateCartTotal(
+                                                              _model.taxOffW!
+                                                                  .value,
                                                               null,
-                                                              null,
-                                                              null,
+                                                              _model.motorSlOffW
+                                                                  ?.value,
                                                             );
                                                             _model.updatePage(
                                                                 () {});
+
+                                                            safeSetState(() {});
                                                           }
                                                         },
                                                         side: (FlutterFlowTheme.of(

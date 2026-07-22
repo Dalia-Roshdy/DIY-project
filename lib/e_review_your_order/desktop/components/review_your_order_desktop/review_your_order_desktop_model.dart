@@ -41,6 +41,10 @@ class ReviewYourOrderDesktopModel
   SettingsRecord? tax;
   // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
   SettingsRecord? motorSl;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? taxOffW;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  SettingsRecord? motorSlOffW;
   // Model for SummaryLine.
   late SummaryLineModel summaryLineModel1;
   // Model for SummaryLine-sl.

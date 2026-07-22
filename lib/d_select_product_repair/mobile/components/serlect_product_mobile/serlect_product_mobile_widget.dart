@@ -141,7 +141,7 @@ class _SerlectProductMobileWidgetState
                   ),
                   TextSpan(
                     text: valueOrDefault<String>(
-                      widget.selectedPartPram?.name,
+                      _model.selectedPartCS?.name,
                       'MOTOR',
                     ),
                     style: TextStyle(),
@@ -165,7 +165,10 @@ class _SerlectProductMobileWidgetState
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
               child: Text(
-                'Choose the specific ${widget.selectedPartPram?.name} that fits your AC unit model. ',
+                'Choose the specific ${valueOrDefault<String>(
+                  _model.selectedPartCS?.name,
+                  'MOTOR',
+                )} that fits your AC unit model. ',
                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                       fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                       color: FlutterFlowTheme.of(context).secondaryText,

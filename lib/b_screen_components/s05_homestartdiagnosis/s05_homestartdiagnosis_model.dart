@@ -41,12 +41,12 @@ class S05HomestartdiagnosisModel
 
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for DropDown-Model widget.
-  String? dropDownModelValue;
-  FormFieldController<String>? dropDownModelValueController;
   // State field(s) for DropDown-Make widget.
   String? dropDownMakeValue;
   FormFieldController<String>? dropDownMakeValueController;
+  // State field(s) for DropDown-Model widget.
+  String? dropDownModelValue;
+  FormFieldController<String>? dropDownModelValueController;
   // State field(s) for TextField-SN widget.
   FocusNode? textFieldSNFocusNode;
   TextEditingController? textFieldSNTextController;

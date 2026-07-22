@@ -1,9 +1,11 @@
+import '/c_components/dialog_components/empty_cart_component/empty_cart_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 's01_navigatio_bar_model.dart';
 export 's01_navigatio_bar_model.dart';
 
@@ -40,6 +42,8 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: double.infinity,
       height: valueOrDefault<double>(
@@ -130,18 +134,38 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed(EReviewYourOrderWidget.routeName);
-                        },
-                        child: Icon(
-                          Icons.shopping_cart_rounded,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
+                      Builder(
+                        builder: (context) => InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            if ((FFAppState().Cart.cartItems.isNotEmpty) ==
+                                true) {
+                              context
+                                  .pushNamed(EReviewYourOrderWidget.routeName);
+                            } else {
+                              await showDialog(
+                                context: context,
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: EmptyCartComponentWidget(),
+                                  );
+                                },
+                              );
+                            }
+                          },
+                          child: Icon(
+                            Icons.shopping_cart_rounded,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
                         ),
                       ),
                       if (false)
@@ -370,17 +394,35 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
             tablet: false,
             tabletLandscape: false,
           ))
-            FlutterFlowIconButton(
-              buttonSize: 80.0,
-              fillColor: FlutterFlowTheme.of(context).primary,
-              icon: Icon(
-                Icons.shopping_cart_rounded,
-                color: FlutterFlowTheme.of(context).primaryBackground,
-                size: 28.0,
+            Builder(
+              builder: (context) => FlutterFlowIconButton(
+                buttonSize: 80.0,
+                fillColor: FlutterFlowTheme.of(context).primary,
+                icon: Icon(
+                  Icons.shopping_cart_rounded,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  size: 28.0,
+                ),
+                onPressed: () async {
+                  if ((FFAppState().Cart.cartItems.isNotEmpty) == true) {
+                    context.pushNamed(EReviewYourOrderWidget.routeName);
+                  } else {
+                    await showDialog(
+                      context: context,
+                      builder: (dialogContext) {
+                        return Dialog(
+                          elevation: 0,
+                          insetPadding: EdgeInsets.zero,
+                          backgroundColor: Colors.transparent,
+                          alignment: AlignmentDirectional(0.0, 0.0)
+                              .resolve(Directionality.of(context)),
+                          child: EmptyCartComponentWidget(),
+                        );
+                      },
+                    );
+                  }
+                },
               ),
-              onPressed: () async {
-                context.pushNamed(EReviewYourOrderWidget.routeName);
-              },
             ),
           if (false &&
               responsiveVisibility(

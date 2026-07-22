@@ -110,7 +110,7 @@ class _DeleteCartItemDialogWidgetState
                   ),
                 ),
                 AutoSizeText(
-                  'Are you sure want to delete account?',
+                  'Are you sure want to delete item?',
                   textAlign: TextAlign.center,
                   maxLines: 1,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(

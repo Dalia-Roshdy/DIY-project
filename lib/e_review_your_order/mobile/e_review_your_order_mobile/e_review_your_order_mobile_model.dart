@@ -21,24 +21,28 @@ class EReviewYourOrderMobileModel
 
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for Checkbox widget.
-  Map<ItemsRecord, bool> checkboxValueMap1 = {};
-  List<ItemsRecord> get checkboxCheckedItems1 => checkboxValueMap1.entries
+  // State field(s) for Checkbox-tool widget.
+  Map<ItemsRecord, bool> checkboxToolValueMap = {};
+  List<ItemsRecord> get checkboxToolCheckedItems => checkboxToolValueMap.entries
       .where((e) => e.value)
       .map((e) => e.key)
       .toList();
 
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-tool widget.
   SettingsRecord? tax;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-tool widget.
   SettingsRecord? motorSl;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue2;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-tool widget.
+  SettingsRecord? taxOffM;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-tool widget.
+  SettingsRecord? motorSlOffM;
+  // State field(s) for Checkbox-sl widget.
+  bool? checkboxSlValue;
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-sl widget.
   SettingsRecord? taxOff;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-sl widget.
   SettingsRecord? sl;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-sl widget.
   SettingsRecord? taxOn;
   // State field(s) for TextField-SL widget.
   FocusNode? textFieldSLFocusNode;

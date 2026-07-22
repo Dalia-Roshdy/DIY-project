@@ -1499,7 +1499,13 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                   ),
                             ),
                             Text(
-                              widget.capacitorCard!.capacDiameter.toString(),
+                              valueOrDefault<String>(
+                                widget.capacitorCard?.capacDiameter == 0.0
+                                    ? ''
+                                    : widget.capacitorCard?.capacDiameter
+                                        .toString(),
+                                'Diameter',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
@@ -1700,7 +1706,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                   ),
                             ),
                             Text(
-                              widget.capacitorCard!.capacTolerance.toString(),
+                              '${widget.capacitorCard?.capacTolerance.toString()} %',
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
@@ -1740,7 +1746,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                   ),
                             ),
                             Text(
-                              widget.capacitorCard!.capacTempLow.toString(),
+                              '${widget.capacitorCard?.capacTempLow.toString()} °C',
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
@@ -1780,7 +1786,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                   ),
                             ),
                             Text(
-                              widget.capacitorCard!.capacTempHigh.toString(),
+                              '${widget.capacitorCard?.capacTempHigh.toString()} °C',
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(

@@ -84,7 +84,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                 ),
                       ),
                       Text(
-                        'Broken AC is a big inconvenience due to its repair cost and time it takes to fix it. We are a small company with the objective of helping you fix simple issues in your own A/C quickly and cheaper.',
+                        'Broken AC is a big inconvenience due to its repair cost and time it takes to fix it. We are a startup company with the objective of helping you fix simple issues in your own A/C quickly and cheaper.',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyLargeFamily,
@@ -489,7 +489,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'TECHNICAL SCOPE',
+                                    'SCOPE',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
