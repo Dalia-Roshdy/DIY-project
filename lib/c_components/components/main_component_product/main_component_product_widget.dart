@@ -114,7 +114,9 @@ class _MainComponentProductWidgetState extends State<MainComponentProductWidget>
                       child: CachedNetworkImage(
                         fadeInDuration: Duration(milliseconds: 200),
                         fadeOutDuration: Duration(milliseconds: 200),
-                        imageUrl: '',
+                        imageUrl: getCORSProxyUrl(
+                          '',
+                        ),
                         width: double.infinity,
                         height: double.infinity,
                         fit: BoxFit.cover,

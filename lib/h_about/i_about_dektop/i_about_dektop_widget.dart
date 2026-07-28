@@ -165,8 +165,9 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                           child: CachedNetworkImage(
                             fadeInDuration: Duration(milliseconds: 0),
                             fadeOutDuration: Duration(milliseconds: 0),
-                            imageUrl:
-                                'https://dimg.dreamflow.cloud/v1/image/vintage%20black%20and%20white%20technical%20internal%20components%20of%20an%20air%20conditioning%20unit',
+                            imageUrl: getCORSProxyUrl(
+                              'https://dimg.dreamflow.cloud/v1/image/vintage%20black%20and%20white%20technical%20internal%20components%20of%20an%20air%20conditioning%20unit',
+                            ),
                             width: 400.0,
                             height: 400.0,
                             fit: BoxFit.cover,

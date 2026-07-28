@@ -90,9 +90,11 @@ class _MotorCard3WidgetState extends State<MotorCard3Widget> {
                   CachedNetworkImage(
                     fadeInDuration: Duration(milliseconds: 0),
                     fadeOutDuration: Duration(milliseconds: 0),
-                    imageUrl: valueOrDefault<String>(
-                      widget.img_desc,
-                      'https://dimg.dreamflow.cloud/v1/image/industrial%20ac%20fan%20motor%20silver%20metal',
+                    imageUrl: getCORSProxyUrl(
+                      valueOrDefault<String>(
+                        widget.img_desc,
+                        'https://dimg.dreamflow.cloud/v1/image/industrial%20ac%20fan%20motor%20silver%20metal',
+                      ),
                     ),
                     height: 240.0,
                     fit: BoxFit.cover,

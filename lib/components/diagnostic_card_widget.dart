@@ -79,9 +79,11 @@ class _DiagnosticCardWidgetState extends State<DiagnosticCardWidget> {
                 CachedNetworkImage(
                   fadeInDuration: Duration(milliseconds: 0),
                   fadeOutDuration: Duration(milliseconds: 0),
-                  imageUrl: valueOrDefault<String>(
-                    widget.img_desc,
-                    'https://dimg.dreamflow.cloud/v1/image/HVAC%20technician%20testing%20capacitor%20with%20multimeter',
+                  imageUrl: getCORSProxyUrl(
+                    valueOrDefault<String>(
+                      widget.img_desc,
+                      'https://dimg.dreamflow.cloud/v1/image/HVAC%20technician%20testing%20capacitor%20with%20multimeter',
+                    ),
                   ),
                   height: 160.0,
                   fit: BoxFit.cover,

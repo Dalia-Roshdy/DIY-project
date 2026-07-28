@@ -104,9 +104,11 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: Image.network(
-                                  widget.img != ''
-                                      ? widget.img
-                                      : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/y2pjwpyum2n7/gettyimages-671795572-612x612.jpg',
+                                  getCORSProxyUrl(
+                                    widget.img != ''
+                                        ? widget.img
+                                        : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/y2pjwpyum2n7/gettyimages-671795572-612x612.jpg',
+                                  ),
                                 ).image,
                               ),
                             ),

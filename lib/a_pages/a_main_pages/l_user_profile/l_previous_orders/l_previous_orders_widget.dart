@@ -74,12 +74,14 @@ class _LPreviousOrdersWidgetState extends State<LPreviousOrdersWidget> {
                             image: DecorationImage(
                               fit: BoxFit.fill,
                               image: CachedNetworkImageProvider(
-                                valueOrDefault<String>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/snombgtjslh3/Lines_Phone.png'
-                                      : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
-                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
+                                getCORSProxyUrl(
+                                  valueOrDefault<String>(
+                                    MediaQuery.sizeOf(context).width <
+                                            kBreakpointSmall
+                                        ? 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/snombgtjslh3/Lines_Phone.png'
+                                        : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
+                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
+                                  ),
                                 ),
                               ),
                             ),

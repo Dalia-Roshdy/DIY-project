@@ -94,8 +94,9 @@ class _LUserProfileDesktopWidgetState extends State<LUserProfileDesktopWidget> {
                                               Duration(milliseconds: 0),
                                           fadeOutDuration:
                                               Duration(milliseconds: 0),
-                                          imageUrl:
-                                              'https://dimg.dreamflow.cloud/v1/image/portrait%20of%20Julian%20Vane',
+                                          imageUrl: getCORSProxyUrl(
+                                            'https://dimg.dreamflow.cloud/v1/image/portrait%20of%20Julian%20Vane',
+                                          ),
                                           fit: BoxFit.cover,
                                           alignment: Alignment(0.0, 0.0),
                                         ),

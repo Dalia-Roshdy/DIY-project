@@ -84,9 +84,11 @@ class _OrderItemRow2WidgetState extends State<OrderItemRow2Widget> {
                       child: CachedNetworkImage(
                         fadeInDuration: Duration(milliseconds: 0),
                         fadeOutDuration: Duration(milliseconds: 0),
-                        imageUrl: valueOrDefault<String>(
-                          widget.imgDesc,
-                          'https://dimg.dreamflow.cloud/v1/image/man%20in%20tan%20coat',
+                        imageUrl: getCORSProxyUrl(
+                          valueOrDefault<String>(
+                            widget.imgDesc,
+                            'https://dimg.dreamflow.cloud/v1/image/man%20in%20tan%20coat',
+                          ),
                         ),
                         fit: BoxFit.cover,
                         alignment: Alignment(0.0, 0.0),

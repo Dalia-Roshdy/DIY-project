@@ -94,8 +94,9 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                         child: CachedNetworkImage(
                           fadeInDuration: Duration(milliseconds: 0),
                           fadeOutDuration: Duration(milliseconds: 0),
-                          imageUrl:
-                              'https://dimg.dreamflow.cloud/v1/image/industrial%20air%20conditioning%20ductwork%20pipes%20monochrome',
+                          imageUrl: getCORSProxyUrl(
+                            'https://dimg.dreamflow.cloud/v1/image/industrial%20air%20conditioning%20ductwork%20pipes%20monochrome',
+                          ),
                           fit: BoxFit.cover,
                           alignment: Alignment(0.0, 0.0),
                         ),

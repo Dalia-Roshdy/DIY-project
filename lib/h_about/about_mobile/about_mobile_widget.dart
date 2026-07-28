@@ -65,8 +65,9 @@ class _AboutMobileWidgetState extends State<AboutMobileWidget> {
                       CachedNetworkImage(
                         fadeInDuration: Duration(milliseconds: 0),
                         fadeOutDuration: Duration(milliseconds: 0),
-                        imageUrl:
-                            'https://dimg.dreamflow.cloud/v1/image/abstract%20architectural%20black%20and%20white%20line%20photography%20extreme%20contrast',
+                        imageUrl: getCORSProxyUrl(
+                          'https://dimg.dreamflow.cloud/v1/image/abstract%20architectural%20black%20and%20white%20line%20photography%20extreme%20contrast',
+                        ),
                         height: 320.0,
                         fit: BoxFit.cover,
                         alignment: Alignment(0.0, 0.0),
@@ -452,8 +453,9 @@ class _AboutMobileWidgetState extends State<AboutMobileWidget> {
               child: CachedNetworkImage(
                 fadeInDuration: Duration(milliseconds: 0),
                 fadeOutDuration: Duration(milliseconds: 0),
-                imageUrl:
-                    'https://dimg.dreamflow.cloud/v1/image/macro%20photography%20of%20industrial%20loom%20threads%20black%20and%20white',
+                imageUrl: getCORSProxyUrl(
+                  'https://dimg.dreamflow.cloud/v1/image/macro%20photography%20of%20industrial%20loom%20threads%20black%20and%20white',
+                ),
                 height: 240.0,
                 fit: BoxFit.cover,
                 alignment: Alignment(0.0, 0.0),

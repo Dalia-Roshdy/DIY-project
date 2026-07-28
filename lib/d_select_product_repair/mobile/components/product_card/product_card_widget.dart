@@ -95,9 +95,11 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                       CachedNetworkImage(
                         fadeInDuration: Duration(milliseconds: 0),
                         fadeOutDuration: Duration(milliseconds: 0),
-                        imageUrl: valueOrDefault<String>(
-                          widget.img_desc,
-                          'https://dimg.dreamflow.cloud/v1/image/industrial%20electric%20motor%20silver',
+                        imageUrl: getCORSProxyUrl(
+                          valueOrDefault<String>(
+                            widget.img_desc,
+                            'https://dimg.dreamflow.cloud/v1/image/industrial%20electric%20motor%20silver',
+                          ),
                         ),
                         height: 200.0,
                         fit: BoxFit.cover,

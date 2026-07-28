@@ -119,19 +119,22 @@ class _LUserProfilemobileWidgetState extends State<LUserProfilemobileWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          currentUserDisplayName,
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .headlineSmallFamily,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w900,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .headlineSmallIsCustom,
-                              ),
+                        AuthUserStreamWidget(
+                          builder: (context) => Text(
+                            currentUserDisplayName,
+                            style: FlutterFlowTheme.of(context)
+                                .headlineSmall
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineSmallFamily,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w900,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineSmallIsCustom,
+                                ),
+                          ),
                         ),
                         Text(
                           currentUserEmail,
