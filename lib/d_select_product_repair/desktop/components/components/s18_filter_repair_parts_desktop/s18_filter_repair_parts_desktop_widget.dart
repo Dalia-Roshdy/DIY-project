@@ -729,9 +729,9 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                       null,
                                                 ),
                                                 options: List<double>.from([
-                                                  0.166,
+                                                  0.1667,
                                                   0.25,
-                                                  0.33,
+                                                  0.3333,
                                                   0.5,
                                                   0.75
                                                 ]),

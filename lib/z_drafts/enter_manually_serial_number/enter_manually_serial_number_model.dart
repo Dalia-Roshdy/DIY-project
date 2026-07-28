@@ -48,12 +48,12 @@ class EnterManuallySerialNumberModel
   FocusNode? textFieldSNFocusNode;
   TextEditingController? textFieldSNTextController;
   String? Function(BuildContext, String?)? textFieldSNTextControllerValidator;
+  // Stores action output result for [Validate Form] action in ResponsiveContainer widget.
+  bool? form;
+  // Stores action output result for [Backend Call - Create Document] action in ResponsiveContainer widget.
+  MailRecord? mail;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered = false;
-  // Stores action output result for [Validate Form] action in Row widget.
-  bool? form;
-  // Stores action output result for [Backend Call - Create Document] action in Row widget.
-  MailRecord? mail;
 
   @override
   void initState(BuildContext context) {

@@ -5,7 +5,8 @@ admin.initializeApp();
 const stripeModule = require("stripe");
 
 // Credentials
-const kStripeProdSecretKey = "";
+const kStripeProdSecretKey =
+  "sk_test_51T2VrQ0XCBpwpAtmFHwlrc4sJBN09AHpYCJifeT0zVNb1K0blHCz52liAVbdGz479k4Y4kDSaabGCmSN0sCOBqxc00P8RxdVzs";
 const kStripeTestSecretKey =
   "sk_test_51T2VrQ0XCBpwpAtmFHwlrc4sJBN09AHpYCJifeT0zVNb1K0blHCz52liAVbdGz479k4Y4kDSaabGCmSN0sCOBqxc00P8RxdVzs";
 
@@ -84,8 +85,3 @@ function userFacingMessage(error) {
     ? error.message
     : "An error occurred, developers have been alerted";
 }
-exports.onUserDeleted = functions.auth.user().onDelete(async (user) => {
-  let firestore = admin.firestore();
-  let userRef = firestore.doc("user/" + user.uid);
-  await firestore.collection("user").doc(user.uid).delete();
-});

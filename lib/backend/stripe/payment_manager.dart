@@ -14,7 +14,8 @@ import '../cloud_functions/cloud_functions.dart';
 final _isProd = false;
 
 // Stripe Credentials
-const _kProdStripePublishableKey = '';
+const _kProdStripePublishableKey =
+    'pk_test_51T2VrQ0XCBpwpAtmREEnUgNq59zXK6JYhNXFBxrzcxbGZ1N6gBDdZ4ijuPZ8G1obG0ECHq5Cdu2fWGQQ3TcmJF2A008uXnM1yb';
 const _kTestStripePublishableKey =
     'pk_test_51T2VrQ0XCBpwpAtmREEnUgNq59zXK6JYhNXFBxrzcxbGZ1N6gBDdZ4ijuPZ8G1obG0ECHq5Cdu2fWGQQ3TcmJF2A008uXnM1yb';
 const _kAppleMerchantId = '';
@@ -91,17 +92,17 @@ Future<StripePaymentResponse> processStripePayment(
         paymentIntentClientSecret: response['paymentIntent'],
         customerEphemeralKeySecret: response['ephemeralKey'],
         customerId: response['customer'],
-        merchantDisplayName: 'DIY',
+        merchantDisplayName: 'DIY AC Repair',
         googlePay: allowGooglePay
             ? PaymentSheetGooglePay(
-                merchantCountryCode: 'US',
+                merchantCountryCode: 'USD',
                 currencyCode: currency,
                 testEnv: !_isProd,
               )
             : null,
         applePay: isiOS && allowApplePay
             ? PaymentSheetApplePay(
-                merchantCountryCode: 'US',
+                merchantCountryCode: 'USD',
               )
             : null,
         style: themeStyle,

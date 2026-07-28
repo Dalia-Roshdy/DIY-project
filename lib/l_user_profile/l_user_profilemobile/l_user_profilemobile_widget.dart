@@ -48,7 +48,7 @@ class _LUserProfilemobileWidgetState extends State<LUserProfilemobileWidget> {
                     .toList())
             .where(
               'uid',
-              isEqualTo: currentUserReference,
+              isEqualTo: null,
             )
             .orderBy('createdAt', descending: true),
         singleRecord: true,
@@ -119,22 +119,19 @@ class _LUserProfilemobileWidgetState extends State<LUserProfilemobileWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AuthUserStreamWidget(
-                          builder: (context) => Text(
-                            currentUserDisplayName,
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineSmallFamily,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w900,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .headlineSmallIsCustom,
-                                ),
-                          ),
+                        Text(
+                          currentUserDisplayName,
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .headlineSmallFamily,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w900,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineSmallIsCustom,
+                              ),
                         ),
                         Text(
                           currentUserEmail,

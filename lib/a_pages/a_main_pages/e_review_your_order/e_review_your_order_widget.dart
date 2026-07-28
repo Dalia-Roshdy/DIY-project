@@ -8,9 +8,11 @@ import '/e_review_your_order/mobile/e_review_your_order_mobile/e_review_your_ord
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import 'e_review_your_order_model.dart';
 export 'e_review_your_order_model.dart';
 
@@ -36,6 +38,17 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if ((FFAppState().Cart.cartItems.isNotEmpty) == false) {
+        context.goNamed(
+          DSelectProductRepairWidget.routeName,
+          queryParameters: {
+            'part': serializeParam(
+              Parts.MOTOR,
+              ParamType.Enum,
+            ),
+          }.withoutNulls,
+        );
+      }
       if (!(_model.tools.isNotEmpty)) {
         _model.toolACT = await queryItemsRecordOnce(
           queryBuilder: (itemsRecord) => itemsRecord.where(
@@ -91,6 +104,8 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();

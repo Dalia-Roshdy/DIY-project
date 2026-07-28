@@ -1499,13 +1499,10 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                   ),
                             ),
                             Text(
-                              valueOrDefault<String>(
-                                widget.capacitorCard?.capacDiameter == 0.0
-                                    ? ''
-                                    : widget.capacitorCard?.capacDiameter
-                                        .toString(),
-                                'Diameter',
-                              ),
+                              widget.capacitorCard?.capacDiameter == 0.0
+                                  ? ''
+                                  : widget.capacitorCard!.capacDiameter
+                                      .toString(),
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(

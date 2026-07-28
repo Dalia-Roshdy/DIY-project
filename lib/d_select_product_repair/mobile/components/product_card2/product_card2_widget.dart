@@ -1428,13 +1428,10 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                     ),
                               ),
                               Text(
-                                valueOrDefault<String>(
-                                  widget.capacitorCard?.capacDiameter == 0.0
-                                      ? ''
-                                      : widget.capacitorCard?.capacDiameter
-                                          .toString(),
-                                  'Diameter',
-                                ),
+                                widget.capacitorCard?.capacDiameter == 0.0
+                                    ? ''
+                                    : widget.capacitorCard!.capacDiameter
+                                        .toString(),
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(

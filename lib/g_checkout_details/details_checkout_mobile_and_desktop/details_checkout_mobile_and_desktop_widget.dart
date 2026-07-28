@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/backend/stripe/payment_manager.dart';
@@ -716,7 +715,6 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
-                                        uid: currentUserReference,
                                         comment: FFAppState().Cart.comment,
                                       ),
                                       ...mapToFirestore(
@@ -764,7 +762,6 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
-                                        uid: currentUserReference,
                                         comment: FFAppState().Cart.comment,
                                       ),
                                       ...mapToFirestore(
@@ -831,6 +828,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                         .inputTextController.text,
                                     allowGooglePay: false,
                                     allowApplePay: false,
+                                    themeStyle: ThemeMode.system,
                                   );
                                   if (paymentResponse.paymentId == null &&
                                       paymentResponse.errorMessage != null) {
@@ -852,7 +850,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                     await _model.orderPS!
                                         .update(createOrdersRecordData(
                                       payment: createPaymentDataStruct(
-                                        paymentIntentId: _model.paymentId,
+                                        paymentIntentId: null,
                                         clearUnsetFields: false,
                                       ),
                                     ));

@@ -48,7 +48,7 @@ class _AbcdeWidgetState extends State<AbcdeWidget> {
                     .toList())
             .where(
               'uid',
-              isEqualTo: currentUserReference,
+              isEqualTo: null,
             )
             .orderBy('createdAt', descending: true),
         singleRecord: true,
@@ -124,23 +124,20 @@ class _AbcdeWidgetState extends State<AbcdeWidget> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                AuthUserStreamWidget(
-                                  builder: (context) => Text(
-                                    currentUserDisplayName,
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineLarge
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineLargeFamily,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w800,
-                                          lineHeight: 1.1,
-                                          useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
-                                                  .headlineLargeIsCustom,
-                                        ),
-                                  ),
+                                Text(
+                                  currentUserDisplayName,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .headlineLargeFamily,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w800,
+                                        lineHeight: 1.1,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .headlineLargeIsCustom,
+                                      ),
                                 ),
                                 Text(
                                   currentUserEmail,

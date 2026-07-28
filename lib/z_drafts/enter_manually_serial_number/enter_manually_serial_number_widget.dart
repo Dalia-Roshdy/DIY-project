@@ -1,13 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/c_components/dialog_components/success_dialog/success_dialog_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'enter_manually_serial_number_model.dart';
 export 'enter_manually_serial_number_model.dart';
 
@@ -22,11 +20,8 @@ class EnterManuallySerialNumberWidget extends StatefulWidget {
 }
 
 class _EnterManuallySerialNumberWidgetState
-    extends State<EnterManuallySerialNumberWidget>
-    with TickerProviderStateMixin {
+    extends State<EnterManuallySerialNumberWidget> {
   late EnterManuallySerialNumberModel _model;
-
-  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -48,28 +43,6 @@ class _EnterManuallySerialNumberWidgetState
     _model.textFieldSNTextController ??= TextEditingController();
     _model.textFieldSNFocusNode ??= FocusNode();
 
-    animationsMap.addAll({
-      'iconOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(-10.0, 0.0),
-            end: Offset(10.0, 0.0),
-          ),
-        ],
-      ),
-    });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -85,6 +58,7 @@ class _EnterManuallySerialNumberWidgetState
     return Align(
       alignment: AlignmentDirectional(0.0, -1.0),
       child: SingleChildScrollView(
+        primary: false,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -641,6 +615,21 @@ class _EnterManuallySerialNumberWidgetState
                               ),
                             ),
                           ),
+                          Text(
+                            'Hello World',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  fontSize: 30.0,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
+                                ),
+                          ),
                         ],
                       ),
                     ),
@@ -648,205 +637,170 @@ class _EnterManuallySerialNumberWidgetState
                 ),
               ),
             ),
-            Container(
-              constraints: BoxConstraints(
-                maxHeight: 100.0,
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: FlutterFlowTheme.of(context).primary,
-                  width: 1.0,
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primary,
-                        border: Border.all(
-                          color: FlutterFlowTheme.of(context).primary,
-                        ),
+            Builder(
+              builder: (context) => Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 10.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    _model.form = true;
+                    if (_model.formKey.currentState == null ||
+                        !_model.formKey.currentState!.validate()) {
+                      safeSetState(() => _model.form = false);
+                      return;
+                    }
+
+                    var mailRecordReference = MailRecord.collection.doc();
+                    await mailRecordReference.set(createMailRecordData(
+                      to: 'esraa.abdou@arkdev.net',
+                      message: createMessageStruct(
+                        subject: 'New A/C Details Submission – DIY AC Repair',
+                        html:
+                            '<!DOCTYPE html> <html> <body style=\"margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, sans-serif;\">   <div style=\"max-width:600px; margin:30px auto; background:#ffffff; border-radius:8px; padding:25px; box-shadow:0 2px 6px rgba(0,0,0,0.1);\">     <!-- Header -->     <div style=\"font-size:20px; font-weight:bold; color:#222; margin-bottom:20px;\">       New A/C Details Submitted     </div>     <!-- Intro -->     <div style=\"margin-bottom:15px; color:#333;\">       A user has submitted their A/C information through the system.     </div>     <!-- Data Box -->     <div style=\"background:#f1f3f5; padding:15px; border-radius:6px; margin-bottom:15px;\">       <div style=\"margin-bottom:10px;\">         <div style=\"font-weight:bold; color:#555;\">A/C Make:</div>         <div style=\"color:#000;\">${_model.textFieldMakeTextController.text}</div>       </div>       <div style=\"margin-bottom:10px;\">         <div style=\"font-weight:bold; color:#555;\">Model Number:</div>         <div style=\"color:#000;\">${_model.textFieldModelTextController.text}</div>       </div>       <div>         <div style=\"font-weight:bold; color:#555;\">Serial Number:</div>         <div style=\"color:#000;\">${_model.textFieldSNTextController.text}</div>       </div>     </div>     <!-- Extra Info -->     <div style=\"margin-bottom:10px;\">       <div style=\"font-weight:bold; color:#555;\">Submitted At:</div>       <div style=\"color:#000;\">${getCurrentTimestamp.toString()}</div>     </div>     <div style=\"margin-bottom:15px;\">       <div style=\"font-weight:bold; color:#555;\">User Email (if available):</div>       <div style=\"color:#000;\">${currentUserEmail != '' ? currentUserEmail : 'Anonymous User'}</div>     </div>     <!-- Footer -->     <div style=\"margin-top:25px; font-size:12px; color:#888; text-align:center;\">       This message was generated automatically by DIY AC Repair system.     </div>   </div> </body> </html>',
+                        clearUnsetFields: false,
+                        create: true,
                       ),
-                      child: MouseRegion(
-                        opaque: false,
-                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                        child: Builder(
-                          builder: (context) => Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 10.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                _model.form = true;
-                                if (_model.formKey.currentState == null ||
-                                    !_model.formKey.currentState!.validate()) {
-                                  safeSetState(() => _model.form = false);
-                                  return;
-                                }
+                    ));
+                    _model.mail = MailRecord.getDocumentFromData(
+                        createMailRecordData(
+                          to: 'esraa.abdou@arkdev.net',
+                          message: createMessageStruct(
+                            subject:
+                                'New A/C Details Submission – DIY AC Repair',
+                            html:
+                                '<!DOCTYPE html> <html> <body style=\"margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, sans-serif;\">   <div style=\"max-width:600px; margin:30px auto; background:#ffffff; border-radius:8px; padding:25px; box-shadow:0 2px 6px rgba(0,0,0,0.1);\">     <!-- Header -->     <div style=\"font-size:20px; font-weight:bold; color:#222; margin-bottom:20px;\">       New A/C Details Submitted     </div>     <!-- Intro -->     <div style=\"margin-bottom:15px; color:#333;\">       A user has submitted their A/C information through the system.     </div>     <!-- Data Box -->     <div style=\"background:#f1f3f5; padding:15px; border-radius:6px; margin-bottom:15px;\">       <div style=\"margin-bottom:10px;\">         <div style=\"font-weight:bold; color:#555;\">A/C Make:</div>         <div style=\"color:#000;\">${_model.textFieldMakeTextController.text}</div>       </div>       <div style=\"margin-bottom:10px;\">         <div style=\"font-weight:bold; color:#555;\">Model Number:</div>         <div style=\"color:#000;\">${_model.textFieldModelTextController.text}</div>       </div>       <div>         <div style=\"font-weight:bold; color:#555;\">Serial Number:</div>         <div style=\"color:#000;\">${_model.textFieldSNTextController.text}</div>       </div>     </div>     <!-- Extra Info -->     <div style=\"margin-bottom:10px;\">       <div style=\"font-weight:bold; color:#555;\">Submitted At:</div>       <div style=\"color:#000;\">${getCurrentTimestamp.toString()}</div>     </div>     <div style=\"margin-bottom:15px;\">       <div style=\"font-weight:bold; color:#555;\">User Email (if available):</div>       <div style=\"color:#000;\">${currentUserEmail != '' ? currentUserEmail : 'Anonymous User'}</div>     </div>     <!-- Footer -->     <div style=\"margin-top:25px; font-size:12px; color:#888; text-align:center;\">       This message was generated automatically by DIY AC Repair system.     </div>   </div> </body> </html>',
+                            clearUnsetFields: false,
+                            create: true,
+                          ),
+                        ),
+                        mailRecordReference);
+                    await Future.wait([
+                      Future(() async {
+                        safeSetState(() {
+                          _model.textFieldMakeTextController?.clear();
+                          _model.textFieldModelTextController?.clear();
+                          _model.textFieldSNTextController?.clear();
+                        });
+                      }),
+                      Future(() async {
+                        await showDialog(
+                          context: context,
+                          builder: (dialogContext) {
+                            return Dialog(
+                              elevation: 0,
+                              insetPadding: EdgeInsets.zero,
+                              backgroundColor: Colors.transparent,
+                              alignment: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              child: SuccessDialogWidget(),
+                            );
+                          },
+                        );
+                      }),
+                    ]);
+                    if (Navigator.of(context).canPop()) {
+                      context.pop();
+                    }
+                    context.pushNamed(BDiagnosisWidget.routeName);
 
-                                var mailRecordReference =
-                                    MailRecord.collection.doc();
-                                await mailRecordReference
-                                    .set(createMailRecordData(
-                                  to: 'esraa.abdou@arkdev.net',
-                                  message: createMessageStruct(
-                                    subject:
-                                        'New A/C Details Submission – DIY AC Repair',
-                                    html:
-                                        '<!DOCTYPE html> <html> <body style=\"margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, sans-serif;\">   <div style=\"max-width:600px; margin:30px auto; background:#ffffff; border-radius:8px; padding:25px; box-shadow:0 2px 6px rgba(0,0,0,0.1);\">     <!-- Header -->     <div style=\"font-size:20px; font-weight:bold; color:#222; margin-bottom:20px;\">       New A/C Details Submitted     </div>     <!-- Intro -->     <div style=\"margin-bottom:15px; color:#333;\">       A user has submitted their A/C information through the system.     </div>     <!-- Data Box -->     <div style=\"background:#f1f3f5; padding:15px; border-radius:6px; margin-bottom:15px;\">       <div style=\"margin-bottom:10px;\">         <div style=\"font-weight:bold; color:#555;\">A/C Make:</div>         <div style=\"color:#000;\">${_model.textFieldMakeTextController.text}</div>       </div>       <div style=\"margin-bottom:10px;\">         <div style=\"font-weight:bold; color:#555;\">Model Number:</div>         <div style=\"color:#000;\">${_model.textFieldModelTextController.text}</div>       </div>       <div>         <div style=\"font-weight:bold; color:#555;\">Serial Number:</div>         <div style=\"color:#000;\">${_model.textFieldSNTextController.text}</div>       </div>     </div>     <!-- Extra Info -->     <div style=\"margin-bottom:10px;\">       <div style=\"font-weight:bold; color:#555;\">Submitted At:</div>       <div style=\"color:#000;\">${getCurrentTimestamp.toString()}</div>     </div>     <div style=\"margin-bottom:15px;\">       <div style=\"font-weight:bold; color:#555;\">User Email (if available):</div>       <div style=\"color:#000;\">${currentUserEmail != '' ? currentUserEmail : 'Anonymous User'}</div>     </div>     <!-- Footer -->     <div style=\"margin-top:25px; font-size:12px; color:#888; text-align:center;\">       This message was generated automatically by DIY AC Repair system.     </div>   </div> </body> </html>',
-                                    clearUnsetFields: false,
-                                    create: true,
-                                  ),
-                                ));
-                                _model.mail = MailRecord.getDocumentFromData(
-                                    createMailRecordData(
-                                      to: 'esraa.abdou@arkdev.net',
-                                      message: createMessageStruct(
-                                        subject:
-                                            'New A/C Details Submission – DIY AC Repair',
-                                        html:
-                                            '<!DOCTYPE html> <html> <body style=\"margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, sans-serif;\">   <div style=\"max-width:600px; margin:30px auto; background:#ffffff; border-radius:8px; padding:25px; box-shadow:0 2px 6px rgba(0,0,0,0.1);\">     <!-- Header -->     <div style=\"font-size:20px; font-weight:bold; color:#222; margin-bottom:20px;\">       New A/C Details Submitted     </div>     <!-- Intro -->     <div style=\"margin-bottom:15px; color:#333;\">       A user has submitted their A/C information through the system.     </div>     <!-- Data Box -->     <div style=\"background:#f1f3f5; padding:15px; border-radius:6px; margin-bottom:15px;\">       <div style=\"margin-bottom:10px;\">         <div style=\"font-weight:bold; color:#555;\">A/C Make:</div>         <div style=\"color:#000;\">${_model.textFieldMakeTextController.text}</div>       </div>       <div style=\"margin-bottom:10px;\">         <div style=\"font-weight:bold; color:#555;\">Model Number:</div>         <div style=\"color:#000;\">${_model.textFieldModelTextController.text}</div>       </div>       <div>         <div style=\"font-weight:bold; color:#555;\">Serial Number:</div>         <div style=\"color:#000;\">${_model.textFieldSNTextController.text}</div>       </div>     </div>     <!-- Extra Info -->     <div style=\"margin-bottom:10px;\">       <div style=\"font-weight:bold; color:#555;\">Submitted At:</div>       <div style=\"color:#000;\">${getCurrentTimestamp.toString()}</div>     </div>     <div style=\"margin-bottom:15px;\">       <div style=\"font-weight:bold; color:#555;\">User Email (if available):</div>       <div style=\"color:#000;\">${currentUserEmail != '' ? currentUserEmail : 'Anonymous User'}</div>     </div>     <!-- Footer -->     <div style=\"margin-top:25px; font-size:12px; color:#888; text-align:center;\">       This message was generated automatically by DIY AC Repair system.     </div>   </div> </body> </html>',
-                                        clearUnsetFields: false,
-                                        create: true,
-                                      ),
-                                    ),
-                                    mailRecordReference);
-                                await Future.wait([
-                                  Future(() async {
-                                    safeSetState(() {
-                                      _model.textFieldMakeTextController
-                                          ?.clear();
-                                      _model.textFieldModelTextController
-                                          ?.clear();
-                                      _model.textFieldSNTextController?.clear();
-                                    });
-                                  }),
-                                  Future(() async {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (dialogContext) {
-                                        return Dialog(
-                                          elevation: 0,
-                                          insetPadding: EdgeInsets.zero,
-                                          backgroundColor: Colors.transparent,
-                                          alignment: AlignmentDirectional(
-                                                  0.0, 0.0)
-                                              .resolve(
-                                                  Directionality.of(context)),
-                                          child: SuccessDialogWidget(),
-                                        );
-                                      },
-                                    );
-                                  }),
-                                ]);
-                                if (Navigator.of(context).canPop()) {
-                                  context.pop();
-                                }
-                                context.pushNamed(BDiagnosisWidget.routeName);
-
-                                safeSetState(() {});
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  AutoSizeText(
-                                    'SEND DTAILS',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMediumFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.normal,
-                                          useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
-                                                  .titleMediumIsCustom,
-                                        ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        50.0, 0.0, 0.0, 0.0),
-                                    child: Icon(
-                                      Icons.arrow_forward,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      size: valueOrDefault<double>(
-                                        MediaQuery.sizeOf(context).width <
-                                                kBreakpointSmall
-                                            ? 24.0
-                                            : 48.0,
-                                        48.0,
-                                      ),
-                                    ).animateOnActionTrigger(
-                                      animationsMap[
-                                          'iconOnActionTriggerAnimation']!,
-                                    ),
-                                  ),
-                                ],
+                    safeSetState(() {});
+                  },
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxHeight: 80.0,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: FlutterFlowTheme.of(context).primary,
+                        width: 1.0,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primary,
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).primary,
                               ),
+                            ),
+                            child: MouseRegion(
+                              opaque: false,
+                              cursor:
+                                  SystemMouseCursors.click ?? MouseCursor.defer,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    AutoSizeText(
+                                      'SEND DTAILS',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMediumFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleMediumIsCustom,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              onEnter: ((event) async {
+                                safeSetState(
+                                    () => _model.mouseRegionHovered = true);
+                              }),
+                              onExit: ((event) async {
+                                safeSetState(
+                                    () => _model.mouseRegionHovered = false);
+                              }),
                             ),
                           ),
                         ),
-                        onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered = true);
-                          // Start Arrow Animation
-                          if (animationsMap['iconOnActionTriggerAnimation'] !=
-                              null) {
-                            await animationsMap['iconOnActionTriggerAnimation']!
-                                .controller
-                              ..reset()
-                              ..repeat(reverse: true);
-                          }
-                        }),
-                        onExit: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered = false);
-                          // Reset Arrow Animation
-                          if (animationsMap['iconOnActionTriggerAnimation'] !=
-                              null) {
-                            animationsMap['iconOnActionTriggerAnimation']!
-                                .controller
-                                .reset();
-                          }
-                        }),
-                      ),
+                        if (responsiveVisibility(
+                          context: context,
+                          phone: false,
+                        ))
+                          Container(
+                            width: valueOrDefault<double>(
+                              MediaQuery.sizeOf(context).height * 0.1,
+                              100.0,
+                            ),
+                            height: valueOrDefault<double>(
+                              MediaQuery.sizeOf(context).height * 0.1,
+                              100.0,
+                            ),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Icon(
+                                Icons.arrow_forward,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 60.0,
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
-                  if (responsiveVisibility(
-                    context: context,
-                    phone: false,
-                  ))
-                    Container(
-                      width: valueOrDefault<double>(
-                        MediaQuery.sizeOf(context).height * 0.1,
-                        100.0,
-                      ),
-                      height: valueOrDefault<double>(
-                        MediaQuery.sizeOf(context).height * 0.1,
-                        100.0,
-                      ),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Icon(
-                          Icons.auto_fix_high,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 60.0,
-                        ),
-                      ),
-                    ),
-                ],
+                ),
               ),
             ),
           ],
