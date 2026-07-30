@@ -19,6 +19,8 @@ class GConfirmationSuccessModel
   late OrderSummaryItemModel orderSummaryItemModel2;
   // Model for OrderSummaryItem.
   late OrderSummaryItemModel orderSummaryItemModel3;
+  // Model for OrderSummaryItem.
+  late OrderSummaryItemModel orderSummaryItemModel4;
   // Model for Button.
   late Button35Model buttonModel1;
   // Model for Button.
@@ -32,6 +34,8 @@ class GConfirmationSuccessModel
         createModel(context, () => OrderSummaryItemModel());
     orderSummaryItemModel3 =
         createModel(context, () => OrderSummaryItemModel());
+    orderSummaryItemModel4 =
+        createModel(context, () => OrderSummaryItemModel());
     buttonModel1 = createModel(context, () => Button35Model());
     buttonModel2 = createModel(context, () => Button35Model());
   }
@@ -41,6 +45,7 @@ class GConfirmationSuccessModel
     orderSummaryItemModel1.dispose();
     orderSummaryItemModel2.dispose();
     orderSummaryItemModel3.dispose();
+    orderSummaryItemModel4.dispose();
     buttonModel1.dispose();
     buttonModel2.dispose();
   }

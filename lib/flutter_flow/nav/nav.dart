@@ -233,6 +233,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: EReviewYourOrderDraftWidget.routeName,
           path: EReviewYourOrderDraftWidget.routePath,
           builder: (context, params) => EReviewYourOrderDraftWidget(),
+        ),
+        FFRoute(
+          name: BDiagnosisCopyWidget.routeName,
+          path: BDiagnosisCopyWidget.routePath,
+          builder: (context, params) => BDiagnosisCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

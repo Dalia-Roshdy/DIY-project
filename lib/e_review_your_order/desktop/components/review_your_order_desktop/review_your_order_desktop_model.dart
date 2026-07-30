@@ -1,6 +1,5 @@
 import '/backend/backend.dart';
 import '/e_review_your_order/desktop/components/button5/button5_widget.dart';
-import '/e_review_your_order/desktop/components/checkout_breadcrumb/checkout_breadcrumb_widget.dart';
 import '/e_review_your_order/desktop/components/part_row_copy/part_row_copy_widget.dart';
 import '/e_review_your_order/desktop/components/summary_line/summary_line_widget.dart';
 import '/e_review_your_order/desktop/components/summary_line_total/summary_line_total_widget.dart';
@@ -26,8 +25,8 @@ class ReviewYourOrderDesktopModel
 
   ///  State fields for stateful widgets in this component.
 
-  // Model for CheckoutBreadcrumb.
-  late CheckoutBreadcrumbModel checkoutBreadcrumbModel;
+  // Stores action output result for [Firestore Query - Query a collection] action in Review_Your_Order_Desktop widget.
+  SettingsRecord? taxAcPL;
   // Model for PartRowCopy component.
   late PartRowCopyModel partRowCopyModel;
   // State field(s) for Checkbox widget.
@@ -37,14 +36,6 @@ class ReviewYourOrderDesktopModel
       .map((e) => e.key)
       .toList();
 
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
-  SettingsRecord? tax;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
-  SettingsRecord? motorSl;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
-  SettingsRecord? taxOffW;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
-  SettingsRecord? motorSlOffW;
   // Model for SummaryLine.
   late SummaryLineModel summaryLineModel1;
   // Model for SummaryLine-sl.
@@ -59,12 +50,6 @@ class ReviewYourOrderDesktopModel
   late Button5Model buttonModel;
   // State field(s) for Checkbox widget.
   bool? checkboxValue2;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
-  SettingsRecord? taxOff;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
-  SettingsRecord? sl;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox widget.
-  SettingsRecord? taxOn;
   // State field(s) for TextField-Message-SL widget.
   FocusNode? textFieldMessageSLFocusNode;
   TextEditingController? textFieldMessageSLTextController;
@@ -78,8 +63,6 @@ class ReviewYourOrderDesktopModel
 
   @override
   void initState(BuildContext context) {
-    checkoutBreadcrumbModel =
-        createModel(context, () => CheckoutBreadcrumbModel());
     partRowCopyModel = createModel(context, () => PartRowCopyModel());
     summaryLineModel1 = createModel(context, () => SummaryLineModel());
     summaryLineSlModel = createModel(context, () => SummaryLineModel());
@@ -91,7 +74,6 @@ class ReviewYourOrderDesktopModel
 
   @override
   void dispose() {
-    checkoutBreadcrumbModel.dispose();
     partRowCopyModel.dispose();
     summaryLineModel1.dispose();
     summaryLineSlModel.dispose();

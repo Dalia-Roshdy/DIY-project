@@ -28,22 +28,8 @@ class EReviewYourOrderMobileModel
       .map((e) => e.key)
       .toList();
 
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-tool widget.
-  SettingsRecord? tax;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-tool widget.
-  SettingsRecord? motorSl;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-tool widget.
-  SettingsRecord? taxOffM;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-tool widget.
-  SettingsRecord? motorSlOffM;
   // State field(s) for Checkbox-sl widget.
   bool? checkboxSlValue;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-sl widget.
-  SettingsRecord? taxOff;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-sl widget.
-  SettingsRecord? sl;
-  // Stores action output result for [Firestore Query - Query a collection] action in Checkbox-sl widget.
-  SettingsRecord? taxOn;
   // State field(s) for TextField-SL widget.
   FocusNode? textFieldSLFocusNode;
   TextEditingController? textFieldSLTextController;

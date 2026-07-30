@@ -1,5 +1,5 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
-import '/b_screen_components/s05_homestartdiagnosis/s05_homestartdiagnosis_widget.dart';
+import '/b_screen_components/s05_homestartdiagnosis_copy2/s05_homestartdiagnosis_copy2_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -8,28 +8,28 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
-import 'b_diagnosis_model.dart';
-export 'b_diagnosis_model.dart';
+import 'b_diagnosis_copy_model.dart';
+export 'b_diagnosis_copy_model.dart';
 
-class BDiagnosisWidget extends StatefulWidget {
-  const BDiagnosisWidget({super.key});
+class BDiagnosisCopyWidget extends StatefulWidget {
+  const BDiagnosisCopyWidget({super.key});
 
-  static String routeName = 'B-Diagnosis';
-  static String routePath = '/diagnosis';
+  static String routeName = 'B-DiagnosisCopy';
+  static String routePath = '/diagnosisCopy';
 
   @override
-  State<BDiagnosisWidget> createState() => _BDiagnosisWidgetState();
+  State<BDiagnosisCopyWidget> createState() => _BDiagnosisCopyWidgetState();
 }
 
-class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
-  late BDiagnosisModel _model;
+class _BDiagnosisCopyWidgetState extends State<BDiagnosisCopyWidget> {
+  late BDiagnosisCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BDiagnosisModel());
+    _model = createModel(context, () => BDiagnosisCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -142,21 +142,19 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .tertiary,
                                         ),
+                                        wrapWithModel(
+                                          model: _model
+                                              .s05HomestartdiagnosisCopy2Model,
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child:
+                                              S05HomestartdiagnosisCopy2Widget(),
+                                        ),
                                         Divider(
                                           height: 1.0,
                                           thickness: 1.0,
                                           color: FlutterFlowTheme.of(context)
                                               .tertiary,
-                                        ),
-                                        Expanded(
-                                          child: wrapWithModel(
-                                            model: _model
-                                                .s05HomestartdiagnosisModel,
-                                            updateCallback: () =>
-                                                safeSetState(() {}),
-                                            child:
-                                                S05HomestartdiagnosisWidget(),
-                                          ),
                                         ),
                                       ],
                                     ),

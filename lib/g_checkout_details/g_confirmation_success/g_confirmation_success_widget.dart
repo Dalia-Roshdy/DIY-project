@@ -310,9 +310,9 @@ class _GConfirmationSuccessWidgetState
                                                 updateCallback: () =>
                                                     safeSetState(() {}),
                                                 child: OrderSummaryItemWidget(
-                                                  label: 'Shipping (Standard)',
+                                                  label: 'Motor Shaft Cut fee',
                                                   value: _model.order
-                                                      ?.totalsSnap.shipping
+                                                      ?.totalsSnap.motorSLFees
                                                       .toString(),
                                                 ),
                                               ),
@@ -325,6 +325,18 @@ class _GConfirmationSuccessWidgetState
                                                   label: 'Tax',
                                                   value: _model
                                                       .order?.totalsSnap.tax
+                                                      .toString(),
+                                                ),
+                                              ),
+                                              wrapWithModel(
+                                                model: _model
+                                                    .orderSummaryItemModel4,
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                child: OrderSummaryItemWidget(
+                                                  label: 'Shipping (Standard)',
+                                                  value: _model.order
+                                                      ?.totalsSnap.shipping
                                                       .toString(),
                                                 ),
                                               ),
@@ -464,7 +476,7 @@ class _GConfirmationSuccessWidgetState
                                                   Text(
                                                     valueOrDefault<String>(
                                                       _model.order?.customerSnap
-                                                          .name,
+                                                          .email,
                                                       'John Doe',
                                                     ),
                                                     style: FlutterFlowTheme.of(

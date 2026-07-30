@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -88,77 +87,6 @@ class _EReviewYourOrderMobileWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Cart',
-                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).labelSmallFamily,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        letterSpacing: 0.0,
-                        lineHeight: 1.2,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                      ),
-                ),
-                Text(
-                  '/',
-                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).labelSmallFamily,
-                        color: FlutterFlowTheme.of(context).onSurface,
-                        letterSpacing: 0.0,
-                        lineHeight: 1.2,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                      ),
-                ),
-                Text(
-                  'Review Order',
-                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).labelSmallFamily,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.bold,
-                        lineHeight: 1.2,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                      ),
-                ),
-                Text(
-                  '/',
-                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).labelSmallFamily,
-                        color: FlutterFlowTheme.of(context).onSurface,
-                        letterSpacing: 0.0,
-                        lineHeight: 1.2,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                      ),
-                ),
-                Text(
-                  'Payment',
-                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).labelSmallFamily,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        letterSpacing: 0.0,
-                        lineHeight: 1.2,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                      ),
-                ),
-              ].divide(SizedBox(width: 4.0)),
-            ),
-          ),
-          Padding(
             padding: EdgeInsets.all(24.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -217,7 +145,7 @@ class _EReviewYourOrderMobileWidgetState
                   ),
                   alignment: AlignmentDirectional(0.0, -1.0),
                   child: Column(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -289,7 +217,7 @@ class _EReviewYourOrderMobileWidgetState
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  14.0, 8.0, 14.0, 8.0),
+                                  10.0, 8.0, 10.0, 8.0),
                               child: Container(
                                 decoration: BoxDecoration(),
                                 child: Row(
@@ -298,8 +226,9 @@ class _EReviewYourOrderMobileWidgetState
                                       MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Expanded(
-                                      flex: 1,
+                                    Container(
+                                      width: 60.0,
+                                      decoration: BoxDecoration(),
                                       child: Text(
                                         'Part Details',
                                         style: FlutterFlowTheme.of(context)
@@ -322,51 +251,67 @@ class _EReviewYourOrderMobileWidgetState
                                       ),
                                     ),
                                     Container(
-                                      width: 40.0,
-                                      child: Text(
-                                        'Qty',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmallFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
+                                      width: 80.0,
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Qty',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
                                                       .onSurface,
-                                              fontSize: 12.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              lineHeight: 1.2,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .labelSmallIsCustom,
-                                            ),
+                                                  fontSize: 12.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  lineHeight: 1.2,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallIsCustom,
+                                                ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                     Container(
-                                      width: 40.0,
-                                      child: Text(
-                                        'Price/each',
-                                        textAlign: TextAlign.end,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmallFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .onSurface,
-                                              fontSize: 12.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              lineHeight: 1.2,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .labelSmallIsCustom,
-                                            ),
+                                      width: 80.0,
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Price/each',
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelSmall
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmallFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .onSurface,
+                                                fontSize: 12.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                lineHeight: 1.2,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmallIsCustom,
+                                              ),
+                                        ),
                                       ),
                                     ),
                                     Align(
@@ -376,7 +321,7 @@ class _EReviewYourOrderMobileWidgetState
                                         decoration: BoxDecoration(),
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 4.0)),
+                                  ],
                                 ),
                               ),
                             ),
@@ -642,43 +587,9 @@ class _EReviewYourOrderMobileWidgetState
                                                           )),
                                                         ),
                                                     );
-                                                    safeSetState(() {});
-                                                    _model.tax =
-                                                        await querySettingsRecordOnce(
-                                                      queryBuilder:
-                                                          (settingsRecord) =>
-                                                              settingsRecord
-                                                                  .where(
-                                                        'key',
-                                                        isEqualTo: SettingKeys
-                                                            .tax.name,
-                                                      ),
-                                                      singleRecord: true,
-                                                    ).then((s) =>
-                                                            s.firstOrNull);
-                                                    _model.motorSl =
-                                                        await querySettingsRecordOnce(
-                                                      queryBuilder:
-                                                          (settingsRecord) =>
-                                                              settingsRecord
-                                                                  .where(
-                                                        'key',
-                                                        isEqualTo: SettingKeys
-                                                            .motor_shaft_length_fees
-                                                            .name,
-                                                      ),
-                                                      singleRecord: true,
-                                                    ).then((s) =>
-                                                            s.firstOrNull);
                                                     await actions
-                                                        .calculateCartTotal(
-                                                      _model.tax!.value,
-                                                      null,
-                                                      _model.motorSl?.value,
-                                                    );
+                                                        .calculateCartTotal();
                                                     _model.updatePage(() {});
-
-                                                    safeSetState(() {});
                                                   } else {
                                                     FFAppState()
                                                         .updateCartStruct(
@@ -696,42 +607,9 @@ class _EReviewYourOrderMobileWidgetState
                                                         ),
                                                     );
                                                     _model.updatePage(() {});
-                                                    _model.taxOffM =
-                                                        await querySettingsRecordOnce(
-                                                      queryBuilder:
-                                                          (settingsRecord) =>
-                                                              settingsRecord
-                                                                  .where(
-                                                        'key',
-                                                        isEqualTo: SettingKeys
-                                                            .tax.name,
-                                                      ),
-                                                      singleRecord: true,
-                                                    ).then((s) =>
-                                                            s.firstOrNull);
-                                                    _model.motorSlOffM =
-                                                        await querySettingsRecordOnce(
-                                                      queryBuilder:
-                                                          (settingsRecord) =>
-                                                              settingsRecord
-                                                                  .where(
-                                                        'key',
-                                                        isEqualTo: SettingKeys
-                                                            .motor_shaft_length_fees
-                                                            .name,
-                                                      ),
-                                                      singleRecord: true,
-                                                    ).then((s) =>
-                                                            s.firstOrNull);
                                                     await actions
-                                                        .calculateCartTotal(
-                                                      _model.taxOffM!.value,
-                                                      null,
-                                                      _model.motorSlOffM?.value,
-                                                    );
+                                                        .calculateCartTotal();
                                                     _model.updatePage(() {});
-
-                                                    safeSetState(() {});
                                                   }
                                                 },
                                                 side: (FlutterFlowTheme.of(
@@ -955,68 +833,25 @@ class _EReviewYourOrderMobileWidgetState
                                   safeSetState(
                                       () => _model.checkboxSlValue = newValue!);
                                   if (newValue!) {
-                                    _model.sl = await querySettingsRecordOnce(
-                                      queryBuilder: (settingsRecord) =>
-                                          settingsRecord.where(
-                                        'key',
-                                        isEqualTo: SettingKeys
-                                            .motor_shaft_length_fees.name,
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    _model.taxOn =
-                                        await querySettingsRecordOnce(
-                                      queryBuilder: (settingsRecord) =>
-                                          settingsRecord.where(
-                                        'key',
-                                        isEqualTo: SettingKeys.tax.name,
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
                                     FFAppState().updateCartStruct(
                                       (e) => e..motorSLEnabled = true,
                                     );
                                     safeSetState(() {});
-                                    await actions.calculateCartTotal(
-                                      _model.taxOn!.value,
-                                      null,
-                                      _model.sl?.value,
-                                    );
-                                    safeSetState(() {});
-
+                                    await actions.calculateCartTotal();
                                     safeSetState(() {});
                                   } else {
                                     FFAppState().updateCartStruct(
                                       (e) => e
                                         ..motorSLComment = null
-                                        ..motorSLFees = null,
+                                        ..motorSLFees = null
+                                        ..motorSLEnabled = false,
                                     );
-                                    safeSetState(() {});
                                     safeSetState(() {
                                       _model.textFieldSLTextController?.text =
                                           FFAppState().Cart.motorSLComment;
                                     });
-                                    _model.taxOff =
-                                        await querySettingsRecordOnce(
-                                      queryBuilder: (settingsRecord) =>
-                                          settingsRecord.where(
-                                        'key',
-                                        isEqualTo: SettingKeys.tax.name,
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    FFAppState().updateCartStruct(
-                                      (e) => e..motorSLEnabled = false,
-                                    );
-                                    safeSetState(() {});
-                                    await actions.calculateCartTotal(
-                                      _model.taxOff!.value,
-                                      null,
-                                      null,
-                                    );
+                                    await actions.calculateCartTotal();
                                     _model.updatePage(() {});
-
-                                    safeSetState(() {});
                                   }
                                 },
                                 side: (FlutterFlowTheme.of(context).alternate !=
@@ -1342,6 +1177,20 @@ class _EReviewYourOrderMobileWidgetState
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             if (FFAppState().Cart.cartItems.isNotEmpty) {
+                              FFAppState().updateCartStruct(
+                                (e) => e
+                                  ..comment =
+                                      _model.textFieldMessageTextController.text
+                                  ..motorSLComment =
+                                      _model.textFieldSLTextController.text
+                                  ..motorSLEnabled =
+                                      _model.textFieldSLTextController
+                                                      .text !=
+                                                  ''
+                                          ? true
+                                          : false,
+                              );
+
                               context.pushNamed(
                                   GSecurePaymentCheckoutWidget.routeName);
                             }

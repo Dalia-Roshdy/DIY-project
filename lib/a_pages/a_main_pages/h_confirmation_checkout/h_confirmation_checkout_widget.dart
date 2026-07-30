@@ -6,6 +6,7 @@ import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/g_confirmation_success/g_confirmation_success_widget.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -42,93 +43,104 @@ class _HConfirmationCheckoutWidgetState
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.cartPS = FFAppState().Cart;
       _model.orderAct = await OrdersRecord.getDocumentOnce(widget.orderId!);
-      _model.paymentJson = await PaymentsGroup.getPaymentByIdCall.call(
-        paymentIntentId: _model.orderAct?.payment.paymentIntentId,
-      );
+      if (_model.orderAct?.status == OrderStatus.paid) {
+        _model.order = _model.orderAct;
+        safeSetState(() {});
+      } else {
+        _model.paymentJson = await PaymentsGroup.getPaymentByIdCall.call(
+          paymentIntentId: _model.orderAct?.payment.paymentIntentId,
+        );
 
-      if ((_model.paymentJson?.succeeded ?? true)) {
-        if (PaymentsGroup.getPaymentByIdCall.status(
-              (_model.paymentJson?.jsonBody ?? ''),
-            ) ==
-            PaymentStatus.succeeded.name) {
-          await _model.orderAct!.reference.update(createOrdersRecordData(
-            payment: createPaymentDataStruct(
-              paymentIntentId: PaymentsGroup.getPaymentByIdCall.paymentId(
+        if ((_model.paymentJson?.succeeded ?? true)) {
+          if (PaymentsGroup.getPaymentByIdCall.status(
                 (_model.paymentJson?.jsonBody ?? ''),
-              ),
-              status: PaymentsGroup.getPaymentByIdCall.status(
-                (_model.paymentJson?.jsonBody ?? ''),
-              ),
-              currency: PaymentsGroup.getPaymentByIdCall.currency(
-                (_model.paymentJson?.jsonBody ?? ''),
-              ),
-              amountTotal: PaymentsGroup.getPaymentByIdCall
-                      .amount(
-                        (_model.paymentJson?.jsonBody ?? ''),
-                      )!
-                      .round() /
-                  100,
-              paidAt: dateTimeFromSecondsSinceEpoch(valueOrDefault<int>(
-                PaymentsGroup.getPaymentByIdCall.paidAt(
+              ) ==
+              PaymentStatus.succeeded.name) {
+            await _model.orderAct!.reference.update(createOrdersRecordData(
+              payment: createPaymentDataStruct(
+                paymentIntentId: PaymentsGroup.getPaymentByIdCall.paymentId(
                   (_model.paymentJson?.jsonBody ?? ''),
                 ),
-                0000000000,
-              )),
-              clearUnsetFields: false,
-            ),
-            status: OrderStatus.paid,
-            updatedAt: getCurrentTimestamp,
-          ));
-          FFAppState().Cart = CartStruct();
-          _model.orderUpdatedAct =
-              await OrdersRecord.getDocumentOnce(_model.orderAct!.reference);
-          _model.order = _model.orderUpdatedAct;
-          safeSetState(() {});
-          _model.email = await actions.buildOrderEmailHtml(
-            _model.orderUpdatedAct?.customerSnap.name,
-            _model.orderUpdatedAct?.customerSnap.shippingAddress,
-            _model.orderUpdatedAct?.customerSnap.phone,
-            _model.orderUpdatedAct!.totalsSnap.subtotal,
-            _model.orderUpdatedAct!.totalsSnap.shipping,
-            _model.orderUpdatedAct!.totalsSnap.tax,
-            _model.orderUpdatedAct!.totalsSnap.total,
-            FFAppState().Cart.cartItems.toList(),
-          );
-
-          await MailRecord.collection.doc().set(createMailRecordData(
-                to: _model.orderUpdatedAct?.customerSnap.email,
-                message: updateMessageStruct(
-                  MessageStruct(
-                    subject: 'Order Confirmed – DIY AC Repair',
-                    html: _model.email,
-                  ),
-                  clearUnsetFields: false,
-                  create: true,
+                status: PaymentsGroup.getPaymentByIdCall.status(
+                  (_model.paymentJson?.jsonBody ?? ''),
                 ),
-              ));
-        } else {
-          await _model.orderAct!.reference.update(createOrdersRecordData(
-            payment: createPaymentDataStruct(
-              paymentIntentId: PaymentsGroup.getPaymentByIdCall.paymentId(
-                (_model.paymentJson?.jsonBody ?? ''),
+                currency: PaymentsGroup.getPaymentByIdCall.currency(
+                  (_model.paymentJson?.jsonBody ?? ''),
+                ),
+                amountTotal: PaymentsGroup.getPaymentByIdCall
+                        .amount(
+                          (_model.paymentJson?.jsonBody ?? ''),
+                        )!
+                        .round() /
+                    100,
+                paidAt: dateTimeFromSecondsSinceEpoch(valueOrDefault<int>(
+                  PaymentsGroup.getPaymentByIdCall.paidAt(
+                    (_model.paymentJson?.jsonBody ?? ''),
+                  ),
+                  0000000000,
+                )),
+                clearUnsetFields: false,
               ),
-              status: PaymentsGroup.getPaymentByIdCall.status(
-                (_model.paymentJson?.jsonBody ?? ''),
+              status: OrderStatus.paid,
+              updatedAt: getCurrentTimestamp,
+            ));
+            _model.orderUpdatedAct =
+                await OrdersRecord.getDocumentOnce(_model.orderAct!.reference);
+            _model.order = _model.orderUpdatedAct;
+            safeSetState(() {});
+            _model.email = await actions.buildOrderEmailHtml(
+              _model.orderUpdatedAct?.customerSnap.name,
+              _model.orderUpdatedAct?.customerSnap.shippingAddress,
+              _model.orderUpdatedAct?.customerSnap.phone,
+              _model.orderUpdatedAct!.totalsSnap.subtotal,
+              _model.orderUpdatedAct!.totalsSnap.shipping,
+              _model.orderUpdatedAct?.totalsSnap.motorSLFees,
+              _model.orderUpdatedAct!.totalsSnap.tax,
+              _model.orderUpdatedAct!.totalsSnap.total,
+              _model.cartPS!.cartItems.toList(),
+            );
+            unawaited(
+              () async {
+                await MailRecord.collection.doc().set(createMailRecordData(
+                      to: _model.orderUpdatedAct?.customerSnap.email,
+                      message: updateMessageStruct(
+                        MessageStruct(
+                          subject: 'Order Confirmed – DIY AC Repair',
+                          html: _model.email,
+                        ),
+                        clearUnsetFields: false,
+                        create: true,
+                      ),
+                    ));
+              }(),
+            );
+            FFAppState().Cart = CartStruct();
+            safeSetState(() {});
+          } else {
+            await _model.orderAct!.reference.update(createOrdersRecordData(
+              payment: createPaymentDataStruct(
+                paymentIntentId: PaymentsGroup.getPaymentByIdCall.paymentId(
+                  (_model.paymentJson?.jsonBody ?? ''),
+                ),
+                status: PaymentsGroup.getPaymentByIdCall.status(
+                  (_model.paymentJson?.jsonBody ?? ''),
+                ),
+                currency: PaymentsGroup.getPaymentByIdCall.currency(
+                  (_model.paymentJson?.jsonBody ?? ''),
+                ),
+                amountTotal: PaymentsGroup.getPaymentByIdCall
+                        .amount(
+                          (_model.paymentJson?.jsonBody ?? ''),
+                        )!
+                        .round() /
+                    100,
+                clearUnsetFields: false,
               ),
-              currency: PaymentsGroup.getPaymentByIdCall.currency(
-                (_model.paymentJson?.jsonBody ?? ''),
-              ),
-              amountTotal: PaymentsGroup.getPaymentByIdCall
-                      .amount(
-                        (_model.paymentJson?.jsonBody ?? ''),
-                      )!
-                      .round() /
-                  100,
-              clearUnsetFields: false,
-            ),
-            updatedAt: getCurrentTimestamp,
-          ));
+              updatedAt: getCurrentTimestamp,
+            ));
+          }
         }
       }
     });
@@ -200,18 +212,6 @@ class _HConfirmationCheckoutWidgetState
                                       thickness: 1.0,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
-                                    ),
-                                    Divider(
-                                      height: 1.0,
-                                      thickness: 1.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).tertiary,
-                                    ),
-                                    Divider(
-                                      height: 1.0,
-                                      thickness: 1.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).tertiary,
                                     ),
                                     if (_model.order?.reference != null)
                                       wrapWithModel(

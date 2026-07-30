@@ -384,7 +384,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   ),
                 ),
                 onPressed: () async {
-                  context.pushNamed(HamburgerNavWidget.routeName);
+                  context.goNamed(HamburgerNavWidget.routeName);
                 },
               ),
             ),

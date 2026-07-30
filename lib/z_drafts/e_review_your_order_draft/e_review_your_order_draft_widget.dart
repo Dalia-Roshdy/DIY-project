@@ -73,11 +73,7 @@ class _EReviewYourOrderDraftWidgetState
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      await actions.calculateCartTotal(
-        _model.tax!.value,
-        _model.shipping?.value,
-        _model.motorSl?.value,
-      );
+      await actions.calculateCartTotal();
       safeSetState(() {});
     });
 

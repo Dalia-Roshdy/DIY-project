@@ -9,11 +9,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 class TotalSnapStruct extends FFFirebaseStruct {
   TotalSnapStruct({
     double? subtotal,
+    double? motorSLFees,
     double? shipping,
     double? tax,
     double? total,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _subtotal = subtotal,
+        _motorSLFees = motorSLFees,
         _shipping = shipping,
         _tax = tax,
         _total = total,
@@ -27,6 +29,16 @@ class TotalSnapStruct extends FFFirebaseStruct {
   void incrementSubtotal(double amount) => subtotal = subtotal + amount;
 
   bool hasSubtotal() => _subtotal != null;
+
+  // "motorSLFees" field.
+  double? _motorSLFees;
+  double get motorSLFees => _motorSLFees ?? 0.0;
+  set motorSLFees(double? val) => _motorSLFees = val;
+
+  void incrementMotorSLFees(double amount) =>
+      motorSLFees = motorSLFees + amount;
+
+  bool hasMotorSLFees() => _motorSLFees != null;
 
   // "shipping" field.
   double? _shipping;
@@ -57,6 +69,7 @@ class TotalSnapStruct extends FFFirebaseStruct {
 
   static TotalSnapStruct fromMap(Map<String, dynamic> data) => TotalSnapStruct(
         subtotal: castToType<double>(data['subtotal']),
+        motorSLFees: castToType<double>(data['motorSLFees']),
         shipping: castToType<double>(data['shipping']),
         tax: castToType<double>(data['tax']),
         total: castToType<double>(data['total']),
@@ -68,6 +81,7 @@ class TotalSnapStruct extends FFFirebaseStruct {
 
   Map<String, dynamic> toMap() => {
         'subtotal': _subtotal,
+        'motorSLFees': _motorSLFees,
         'shipping': _shipping,
         'tax': _tax,
         'total': _total,
@@ -77,6 +91,10 @@ class TotalSnapStruct extends FFFirebaseStruct {
   Map<String, dynamic> toSerializableMap() => {
         'subtotal': serializeParam(
           _subtotal,
+          ParamType.double,
+        ),
+        'motorSLFees': serializeParam(
+          _motorSLFees,
           ParamType.double,
         ),
         'shipping': serializeParam(
@@ -97,6 +115,11 @@ class TotalSnapStruct extends FFFirebaseStruct {
       TotalSnapStruct(
         subtotal: deserializeParam(
           data['subtotal'],
+          ParamType.double,
+          false,
+        ),
+        motorSLFees: deserializeParam(
+          data['motorSLFees'],
           ParamType.double,
           false,
         ),
@@ -124,6 +147,7 @@ class TotalSnapStruct extends FFFirebaseStruct {
   bool operator ==(Object other) {
     return other is TotalSnapStruct &&
         subtotal == other.subtotal &&
+        motorSLFees == other.motorSLFees &&
         shipping == other.shipping &&
         tax == other.tax &&
         total == other.total;
@@ -131,11 +155,12 @@ class TotalSnapStruct extends FFFirebaseStruct {
 
   @override
   int get hashCode =>
-      const ListEquality().hash([subtotal, shipping, tax, total]);
+      const ListEquality().hash([subtotal, motorSLFees, shipping, tax, total]);
 }
 
 TotalSnapStruct createTotalSnapStruct({
   double? subtotal,
+  double? motorSLFees,
   double? shipping,
   double? tax,
   double? total,
@@ -146,6 +171,7 @@ TotalSnapStruct createTotalSnapStruct({
 }) =>
     TotalSnapStruct(
       subtotal: subtotal,
+      motorSLFees: motorSLFees,
       shipping: shipping,
       tax: tax,
       total: total,

@@ -11,33 +11,29 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future calculateCartTotal(
-    String taxStr, String? shippingStr, String? motorSLStr) async {
+double _round2(double v) => (v * 100).round() / 100;
+
+Future<void> calculateCartTotal() {
   final cart = FFAppState().Cart;
+  final settings = FFAppState().CartSetting;
 
   double subtotal = 0.0;
-  for (final item in cart.cartItems) {
-    subtotal += (item.price * item.qty);
+  final items = cart.cartItems;
+  final n = items.length;
+  for (var i = 0; i < n; i++) {
+    subtotal += items[i].price * items[i].qty;
   }
-  subtotal = double.parse(subtotal.toStringAsFixed(2));
+  subtotal = _round2(subtotal);
 
-  final double taxPercent = double.tryParse(taxStr) ?? 0.0;
-  final double shipping =
-      double.tryParse(shippingStr ?? '') ?? (cart.shipping ?? 0.0);
+  final taxPercent = double.tryParse(settings.tax) ?? 0.0;
+  final shipping = double.tryParse(settings.shipping) ?? (cart.shipping ?? 0.0);
 
-  double motorSL =
-      double.tryParse(motorSLStr ?? '') ?? (cart.motorSLFees ?? 0.0);
+  double motorSL = (cart.motorSLEnabled ?? false)
+      ? double.tryParse(settings.motorSLFees) ?? (cart.motorSLFees ?? 0.0)
+      : 0.0;
 
-  // Gate on the checkbox flag, not the comment
-  if (!(cart.motorSLEnabled ?? false)) {
-    motorSL = 0.0;
-  }
-
-  final double tax = double.parse(
-      ((subtotal + motorSL) * taxPercent / 100).toStringAsFixed(2));
-
-  final double total =
-      double.parse((subtotal + shipping + tax + motorSL).toStringAsFixed(2));
+  final tax = _round2((subtotal + motorSL) * taxPercent / 100);
+  final total = _round2(subtotal + shipping + tax + motorSL);
 
   FFAppState().updateCartStruct((c) => c
     ..subtotal = subtotal
@@ -45,4 +41,6 @@ Future calculateCartTotal(
     ..shipping = shipping
     ..tax = tax
     ..motorSLFees = motorSL);
+
+  return Future.value();
 }

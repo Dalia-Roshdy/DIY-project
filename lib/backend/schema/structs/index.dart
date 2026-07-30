@@ -2,11 +2,13 @@ export '/backend/schema/util/schema_util.dart';
 
 export 'fulfillment_data_struct.dart';
 export 'responsive_colors_struct.dart';
+export 'ac_customer_data_struct.dart';
 export 'ac_make_d_t_o_struct.dart';
 export 'ac_model_d_t_o_struct.dart';
 export 'capacitor_card_struct.dart';
 export 'cart_struct.dart';
 export 'cart_item_struct.dart';
+export 'cart_setting_struct.dart';
 export 'contactor_card_struct.dart';
 export 'context_struct.dart';
 export 'customer_struct.dart';

@@ -1,5 +1,3 @@
-import '/backend/backend.dart';
-import '/backend/schema/enums/enums.dart';
 import '/c_components/dialog_components/delete_cart_item_dialog/delete_cart_item_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,8 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'part_row_model.dart';
 export 'part_row_model.dart';
 
@@ -64,6 +62,8 @@ class _PartRowWidgetState extends State<PartRowWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
@@ -201,23 +201,10 @@ class _PartRowWidgetState extends State<PartRowWidget> {
                               widget.itemId!,
                               _model.countControllerValue!,
                             );
-                            _model.tax = await querySettingsRecordOnce(
-                              queryBuilder: (settingsRecord) =>
-                                  settingsRecord.where(
-                                'key',
-                                isEqualTo: SettingKeys.tax.name,
-                              ),
-                              singleRecord: true,
-                            ).then((s) => s.firstOrNull);
-                            await actions.calculateCartTotal(
-                              _model.tax!.value,
-                              null,
-                              null,
-                            );
-
-                            safeSetState(() {});
+                            await actions.calculateCartTotal();
+                            _model.updatePage(() {});
                           },
-                          stepSize: 2,
+                          stepSize: 1,
                           minimum: 1,
                           contentPadding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),

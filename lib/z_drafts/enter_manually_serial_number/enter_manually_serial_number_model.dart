@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'enter_manually_serial_number_widget.dart'
     show EnterManuallySerialNumberWidget;
@@ -13,55 +12,20 @@ class EnterManuallySerialNumberModel
   FocusNode? textFieldMakeFocusNode;
   TextEditingController? textFieldMakeTextController;
   String? Function(BuildContext, String?)? textFieldMakeTextControllerValidator;
-  String? _textFieldMakeTextControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Enter yourA/C Make e.g. Carrier is required';
-    }
-
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
-    }
-
-    return null;
-  }
-
   // State field(s) for TextField-Model widget.
   FocusNode? textFieldModelFocusNode;
   TextEditingController? textFieldModelTextController;
   String? Function(BuildContext, String?)?
       textFieldModelTextControllerValidator;
-  String? _textFieldModelTextControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Model is required';
-    }
-
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
-    }
-
-    return null;
-  }
-
   // State field(s) for TextField-SN widget.
   FocusNode? textFieldSNFocusNode;
   TextEditingController? textFieldSNTextController;
   String? Function(BuildContext, String?)? textFieldSNTextControllerValidator;
-  // Stores action output result for [Validate Form] action in ResponsiveContainer widget.
-  bool? form;
-  // Stores action output result for [Backend Call - Create Document] action in ResponsiveContainer widget.
-  MailRecord? mail;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered = false;
 
   @override
-  void initState(BuildContext context) {
-    textFieldMakeTextControllerValidator =
-        _textFieldMakeTextControllerValidator;
-    textFieldModelTextControllerValidator =
-        _textFieldModelTextControllerValidator;
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {

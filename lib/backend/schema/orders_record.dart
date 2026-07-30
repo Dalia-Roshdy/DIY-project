@@ -77,6 +77,11 @@ class OrdersRecord extends FirestoreRecord {
   String get comment => _comment ?? '';
   bool hasComment() => _comment != null;
 
+  // "acCustomer" field.
+  AcCustomerDataStruct? _acCustomer;
+  AcCustomerDataStruct get acCustomer => _acCustomer ?? AcCustomerDataStruct();
+  bool hasAcCustomer() => _acCustomer != null;
+
   void _initializeFields() {
     _orderNumber = snapshotData['orderNumber'] as String?;
     _uid = snapshotData['uid'] as DocumentReference?;
@@ -105,6 +110,9 @@ class OrdersRecord extends FirestoreRecord {
         ? snapshotData['fulfillment']
         : FulfillmentDataStruct.maybeFromMap(snapshotData['fulfillment']);
     _comment = snapshotData['comment'] as String?;
+    _acCustomer = snapshotData['acCustomer'] is AcCustomerDataStruct
+        ? snapshotData['acCustomer']
+        : AcCustomerDataStruct.maybeFromMap(snapshotData['acCustomer']);
   }
 
   static CollectionReference get collection =>
@@ -152,6 +160,7 @@ Map<String, dynamic> createOrdersRecordData({
   PaymentDataStruct? payment,
   FulfillmentDataStruct? fulfillment,
   String? comment,
+  AcCustomerDataStruct? acCustomer,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -166,6 +175,7 @@ Map<String, dynamic> createOrdersRecordData({
       'payment': PaymentDataStruct().toMap(),
       'fulfillment': FulfillmentDataStruct().toMap(),
       'comment': comment,
+      'acCustomer': AcCustomerDataStruct().toMap(),
     }.withoutNulls,
   );
 
@@ -183,6 +193,9 @@ Map<String, dynamic> createOrdersRecordData({
 
   // Handle nested data for "fulfillment" field.
   addFulfillmentDataStructData(firestoreData, fulfillment, 'fulfillment');
+
+  // Handle nested data for "acCustomer" field.
+  addAcCustomerDataStructData(firestoreData, acCustomer, 'acCustomer');
 
   return firestoreData;
 }
@@ -204,7 +217,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e1?.totalsSnap == e2?.totalsSnap &&
         e1?.payment == e2?.payment &&
         e1?.fulfillment == e2?.fulfillment &&
-        e1?.comment == e2?.comment;
+        e1?.comment == e2?.comment &&
+        e1?.acCustomer == e2?.acCustomer;
   }
 
   @override
@@ -220,7 +234,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e?.totalsSnap,
         e?.payment,
         e?.fulfillment,
-        e?.comment
+        e?.comment,
+        e?.acCustomer
       ]);
 
   @override

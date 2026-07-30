@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/e_review_your_order/desktop/components/button5/button5_widget.dart';
-import '/e_review_your_order/desktop/components/checkout_breadcrumb/checkout_breadcrumb_widget.dart';
 import '/e_review_your_order/desktop/components/part_row/part_row_widget.dart';
 import '/e_review_your_order/desktop/components/part_row_copy/part_row_copy_widget.dart';
 import '/e_review_your_order/desktop/components/summary_line/summary_line_widget.dart';
@@ -48,6 +47,13 @@ class _ReviewYourOrderDesktopWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.taxAcPL = await querySettingsRecordOnce(
+        queryBuilder: (settingsRecord) => settingsRecord.where(
+          'key',
+          isEqualTo: '',
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
       await Future.delayed(
         Duration(
           milliseconds: 500,
@@ -91,11 +97,6 @@ class _ReviewYourOrderDesktopWidgetState
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              wrapWithModel(
-                model: _model.checkoutBreadcrumbModel,
-                updateCallback: () => safeSetState(() {}),
-                child: CheckoutBreadcrumbWidget(),
-              ),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -570,49 +571,10 @@ class _ReviewYourOrderDesktopWidgetState
                                                                 ),
                                                             );
                                                             safeSetState(() {});
-                                                            _model.tax =
-                                                                await querySettingsRecordOnce(
-                                                              queryBuilder:
-                                                                  (settingsRecord) =>
-                                                                      settingsRecord
-                                                                          .where(
-                                                                'key',
-                                                                isEqualTo:
-                                                                    SettingKeys
-                                                                        .tax
-                                                                        .name,
-                                                              ),
-                                                              singleRecord:
-                                                                  true,
-                                                            ).then((s) => s
-                                                                    .firstOrNull);
-                                                            _model.motorSl =
-                                                                await querySettingsRecordOnce(
-                                                              queryBuilder:
-                                                                  (settingsRecord) =>
-                                                                      settingsRecord
-                                                                          .where(
-                                                                'key',
-                                                                isEqualTo:
-                                                                    SettingKeys
-                                                                        .motor_shaft_length_fees
-                                                                        .name,
-                                                              ),
-                                                              singleRecord:
-                                                                  true,
-                                                            ).then((s) => s
-                                                                    .firstOrNull);
                                                             await actions
-                                                                .calculateCartTotal(
-                                                              _model.tax!.value,
-                                                              null,
-                                                              _model.motorSl
-                                                                  ?.value,
-                                                            );
+                                                                .calculateCartTotal();
                                                             _model.updatePage(
                                                                 () {});
-
-                                                            safeSetState(() {});
                                                           } else {
                                                             FFAppState()
                                                                 .updateCartStruct(
@@ -629,50 +591,10 @@ class _ReviewYourOrderDesktopWidgetState
                                                                       .firstOrNull),
                                                                 ),
                                                             );
-                                                            _model.taxOffW =
-                                                                await querySettingsRecordOnce(
-                                                              queryBuilder:
-                                                                  (settingsRecord) =>
-                                                                      settingsRecord
-                                                                          .where(
-                                                                'key',
-                                                                isEqualTo:
-                                                                    SettingKeys
-                                                                        .tax
-                                                                        .name,
-                                                              ),
-                                                              singleRecord:
-                                                                  true,
-                                                            ).then((s) => s
-                                                                    .firstOrNull);
-                                                            _model.motorSlOffW =
-                                                                await querySettingsRecordOnce(
-                                                              queryBuilder:
-                                                                  (settingsRecord) =>
-                                                                      settingsRecord
-                                                                          .where(
-                                                                'key',
-                                                                isEqualTo:
-                                                                    SettingKeys
-                                                                        .motor_shaft_length_fees
-                                                                        .name,
-                                                              ),
-                                                              singleRecord:
-                                                                  true,
-                                                            ).then((s) => s
-                                                                    .firstOrNull);
                                                             await actions
-                                                                .calculateCartTotal(
-                                                              _model.taxOffW!
-                                                                  .value,
-                                                              null,
-                                                              _model.motorSlOffW
-                                                                  ?.value,
-                                                            );
+                                                                .calculateCartTotal();
                                                             _model.updatePage(
                                                                 () {});
-
-                                                            safeSetState(() {});
                                                           }
                                                         },
                                                         side: (FlutterFlowTheme.of(
@@ -1150,42 +1072,18 @@ class _ReviewYourOrderDesktopWidgetState
                                         safeSetState(() =>
                                             _model.checkboxValue2 = newValue!);
                                         if (newValue!) {
-                                          _model.sl =
-                                              await querySettingsRecordOnce(
-                                            queryBuilder: (settingsRecord) =>
-                                                settingsRecord.where(
-                                              'key',
-                                              isEqualTo: SettingKeys
-                                                  .motor_shaft_length_fees.name,
-                                            ),
-                                            singleRecord: true,
-                                          ).then((s) => s.firstOrNull);
-                                          _model.taxOn =
-                                              await querySettingsRecordOnce(
-                                            queryBuilder: (settingsRecord) =>
-                                                settingsRecord.where(
-                                              'key',
-                                              isEqualTo: SettingKeys.tax.name,
-                                            ),
-                                            singleRecord: true,
-                                          ).then((s) => s.firstOrNull);
                                           FFAppState().updateCartStruct(
                                             (e) => e..motorSLEnabled = true,
                                           );
-                                          safeSetState(() {});
-                                          await actions.calculateCartTotal(
-                                            _model.taxOn!.value,
-                                            null,
-                                            _model.sl?.value,
-                                          );
-                                          safeSetState(() {});
-
-                                          safeSetState(() {});
+                                          _model.updatePage(() {});
+                                          await actions.calculateCartTotal();
+                                          _model.updatePage(() {});
                                         } else {
                                           FFAppState().updateCartStruct(
-                                            (e) => e..motorSLComment = null,
+                                            (e) => e
+                                              ..motorSLComment = null
+                                              ..motorSLEnabled = false,
                                           );
-                                          safeSetState(() {});
                                           safeSetState(() {
                                             _model.textFieldMessageSLTextController
                                                     ?.text =
@@ -1193,27 +1091,8 @@ class _ReviewYourOrderDesktopWidgetState
                                                     .Cart
                                                     .motorSLComment;
                                           });
-                                          _model.taxOff =
-                                              await querySettingsRecordOnce(
-                                            queryBuilder: (settingsRecord) =>
-                                                settingsRecord.where(
-                                              'key',
-                                              isEqualTo: SettingKeys.tax.name,
-                                            ),
-                                            singleRecord: true,
-                                          ).then((s) => s.firstOrNull);
-                                          FFAppState().updateCartStruct(
-                                            (e) => e..motorSLEnabled = false,
-                                          );
-                                          safeSetState(() {});
-                                          await actions.calculateCartTotal(
-                                            _model.taxOff!.value,
-                                            null,
-                                            null,
-                                          );
+                                          await actions.calculateCartTotal();
                                           _model.updatePage(() {});
-
-                                          safeSetState(() {});
                                         }
                                       },
                                       side: (FlutterFlowTheme.of(context)

@@ -17,6 +17,7 @@ Future<String> buildOrderEmailHtml(
   String? phone,
   double subtotal,
   double shipping,
+  double? motorSLFee,
   double tax,
   double total,
   List<CartItemStruct> items,
@@ -79,6 +80,18 @@ Future<String> buildOrderEmailHtml(
       </div>''';
   }
 
+  String motorFeesSectionHtml = '';
+  if (motorSLFee != null) {
+    motorFeesSectionHtml = '''
+          <tr>
+            <td style="padding:6px 0;color:#444444;">Motor Shaft Cut fee</td>
+            <td style="padding:6px 0;color:#444444;text-align:right;">\$${motorSLFee.toStringAsFixed(2)}</td>
+          </tr>
+          <tr>
+
+    ''';
+  }
+
   return '''
 <!DOCTYPE html>
 <html lang="en">
@@ -120,13 +133,14 @@ Future<String> buildOrderEmailHtml(
             <td style="padding:6px 0;color:#444444;">Subtotal</td>
             <td style="padding:6px 0;color:#444444;text-align:right;">\$${subtotal.toStringAsFixed(2)}</td>
           </tr>
-          <tr>
-            <td style="padding:6px 0;color:#444444;">Shipping</td>
-            <td style="padding:6px 0;color:#444444;text-align:right;">\$${shipping.toStringAsFixed(2)}</td>
-          </tr>
+          $motorFeesSectionHtml
           <tr>
             <td style="padding:6px 0;color:#444444;">Tax</td>
             <td style="padding:6px 0;color:#444444;text-align:right;">\$${tax.toStringAsFixed(2)}</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 0;color:#444444;">Shipping</td>
+            <td style="padding:6px 0;color:#444444;text-align:right;">\$${shipping.toStringAsFixed(2)}</td>
           </tr>
           <tr>
             <td colspan="2" style="border-top:1px solid #dddddd;padding-top:4px;"></td>

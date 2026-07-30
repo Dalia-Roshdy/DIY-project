@@ -15,10 +15,6 @@ class S18FilterRepairPartsDesktopModel
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
-  // State field(s) for TextField-volt widget.
-  FocusNode? textFieldVoltFocusNode;
-  TextEditingController? textFieldVoltTextController;
-  String? Function(BuildContext, String?)? textFieldVoltTextControllerValidator;
   // State field(s) for DropDown-hp widget.
   double? dropDownHpValue;
   FormFieldController<double>? dropDownHpValueController;
@@ -62,9 +58,6 @@ class S18FilterRepairPartsDesktopModel
 
   @override
   void dispose() {
-    textFieldVoltFocusNode?.dispose();
-    textFieldVoltTextController?.dispose();
-
     buttonModel1.dispose();
     buttonModel2.dispose();
     buttonModel3.dispose();

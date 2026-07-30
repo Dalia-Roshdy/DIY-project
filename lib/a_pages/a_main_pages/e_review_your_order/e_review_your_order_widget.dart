@@ -84,11 +84,12 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      await actions.calculateCartTotal(
-        _model.tax!.value,
-        _model.shipping?.value,
-        _model.motorSl?.value,
+      FFAppState().CartSetting = CartSettingStruct(
+        tax: _model.tax?.value,
+        shipping: _model.shipping?.value,
+        motorSLFees: _model.motorSl?.value,
       );
+      await actions.calculateCartTotal();
       safeSetState(() {});
     });
 

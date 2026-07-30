@@ -4,6 +4,7 @@ import '/b_screen_components/s12_footer/s12_footer_widget.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/details_checkout_mobile_and_desktop/details_checkout_mobile_and_desktop_widget.dart';
+import '/index.dart';
 import 'g_secure_payment_checkout_widget.dart'
     show GSecurePaymentCheckoutWidget;
 import 'package:flutter/material.dart';

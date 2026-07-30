@@ -5,7 +5,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -109,22 +108,7 @@ class _LRequestTechnicalWidgetState extends State<LRequestTechnicalWidget> {
                             16.0, 0.0, 16.0, 0.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.96,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: CachedNetworkImageProvider(
-                                getCORSProxyUrl(
-                                  valueOrDefault<String>(
-                                    MediaQuery.sizeOf(context).width <
-                                            kBreakpointSmall
-                                        ? 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/snombgtjslh3/Lines_Phone.png'
-                                        : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
-                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [

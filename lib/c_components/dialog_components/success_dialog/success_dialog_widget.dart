@@ -30,14 +30,7 @@ class _SuccessDialogWidgetState extends State<SuccessDialogWidget> {
     _model = createModel(context, () => SuccessDialogModel());
 
     // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(
-        Duration(
-          milliseconds: 2000,
-        ),
-      );
-      Navigator.pop(context);
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }

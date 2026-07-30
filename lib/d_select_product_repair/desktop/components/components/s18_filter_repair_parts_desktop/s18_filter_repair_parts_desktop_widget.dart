@@ -58,9 +58,6 @@ class _S18FilterRepairPartsDesktopWidgetState
       safeSetState(() {});
     });
 
-    _model.textFieldVoltTextController ??= TextEditingController(text: '230');
-    _model.textFieldVoltFocusNode ??= FocusNode();
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -143,13 +140,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       safeSetState(() {});
                                       await widget.onMotorSelected?.call(
                                         Parts.MOTOR.name,
-                                        _model.textFieldVoltTextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldVoltTextController
-                                                .text)
-                                            : null,
+                                        230,
                                         _model.dropDownHpValue != null
                                             ? _model.dropDownHpValue
                                             : null,
@@ -548,130 +539,31 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                 width: 2.0,
                                               ),
                                             ),
-                                            child: Padding(
-                                              padding: EdgeInsets.all(4.0),
-                                              child: TextFormField(
-                                                controller: _model
-                                                    .textFieldVoltTextController,
-                                                focusNode: _model
-                                                    .textFieldVoltFocusNode,
-                                                autofocus: false,
-                                                enabled: true,
-                                                readOnly: true,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  isDense: true,
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                !FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumIsCustom,
-                                                          ),
-                                                  hintText: 'e.g. 230',
-                                                  hintStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily,
-                                                            color: FlutterFlowTheme
+                                            child: Align(
+                                              alignment: AlignmentDirectional(
+                                                  -1.0, 0.0),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Text(
+                                                  '230',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
                                                                     .of(context)
-                                                                .secondaryText,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                !FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumIsCustom,
-                                                          ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  filled: true,
+                                                                .bodyMediumIsCustom,
+                                                      ),
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          useGoogleFonts:
-                                                              !FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMediumIsCustom,
-                                                        ),
-                                                keyboardType:
-                                                    TextInputType.number,
-                                                cursorColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                enableInteractiveSelection:
-                                                    true,
-                                                validator: _model
-                                                    .textFieldVoltTextControllerValidator
-                                                    .asValidator(context),
                                               ),
                                             ),
                                           ),
@@ -1036,13 +928,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         });
                                         await widget.onMotorSelected?.call(
                                           _model.selectedPart?.name,
-                                          _model.textFieldVoltTextController
-                                                          .text !=
-                                                      ''
-                                              ? int.tryParse(_model
-                                                  .textFieldVoltTextController
-                                                  .text)
-                                              : null,
+                                          230,
                                           _model.dropDownHpValue != null
                                               ? _model.dropDownHpValue
                                               : null,
@@ -1087,12 +973,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                   onTap: () async {
                                     await widget.onMotorSelected?.call(
                                       _model.selectedPart?.name,
-                                      _model.textFieldVoltTextController
-                                                      .text !=
-                                                  ''
-                                          ? int.tryParse(_model
-                                              .textFieldVoltTextController.text)
-                                          : null,
+                                      230,
                                       _model.dropDownHpValue != null
                                           ? _model.dropDownHpValue
                                           : null,

@@ -41,3 +41,5 @@ export '/new_screen2/new_screen2_widget.dart' show NewScreen2Widget;
 export '/new_screen4/new_screen4_widget.dart' show NewScreen4Widget;
 export '/z_drafts/e_review_your_order_draft/e_review_your_order_draft_widget.dart'
     show EReviewYourOrderDraftWidget;
+export '/b_diagnosis/b_diagnosis_copy/b_diagnosis_copy_widget.dart'
+    show BDiagnosisCopyWidget;

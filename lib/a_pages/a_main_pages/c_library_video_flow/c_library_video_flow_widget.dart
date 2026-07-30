@@ -5,7 +5,6 @@ import '/c_library_video/c_video_diagnosis_desktop/c_video_diagnosis_desktop_wid
 import '/c_library_video/c_video_diagnosis_mobile/c_video_diagnosis_mobile_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -101,22 +100,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                 16.0, 0.0, 16.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 0.96,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: CachedNetworkImageProvider(
-                                    getCORSProxyUrl(
-                                      valueOrDefault<String>(
-                                        MediaQuery.sizeOf(context).width <
-                                                kBreakpointSmall
-                                            ? 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/snombgtjslh3/Lines_Phone.png'
-                                            : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
-                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/f0wd86jvtesu/Lines_TabletPC.png',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              decoration: BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [

@@ -1,15 +1,9 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'delete_cart_item_dialog_widget.dart' show DeleteCartItemDialogWidget;
 import 'package:flutter/material.dart';
 
 class DeleteCartItemDialogModel
     extends FlutterFlowModel<DeleteCartItemDialogWidget> {
-  ///  State fields for stateful widgets in this component.
-
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  SettingsRecord? tax;
-
   @override
   void initState(BuildContext context) {}
 

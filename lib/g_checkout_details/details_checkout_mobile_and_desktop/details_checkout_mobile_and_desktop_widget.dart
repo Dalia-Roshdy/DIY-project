@@ -690,6 +690,8 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           shipping: FFAppState().Cart.shipping,
                                           tax: FFAppState().Cart.tax,
                                           total: FFAppState().Cart.total,
+                                          motorSLFees:
+                                              FFAppState().Cart.motorSLFees,
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
@@ -716,6 +718,11 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           create: true,
                                         ),
                                         comment: FFAppState().Cart.comment,
+                                        acCustomer: updateAcCustomerDataStruct(
+                                          FFAppState().acCustomer,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -737,6 +744,8 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           shipping: FFAppState().Cart.shipping,
                                           tax: FFAppState().Cart.tax,
                                           total: FFAppState().Cart.total,
+                                          motorSLFees:
+                                              FFAppState().Cart.motorSLFees,
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
@@ -763,6 +772,11 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           create: true,
                                         ),
                                         comment: FFAppState().Cart.comment,
+                                        acCustomer: updateAcCustomerDataStruct(
+                                          FFAppState().acCustomer,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -804,6 +818,10 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           clearUnsetFields: false,
                                         ),
                                         comment: FFAppState().Cart.comment,
+                                        acCustomer: updateAcCustomerDataStruct(
+                                          FFAppState().acCustomer,
+                                          clearUnsetFields: false,
+                                        ),
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -850,12 +868,13 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                     await _model.orderPS!
                                         .update(createOrdersRecordData(
                                       payment: createPaymentDataStruct(
-                                        paymentIntentId: null,
+                                        paymentIntentId: _model.paymentId,
+                                        status: 'processing',
                                         clearUnsetFields: false,
                                       ),
                                     ));
 
-                                    context.pushNamed(
+                                    context.goNamed(
                                       HConfirmationCheckoutWidget.routeName,
                                       queryParameters: {
                                         'orderId': serializeParam(

@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s08_company_investors/s08_company_investors_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
@@ -44,11 +45,14 @@ class _GSecurePaymentCheckoutWidgetState
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      await actions.calculateCartTotal(
-        _model.tax!.value,
-        null,
-        null,
-      );
+      await actions.calculateCartTotal();
+      if (!loggedIn) {
+        GoRouter.of(context).prepareAuthEvent();
+        final user = await authManager.signInAnonymously(context);
+        if (user == null) {
+          return;
+        }
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));

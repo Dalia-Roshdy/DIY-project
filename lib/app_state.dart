@@ -40,6 +40,28 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      if (prefs.containsKey('ff_acCustomer')) {
+        try {
+          final serializedData = prefs.getString('ff_acCustomer') ?? '{}';
+          _acCustomer = AcCustomerDataStruct.fromSerializableMap(
+              jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
+    _safeInit(() {
+      if (prefs.containsKey('ff_CartSetting')) {
+        try {
+          final serializedData = prefs.getString('ff_CartSetting') ?? '{}';
+          _CartSetting =
+              CartSettingStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -182,6 +204,30 @@ class FFAppState extends ChangeNotifier {
   void updateUserStruct(Function(UserAppStateStruct) updateFn) {
     updateFn(_User);
     prefs.setString('ff_User', _User.serialize());
+  }
+
+  AcCustomerDataStruct _acCustomer = AcCustomerDataStruct();
+  AcCustomerDataStruct get acCustomer => _acCustomer;
+  set acCustomer(AcCustomerDataStruct value) {
+    _acCustomer = value;
+    prefs.setString('ff_acCustomer', value.serialize());
+  }
+
+  void updateAcCustomerStruct(Function(AcCustomerDataStruct) updateFn) {
+    updateFn(_acCustomer);
+    prefs.setString('ff_acCustomer', _acCustomer.serialize());
+  }
+
+  CartSettingStruct _CartSetting = CartSettingStruct();
+  CartSettingStruct get CartSetting => _CartSetting;
+  set CartSetting(CartSettingStruct value) {
+    _CartSetting = value;
+    prefs.setString('ff_CartSetting', value.serialize());
+  }
+
+  void updateCartSettingStruct(Function(CartSettingStruct) updateFn) {
+    updateFn(_CartSetting);
+    prefs.setString('ff_CartSetting', _CartSetting.serialize());
   }
 }
 

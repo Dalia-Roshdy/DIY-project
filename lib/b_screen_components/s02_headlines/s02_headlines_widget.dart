@@ -346,7 +346,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed(BDiagnosisWidget.routeName);
+                        context.goNamed(BDiagnosisWidget.routeName);
                       },
                       child: Container(
                         constraints: BoxConstraints(

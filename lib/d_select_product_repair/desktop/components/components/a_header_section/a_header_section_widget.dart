@@ -43,75 +43,10 @@ class _AHeaderSectionWidgetState extends State<AHeaderSectionWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (responsiveVisibility(
-          context: context,
-          phone: false,
-          tablet: false,
-        ))
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Home',
-                style: FlutterFlowTheme.of(context).labelSmall.override(
-                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                      color: FlutterFlowTheme.of(context).tertiary,
-                      letterSpacing: 0.0,
-                      lineHeight: 1.2,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                    ),
-              ),
-              Text(
-                '/',
-                style: FlutterFlowTheme.of(context).labelSmall.override(
-                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                      color: FlutterFlowTheme.of(context).tertiary,
-                      letterSpacing: 0.0,
-                      lineHeight: 1.2,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                    ),
-              ),
-              Text(
-                'AC Parts',
-                style: FlutterFlowTheme.of(context).labelSmall.override(
-                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                      color: FlutterFlowTheme.of(context).tertiary,
-                      letterSpacing: 0.0,
-                      lineHeight: 1.2,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                    ),
-              ),
-              Text(
-                '/',
-                style: FlutterFlowTheme.of(context).labelSmall.override(
-                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                      letterSpacing: 0.0,
-                      lineHeight: 1.2,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                    ),
-              ),
-              Text(
-                widget.partParam,
-                style: FlutterFlowTheme.of(context).labelSmall.override(
-                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                      letterSpacing: 0.0,
-                      lineHeight: 1.2,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                    ),
-              ),
-            ].divide(SizedBox(width: 4.0)),
-          ),
         RichText(
           textScaler: MediaQuery.of(context).textScaler,
           text: TextSpan(
