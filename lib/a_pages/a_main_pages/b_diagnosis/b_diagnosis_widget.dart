@@ -54,87 +54,56 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Flexible(
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+              Align(
+                alignment: AlignmentDirectional(0.0, -1.0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: Container(
-                    width: double.infinity,
-                    constraints: BoxConstraints(
-                      maxWidth: MediaQuery.sizeOf(context).width,
-                    ),
+                    width: MediaQuery.sizeOf(context).width * 0.96,
                     decoration: BoxDecoration(),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 0.96,
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                  child: SingleChildScrollView(
-                                    primary: false,
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        wrapWithModel(
-                                          model: _model.s01NavigatioBarModel,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: S01NavigatioBarWidget(),
-                                        ),
-                                        Divider(
-                                          height: 1.0,
-                                          thickness: 1.0,
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                        ),
-                                        Divider(
-                                          height: 1.0,
-                                          thickness: 1.0,
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                        ),
-                                        Expanded(
-                                          child: wrapWithModel(
-                                            model: _model
-                                                .s05HomestartdiagnosisModel,
-                                            updateCallback: () =>
-                                                safeSetState(() {}),
-                                            child:
-                                                S05HomestartdiagnosisWidget(),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                    child: SingleChildScrollView(
+                      primary: false,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
                               ),
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                                tablet: false,
-                                tabletLandscape: false,
-                              ))
-                                wrapWithModel(
-                                  model: _model.s12FooterModel,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: S12FooterWidget(),
-                                ),
-                            ].divide(SizedBox(height: 50.0)),
+                            ),
+                            child: SingleChildScrollView(
+                              primary: false,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  wrapWithModel(
+                                    model: _model.s01NavigatioBarModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: S01NavigatioBarWidget(),
+                                  ),
+                                  wrapWithModel(
+                                    model: _model.s05HomestartdiagnosisModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: S05HomestartdiagnosisWidget(),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                            tablet: false,
+                            tabletLandscape: false,
+                          ))
+                            wrapWithModel(
+                              model: _model.s12FooterModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: S12FooterWidget(),
+                            ),
+                        ].divide(SizedBox(height: 50.0)),
                       ),
                     ),
                   ),

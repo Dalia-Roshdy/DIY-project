@@ -286,7 +286,7 @@ class _CVideoDiagnosisDesktopWidgetState
                                       16.0, 0.0, 16.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).grey30,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -312,48 +312,58 @@ class _CVideoDiagnosisDesktopWidgetState
                                 ),
                               ),
                               FFButtonWidget(
-                                onPressed: () async {
-                                  if (_model.slectedOption?.actionType ==
-                                      ActionType.showVideo) {
-                                    context.pushNamed(
-                                      CLibraryVideoFlowWidget.routeName,
-                                      queryParameters: {
-                                        'currentVideoId': serializeParam(
-                                          _model.slectedOption?.nextStepKey,
-                                          ParamType.DocumentReference,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  } else if (_model.slectedOption?.actionType ==
-                                      ActionType.navigate) {
-                                    if (_model.slectedOption?.targetPage ==
-                                        TargetPage.contactUs) {
-                                      context
-                                          .pushNamed(KContactWidget.routeName);
-                                    } else if (_model
-                                            .slectedOption?.targetPage ==
-                                        TargetPage.needAssistant) {
-                                      context.pushNamed(
-                                          LRequestTechnicalWidget.routeName);
-                                    } else if (_model
-                                            .slectedOption?.targetPage ==
-                                        TargetPage.diagnosis) {
-                                      context.pushNamed(
-                                          BDiagnosisWidget.routeName);
-                                    }
-                                  } else if (_model.slectedOption?.actionType ==
-                                      ActionType.navigateWithData) {
-                                    context.pushNamed(
-                                      DSelectProductRepairWidget.routeName,
-                                      queryParameters: {
-                                        'part': serializeParam(
-                                          _model.slectedOption?.targetPartType,
-                                          ParamType.Enum,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  }
-                                },
+                                onPressed: (_model.radioButtonValue == null ||
+                                        _model.radioButtonValue == '')
+                                    ? null
+                                    : () async {
+                                        if (_model.slectedOption?.actionType ==
+                                            ActionType.showVideo) {
+                                          context.pushNamed(
+                                            CLibraryVideoFlowWidget.routeName,
+                                            queryParameters: {
+                                              'currentVideoId': serializeParam(
+                                                _model
+                                                    .slectedOption?.nextStepKey,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        } else if (_model
+                                                .slectedOption?.actionType ==
+                                            ActionType.navigate) {
+                                          if (_model
+                                                  .slectedOption?.targetPage ==
+                                              TargetPage.contactUs) {
+                                            context.pushNamed(
+                                                KContactWidget.routeName);
+                                          } else if (_model
+                                                  .slectedOption?.targetPage ==
+                                              TargetPage.needAssistant) {
+                                            context.pushNamed(
+                                                LRequestTechnicalWidget
+                                                    .routeName);
+                                          } else if (_model
+                                                  .slectedOption?.targetPage ==
+                                              TargetPage.diagnosis) {
+                                            context.pushNamed(
+                                                BDiagnosisWidget.routeName);
+                                          }
+                                        } else if (_model
+                                                .slectedOption?.actionType ==
+                                            ActionType.navigateWithData) {
+                                          context.pushNamed(
+                                            DSelectProductRepairWidget
+                                                .routeName,
+                                            queryParameters: {
+                                              'part': serializeParam(
+                                                _model.slectedOption
+                                                    ?.targetPartType,
+                                                ParamType.Enum,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        }
+                                      },
                                 text: 'Proceed',
                                 icon: Icon(
                                   Icons.arrow_forward_sharp,
@@ -382,6 +392,8 @@ class _CVideoDiagnosisDesktopWidgetState
                                       ),
                                   elevation: 0.0,
                                   borderRadius: BorderRadius.circular(0.0),
+                                  disabledColor: FlutterFlowTheme.of(context)
+                                      .secondaryText,
                                   hoverColor: Color(0xFF3890A5),
                                   hoverTextColor:
                                       FlutterFlowTheme.of(context).secondary,

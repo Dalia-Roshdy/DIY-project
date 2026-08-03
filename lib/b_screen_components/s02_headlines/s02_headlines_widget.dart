@@ -183,7 +183,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                                   .displayLargeFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
-                                          fontSize: 128.0,
+                                          fontSize: 54.0,
                                           letterSpacing: 0.0,
                                           useGoogleFonts:
                                               !FlutterFlowTheme.of(context)

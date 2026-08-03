@@ -60,7 +60,7 @@ class _S05HomestartdiagnosisWidgetState
               Flexible(
                 child: Container(
                   constraints: BoxConstraints(
-                    maxWidth: MediaQuery.sizeOf(context).width * 0.45,
+                    maxWidth: MediaQuery.sizeOf(context).width * 0.4,
                   ),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primary,
@@ -395,7 +395,6 @@ class _S05HomestartdiagnosisWidgetState
               child: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
-                  height: MediaQuery.sizeOf(context).height * 1.0,
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: FlutterFlowTheme.of(context).secondary,

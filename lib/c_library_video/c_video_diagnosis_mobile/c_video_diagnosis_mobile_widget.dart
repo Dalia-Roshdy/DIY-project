@@ -366,50 +366,58 @@ class _CVideoDiagnosisMobileWidgetState
                                 ),
                               ),
                               FFButtonWidget(
-                                onPressed: () async {
-                                  if (_model.selectedOption?.actionType ==
-                                      ActionType.showVideo) {
-                                    context.pushNamed(
-                                      CLibraryVideoFlowWidget.routeName,
-                                      queryParameters: {
-                                        'currentVideoId': serializeParam(
-                                          _model.selectedOption?.nextStepKey,
-                                          ParamType.DocumentReference,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  } else if (_model
-                                          .selectedOption?.actionType ==
-                                      ActionType.navigate) {
-                                    if (_model.selectedOption?.targetPage ==
-                                        TargetPage.contactUs) {
-                                      context
-                                          .pushNamed(KContactWidget.routeName);
-                                    } else if (_model
-                                            .selectedOption?.targetPage ==
-                                        TargetPage.needAssistant) {
-                                      context.pushNamed(
-                                          LRequestTechnicalWidget.routeName);
-                                    } else if (_model
-                                            .selectedOption?.targetPage ==
-                                        TargetPage.diagnosis) {
-                                      context.pushNamed(
-                                          BDiagnosisWidget.routeName);
-                                    }
-                                  } else if (_model
-                                          .selectedOption?.actionType ==
-                                      ActionType.navigateWithData) {
-                                    context.pushNamed(
-                                      DSelectProductRepairWidget.routeName,
-                                      queryParameters: {
-                                        'part': serializeParam(
-                                          _model.selectedOption?.targetPartType,
-                                          ParamType.Enum,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  }
-                                },
+                                onPressed: (_model.radioButtonValue == null ||
+                                        _model.radioButtonValue == '')
+                                    ? null
+                                    : () async {
+                                        if (_model.selectedOption?.actionType ==
+                                            ActionType.showVideo) {
+                                          context.pushNamed(
+                                            CLibraryVideoFlowWidget.routeName,
+                                            queryParameters: {
+                                              'currentVideoId': serializeParam(
+                                                _model.selectedOption
+                                                    ?.nextStepKey,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        } else if (_model
+                                                .selectedOption?.actionType ==
+                                            ActionType.navigate) {
+                                          if (_model
+                                                  .selectedOption?.targetPage ==
+                                              TargetPage.contactUs) {
+                                            context.pushNamed(
+                                                KContactWidget.routeName);
+                                          } else if (_model
+                                                  .selectedOption?.targetPage ==
+                                              TargetPage.needAssistant) {
+                                            context.pushNamed(
+                                                LRequestTechnicalWidget
+                                                    .routeName);
+                                          } else if (_model
+                                                  .selectedOption?.targetPage ==
+                                              TargetPage.diagnosis) {
+                                            context.pushNamed(
+                                                BDiagnosisWidget.routeName);
+                                          }
+                                        } else if (_model
+                                                .selectedOption?.actionType ==
+                                            ActionType.navigateWithData) {
+                                          context.pushNamed(
+                                            DSelectProductRepairWidget
+                                                .routeName,
+                                            queryParameters: {
+                                              'part': serializeParam(
+                                                _model.selectedOption
+                                                    ?.targetPartType,
+                                                ParamType.Enum,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        }
+                                      },
                                 text: 'Proceed',
                                 icon: Icon(
                                   Icons.arrow_forward_sharp,
@@ -438,6 +446,8 @@ class _CVideoDiagnosisMobileWidgetState
                                       ),
                                   elevation: 0.0,
                                   borderRadius: BorderRadius.circular(0.0),
+                                  disabledColor: FlutterFlowTheme.of(context)
+                                      .secondaryText,
                                 ),
                               ),
                             ],
