@@ -170,15 +170,7 @@ class _EnterManuallySerialNumberWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primary,
-                                                  fontSize:
-                                                      valueOrDefault<double>(
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            kBreakpointSmall
-                                                        ? 10.0
-                                                        : 18.0,
-                                                    40.0,
-                                                  ),
+                                                  fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts:
@@ -197,14 +189,7 @@ class _EnterManuallySerialNumberWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
-                                              fontSize: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 10.0
-                                                    : 18.0,
-                                                40.0,
-                                              ),
+                                              fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               useGoogleFonts:
@@ -341,7 +326,7 @@ class _EnterManuallySerialNumberWidgetState
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 10.0),
+                                20.0, 10.0, 20.0, 10.0),
                             child: Container(
                               decoration: BoxDecoration(
                                 border: Border.all(
@@ -366,14 +351,7 @@ class _EnterManuallySerialNumberWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
-                                              fontSize: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 12.0
-                                                    : 18.0,
-                                                40.0,
-                                              ),
+                                              fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               useGoogleFonts:
@@ -390,13 +368,7 @@ class _EnterManuallySerialNumberWidgetState
                                                   .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
-                                          fontSize: valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 12.0
-                                                : 18.0,
-                                            40.0,
-                                          ),
+                                          fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                           useGoogleFonts:
@@ -532,7 +504,7 @@ class _EnterManuallySerialNumberWidgetState
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 0.0),
+                                20.0, 0.0, 20.0, 10.0),
                             child: Container(
                               decoration: BoxDecoration(
                                 border: Border.all(
@@ -542,28 +514,27 @@ class _EnterManuallySerialNumberWidgetState
                               ),
                               child: Align(
                                 alignment: AlignmentDirectional(-1.0, 0.0),
-                                child: Text(
-                                  'Serial Number (optional)',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyMediumFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        fontSize: valueOrDefault<double>(
-                                          MediaQuery.sizeOf(context).width <
-                                                  kBreakpointSmall
-                                              ? 12.0
-                                              : 18.0,
-                                          40.0,
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: Text(
+                                    'Serial Number (optional)',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                        useGoogleFonts:
-                                            !FlutterFlowTheme.of(context)
-                                                .bodyMediumIsCustom,
-                                      ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -691,7 +662,7 @@ class _EnterManuallySerialNumberWidgetState
                           Expanded(
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 20.0, 0.0, 64.0),
+                                  0.0, 20.0, 0.0, 20.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -736,7 +707,7 @@ class _EnterManuallySerialNumberWidgetState
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 20.0, 12.0),
+                                          24.0, 0.0, 20.0, 20.0),
                                       child: Text(
                                         'Detailed specs of the parts will be requested later to confirm fitment.',
                                         textAlign: TextAlign.start,
@@ -770,7 +741,7 @@ class _EnterManuallySerialNumberWidgetState
                                     alignment: AlignmentDirectional(1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 20.0, 10.0),
+                                          0.0, 10.0, 20.0, 10.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
