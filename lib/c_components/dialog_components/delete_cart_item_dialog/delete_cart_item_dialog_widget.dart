@@ -179,6 +179,11 @@ class _DeleteCartItemDialogWidgetState
                               ),
                           );
                           safeSetState(() {});
+                          await Future.delayed(
+                            Duration(
+                              milliseconds: 100,
+                            ),
+                          );
                           await actions.calculateCartTotal();
                           Navigator.pop(context);
                         },

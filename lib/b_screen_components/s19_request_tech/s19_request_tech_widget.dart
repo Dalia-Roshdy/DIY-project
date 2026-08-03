@@ -118,7 +118,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                 width: MediaQuery.sizeOf(context).width < kBreakpointLarge
                     ? double.infinity
                     : (MediaQuery.sizeOf(context).width * 0.43),
-                height: MediaQuery.sizeOf(context).height * 1.04,
+                height: MediaQuery.sizeOf(context).height * 1.24,
                 constraints: BoxConstraints(
                   maxWidth: valueOrDefault<double>(
                     MediaQuery.sizeOf(context).width < kBreakpointLarge
@@ -445,7 +445,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
               width: MediaQuery.sizeOf(context).width < kBreakpointLarge
                   ? double.infinity
                   : (MediaQuery.sizeOf(context).width * 0.502),
-              height: MediaQuery.sizeOf(context).height * 1.04,
+              height: MediaQuery.sizeOf(context).height * 1.8,
               constraints: BoxConstraints(
                 maxWidth: 1055.0,
                 maxHeight: valueOrDefault<double>(
@@ -668,7 +668,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .tertiary,
-                                                              fontSize: 24.0,
+                                                              fontSize: 16.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               useGoogleFonts:
@@ -844,7 +844,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .tertiary,
-                                                              fontSize: 24.0,
+                                                              fontSize: 16.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               useGoogleFonts:
@@ -1020,7 +1020,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .tertiary,
-                                                              fontSize: 24.0,
+                                                              fontSize: 16.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               useGoogleFonts:
@@ -1196,7 +1196,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .tertiary,
-                                                              fontSize: 24.0,
+                                                              fontSize: 16.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               useGoogleFonts:
@@ -1372,7 +1372,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .tertiary,
-                                                              fontSize: 24.0,
+                                                              fontSize: 16.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               useGoogleFonts:
@@ -1428,7 +1428,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                       ),
                                       Expanded(
                                         child: Padding(
-                                          padding: EdgeInsets.all(25.0),
+                                          padding: EdgeInsets.all(16.0),
                                           child: TextFormField(
                                             controller: _model
                                                 .textFieldMessageTextController,
@@ -1457,7 +1457,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .tertiary,
-                                                    fontSize: 24.0,
+                                                    fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     useGoogleFonts:
                                                         !FlutterFlowTheme.of(
@@ -1670,7 +1670,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .secondary,
-                                                      fontSize: 28.0,
+                                                      fontSize: 20.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.normal,

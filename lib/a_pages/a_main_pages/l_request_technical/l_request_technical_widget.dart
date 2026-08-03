@@ -121,6 +121,7 @@ class _LRequestTechnicalWidgetState extends State<LRequestTechnicalWidget> {
                                 ),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     wrapWithModel(
                                       model: _model.s01NavigatioBarModel,

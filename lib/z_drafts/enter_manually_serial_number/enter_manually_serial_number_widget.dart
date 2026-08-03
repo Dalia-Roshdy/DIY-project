@@ -1,8 +1,9 @@
-import '/backend/schema/structs/index.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'enter_manually_serial_number_model.dart';
 export 'enter_manually_serial_number_model.dart';
@@ -59,7 +60,7 @@ class _EnterManuallySerialNumberWidgetState
         primary: false,
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Flexible(
               child: Align(
@@ -71,7 +72,7 @@ class _EnterManuallySerialNumberWidgetState
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryBackground,
                       border: Border.all(
-                        color: FlutterFlowTheme.of(context).secondary,
+                        color: FlutterFlowTheme.of(context).alternate,
                         width: 1.0,
                       ),
                     ),
@@ -80,6 +81,7 @@ class _EnterManuallySerialNumberWidgetState
                       autovalidateMode: AutovalidateMode.disabled,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           if (false)
                             Align(
@@ -109,12 +111,13 @@ class _EnterManuallySerialNumberWidgetState
                               ),
                             ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(-1.0, -1.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 20.0, 20.0, 20.0),
                               child: AutoSizeText(
-                                'PLEASE ENTER YOUR A/C DETAILS ',
+                                'WHAT DO YOU NEED HELP WITH?\nLET’S FIX IT TOGETHER.',
+                                textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .headlineMedium
                                     .override(
@@ -140,7 +143,6 @@ class _EnterManuallySerialNumberWidgetState
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 10.0),
                               child: Container(
-                                height: 40.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context).secondary,
                                   shape: BoxShape.rectangle,
@@ -222,8 +224,6 @@ class _EnterManuallySerialNumberWidgetState
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
                               child: Container(
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.08,
                                 constraints: BoxConstraints(
                                   minHeight: 50.0,
                                   maxHeight: valueOrDefault<double>(
@@ -341,19 +341,8 @@ class _EnterManuallySerialNumberWidgetState
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 0.0),
+                                20.0, 0.0, 20.0, 10.0),
                             child: Container(
-                              height: MediaQuery.sizeOf(context).height * 0.08,
-                              constraints: BoxConstraints(
-                                minHeight: 50.0,
-                                maxHeight: valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 50.0
-                                      : 100.0,
-                                  100.0,
-                                ),
-                              ),
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: FlutterFlowTheme.of(context).secondary,
@@ -425,8 +414,6 @@ class _EnterManuallySerialNumberWidgetState
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
                               child: Container(
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.08,
                                 constraints: BoxConstraints(
                                   minHeight: 50.0,
                                   maxHeight: valueOrDefault<double>(
@@ -547,17 +534,6 @@ class _EnterManuallySerialNumberWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             child: Container(
-                              height: MediaQuery.sizeOf(context).height * 0.08,
-                              constraints: BoxConstraints(
-                                minHeight: 50.0,
-                                maxHeight: valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 50.0
-                                      : 100.0,
-                                  100.0,
-                                ),
-                              ),
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: FlutterFlowTheme.of(context).secondary,
@@ -596,10 +572,8 @@ class _EnterManuallySerialNumberWidgetState
                             alignment: AlignmentDirectional(0.0, -1.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 50.0),
+                                  20.0, 0.0, 20.0, 5.0),
                               child: Container(
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.08,
                                 constraints: BoxConstraints(
                                   minHeight: 50.0,
                                   maxHeight: valueOrDefault<double>(
@@ -714,20 +688,231 @@ class _EnterManuallySerialNumberWidgetState
                               ),
                             ),
                           ),
-                          Text(
-                            'Hello World',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  fontSize: 30.0,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .bodyMediumIsCustom,
-                                ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 20.0, 0.0, 64.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 10.0, 20.0, 0.0),
+                                      child: Text(
+                                        'Note: A/C make , Model and serial number are optional and do not guarantee fitment.',
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              fontSize: valueOrDefault<double>(
+                                                MediaQuery.sizeOf(context)
+                                                            .width <
+                                                        kBreakpointSmall
+                                                    ? 10.0
+                                                    : 18.0,
+                                                40.0,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 20.0, 12.0),
+                                      child: Text(
+                                        'Detailed specs of the parts will be requested later to confirm fitment.',
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              fontSize: valueOrDefault<double>(
+                                                MediaQuery.sizeOf(context)
+                                                            .width <
+                                                        kBreakpointSmall
+                                                    ? 10.0
+                                                    : 18.0,
+                                                40.0,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 20.0, 10.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          safeSetState(() {
+                                            _model.textFieldMakeTextController
+                                                ?.clear();
+                                            _model.textFieldModelTextController
+                                                ?.clear();
+                                            _model.textFieldSNTextController
+                                                ?.clear();
+                                          });
+                                          FFAppState().acCustomer =
+                                              AcCustomerDataStruct();
+                                          safeSetState(() {});
+                                        },
+                                        child: Text(
+                                          'Clear Form ',
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                                fontSize:
+                                                    valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 10.0
+                                                      : 18.0,
+                                                  40.0,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 12.0, 0.0, 10.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          _model.videoidentify =
+                                              await queryDiagnosisVideoRecordOnce(
+                                            queryBuilder:
+                                                (diagnosisVideoRecord) =>
+                                                    diagnosisVideoRecord.where(
+                                              'id',
+                                              isEqualTo: 'VideoMakeModel',
+                                            ),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          _model.videoID =
+                                              _model.videoidentify?.reference;
+
+                                          context.pushNamed(
+                                            CLibraryVideoFlowWidget.routeName,
+                                            queryParameters: {
+                                              'currentVideoId': serializeParam(
+                                                _model.videoID,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+
+                                          safeSetState(() {});
+                                        },
+                                        child: Text(
+                                          'Help me identify my make , model and serial',
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                                fontSize:
+                                                    valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 10.0
+                                                      : 18.0,
+                                                  40.0,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Hello World',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -736,8 +921,7 @@ class _EnterManuallySerialNumberWidgetState
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 10.0),
+            Flexible(
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -763,7 +947,7 @@ class _EnterManuallySerialNumberWidgetState
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: FlutterFlowTheme.of(context).alternate,
                       width: 1.0,
                     ),
                   ),
@@ -791,7 +975,7 @@ class _EnterManuallySerialNumberWidgetState
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   AutoSizeText(
-                                    'SEND DTAILS',
+                                    'START DIAGNOSIS',
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -826,14 +1010,8 @@ class _EnterManuallySerialNumberWidgetState
                         phone: false,
                       ))
                         Container(
-                          width: valueOrDefault<double>(
-                            MediaQuery.sizeOf(context).height * 0.1,
-                            100.0,
-                          ),
-                          height: valueOrDefault<double>(
-                            MediaQuery.sizeOf(context).height * 0.1,
-                            100.0,
-                          ),
+                          width: 80.0,
+                          height: 80.0,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                           ),

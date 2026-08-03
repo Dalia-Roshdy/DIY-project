@@ -727,6 +727,7 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                                     .displaySmallFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondary,
+                                            fontSize: 72.0,
                                             letterSpacing:
                                                 MediaQuery.sizeOf(context)
                                                             .width <

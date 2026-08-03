@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -346,12 +347,14 @@ class _EReviewYourOrderMobileWidgetState
                                 .where((e) => e.specType != Parts.TOOL.name)
                                 .toList();
 
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
+                            return ListView.separated(
+                              padding: EdgeInsets.symmetric(vertical: 6.0),
                               primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: cartListItems.length,
+                              separatorBuilder: (_, __) =>
+                                  SizedBox(height: 6.0),
                               itemBuilder: (context, cartListItemsIndex) {
                                 final cartListItemsItem =
                                     cartListItems[cartListItemsIndex];
@@ -444,7 +447,7 @@ class _EReviewYourOrderMobileWidgetState
                                     ),
                                     TextSpan(
                                       text:
-                                          'Refundable once returned with 7 days',
+                                          'Refundable once returned within 7 days',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -795,7 +798,7 @@ class _EReviewYourOrderMobileWidgetState
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'Need a custom Motor Shaft length?',
+                              'Need a custom Motor Shaft length (Inch)?',
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
@@ -882,6 +885,20 @@ class _EReviewYourOrderMobileWidgetState
                               child: TextFormField(
                                 controller: _model.textFieldSLTextController,
                                 focusNode: _model.textFieldSLFocusNode,
+                                onChanged: (_) => EasyDebounce.debounce(
+                                  '_model.textFieldSLTextController',
+                                  Duration(milliseconds: 100),
+                                  () async {
+                                    FFAppState().updateCartStruct(
+                                      (e) => e
+                                        ..motorSLComment = _model
+                                            .textFieldSLTextController.text
+                                        ..comment = _model
+                                            .textFieldMessageTextController
+                                            .text,
+                                    );
+                                  },
+                                ),
                                 autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -985,6 +1002,19 @@ class _EReviewYourOrderMobileWidgetState
                             child: TextFormField(
                               controller: _model.textFieldMessageTextController,
                               focusNode: _model.textFieldMessageFocusNode,
+                              onChanged: (_) => EasyDebounce.debounce(
+                                '_model.textFieldMessageTextController',
+                                Duration(milliseconds: 100),
+                                () async {
+                                  FFAppState().updateCartStruct(
+                                    (e) => e
+                                      ..motorSLComment =
+                                          _model.textFieldSLTextController.text
+                                      ..comment = _model
+                                          .textFieldMessageTextController.text,
+                                  );
+                                },
+                              ),
                               autofocus: false,
                               obscureText: false,
                               decoration: InputDecoration(

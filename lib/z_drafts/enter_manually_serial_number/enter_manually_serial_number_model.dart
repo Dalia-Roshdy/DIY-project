@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'enter_manually_serial_number_widget.dart'
     show EnterManuallySerialNumberWidget;
@@ -5,6 +6,10 @@ import 'package:flutter/material.dart';
 
 class EnterManuallySerialNumberModel
     extends FlutterFlowModel<EnterManuallySerialNumberWidget> {
+  ///  Local state fields for this component.
+
+  DocumentReference? videoID;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
@@ -21,6 +26,8 @@ class EnterManuallySerialNumberModel
   FocusNode? textFieldSNFocusNode;
   TextEditingController? textFieldSNTextController;
   String? Function(BuildContext, String?)? textFieldSNTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in Text widget.
+  DiagnosisVideoRecord? videoidentify;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered = false;
 

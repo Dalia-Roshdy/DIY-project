@@ -10,7 +10,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
-import 'package:collection/collection.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -47,16 +47,9 @@ class _ReviewYourOrderDesktopWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.taxAcPL = await querySettingsRecordOnce(
-        queryBuilder: (settingsRecord) => settingsRecord.where(
-          'key',
-          isEqualTo: '',
-        ),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
       await Future.delayed(
         Duration(
-          milliseconds: 500,
+          milliseconds: 700,
         ),
       );
       _model.toolsList = widget.toolsCS!.toList().cast<ItemsRecord>();
@@ -405,7 +398,7 @@ class _ReviewYourOrderDesktopWidgetState
                                               ),
                                               TextSpan(
                                                 text:
-                                                    'Refundable once returned with 7 days',
+                                                    'Refundable once returned within 7 days',
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -1029,7 +1022,7 @@ class _ReviewYourOrderDesktopWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
-                                    'Need a custom Motor Shaft length ?',
+                                    'Need a custom Motor Shaft length (Inch) ?',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -1075,8 +1068,12 @@ class _ReviewYourOrderDesktopWidgetState
                                           FFAppState().updateCartStruct(
                                             (e) => e..motorSLEnabled = true,
                                           );
-                                          _model.updatePage(() {});
                                           await actions.calculateCartTotal();
+                                          await Future.delayed(
+                                            Duration(
+                                              milliseconds: 100,
+                                            ),
+                                          );
                                           _model.updatePage(() {});
                                         } else {
                                           FFAppState().updateCartStruct(
@@ -1092,6 +1089,11 @@ class _ReviewYourOrderDesktopWidgetState
                                                     .motorSLComment;
                                           });
                                           await actions.calculateCartTotal();
+                                          await Future.delayed(
+                                            Duration(
+                                              milliseconds: 100,
+                                            ),
+                                          );
                                           _model.updatePage(() {});
                                         }
                                       },
@@ -1129,6 +1131,21 @@ class _ReviewYourOrderDesktopWidgetState
                                           .textFieldMessageSLTextController,
                                       focusNode:
                                           _model.textFieldMessageSLFocusNode,
+                                      onChanged: (_) => EasyDebounce.debounce(
+                                        '_model.textFieldMessageSLTextController',
+                                        Duration(milliseconds: 100),
+                                        () async {
+                                          FFAppState().updateCartStruct(
+                                            (e) => e
+                                              ..motorSLComment = _model
+                                                  .textFieldMessageSLTextController
+                                                  .text
+                                              ..comment = _model
+                                                  .textFieldMessageCTextController
+                                                  .text,
+                                          );
+                                        },
+                                      ),
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -1232,6 +1249,21 @@ class _ReviewYourOrderDesktopWidgetState
                                         _model.textFieldMessageCTextController,
                                     focusNode:
                                         _model.textFieldMessageCFocusNode,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.textFieldMessageCTextController',
+                                      Duration(milliseconds: 100),
+                                      () async {
+                                        FFAppState().updateCartStruct(
+                                          (e) => e
+                                            ..motorSLComment = _model
+                                                .textFieldMessageSLTextController
+                                                .text
+                                            ..comment = _model
+                                                .textFieldMessageCTextController
+                                                .text,
+                                        );
+                                      },
+                                    ),
                                     autofocus: false,
                                     obscureText: false,
                                     decoration: InputDecoration(

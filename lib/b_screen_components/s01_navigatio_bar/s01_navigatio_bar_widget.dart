@@ -143,8 +143,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           onTap: () async {
                             if ((FFAppState().Cart.cartItems.isNotEmpty) ==
                                 true) {
-                              context
-                                  .pushNamed(EReviewYourOrderWidget.routeName);
+                              context.goNamed(EReviewYourOrderWidget.routeName);
                             } else {
                               await showDialog(
                                 context: context,
@@ -405,7 +404,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                 ),
                 onPressed: () async {
                   if ((FFAppState().Cart.cartItems.isNotEmpty) == true) {
-                    context.pushNamed(EReviewYourOrderWidget.routeName);
+                    context.goNamed(EReviewYourOrderWidget.routeName);
                   } else {
                     await showDialog(
                       context: context,

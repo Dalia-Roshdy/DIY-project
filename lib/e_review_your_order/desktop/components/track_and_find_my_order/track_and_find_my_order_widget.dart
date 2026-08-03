@@ -510,7 +510,7 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                           ),
                                     ),
                                     Text(
-                                      'Showing results for yourorders',
+                                      'Showing results for your orders',
                                       style: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(

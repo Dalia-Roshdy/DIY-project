@@ -231,7 +231,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                         alignment:
                                             AlignmentDirectional(0.0, 1.0),
                                         child: AutoSizeText(
-                                          'REAREADY TO FIX YOUR AC?',
+                                          'READY TO FIX YOUR AC?',
                                           style: FlutterFlowTheme.of(context)
                                               .displayMedium
                                               .override(
@@ -1090,7 +1090,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                             decoration: InputDecoration(
                                               isDense: true,
                                               hintText:
-                                                  'Describe your AC problem,,',
+                                                  'Describe your AC problem',
                                               hintStyle: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall

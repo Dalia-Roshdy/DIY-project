@@ -1,13 +1,9 @@
 import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
 import '/b_screen_components/s05_homestartdiagnosis/s05_homestartdiagnosis_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:provider/provider.dart';
 import 'b_diagnosis_model.dart';
 export 'b_diagnosis_model.dart';
 
@@ -31,42 +27,6 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
     super.initState();
     _model = createModel(context, () => BDiagnosisModel());
 
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (!(FFAppState().acMakeList.isNotEmpty)) {
-        _model.acMakeActD = await queryACMakeRecordOnce(
-          queryBuilder: (aCMakeRecord) => aCMakeRecord.where(
-            'approved',
-            isEqualTo: true,
-          ),
-        );
-        _model.acMakeMapD = await actions.mapACMakeToDto(
-          _model.acMakeActD!.toList(),
-        );
-        FFAppState().acMakeList = _model.acMakeMapD!
-            .sortedList(keyOf: (e) => e.name, desc: false)
-            .toList()
-            .cast<AcMakeDTOStruct>();
-        safeSetState(() {});
-      }
-      if (!(FFAppState().acModelList.isNotEmpty)) {
-        _model.acModelActD = await queryACModelRecordOnce(
-          queryBuilder: (aCModelRecord) => aCModelRecord.where(
-            'approved',
-            isEqualTo: true,
-          ),
-        );
-        _model.acModelMapD = await actions.mapACModelToDto(
-          _model.acModelActD!.toList(),
-        );
-        FFAppState().acModelList = _model.acModelMapD!
-            .sortedList(keyOf: (e) => e.name, desc: false)
-            .toList()
-            .cast<AcModelDTOStruct>();
-      }
-      safeSetState(() {});
-    });
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -79,8 +39,6 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       excludeFromSemantics: true,
       onTap: () {

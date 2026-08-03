@@ -214,8 +214,6 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                                 updateCallback: () =>
                                                                     safeSetState(
                                                                         () {}),
-                                                                updateOnChange:
-                                                                    true,
                                                                 child:
                                                                     CVideoDiagnosisDesktopWidget(
                                                                   videoRecord:

@@ -859,7 +859,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                     size: 20.0,
                                   ),
                                   Text(
-                                    'CATIOUS',
+                                    'CAUTIOUS',
                                     style: FlutterFlowTheme.of(context)
                                         .labelSmall
                                         .override(

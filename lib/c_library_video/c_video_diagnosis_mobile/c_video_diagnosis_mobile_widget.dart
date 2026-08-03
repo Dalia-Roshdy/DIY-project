@@ -300,7 +300,6 @@ class _CVideoDiagnosisMobileWidgetState
                                       e.buttonText == _model.radioButtonValue)
                                   .toList()
                                   .firstOrNull;
-                              safeSetState(() {});
                             },
                             controller: _model.radioButtonValueController ??=
                                 FormFieldController<String>(null),

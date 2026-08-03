@@ -49,7 +49,8 @@ class _S05HomestartdiagnosisWidgetState
           color: FlutterFlowTheme.of(context).primaryBackground,
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             if (responsiveVisibility(
               context: context,
@@ -59,7 +60,7 @@ class _S05HomestartdiagnosisWidgetState
               Flexible(
                 child: Container(
                   constraints: BoxConstraints(
-                    maxWidth: MediaQuery.sizeOf(context).width * 0.4,
+                    maxWidth: MediaQuery.sizeOf(context).width * 0.45,
                   ),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primary,
@@ -391,56 +392,43 @@ class _S05HomestartdiagnosisWidgetState
                 ),
               ),
             Flexible(
-              child: Container(
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: FlutterFlowTheme.of(context).secondary,
-                    width: 1.0,
+              child: Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Container(
+                  height: MediaQuery.sizeOf(context).height * 1.0,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: FlutterFlowTheme.of(context).secondary,
+                      width: 1.0,
+                    ),
                   ),
-                ),
-                child: Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(
-                        valueOrDefault<double>(
-                          MediaQuery.sizeOf(context).width < kBreakpointSmall
-                              ? 10.0
-                              : 50.0,
-                          50.0,
-                        ),
-                        valueOrDefault<double>(
-                          MediaQuery.sizeOf(context).width < kBreakpointSmall
-                              ? 25.0
-                              : 25.0,
-                          25.0,
-                        ),
-                        valueOrDefault<double>(
-                          MediaQuery.sizeOf(context).width < kBreakpointSmall
-                              ? 10.0
-                              : 50.0,
-                          50.0,
-                        ),
-                        valueOrDefault<double>(
-                          MediaQuery.sizeOf(context).width < kBreakpointSmall
-                              ? 25.0
-                              : 20.0,
-                          20.0,
-                        )),
-                    child: ClipRRect(
-                      child: Container(
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 6.0,
+                  child: Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          0.0,
+                          valueOrDefault<double>(
+                            MediaQuery.sizeOf(context).width < kBreakpointSmall
+                                ? 10.0
+                                : 50.0,
+                            50.0,
                           ),
-                        ),
-                        child: wrapWithModel(
-                          model: _model.enterManuallySerialNumberModel,
-                          updateCallback: () => safeSetState(() {}),
-                          child: EnterManuallySerialNumberWidget(),
-                        ),
+                          valueOrDefault<double>(
+                            MediaQuery.sizeOf(context).width < kBreakpointSmall
+                                ? 10.0
+                                : 50.0,
+                            50.0,
+                          ),
+                          valueOrDefault<double>(
+                            MediaQuery.sizeOf(context).width < kBreakpointSmall
+                                ? 10.0
+                                : 50.0,
+                            50.0,
+                          )),
+                      child: wrapWithModel(
+                        model: _model.enterManuallySerialNumberModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: EnterManuallySerialNumberWidget(),
                       ),
                     ),
                   ),

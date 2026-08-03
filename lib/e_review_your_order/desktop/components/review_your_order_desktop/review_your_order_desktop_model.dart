@@ -25,8 +25,6 @@ class ReviewYourOrderDesktopModel
 
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in Review_Your_Order_Desktop widget.
-  SettingsRecord? taxAcPL;
   // Model for PartRowCopy component.
   late PartRowCopyModel partRowCopyModel;
   // State field(s) for Checkbox widget.

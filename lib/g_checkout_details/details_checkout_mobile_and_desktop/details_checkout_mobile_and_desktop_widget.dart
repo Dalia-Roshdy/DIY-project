@@ -986,7 +986,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                   ].divide(SizedBox(width: 4.0)),
                 ),
                 Text(
-                  '© 2023 DIY AC Repair Systems Inc. All rights reserved.',
+                  '© 2026 DIY AC Repair Systems Inc. All rights reserved.',
                   style: FlutterFlowTheme.of(context).labelSmall.override(
                         fontFamily:
                             FlutterFlowTheme.of(context).labelSmallFamily,

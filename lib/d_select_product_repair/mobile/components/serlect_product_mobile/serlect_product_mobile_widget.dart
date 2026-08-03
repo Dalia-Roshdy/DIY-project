@@ -224,6 +224,8 @@ class _SerlectProductMobileWidgetState
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       if (_model.selectedPartCS != Parts.MOTOR) {
+                        _model.selectedPartCS = Parts.MOTOR;
+                        safeSetState(() {});
                         _model.motorItemsOnCallbackMob =
                             await actions.filterMotorItems(
                           FFAppState().userAC.acModel,
@@ -232,12 +234,10 @@ class _SerlectProductMobileWidgetState
                           null,
                           null,
                         );
-                        _model.selectedPartCS = Parts.MOTOR;
                         _model.partsList = _model.motorItemsOnCallbackMob!
                             .sortedList(keyOf: (e) => e.title, desc: false)
                             .toList()
                             .cast<PartCardDTOStruct>();
-                        safeSetState(() {});
                         safeSetState(() {
                           _model.dropDownHpValueController?.reset();
                           _model.dropDownHpValue = null;
@@ -282,6 +282,8 @@ class _SerlectProductMobileWidgetState
                   highlightColor: Colors.transparent,
                   onTap: () async {
                     if (_model.selectedPartCS != Parts.CAPACITOR) {
+                      _model.selectedPartCS = Parts.CAPACITOR;
+                      safeSetState(() {});
                       _model.capacItemsOnCallbackMob =
                           await actions.filterCapacitorItems(
                         FFAppState().userAC.acModel,
@@ -295,7 +297,6 @@ class _SerlectProductMobileWidgetState
                           .sortedList(keyOf: (e) => e.title, desc: false)
                           .toList()
                           .cast<PartCardDTOStruct>();
-                      safeSetState(() {});
                       safeSetState(() {
                         _model.dropDownHpValueController?.reset();
                         _model.dropDownHpValue = null;
@@ -341,18 +342,18 @@ class _SerlectProductMobileWidgetState
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       if (_model.selectedPartCS != Parts.CONTACTOR) {
+                        _model.selectedPartCS = Parts.CONTACTOR;
+                        safeSetState(() {});
                         _model.contItemsOnCallbackMob =
                             await actions.filterContactorItems(
                           FFAppState().userAC.acModel,
                           null,
                           null,
                         );
-                        _model.selectedPartCS = Parts.CONTACTOR;
                         _model.partsList = _model.contItemsOnCallbackMob!
                             .sortedList(keyOf: (e) => e.title, desc: false)
                             .toList()
                             .cast<PartCardDTOStruct>();
-                        safeSetState(() {});
                         safeSetState(() {
                           _model.dropDownHpValueController?.reset();
                           _model.dropDownHpValue = null;
