@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 's12_footer_model.dart';
@@ -317,47 +316,6 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                     border: Border.all(
                       color: FlutterFlowTheme.of(context).primary,
                       width: 1.0,
-                    ),
-                  ),
-                  child: Visibility(
-                    visible: false,
-                    child: Align(
-                      alignment: AlignmentDirectional(1.0, 0.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            25.0, 20.0, 25.0, 20.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Image.asset(
-                              'assets/images/Logo_2.png',
-                              height: 20.0,
-                              fit: BoxFit.contain,
-                            ),
-                            Flexible(
-                              child: AutoSizeText(
-                                '© 2026 THE COMPANY. ALL RIGHTS RESERVED.',
-                                textAlign: TextAlign.end,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelLarge
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .labelLargeFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      useGoogleFonts:
-                                          !FlutterFlowTheme.of(context)
-                                              .labelLargeIsCustom,
-                                    ),
-                              ),
-                            ),
-                          ].divide(SizedBox(height: 5.0)),
-                        ),
-                      ),
                     ),
                   ),
                 ),

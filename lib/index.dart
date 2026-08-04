@@ -43,3 +43,5 @@ export '/z_drafts/e_review_your_order_draft/e_review_your_order_draft_widget.dar
     show EReviewYourOrderDraftWidget;
 export '/b_diagnosis/b_diagnosis_copy/b_diagnosis_copy_widget.dart'
     show BDiagnosisCopyWidget;
+export '/k_widgets/hamburger_overlay/hamburger_overlay_widget.dart'
+    show HamburgerOverlayWidget;

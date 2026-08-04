@@ -56,43 +56,45 @@ class _DSelectProductRepairWidgetState
         safeSetState(() {});
       }
 
-      if (_model.selectedPart == Parts.MOTOR) {
-        _model.motorItemsOnPageLoad = await actions.filterMotorItems(
-          FFAppState().userAC.acModel,
-          null,
-          null,
-          null,
-          null,
-        );
-        _model.partList = _model.motorItemsOnPageLoad!
-            .sortedList(keyOf: (e) => e.title, desc: false)
-            .toList()
-            .cast<PartCardDTOStruct>();
-        safeSetState(() {});
-      } else if (_model.selectedPart == Parts.CONTACTOR) {
-        _model.contOnPageLoad = await actions.filterContactorItems(
-          FFAppState().userAC.acModel,
-          null,
-          null,
-        );
-        _model.partList = _model.contOnPageLoad!
-            .sortedList(keyOf: (e) => e.title, desc: false)
-            .toList()
-            .cast<PartCardDTOStruct>();
-        safeSetState(() {});
-      } else if (_model.selectedPart == Parts.CAPACITOR) {
-        _model.capacOnPageLoad = await actions.filterCapacitorItems(
-          FFAppState().userAC.acModel,
-          null,
-          null,
-          null,
-          null,
-        );
-        _model.partList = _model.capacOnPageLoad!
-            .sortedList(keyOf: (e) => e.title, desc: false)
-            .toList()
-            .cast<PartCardDTOStruct>();
-        safeSetState(() {});
+      if (MediaQuery.sizeOf(context).width >= 1024.0) {
+        if (_model.selectedPart == Parts.MOTOR) {
+          _model.motorItemsOnPageLoad = await actions.filterMotorItems(
+            FFAppState().userAC.acModel,
+            null,
+            null,
+            null,
+            null,
+          );
+          _model.partList = _model.motorItemsOnPageLoad!
+              .sortedList(keyOf: (e) => e.title, desc: false)
+              .toList()
+              .cast<PartCardDTOStruct>();
+          safeSetState(() {});
+        } else if (_model.selectedPart == Parts.CONTACTOR) {
+          _model.contOnPageLoad = await actions.filterContactorItems(
+            FFAppState().userAC.acModel,
+            null,
+            null,
+          );
+          _model.partList = _model.contOnPageLoad!
+              .sortedList(keyOf: (e) => e.title, desc: false)
+              .toList()
+              .cast<PartCardDTOStruct>();
+          safeSetState(() {});
+        } else if (_model.selectedPart == Parts.CAPACITOR) {
+          _model.capacOnPageLoad = await actions.filterCapacitorItems(
+            FFAppState().userAC.acModel,
+            null,
+            null,
+            null,
+            null,
+          );
+          _model.partList = _model.capacOnPageLoad!
+              .sortedList(keyOf: (e) => e.title, desc: false)
+              .toList()
+              .cast<PartCardDTOStruct>();
+          safeSetState(() {});
+        }
       }
     });
 

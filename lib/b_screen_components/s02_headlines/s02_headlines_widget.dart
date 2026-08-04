@@ -176,18 +176,15 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                   child: AutoSizeText(
                                     'DIAGNOSE',
                                     style: FlutterFlowTheme.of(context)
-                                        .displayLarge
+                                        .headlineLarge
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .displayLargeFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          fontSize: 54.0,
+                                                  .headlineLargeFamily,
                                           letterSpacing: 0.0,
                                           useGoogleFonts:
                                               !FlutterFlowTheme.of(context)
-                                                  .displayLargeIsCustom,
+                                                  .headlineLargeIsCustom,
                                         ),
                                   ),
                                 ),
@@ -199,19 +196,17 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                                       10.0, 20.0, 10.0, 20.0),
                                   child: AutoSizeText(
                                     'QUICK DELIVERY',
+                                    textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
-                                        .displayLarge
+                                        .displayMedium
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .displayLargeFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                                  .displayMediumFamily,
                                           letterSpacing: 0.0,
-                                          fontWeight: FontWeight.normal,
                                           useGoogleFonts:
                                               !FlutterFlowTheme.of(context)
-                                                  .displayLargeIsCustom,
+                                                  .displayMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -436,35 +431,6 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                     ),
                   ],
                 ),
-              ),
-            ),
-            Container(
-              width: () {
-                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-                  return 179.0;
-                } else if (MediaQuery.sizeOf(context).width <
-                    kBreakpointLarge) {
-                  return (MediaQuery.sizeOf(context).width * 0.3);
-                } else if (MediaQuery.sizeOf(context).width < 2000.0) {
-                  return (MediaQuery.sizeOf(context).width * 0.23);
-                } else {
-                  return 500.0;
-                }
-              }(),
-              height: () {
-                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-                  return 179.0;
-                } else if (MediaQuery.sizeOf(context).width <
-                    kBreakpointLarge) {
-                  return (MediaQuery.sizeOf(context).width * 0.3);
-                } else if (MediaQuery.sizeOf(context).width < 2000.0) {
-                  return (MediaQuery.sizeOf(context).width * 0.23);
-                } else {
-                  return 500.0;
-                }
-              }(),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
               ),
             ),
           ],

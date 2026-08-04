@@ -376,8 +376,7 @@ class _EnterManuallySerialNumberWidgetState
                                       _model.textFieldModelTextController,
                                   focusNode: _model.textFieldModelFocusNode,
                                   autofocus: false,
-                                  enabled: _model.textFieldMakeTextController.text !=
-                                          '',
+                                  enabled: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     isDense: true,

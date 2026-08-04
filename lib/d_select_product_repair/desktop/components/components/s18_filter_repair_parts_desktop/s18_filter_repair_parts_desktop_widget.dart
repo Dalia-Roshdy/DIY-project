@@ -1008,7 +1008,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                       ),
                     ),
                   ),
-                if (widget.selectedPartPram == Parts.CONTACTOR)
+                if (_model.selectedPart == Parts.CONTACTOR)
                   Container(
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).grey10,

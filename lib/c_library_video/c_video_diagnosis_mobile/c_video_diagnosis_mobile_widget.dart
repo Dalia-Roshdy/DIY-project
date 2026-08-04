@@ -43,15 +43,16 @@ class _CVideoDiagnosisMobileWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.currentVideo = widget.videoRecord;
+      safeSetState(() {});
       _model.allOptions = await queryDiagnosisVideoOptionRecordOnce(
         queryBuilder: (diagnosisVideoOptionRecord) => diagnosisVideoOptionRecord
             .where(
               'diagnosisVideoRef',
-              isEqualTo: widget.videoRecord?.reference,
+              isEqualTo: _model.currentVideo?.reference,
             )
             .orderBy('displayOrder'),
       );
-      _model.currentVideo = widget.videoRecord;
       _model.videoOptions =
           _model.allOptions!.toList().cast<DiagnosisVideoOptionRecord>();
       safeSetState(() {});
@@ -118,114 +119,30 @@ class _CVideoDiagnosisMobileWidgetState
               ),
             ),
           ),
-          Expanded(
-            child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: ClipRRect(
-                child: Container(
-                  width: double.infinity,
-                  height: MediaQuery.sizeOf(context).height * 0.45,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: AspectRatio(
-                    aspectRatio: 0.75,
-                    child: FlutterFlowVideoPlayer(
-                      path: _model.currentVideo!.videoUrl,
-                      videoType: VideoType.network,
-                      autoPlay: true,
-                      looping: false,
-                      showControls: true,
-                      allowFullScreen: false,
-                      allowPlaybackSpeedMenu: true,
-                      lazyLoad: true,
-                    ),
+          Align(
+            alignment: AlignmentDirectional(0.0, 0.0),
+            child: ClipRRect(
+              child: Container(
+                width: double.infinity,
+                height: MediaQuery.sizeOf(context).height * 0.45,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: AspectRatio(
+                  aspectRatio: 0.75,
+                  child: FlutterFlowVideoPlayer(
+                    path: widget.videoRecord!.videoUrl,
+                    videoType: VideoType.network,
+                    autoPlay: true,
+                    looping: false,
+                    showControls: true,
+                    allowFullScreen: false,
+                    allowPlaybackSpeedMenu: true,
+                    lazyLoad: true,
                   ),
                 ),
               ),
             ),
-          ),
-          Wrap(
-            spacing: 0.0,
-            runSpacing: 0.0,
-            alignment: WrapAlignment.start,
-            crossAxisAlignment: WrapCrossAlignment.start,
-            direction: Axis.horizontal,
-            runAlignment: WrapAlignment.start,
-            verticalDirection: VerticalDirection.down,
-            clipBehavior: Clip.none,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (false)
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 24.0, 12.0, 0.0),
-                      child: RichText(
-                        textScaler: MediaQuery.of(context).textScaler,
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Description:',
-                              style: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .labelMediumFamily,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .labelMediumIsCustom,
-                                  ),
-                            ),
-                            TextSpan(
-                              text: '\n',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    letterSpacing: 0.0,
-                                    decoration: TextDecoration.underline,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .bodyMediumIsCustom,
-                                  ),
-                            ),
-                            TextSpan(
-                              text:
-                                  'Learn how to locate your AC model and serial number \nquickly. This information helps us recommend the\n correct parts and repair steps for your unit.',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .bodyMediumIsCustom,
-                                  ),
-                            )
-                          ],
-                          style: FlutterFlowTheme.of(context)
-                              .titleLarge
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .titleLargeFamily,
-                                letterSpacing: 0.0,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .titleLargeIsCustom,
-                              ),
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                ],
-              ),
-            ],
           ),
           Padding(
             padding: EdgeInsets.all(16.0),

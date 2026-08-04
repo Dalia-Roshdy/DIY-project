@@ -127,7 +127,7 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  width: 40.0,
+                  width: 30.0,
                   decoration: BoxDecoration(),
                   child: Text(
                     'Part',
@@ -147,12 +147,12 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
-                    width: 80.0,
+                    width: 120.0,
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
-                        width: 80.0,
+                        width: 120.0,
                         height: 40.0,
                         decoration: BoxDecoration(
                           color:
@@ -166,26 +166,25 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                             color: enabled
                                 ? FlutterFlowTheme.of(context).secondaryText
                                 : FlutterFlowTheme.of(context).alternate,
-                            size: 25.0,
+                            size: 30.0,
                           ),
                           incrementIconBuilder: (enabled) => Icon(
                             Icons.add_rounded,
                             color: enabled
                                 ? FlutterFlowTheme.of(context).primary
                                 : FlutterFlowTheme.of(context).alternate,
-                            size: 25.0,
+                            size: 30.0,
                           ),
                           countBuilder: (count) => Text(
                             count.toString(),
                             style: FlutterFlowTheme.of(context)
-                                .titleLarge
+                                .titleSmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .titleLargeFamily,
-                                  fontSize: 14.0,
+                                      .titleSmallFamily,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .titleLargeIsCustom,
+                                      .titleSmallIsCustom,
                                 ),
                           ),
                           count: _model.countControllerValue ??= widget.qty!,
@@ -209,25 +208,22 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                   ),
                 ),
                 Container(
-                  width: 80.0,
+                  width: 100.0,
                   child: Text(
                     '\$${widget.price}',
                     textAlign: TextAlign.end,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily:
-                              FlutterFlowTheme.of(context).bodyMediumFamily,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 12.0,
+                              FlutterFlowTheme.of(context).titleSmallFamily,
                           letterSpacing: 0.0,
-                          fontWeight: FontWeight.w600,
                           lineHeight: 1.5,
                           useGoogleFonts:
-                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                         ),
                   ),
                 ),
                 Container(
-                  width: 50.0,
+                  width: 40.0,
                   decoration: BoxDecoration(),
                   child: Align(
                     alignment: AlignmentDirectional(0.0, 0.0),

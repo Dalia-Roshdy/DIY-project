@@ -83,188 +83,103 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Stack(
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
-                      child: Container(
-                        width: double.infinity,
-                        constraints: BoxConstraints(
-                          maxWidth: 2000.0,
-                        ),
-                        decoration: BoxDecoration(),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            child: Container(
-                              width: MediaQuery.sizeOf(context).width * 0.96,
-                              decoration: BoxDecoration(),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 1.0,
-                                      ),
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            wrapWithModel(
-                                              model:
-                                                  _model.s01NavigatioBarModel,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: S01NavigatioBarWidget(),
-                                            ),
-                                            Divider(
-                                              height: 1.0,
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                            ),
-                                            Container(
-                                              width: double.infinity,
-                                              height: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 25.0
-                                                    : 60.0,
-                                                100.0,
-                                              ),
-                                              decoration: BoxDecoration(),
-                                            ),
-                                            Divider(
-                                              height: 1.0,
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                            ),
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          if ((_model.currentValue !=
-                                                                  null) &&
-                                                              responsiveVisibility(
-                                                                context:
-                                                                    context,
-                                                                tablet: false,
-                                                                tabletLandscape:
-                                                                    false,
-                                                                desktop: false,
-                                                              ))
-                                                            wrapWithModel(
-                                                              model: _model
-                                                                  .cVideoDiagnosisMobileModel,
-                                                              updateCallback: () =>
-                                                                  safeSetState(
-                                                                      () {}),
-                                                              child:
-                                                                  CVideoDiagnosisMobileWidget(
-                                                                videoRecord: _model
-                                                                    .currentValue,
-                                                              ),
-                                                            ),
-                                                          if ((_model.currentValue
-                                                                      ?.reference !=
-                                                                  null) &&
-                                                              responsiveVisibility(
-                                                                context:
-                                                                    context,
-                                                                phone: false,
-                                                                tablet: false,
-                                                              ))
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          48.0),
-                                                              child:
-                                                                  wrapWithModel(
-                                                                model: _model
-                                                                    .cVideoDiagnosisDesktopModel,
-                                                                updateCallback: () =>
-                                                                    safeSetState(
-                                                                        () {}),
-                                                                child:
-                                                                    CVideoDiagnosisDesktopWidget(
-                                                                  videoRecord:
-                                                                      _model
-                                                                          .currentValue!,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          if (responsiveVisibility(
-                                                            context: context,
-                                                            phone: false,
-                                                            tablet: false,
-                                                            tabletLandscape:
-                                                                false,
-                                                          ))
-                                                            wrapWithModel(
-                                                              model: _model
-                                                                  .s12FooterModel,
-                                                              updateCallback: () =>
-                                                                  safeSetState(
-                                                                      () {}),
-                                                              child:
-                                                                  S12FooterWidget(),
-                                                            ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ].divide(SizedBox(
-                                    height: valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 25.0
-                                      : 50.0,
-                                  50.0,
-                                ))),
-                              ),
-                            ),
-                          ),
+                Align(
+                  alignment: AlignmentDirectional(0.0, -1.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.96,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).primary,
+                          width: 1.0,
                         ),
                       ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          wrapWithModel(
+                            model: _model.s01NavigatioBarModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: S01NavigatioBarWidget(),
+                          ),
+                          Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: valueOrDefault<double>(
+                              MediaQuery.sizeOf(context).width <
+                                      kBreakpointSmall
+                                  ? 25.0
+                                  : 60.0,
+                              100.0,
+                            ),
+                            decoration: BoxDecoration(),
+                          ),
+                          Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).tertiary,
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              if ((_model.currentValue != null) &&
+                                  responsiveVisibility(
+                                    context: context,
+                                    tablet: false,
+                                    tabletLandscape: false,
+                                    desktop: false,
+                                  ))
+                                Expanded(
+                                  child: wrapWithModel(
+                                    model: _model.cVideoDiagnosisMobileModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: CVideoDiagnosisMobileWidget(
+                                      videoRecord: _model.currentValue,
+                                    ),
+                                  ),
+                                ),
+                              if ((_model.currentValue?.reference != null) &&
+                                  responsiveVisibility(
+                                    context: context,
+                                    phone: false,
+                                    tablet: false,
+                                  ))
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 48.0),
+                                    child: wrapWithModel(
+                                      model: _model.cVideoDiagnosisDesktopModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: CVideoDiagnosisDesktopWidget(
+                                        videoRecord: _model.currentValue!,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                                tabletLandscape: false,
+                              ))
+                                wrapWithModel(
+                                  model: _model.s12FooterModel,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: S12FooterWidget(),
+                                ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
+                  ),
                 ),
               ]
                   .addToStart(SizedBox(

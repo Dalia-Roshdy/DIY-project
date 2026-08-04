@@ -123,7 +123,7 @@ class _EReviewYourOrderMobileWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 16.0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 16.0),
             child: Container(
               constraints: BoxConstraints(
                 maxHeight: double.infinity,
@@ -228,7 +228,7 @@ class _EReviewYourOrderMobileWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Container(
-                                      width: 60.0,
+                                      width: 50.0,
                                       decoration: BoxDecoration(),
                                       child: Text(
                                         'Part Details',
@@ -251,43 +251,48 @@ class _EReviewYourOrderMobileWidgetState
                                             ),
                                       ),
                                     ),
-                                    Container(
-                                      width: 80.0,
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Qty',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelSmall
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelSmallFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .onSurface,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  lineHeight: 1.2,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelSmallIsCustom,
-                                                ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.0, -1.0),
+                                      child: Container(
+                                        width: 100.0,
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    30.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Qty',
+                                              textAlign: TextAlign.center,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelSmallFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .onSurface,
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    lineHeight: 1.2,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelSmallIsCustom,
+                                                  ),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                     Container(
-                                      width: 80.0,
+                                      width: 100.0,
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 0.0, 0.0),
@@ -381,7 +386,7 @@ class _EReviewYourOrderMobileWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 16.0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 16.0),
             child: Container(
               child: Visibility(
                 visible: (_model.toolsCS.isNotEmpty) == true,
@@ -771,7 +776,7 @@ class _EReviewYourOrderMobileWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 24.0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 24.0),
             child: Container(
               child: Container(
                 decoration: BoxDecoration(
@@ -961,7 +966,7 @@ class _EReviewYourOrderMobileWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 24.0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 24.0),
             child: Container(
               decoration: BoxDecoration(),
               child: Container(
@@ -1076,7 +1081,7 @@ class _EReviewYourOrderMobileWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 24.0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 24.0),
             child: Container(
               decoration: BoxDecoration(),
               child: Container(

@@ -1,9 +1,11 @@
 import '/c_components/dialog_components/empty_cart_component/empty_cart_component_widget.dart';
+import '/components/nav_menu_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 's01_navigatio_bar_model.dart';
@@ -358,33 +360,51 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
             context: context,
             desktop: false,
           ))
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-              child: FlutterFlowIconButton(
-                borderRadius: 0.0,
-                borderWidth: 0.0,
-                buttonSize: valueOrDefault<double>(
-                  MediaQuery.sizeOf(context).width < kBreakpointSmall
-                      ? 40.0
-                      : 80.0,
-                  80.0,
-                ),
-                fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                hoverColor: FlutterFlowTheme.of(context).primaryBackground,
-                hoverIconColor: FlutterFlowTheme.of(context).tertiary,
-                icon: Icon(
-                  Icons.menu,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: valueOrDefault<double>(
+            Builder(
+              builder: (context) => Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                child: FlutterFlowIconButton(
+                  borderRadius: 0.0,
+                  borderWidth: 0.0,
+                  buttonSize: valueOrDefault<double>(
                     MediaQuery.sizeOf(context).width < kBreakpointSmall
-                        ? 20.0
-                        : 40.0,
-                    40.0,
+                        ? 40.0
+                        : 80.0,
+                    80.0,
                   ),
+                  fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                  hoverColor: FlutterFlowTheme.of(context).primaryBackground,
+                  hoverIconColor: FlutterFlowTheme.of(context).tertiary,
+                  icon: Icon(
+                    Icons.menu,
+                    color: FlutterFlowTheme.of(context).primary,
+                    size: valueOrDefault<double>(
+                      MediaQuery.sizeOf(context).width < kBreakpointSmall
+                          ? 20.0
+                          : 40.0,
+                      40.0,
+                    ),
+                  ),
+                  onPressed: () async {
+                    await showAlignedDialog(
+                      barrierColor:
+                          FlutterFlowTheme.of(context).primaryBackground,
+                      context: context,
+                      isGlobal: false,
+                      avoidOverflow: true,
+                      targetAnchor: AlignmentDirectional(1.0, -1.0)
+                          .resolve(Directionality.of(context)),
+                      followerAnchor: AlignmentDirectional(1.0, -1.0)
+                          .resolve(Directionality.of(context)),
+                      builder: (dialogContext) {
+                        return Material(
+                          color: Colors.transparent,
+                          child: NavMenuWidget(),
+                        );
+                      },
+                    );
+                  },
                 ),
-                onPressed: () async {
-                  context.goNamed(HamburgerNavWidget.routeName);
-                },
               ),
             ),
           if (responsiveVisibility(

@@ -397,10 +397,10 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                             .cast<OrdersRecord>();
                                         if (_model.orders.length > 0) {
                                           _model.zeroResult = false;
-                                          safeSetState(() {});
+                                          _model.updatePage(() {});
                                         } else {
                                           _model.zeroResult = true;
-                                          safeSetState(() {});
+                                          _model.updatePage(() {});
                                         }
 
                                         safeSetState(() {});

@@ -238,6 +238,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: BDiagnosisCopyWidget.routeName,
           path: BDiagnosisCopyWidget.routePath,
           builder: (context, params) => BDiagnosisCopyWidget(),
+        ),
+        FFRoute(
+          name: HamburgerOverlayWidget.routeName,
+          path: HamburgerOverlayWidget.routePath,
+          builder: (context, params) => HamburgerOverlayWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
