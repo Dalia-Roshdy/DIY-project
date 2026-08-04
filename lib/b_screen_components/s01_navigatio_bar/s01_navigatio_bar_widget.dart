@@ -67,7 +67,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.pushNamed(AHomePageWidget.routeName);
+                  context.goNamed(AHomePageWidget.routeName);
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.max,

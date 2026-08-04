@@ -112,7 +112,7 @@ class _TextField18WidgetState extends State<TextField18Widget> {
                   ),
             ),
           Container(
-            height: 40.0,
+            height: 65.0,
             decoration: BoxDecoration(
               color: valueOrDefault<Color>(
                 () {

@@ -64,8 +64,10 @@ class _DSelectProductRepairWidgetState
           null,
           null,
         );
-        _model.partList =
-            _model.motorItemsOnPageLoad!.toList().cast<PartCardDTOStruct>();
+        _model.partList = _model.motorItemsOnPageLoad!
+            .sortedList(keyOf: (e) => e.title, desc: false)
+            .toList()
+            .cast<PartCardDTOStruct>();
         safeSetState(() {});
       } else if (_model.selectedPart == Parts.CONTACTOR) {
         _model.contOnPageLoad = await actions.filterContactorItems(
@@ -147,8 +149,8 @@ class _DSelectProductRepairWidgetState
                             ),
                             if (responsiveVisibility(
                               context: context,
-                              tablet: false,
                               tabletLandscape: false,
+                              desktop: false,
                             ))
                               Divider(
                                 height: 1.0,

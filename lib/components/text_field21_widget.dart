@@ -115,7 +115,7 @@ class _TextField21WidgetState extends State<TextField21Widget> {
                   ),
             ),
           Container(
-            height: 40.0,
+            height: 65.0,
             decoration: BoxDecoration(
               color: valueOrDefault<Color>(
                 () {

@@ -83,10 +83,24 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                                     updateCallback: () => safeSetState(() {}),
                                     child: S01NavigatioBarWidget(),
                                   ),
-                                  wrapWithModel(
-                                    model: _model.s05HomestartdiagnosisModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: S05HomestartdiagnosisWidget(),
+                                  Divider(
+                                    height: 1.0,
+                                    thickness: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
+                                  Divider(
+                                    height: 1.0,
+                                    thickness: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 50.0, 0.0, 0.0),
+                                    child: wrapWithModel(
+                                      model: _model.s05HomestartdiagnosisModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: S05HomestartdiagnosisWidget(),
+                                    ),
                                   ),
                                 ],
                               ),

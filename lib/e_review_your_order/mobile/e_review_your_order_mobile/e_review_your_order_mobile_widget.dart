@@ -408,12 +408,10 @@ class _EReviewYourOrderMobileWidgetState
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(),
+                                  child: Text(
                                     'Recommended Items to add to order',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
@@ -432,7 +430,7 @@ class _EReviewYourOrderMobileWidgetState
                                         ),
                                     overflow: TextOverflow.visible,
                                   ),
-                                ].divide(SizedBox(width: 4.0)),
+                                ),
                               ),
                               RichText(
                                 textScaler: MediaQuery.of(context).textScaler,
@@ -796,43 +794,32 @@ class _EReviewYourOrderMobileWidgetState
                       children: [
                         Row(
                           mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            RichText(
-                              textScaler: MediaQuery.of(context).textScaler,
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text:
-                                        'Need a custom Motor Shaft length (Inch)?',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyLargeFamily,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          lineHeight: 1.0,
-                                          useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
-                                                  .bodyLargeIsCustom,
-                                        ),
-                                  )
-                                ],
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyLargeFamily,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      lineHeight: 1.0,
-                                      useGoogleFonts:
-                                          !FlutterFlowTheme.of(context)
-                                              .bodyLargeIsCustom,
-                                    ),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Text(
+                                  'Need a custom Motor Shaft length (Inch)?',
+                                  maxLines: 3,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyLargeFamily,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyLargeIsCustom,
+                                      ),
+                                  overflow: TextOverflow.visible,
+                                ),
                               ),
-                              textAlign: TextAlign.start,
                             ),
                             Theme(
                               data: ThemeData(

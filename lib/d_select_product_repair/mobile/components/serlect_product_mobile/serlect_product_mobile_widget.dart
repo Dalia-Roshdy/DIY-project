@@ -51,7 +51,7 @@ class _SerlectProductMobileWidgetState
         ),
       );
       _model.selectedPartCS = widget.selectedPartPram;
-      safeSetState(() {});
+      _model.updatePage(() {});
       if (_model.selectedPartCS == Parts.MOTOR) {
         _model.motorItemsOnPageMob = await actions.filterMotorItems(
           FFAppState().userAC.acModel,
