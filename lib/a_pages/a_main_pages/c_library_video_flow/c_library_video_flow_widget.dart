@@ -80,6 +80,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
+            primary: false,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -97,7 +98,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                         ),
                       ),
                       child: Column(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           wrapWithModel(
                             model: _model.s01NavigatioBarModel,
@@ -125,56 +126,60 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                             thickness: 1.0,
                             color: FlutterFlowTheme.of(context).tertiary,
                           ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              if ((_model.currentValue != null) &&
-                                  responsiveVisibility(
-                                    context: context,
-                                    tablet: false,
-                                    tabletLandscape: false,
-                                    desktop: false,
-                                  ))
-                                Expanded(
-                                  child: wrapWithModel(
-                                    model: _model.cVideoDiagnosisMobileModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: CVideoDiagnosisMobileWidget(
-                                      videoRecord: _model.currentValue,
-                                    ),
-                                  ),
-                                ),
-                              if ((_model.currentValue?.reference != null) &&
-                                  responsiveVisibility(
-                                    context: context,
-                                    phone: false,
-                                    tablet: false,
-                                  ))
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 48.0),
+                          Align(
+                            alignment: AlignmentDirectional(0.0, -1.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if ((_model.currentValue != null) &&
+                                    responsiveVisibility(
+                                      context: context,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
+                                  Expanded(
                                     child: wrapWithModel(
-                                      model: _model.cVideoDiagnosisDesktopModel,
+                                      model: _model.cVideoDiagnosisMobileModel,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: CVideoDiagnosisDesktopWidget(
+                                      child: CVideoDiagnosisMobileWidget(
                                         videoRecord: _model.currentValue!,
                                       ),
                                     ),
                                   ),
-                                ),
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                                tablet: false,
-                                tabletLandscape: false,
-                              ))
-                                wrapWithModel(
-                                  model: _model.s12FooterModel,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: S12FooterWidget(),
-                                ),
-                            ],
+                                if ((_model.currentValue?.reference != null) &&
+                                    responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                      tablet: false,
+                                    ))
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 48.0),
+                                      child: wrapWithModel(
+                                        model:
+                                            _model.cVideoDiagnosisDesktopModel,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: CVideoDiagnosisDesktopWidget(
+                                          videoRecord: _model.currentValue!,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                if (responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                  tablet: false,
+                                  tabletLandscape: false,
+                                ))
+                                  wrapWithModel(
+                                    model: _model.s12FooterModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: S12FooterWidget(),
+                                  ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

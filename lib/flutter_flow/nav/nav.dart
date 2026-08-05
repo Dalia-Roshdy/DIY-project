@@ -127,21 +127,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HamburgerNavWidget(),
         ),
         FFRoute(
-          name: LUserProfileWidget.routeName,
-          path: LUserProfileWidget.routePath,
-          builder: (context, params) => LUserProfileWidget(),
-        ),
-        FFRoute(
-          name: LPreviousOrdersWidget.routeName,
-          path: LPreviousOrdersWidget.routePath,
-          builder: (context, params) => LPreviousOrdersWidget(),
-        ),
-        FFRoute(
-          name: LShippingAddressEditWidget.routeName,
-          path: LShippingAddressEditWidget.routePath,
-          builder: (context, params) => LShippingAddressEditWidget(),
-        ),
-        FFRoute(
           name: CLibraryVideoFlowWidget.routeName,
           path: CLibraryVideoFlowWidget.routePath,
           builder: (context, params) => CLibraryVideoFlowWidget(
@@ -178,11 +163,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: ShippingAddressesWidget.routeName,
-          path: ShippingAddressesWidget.routePath,
-          builder: (context, params) => ShippingAddressesWidget(),
-        ),
-        FFRoute(
           name: SomethingWentWrongWidget.routeName,
           path: SomethingWentWrongWidget.routePath,
           builder: (context, params) => SomethingWentWrongWidget(),
@@ -203,11 +183,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => GTrackAndFindMyOrderWidget(),
         ),
         FFRoute(
-          name: NewScreen3Widget.routeName,
-          path: NewScreen3Widget.routePath,
-          builder: (context, params) => NewScreen3Widget(),
-        ),
-        FFRoute(
           name: HOrderTrackingWidget.routeName,
           path: HOrderTrackingWidget.routePath,
           builder: (context, params) => HOrderTrackingWidget(
@@ -218,21 +193,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['orders'],
             ),
           ),
-        ),
-        FFRoute(
-          name: NewScreen2Widget.routeName,
-          path: NewScreen2Widget.routePath,
-          builder: (context, params) => NewScreen2Widget(),
-        ),
-        FFRoute(
-          name: NewScreen4Widget.routeName,
-          path: NewScreen4Widget.routePath,
-          builder: (context, params) => NewScreen4Widget(),
-        ),
-        FFRoute(
-          name: EReviewYourOrderDraftWidget.routeName,
-          path: EReviewYourOrderDraftWidget.routePath,
-          builder: (context, params) => EReviewYourOrderDraftWidget(),
         ),
         FFRoute(
           name: BDiagnosisCopyWidget.routeName,

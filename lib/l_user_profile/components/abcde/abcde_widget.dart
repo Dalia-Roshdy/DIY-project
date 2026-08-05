@@ -374,21 +374,11 @@ class _AbcdeWidgetState extends State<AbcdeWidget> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               if (false)
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed(
-                                        LPreviousOrdersWidget.routeName);
-                                  },
-                                  child: wrapWithModel(
-                                    model: _model.navTileModel1,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: NavTileWidget(
-                                      title: 'Previous Orders',
-                                    ),
+                                wrapWithModel(
+                                  model: _model.navTileModel1,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: NavTileWidget(
+                                    title: 'Previous Orders',
                                   ),
                                 ),
                               if (false)

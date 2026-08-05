@@ -108,7 +108,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                           getCORSProxyUrl(
                             widget.img != ''
                                 ? widget.img
-                                : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/y2pjwpyum2n7/gettyimages-671795572-612x612.jpg',
+                                : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/wi3g2isaor5f/alternator-thumbnail-400.webp',
                           ),
                         ).image,
                       ),

@@ -139,13 +139,12 @@ class _CVideoDiagnosisDesktopWidgetState
                       ),
                     ),
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: EdgeInsets.all(24.0),
                           child: Container(
-                            width: 320.93,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).secondary,
                               border: Border.all(
@@ -155,7 +154,7 @@ class _CVideoDiagnosisDesktopWidgetState
                             child: Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Column(
-                                mainAxisSize: MainAxisSize.max,
+                                mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
@@ -268,8 +267,8 @@ class _CVideoDiagnosisDesktopWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 24.0),
                           child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
@@ -399,7 +398,7 @@ class _CVideoDiagnosisDesktopWidgetState
                                       FlutterFlowTheme.of(context).secondary,
                                 ),
                               ),
-                            ].divide(SizedBox(width: 115.0)),
+                            ].divide(SizedBox(width: 110.0)),
                           ),
                         ),
                       ],
@@ -407,39 +406,36 @@ class _CVideoDiagnosisDesktopWidgetState
                   ),
                 ),
               ),
-              Expanded(
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Padding(
-                    padding: EdgeInsets.all(18.0),
-                    child: ClipRRect(
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.8,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 0.0),
-                          child: AspectRatio(
-                            aspectRatio: 1.78,
-                            child: FlutterFlowVideoPlayer(
-                              path: valueOrDefault<String>(
-                                widget.videoRecord?.videoUrl,
-                                'https://firebasestorage.googleapis.com/v0/b/diy-ac-44e10.firebasestorage.app/o/18127221-hd_1080_1920_30fps.mp4?alt=media&token=501c0213-f782-453c-96ed-e7d2cc2f03a9',
-                              ),
-                              videoType: VideoType.network,
-                              width: MediaQuery.sizeOf(context).width * 0.8,
-                              height: MediaQuery.sizeOf(context).height * 0.7,
-                              aspectRatio: 1.7,
-                              autoPlay: true,
-                              looping: false,
-                              showControls: true,
-                              allowFullScreen: false,
-                              allowPlaybackSpeedMenu: true,
-                              lazyLoad: true,
+              Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Padding(
+                  padding: EdgeInsets.all(18.0),
+                  child: ClipRRect(
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.8,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 0.0),
+                        child: AspectRatio(
+                          aspectRatio: 1.78,
+                          child: FlutterFlowVideoPlayer(
+                            path: valueOrDefault<String>(
+                              widget.videoRecord?.videoUrl,
+                              'https://firebasestorage.googleapis.com/v0/b/diy-ac-44e10.firebasestorage.app/o/18127221-hd_1080_1920_30fps.mp4?alt=media&token=501c0213-f782-453c-96ed-e7d2cc2f03a9',
                             ),
+                            videoType: VideoType.network,
+                            width: MediaQuery.sizeOf(context).width * 0.8,
+                            height: MediaQuery.sizeOf(context).height * 0.7,
+                            aspectRatio: 1.7,
+                            autoPlay: true,
+                            looping: false,
+                            showControls: true,
+                            allowFullScreen: false,
+                            allowPlaybackSpeedMenu: true,
+                            lazyLoad: true,
                           ),
                         ),
                       ),

@@ -169,21 +169,6 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           ),
                         ),
                       ),
-                      if (false)
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed(LUserProfileWidget.routeName);
-                          },
-                          child: Icon(
-                            Icons.person,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24.0,
-                          ),
-                        ),
                     ].divide(SizedBox(width: 12.0)),
                   ),
                 ),
@@ -442,54 +427,6 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   }
                 },
               ),
-            ),
-          if (false &&
-              responsiveVisibility(
-                context: context,
-                phone: false,
-                tablet: false,
-                tabletLandscape: false,
-              ))
-            FlutterFlowIconButton(
-              buttonSize: 80.0,
-              fillColor: FlutterFlowTheme.of(context).primary,
-              icon: Icon(
-                Icons.person,
-                color: FlutterFlowTheme.of(context).primaryBackground,
-                size: 28.0,
-              ),
-              onPressed: () async {
-                context.pushNamed(LUserProfileWidget.routeName);
-              },
-            ),
-          if (false &&
-              responsiveVisibility(
-                context: context,
-                phone: false,
-                tablet: false,
-                tabletLandscape: false,
-              ))
-            FFButtonWidget(
-              onPressed: () {
-                print('Button-GetStartedBtn pressed ...');
-              },
-              text: 'LOGIN',
-              options: FFButtonOptions(
-                height: double.infinity,
-                padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                color: FlutterFlowTheme.of(context).primary,
-                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      letterSpacing: 0.0,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                    ),
-                elevation: 0.0,
-                borderRadius: BorderRadius.circular(0.0),
-              ),
-              showLoadingIndicator: false,
             ),
         ],
       ),

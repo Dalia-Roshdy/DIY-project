@@ -110,7 +110,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
               ),
               decoration: BoxDecoration(),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 50.0, 0.0, 50.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,

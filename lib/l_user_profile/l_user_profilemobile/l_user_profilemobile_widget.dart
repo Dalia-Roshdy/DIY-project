@@ -335,37 +335,19 @@ class _LUserProfilemobileWidgetState extends State<LUserProfilemobileWidget> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               if (false)
-                InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    context.pushNamed(LPreviousOrdersWidget.routeName);
-                  },
-                  child: wrapWithModel(
-                    model: _model.navItemModel1,
-                    updateCallback: () => safeSetState(() {}),
-                    child: NavItemWidget(
-                      label: 'Previous Orders',
-                    ),
+                wrapWithModel(
+                  model: _model.navItemModel1,
+                  updateCallback: () => safeSetState(() {}),
+                  child: NavItemWidget(
+                    label: 'Previous Orders',
                   ),
                 ),
               if (false)
-                InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    context.pushNamed(LShippingAddressEditWidget.routeName);
-                  },
-                  child: wrapWithModel(
-                    model: _model.navItemModel2,
-                    updateCallback: () => safeSetState(() {}),
-                    child: NavItemWidget(
-                      label: 'Shipping Addresses',
-                    ),
+                wrapWithModel(
+                  model: _model.navItemModel2,
+                  updateCallback: () => safeSetState(() {}),
+                  child: NavItemWidget(
+                    label: 'Shipping Addresses',
                   ),
                 ),
               if (false)
