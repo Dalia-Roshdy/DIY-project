@@ -10,8 +10,6 @@ export '/a_pages/a_main_pages/g_secure_payment_checkout/g_secure_payment_checkou
 export '/a_pages/a_main_pages/d_select_product_repair/d_select_product_repair_widget.dart'
     show DSelectProductRepairWidget;
 export '/a_pages/a_main_pages/i_about/i_about_widget.dart' show IAboutWidget;
-export '/k_widgets/hamburger_nav/hamburger_nav_widget.dart'
-    show HamburgerNavWidget;
 export '/a_pages/a_main_pages/c_library_video_flow/c_library_video_flow_widget.dart'
     show CLibraryVideoFlowWidget;
 export '/a_pages/a_main_pages/unsubscribe/unsubscribe_widget.dart'
@@ -30,5 +28,3 @@ export '/a_pages/a_main_pages/l_user_profile/h_order_tracking/h_order_tracking_w
     show HOrderTrackingWidget;
 export '/b_diagnosis/b_diagnosis_copy/b_diagnosis_copy_widget.dart'
     show BDiagnosisCopyWidget;
-export '/k_widgets/hamburger_overlay/hamburger_overlay_widget.dart'
-    show HamburgerOverlayWidget;

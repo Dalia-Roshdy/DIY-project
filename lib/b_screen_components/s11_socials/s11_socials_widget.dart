@@ -482,6 +482,7 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                                 clearUnsetFields: false,
                                                 create: true,
                                               ),
+                                              ctime: getCurrentTimestamp,
                                             ));
                                             _model.mail =
                                                 MailRecord.getDocumentFromData(
@@ -499,6 +500,8 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                                         clearUnsetFields: false,
                                                         create: true,
                                                       ),
+                                                      ctime:
+                                                          getCurrentTimestamp,
                                                     ),
                                                     mailRecordReference);
                                             safeSetState(() {

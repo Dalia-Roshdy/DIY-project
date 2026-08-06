@@ -1,4 +1,4 @@
-import '/components/button37_widget.dart';
+import '/c_components/button37/button37_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'something_went_wrong_widget.dart' show SomethingWentWrongWidget;
 import 'package:flutter/material.dart';

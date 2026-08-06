@@ -1,8 +1,8 @@
 import '/backend/backend.dart';
-import '/components/button41_widget.dart';
-import '/components/order_item_row4_widget.dart';
-import '/components/tracking_step2_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/g_checkout_details/components/button41/button41_widget.dart';
+import '/g_checkout_details/desktop/order_item_row4/order_item_row4_widget.dart';
+import '/g_checkout_details/mobile/tracking_step2/tracking_step2_widget.dart';
 import 'h_track_order_mobile_widget.dart' show HTrackOrderMobileWidget;
 import 'package:flutter/material.dart';
 

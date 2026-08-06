@@ -122,11 +122,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => IAboutWidget(),
         ),
         FFRoute(
-          name: HamburgerNavWidget.routeName,
-          path: HamburgerNavWidget.routePath,
-          builder: (context, params) => HamburgerNavWidget(),
-        ),
-        FFRoute(
           name: CLibraryVideoFlowWidget.routeName,
           path: CLibraryVideoFlowWidget.routePath,
           builder: (context, params) => CLibraryVideoFlowWidget(
@@ -198,11 +193,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: BDiagnosisCopyWidget.routeName,
           path: BDiagnosisCopyWidget.routePath,
           builder: (context, params) => BDiagnosisCopyWidget(),
-        ),
-        FFRoute(
-          name: HamburgerOverlayWidget.routeName,
-          path: HamburgerOverlayWidget.routePath,
-          builder: (context, params) => HamburgerOverlayWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

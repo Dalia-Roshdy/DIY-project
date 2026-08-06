@@ -80,11 +80,10 @@ class _S08CompanyInvestorsWidgetState extends State<S08CompanyInvestorsWidget> {
                   height: MediaQuery.sizeOf(context).height * 0.14,
                   constraints: BoxConstraints(
                     minHeight: 92.0,
-                    maxWidth: 1270.0,
                     maxHeight: 150.0,
                   ),
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: FlutterFlowTheme.of(context).secondaryText,
                   ),
                   child: Align(
                     alignment: AlignmentDirectional(0.0, 0.0),

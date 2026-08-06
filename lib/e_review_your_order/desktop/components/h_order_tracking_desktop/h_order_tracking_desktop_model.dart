@@ -1,8 +1,8 @@
 import '/backend/backend.dart';
-import '/components/button40_widget.dart';
-import '/components/order_item_row3_widget.dart';
-import '/components/tracking_step_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/g_checkout_details/components/button40/button40_widget.dart';
+import '/g_checkout_details/desktop/order_item_row3/order_item_row3_widget.dart';
+import '/g_checkout_details/desktop/tracking_step/tracking_step_widget.dart';
 import 'h_order_tracking_desktop_widget.dart' show HOrderTrackingDesktopWidget;
 import 'package:flutter/material.dart';
 

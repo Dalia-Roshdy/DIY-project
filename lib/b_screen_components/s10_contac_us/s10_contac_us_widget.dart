@@ -107,6 +107,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
               context: context,
               phone: false,
               tablet: false,
+              tabletLandscape: false,
             ))
               Container(
                 width: MediaQuery.sizeOf(context).width < kBreakpointLarge
@@ -1235,6 +1236,7 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                 clearUnsetFields: false,
                                                 create: true,
                                               ),
+                                              ctime: getCurrentTimestamp,
                                             ));
                                             _model.mail =
                                                 MailRecord.getDocumentFromData(
@@ -1249,6 +1251,8 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                         clearUnsetFields: false,
                                                         create: true,
                                                       ),
+                                                      ctime:
+                                                          getCurrentTimestamp,
                                                     ),
                                                     mailRecordReference);
                                             await Future.wait([

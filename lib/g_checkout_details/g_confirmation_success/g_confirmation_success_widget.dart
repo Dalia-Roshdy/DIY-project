@@ -1,8 +1,8 @@
 import '/backend/backend.dart';
-import '/components/button35_widget.dart';
-import '/components/order_summary_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/g_checkout_details/components/button35/button35_widget.dart';
+import '/g_checkout_details/components/order_summary_item/order_summary_item_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

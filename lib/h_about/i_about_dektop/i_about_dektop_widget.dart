@@ -1,9 +1,9 @@
-import '/components/limit_badge_widget.dart';
-import '/components/objective_card_widget.dart';
-import '/components/role_item_widget.dart';
-import '/components/scope_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/h_about/components/role_item/role_item_widget.dart';
+import '/h_about/limit_badge/limit_badge_widget.dart';
+import '/h_about/objective_card/objective_card_widget.dart';
+import '/h_about/scope_item/scope_item_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'i_about_dektop_model.dart';
@@ -166,7 +166,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                             fadeInDuration: Duration(milliseconds: 0),
                             fadeOutDuration: Duration(milliseconds: 0),
                             imageUrl: getCORSProxyUrl(
-                              'https://dimg.dreamflow.cloud/v1/image/vintage%20black%20and%20white%20technical%20internal%20components%20of%20an%20air%20conditioning%20unit',
+                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/wjyafi0obppw/industrial-hvac-ductwork-web.webp',
                             ),
                             width: 400.0,
                             height: 400.0,

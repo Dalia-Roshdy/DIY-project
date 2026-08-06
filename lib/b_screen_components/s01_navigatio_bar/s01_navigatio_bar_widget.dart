@@ -1,9 +1,9 @@
 import '/c_components/dialog_components/empty_cart_component/empty_cart_component_widget.dart';
-import '/components/nav_menu_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/k_widgets/nav_menu/nav_menu_widget.dart';
 import '/index.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';

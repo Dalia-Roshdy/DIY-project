@@ -1,9 +1,9 @@
 import '/backend/backend.dart';
-import '/components/button39_widget.dart';
-import '/components/order_card2_widget.dart';
-import '/components/text_field21_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/g_checkout_details/components/button39/button39_widget.dart';
+import '/g_checkout_details/mobile/text_field21/text_field21_widget.dart';
+import '/g_checkout_details/order_card2/order_card2_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

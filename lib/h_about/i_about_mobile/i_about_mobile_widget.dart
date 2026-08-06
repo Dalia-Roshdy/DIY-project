@@ -1,8 +1,8 @@
-import '/components/industrial_badge_widget.dart';
-import '/components/objective_card2_widget.dart';
-import '/components/scope_item2_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/h_about/industrial_badge/industrial_badge_widget.dart';
+import '/h_about/objective_card2/objective_card2_widget.dart';
+import '/h_about/scope_item2/scope_item2_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'i_about_mobile_model.dart';
@@ -95,7 +95,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                           fadeInDuration: Duration(milliseconds: 0),
                           fadeOutDuration: Duration(milliseconds: 0),
                           imageUrl: getCORSProxyUrl(
-                            'https://dimg.dreamflow.cloud/v1/image/industrial%20air%20conditioning%20ductwork%20pipes%20monochrome',
+                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/wjyafi0obppw/industrial-hvac-ductwork-web.webp',
                           ),
                           fit: BoxFit.cover,
                           alignment: Alignment(0.0, 0.0),

@@ -1,8 +1,8 @@
-import '/components/limit_badge_widget.dart';
-import '/components/objective_card_widget.dart';
-import '/components/role_item_widget.dart';
-import '/components/scope_item_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/h_about/components/role_item/role_item_widget.dart';
+import '/h_about/limit_badge/limit_badge_widget.dart';
+import '/h_about/objective_card/objective_card_widget.dart';
+import '/h_about/scope_item/scope_item_widget.dart';
 import 'i_about_dektop_widget.dart' show IAboutDektopWidget;
 import 'package:flutter/material.dart';
 

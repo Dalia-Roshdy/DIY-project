@@ -1,5 +1,5 @@
 import '/backend/backend.dart';
-import '/components/status_illustration_widget.dart';
+import '/c_components/status_illustration/status_illustration_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'unsubscribe_widget.dart' show UnsubscribeWidget;
 import 'package:flutter/material.dart';

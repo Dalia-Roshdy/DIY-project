@@ -25,11 +25,17 @@ class MailRecord extends FirestoreRecord {
   MessageStruct get message => _message ?? MessageStruct();
   bool hasMessage() => _message != null;
 
+  // "ctime" field.
+  DateTime? _ctime;
+  DateTime? get ctime => _ctime;
+  bool hasCtime() => _ctime != null;
+
   void _initializeFields() {
     _to = snapshotData['to'] as String?;
     _message = snapshotData['message'] is MessageStruct
         ? snapshotData['message']
         : MessageStruct.maybeFromMap(snapshotData['message']);
+    _ctime = snapshotData['ctime'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -68,11 +74,13 @@ class MailRecord extends FirestoreRecord {
 Map<String, dynamic> createMailRecordData({
   String? to,
   MessageStruct? message,
+  DateTime? ctime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'to': to,
       'message': MessageStruct().toMap(),
+      'ctime': ctime,
     }.withoutNulls,
   );
 
@@ -87,11 +95,14 @@ class MailRecordDocumentEquality implements Equality<MailRecord> {
 
   @override
   bool equals(MailRecord? e1, MailRecord? e2) {
-    return e1?.to == e2?.to && e1?.message == e2?.message;
+    return e1?.to == e2?.to &&
+        e1?.message == e2?.message &&
+        e1?.ctime == e2?.ctime;
   }
 
   @override
-  int hash(MailRecord? e) => const ListEquality().hash([e?.to, e?.message]);
+  int hash(MailRecord? e) =>
+      const ListEquality().hash([e?.to, e?.message, e?.ctime]);
 
   @override
   bool isValidKey(Object? o) => o is MailRecord;

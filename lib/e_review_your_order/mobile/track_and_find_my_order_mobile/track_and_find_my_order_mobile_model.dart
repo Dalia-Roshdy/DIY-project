@@ -1,7 +1,7 @@
 import '/backend/backend.dart';
-import '/components/button39_widget.dart';
-import '/components/text_field21_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/g_checkout_details/components/button39/button39_widget.dart';
+import '/g_checkout_details/mobile/text_field21/text_field21_widget.dart';
 import 'track_and_find_my_order_mobile_widget.dart'
     show TrackAndFindMyOrderMobileWidget;
 import 'package:flutter/material.dart';

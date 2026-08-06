@@ -1,7 +1,7 @@
 import '/backend/backend.dart';
-import '/components/button35_widget.dart';
-import '/components/order_summary_item_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/g_checkout_details/components/button35/button35_widget.dart';
+import '/g_checkout_details/components/order_summary_item/order_summary_item_widget.dart';
 import 'g_confirmation_success_widget.dart' show GConfirmationSuccessWidget;
 import 'package:flutter/material.dart';
 

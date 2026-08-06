@@ -82,7 +82,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
           child: SingleChildScrollView(
             primary: false,
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Align(
                   alignment: AlignmentDirectional(0.0, -1.0),
@@ -137,10 +137,12 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                       tabletLandscape: false,
                                       desktop: false,
                                     ))
-                                  Expanded(
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
                                     child: wrapWithModel(
                                       model: _model.cVideoDiagnosisMobileModel,
                                       updateCallback: () => safeSetState(() {}),
+                                      updateOnChange: true,
                                       child: CVideoDiagnosisMobileWidget(
                                         videoRecord: _model.currentValue!,
                                       ),
@@ -152,7 +154,8 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                       phone: false,
                                       tablet: false,
                                     ))
-                                  Expanded(
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 48.0),
@@ -161,6 +164,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                             _model.cVideoDiagnosisDesktopModel,
                                         updateCallback: () =>
                                             safeSetState(() {}),
+                                        updateOnChange: true,
                                         child: CVideoDiagnosisDesktopWidget(
                                           videoRecord: _model.currentValue!,
                                         ),

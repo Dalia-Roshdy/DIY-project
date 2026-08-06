@@ -1,9 +1,9 @@
 import '/backend/backend.dart';
-import '/components/form_label2_widget.dart';
-import '/components/payment_badge3_widget.dart';
-import '/components/text_field7_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/components/button8/button8_widget.dart';
+import '/g_checkout_details/components/form_label2/form_label2_widget.dart';
+import '/g_checkout_details/desktop/payment_badge3/payment_badge3_widget.dart';
+import '/g_checkout_details/desktop/text_field7/text_field7_widget.dart';
 import 'details_checkout_mobile_and_desktop_widget.dart'
     show DetailsCheckoutMobileAndDesktopWidget;
 import 'package:flutter/material.dart';
@@ -205,7 +205,7 @@ class DetailsCheckoutMobileAndDesktopModel
     if (val.length > 4) {
       return 'Maximum 4 characters allowed, currently ${val.length}.';
     }
-    if (!RegExp('^[0-9]+\$').hasMatch(val)) {
+    if (!RegExp('^[0-9]{4}\$').hasMatch(val)) {
       return 'Must be exactly 4 digits.';
     }
     return null;

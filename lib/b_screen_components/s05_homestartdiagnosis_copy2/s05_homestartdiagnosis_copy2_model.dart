@@ -1,7 +1,7 @@
+import '/b_diagnosis/enter_manually_serial_number/enter_manually_serial_number_widget.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/z_drafts/enter_manually_serial_number/enter_manually_serial_number_widget.dart';
 import 's05_homestartdiagnosis_copy2_widget.dart'
     show S05HomestartdiagnosisCopy2Widget;
 import 'package:flutter/material.dart';

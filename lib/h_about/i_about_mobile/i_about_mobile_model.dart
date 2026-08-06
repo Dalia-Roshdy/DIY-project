@@ -1,7 +1,7 @@
-import '/components/industrial_badge_widget.dart';
-import '/components/objective_card2_widget.dart';
-import '/components/scope_item2_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/h_about/industrial_badge/industrial_badge_widget.dart';
+import '/h_about/objective_card2/objective_card2_widget.dart';
+import '/h_about/scope_item2/scope_item2_widget.dart';
 import 'i_about_mobile_widget.dart' show IAboutMobileWidget;
 import 'package:flutter/material.dart';
 

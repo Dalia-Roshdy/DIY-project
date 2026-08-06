@@ -7,7 +7,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'add_cart_success_dialog_model.dart';
 export 'add_cart_success_dialog_model.dart';
@@ -34,9 +33,6 @@ class _AddCartSuccessDialogWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => AddCartSuccessDialogModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }

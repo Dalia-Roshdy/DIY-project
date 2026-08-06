@@ -121,23 +121,26 @@ class _CVideoDiagnosisMobileWidgetState
           ),
           Align(
             alignment: AlignmentDirectional(0.0, 0.0),
-            child: Container(
-              width: double.infinity,
-              height: MediaQuery.sizeOf(context).height * 0.45,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
-              child: AspectRatio(
-                aspectRatio: 0.75,
-                child: FlutterFlowVideoPlayer(
-                  path: widget.videoRecord!.videoUrl,
-                  videoType: VideoType.network,
-                  autoPlay: true,
-                  looping: false,
-                  showControls: true,
-                  allowFullScreen: false,
-                  allowPlaybackSpeedMenu: true,
-                  lazyLoad: true,
+            child: ClipRRect(
+              child: Container(
+                height: MediaQuery.sizeOf(context).height * 0.4,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: FlutterFlowVideoPlayer(
+                    path: widget.videoRecord!.videoUrl,
+                    videoType: VideoType.network,
+                    height: MediaQuery.sizeOf(context).height * 0.4,
+                    aspectRatio: 1.0,
+                    autoPlay: true,
+                    looping: false,
+                    showControls: true,
+                    allowFullScreen: false,
+                    allowPlaybackSpeedMenu: true,
+                    lazyLoad: true,
+                  ),
                 ),
               ),
             ),

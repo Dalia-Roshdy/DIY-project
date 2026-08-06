@@ -1,5 +1,5 @@
 import '/backend/schema/enums/enums.dart';
-import '/components/button2_widget.dart';
+import '/d_select_product_repair/desktop/components/components/button2/button2_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

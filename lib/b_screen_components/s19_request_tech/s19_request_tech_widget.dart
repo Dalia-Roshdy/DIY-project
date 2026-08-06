@@ -1589,6 +1589,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                 clearUnsetFields: false,
                                                 create: true,
                                               ),
+                                              ctime: getCurrentTimestamp,
                                             ));
                                             _model.mail =
                                                 MailRecord.getDocumentFromData(
@@ -1603,6 +1604,8 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                         clearUnsetFields: false,
                                                         create: true,
                                                       ),
+                                                      ctime:
+                                                          getCurrentTimestamp,
                                                     ),
                                                     mailRecordReference);
                                             await Future.wait([

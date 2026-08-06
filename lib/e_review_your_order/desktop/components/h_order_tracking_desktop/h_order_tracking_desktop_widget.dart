@@ -1,9 +1,9 @@
 import '/backend/backend.dart';
-import '/components/button40_widget.dart';
-import '/components/order_item_row3_widget.dart';
-import '/components/tracking_step_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/g_checkout_details/components/button40/button40_widget.dart';
+import '/g_checkout_details/desktop/order_item_row3/order_item_row3_widget.dart';
+import '/g_checkout_details/desktop/tracking_step/tracking_step_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

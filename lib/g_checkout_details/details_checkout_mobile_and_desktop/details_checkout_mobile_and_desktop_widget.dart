@@ -1,12 +1,12 @@
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/backend/stripe/payment_manager.dart';
-import '/components/form_label2_widget.dart';
-import '/components/payment_badge3_widget.dart';
-import '/components/text_field7_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/components/button8/button8_widget.dart';
+import '/g_checkout_details/components/form_label2/form_label2_widget.dart';
+import '/g_checkout_details/desktop/payment_badge3/payment_badge3_widget.dart';
+import '/g_checkout_details/desktop/text_field7/text_field7_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -83,91 +83,6 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Cart',
-                          style: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodySmallFamily,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 18.0,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.4,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodySmallIsCustom,
-                              ),
-                        ),
-                        Text(
-                          '/',
-                          style: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodySmallFamily,
-                                color: FlutterFlowTheme.of(context).onSurface,
-                                fontSize: 18.0,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.4,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodySmallIsCustom,
-                              ),
-                        ),
-                        Text(
-                          'Review Order',
-                          style: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodySmallFamily,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 18.0,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.4,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodySmallIsCustom,
-                              ),
-                        ),
-                        Text(
-                          '/',
-                          style: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodySmallFamily,
-                                color: FlutterFlowTheme.of(context).onSurface,
-                                fontSize: 18.0,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.4,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodySmallIsCustom,
-                              ),
-                        ),
-                        Text(
-                          'Payment',
-                          style: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodySmallFamily,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 18.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                                lineHeight: 1.4,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodySmallIsCustom,
-                              ),
-                        ),
-                      ].divide(SizedBox(width: 4.0)),
-                    ),
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -537,7 +452,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                 child: TextField7Widget(
                                                   label: false,
                                                   helper: false,
-                                                  hint: '00000',
+                                                  hint: '0000',
                                                   value: '',
                                                   leading_icon_present: false,
                                                   trailing_icon_present: false,
@@ -723,6 +638,23 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
+                                        orderNumber: (String var1) {
+                                          return 'TT-'
+                                              '${DateTime.now().day.toString().padLeft(2, '0')}'
+                                              '${DateTime.now().month.toString().padLeft(2, '0')}'
+                                              '-${var1.replaceAll(RegExp(r'\D'), '').substring(
+                                                    var1
+                                                            .replaceAll(
+                                                                RegExp(r'\D'),
+                                                                '')
+                                                            .length -
+                                                        4,
+                                                  )}'
+                                              '-${DateTime.now().hour.toString().padLeft(2, '0')}'
+                                              '${DateTime.now().minute.toString().padLeft(2, '0')}'
+                                              '${DateTime.now().second.toString().padLeft(2, '0')}';
+                                        }(_model.textFieldPhoneModel
+                                            .inputTextController.text),
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -777,6 +709,23 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
+                                        orderNumber: (String var1) {
+                                          return 'TT-'
+                                              '${DateTime.now().day.toString().padLeft(2, '0')}'
+                                              '${DateTime.now().month.toString().padLeft(2, '0')}'
+                                              '-${var1.replaceAll(RegExp(r'\D'), '').substring(
+                                                    var1
+                                                            .replaceAll(
+                                                                RegExp(r'\D'),
+                                                                '')
+                                                            .length -
+                                                        4,
+                                                  )}'
+                                              '-${DateTime.now().hour.toString().padLeft(2, '0')}'
+                                              '${DateTime.now().minute.toString().padLeft(2, '0')}'
+                                              '${DateTime.now().second.toString().padLeft(2, '0')}';
+                                        }(_model.textFieldPhoneModel
+                                            .inputTextController.text),
                                       ),
                                       ...mapToFirestore(
                                         {

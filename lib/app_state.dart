@@ -71,49 +71,6 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  List<String> _imagesList = [
-    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/sqtvx5xxfwmu/Marquee_Image1.png',
-    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/h4w922q9sxoy/Marquee_Image2.png',
-    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/the-company-kx87u5/assets/stw04v1shtb6/Marquee_Image3.png'
-  ];
-  List<String> get imagesList => _imagesList;
-  set imagesList(List<String> value) {
-    _imagesList = value;
-  }
-
-  void addToImagesList(String value) {
-    imagesList.add(value);
-  }
-
-  void removeFromImagesList(String value) {
-    imagesList.remove(value);
-  }
-
-  void removeAtIndexFromImagesList(int index) {
-    imagesList.removeAt(index);
-  }
-
-  void updateImagesListAtIndex(
-    int index,
-    String Function(String) updateFn,
-  ) {
-    imagesList[index] = updateFn(_imagesList[index]);
-  }
-
-  void insertAtIndexInImagesList(int index, String value) {
-    imagesList.insert(index, value);
-  }
-
-  PaymentDataStruct _payment = PaymentDataStruct();
-  PaymentDataStruct get payment => _payment;
-  set payment(PaymentDataStruct value) {
-    _payment = value;
-  }
-
-  void updatePaymentStruct(Function(PaymentDataStruct) updateFn) {
-    updateFn(_payment);
-  }
-
   List<AcMakeDTOStruct> _acMakeList = [];
   List<AcMakeDTOStruct> get acMakeList => _acMakeList;
   set acMakeList(List<AcMakeDTOStruct> value) {

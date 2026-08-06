@@ -45,7 +45,7 @@ class _HConfirmationCheckoutWidgetState
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.cartPS = FFAppState().Cart;
       _model.orderAct = await OrdersRecord.getDocumentOnce(widget.orderId!);
-      if (_model.orderAct?.status == OrderStatus.paid) {
+      if (_model.orderAct?.status == OrderStatus.submitted) {
         _model.order = _model.orderAct;
         safeSetState(() {});
       } else {
@@ -113,6 +113,7 @@ class _HConfirmationCheckoutWidgetState
                         clearUnsetFields: false,
                         create: true,
                       ),
+                      ctime: getCurrentTimestamp,
                     ));
               }(),
             );

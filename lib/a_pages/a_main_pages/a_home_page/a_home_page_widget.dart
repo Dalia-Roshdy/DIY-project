@@ -3,7 +3,9 @@ import '/b_screen_components/s02_headlines/s02_headlines_widget.dart';
 import '/b_screen_components/s12_footer/s12_footer_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'a_home_page_model.dart';
 export 'a_home_page_model.dart';
 
@@ -26,6 +28,13 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AHomePageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      unawaited(
+        () async {}(),
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
