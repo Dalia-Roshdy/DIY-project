@@ -1000,159 +1000,190 @@ class _ReviewYourOrderDesktopWidgetState
                         ),
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: BorderRadius.circular(8.0),
-                        shape: BoxShape.rectangle,
-                        border: Border.all(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          width: 1.0,
+                    if (FFAppState()
+                            .Cart
+                            .cartItems
+                            .where((e) => e.specType == Parts.MOTOR.name)
+                            .toList()
+                            .length >
+                        0)
+                      Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(8.0),
+                          shape: BoxShape.rectangle,
+                          border: Border.all(
+                            color: FlutterFlowTheme.of(context).alternate,
+                            width: 1.0,
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(24.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Need a custom Motor Shaft length (Inch) ?',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          lineHeight: 1.4,
-                                          useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
-                                                  .bodyMediumIsCustom,
+                        child: Padding(
+                          padding: EdgeInsets.all(24.0),
+                          child: Container(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      'Need a custom Motor Shaft length (Inch) ?',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            lineHeight: 1.4,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
+                                          ),
+                                    ),
+                                    Theme(
+                                      data: ThemeData(
+                                        checkboxTheme: CheckboxThemeData(
+                                          visualDensity: VisualDensity.compact,
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
                                         ),
-                                  ),
-                                  Theme(
-                                    data: ThemeData(
-                                      checkboxTheme: CheckboxThemeData(
-                                        visualDensity: VisualDensity.compact,
-                                        materialTapTargetSize:
-                                            MaterialTapTargetSize.shrinkWrap,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(4.0),
-                                        ),
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
                                       ),
-                                      unselectedWidgetColor:
-                                          FlutterFlowTheme.of(context)
-                                              .alternate,
-                                    ),
-                                    child: Checkbox(
-                                      value: _model.checkboxValue2 ??=
-                                          FFAppState()
-                                                          .Cart
-                                                          .motorSLComment !=
-                                                      ''
-                                              ? true
-                                              : false,
-                                      onChanged: (newValue) async {
-                                        safeSetState(() =>
-                                            _model.checkboxValue2 = newValue!);
-                                        if (newValue!) {
-                                          FFAppState().updateCartStruct(
-                                            (e) => e..motorSLEnabled = true,
-                                          );
-                                          await actions.calculateCartTotal();
-                                          await Future.delayed(
-                                            Duration(
-                                              milliseconds: 100,
-                                            ),
-                                          );
-                                          _model.updatePage(() {});
-                                        } else {
-                                          FFAppState().updateCartStruct(
-                                            (e) => e
-                                              ..motorSLComment = null
-                                              ..motorSLEnabled = false,
-                                          );
-                                          safeSetState(() {
-                                            _model.textFieldMessageSLTextController
-                                                    ?.text =
-                                                FFAppState()
-                                                    .Cart
-                                                    .motorSLComment;
-                                          });
-                                          await actions.calculateCartTotal();
-                                          await Future.delayed(
-                                            Duration(
-                                              milliseconds: 100,
-                                            ),
-                                          );
-                                          _model.updatePage(() {});
-                                        }
-                                      },
-                                      side: (FlutterFlowTheme.of(context)
-                                                  .alternate !=
-                                              null)
-                                          ? BorderSide(
-                                              width: 2,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            )
-                                          : null,
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).primary,
-                                      checkColor:
-                                          FlutterFlowTheme.of(context).info,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              if (_model.checkboxValue2 ?? true)
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color:
-                                          FlutterFlowTheme.of(context).tertiary,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(12.0),
-                                    child: TextFormField(
-                                      controller: _model
-                                          .textFieldMessageSLTextController,
-                                      focusNode:
-                                          _model.textFieldMessageSLFocusNode,
-                                      onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.textFieldMessageSLTextController',
-                                        Duration(milliseconds: 100),
-                                        () async {
-                                          FFAppState().updateCartStruct(
-                                            (e) => e
-                                              ..motorSLComment = _model
-                                                  .textFieldMessageSLTextController
-                                                  .text
-                                              ..comment = _model
-                                                  .textFieldMessageCTextController
-                                                  .text,
-                                          );
+                                      child: Checkbox(
+                                        value: _model.checkboxValue2 ??=
+                                            FFAppState()
+                                                            .Cart
+                                                            .motorSLComment !=
+                                                        ''
+                                                ? true
+                                                : false,
+                                        onChanged: (newValue) async {
+                                          safeSetState(() => _model
+                                              .checkboxValue2 = newValue!);
+                                          if (newValue!) {
+                                            FFAppState().updateCartStruct(
+                                              (e) => e..motorSLEnabled = true,
+                                            );
+                                            await actions.calculateCartTotal();
+                                            await Future.delayed(
+                                              Duration(
+                                                milliseconds: 100,
+                                              ),
+                                            );
+                                            _model.updatePage(() {});
+                                          } else {
+                                            FFAppState().updateCartStruct(
+                                              (e) => e
+                                                ..motorSLComment = null
+                                                ..motorSLEnabled = false,
+                                            );
+                                            safeSetState(() {
+                                              _model.textFieldMessageSLTextController
+                                                      ?.text =
+                                                  FFAppState()
+                                                      .Cart
+                                                      .motorSLComment;
+                                            });
+                                            await actions.calculateCartTotal();
+                                            await Future.delayed(
+                                              Duration(
+                                                milliseconds: 100,
+                                              ),
+                                            );
+                                            _model.updatePage(() {});
+                                          }
                                         },
+                                        side: (FlutterFlowTheme.of(context)
+                                                    .alternate !=
+                                                null)
+                                            ? BorderSide(
+                                                width: 2,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                              )
+                                            : null,
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        checkColor:
+                                            FlutterFlowTheme.of(context).info,
                                       ),
-                                      autofocus: false,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        isDense: true,
-                                        hintText:
-                                            'Enter a custom Motor Shaft length.',
-                                        hintStyle: FlutterFlowTheme.of(context)
+                                    ),
+                                  ],
+                                ),
+                                if (_model.checkboxValue2 ?? true)
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(12.0),
+                                      child: TextFormField(
+                                        controller: _model
+                                            .textFieldMessageSLTextController,
+                                        focusNode:
+                                            _model.textFieldMessageSLFocusNode,
+                                        onChanged: (_) => EasyDebounce.debounce(
+                                          '_model.textFieldMessageSLTextController',
+                                          Duration(milliseconds: 100),
+                                          () async {
+                                            FFAppState().updateCartStruct(
+                                              (e) => e
+                                                ..motorSLComment = _model
+                                                    .textFieldMessageSLTextController
+                                                    .text
+                                                ..comment = _model
+                                                    .textFieldMessageCTextController
+                                                    .text,
+                                            );
+                                          },
+                                        ),
+                                        autofocus: false,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          hintText:
+                                              'Enter a custom Motor Shaft length.',
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelSmall
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmallFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmallIsCustom,
+                                              ),
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedErrorBorder: InputBorder.none,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
                                             .labelSmall
                                             .override(
                                               fontFamily:
@@ -1160,46 +1191,28 @@ class _ReviewYourOrderDesktopWidgetState
                                                       .labelSmallFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiary,
+                                                      .primaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               useGoogleFonts:
                                                   !FlutterFlowTheme.of(context)
                                                       .labelSmallIsCustom,
                                             ),
-                                        enabledBorder: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        focusedErrorBorder: InputBorder.none,
+                                        maxLines: null,
+                                        cursorColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        validator: _model
+                                            .textFieldMessageSLTextControllerValidator
+                                            .asValidator(context),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelSmallFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts:
-                                                !FlutterFlowTheme.of(context)
-                                                    .labelSmallIsCustom,
-                                          ),
-                                      maxLines: null,
-                                      cursorColor:
-                                          FlutterFlowTheme.of(context).primary,
-                                      validator: _model
-                                          .textFieldMessageSLTextControllerValidator
-                                          .asValidator(context),
                                     ),
                                   ),
-                                ),
-                            ].divide(SizedBox(height: 16.0)),
+                              ].divide(SizedBox(height: 16.0)),
+                            ),
                           ),
                         ),
                       ),
-                    ),
                     Container(
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,

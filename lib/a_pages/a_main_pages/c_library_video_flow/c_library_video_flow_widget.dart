@@ -55,6 +55,18 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
         _model.currentValue = _model.startPoint;
         safeSetState(() {});
       }
+
+      _model.initialOptions = await queryDiagnosisVideoOptionRecordOnce(
+        queryBuilder: (diagnosisVideoOptionRecord) => diagnosisVideoOptionRecord
+            .where(
+              'diagnosisVideoRef',
+              isEqualTo: _model.currentValue?.reference,
+            )
+            .orderBy('displayOrder'),
+      );
+      _model.currentOptions =
+          _model.initialOptions!.toList().cast<DiagnosisVideoOptionRecord>();
+      safeSetState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -131,6 +143,27 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
+                                if (_model.isLoading)
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Text(
+                                      'Loading.....',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLargeFamily,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleLargeIsCustom,
+                                          ),
+                                    ),
+                                  ),
                                 if ((_model.currentValue != null) &&
                                     responsiveVisibility(
                                       context: context,
@@ -145,10 +178,104 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                       updateOnChange: true,
                                       child: CVideoDiagnosisMobileWidget(
                                         videoRecord: _model.currentValue!,
+                                        videoOptions: _model.currentOptions,
+                                        onNextVideo: (nextVideoRef) async {
+                                          _model.isLoading = true;
+                                          safeSetState(() {});
+                                          _model.loadedNextVideo =
+                                              await DiagnosisVideoRecord
+                                                  .getDocumentOnce(
+                                                      nextVideoRef);
+                                          _model.nextOptions =
+                                              await queryDiagnosisVideoOptionRecordOnce(
+                                            queryBuilder:
+                                                (diagnosisVideoOptionRecord) =>
+                                                    diagnosisVideoOptionRecord
+                                                        .where(
+                                              'diagnosisVideoRef',
+                                              isEqualTo: nextVideoRef,
+                                            ),
+                                          );
+                                          if (_model.loadedNextVideo
+                                                  ?.reference !=
+                                              null) {
+                                            _model.addToList(
+                                                _model.currentValue!);
+                                            _model.currentValue =
+                                                _model.loadedNextVideo;
+                                            _model.currentOptions = _model
+                                                .nextOptions!
+                                                .toList()
+                                                .cast<
+                                                    DiagnosisVideoOptionRecord>();
+                                            _model.isLoading = false;
+                                            safeSetState(() {});
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Unable to load the next video. Please try again.',
+                                                  style: TextStyle(
+                                                    color:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondary,
+                                              ),
+                                            );
+                                          }
+                                        
+                                          safeSetState(() {});
+                                        },
+                                        onBack: () async {
+                                          if (_model.list.isNotEmpty) {
+                                            _model.isLoading = true;
+                                            safeSetState(() {});
+                                            _model.currentValue =
+                                                _model.list.lastOrNull;
+                                            _model.previousOptions =
+                                                await queryDiagnosisVideoOptionRecordOnce(
+                                              queryBuilder:
+                                                  (diagnosisVideoOptionRecord) =>
+                                                      diagnosisVideoOptionRecord
+                                                          .where(
+                                                            'diagnosisVideoRef',
+                                                            isEqualTo: _model
+                                                                .list
+                                                                .lastOrNull
+                                                                ?.reference,
+                                                          )
+                                                          .orderBy(
+                                                              'displayOrder'),
+                                            );
+                                            _model.removeFromList(
+                                                _model.list.lastOrNull!);
+                                            _model.currentOptions = _model
+                                                .previousOptions!
+                                                .toList()
+                                                .cast<
+                                                    DiagnosisVideoOptionRecord>();
+                                            _model.isLoading = false;
+                                            safeSetState(() {});
+                                          } else {
+                                            context.safePop();
+                                          }
+
+                                          safeSetState(() {});
+                                        },
                                       ),
                                     ),
                                   ),
-                                if ((_model.currentValue?.reference != null) &&
+                                if (((_model.currentValue?.reference != null) &&
+                                        !_model.isLoading) &&
                                     responsiveVisibility(
                                       context: context,
                                       phone: false,
@@ -167,6 +294,99 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                         updateOnChange: true,
                                         child: CVideoDiagnosisDesktopWidget(
                                           videoRecord: _model.currentValue!,
+                                          videoOptions: _model.currentOptions,
+                                          onNextVideo: (nextVideoRef) async {
+                                            _model.isLoading = true;
+                                            safeSetState(() {});
+                                            _model.loadedNextVideoweb =
+                                                await DiagnosisVideoRecord
+                                                    .getDocumentOnce(
+                                                        nextVideoRef);
+                                            _model.nextOptiondesktop =
+                                                await queryDiagnosisVideoOptionRecordOnce(
+                                              queryBuilder:
+                                                  (diagnosisVideoOptionRecord) =>
+                                                      diagnosisVideoOptionRecord
+                                                          .where(
+                                                'diagnosisVideoRef',
+                                                isEqualTo: nextVideoRef,
+                                              ),
+                                            );
+                                            if (_model.loadedNextVideoweb
+                                                    ?.reference !=
+                                                null) {
+                                              _model.addToList(
+                                                  _model.currentValue!);
+                                              _model.currentValue =
+                                                  _model.loadedNextVideoweb;
+                                              _model.currentOptions = _model
+                                                  .nextOptiondesktop!
+                                                  .toList()
+                                                  .cast<
+                                                      DiagnosisVideoOptionRecord>();
+                                              _model.isLoading = false;
+                                              safeSetState(() {});
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Unable to load the next video. Please try again.',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
+                                                ),
+                                              );
+                                            }
+                                          
+                                            safeSetState(() {});
+                                          },
+                                          onBack: () async {
+                                            if (_model.list.isNotEmpty) {
+                                              _model.isLoading = true;
+                                              safeSetState(() {});
+                                              _model.currentValue =
+                                                  _model.list.lastOrNull;
+                                              _model.previousOptionsdesktop =
+                                                  await queryDiagnosisVideoOptionRecordOnce(
+                                                queryBuilder:
+                                                    (diagnosisVideoOptionRecord) =>
+                                                        diagnosisVideoOptionRecord
+                                                            .where(
+                                                              'diagnosisVideoRef',
+                                                              isEqualTo: _model
+                                                                  .list
+                                                                  .lastOrNull
+                                                                  ?.reference,
+                                                            )
+                                                            .orderBy(
+                                                                'displayOrder'),
+                                              );
+                                              _model.removeFromList(
+                                                  _model.list.lastOrNull!);
+                                              _model.currentOptions = _model
+                                                  .previousOptionsdesktop!
+                                                  .toList()
+                                                  .cast<
+                                                      DiagnosisVideoOptionRecord>();
+                                              _model.isLoading = false;
+                                              safeSetState(() {});
+                                            } else {
+                                              context.safePop();
+                                            }
+
+                                            safeSetState(() {});
+                                          },
                                         ),
                                       ),
                                     ),

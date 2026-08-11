@@ -193,6 +193,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: BDiagnosisCopyWidget.routeName,
           path: BDiagnosisCopyWidget.routePath,
           builder: (context, params) => BDiagnosisCopyWidget(),
+        ),
+        FFRoute(
+          name: CLibraryVideoFlowCopyWidget.routeName,
+          path: CLibraryVideoFlowCopyWidget.routePath,
+          builder: (context, params) => CLibraryVideoFlowCopyWidget(
+            currentVideoId: params.getParam(
+              'currentVideoId',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['DiagnosisVideo'],
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

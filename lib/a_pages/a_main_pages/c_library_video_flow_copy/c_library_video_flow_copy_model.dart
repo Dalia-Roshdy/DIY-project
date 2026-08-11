@@ -4,10 +4,11 @@ import '/backend/backend.dart';
 import '/c_library_video/c_video_diagnosis_desktop/c_video_diagnosis_desktop_widget.dart';
 import '/c_library_video/c_video_diagnosis_mobile/c_video_diagnosis_mobile_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'c_library_video_flow_widget.dart' show CLibraryVideoFlowWidget;
+import 'c_library_video_flow_copy_widget.dart' show CLibraryVideoFlowCopyWidget;
 import 'package:flutter/material.dart';
 
-class CLibraryVideoFlowModel extends FlutterFlowModel<CLibraryVideoFlowWidget> {
+class CLibraryVideoFlowCopyModel
+    extends FlutterFlowModel<CLibraryVideoFlowCopyWidget> {
   ///  Local state fields for this page.
 
   List<DiagnosisVideoRecord> list = [];
@@ -22,8 +23,6 @@ class CLibraryVideoFlowModel extends FlutterFlowModel<CLibraryVideoFlowWidget> {
   DiagnosisVideoRecord? currentValue;
 
   DiagnosisVideoOptionRecord? selectedOption;
-
-  bool isLoading = false;
 
   List<DiagnosisVideoOptionRecord> currentOptions = [];
   void addToCurrentOptions(DiagnosisVideoOptionRecord item) =>
@@ -41,30 +40,16 @@ class CLibraryVideoFlowModel extends FlutterFlowModel<CLibraryVideoFlowWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - Read Document] action in C-Library_Video_Flow widget.
+  // Stores action output result for [Backend Call - Read Document] action in C-Library_Video_FlowCopy widget.
   DiagnosisVideoRecord? passedVideo;
-  // Stores action output result for [Firestore Query - Query a collection] action in C-Library_Video_Flow widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in C-Library_Video_FlowCopy widget.
   DiagnosisVideoRecord? startPoint;
-  // Stores action output result for [Firestore Query - Query a collection] action in C-Library_Video_Flow widget.
-  List<DiagnosisVideoOptionRecord>? initialOptions;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for C_Video_Diagnosis_mobile component.
   late CVideoDiagnosisMobileModel cVideoDiagnosisMobileModel;
-  // Stores action output result for [Backend Call - Read Document] action in C_Video_Diagnosis_mobile widget.
-  DiagnosisVideoRecord? loadedNextVideo;
-  // Stores action output result for [Firestore Query - Query a collection] action in C_Video_Diagnosis_mobile widget.
-  List<DiagnosisVideoOptionRecord>? nextOptions;
-  // Stores action output result for [Firestore Query - Query a collection] action in C_Video_Diagnosis_mobile widget.
-  List<DiagnosisVideoOptionRecord>? previousOptions;
   // Model for C_Video_Diagnosis_desktop component.
   late CVideoDiagnosisDesktopModel cVideoDiagnosisDesktopModel;
-  // Stores action output result for [Backend Call - Read Document] action in C_Video_Diagnosis_desktop widget.
-  DiagnosisVideoRecord? loadedNextVideoweb;
-  // Stores action output result for [Firestore Query - Query a collection] action in C_Video_Diagnosis_desktop widget.
-  List<DiagnosisVideoOptionRecord>? nextOptiondesktop;
-  // Stores action output result for [Firestore Query - Query a collection] action in C_Video_Diagnosis_desktop widget.
-  List<DiagnosisVideoOptionRecord>? previousOptionsdesktop;
   // Model for S12_Footer component.
   late S12FooterModel s12FooterModel;
 

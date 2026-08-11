@@ -1,12 +1,12 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'c_video_diagnosis_desktop_widget.dart'
-    show CVideoDiagnosisDesktopWidget;
+import 'c_video_diagnosis_mobile_copy_widget.dart'
+    show CVideoDiagnosisMobileCopyWidget;
 import 'package:flutter/material.dart';
 
-class CVideoDiagnosisDesktopModel
-    extends FlutterFlowModel<CVideoDiagnosisDesktopWidget> {
+class CVideoDiagnosisMobileCopyModel
+    extends FlutterFlowModel<CVideoDiagnosisMobileCopyWidget> {
   ///  Local state fields for this component.
 
   DiagnosisVideoRecord? currentVideo;
@@ -24,10 +24,12 @@ class CVideoDiagnosisDesktopModel
           int index, Function(DiagnosisVideoOptionRecord) updateFn) =>
       videoOptions[index] = updateFn(videoOptions[index]);
 
-  DiagnosisVideoOptionRecord? slectedOption;
+  DiagnosisVideoOptionRecord? selectedOption;
 
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in C_Video_Diagnosis_mobileCopy widget.
+  List<DiagnosisVideoOptionRecord>? allOptions;
   // State field(s) for RadioButton widget.
   FormFieldController<String>? radioButtonValueController;
 

@@ -1,0 +1,219 @@
+import '/b_screen_components/s01_navigatio_bar/s01_navigatio_bar_widget.dart';
+import '/b_screen_components/s12_footer/s12_footer_widget.dart';
+import '/backend/backend.dart';
+import '/c_library_video/c_video_diagnosis_desktop/c_video_diagnosis_desktop_widget.dart';
+import '/c_library_video/c_video_diagnosis_mobile/c_video_diagnosis_mobile_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'c_library_video_flow_copy_model.dart';
+export 'c_library_video_flow_copy_model.dart';
+
+class CLibraryVideoFlowCopyWidget extends StatefulWidget {
+  const CLibraryVideoFlowCopyWidget({
+    super.key,
+    this.currentVideoId,
+  });
+
+  final DocumentReference? currentVideoId;
+
+  static String routeName = 'C-Library_Video_FlowCopy';
+  static String routePath = '/libraryCopy';
+
+  @override
+  State<CLibraryVideoFlowCopyWidget> createState() =>
+      _CLibraryVideoFlowCopyWidgetState();
+}
+
+class _CLibraryVideoFlowCopyWidgetState
+    extends State<CLibraryVideoFlowCopyWidget> {
+  late CLibraryVideoFlowCopyModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => CLibraryVideoFlowCopyModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.currentVideoId != null) {
+        _model.passedVideo =
+            await DiagnosisVideoRecord.getDocumentOnce(widget.currentVideoId!);
+        _model.currentValue = _model.passedVideo;
+        safeSetState(() {});
+      } else {
+        _model.startPoint = await queryDiagnosisVideoRecordOnce(
+          queryBuilder: (diagnosisVideoRecord) => diagnosisVideoRecord.where(
+            'isStart',
+            isEqualTo: true,
+          ),
+          singleRecord: true,
+        ).then((s) => s.firstOrNull);
+        _model.currentValue = _model.startPoint;
+        safeSetState(() {});
+      }
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
+          top: true,
+          child: SingleChildScrollView(
+            primary: false,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0.0, -1.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.96,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).primary,
+                          width: 1.0,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          wrapWithModel(
+                            model: _model.s01NavigatioBarModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: S01NavigatioBarWidget(),
+                          ),
+                          Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: valueOrDefault<double>(
+                              MediaQuery.sizeOf(context).width <
+                                      kBreakpointSmall
+                                  ? 25.0
+                                  : 60.0,
+                              100.0,
+                            ),
+                            decoration: BoxDecoration(),
+                          ),
+                          Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).tertiary,
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.0, -1.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if ((_model.currentValue != null) &&
+                                    responsiveVisibility(
+                                      context: context,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    child: wrapWithModel(
+                                      model: _model.cVideoDiagnosisMobileModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      updateOnChange: true,
+                                      child: CVideoDiagnosisMobileWidget(
+                                        videoRecord: _model.currentValue!,
+                                        onNextVideo: (nextVideoRef) async {},
+                                        onBack: () async {},
+                                      ),
+                                    ),
+                                  ),
+                                if ((_model.currentValue?.reference != null) &&
+                                    responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                      tablet: false,
+                                    ))
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 48.0),
+                                      child: wrapWithModel(
+                                        model:
+                                            _model.cVideoDiagnosisDesktopModel,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        updateOnChange: true,
+                                        child: CVideoDiagnosisDesktopWidget(
+                                          videoRecord: _model.currentValue!,
+                                          onNextVideo: (nextVideoRef) async {},
+                                          onBack: () async {},
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                if (responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                  tablet: false,
+                                  tabletLandscape: false,
+                                ))
+                                  wrapWithModel(
+                                    model: _model.s12FooterModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: S12FooterWidget(),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ]
+                  .addToStart(SizedBox(
+                      height: valueOrDefault<double>(
+                    MediaQuery.sizeOf(context).width < kBreakpointSmall
+                        ? 32.0
+                        : 64.0,
+                    64.0,
+                  )))
+                  .addToEnd(SizedBox(
+                      height: valueOrDefault<double>(
+                    MediaQuery.sizeOf(context).width < kBreakpointSmall
+                        ? 32.0
+                        : 64.0,
+                    64.0,
+                  ))),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -27,8 +27,6 @@ class CVideoDiagnosisMobileModel
 
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in C_Video_Diagnosis_mobile widget.
-  List<DiagnosisVideoOptionRecord>? allOptions;
   // State field(s) for RadioButton widget.
   FormFieldController<String>? radioButtonValueController;
 
