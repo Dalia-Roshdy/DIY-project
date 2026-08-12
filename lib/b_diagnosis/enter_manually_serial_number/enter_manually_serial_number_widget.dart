@@ -914,7 +914,7 @@ class _EnterManuallySerialNumberWidgetState
                           child: Icon(
                             Icons.arrow_forward,
                             color: FlutterFlowTheme.of(context).primary,
-                            size: 80.0,
+                            size: 50.0,
                           ),
                         ),
                       ),

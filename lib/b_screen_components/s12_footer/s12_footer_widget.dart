@@ -66,21 +66,34 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
-                        width: 100.0,
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 1.0,
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(AHomePageWidget.routeName);
+                        },
+                        child: Container(
+                          width: 100.0,
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 1.0,
+                            ),
                           ),
-                        ),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Icon(
-                            Icons.toll,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 30.0,
+                          child: Padding(
+                            padding: EdgeInsets.all(15.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/AYK_Logo.jpg',
+                                width: 20.0,
+                                height: 200.0,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
                           ),
                         ),
                       ),

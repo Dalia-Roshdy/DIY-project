@@ -38,7 +38,7 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if ((FFAppState().Cart.cartItems.isNotEmpty) == false) {
+      if (!(FFAppState().Cart.cartItems.isNotEmpty)) {
         context.goNamed(
           DSelectProductRepairWidget.routeName,
           queryParameters: {

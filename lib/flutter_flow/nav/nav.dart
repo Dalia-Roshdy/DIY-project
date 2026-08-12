@@ -77,14 +77,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? AHomePageWidget() : AHomePageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? CLibraryVideoFlowWidget()
+          : AHomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? AHomePageWidget() : AHomePageWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? CLibraryVideoFlowWidget()
+              : AHomePageWidget(),
         ),
         FFRoute(
           name: AHomePageWidget.routeName,

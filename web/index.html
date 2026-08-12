@@ -24,7 +24,38 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="DIY AC Repair">
 
-  
+  <script>
+(async function () {
+  const version = 'diy-ac-v13-2';
+  const versionKey = 'diy_ac_app_version';
+
+  if (localStorage.getItem(versionKey) === version) return;
+
+  try {
+    if ('serviceWorker' in navigator) {
+      const registrations =
+          await navigator.serviceWorker.getRegistrations();
+
+      await Promise.all(
+        registrations.map(registration => registration.unregister())
+      );
+    }
+
+    if ('caches' in window) {
+      const cacheNames = await caches.keys();
+
+      await Promise.all(
+        cacheNames.map(cacheName => caches.delete(cacheName))
+      );
+    }
+
+    localStorage.setItem(versionKey, version);
+    window.location.reload();
+  } catch (error) {
+    console.error('App cache cleanup failed:', error);
+  }
+})();
+</script>
 
   
 

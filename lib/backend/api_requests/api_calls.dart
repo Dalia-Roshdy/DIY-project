@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../cloud_functions/cloud_functions.dart';
 
 import 'package:flutter/foundation.dart';
 
@@ -12,11 +13,6 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start Payments Group Code
 
 class PaymentsGroup {
-  static String getBaseUrl() => 'https://api.stripe.com/v1/';
-  static Map<String, String> headers = {
-    'Authorization':
-        'Bearer sk_test_51T2VrQ0XCBpwpAtmFHwlrc4sJBN09AHpYCJifeT0zVNb1K0blHCz52liAVbdGz479k4Y4kDSaabGCmSN0sCOBqxc00P8RxdVzs',
-  };
   static GetPaymentByIdCall getPaymentByIdCall = GetPaymentByIdCall();
 }
 
@@ -24,24 +20,16 @@ class GetPaymentByIdCall {
   Future<ApiCallResponse> call({
     String? paymentIntentId = 'pi_3TgWUU0XCBpwpAtm0YzlHJKe',
   }) async {
-    final baseUrl = PaymentsGroup.getBaseUrl();
-
-    return ApiManager.instance.makeApiCall(
-      callName: 'getPaymentById',
-      apiUrl: '${baseUrl}payment_intents/${paymentIntentId}',
-      callType: ApiCallType.GET,
-      headers: {
-        'Authorization':
-            'Bearer sk_test_51T2VrQ0XCBpwpAtmFHwlrc4sJBN09AHpYCJifeT0zVNb1K0blHCz52liAVbdGz479k4Y4kDSaabGCmSN0sCOBqxc00P8RxdVzs',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetPaymentByIdCall',
+        'variables': {
+          'paymentIntentId': paymentIntentId,
+        },
       },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? paymentId(dynamic response) => castToType<String>(getJsonField(

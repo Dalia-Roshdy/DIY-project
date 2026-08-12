@@ -253,7 +253,10 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                             },
                           );
 
-                          context.goNamed(EReviewYourOrderWidget.routeName);
+                          if (Navigator.of(context).canPop()) {
+                            context.pop();
+                          }
+                          context.pushNamed(EReviewYourOrderWidget.routeName);
                         },
                       ),
                     ),
