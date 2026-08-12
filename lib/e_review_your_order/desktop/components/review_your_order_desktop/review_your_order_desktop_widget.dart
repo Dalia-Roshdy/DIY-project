@@ -775,7 +775,8 @@ class _ReviewYourOrderDesktopWidgetState
                                       is_total: false,
                                     ),
                                   ),
-                                  if (_model.checkboxValue2 ?? true)
+                                  if ((_model.checkboxValue2 == true) ||
+                                      (FFAppState().Cart.motorSLFees != 0.0))
                                     wrapWithModel(
                                       model: _model.summaryLineSlModel,
                                       updateCallback: () => safeSetState(() {}),
@@ -853,6 +854,7 @@ class _ReviewYourOrderDesktopWidgetState
                                                 ? true
                                                 : false,
                                     );
+                                    await actions.calculateCartTotal();
 
                                     context.pushNamed(
                                         GSecurePaymentCheckoutWidget.routeName);
@@ -1003,9 +1005,9 @@ class _ReviewYourOrderDesktopWidgetState
                     if (FFAppState()
                             .Cart
                             .cartItems
-                            .where((e) => e.specType == Parts.MOTOR.name)
+                            .where((e) => e.specType == 'MOTOR')
                             .toList()
-                            .length >
+                            .length !=
                         0)
                       Container(
                         decoration: BoxDecoration(
@@ -1069,42 +1071,55 @@ class _ReviewYourOrderDesktopWidgetState
                                                         ''
                                                 ? true
                                                 : false,
-                                        onChanged: (newValue) async {
-                                          safeSetState(() => _model
-                                              .checkboxValue2 = newValue!);
-                                          if (newValue!) {
-                                            FFAppState().updateCartStruct(
-                                              (e) => e..motorSLEnabled = true,
-                                            );
-                                            await actions.calculateCartTotal();
-                                            await Future.delayed(
-                                              Duration(
-                                                milliseconds: 100,
-                                              ),
-                                            );
-                                            _model.updatePage(() {});
-                                          } else {
-                                            FFAppState().updateCartStruct(
-                                              (e) => e
-                                                ..motorSLComment = null
-                                                ..motorSLEnabled = false,
-                                            );
-                                            safeSetState(() {
-                                              _model.textFieldMessageSLTextController
-                                                      ?.text =
-                                                  FFAppState()
-                                                      .Cart
-                                                      .motorSLComment;
-                                            });
-                                            await actions.calculateCartTotal();
-                                            await Future.delayed(
-                                              Duration(
-                                                milliseconds: 100,
-                                              ),
-                                            );
-                                            _model.updatePage(() {});
-                                          }
-                                        },
+                                        onChanged: (FFAppState()
+                                                    .Cart
+                                                    .cartItems
+                                                    .where((e) =>
+                                                        e.specType == 'MOTOR')
+                                                    .toList()
+                                                    .length ==
+                                                0)
+                                            ? null
+                                            : (newValue) async {
+                                                safeSetState(() =>
+                                                    _model.checkboxValue2 =
+                                                        newValue!);
+                                                if (newValue!) {
+                                                  FFAppState().updateCartStruct(
+                                                    (e) => e
+                                                      ..motorSLEnabled = true,
+                                                  );
+                                                  await actions
+                                                      .calculateCartTotal();
+                                                  await Future.delayed(
+                                                    Duration(
+                                                      milliseconds: 100,
+                                                    ),
+                                                  );
+                                                  _model.updatePage(() {});
+                                                } else {
+                                                  FFAppState().updateCartStruct(
+                                                    (e) => e
+                                                      ..motorSLComment = null
+                                                      ..motorSLEnabled = false,
+                                                  );
+                                                  safeSetState(() {
+                                                    _model.textFieldMessageSLTextController
+                                                            ?.text =
+                                                        FFAppState()
+                                                            .Cart
+                                                            .motorSLComment;
+                                                  });
+                                                  await actions
+                                                      .calculateCartTotal();
+                                                  await Future.delayed(
+                                                    Duration(
+                                                      milliseconds: 100,
+                                                    ),
+                                                  );
+                                                  _model.updatePage(() {});
+                                                }
+                                              },
                                         side: (FlutterFlowTheme.of(context)
                                                     .alternate !=
                                                 null)
@@ -1118,8 +1133,17 @@ class _ReviewYourOrderDesktopWidgetState
                                         activeColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
-                                        checkColor:
-                                            FlutterFlowTheme.of(context).info,
+                                        checkColor: (FFAppState()
+                                                    .Cart
+                                                    .cartItems
+                                                    .where((e) =>
+                                                        e.specType == 'MOTOR')
+                                                    .toList()
+                                                    .length ==
+                                                0)
+                                            ? FlutterFlowTheme.of(context)
+                                                .grey10
+                                            : FlutterFlowTheme.of(context).info,
                                       ),
                                     ),
                                   ],

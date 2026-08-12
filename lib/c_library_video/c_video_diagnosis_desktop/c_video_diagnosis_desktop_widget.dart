@@ -478,42 +478,48 @@ class _CVideoDiagnosisDesktopWidgetState
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
-                      child: Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: ClipRRect(
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.7,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 0.0),
-                              child: AspectRatio(
-                                aspectRatio: 1.78,
-                                child: FlutterFlowVideoPlayer(
-                                  path: widget.videoRecord!.videoUrl,
-                                  videoType: VideoType.network,
-                                  width: MediaQuery.sizeOf(context).width * 0.8,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.7,
-                                  aspectRatio: 1.7,
-                                  autoPlay: true,
-                                  looping: false,
-                                  showControls: true,
-                                  allowFullScreen: false,
-                                  allowPlaybackSpeedMenu: true,
-                                  lazyLoad: true,
+                    if (valueOrDefault<bool>(
+                      widget.videoRecord?.videoUrl != null &&
+                          widget.videoRecord?.videoUrl != '',
+                      true,
+                    ))
+                      Align(
+                        alignment: AlignmentDirectional(0.0, -1.0),
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: ClipRRect(
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.7,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 0.0, 20.0, 0.0),
+                                child: AspectRatio(
+                                  aspectRatio: 1.78,
+                                  child: FlutterFlowVideoPlayer(
+                                    path: widget.videoRecord!.videoUrl,
+                                    videoType: VideoType.network,
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.8,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 0.7,
+                                    aspectRatio: 1.7,
+                                    autoPlay: true,
+                                    looping: false,
+                                    showControls: true,
+                                    allowFullScreen: false,
+                                    allowPlaybackSpeedMenu: true,
+                                    lazyLoad: true,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),

@@ -20,17 +20,34 @@ Future<void> calculateCartTotal() {
   double subtotal = 0.0;
   final items = cart.cartItems;
   final n = items.length;
+  bool hasMotor = false;
+
   for (var i = 0; i < n; i++) {
     subtotal += items[i].price * items[i].qty;
+    if (items[i].specType == 'MOTOR') {
+      hasMotor = true;
+    }
   }
   subtotal = _round2(subtotal);
 
   final taxPercent = double.tryParse(settings.tax) ?? 0.0;
   final shipping = double.tryParse(settings.shipping) ?? (cart.shipping ?? 0.0);
 
-  double motorSL = (cart.motorSLEnabled ?? false)
-      ? double.tryParse(settings.motorSLFees) ?? (cart.motorSLFees ?? 0.0)
-      : 0.0;
+  double motorSL;
+  bool motorSLEnabled;
+  String? motorSLComment;
+
+  if (!hasMotor) {
+    motorSL = 0;
+    motorSLEnabled = false;
+    motorSLComment = null;
+  } else {
+    motorSLEnabled = cart.motorSLEnabled ?? false;
+    motorSL = motorSLEnabled
+        ? (double.tryParse(settings.motorSLFees) ?? (cart.motorSLFees ?? 0.0))
+        : 0.0;
+    motorSLComment = cart.motorSLComment;
+  }
 
   final tax = _round2((subtotal + motorSL) * taxPercent / 100);
   final total = _round2(subtotal + shipping + tax + motorSL);
@@ -40,7 +57,9 @@ Future<void> calculateCartTotal() {
     ..total = total
     ..shipping = shipping
     ..tax = tax
-    ..motorSLFees = motorSL);
+    ..motorSLFees = motorSL
+    ..motorSLEnabled = motorSLEnabled
+    ..motorSLComment = motorSLComment);
 
   return Future.value();
 }

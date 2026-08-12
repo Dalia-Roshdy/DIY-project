@@ -39,6 +39,8 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.isLoading = true;
+      safeSetState(() {});
       if (widget.currentVideoId != null) {
         _model.passedVideo =
             await DiagnosisVideoRecord.getDocumentOnce(widget.currentVideoId!);
@@ -66,6 +68,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
       );
       _model.currentOptions =
           _model.initialOptions!.toList().cast<DiagnosisVideoOptionRecord>();
+      _model.isLoading = false;
       safeSetState(() {});
     });
 
@@ -164,7 +167,8 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                           ),
                                     ),
                                   ),
-                                if ((_model.currentValue != null) &&
+                                if (((_model.currentValue != null) &&
+                                        !_model.isLoading) &&
                                     responsiveVisibility(
                                       context: context,
                                       tabletLandscape: false,
@@ -192,9 +196,12 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                 (diagnosisVideoOptionRecord) =>
                                                     diagnosisVideoOptionRecord
                                                         .where(
-                                              'diagnosisVideoRef',
-                                              isEqualTo: nextVideoRef,
-                                            ),
+                                                          'diagnosisVideoRef',
+                                                          isEqualTo:
+                                                              nextVideoRef,
+                                                        )
+                                                        .orderBy(
+                                                            'displayOrder'),
                                           );
                                           if (_model.loadedNextVideo
                                                   ?.reference !=
@@ -308,9 +315,12 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                   (diagnosisVideoOptionRecord) =>
                                                       diagnosisVideoOptionRecord
                                                           .where(
-                                                'diagnosisVideoRef',
-                                                isEqualTo: nextVideoRef,
-                                              ),
+                                                            'diagnosisVideoRef',
+                                                            isEqualTo:
+                                                                nextVideoRef,
+                                                          )
+                                                          .orderBy(
+                                                              'displayOrder'),
                                             );
                                             if (_model.loadedNextVideoweb
                                                     ?.reference !=

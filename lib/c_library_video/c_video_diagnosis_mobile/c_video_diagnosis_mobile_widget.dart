@@ -135,224 +135,229 @@ class _CVideoDiagnosisMobileWidgetState
               ),
             ),
           if (widget.videoOptions!.length > 0)
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).grey20,
-                  border: Border.all(
-                    color: FlutterFlowTheme.of(context).primary,
+            Align(
+              alignment: AlignmentDirectional(-1.0, -1.0),
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).grey20,
+                    border: Border.all(
+                      color: FlutterFlowTheme.of(context).primary,
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(24.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
-                        child: Text(
-                          'Questions:',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyMediumFamily,
-                                fontSize: 18.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w800,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodyMediumIsCustom,
-                              ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
-                        child: Text(
-                          valueOrDefault<String>(
-                            widget.videoRecord?.videoQuestion,
-                            'Q.Text',
+                  child: Padding(
+                    padding: EdgeInsets.all(24.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 12.0),
+                          child: Text(
+                            'Questions:',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w800,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
+                                ),
                           ),
-                          textAlign: TextAlign.start,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyLarge
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyLargeFamily,
-                                fontSize: 18.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.normal,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .bodyLargeIsCustom,
-                              ),
                         ),
-                      ),
-                      Expanded(
-                        child: FlutterFlowRadioButton(
-                          options: widget.videoOptions!
-                              .map((e) => e.buttonText)
-                              .toList(),
-                          onChanged: (val) async {
-                            safeSetState(() {});
-                            _model.selectedOption = widget.videoOptions
-                                ?.where((e) =>
-                                    e.buttonText == _model.radioButtonValue)
-                                .toList()
-                                .firstOrNull;
-                          },
-                          controller: _model.radioButtonValueController ??=
-                              FormFieldController<String>(null),
-                          optionHeight: 32.0,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .labelMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .labelMediumFamily,
-                                fontSize: 16.0,
-                                letterSpacing: 0.0,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .labelMediumIsCustom,
-                              ),
-                          buttonPosition: RadioButtonPosition.left,
-                          direction: Axis.vertical,
-                          radioButtonColor:
-                              FlutterFlowTheme.of(context).primary,
-                          inactiveRadioButtonColor:
-                              FlutterFlowTheme.of(context).secondaryText,
-                          toggleable: false,
-                          horizontalAlignment: WrapAlignment.start,
-                          verticalAlignment: WrapCrossAlignment.start,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 12.0),
+                          child: Text(
+                            valueOrDefault<String>(
+                              widget.videoRecord?.videoQuestion,
+                              'Q.Text',
+                            ),
+                            textAlign: TextAlign.start,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyLargeFamily,
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.normal,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyLargeIsCustom,
+                                ),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            2.0, 24.0, 0.0, 24.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                _model.selectedOption = null;
-                                _model.radioButtonValueController?.reset();
+                        Expanded(
+                          child: FlutterFlowRadioButton(
+                            options: widget.videoOptions!
+                                .map((e) => e.buttonText)
+                                .toList(),
+                            onChanged: (val) async {
+                              safeSetState(() {});
+                              _model.selectedOption = widget.videoOptions
+                                  ?.where((e) =>
+                                      e.buttonText == _model.radioButtonValue)
+                                  .toList()
+                                  .firstOrNull;
+                            },
+                            controller: _model.radioButtonValueController ??=
+                                FormFieldController<String>(null),
+                            optionHeight: 32.0,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelMediumIsCustom,
+                                ),
+                            buttonPosition: RadioButtonPosition.left,
+                            direction: Axis.vertical,
+                            radioButtonColor:
+                                FlutterFlowTheme.of(context).primary,
+                            inactiveRadioButtonColor:
+                                FlutterFlowTheme.of(context).secondaryText,
+                            toggleable: false,
+                            horizontalAlignment: WrapAlignment.start,
+                            verticalAlignment: WrapCrossAlignment.start,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              2.0, 24.0, 0.0, 24.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  _model.selectedOption = null;
+                                  _model.radioButtonValueController?.reset();
 
-                                await widget.onBack?.call();
-                              },
-                              text: 'Back',
-                              icon: Icon(
-                                Icons.arrow_back_sharp,
-                                size: 15.0,
+                                  await widget.onBack?.call();
+                                },
+                                text: 'Back',
+                                icon: Icon(
+                                  Icons.arrow_back_sharp,
+                                  size: 15.0,
+                                ),
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelMediumIsCustom,
+                                      ),
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(0.0),
+                                ),
                               ),
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .labelMediumFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts:
-                                          !FlutterFlowTheme.of(context)
-                                              .labelMediumIsCustom,
-                                    ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(0.0),
-                              ),
-                            ),
-                            FFButtonWidget(
-                              onPressed: (_model.radioButtonValue == null ||
-                                      _model.radioButtonValue == '')
-                                  ? null
-                                  : () async {
-                                      if (_model.selectedOption?.actionType ==
-                                          ActionType.showVideo) {
-                                        await widget.onNextVideo?.call(
-                                          _model.selectedOption!.nextStepKey!,
-                                        );
-                                        _model.selectedOption = null;
-                                        _model.radioButtonValueController
-                                            ?.reset();
-                                      } else if (_model
-                                              .selectedOption?.actionType ==
-                                          ActionType.navigate) {
-                                        if (_model.selectedOption?.targetPage ==
-                                            TargetPage.contactUs) {
-                                          context.pushNamed(
-                                              KContactWidget.routeName);
+                              FFButtonWidget(
+                                onPressed: (_model.radioButtonValue == null ||
+                                        _model.radioButtonValue == '')
+                                    ? null
+                                    : () async {
+                                        if (_model.selectedOption?.actionType ==
+                                            ActionType.showVideo) {
+                                          await widget.onNextVideo?.call(
+                                            _model.selectedOption!.nextStepKey!,
+                                          );
+                                          _model.selectedOption = null;
+                                          _model.radioButtonValueController
+                                              ?.reset();
                                         } else if (_model
-                                                .selectedOption?.targetPage ==
-                                            TargetPage.needAssistant) {
-                                          context.pushNamed(
-                                              LRequestTechnicalWidget
-                                                  .routeName);
+                                                .selectedOption?.actionType ==
+                                            ActionType.navigate) {
+                                          if (_model
+                                                  .selectedOption?.targetPage ==
+                                              TargetPage.contactUs) {
+                                            context.pushNamed(
+                                                KContactWidget.routeName);
+                                          } else if (_model
+                                                  .selectedOption?.targetPage ==
+                                              TargetPage.needAssistant) {
+                                            context.pushNamed(
+                                                LRequestTechnicalWidget
+                                                    .routeName);
+                                          } else if (_model
+                                                  .selectedOption?.targetPage ==
+                                              TargetPage.diagnosis) {
+                                            context.pushNamed(
+                                                BDiagnosisWidget.routeName);
+                                          }
                                         } else if (_model
-                                                .selectedOption?.targetPage ==
-                                            TargetPage.diagnosis) {
+                                                .selectedOption?.actionType ==
+                                            ActionType.navigateWithData) {
                                           context.pushNamed(
-                                              BDiagnosisWidget.routeName);
+                                            DSelectProductRepairWidget
+                                                .routeName,
+                                            queryParameters: {
+                                              'part': serializeParam(
+                                                _model.selectedOption
+                                                    ?.targetPartType,
+                                                ParamType.Enum,
+                                              ),
+                                            }.withoutNulls,
+                                          );
                                         }
-                                      } else if (_model
-                                              .selectedOption?.actionType ==
-                                          ActionType.navigateWithData) {
-                                        context.pushNamed(
-                                          DSelectProductRepairWidget.routeName,
-                                          queryParameters: {
-                                            'part': serializeParam(
-                                              _model.selectedOption
-                                                  ?.targetPartType,
-                                              ParamType.Enum,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      }
-                                    },
-                              text: 'Proceed',
-                              icon: Icon(
-                                Icons.arrow_forward_sharp,
-                                size: 15.0,
+                                      },
+                                text: 'Proceed',
+                                icon: Icon(
+                                  Icons.arrow_forward_sharp,
+                                  size: 15.0,
+                                ),
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconAlignment: IconAlignment.end,
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelMediumIsCustom,
+                                      ),
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  disabledColor: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                ),
                               ),
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconAlignment: IconAlignment.end,
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .labelMediumFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts:
-                                          !FlutterFlowTheme.of(context)
-                                              .labelMediumIsCustom,
-                                    ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(0.0),
-                                disabledColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

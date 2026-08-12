@@ -145,6 +145,7 @@ class _AddCartSuccessDialogWidgetState
                               await actions.calculateCartTotal();
                             }(),
                           );
+                          Navigator.pop(context);
 
                           context.pushNamed(EReviewYourOrderWidget.routeName);
                         },
