@@ -25,12 +25,6 @@ class EReviewYourOrderModel extends FlutterFlowModel<EReviewYourOrderWidget> {
 
   // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
   List<ItemsRecord>? toolACT;
-  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
-  SettingsRecord? shipping;
-  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
-  SettingsRecord? tax;
-  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
-  SettingsRecord? motorSl;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for Review_Your_Order_Desktop component.

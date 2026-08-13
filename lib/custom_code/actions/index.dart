@@ -8,3 +8,4 @@ export 'updatecart_items_action.dart' show updatecartItemsAction;
 export 'build_order_email_html.dart' show buildOrderEmailHtml;
 export 'cart_items_to_order_lines_a.dart' show cartItemsToOrderLinesA;
 export 'enable_firestore_web_cache.dart' show enableFirestoreWebCache;
+export 'get_cart_setting_action.dart' show getCartSettingAction;

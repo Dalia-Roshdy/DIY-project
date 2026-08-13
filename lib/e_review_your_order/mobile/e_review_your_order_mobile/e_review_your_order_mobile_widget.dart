@@ -46,7 +46,7 @@ class _EReviewYourOrderMobileWidgetState
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(
         Duration(
-          milliseconds: 500,
+          milliseconds: 700,
         ),
       );
       _model.toolsCS = widget.toolsC!.toList().cast<ItemsRecord>();
@@ -1051,7 +1051,7 @@ class _EReviewYourOrderMobileWidgetState
                               ),
                         ),
                         Container(
-                          height: 150.0,
+                          height: 100.0,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
                             border: Border.all(
@@ -1107,7 +1107,7 @@ class _EReviewYourOrderMobileWidgetState
                                         .labelSmallFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
-                                    fontSize: 10.0,
+                                    fontSize: 12.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts:
                                         !FlutterFlowTheme.of(context)

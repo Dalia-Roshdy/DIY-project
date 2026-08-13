@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -63,32 +62,6 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
             .cast<ItemsRecord>();
         safeSetState(() {});
       }
-      _model.shipping = await querySettingsRecordOnce(
-        queryBuilder: (settingsRecord) => settingsRecord.where(
-          'key',
-          isEqualTo: SettingKeys.shipping.name,
-        ),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
-      _model.tax = await querySettingsRecordOnce(
-        queryBuilder: (settingsRecord) => settingsRecord.where(
-          'key',
-          isEqualTo: SettingKeys.tax.name,
-        ),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
-      _model.motorSl = await querySettingsRecordOnce(
-        queryBuilder: (settingsRecord) => settingsRecord.where(
-          'key',
-          isEqualTo: SettingKeys.motor_shaft_length_fees.name,
-        ),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
-      FFAppState().CartSetting = CartSettingStruct(
-        tax: _model.tax?.value,
-        shipping: _model.shipping?.value,
-        motorSLFees: _model.motorSl?.value,
-      );
       await actions.calculateCartTotal();
       safeSetState(() {});
     });
