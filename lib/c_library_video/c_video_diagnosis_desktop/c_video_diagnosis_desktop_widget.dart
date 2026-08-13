@@ -507,7 +507,7 @@ class _CVideoDiagnosisDesktopWidgetState
                                     height:
                                         MediaQuery.sizeOf(context).height * 0.7,
                                     aspectRatio: 1.7,
-                                    autoPlay: true,
+                                    autoPlay: false,
                                     looping: false,
                                     showControls: true,
                                     allowFullScreen: false,

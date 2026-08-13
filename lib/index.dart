@@ -30,3 +30,5 @@ export '/b_diagnosis/b_diagnosis_copy/b_diagnosis_copy_widget.dart'
     show BDiagnosisCopyWidget;
 export '/a_pages/a_main_pages/c_library_video_flow_copy/c_library_video_flow_copy_widget.dart'
     show CLibraryVideoFlowCopyWidget;
+export '/a_pages/a_main_pages/d_select_product_repair_copy/d_select_product_repair_copy_widget.dart'
+    show DSelectProductRepairCopyWidget;

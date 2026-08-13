@@ -123,7 +123,7 @@ class _CVideoDiagnosisMobileWidgetState
                       videoType: VideoType.network,
                       height: MediaQuery.sizeOf(context).height * 0.4,
                       aspectRatio: 1.0,
-                      autoPlay: true,
+                      autoPlay: false,
                       looping: false,
                       showControls: true,
                       allowFullScreen: false,

@@ -205,6 +205,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['DiagnosisVideo'],
             ),
           ),
+        ),
+        FFRoute(
+          name: DSelectProductRepairCopyWidget.routeName,
+          path: DSelectProductRepairCopyWidget.routePath,
+          builder: (context, params) => DSelectProductRepairCopyWidget(
+            part: params.getParam<Parts>(
+              'part',
+              ParamType.Enum,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
