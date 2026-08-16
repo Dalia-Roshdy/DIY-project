@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 's18_filter_repair_parts_desktop_model.dart';
@@ -138,49 +139,39 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     if (_model.selectedPart != Parts.MOTOR) {
                                       _model.selectedPart = Parts.MOTOR;
                                       safeSetState(() {});
+                                      _model.dropDownHpValueController?.reset();
+                                      _model.dropDownHpValue = null;
+                                      _model.dropDownRpmValueController
+                                          ?.reset();
+                                      _model.dropDownRpmValue = null;
+                                      _model.dropDownRotationValueController
+                                          ?.reset();
+                                      _model.dropDownRotationValue = null;
+                                      _model.dropDownAmpValueController
+                                          ?.reset();
+                                      _model.dropDownAmpValue = null;
+                                      _model.dropDownNopValueController
+                                          ?.reset();
+                                      _model.dropDownNopValue = null;
+                                      _model.dropDownMFD1ValueController
+                                          ?.reset();
+                                      _model.dropDownMFD1Value = null;
+                                      _model.dropDownMFD2ValueController
+                                          ?.reset();
+                                      _model.dropDownMFD2Value = null;
+                                      _model.dropDownTypeValueController
+                                          ?.reset();
+                                      _model.dropDownTypeValue = null;
+                                      _model.dDShapValueController?.reset();
+                                      _model.dDShapValue = null;
+
                                       await widget.onMotorSelected?.call(
                                         Parts.MOTOR.name,
                                         230,
-                                        _model.dropDownHpValue != null
-                                            ? _model.dropDownHpValue
-                                            : null,
-                                        _model.dropDownRpmValue != null
-                                            ? _model.dropDownRpmValue
-                                            : null,
-                                        _model.dropDownRotationValue != null &&
-                                                _model.dropDownRotationValue !=
-                                                    ''
-                                            ? _model.dropDownRotationValue
-                                            : null,
+                                        _model.dropDownHpValue,
+                                        _model.dropDownRpmValue,
+                                        _model.dropDownRotationValue,
                                       );
-                                      safeSetState(() {
-                                        _model.dropDownHpValueController
-                                            ?.reset();
-                                        _model.dropDownHpValue = null;
-                                        _model.dropDownRpmValueController
-                                            ?.reset();
-                                        _model.dropDownRpmValue = null;
-                                        _model.dropDownRotationValueController
-                                            ?.reset();
-                                        _model.dropDownRotationValue = null;
-                                        _model.dropDownAmpValueController
-                                            ?.reset();
-                                        _model.dropDownAmpValue = null;
-                                        _model.dropDownNopValueController
-                                            ?.reset();
-                                        _model.dropDownNopValue = null;
-                                        _model.dropDownMFD1ValueController
-                                            ?.reset();
-                                        _model.dropDownMFD1Value = null;
-                                        _model.dropDownMFD2ValueController
-                                            ?.reset();
-                                        _model.dropDownMFD2Value = null;
-                                        _model.dropDownTypeValueController
-                                            ?.reset();
-                                        _model.dropDownTypeValue = null;
-                                        _model.dDShapValueController?.reset();
-                                        _model.dDShapValue = null;
-                                      });
                                     }
                                   },
                                   text:
@@ -909,38 +900,34 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       0.0, 0.0, 0.0, 12.0),
                                   child: Container(
                                     height: 24.0,
+                                    alignment: AlignmentDirectional(1.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        safeSetState(() {
-                                          _model.dropDownHpValueController
-                                              ?.reset();
-                                          _model.dropDownHpValue = null;
-                                          _model.dropDownRpmValueController
-                                              ?.reset();
-                                          _model.dropDownRpmValue = null;
-                                          _model.dropDownRotationValueController
-                                              ?.reset();
-                                          _model.dropDownRotationValue = null;
-                                        });
-                                        await widget.onMotorSelected?.call(
-                                          _model.selectedPart?.name,
-                                          230,
-                                          _model.dropDownHpValue != null
-                                              ? _model.dropDownHpValue
-                                              : null,
-                                          _model.dropDownRpmValue != null
-                                              ? _model.dropDownRpmValue
-                                              : null,
-                                          _model.dropDownRotationValue !=
-                                                      null &&
-                                                  _model.dropDownRotationValue !=
-                                                      ''
-                                              ? _model.dropDownRotationValue
-                                              : null,
+                                        _model.dropDownHpValueController
+                                            ?.reset();
+                                        _model.dropDownHpValue = null;
+                                        _model.dropDownRotationValueController
+                                            ?.reset();
+                                        _model.dropDownRotationValue = null;
+                                        _model.dropDownRpmValueController
+                                            ?.reset();
+                                        _model.dropDownRpmValue = null;
+
+                                        if (Navigator.of(context).canPop()) {
+                                          context.pop();
+                                        }
+                                        context.pushNamed(
+                                          DSelectProductRepairWidget.routeName,
+                                          queryParameters: {
+                                            'part': serializeParam(
+                                              _model.selectedPart,
+                                              ParamType.Enum,
+                                            ),
+                                          }.withoutNulls,
                                         );
                                       },
                                       child: Text(
@@ -1235,6 +1222,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                             Container(
                               height: 24.0,
                               decoration: BoxDecoration(),
+                              alignment: AlignmentDirectional(1.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -1247,14 +1235,17 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     _model.dropDownNopValueController?.reset();
                                     _model.dropDownNopValue = null;
                                   });
-                                  await widget.onContSelected?.call(
-                                    _model.dropDownAmpValue != null
-                                        ? _model.dropDownAmpValue?.toDouble()
-                                        : null,
-                                    _model.dropDownNopValue != null
-                                        ? _model.dropDownNopValue
-                                        : null,
-                                    _model.selectedPart?.name,
+                                  if (Navigator.of(context).canPop()) {
+                                    context.pop();
+                                  }
+                                  context.pushNamed(
+                                    DSelectProductRepairWidget.routeName,
+                                    queryParameters: {
+                                      'part': serializeParam(
+                                        _model.selectedPart,
+                                        ParamType.Enum,
+                                      ),
+                                    }.withoutNulls,
                                   );
                                 },
                                 child: Text(
@@ -1804,6 +1795,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                             Container(
                               height: 24.0,
                               decoration: BoxDecoration(),
+                              alignment: AlignmentDirectional(1.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -1820,22 +1812,17 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     _model.dDShapValueController?.reset();
                                     _model.dDShapValue = null;
                                   });
-                                  await widget.onCapatSelected?.call(
-                                    _model.selectedPart?.name,
-                                    _model.dropDownMFD1Value != null
-                                        ? _model.dropDownMFD1Value
-                                        : null,
-                                    _model.dropDownMFD2Value != null
-                                        ? _model.dropDownMFD2Value
-                                        : null,
-                                    _model.dropDownTypeValue != null &&
-                                            _model.dropDownTypeValue != ''
-                                        ? _model.dropDownTypeValue
-                                        : null,
-                                    _model.dDShapValue != null &&
-                                            _model.dDShapValue != ''
-                                        ? _model.dDShapValue
-                                        : null,
+                                  if (Navigator.of(context).canPop()) {
+                                    context.pop();
+                                  }
+                                  context.pushNamed(
+                                    DSelectProductRepairWidget.routeName,
+                                    queryParameters: {
+                                      'part': serializeParam(
+                                        _model.selectedPart,
+                                        ParamType.Enum,
+                                      ),
+                                    }.withoutNulls,
                                   );
                                 },
                                 child: Text(

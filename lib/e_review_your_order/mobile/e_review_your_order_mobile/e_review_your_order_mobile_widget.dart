@@ -44,13 +44,15 @@ class _EReviewYourOrderMobileWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(
-        Duration(
-          milliseconds: 700,
-        ),
-      );
-      _model.toolsCS = widget.toolsC!.toList().cast<ItemsRecord>();
-      _model.updatePage(() {});
+      if ((_model.toolsCS.isNotEmpty) == false) {
+        await Future.delayed(
+          Duration(
+            milliseconds: 500,
+          ),
+        );
+        _model.toolsCS = widget.toolsC!.toList().cast<ItemsRecord>();
+        _model.updatePage(() {});
+      }
     });
 
     _model.textFieldSLTextController ??=

@@ -75,7 +75,7 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                           context.pushNamed(AHomePageWidget.routeName);
                         },
                         child: Container(
-                          width: 100.0,
+                          width: 50.0,
                           height: double.infinity,
                           decoration: BoxDecoration(
                             border: Border.all(
@@ -84,14 +84,15 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(4.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
-                                'assets/images/AYK_Logo.jpg',
-                                width: 20.0,
-                                height: 200.0,
+                                'assets/images/logopng.PNG',
+                                width: 10.0,
+                                height: 7.3,
                                 fit: BoxFit.contain,
+                                alignment: Alignment(0.0, 0.58),
                               ),
                             ),
                           ),

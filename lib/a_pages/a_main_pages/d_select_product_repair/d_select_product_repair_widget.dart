@@ -56,45 +56,50 @@ class _DSelectProductRepairWidgetState
         safeSetState(() {});
       }
 
-      if (MediaQuery.sizeOf(context).width >= 1024.0) {
-        if (_model.selectedPart == Parts.MOTOR) {
-          _model.motorItemsOnPageLoad = await actions.filterMotorItems(
-            FFAppState().userAC.acModel,
-            null,
-            null,
-            null,
-            null,
-          );
+      if (_model.selectedPart == Parts.MOTOR) {
+        if (!(FFAppState().MotorCardList.isNotEmpty)) {
+          _model.motorItemsOnPageLoad = await actions.filterMotorItemsV2();
           _model.partList = _model.motorItemsOnPageLoad!
               .sortedList(keyOf: (e) => e.title, desc: false)
               .toList()
               .cast<PartCardDTOStruct>();
           safeSetState(() {});
-        } else if (_model.selectedPart == Parts.CONTACTOR) {
-          _model.contOnPageLoad = await actions.filterContactorItems(
-            FFAppState().userAC.acModel,
-            null,
-            null,
-          );
-          _model.partList = _model.contOnPageLoad!
+          FFAppState().MotorCardList = _model.motorItemsOnPageLoad!
               .sortedList(keyOf: (e) => e.title, desc: false)
               .toList()
               .cast<PartCardDTOStruct>();
-          safeSetState(() {});
-        } else if (_model.selectedPart == Parts.CAPACITOR) {
-          _model.capacOnPageLoad = await actions.filterCapacitorItems(
-            FFAppState().userAC.acModel,
-            null,
-            null,
-            null,
-            null,
-          );
-          _model.partList = _model.capacOnPageLoad!
+        } else {
+          _model.partList = FFAppState()
+              .MotorCardList
               .sortedList(keyOf: (e) => e.title, desc: false)
               .toList()
               .cast<PartCardDTOStruct>();
           safeSetState(() {});
         }
+      } else if (_model.selectedPart == Parts.CONTACTOR) {
+        _model.contOnPageLoad = await actions.filterContactorItems(
+          FFAppState().userAC.acModel,
+          null,
+          null,
+        );
+        _model.partList = _model.contOnPageLoad!
+            .sortedList(keyOf: (e) => e.title, desc: false)
+            .toList()
+            .cast<PartCardDTOStruct>();
+        safeSetState(() {});
+      } else if (_model.selectedPart == Parts.CAPACITOR) {
+        _model.capacOnPageLoad = await actions.filterCapacitorItems(
+          FFAppState().userAC.acModel,
+          null,
+          null,
+          null,
+          null,
+        );
+        _model.partList = _model.capacOnPageLoad!
+            .sortedList(keyOf: (e) => e.title, desc: false)
+            .toList()
+            .cast<PartCardDTOStruct>();
+        safeSetState(() {});
       }
     });
 
@@ -269,25 +274,69 @@ class _DSelectProductRepairWidgetState
                                                     _model.selectedPart =
                                                         Parts.MOTOR;
                                                     _model.partList = [];
-                                                    safeSetState(() {});
-                                                    if (selectedPart ==
-                                                        Parts.MOTOR.name) {
+                                                    if ((_model.selectedPart ==
+                                                            Parts.MOTOR) &&
+                                                        !(FFAppState()
+                                                            .MotorCardList
+                                                            .isNotEmpty)) {
                                                       _model.motorItemsOnCallback =
                                                           await actions
-                                                              .filterMotorItems(
-                                                        FFAppState()
-                                                            .userAC
-                                                            .acModel,
-                                                        volt,
-                                                        hp,
-                                                        rpm,
-                                                        rotation,
-                                                      );
+                                                              .filterMotorItemsV2();
                                                       _model.partList = _model
                                                           .motorItemsOnCallback!
+                                                          .sortedList(
+                                                              keyOf: (e) =>
+                                                                  e.title,
+                                                              desc: false)
                                                           .toList()
                                                           .cast<
                                                               PartCardDTOStruct>();
+                                                      safeSetState(() {});
+                                                      FFAppState()
+                                                              .MotorCardList =
+                                                          _model
+                                                              .motorItemsOnCallback!
+                                                              .sortedList(
+                                                                  keyOf: (e) =>
+                                                                      e.title,
+                                                                  desc: false)
+                                                              .toList()
+                                                              .cast<
+                                                                  PartCardDTOStruct>();
+                                                    } else if ((_model
+                                                                .selectedPart ==
+                                                            Parts.MOTOR) &&
+                                                        (FFAppState()
+                                                            .MotorCardList
+                                                            .isNotEmpty)) {
+                                                      _model.partList = FFAppState()
+                                                          .MotorCardList
+                                                          .where((e) =>
+                                                              ((e.motorCard.motorVolt ==
+                                                                      volt) ||
+                                                                  (volt ==
+                                                                      null)) &&
+                                                              ((e.motorCard.motorRpm == rpm) ||
+                                                                  (rpm ==
+                                                                      null)) &&
+                                                              ((e.motorCard.motorRotation ==
+                                                                      rotation) ||
+                                                                  (rotation == null ||
+                                                                      rotation ==
+                                                                          '')) &&
+                                                              ((e.motorCard.motorHpMin <=
+                                                                      hp!) ||
+                                                                  (hp ==
+                                                                      null)) &&
+                                                              ((e.motorCard.motorHpMax >=
+                                                                      hp) ||
+                                                                  (hp == null)))
+                                                          .toList()
+                                                          .sortedList(
+                                                              keyOf: (e) => e.title,
+                                                              desc: false)
+                                                          .toList()
+                                                          .cast<PartCardDTOStruct>();
                                                       safeSetState(() {});
                                                     }
 

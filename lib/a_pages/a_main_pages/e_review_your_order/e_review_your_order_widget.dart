@@ -60,7 +60,6 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
             .toList()
             .toList()
             .cast<ItemsRecord>();
-        safeSetState(() {});
       }
       await actions.calculateCartTotal();
       safeSetState(() {});

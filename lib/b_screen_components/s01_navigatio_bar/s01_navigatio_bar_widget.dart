@@ -76,28 +76,38 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/AYK_Logo.jpg',
-                        width: 47.98,
-                        height: 200.0,
-                        fit: BoxFit.contain,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          'assets/images/logopng.PNG',
+                          width: 35.0,
+                          height: 35.0,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                    Text(
-                      'DIY AC REPAIR',
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).titleMediumFamily,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 18.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w900,
-                            lineHeight: 1.4,
-                            useGoogleFonts: !FlutterFlowTheme.of(context)
-                                .titleMediumIsCustom,
-                          ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                      child: Text(
+                        'DIY AC REPAIR',
+                        style: FlutterFlowTheme.of(context)
+                            .titleMedium
+                            .override(
+                              fontFamily: FlutterFlowTheme.of(context)
+                                  .titleMediumFamily,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 18.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.w900,
+                              lineHeight: 1.4,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .titleMediumIsCustom,
+                            ),
+                      ),
                     ),
                   ].divide(SizedBox(width: 8.0)),
                 ),

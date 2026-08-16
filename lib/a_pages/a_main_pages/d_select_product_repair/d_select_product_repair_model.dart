@@ -29,7 +29,7 @@ class DSelectProductRepairModel
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Custom Action - filterMotorItems] action in D-Select_Product_Repair widget.
+  // Stores action output result for [Custom Action - filterMotorItemsV2] action in D-Select_Product_Repair widget.
   List<PartCardDTOStruct>? motorItemsOnPageLoad;
   // Stores action output result for [Custom Action - filterContactorItems] action in D-Select_Product_Repair widget.
   List<PartCardDTOStruct>? contOnPageLoad;
@@ -43,7 +43,7 @@ class DSelectProductRepairModel
   late AHeaderSectionModel aHeaderSectionModel;
   // Model for S18_Filter_repair_parts_desktop component.
   late S18FilterRepairPartsDesktopModel s18FilterRepairPartsDesktopModel;
-  // Stores action output result for [Custom Action - filterMotorItems] action in S18_Filter_repair_parts_desktop widget.
+  // Stores action output result for [Custom Action - filterMotorItemsV2] action in S18_Filter_repair_parts_desktop widget.
   List<PartCardDTOStruct>? motorItemsOnCallback;
   // Stores action output result for [Custom Action - filterContactorItems] action in S18_Filter_repair_parts_desktop widget.
   List<PartCardDTOStruct>? contOnCallback;

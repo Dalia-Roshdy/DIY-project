@@ -3,16 +3,16 @@ import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'c_video_diagnosis_mobile_model.dart';
-export 'c_video_diagnosis_mobile_model.dart';
+import 'c_video_diagnosis_mobilethelastworking_model.dart';
+export 'c_video_diagnosis_mobilethelastworking_model.dart';
 
-class CVideoDiagnosisMobileWidget extends StatefulWidget {
-  const CVideoDiagnosisMobileWidget({
+class CVideoDiagnosisMobilethelastworkingWidget extends StatefulWidget {
+  const CVideoDiagnosisMobilethelastworkingWidget({
     super.key,
     required this.videoRecord,
     required this.onNextVideo,
@@ -26,13 +26,13 @@ class CVideoDiagnosisMobileWidget extends StatefulWidget {
   final List<DiagnosisVideoOptionRecord>? videoOptions;
 
   @override
-  State<CVideoDiagnosisMobileWidget> createState() =>
-      _CVideoDiagnosisMobileWidgetState();
+  State<CVideoDiagnosisMobilethelastworkingWidget> createState() =>
+      _CVideoDiagnosisMobilethelastworkingWidgetState();
 }
 
-class _CVideoDiagnosisMobileWidgetState
-    extends State<CVideoDiagnosisMobileWidget> {
-  late CVideoDiagnosisMobileModel _model;
+class _CVideoDiagnosisMobilethelastworkingWidgetState
+    extends State<CVideoDiagnosisMobilethelastworkingWidget> {
+  late CVideoDiagnosisMobilethelastworkingModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -43,7 +43,8 @@ class _CVideoDiagnosisMobileWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CVideoDiagnosisMobileModel());
+    _model =
+        createModel(context, () => CVideoDiagnosisMobilethelastworkingModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -116,17 +117,19 @@ class _CVideoDiagnosisMobileWidgetState
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
-                  child: Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.4,
-                    child: custom_widgets.HtmlVideoPlayer(
-                      width: double.infinity,
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: FlutterFlowVideoPlayer(
+                      path: widget.videoRecord!.videoUrl,
+                      videoType: VideoType.network,
                       height: MediaQuery.sizeOf(context).height * 0.4,
-                      videoUrl: widget.videoRecord!.videoUrl,
-                      autoplay: true,
+                      aspectRatio: 1.0,
+                      autoPlay: true,
+                      looping: false,
                       showControls: true,
-                      loop: false,
-                      muted: true,
+                      allowFullScreen: false,
+                      allowPlaybackSpeedMenu: true,
+                      lazyLoad: true,
                     ),
                   ),
                 ),

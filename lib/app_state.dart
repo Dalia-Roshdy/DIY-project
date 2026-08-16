@@ -186,6 +186,93 @@ class FFAppState extends ChangeNotifier {
     updateFn(_CartSetting);
     prefs.setString('ff_CartSetting', _CartSetting.serialize());
   }
+
+  List<PartCardDTOStruct> _MotorCardList = [];
+  List<PartCardDTOStruct> get MotorCardList => _MotorCardList;
+  set MotorCardList(List<PartCardDTOStruct> value) {
+    _MotorCardList = value;
+  }
+
+  void addToMotorCardList(PartCardDTOStruct value) {
+    MotorCardList.add(value);
+  }
+
+  void removeFromMotorCardList(PartCardDTOStruct value) {
+    MotorCardList.remove(value);
+  }
+
+  void removeAtIndexFromMotorCardList(int index) {
+    MotorCardList.removeAt(index);
+  }
+
+  void updateMotorCardListAtIndex(
+    int index,
+    PartCardDTOStruct Function(PartCardDTOStruct) updateFn,
+  ) {
+    MotorCardList[index] = updateFn(_MotorCardList[index]);
+  }
+
+  void insertAtIndexInMotorCardList(int index, PartCardDTOStruct value) {
+    MotorCardList.insert(index, value);
+  }
+
+  List<PartCardDTOStruct> _CapacCardList = [];
+  List<PartCardDTOStruct> get CapacCardList => _CapacCardList;
+  set CapacCardList(List<PartCardDTOStruct> value) {
+    _CapacCardList = value;
+  }
+
+  void addToCapacCardList(PartCardDTOStruct value) {
+    CapacCardList.add(value);
+  }
+
+  void removeFromCapacCardList(PartCardDTOStruct value) {
+    CapacCardList.remove(value);
+  }
+
+  void removeAtIndexFromCapacCardList(int index) {
+    CapacCardList.removeAt(index);
+  }
+
+  void updateCapacCardListAtIndex(
+    int index,
+    PartCardDTOStruct Function(PartCardDTOStruct) updateFn,
+  ) {
+    CapacCardList[index] = updateFn(_CapacCardList[index]);
+  }
+
+  void insertAtIndexInCapacCardList(int index, PartCardDTOStruct value) {
+    CapacCardList.insert(index, value);
+  }
+
+  List<PartCardDTOStruct> _ContCardList = [];
+  List<PartCardDTOStruct> get ContCardList => _ContCardList;
+  set ContCardList(List<PartCardDTOStruct> value) {
+    _ContCardList = value;
+  }
+
+  void addToContCardList(PartCardDTOStruct value) {
+    ContCardList.add(value);
+  }
+
+  void removeFromContCardList(PartCardDTOStruct value) {
+    ContCardList.remove(value);
+  }
+
+  void removeAtIndexFromContCardList(int index) {
+    ContCardList.removeAt(index);
+  }
+
+  void updateContCardListAtIndex(
+    int index,
+    PartCardDTOStruct Function(PartCardDTOStruct) updateFn,
+  ) {
+    ContCardList[index] = updateFn(_ContCardList[index]);
+  }
+
+  void insertAtIndexInContCardList(int index, PartCardDTOStruct value) {
+    ContCardList.insert(index, value);
+  }
 }
 
 void _safeInit(Function() initializeField) {

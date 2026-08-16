@@ -14,7 +14,6 @@ export 'context_struct.dart';
 export 'customer_struct.dart';
 export 'message_struct.dart';
 export 'motor_card_struct.dart';
-export 'motor_part_card_d_t_o_struct.dart';
 export 'order_lines_struct.dart';
 export 'part_card_d_t_o_struct.dart';
 export 'payment_data_struct.dart';

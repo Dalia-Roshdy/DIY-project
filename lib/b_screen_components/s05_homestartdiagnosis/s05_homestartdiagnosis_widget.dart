@@ -306,7 +306,7 @@ class _S05HomestartdiagnosisWidgetState
                                                       BorderRadius.circular(
                                                           8.0),
                                                   child: Image.asset(
-                                                    'assets/images/AYK_Logo.jpg',
+                                                    'assets/images/logopng.PNG',
                                                     width: 200.0,
                                                     height: 200.0,
                                                     fit: BoxFit.cover,

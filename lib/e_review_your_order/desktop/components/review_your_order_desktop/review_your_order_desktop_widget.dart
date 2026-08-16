@@ -47,13 +47,15 @@ class _ReviewYourOrderDesktopWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(
-        Duration(
-          milliseconds: 700,
-        ),
-      );
-      _model.toolsList = widget.toolsCS!.toList().cast<ItemsRecord>();
-      safeSetState(() {});
+      if ((_model.toolsList.isNotEmpty) == false) {
+        await Future.delayed(
+          Duration(
+            milliseconds: 700,
+          ),
+        );
+        _model.toolsList = widget.toolsCS!.toList().cast<ItemsRecord>();
+        safeSetState(() {});
+      }
     });
 
     _model.textFieldMessageSLTextController ??=

@@ -817,7 +817,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                     await _model.orderPS!
                                         .update(createOrdersRecordData(
                                       payment: createPaymentDataStruct(
-                                        paymentIntentId: _model.paymentId,
+                                        paymentIntentId: '',
                                         status: 'processing',
                                         clearUnsetFields: false,
                                       ),
