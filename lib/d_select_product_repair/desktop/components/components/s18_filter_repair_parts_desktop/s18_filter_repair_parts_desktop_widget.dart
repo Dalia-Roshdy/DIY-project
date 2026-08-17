@@ -137,40 +137,17 @@ class _S18FilterRepairPartsDesktopWidgetState
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     if (_model.selectedPart != Parts.MOTOR) {
-                                      _model.selectedPart = Parts.MOTOR;
-                                      safeSetState(() {});
-                                      _model.dropDownHpValueController?.reset();
-                                      _model.dropDownHpValue = null;
-                                      _model.dropDownRpmValueController
-                                          ?.reset();
-                                      _model.dropDownRpmValue = null;
-                                      _model.dropDownRotationValueController
-                                          ?.reset();
-                                      _model.dropDownRotationValue = null;
-                                      _model.dropDownAmpValueController
-                                          ?.reset();
-                                      _model.dropDownAmpValue = null;
-                                      _model.dropDownNopValueController
-                                          ?.reset();
-                                      _model.dropDownNopValue = null;
-                                      _model.dropDownMFD1ValueController
-                                          ?.reset();
-                                      _model.dropDownMFD1Value = null;
-                                      _model.dropDownMFD2ValueController
-                                          ?.reset();
-                                      _model.dropDownMFD2Value = null;
-                                      _model.dropDownTypeValueController
-                                          ?.reset();
-                                      _model.dropDownTypeValue = null;
-                                      _model.dDShapValueController?.reset();
-                                      _model.dDShapValue = null;
-
-                                      await widget.onMotorSelected?.call(
-                                        Parts.MOTOR.name,
-                                        230,
-                                        _model.dropDownHpValue,
-                                        _model.dropDownRpmValue,
-                                        _model.dropDownRotationValue,
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
+                                      context.pushNamed(
+                                        DSelectProductRepairWidget.routeName,
+                                        queryParameters: {
+                                          'part': serializeParam(
+                                            Parts.MOTOR,
+                                            ParamType.Enum,
+                                          ),
+                                        }.withoutNulls,
                                       );
                                     }
                                   },
@@ -229,46 +206,18 @@ class _S18FilterRepairPartsDesktopWidgetState
                                   onPressed: () async {
                                     if (_model.selectedPart !=
                                         Parts.CONTACTOR) {
-                                      _model.selectedPart = Parts.CONTACTOR;
-                                      safeSetState(() {});
-                                      await widget.onContSelected?.call(
-                                        _model.dropDownAmpValue != null
-                                            ? _model.dropDownAmpValue
-                                                ?.toDouble()
-                                            : null,
-                                        _model.dropDownNopValue != null
-                                            ? _model.dropDownNopValue
-                                            : null,
-                                        Parts.CONTACTOR.name,
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
+                                      context.pushNamed(
+                                        DSelectProductRepairWidget.routeName,
+                                        queryParameters: {
+                                          'part': serializeParam(
+                                            Parts.CONTACTOR,
+                                            ParamType.Enum,
+                                          ),
+                                        }.withoutNulls,
                                       );
-                                      safeSetState(() {
-                                        _model.dropDownHpValueController
-                                            ?.reset();
-                                        _model.dropDownHpValue = null;
-                                        _model.dropDownRpmValueController
-                                            ?.reset();
-                                        _model.dropDownRpmValue = null;
-                                        _model.dropDownRotationValueController
-                                            ?.reset();
-                                        _model.dropDownRotationValue = null;
-                                        _model.dropDownAmpValueController
-                                            ?.reset();
-                                        _model.dropDownAmpValue = null;
-                                        _model.dropDownNopValueController
-                                            ?.reset();
-                                        _model.dropDownNopValue = null;
-                                        _model.dropDownMFD1ValueController
-                                            ?.reset();
-                                        _model.dropDownMFD1Value = null;
-                                        _model.dropDownMFD2ValueController
-                                            ?.reset();
-                                        _model.dropDownMFD2Value = null;
-                                        _model.dropDownTypeValueController
-                                            ?.reset();
-                                        _model.dropDownTypeValue = null;
-                                        _model.dDShapValueController?.reset();
-                                        _model.dDShapValue = null;
-                                      });
                                     }
                                   },
                                   text: 'CONTACTOR                  ',
@@ -327,52 +276,15 @@ class _S18FilterRepairPartsDesktopWidgetState
                                   onPressed: () async {
                                     if (_model.selectedPart !=
                                         Parts.CAPACITOR) {
-                                      _model.selectedPart = Parts.CAPACITOR;
-                                      await widget.onCapatSelected?.call(
-                                        Parts.CAPACITOR.name,
-                                        _model.dropDownMFD1Value != null
-                                            ? _model.dropDownMFD1Value
-                                            : null,
-                                        _model.dropDownMFD2Value != null
-                                            ? _model.dropDownMFD2Value
-                                            : null,
-                                        _model.dropDownTypeValue != null &&
-                                                _model.dropDownTypeValue != ''
-                                            ? _model.dropDownTypeValue
-                                            : null,
-                                        _model.dDShapValue != null &&
-                                                _model.dDShapValue != ''
-                                            ? _model.dDShapValue
-                                            : null,
+                                      context.pushNamed(
+                                        DSelectProductRepairWidget.routeName,
+                                        queryParameters: {
+                                          'part': serializeParam(
+                                            Parts.CAPACITOR,
+                                            ParamType.Enum,
+                                          ),
+                                        }.withoutNulls,
                                       );
-                                      safeSetState(() {
-                                        _model.dropDownRpmValueController
-                                            ?.reset();
-                                        _model.dropDownRpmValue = null;
-                                        _model.dropDownHpValueController
-                                            ?.reset();
-                                        _model.dropDownHpValue = null;
-                                        _model.dropDownRotationValueController
-                                            ?.reset();
-                                        _model.dropDownRotationValue = null;
-                                        _model.dropDownAmpValueController
-                                            ?.reset();
-                                        _model.dropDownAmpValue = null;
-                                        _model.dropDownNopValueController
-                                            ?.reset();
-                                        _model.dropDownNopValue = null;
-                                        _model.dropDownMFD1ValueController
-                                            ?.reset();
-                                        _model.dropDownMFD1Value = null;
-                                        _model.dropDownMFD2ValueController
-                                            ?.reset();
-                                        _model.dropDownMFD2Value = null;
-                                        _model.dropDownTypeValueController
-                                            ?.reset();
-                                        _model.dropDownTypeValue = null;
-                                        _model.dDShapValueController?.reset();
-                                        _model.dDShapValue = null;
-                                      });
                                     }
                                   },
                                   text: 'CAPACITOR                          ',
