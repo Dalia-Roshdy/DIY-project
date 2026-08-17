@@ -58,44 +58,30 @@ class _DSelectProductRepairWidgetState
 
       if (_model.selectedPart == Parts.MOTOR) {
         if (!(FFAppState().MotorCardList.isNotEmpty)) {
-          _model.motorItemsOnPageLoad = await actions.filterMotorItemsV2();
-          _model.partList = _model.motorItemsOnPageLoad!
-              .sortedList(keyOf: (e) => e.title, desc: false)
-              .toList()
-              .cast<PartCardDTOStruct>();
-          safeSetState(() {});
-          FFAppState().MotorCardList = _model.motorItemsOnPageLoad!
-              .sortedList(keyOf: (e) => e.title, desc: false)
-              .toList()
-              .cast<PartCardDTOStruct>();
-        } else {
-          _model.partList = FFAppState()
-              .MotorCardList
-              .sortedList(keyOf: (e) => e.title, desc: false)
-              .toList()
-              .cast<PartCardDTOStruct>();
-          safeSetState(() {});
+          await actions.filterMotorItemsV2();
         }
+        _model.partList = FFAppState()
+            .MotorCardList
+            .sortedList(keyOf: (e) => e.title, desc: false)
+            .toList()
+            .cast<PartCardDTOStruct>();
+        safeSetState(() {});
       } else if (_model.selectedPart == Parts.CONTACTOR) {
-        _model.contOnPageLoad = await actions.filterContactorItems(
-          FFAppState().userAC.acModel,
-          null,
-          null,
-        );
-        _model.partList = _model.contOnPageLoad!
+        if (!(FFAppState().ContCardList.isNotEmpty)) {
+          await actions.filterContactorItemsV2();
+        }
+        _model.partList = FFAppState()
+            .ContCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
             .toList()
             .cast<PartCardDTOStruct>();
         safeSetState(() {});
       } else if (_model.selectedPart == Parts.CAPACITOR) {
-        _model.capacOnPageLoad = await actions.filterCapacitorItems(
-          FFAppState().userAC.acModel,
-          null,
-          null,
-          null,
-          null,
-        );
-        _model.partList = _model.capacOnPageLoad!
+        if (!(FFAppState().CapacCardList.isNotEmpty)) {
+          await actions.filterCapacitorItemsV2();
+        }
+        _model.partList = FFAppState()
+            .CapacCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
             .toList()
             .cast<PartCardDTOStruct>();
@@ -166,6 +152,7 @@ class _DSelectProductRepairWidgetState
                               ),
                             if (responsiveVisibility(
                               context: context,
+                              tabletLandscape: false,
                               desktop: false,
                             ))
                               wrapWithModel(
@@ -197,9 +184,9 @@ class _DSelectProductRepairWidgetState
                                   height: valueOrDefault<double>(
                                     MediaQuery.sizeOf(context).width <
                                             kBreakpointSmall
-                                        ? 25.0
-                                        : 60.0,
-                                    25.0,
+                                        ? 10.0
+                                        : 30.0,
+                                    30.0,
                                   ),
                                   decoration: BoxDecoration(),
                                 ),
@@ -274,72 +261,42 @@ class _DSelectProductRepairWidgetState
                                                     _model.selectedPart =
                                                         Parts.MOTOR;
                                                     _model.partList = [];
-                                                    if ((_model.selectedPart ==
-                                                            Parts.MOTOR) &&
-                                                        !(FFAppState()
-                                                            .MotorCardList
-                                                            .isNotEmpty)) {
-                                                      _model.motorItemsOnCallback =
-                                                          await actions
-                                                              .filterMotorItemsV2();
-                                                      _model.partList = _model
-                                                          .motorItemsOnCallback!
-                                                          .sortedList(
-                                                              keyOf: (e) =>
-                                                                  e.title,
-                                                              desc: false)
-                                                          .toList()
-                                                          .cast<
-                                                              PartCardDTOStruct>();
-                                                      safeSetState(() {});
-                                                      FFAppState()
-                                                              .MotorCardList =
-                                                          _model
-                                                              .motorItemsOnCallback!
-                                                              .sortedList(
-                                                                  keyOf: (e) =>
-                                                                      e.title,
-                                                                  desc: false)
-                                                              .toList()
-                                                              .cast<
-                                                                  PartCardDTOStruct>();
-                                                    } else if ((_model
-                                                                .selectedPart ==
-                                                            Parts.MOTOR) &&
-                                                        (FFAppState()
-                                                            .MotorCardList
-                                                            .isNotEmpty)) {
-                                                      _model.partList = FFAppState()
-                                                          .MotorCardList
-                                                          .where((e) =>
-                                                              ((e.motorCard.motorVolt ==
-                                                                      volt) ||
-                                                                  (volt ==
-                                                                      null)) &&
-                                                              ((e.motorCard.motorRpm == rpm) ||
-                                                                  (rpm ==
-                                                                      null)) &&
-                                                              ((e.motorCard.motorRotation ==
-                                                                      rotation) ||
-                                                                  (rotation == null ||
-                                                                      rotation ==
-                                                                          '')) &&
-                                                              ((e.motorCard.motorHpMin <=
-                                                                      hp!) ||
-                                                                  (hp ==
-                                                                      null)) &&
-                                                              ((e.motorCard.motorHpMax >=
-                                                                      hp) ||
-                                                                  (hp == null)))
-                                                          .toList()
-                                                          .sortedList(
-                                                              keyOf: (e) => e.title,
-                                                              desc: false)
-                                                          .toList()
-                                                          .cast<PartCardDTOStruct>();
-                                                      safeSetState(() {});
+                                                    if (!(FFAppState()
+                                                        .MotorCardList
+                                                        .isNotEmpty)) {
+                                                      await actions
+                                                          .filterMotorItemsV2();
                                                     }
-
+                                                    _model.partList = FFAppState()
+                                                        .MotorCardList
+                                                        .where((e) =>
+                                                            ((volt == null) ||
+                                                                (volt == 0) ||
+                                                                (e.motorCard.motorVolt ==
+                                                                    volt)) &&
+                                                            ((rpm == null) ||
+                                                                (rpm == 0) ||
+                                                                (e.motorCard.motorRpm ==
+                                                                    rpm)) &&
+                                                            ((rotation == null ||
+                                                                    rotation ==
+                                                                        '') ||
+                                                                (rotation ==
+                                                                    '') ||
+                                                                (e.motorCard.motorRotation ==
+                                                                    rotation)) &&
+                                                            ((hp == null) ||
+                                                                (hp == 0.0) ||
+                                                                ((e.motorCard.motorHpMin <=
+                                                                        hp) &&
+                                                                    (e.motorCard.motorHpMax >=
+                                                                        hp))))
+                                                        .toList()
+                                                        .sortedList(
+                                                            keyOf: (e) => e.title,
+                                                            desc: false)
+                                                        .toList()
+                                                        .cast<PartCardDTOStruct>();
                                                     safeSetState(() {});
                                                   },
                                                   onContSelected: (amp, nop,
@@ -348,29 +305,33 @@ class _DSelectProductRepairWidgetState
                                                     _model.selectedPart =
                                                         Parts.CONTACTOR;
                                                     safeSetState(() {});
-                                                    if (selectedPart ==
-                                                        Parts.CONTACTOR.name) {
-                                                      _model.contOnCallback =
-                                                          await actions
-                                                              .filterContactorItems(
-                                                        FFAppState()
-                                                            .userAC
-                                                            .acModel,
-                                                        amp,
-                                                        nop,
-                                                      );
-                                                      _model.partList = _model
-                                                          .contOnCallback!
-                                                          .sortedList(
-                                                              keyOf: (e) =>
-                                                                  e.title,
-                                                              desc: false)
-                                                          .toList()
-                                                          .cast<
-                                                              PartCardDTOStruct>();
-                                                      safeSetState(() {});
+                                                    if (!(FFAppState()
+                                                        .ContCardList
+                                                        .isNotEmpty)) {
+                                                      await actions
+                                                          .filterContactorItemsV2();
                                                     }
-
+                                                    _model.partList = FFAppState()
+                                                        .ContCardList
+                                                        .where((e) =>
+                                                            ((amp == null) ||
+                                                                (amp == 0.0) ||
+                                                                (e.contactorCard
+                                                                        .contratedAmp ==
+                                                                    amp)) &&
+                                                            ((nop == null) ||
+                                                                (nop == 0) ||
+                                                                (e.contactorCard
+                                                                        .contNumberOfPoles ==
+                                                                    nop)))
+                                                        .toList()
+                                                        .sortedList(
+                                                            keyOf: (e) =>
+                                                                e.title,
+                                                            desc: false)
+                                                        .toList()
+                                                        .cast<
+                                                            PartCardDTOStruct>();
                                                     safeSetState(() {});
                                                   },
                                                   onCapatSelected:
@@ -380,31 +341,76 @@ class _DSelectProductRepairWidgetState
                                                     _model.selectedPart =
                                                         Parts.CAPACITOR;
                                                     safeSetState(() {});
-                                                    if (selectedPart ==
-                                                        Parts.CAPACITOR.name) {
-                                                      _model.capacOnCallback =
-                                                          await actions
-                                                              .filterCapacitorItems(
-                                                        FFAppState()
-                                                            .userAC
-                                                            .acModel,
-                                                        mfd1,
-                                                        mfd2,
-                                                        type,
-                                                        shape,
-                                                      );
-                                                      _model.partList = _model
-                                                          .capacOnCallback!
-                                                          .sortedList(
-                                                              keyOf: (e) =>
-                                                                  e.title,
-                                                              desc: false)
-                                                          .toList()
-                                                          .cast<
-                                                              PartCardDTOStruct>();
-                                                      safeSetState(() {});
+                                                    if (!(FFAppState()
+                                                        .CapacCardList
+                                                        .isNotEmpty)) {
+                                                      await actions
+                                                          .filterCapacitorItemsV2();
                                                     }
-
+                                                    _model.partList =
+                                                        FFAppState()
+                                                            .CapacCardList
+                                                            .where((e) =>
+                                                                ((mfd1 ==
+                                                                        null) ||
+                                                                    (mfd1 ==
+                                                                        0.0) ||
+                                                                    (e.capacitorCard.capacMFD1 ==
+                                                                        mfd1)) &&
+                                                                ((mfd2 ==
+                                                                        null) ||
+                                                                    (mfd2 ==
+                                                                        0.0) ||
+                                                                    (e.capacitorCard
+                                                                            .capacMFD2 ==
+                                                                        mfd2)) &&
+                                                                ((type ==
+                                                                            null ||
+                                                                        type ==
+                                                                            '') ||
+                                                                    (type ==
+                                                                        '') ||
+                                                                    (e.capacitorCard
+                                                                            .capacType ==
+                                                                        () {
+                                                                          if (type ==
+                                                                              CapacitorType
+                                                                                  .Single.name) {
+                                                                            return CapacitorType.Single;
+                                                                          } else if (type ==
+                                                                              CapacitorType.Dual.name) {
+                                                                            return CapacitorType.Dual;
+                                                                          } else {
+                                                                            return CapacitorType.Single;
+                                                                          }
+                                                                        }())) &&
+                                                                ((shape == null ||
+                                                                        shape ==
+                                                                            '') ||
+                                                                    (shape ==
+                                                                        '') ||
+                                                                    (e.capacitorCard
+                                                                            .capacShape ==
+                                                                        () {
+                                                                          if (shape ==
+                                                                              CapacitorShape
+                                                                                  .Oval.name) {
+                                                                            return CapacitorShape.Oval;
+                                                                          } else if (shape ==
+                                                                              CapacitorShape.Round.name) {
+                                                                            return CapacitorShape.Round;
+                                                                          } else {
+                                                                            return CapacitorShape.Round;
+                                                                          }
+                                                                        }())))
+                                                            .toList()
+                                                            .sortedList(
+                                                                keyOf: (e) =>
+                                                                    e.title,
+                                                                desc: false)
+                                                            .toList()
+                                                            .cast<
+                                                                PartCardDTOStruct>();
                                                     safeSetState(() {});
                                                   },
                                                 ),
@@ -514,6 +520,17 @@ class _DSelectProductRepairWidgetState
                                   ),
                                 ],
                               ),
+                            if (responsiveVisibility(
+                              context: context,
+                              phone: false,
+                              tablet: false,
+                              tabletLandscape: false,
+                            ))
+                              wrapWithModel(
+                                model: _model.s12FooterModel,
+                                updateCallback: () => safeSetState(() {}),
+                                child: S12FooterWidget(),
+                              ),
                           ],
                         ),
                       ),
@@ -521,17 +538,6 @@ class _DSelectProductRepairWidgetState
                   ),
                 ),
               ),
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-                tablet: false,
-                tabletLandscape: false,
-              ))
-                wrapWithModel(
-                  model: _model.s12FooterModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: S12FooterWidget(),
-                ),
             ]
                 .addToStart(SizedBox(
                     height: valueOrDefault<double>(

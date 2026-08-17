@@ -110,14 +110,14 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
               ),
               decoration: BoxDecoration(),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 50.0, 0.0, 50.0),
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 20.0, 0.0, 20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Text(
                         'WE PROVIDE THE PARTS, TOOLS, AND KNOWLEDGE SO IT HELP YOU FIX YOUR A/C.',
                         style: FlutterFlowTheme.of(context)

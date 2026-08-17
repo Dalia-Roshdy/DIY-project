@@ -109,9 +109,9 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
                                         height: valueOrDefault<double>(
                                           MediaQuery.sizeOf(context).width <
                                                   kBreakpointSmall
-                                              ? 14.0
-                                              : 42.0,
-                                          100.0,
+                                              ? 10.0
+                                              : 30.0,
+                                          30.0,
                                         ),
                                         decoration: BoxDecoration(),
                                       ),

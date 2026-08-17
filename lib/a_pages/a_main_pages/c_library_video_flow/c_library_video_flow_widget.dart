@@ -130,9 +130,9 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                             height: valueOrDefault<double>(
                               MediaQuery.sizeOf(context).width <
                                       kBreakpointSmall
-                                  ? 25.0
-                                  : 60.0,
-                              100.0,
+                                  ? 10.0
+                                  : 30.0,
+                              30.0,
                             ),
                             decoration: BoxDecoration(),
                           ),

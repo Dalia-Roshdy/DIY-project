@@ -25,24 +25,12 @@ class SerlectProductMobileModel
 
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Custom Action - filterMotorItems] action in Serlect_Product_Mobile widget.
-  List<PartCardDTOStruct>? motorItemsOnPageMob;
-  // Stores action output result for [Custom Action - filterContactorItems] action in Serlect_Product_Mobile widget.
-  List<PartCardDTOStruct>? contItemsOnPageMob;
-  // Stores action output result for [Custom Action - filterCapacitorItems] action in Serlect_Product_Mobile widget.
-  List<PartCardDTOStruct>? capacItemsOnPageMob;
   // Model for FilterItem.
   late FilterItemModel filterItemModel1;
-  // Stores action output result for [Custom Action - filterMotorItems] action in FilterItem widget.
-  List<PartCardDTOStruct>? motorItemsOnCallbackMob;
   // Model for FilterItem.
   late FilterItemModel filterItemModel2;
-  // Stores action output result for [Custom Action - filterCapacitorItems] action in FilterItem widget.
-  List<PartCardDTOStruct>? capacItemsOnCallbackMob;
   // Model for FilterItem.
   late FilterItemModel filterItemModel3;
-  // Stores action output result for [Custom Action - filterContactorItems] action in FilterItem widget.
-  List<PartCardDTOStruct>? contItemsOnCallbackMob;
   // State field(s) for TextFieldVolt widget.
   FocusNode? textFieldVoltFocusNode;
   TextEditingController? textFieldVoltTextController;
@@ -56,20 +44,12 @@ class SerlectProductMobileModel
   // State field(s) for DropDown-rotation widget.
   String? dropDownRotationValue;
   FormFieldController<String>? dropDownRotationValueController;
-  // Stores action output result for [Custom Action - filterMotorItems] action in Text widget.
-  List<PartCardDTOStruct>? motorItemsFilterMobReset;
-  // Stores action output result for [Custom Action - filterMotorItems] action in Button widget.
-  List<PartCardDTOStruct>? motorItemsFilterMob;
   // State field(s) for DropDown-amp widget.
   int? dropDownAmpValue;
   FormFieldController<int>? dropDownAmpValueController;
   // State field(s) for DropDown-nop widget.
   int? dropDownNopValue;
   FormFieldController<int>? dropDownNopValueController;
-  // Stores action output result for [Custom Action - filterContactorItems] action in Text widget.
-  List<PartCardDTOStruct>? contItemsOnFilterMobReset;
-  // Stores action output result for [Custom Action - filterContactorItems] action in Button widget.
-  List<PartCardDTOStruct>? contItemsOnFilterMob;
   // State field(s) for DropDown-MFD1 widget.
   double? dropDownMFD1Value;
   FormFieldController<double>? dropDownMFD1ValueController;
@@ -82,10 +62,6 @@ class SerlectProductMobileModel
   // State field(s) for DropDown-shape widget.
   String? dropDownShapeValue;
   FormFieldController<String>? dropDownShapeValueController;
-  // Stores action output result for [Custom Action - filterCapacitorItems] action in Text widget.
-  List<PartCardDTOStruct>? capacItemsOnFilterMobReset;
-  // Stores action output result for [Custom Action - filterCapacitorItems] action in Button widget.
-  List<PartCardDTOStruct>? capacItemsOnFilterMob;
 
   @override
   void initState(BuildContext context) {

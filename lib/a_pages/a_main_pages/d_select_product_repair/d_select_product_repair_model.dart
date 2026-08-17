@@ -29,12 +29,6 @@ class DSelectProductRepairModel
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Custom Action - filterMotorItemsV2] action in D-Select_Product_Repair widget.
-  List<PartCardDTOStruct>? motorItemsOnPageLoad;
-  // Stores action output result for [Custom Action - filterContactorItems] action in D-Select_Product_Repair widget.
-  List<PartCardDTOStruct>? contOnPageLoad;
-  // Stores action output result for [Custom Action - filterCapacitorItems] action in D-Select_Product_Repair widget.
-  List<PartCardDTOStruct>? capacOnPageLoad;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for Serlect_Product_Mobile component.
@@ -43,12 +37,6 @@ class DSelectProductRepairModel
   late AHeaderSectionModel aHeaderSectionModel;
   // Model for S18_Filter_repair_parts_desktop component.
   late S18FilterRepairPartsDesktopModel s18FilterRepairPartsDesktopModel;
-  // Stores action output result for [Custom Action - filterMotorItemsV2] action in S18_Filter_repair_parts_desktop widget.
-  List<PartCardDTOStruct>? motorItemsOnCallback;
-  // Stores action output result for [Custom Action - filterContactorItems] action in S18_Filter_repair_parts_desktop widget.
-  List<PartCardDTOStruct>? contOnCallback;
-  // Stores action output result for [Custom Action - filterCapacitorItems] action in S18_Filter_repair_parts_desktop widget.
-  List<PartCardDTOStruct>? capacOnCallback;
   // Model for User_Input_A_C_details component.
   late UserInputACDetailsModel userInputACDetailsModel;
   // Model for B-Select_Product_Main component.

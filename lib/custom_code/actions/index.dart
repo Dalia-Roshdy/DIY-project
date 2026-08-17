@@ -7,6 +7,7 @@ export 'filter_capacitor_items.dart' show filterCapacitorItems;
 export 'updatecart_items_action.dart' show updatecartItemsAction;
 export 'build_order_email_html.dart' show buildOrderEmailHtml;
 export 'cart_items_to_order_lines_a.dart' show cartItemsToOrderLinesA;
-export 'enable_firestore_web_cache.dart' show enableFirestoreWebCache;
 export 'get_cart_setting_action.dart' show getCartSettingAction;
 export 'filter_motor_items_v2.dart' show filterMotorItemsV2;
+export 'filter_capacitor_items_v2.dart' show filterCapacitorItemsV2;
+export 'filter_contactor_items_v2.dart' show filterContactorItemsV2;

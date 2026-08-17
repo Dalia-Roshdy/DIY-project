@@ -64,307 +64,291 @@ class _S05HomestartdiagnosisWidgetState
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primary,
                 ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        height: valueOrDefault<double>(
-                          () {
-                            if (MediaQuery.sizeOf(context).width <
-                                kBreakpointSmall) {
-                              return 25.0;
-                            } else if (MediaQuery.sizeOf(context).width <
-                                kBreakpointLarge) {
-                              return 50.0;
-                            } else {
-                              return 100.0;
-                            }
-                          }(),
-                          100.0,
-                        ),
-                        decoration: BoxDecoration(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      height: valueOrDefault<double>(
+                        () {
+                          if (MediaQuery.sizeOf(context).width <
+                              kBreakpointSmall) {
+                            return 25.0;
+                          } else if (MediaQuery.sizeOf(context).width <
+                              kBreakpointLarge) {
+                            return 50.0;
+                          } else {
+                            return 100.0;
+                          }
+                        }(),
+                        100.0,
                       ),
-                      Divider(
-                        height: 1.0,
-                        thickness: 1.0,
-                        color: FlutterFlowTheme.of(context).tertiary,
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width <
-                                  kBreakpointLarge
-                              ? (MediaQuery.sizeOf(context).width * 0.86)
-                              : (MediaQuery.sizeOf(context).width * 0.40),
-                          constraints: BoxConstraints(
-                            maxWidth: valueOrDefault<double>(
-                              MediaQuery.sizeOf(context).width <
-                                      kBreakpointLarge
-                                  ? double.infinity
-                                  : 740.0,
-                              740.0,
-                            ),
+                      decoration: BoxDecoration(),
+                    ),
+                    Divider(
+                      height: 1.0,
+                      thickness: 1.0,
+                      color: FlutterFlowTheme.of(context).tertiary,
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      child: Container(
+                        width:
+                            MediaQuery.sizeOf(context).width < kBreakpointLarge
+                                ? (MediaQuery.sizeOf(context).width * 0.86)
+                                : (MediaQuery.sizeOf(context).width * 0.40),
+                        constraints: BoxConstraints(
+                          maxWidth: valueOrDefault<double>(
+                            MediaQuery.sizeOf(context).width < kBreakpointLarge
+                                ? double.infinity
+                                : 740.0,
+                            740.0,
                           ),
-                          decoration: BoxDecoration(),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              VerticalDivider(
-                                width: 1.0,
-                                thickness: 1.0,
-                                color: FlutterFlowTheme.of(context).tertiary,
-                              ),
-                              SizedBox(
-                                height: 100.0,
-                                child: VerticalDivider(
-                                  width: 1.0,
-                                  thickness: 7.0,
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Container(
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              0.25,
-                                      constraints: BoxConstraints(
-                                        maxHeight: valueOrDefault<double>(
-                                          () {
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width <
-                                                kBreakpointSmall) {
-                                              return 171.0;
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointLarge) {
-                                              return 261.0;
-                                            } else {
-                                              return 325.0;
-                                            }
-                                          }(),
-                                          325.0,
-                                        ),
-                                      ),
-                                      decoration: BoxDecoration(),
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, 1.0),
-                                        child: AutoSizeText(
-                                          'START FIXING\nCHEAPER\nFASTER.',
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .displayMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displayMediumFamily,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                                letterSpacing:
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            kBreakpointSmall
-                                                        ? FFAppConstants
-                                                            .LetterSpacingM
-                                                        : FFAppConstants
-                                                            .LetterSpacingTD,
-                                                fontWeight: FontWeight.normal,
-                                                lineHeight: 1.0,
-                                                useGoogleFonts:
-                                                    !FlutterFlowTheme.of(
-                                                            context)
-                                                        .displayMediumIsCustom,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 25.0, 0.0, 0.0),
-                                      child: Container(
-                                        decoration: BoxDecoration(),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 0.0, 0.0, 0.0),
-                                          child: AutoSizeText(
-                                            'JUST THE RAW TECHNICAL DATA YOU NEED TO GET YOUR COLD AIR BACK. \nENTER YOUR SPECS IN THE CORRESPONDING FIELDS .',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMediumFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                  fontSize: 28.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMediumIsCustom,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              0.04,
-                                      constraints: BoxConstraints(
-                                        maxHeight: 50.0,
-                                      ),
-                                      decoration: BoxDecoration(),
-                                    ),
-                                    Divider(
-                                      height: 1.0,
-                                      thickness: 1.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).tertiary,
-                                    ),
-                                    Align(
-                                      alignment: AlignmentDirectional(1.0, 0.0),
-                                      child: Container(
-                                        constraints: BoxConstraints(
-                                          maxWidth: 270.0,
-                                          maxHeight: 270.0,
-                                        ),
-                                        decoration: BoxDecoration(),
-                                        child: Container(
-                                          width: () {
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width <
-                                                kBreakpointSmall) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.4);
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointLarge) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.28);
-                                            } else {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.15);
-                                            }
-                                          }(),
-                                          height: () {
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width <
-                                                kBreakpointSmall) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.4);
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointLarge) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.28);
-                                            } else {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.15);
-                                            }
-                                          }(),
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              VerticalDivider(
-                                                width: 1.0,
-                                                thickness: 1.0,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        6.0, 0.0, 0.0, 0.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image.asset(
-                                                    'assets/images/logopng.PNG',
-                                                    width: 200.0,
-                                                    height: 200.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              VerticalDivider(
-                                width: 1.0,
-                                thickness: 1.0,
-                                color: FlutterFlowTheme.of(context).tertiary,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        height: 1.0,
-                        thickness: 1.0,
-                        color: FlutterFlowTheme.of(context).tertiary,
-                      ),
-                      Container(
-                        height: valueOrDefault<double>(
-                          () {
-                            if (MediaQuery.sizeOf(context).width <
-                                kBreakpointSmall) {
-                              return 25.0;
-                            } else if (MediaQuery.sizeOf(context).width <
-                                kBreakpointLarge) {
-                              return 50.0;
-                            } else {
-                              return 92.0;
-                            }
-                          }(),
-                          92.0,
                         ),
                         decoration: BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             VerticalDivider(
                               width: 1.0,
                               thickness: 1.0,
                               color: FlutterFlowTheme.of(context).tertiary,
                             ),
-                          ].addToEnd(SizedBox(width: 200.0)),
+                            SizedBox(
+                              height: 100.0,
+                              child: VerticalDivider(
+                                width: 1.0,
+                                thickness: 7.0,
+                                color: FlutterFlowTheme.of(context).secondary,
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    height: MediaQuery.sizeOf(context).height *
+                                        0.25,
+                                    constraints: BoxConstraints(
+                                      maxHeight: valueOrDefault<double>(
+                                        () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 171.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return 261.0;
+                                          } else {
+                                            return 325.0;
+                                          }
+                                        }(),
+                                        325.0,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(),
+                                    child: Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.0, 1.0),
+                                      child: AutoSizeText(
+                                        'START FIXING\nCHEAPER\nFASTER.',
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .displayMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .displayMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                              letterSpacing:
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? FFAppConstants
+                                                          .LetterSpacingM
+                                                      : FFAppConstants
+                                                          .LetterSpacingTD,
+                                              fontWeight: FontWeight.normal,
+                                              lineHeight: 1.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .displayMediumIsCustom,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 25.0, 0.0, 0.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15.0, 0.0, 0.0, 0.0),
+                                        child: AutoSizeText(
+                                          'JUST THE RAW TECHNICAL DATA YOU NEED TO GET YOUR COLD AIR BACK. \nENTER YOUR SPECS IN THE CORRESPONDING FIELDS .',
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                                fontSize: 28.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    height: MediaQuery.sizeOf(context).height *
+                                        0.04,
+                                    constraints: BoxConstraints(
+                                      maxHeight: 50.0,
+                                    ),
+                                    decoration: BoxDecoration(),
+                                  ),
+                                  Divider(
+                                    height: 1.0,
+                                    thickness: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(1.0, 0.0),
+                                    child: Container(
+                                      constraints: BoxConstraints(
+                                        maxWidth: 270.0,
+                                        maxHeight: 270.0,
+                                      ),
+                                      decoration: BoxDecoration(),
+                                      child: Container(
+                                        width: () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.4);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.28);
+                                          } else {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.15);
+                                          }
+                                        }(),
+                                        height: () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.4);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.28);
+                                          } else {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.15);
+                                          }
+                                        }(),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            VerticalDivider(
+                                              width: 1.0,
+                                              thickness: 1.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(6.0, 0.0, 0.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.asset(
+                                                  'assets/images/logopng.PNG',
+                                                  width: 200.0,
+                                                  height: 200.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(
+                              width: 1.0,
+                              thickness: 1.0,
+                              color: FlutterFlowTheme.of(context).tertiary,
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Divider(
+                      height: 1.0,
+                      thickness: 1.0,
+                      color: FlutterFlowTheme.of(context).tertiary,
+                    ),
+                    Container(
+                      height: valueOrDefault<double>(
+                        () {
+                          if (MediaQuery.sizeOf(context).width <
+                              kBreakpointSmall) {
+                            return 25.0;
+                          } else if (MediaQuery.sizeOf(context).width <
+                              kBreakpointLarge) {
+                            return 50.0;
+                          } else {
+                            return 92.0;
+                          }
+                        }(),
+                        92.0,
+                      ),
+                      decoration: BoxDecoration(),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          VerticalDivider(
+                            width: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).tertiary,
+                          ),
+                        ].addToEnd(SizedBox(width: 200.0)),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             Flexible(
@@ -380,31 +364,8 @@ class _S05HomestartdiagnosisWidgetState
                   child: Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          valueOrDefault<double>(
-                            MediaQuery.sizeOf(context).width < kBreakpointSmall
-                                ? 10.0
-                                : 50.0,
-                            50.0,
-                          ),
-                          valueOrDefault<double>(
-                            MediaQuery.sizeOf(context).width < kBreakpointSmall
-                                ? 10.0
-                                : 50.0,
-                            50.0,
-                          ),
-                          valueOrDefault<double>(
-                            MediaQuery.sizeOf(context).width < kBreakpointSmall
-                                ? 10.0
-                                : 50.0,
-                            50.0,
-                          ),
-                          valueOrDefault<double>(
-                            MediaQuery.sizeOf(context).width < kBreakpointSmall
-                                ? 10.0
-                                : 50.0,
-                            50.0,
-                          )),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: wrapWithModel(
                         model: _model.enterManuallySerialNumberModel,
                         updateCallback: () => safeSetState(() {}),

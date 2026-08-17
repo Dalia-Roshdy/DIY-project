@@ -51,43 +51,34 @@ class _SerlectProductMobileWidgetState
         ),
       );
       _model.selectedPartCS = widget.selectedPartPram;
+      _model.partsList = [];
       _model.updatePage(() {});
       if (_model.selectedPartCS == Parts.MOTOR) {
-        _model.motorItemsOnPageMob = await actions.filterMotorItems(
-          FFAppState().userAC.acModel,
-          null,
-          null,
-          null,
-          null,
-        );
-        _model.selectedPartCS = Parts.MOTOR;
-        _model.partsList = _model.motorItemsOnPageMob!
+        if (!(FFAppState().MotorCardList.isNotEmpty)) {
+          await actions.filterMotorItemsV2();
+        }
+        _model.partsList = FFAppState()
+            .MotorCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
             .toList()
             .cast<PartCardDTOStruct>();
         safeSetState(() {});
       } else if (_model.selectedPartCS == Parts.CONTACTOR) {
-        _model.contItemsOnPageMob = await actions.filterContactorItems(
-          FFAppState().userAC.acModel,
-          null,
-          null,
-        );
-        _model.selectedPartCS = Parts.CONTACTOR;
-        _model.partsList = _model.contItemsOnPageMob!
+        if (!(FFAppState().ContCardList.isNotEmpty)) {
+          await actions.filterContactorItemsV2();
+        }
+        _model.partsList = FFAppState()
+            .ContCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
             .toList()
             .cast<PartCardDTOStruct>();
         safeSetState(() {});
       } else if (_model.selectedPartCS == Parts.CAPACITOR) {
-        _model.capacItemsOnPageMob = await actions.filterCapacitorItems(
-          FFAppState().userAC.acModel,
-          null,
-          null,
-          null,
-          null,
-        );
-        _model.selectedPartCS = Parts.CAPACITOR;
-        _model.partsList = _model.capacItemsOnPageMob!
+        if (!(FFAppState().CapacCardList.isNotEmpty)) {
+          await actions.filterCapacitorItemsV2();
+        }
+        _model.partsList = FFAppState()
+            .CapacCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
             .toList()
             .cast<PartCardDTOStruct>();
@@ -224,43 +215,36 @@ class _SerlectProductMobileWidgetState
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       if (_model.selectedPartCS != Parts.MOTOR) {
+                        if (!(FFAppState().MotorCardList.isNotEmpty)) {
+                          await actions.filterMotorItemsV2();
+                        }
+                        _model.dropDownHpValueController?.reset();
+                        _model.dropDownHpValue = null;
+                        _model.dropDownRpmValueController?.reset();
+                        _model.dropDownRpmValue = null;
+                        _model.dropDownRotationValueController?.reset();
+                        _model.dropDownRotationValue = null;
+                        _model.dropDownAmpValueController?.reset();
+                        _model.dropDownAmpValue = null;
+                        _model.dropDownNopValueController?.reset();
+                        _model.dropDownNopValue = null;
+                        _model.dropDownMFD1ValueController?.reset();
+                        _model.dropDownMFD1Value = null;
+                        _model.dropDownMFD2ValueController?.reset();
+                        _model.dropDownMFD2Value = null;
+                        _model.dropDownTypeValueController?.reset();
+                        _model.dropDownTypeValue = null;
+                        _model.dropDownShapeValueController?.reset();
+                        _model.dropDownShapeValue = null;
+
                         _model.selectedPartCS = Parts.MOTOR;
-                        safeSetState(() {});
-                        _model.motorItemsOnCallbackMob =
-                            await actions.filterMotorItems(
-                          FFAppState().userAC.acModel,
-                          null,
-                          null,
-                          null,
-                          null,
-                        );
-                        _model.partsList = _model.motorItemsOnCallbackMob!
+                        _model.partsList = FFAppState()
+                            .MotorCardList
                             .sortedList(keyOf: (e) => e.title, desc: false)
                             .toList()
                             .cast<PartCardDTOStruct>();
-                        safeSetState(() {
-                          _model.dropDownHpValueController?.reset();
-                          _model.dropDownHpValue = null;
-                          _model.dropDownRpmValueController?.reset();
-                          _model.dropDownRpmValue = null;
-                          _model.dropDownRotationValueController?.reset();
-                          _model.dropDownRotationValue = null;
-                          _model.dropDownAmpValueController?.reset();
-                          _model.dropDownAmpValue = null;
-                          _model.dropDownNopValueController?.reset();
-                          _model.dropDownNopValue = null;
-                          _model.dropDownMFD1ValueController?.reset();
-                          _model.dropDownMFD1Value = null;
-                          _model.dropDownMFD2ValueController?.reset();
-                          _model.dropDownMFD2Value = null;
-                          _model.dropDownTypeValueController?.reset();
-                          _model.dropDownTypeValue = null;
-                          _model.dropDownShapeValueController?.reset();
-                          _model.dropDownShapeValue = null;
-                        });
+                        _model.updatePage(() {});
                       }
-
-                      safeSetState(() {});
                     },
                     child: wrapWithModel(
                       model: _model.filterItemModel1,
@@ -282,44 +266,36 @@ class _SerlectProductMobileWidgetState
                   highlightColor: Colors.transparent,
                   onTap: () async {
                     if (_model.selectedPartCS != Parts.CAPACITOR) {
+                      if (!(FFAppState().CapacCardList.isNotEmpty)) {
+                        await actions.filterCapacitorItemsV2();
+                      }
+                      _model.dropDownHpValueController?.reset();
+                      _model.dropDownHpValue = null;
+                      _model.dropDownRotationValueController?.reset();
+                      _model.dropDownRotationValue = null;
+                      _model.dropDownAmpValueController?.reset();
+                      _model.dropDownAmpValue = null;
+                      _model.dropDownRpmValueController?.reset();
+                      _model.dropDownRpmValue = null;
+                      _model.dropDownMFD1ValueController?.reset();
+                      _model.dropDownMFD1Value = null;
+                      _model.dropDownNopValueController?.reset();
+                      _model.dropDownNopValue = null;
+                      _model.dropDownShapeValueController?.reset();
+                      _model.dropDownShapeValue = null;
+                      _model.dropDownTypeValueController?.reset();
+                      _model.dropDownTypeValue = null;
+                      _model.dropDownMFD2ValueController?.reset();
+                      _model.dropDownMFD2Value = null;
+
                       _model.selectedPartCS = Parts.CAPACITOR;
-                      safeSetState(() {});
-                      _model.capacItemsOnCallbackMob =
-                          await actions.filterCapacitorItems(
-                        FFAppState().userAC.acModel,
-                        null,
-                        null,
-                        null,
-                        null,
-                      );
-                      _model.selectedPartCS = Parts.CAPACITOR;
-                      _model.partsList = _model.capacItemsOnCallbackMob!
+                      _model.partsList = FFAppState()
+                          .CapacCardList
                           .sortedList(keyOf: (e) => e.title, desc: false)
                           .toList()
                           .cast<PartCardDTOStruct>();
-                      safeSetState(() {
-                        _model.dropDownHpValueController?.reset();
-                        _model.dropDownHpValue = null;
-                        _model.dropDownRotationValueController?.reset();
-                        _model.dropDownRotationValue = null;
-                        _model.dropDownAmpValueController?.reset();
-                        _model.dropDownAmpValue = null;
-                        _model.dropDownRpmValueController?.reset();
-                        _model.dropDownRpmValue = null;
-                        _model.dropDownMFD1ValueController?.reset();
-                        _model.dropDownMFD1Value = null;
-                        _model.dropDownNopValueController?.reset();
-                        _model.dropDownNopValue = null;
-                        _model.dropDownShapeValueController?.reset();
-                        _model.dropDownShapeValue = null;
-                        _model.dropDownTypeValueController?.reset();
-                        _model.dropDownTypeValue = null;
-                        _model.dropDownMFD2ValueController?.reset();
-                        _model.dropDownMFD2Value = null;
-                      });
+                      _model.updatePage(() {});
                     }
-
-                    safeSetState(() {});
                   },
                   child: wrapWithModel(
                     model: _model.filterItemModel2,
@@ -342,41 +318,36 @@ class _SerlectProductMobileWidgetState
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       if (_model.selectedPartCS != Parts.CONTACTOR) {
+                        if (!(FFAppState().ContCardList.isNotEmpty)) {
+                          await actions.filterContactorItemsV2();
+                        }
+                        _model.dropDownHpValueController?.reset();
+                        _model.dropDownHpValue = null;
+                        _model.dropDownRpmValueController?.reset();
+                        _model.dropDownRpmValue = null;
+                        _model.dropDownRotationValueController?.reset();
+                        _model.dropDownRotationValue = null;
+                        _model.dropDownAmpValueController?.reset();
+                        _model.dropDownAmpValue = null;
+                        _model.dropDownMFD1ValueController?.reset();
+                        _model.dropDownMFD1Value = null;
+                        _model.dropDownMFD2ValueController?.reset();
+                        _model.dropDownMFD2Value = null;
+                        _model.dropDownTypeValueController?.reset();
+                        _model.dropDownTypeValue = null;
+                        _model.dropDownShapeValueController?.reset();
+                        _model.dropDownShapeValue = null;
+                        _model.dropDownNopValueController?.reset();
+                        _model.dropDownNopValue = null;
+
                         _model.selectedPartCS = Parts.CONTACTOR;
-                        safeSetState(() {});
-                        _model.contItemsOnCallbackMob =
-                            await actions.filterContactorItems(
-                          FFAppState().userAC.acModel,
-                          null,
-                          null,
-                        );
-                        _model.partsList = _model.contItemsOnCallbackMob!
+                        _model.partsList = FFAppState()
+                            .ContCardList
                             .sortedList(keyOf: (e) => e.title, desc: false)
                             .toList()
                             .cast<PartCardDTOStruct>();
-                        safeSetState(() {
-                          _model.dropDownHpValueController?.reset();
-                          _model.dropDownHpValue = null;
-                          _model.dropDownRpmValueController?.reset();
-                          _model.dropDownRpmValue = null;
-                          _model.dropDownRotationValueController?.reset();
-                          _model.dropDownRotationValue = null;
-                          _model.dropDownAmpValueController?.reset();
-                          _model.dropDownAmpValue = null;
-                          _model.dropDownMFD1ValueController?.reset();
-                          _model.dropDownMFD1Value = null;
-                          _model.dropDownMFD2ValueController?.reset();
-                          _model.dropDownMFD2Value = null;
-                          _model.dropDownTypeValueController?.reset();
-                          _model.dropDownTypeValue = null;
-                          _model.dropDownShapeValueController?.reset();
-                          _model.dropDownShapeValue = null;
-                          _model.dropDownNopValueController?.reset();
-                          _model.dropDownNopValue = null;
-                        });
+                        safeSetState(() {});
                       }
-
-                      safeSetState(() {});
                     },
                     child: wrapWithModel(
                       model: _model.filterItemModel3,
@@ -1028,7 +999,10 @@ class _SerlectProductMobileWidgetState
                                                         controller: _model
                                                                 .dropDownRotationValueController ??=
                                                             FormFieldController<
-                                                                String>(null),
+                                                                String>(
+                                                          _model.dropDownRotationValue ??=
+                                                              null,
+                                                        ),
                                                         options:
                                                             MotorRotationDirection
                                                                 .values
@@ -1103,56 +1077,50 @@ class _SerlectProductMobileWidgetState
                                     width: double.infinity,
                                     height: 24.0,
                                     decoration: BoxDecoration(),
+                                    alignment: AlignmentDirectional(1.0, -1.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        safeSetState(() {
-                                          _model.dropDownHpValueController
-                                              ?.reset();
-                                          _model.dropDownHpValue = null;
-                                          _model.dropDownRpmValueController
-                                              ?.reset();
-                                          _model.dropDownRpmValue = null;
-                                          _model.dropDownRotationValueController
-                                              ?.reset();
-                                          _model.dropDownRotationValue = null;
-                                        });
-                                        _model.motorItemsFilterMobReset =
-                                            await actions.filterMotorItems(
-                                          FFAppState().userAC.acModel,
-                                          _model.textFieldVoltTextController
-                                                          .text !=
-                                                      ''
-                                              ? int.tryParse(_model
-                                                  .textFieldVoltTextController
-                                                  .text)
-                                              : null,
-                                          _model.dropDownHpValue != null
-                                              ? _model.dropDownHpValue
-                                              : null,
-                                          _model.dropDownRpmValue != null
-                                              ? _model.dropDownRpmValue
-                                              : null,
-                                          _model.dropDownRotationValue !=
-                                                      null &&
-                                                  _model.dropDownRotationValue !=
-                                                      ''
-                                              ? _model.dropDownRotationValue
-                                              : null,
-                                        );
-                                        _model.partsList = _model
-                                            .motorItemsFilterMobReset!
+                                        _model.dropDownHpValueController
+                                            ?.reset();
+                                        _model.dropDownHpValue = null;
+                                        _model.dropDownRpmValueController
+                                            ?.reset();
+                                        _model.dropDownRpmValue = null;
+                                        _model.dropDownRotationValueController
+                                            ?.reset();
+                                        _model.dropDownRotationValue = null;
+                                        _model.dropDownAmpValueController
+                                            ?.reset();
+                                        _model.dropDownAmpValue = null;
+                                        _model.dropDownNopValueController
+                                            ?.reset();
+                                        _model.dropDownNopValue = null;
+                                        _model.dropDownMFD1ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD1Value = null;
+                                        _model.dropDownMFD2ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD2Value = null;
+                                        _model.dropDownTypeValueController
+                                            ?.reset();
+                                        _model.dropDownTypeValue = null;
+                                        _model.dropDownShapeValueController
+                                            ?.reset();
+                                        _model.dropDownShapeValue = null;
+
+                                        _model.selectedPartCS = Parts.MOTOR;
+                                        _model.partsList = FFAppState()
+                                            .MotorCardList
                                             .sortedList(
                                                 keyOf: (e) => e.title,
                                                 desc: false)
                                             .toList()
                                             .cast<PartCardDTOStruct>();
-                                        safeSetState(() {});
-
-                                        safeSetState(() {});
+                                        _model.updatePage(() {});
                                       },
                                       child: Text(
                                         'Clear Form',
@@ -1181,37 +1149,34 @@ class _SerlectProductMobileWidgetState
                                       0.0, 0.0, 0.0, 12.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      _model.motorItemsFilterMob =
-                                          await actions.filterMotorItems(
-                                        FFAppState().userAC.acModel,
-                                        _model.textFieldVoltTextController
-                                                        .text !=
-                                                    ''
-                                            ? int.tryParse(_model
-                                                .textFieldVoltTextController
-                                                .text)
-                                            : null,
-                                        _model.dropDownHpValue != null
-                                            ? _model.dropDownHpValue
-                                            : null,
-                                        _model.dropDownRpmValue != null
-                                            ? _model.dropDownRpmValue
-                                            : null,
-                                        _model.dropDownRotationValue != null &&
-                                                _model.dropDownRotationValue !=
-                                                    ''
-                                            ? _model.dropDownRotationValue
-                                            : null,
-                                      );
-                                      _model.partsList = _model
-                                          .motorItemsFilterMob!
-                                          .sortedList(
-                                              keyOf: (e) => e.title,
-                                              desc: false)
+                                      if (!(FFAppState()
+                                          .MotorCardList
+                                          .isNotEmpty)) {
+                                        await actions.filterMotorItemsV2();
+                                      }
+                                      _model.partsList = FFAppState()
+                                          .MotorCardList
+                                          .where((e) =>
+                                              ((e.motorCard.motorRpm == _model.dropDownRpmValue) ||
+                                                  (_model.dropDownRpmValue ==
+                                                      null)) &&
+                                              (e.motorCard.motorVolt.toString() ==
+                                                  _model
+                                                      .textFieldVoltTextController
+                                                      .text) &&
+                                              ((e.motorCard.motorRotation == _model.dropDownRotationValue) ||
+                                                  (_model.dropDownRotationValue == null ||
+                                                      _model.dropDownRotationValue ==
+                                                          '')) &&
+                                              (((e.motorCard.motorHpMin <= _model.dropDownHpValue!) &&
+                                                      (e.motorCard.motorHpMax >=
+                                                          _model.dropDownHpValue!)) ||
+                                                  (_model.dropDownHpValue == null)))
+                                          .toList()
+                                          .sortedList(keyOf: (e) => e.title, desc: false)
                                           .toList()
                                           .cast<PartCardDTOStruct>();
-                                      safeSetState(() {});
-
+                                      _model.selectedPartCS = Parts.MOTOR;
                                       safeSetState(() {});
                                     },
                                     text: 'FILTER',
@@ -1570,39 +1535,41 @@ class _SerlectProductMobileWidgetState
                                 width: double.infinity,
                                 height: 24.0,
                                 decoration: BoxDecoration(),
+                                alignment: AlignmentDirectional(1.0, -1.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    safeSetState(() {
-                                      _model.dropDownAmpValueController
-                                          ?.reset();
-                                      _model.dropDownAmpValue = null;
-                                      _model.dropDownNopValueController
-                                          ?.reset();
-                                      _model.dropDownNopValue = null;
-                                    });
-                                    _model.contItemsOnFilterMobReset =
-                                        await actions.filterContactorItems(
-                                      FFAppState().userAC.acModel,
-                                      (_model.dropDownAmpValue != null
-                                              ? _model.dropDownAmpValue
-                                              : null)
-                                          ?.toDouble(),
-                                      _model.dropDownNopValue != null
-                                          ? _model.dropDownNopValue
-                                          : null,
-                                    );
-                                    _model.partsList = _model
-                                        .contItemsOnFilterMobReset!
+                                    _model.dropDownHpValueController?.reset();
+                                    _model.dropDownHpValue = null;
+                                    _model.dropDownRpmValueController?.reset();
+                                    _model.dropDownRpmValue = null;
+                                    _model.dropDownRotationValueController
+                                        ?.reset();
+                                    _model.dropDownRotationValue = null;
+                                    _model.dropDownAmpValueController?.reset();
+                                    _model.dropDownAmpValue = null;
+                                    _model.dropDownMFD1ValueController?.reset();
+                                    _model.dropDownMFD1Value = null;
+                                    _model.dropDownMFD2ValueController?.reset();
+                                    _model.dropDownMFD2Value = null;
+                                    _model.dropDownTypeValueController?.reset();
+                                    _model.dropDownTypeValue = null;
+                                    _model.dropDownShapeValueController
+                                        ?.reset();
+                                    _model.dropDownShapeValue = null;
+                                    _model.dropDownNopValueController?.reset();
+                                    _model.dropDownNopValue = null;
+
+                                    _model.selectedPartCS = Parts.CONTACTOR;
+                                    _model.partsList = FFAppState()
+                                        .ContCardList
                                         .sortedList(
                                             keyOf: (e) => e.title, desc: false)
                                         .toList()
                                         .cast<PartCardDTOStruct>();
-                                    safeSetState(() {});
-
                                     safeSetState(() {});
                                   },
                                   child: Text(
@@ -1631,25 +1598,26 @@ class _SerlectProductMobileWidgetState
                                   0.0, 12.0, 0.0, 12.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  _model.contItemsOnFilterMob =
-                                      await actions.filterContactorItems(
-                                    FFAppState().userAC.acModel,
-                                    (_model.dropDownAmpValue != null
-                                            ? _model.dropDownAmpValue
-                                            : null)
-                                        ?.toDouble(),
-                                    _model.dropDownNopValue != null
-                                        ? _model.dropDownNopValue
-                                        : null,
-                                  );
-                                  _model.partsList = _model
-                                      .contItemsOnFilterMob!
+                                  if (!(FFAppState().ContCardList.isNotEmpty)) {
+                                    await actions.filterContactorItemsV2();
+                                  }
+                                  _model.partsList = FFAppState()
+                                      .ContCardList
+                                      .where((e) =>
+                                          ((e.contactorCard.contratedAmp ==
+                                                  _model.dropDownAmpValue
+                                                      ?.toDouble()) ||
+                                              (_model.dropDownAmpValue ==
+                                                  null)) &&
+                                          ((e.contactorCard.contNumberOfPoles ==
+                                                  _model.dropDownNopValue) ||
+                                              (_model.dropDownNopValue ==
+                                                  null)))
+                                      .toList()
                                       .sortedList(
                                           keyOf: (e) => e.title, desc: false)
                                       .toList()
                                       .cast<PartCardDTOStruct>();
-                                  safeSetState(() {});
-
                                   safeSetState(() {});
                                 },
                                 text: 'FILTER',
@@ -2355,54 +2323,42 @@ class _SerlectProductMobileWidgetState
                                 width: double.infinity,
                                 height: 24.0,
                                 decoration: BoxDecoration(),
+                                alignment: AlignmentDirectional(1.0, -1.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    safeSetState(() {
-                                      _model.dropDownMFD1ValueController
-                                          ?.reset();
-                                      _model.dropDownMFD1Value = null;
-                                      _model.dropDownTypeValueController
-                                          ?.reset();
-                                      _model.dropDownTypeValue = null;
-                                      _model.dropDownMFD2ValueController
-                                          ?.reset();
-                                      _model.dropDownMFD2Value = null;
-                                      _model.dropDownShapeValueController
-                                          ?.reset();
-                                      _model.dropDownShapeValue = null;
-                                    });
-                                    _model.capacItemsOnFilterMobReset =
-                                        await actions.filterCapacitorItems(
-                                      FFAppState().userAC.acModel,
-                                      _model.dropDownMFD1Value != null
-                                          ? _model.dropDownMFD1Value
-                                          : null,
-                                      _model.dropDownMFD2Value != null
-                                          ? _model.dropDownMFD2Value
-                                          : null,
-                                      _model.dropDownTypeValue != null &&
-                                              _model.dropDownTypeValue != ''
-                                          ? _model.dropDownTypeValue
-                                          : null,
-                                      _model.dropDownShapeValue != null &&
-                                              _model.dropDownShapeValue != ''
-                                          ? _model.dropDownShapeValue
-                                          : null,
-                                    );
+                                    _model.dropDownHpValueController?.reset();
+                                    _model.dropDownHpValue = null;
+                                    _model.dropDownRotationValueController
+                                        ?.reset();
+                                    _model.dropDownRotationValue = null;
+                                    _model.dropDownAmpValueController?.reset();
+                                    _model.dropDownAmpValue = null;
+                                    _model.dropDownRpmValueController?.reset();
+                                    _model.dropDownRpmValue = null;
+                                    _model.dropDownMFD1ValueController?.reset();
+                                    _model.dropDownMFD1Value = null;
+                                    _model.dropDownNopValueController?.reset();
+                                    _model.dropDownNopValue = null;
+                                    _model.dropDownShapeValueController
+                                        ?.reset();
+                                    _model.dropDownShapeValue = null;
+                                    _model.dropDownTypeValueController?.reset();
+                                    _model.dropDownTypeValue = null;
+                                    _model.dropDownMFD2ValueController?.reset();
+                                    _model.dropDownMFD2Value = null;
+
                                     _model.selectedPartCS = Parts.CAPACITOR;
-                                    _model.partsList = _model
-                                        .capacItemsOnFilterMobReset!
+                                    _model.partsList = FFAppState()
+                                        .CapacCardList
                                         .sortedList(
                                             keyOf: (e) => e.title, desc: false)
                                         .toList()
                                         .cast<PartCardDTOStruct>();
-                                    safeSetState(() {});
-
-                                    safeSetState(() {});
+                                    _model.updatePage(() {});
                                   },
                                   child: Text(
                                     'Clear Form',
@@ -2430,33 +2386,37 @@ class _SerlectProductMobileWidgetState
                                   0.0, 12.0, 0.0, 12.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  _model.capacItemsOnFilterMob =
-                                      await actions.filterCapacitorItems(
-                                    FFAppState().userAC.acModel,
-                                    _model.dropDownMFD1Value != null
-                                        ? _model.dropDownMFD1Value
-                                        : null,
-                                    _model.dropDownMFD2Value != null
-                                        ? _model.dropDownMFD2Value
-                                        : null,
-                                    _model.dropDownTypeValue != null &&
-                                            _model.dropDownTypeValue != ''
-                                        ? _model.dropDownTypeValue
-                                        : null,
-                                    _model.dropDownShapeValue != null &&
-                                            _model.dropDownShapeValue != ''
-                                        ? _model.dropDownShapeValue
-                                        : null,
-                                  );
-                                  _model.selectedPartCS = Parts.CAPACITOR;
-                                  _model.partsList = _model
-                                      .capacItemsOnFilterMob!
-                                      .sortedList(
-                                          keyOf: (e) => e.title, desc: false)
+                                  if (!(FFAppState()
+                                      .CapacCardList
+                                      .isNotEmpty)) {
+                                    await actions.filterCapacitorItemsV2();
+                                  }
+                                  _model.partsList = FFAppState()
+                                      .CapacCardList
+                                      .where((e) =>
+                                          ((e.capacitorCard.capacMFD1 == _model.dropDownMFD1Value) || (_model.dropDownMFD1Value == null)) &&
+                                          ((e.capacitorCard.capacMFD2 ==
+                                                  _model.dropDownMFD2Value) ||
+                                              (_model.dropDownMFD2Value ==
+                                                  null)) &&
+                                          ((e.capacitorCard.capacType ==
+                                                  (_model.dropDownTypeValue == CapacitorType.Single.name
+                                                      ? CapacitorType.Single
+                                                      : CapacitorType.Dual)) ||
+                                              (_model.dropDownTypeValue == null ||
+                                                  _model.dropDownTypeValue ==
+                                                      '')) &&
+                                          ((e.capacitorCard.capacShape ==
+                                                  (_model.dropDownShapeValue == CapacitorShape.Oval.name
+                                                      ? CapacitorShape.Oval
+                                                      : CapacitorShape
+                                                          .Round)) ||
+                                              (_model.dropDownShapeValue == null ||
+                                                  _model.dropDownShapeValue == '')))
+                                      .toList()
+                                      .sortedList(keyOf: (e) => e.title, desc: false)
                                       .toList()
                                       .cast<PartCardDTOStruct>();
-                                  safeSetState(() {});
-
                                   safeSetState(() {});
                                 },
                                 text: 'FILTER',

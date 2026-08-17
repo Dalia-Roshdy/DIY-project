@@ -88,19 +88,30 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                                     thickness: 1.0,
                                     color: FlutterFlowTheme.of(context).primary,
                                   ),
+                                  if (responsiveVisibility(
+                                    context: context,
+                                    phone: false,
+                                  ))
+                                    Container(
+                                      width: double.infinity,
+                                      height: valueOrDefault<double>(
+                                        MediaQuery.sizeOf(context).width <
+                                                kBreakpointSmall
+                                            ? 10.0
+                                            : 30.0,
+                                        30.0,
+                                      ),
+                                      decoration: BoxDecoration(),
+                                    ),
                                   Divider(
                                     height: 1.0,
                                     thickness: 1.0,
                                     color: FlutterFlowTheme.of(context).primary,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 50.0, 0.0, 0.0),
-                                    child: wrapWithModel(
-                                      model: _model.s05HomestartdiagnosisModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: S05HomestartdiagnosisWidget(),
-                                    ),
+                                  wrapWithModel(
+                                    model: _model.s05HomestartdiagnosisModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: S05HomestartdiagnosisWidget(),
                                   ),
                                 ],
                               ),

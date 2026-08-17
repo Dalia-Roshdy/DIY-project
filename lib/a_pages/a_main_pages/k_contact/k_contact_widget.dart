@@ -138,9 +138,9 @@ class _KContactWidgetState extends State<KContactWidget> {
                                       height: valueOrDefault<double>(
                                         MediaQuery.sizeOf(context).width <
                                                 kBreakpointSmall
-                                            ? 25.0
-                                            : 100.0,
-                                        100.0,
+                                            ? 10.0
+                                            : 30.0,
+                                        30.0,
                                       ),
                                       decoration: BoxDecoration(),
                                     ),

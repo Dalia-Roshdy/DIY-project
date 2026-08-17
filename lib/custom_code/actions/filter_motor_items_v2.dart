@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<List<PartCardDTOStruct>> filterMotorItemsV2() async {
+Future<void> filterMotorItemsV2() async {
   List<PartCardDTOStruct> result = [];
 
   try {
@@ -22,7 +22,7 @@ Future<List<PartCardDTOStruct>> filterMotorItemsV2() async {
         .get();
 
     final itemDocs = itemSnapshot.docs;
-    if (itemDocs.isEmpty) return result;
+    if (itemDocs.isEmpty) return;
 
     // Dedup motorSpecId refs to avoid redundant reads
     final Map<String, DocumentReference> uniqueSpecRefs = {};
@@ -91,9 +91,11 @@ Future<List<PartCardDTOStruct>> filterMotorItemsV2() async {
         contactorCard: null,
       ));
     }
+
+    FFAppState().update(() {
+      FFAppState().MotorCardList = result;
+    });
   } catch (e) {
     debugPrint('Error in filterMotorItems: $e');
   }
-
-  return result;
 }

@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 's18_filter_repair_parts_desktop_model.dart';
@@ -137,17 +136,31 @@ class _S18FilterRepairPartsDesktopWidgetState
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     if (_model.selectedPart != Parts.MOTOR) {
-                                      if (Navigator.of(context).canPop()) {
-                                        context.pop();
-                                      }
-                                      context.pushNamed(
-                                        DSelectProductRepairWidget.routeName,
-                                        queryParameters: {
-                                          'part': serializeParam(
-                                            Parts.MOTOR,
-                                            ParamType.Enum,
-                                          ),
-                                        }.withoutNulls,
+                                      _model.selectedPart = Parts.MOTOR;
+                                      _model.updatePage(() {});
+                                      _model.dropDownHpValueController?.reset();
+                                      _model.dropDownHpValue = null;
+                                      _model.dropDownRotationValueController
+                                          ?.reset();
+                                      _model.dropDownRotationValue = null;
+                                      _model.dropDownRpmValueController
+                                          ?.reset();
+                                      _model.dropDownRpmValue = null;
+
+                                      await widget.onMotorSelected?.call(
+                                        _model.selectedPart?.name,
+                                        230,
+                                        _model.dropDownHpValue != null
+                                            ? _model.dropDownHpValue
+                                            : 0.0,
+                                        _model.dropDownRpmValue != null
+                                            ? _model.dropDownRpmValue
+                                            : 0,
+                                        _model.dropDownRotationValue != null &&
+                                                _model.dropDownRotationValue !=
+                                                    ''
+                                            ? _model.dropDownRotationValue
+                                            : '',
                                       );
                                     }
                                   },
@@ -206,17 +219,25 @@ class _S18FilterRepairPartsDesktopWidgetState
                                   onPressed: () async {
                                     if (_model.selectedPart !=
                                         Parts.CONTACTOR) {
-                                      if (Navigator.of(context).canPop()) {
-                                        context.pop();
-                                      }
-                                      context.pushNamed(
-                                        DSelectProductRepairWidget.routeName,
-                                        queryParameters: {
-                                          'part': serializeParam(
-                                            Parts.CONTACTOR,
-                                            ParamType.Enum,
-                                          ),
-                                        }.withoutNulls,
+                                      _model.selectedPart = Parts.CONTACTOR;
+                                      _model.updatePage(() {});
+                                      safeSetState(() {
+                                        _model.dropDownAmpValueController
+                                            ?.reset();
+                                        _model.dropDownAmpValue = null;
+                                        _model.dropDownNopValueController
+                                            ?.reset();
+                                        _model.dropDownNopValue = null;
+                                      });
+                                      await widget.onContSelected?.call(
+                                        _model.dropDownAmpValue != null
+                                            ? _model.dropDownAmpValue
+                                                ?.toDouble()
+                                            : 0.0,
+                                        _model.dropDownNopValue != null
+                                            ? _model.dropDownNopValue
+                                            : 0,
+                                        _model.selectedPart?.name,
                                       );
                                     }
                                   },
@@ -276,14 +297,37 @@ class _S18FilterRepairPartsDesktopWidgetState
                                   onPressed: () async {
                                     if (_model.selectedPart !=
                                         Parts.CAPACITOR) {
-                                      context.pushNamed(
-                                        DSelectProductRepairWidget.routeName,
-                                        queryParameters: {
-                                          'part': serializeParam(
-                                            Parts.CAPACITOR,
-                                            ParamType.Enum,
-                                          ),
-                                        }.withoutNulls,
+                                      _model.selectedPart = Parts.CAPACITOR;
+                                      _model.updatePage(() {});
+                                      safeSetState(() {
+                                        _model.dropDownMFD1ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD1Value = null;
+                                        _model.dropDownMFD2ValueController
+                                            ?.reset();
+                                        _model.dropDownMFD2Value = null;
+                                        _model.dropDownTypeValueController
+                                            ?.reset();
+                                        _model.dropDownTypeValue = null;
+                                        _model.dDShapValueController?.reset();
+                                        _model.dDShapValue = null;
+                                      });
+                                      await widget.onCapatSelected?.call(
+                                        Parts.CAPACITOR.name,
+                                        _model.dropDownMFD1Value != null
+                                            ? _model.dropDownMFD1Value
+                                            : 0.0,
+                                        _model.dropDownMFD2Value != null
+                                            ? _model.dropDownMFD2Value
+                                            : 0.0,
+                                        _model.dropDownTypeValue != null &&
+                                                _model.dropDownTypeValue != ''
+                                            ? _model.dropDownTypeValue
+                                            : '',
+                                        _model.dDShapValue != null &&
+                                                _model.dDShapValue != ''
+                                            ? _model.dDShapValue
+                                            : '',
                                       );
                                     }
                                   },
@@ -829,17 +873,21 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             ?.reset();
                                         _model.dropDownRpmValue = null;
 
-                                        if (Navigator.of(context).canPop()) {
-                                          context.pop();
-                                        }
-                                        context.pushNamed(
-                                          DSelectProductRepairWidget.routeName,
-                                          queryParameters: {
-                                            'part': serializeParam(
-                                              _model.selectedPart,
-                                              ParamType.Enum,
-                                            ),
-                                          }.withoutNulls,
+                                        await widget.onMotorSelected?.call(
+                                          _model.selectedPart?.name,
+                                          230,
+                                          _model.dropDownHpValue != null
+                                              ? _model.dropDownHpValue
+                                              : 0.0,
+                                          _model.dropDownRpmValue != null
+                                              ? _model.dropDownRpmValue
+                                              : 0,
+                                          _model.dropDownRotationValue !=
+                                                      null &&
+                                                  _model.dropDownRotationValue !=
+                                                      ''
+                                              ? _model.dropDownRotationValue
+                                              : '',
                                         );
                                       },
                                       child: Text(
@@ -875,14 +923,14 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       230,
                                       _model.dropDownHpValue != null
                                           ? _model.dropDownHpValue
-                                          : null,
+                                          : 0.0,
                                       _model.dropDownRpmValue != null
                                           ? _model.dropDownRpmValue
-                                          : null,
+                                          : 0,
                                       _model.dropDownRotationValue != null &&
                                               _model.dropDownRotationValue != ''
                                           ? _model.dropDownRotationValue
-                                          : null,
+                                          : '',
                                     );
                                   },
                                   child: wrapWithModel(
@@ -1147,17 +1195,14 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     _model.dropDownNopValueController?.reset();
                                     _model.dropDownNopValue = null;
                                   });
-                                  if (Navigator.of(context).canPop()) {
-                                    context.pop();
-                                  }
-                                  context.pushNamed(
-                                    DSelectProductRepairWidget.routeName,
-                                    queryParameters: {
-                                      'part': serializeParam(
-                                        _model.selectedPart,
-                                        ParamType.Enum,
-                                      ),
-                                    }.withoutNulls,
+                                  await widget.onContSelected?.call(
+                                    _model.dropDownAmpValue != null
+                                        ? _model.dropDownAmpValue?.toDouble()
+                                        : 0.0,
+                                    _model.dropDownNopValue != null
+                                        ? _model.dropDownNopValue
+                                        : 0,
+                                    _model.selectedPart?.name,
                                   );
                                 },
                                 child: Text(
@@ -1188,10 +1233,10 @@ class _S18FilterRepairPartsDesktopWidgetState
                                 await widget.onContSelected?.call(
                                   _model.dropDownAmpValue != null
                                       ? _model.dropDownAmpValue?.toDouble()
-                                      : null,
+                                      : 0.0,
                                   _model.dropDownNopValue != null
                                       ? _model.dropDownNopValue
-                                      : null,
+                                      : 0,
                                   _model.selectedPart?.name,
                                 );
                               },
@@ -1724,17 +1769,22 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     _model.dDShapValueController?.reset();
                                     _model.dDShapValue = null;
                                   });
-                                  if (Navigator.of(context).canPop()) {
-                                    context.pop();
-                                  }
-                                  context.pushNamed(
-                                    DSelectProductRepairWidget.routeName,
-                                    queryParameters: {
-                                      'part': serializeParam(
-                                        _model.selectedPart,
-                                        ParamType.Enum,
-                                      ),
-                                    }.withoutNulls,
+                                  await widget.onCapatSelected?.call(
+                                    Parts.CAPACITOR.name,
+                                    _model.dropDownMFD1Value != null
+                                        ? _model.dropDownMFD1Value
+                                        : 0.0,
+                                    _model.dropDownMFD2Value != null
+                                        ? _model.dropDownMFD2Value
+                                        : 0.0,
+                                    _model.dropDownTypeValue != null &&
+                                            _model.dropDownTypeValue != ''
+                                        ? _model.dropDownTypeValue
+                                        : '',
+                                    _model.dDShapValue != null &&
+                                            _model.dDShapValue != ''
+                                        ? _model.dDShapValue
+                                        : '',
                                   );
                                 },
                                 child: Text(
@@ -1763,21 +1813,21 @@ class _S18FilterRepairPartsDesktopWidgetState
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 await widget.onCapatSelected?.call(
-                                  _model.selectedPart?.name,
+                                  Parts.CAPACITOR.name,
                                   _model.dropDownMFD1Value != null
                                       ? _model.dropDownMFD1Value
-                                      : null,
+                                      : 0.0,
                                   _model.dropDownMFD2Value != null
                                       ? _model.dropDownMFD2Value
-                                      : null,
+                                      : 0.0,
                                   _model.dropDownTypeValue != null &&
                                           _model.dropDownTypeValue != ''
                                       ? _model.dropDownTypeValue
-                                      : null,
+                                      : '',
                                   _model.dDShapValue != null &&
                                           _model.dDShapValue != ''
                                       ? _model.dDShapValue
-                                      : null,
+                                      : '',
                                 );
                               },
                               child: wrapWithModel(
