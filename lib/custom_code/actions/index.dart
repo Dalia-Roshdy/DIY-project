@@ -11,3 +11,4 @@ export 'get_cart_setting_action.dart' show getCartSettingAction;
 export 'filter_motor_items_v2.dart' show filterMotorItemsV2;
 export 'filter_capacitor_items_v2.dart' show filterCapacitorItemsV2;
 export 'filter_contactor_items_v2.dart' show filterContactorItemsV2;
+export 'configure_firestore_web.dart' show configureFirestoreWeb;
