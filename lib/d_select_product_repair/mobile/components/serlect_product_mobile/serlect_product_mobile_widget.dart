@@ -853,10 +853,7 @@ class _SerlectProductMobileWidgetState
                                                         controller: _model
                                                                 .dropDownRpmValueController ??=
                                                             FormFieldController<
-                                                                int>(
-                                                          _model.dropDownRpmValue ??=
-                                                              null,
-                                                        ),
+                                                                int>(null),
                                                         options: List<int>.from(
                                                             [825, 1075]),
                                                         optionLabels: [
@@ -1159,7 +1156,9 @@ class _SerlectProductMobileWidgetState
                                           .where((e) =>
                                               ((e.motorCard.motorRpm == _model.dropDownRpmValue) ||
                                                   (_model.dropDownRpmValue ==
-                                                      null)) &&
+                                                      null) ||
+                                                  (_model.dropDownRpmValue ==
+                                                      0)) &&
                                               (e.motorCard.motorVolt.toString() ==
                                                   _model
                                                       .textFieldVoltTextController
