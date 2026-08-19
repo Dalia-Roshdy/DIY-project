@@ -58,12 +58,12 @@ class _EnterManuallySerialNumberWidgetState
       alignment: AlignmentDirectional(0.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Align(
             alignment: AlignmentDirectional(0.0, -1.0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -80,31 +80,6 @@ class _EnterManuallySerialNumberWidgetState
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (false)
-                        Align(
-                          alignment: AlignmentDirectional(-1.0, -1.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 20.0, 0.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                if (Navigator.of(context).canPop()) {
-                                  context.pop();
-                                }
-                                context.pushNamed(BDiagnosisWidget.routeName);
-                              },
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 32.0,
-                              ),
-                            ),
-                          ),
-                        ),
                       Align(
                         alignment: AlignmentDirectional(-1.0, -1.0),
                         child: Padding(
@@ -118,6 +93,7 @@ class _EnterManuallySerialNumberWidgetState
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineMediumFamily,
+                                  fontSize: 36.0,
                                   letterSpacing:
                                       MediaQuery.sizeOf(context).width <
                                               kBreakpointSmall
@@ -134,7 +110,7 @@ class _EnterManuallySerialNumberWidgetState
                         alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 0.0, 10.0),
+                              20.0, 0.0, 0.0, 5.0),
                           child: Container(
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).secondary,
@@ -143,49 +119,43 @@ class _EnterManuallySerialNumberWidgetState
                             alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Align(
                               alignment: AlignmentDirectional(-1.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 0.0),
-                                child: RichText(
-                                  textScaler: MediaQuery.of(context).textScaler,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: 'A/C MAKE (optional)',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .bodyMediumIsCustom,
-                                            ),
-                                      )
-                                    ],
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
-                                                  .bodyMediumIsCustom,
-                                        ),
-                                  ),
+                              child: RichText(
+                                textScaler: MediaQuery.of(context).textScaler,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'A/C MAKE (optional)',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
+                                          ),
+                                    )
+                                  ],
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
+                                      ),
                                 ),
                               ),
                             ),
@@ -294,7 +264,7 @@ class _EnterManuallySerialNumberWidgetState
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 10.0, 20.0, 10.0),
+                            20.0, 10.0, 20.0, 5.0),
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(
@@ -448,7 +418,7 @@ class _EnterManuallySerialNumberWidgetState
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 10.0),
+                            20.0, 0.0, 20.0, 5.0),
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(
@@ -584,7 +554,7 @@ class _EnterManuallySerialNumberWidgetState
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -594,7 +564,7 @@ class _EnterManuallySerialNumberWidgetState
                               alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 10.0, 20.0, 0.0),
+                                    24.0, 5.0, 20.0, 0.0),
                                 child: Text(
                                   'Note: A/C make , Model and serial number are optional and do not guarantee fitment.',
                                   textAlign: TextAlign.start,
@@ -625,7 +595,7 @@ class _EnterManuallySerialNumberWidgetState
                               alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 20.0, 20.0),
+                                    24.0, 0.0, 20.0, 10.0),
                                 child: Text(
                                   'Detailed specs of the parts will be requested later to confirm fitment.',
                                   textAlign: TextAlign.start,
@@ -656,7 +626,7 @@ class _EnterManuallySerialNumberWidgetState
                               alignment: AlignmentDirectional(1.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 20.0, 10.0),
+                                    0.0, 5.0, 20.0, 5.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -690,7 +660,7 @@ class _EnterManuallySerialNumberWidgetState
                                                     kBreakpointSmall
                                                 ? 10.0
                                                 : 18.0,
-                                            40.0,
+                                            18.0,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
@@ -707,7 +677,7 @@ class _EnterManuallySerialNumberWidgetState
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 24.0),
+                                    0.0, 5.0, 0.0, 12.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -754,7 +724,7 @@ class _EnterManuallySerialNumberWidgetState
                                                     kBreakpointSmall
                                                 ? 10.0
                                                 : 18.0,
-                                            40.0,
+                                            18.0,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
@@ -767,22 +737,6 @@ class _EnterManuallySerialNumberWidgetState
                                 ),
                               ),
                             ),
-                            Text(
-                              'Hello World',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 18.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .bodyMediumIsCustom,
-                                  ),
-                            ),
                           ],
                         ),
                       ),
@@ -793,7 +747,7 @@ class _EnterManuallySerialNumberWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 28.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
             child: InkWell(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,
@@ -824,7 +778,7 @@ class _EnterManuallySerialNumberWidgetState
                   ),
                 ),
                 child: Row(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Flexible(

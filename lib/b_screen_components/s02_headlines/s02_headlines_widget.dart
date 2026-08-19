@@ -74,7 +74,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
           : (MediaQuery.sizeOf(context).width * 0.5),
       decoration: BoxDecoration(),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(12.0, 20.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(12.0, 20.0, 12.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -282,95 +282,100 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
             ),
             Align(
               alignment: AlignmentDirectional(-1.0, 0.0),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.goNamed(BDiagnosisWidget.routeName);
-                },
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: 617.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primary,
-                  ),
-                  child: Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
-                    child: MouseRegion(
-                      opaque: false,
-                      cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 30.0, 10.0, 30.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            AutoSizeText(
-                              'LET’S GET STARTED!',
-                              minFontSize: 12.0,
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleSmallFamily,
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .titleSmallIsCustom,
-                                  ),
-                            ),
-                            if (responsiveVisibility(
-                              context: context,
-                              phone: false,
-                            ))
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 0.0, 0.0),
-                                child: Icon(
-                                  Icons.arrow_forward,
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  size: valueOrDefault<double>(
-                                    MediaQuery.sizeOf(context).width <
-                                            kBreakpointSmall
-                                        ? 20.0
-                                        : 36.0,
-                                    36.0,
-                                  ),
-                                ).animateOnActionTrigger(
-                                  animationsMap[
-                                      'iconOnActionTriggerAnimation']!,
-                                ),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 5.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.goNamed(BDiagnosisWidget.routeName);
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primary,
+                    ),
+                    child: Align(
+                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      child: MouseRegion(
+                        opaque: false,
+                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 30.0, 10.0, 30.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              AutoSizeText(
+                                'LET’S GET STARTED!',
+                                minFontSize: 12.0,
+                                style: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleSmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleSmallIsCustom,
+                                    ),
                               ),
-                          ],
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                              ))
+                                Align(
+                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      size: valueOrDefault<double>(
+                                        MediaQuery.sizeOf(context).width <
+                                                kBreakpointSmall
+                                            ? 20.0
+                                            : 36.0,
+                                        36.0,
+                                      ),
+                                    ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'iconOnActionTriggerAnimation']!,
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
+                        onEnter: ((event) async {
+                          safeSetState(() => _model.mouseRegionHovered = true);
+                          // Start Arrow Animation
+                          if (animationsMap['iconOnActionTriggerAnimation'] !=
+                              null) {
+                            await animationsMap['iconOnActionTriggerAnimation']!
+                                .controller
+                              ..reset()
+                              ..repeat(reverse: true);
+                          }
+                        }),
+                        onExit: ((event) async {
+                          safeSetState(() => _model.mouseRegionHovered = false);
+                          // Reset Arrow Animation
+                          if (animationsMap['iconOnActionTriggerAnimation'] !=
+                              null) {
+                            animationsMap['iconOnActionTriggerAnimation']!
+                                .controller
+                                .reset();
+                          }
+                        }),
                       ),
-                      onEnter: ((event) async {
-                        safeSetState(() => _model.mouseRegionHovered = true);
-                        // Start Arrow Animation
-                        if (animationsMap['iconOnActionTriggerAnimation'] !=
-                            null) {
-                          await animationsMap['iconOnActionTriggerAnimation']!
-                              .controller
-                            ..reset()
-                            ..repeat(reverse: true);
-                        }
-                      }),
-                      onExit: ((event) async {
-                        safeSetState(() => _model.mouseRegionHovered = false);
-                        // Reset Arrow Animation
-                        if (animationsMap['iconOnActionTriggerAnimation'] !=
-                            null) {
-                          animationsMap['iconOnActionTriggerAnimation']!
-                              .controller
-                              .reset();
-                        }
-                      }),
                     ),
                   ),
                 ),
