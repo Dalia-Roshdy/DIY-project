@@ -49,12 +49,12 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
         key: scaffoldKey,
         resizeToAvoidBottomInset: false,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Flexible(
-              flex: 1,
-              child: Align(
+        body: SingleChildScrollView(
+          primary: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Align(
                 alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
@@ -120,22 +120,22 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                   ),
                 ),
               ),
-            ),
-          ]
-              .addToStart(SizedBox(
-                  height: valueOrDefault<double>(
-                MediaQuery.sizeOf(context).width < kBreakpointSmall
-                    ? 32.0
-                    : 64.0,
-                64.0,
-              )))
-              .addToEnd(SizedBox(
-                  height: valueOrDefault<double>(
-                MediaQuery.sizeOf(context).width < kBreakpointSmall
-                    ? 16.0
-                    : 32.0,
-                32.0,
-              ))),
+            ]
+                .addToStart(SizedBox(
+                    height: valueOrDefault<double>(
+                  MediaQuery.sizeOf(context).width < kBreakpointSmall
+                      ? 32.0
+                      : 64.0,
+                  64.0,
+                )))
+                .addToEnd(SizedBox(
+                    height: valueOrDefault<double>(
+                  MediaQuery.sizeOf(context).width < kBreakpointSmall
+                      ? 16.0
+                      : 32.0,
+                  32.0,
+                ))),
+          ),
         ),
       ),
     );
