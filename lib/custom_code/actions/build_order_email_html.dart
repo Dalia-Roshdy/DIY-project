@@ -81,7 +81,7 @@ Future<String> buildOrderEmailHtml(
   }
 
   String motorFeesSectionHtml = '';
-  if (motorSLFee != null) {
+  if (motorSLFee != null && motorSLFee != 0) {
     motorFeesSectionHtml = '''
           <tr>
             <td style="padding:6px 0;color:#444444;">Motor Shaft Cut fee</td>

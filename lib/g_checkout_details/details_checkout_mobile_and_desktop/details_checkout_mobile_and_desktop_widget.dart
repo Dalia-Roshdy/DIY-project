@@ -204,7 +204,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(32.0),
+                        padding: EdgeInsets.all(28.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -547,6 +547,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                     .bodyLargeFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
                                             lineHeight: 1.5,
                                             useGoogleFonts:
@@ -564,6 +565,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                     .headlineSmallFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
+                                            fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w800,
                                             useGoogleFonts:
@@ -845,7 +847,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                       Icons.lock_rounded,
                                       color: FlutterFlowTheme.of(context)
                                           .onPrimary,
-                                      size: 20.0,
+                                      size: 18.0,
                                     ),
                                     iconPresent: true,
                                     iconEndPresent: false,
@@ -891,7 +893,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                         name: 'PAYPAL',
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 16.0)),
+                                  ].divide(SizedBox(width: 10.0)),
                                 ),
                             ].divide(SizedBox(height: 32.0)),
                           ),
@@ -918,7 +920,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                     Icon(
                       Icons.security_rounded,
                       color: FlutterFlowTheme.of(context).secondaryText,
-                      size: 14.0,
+                      size: 10.0,
                     ),
                     Text(
                       'Secure 256-bit SSL Encrypted Connection',
@@ -926,6 +928,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             color: FlutterFlowTheme.of(context).secondaryText,
+                            fontSize: 10.0,
                             letterSpacing: 0.0,
                             lineHeight: 1.2,
                             useGoogleFonts: !FlutterFlowTheme.of(context)
@@ -940,6 +943,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                         fontFamily:
                             FlutterFlowTheme.of(context).labelSmallFamily,
                         color: FlutterFlowTheme.of(context).onSurface,
+                        fontSize: 10.0,
                         letterSpacing: 0.0,
                         lineHeight: 1.2,
                         useGoogleFonts:

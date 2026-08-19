@@ -1,6 +1,7 @@
 import '/c_components/button37/button37_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'something_went_wrong_model.dart';
@@ -10,7 +11,7 @@ class SomethingWentWrongWidget extends StatefulWidget {
   const SomethingWentWrongWidget({super.key});
 
   static String routeName = 'Something_went_wrong';
-  static String routePath = '/somethingWentWrong';
+  static String routePath = '/error';
 
   @override
   State<SomethingWentWrongWidget> createState() =>
@@ -119,37 +120,47 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    wrapWithModel(
-                      model: _model.buttonModel1,
-                      updateCallback: () => safeSetState(() {}),
-                      child: Button37Widget(
-                        content: 'Try Again',
-                        icon: Icon(
-                          Icons.refresh_rounded,
-                          color: Colors.white,
-                          size: 16.0,
+                    if (false)
+                      wrapWithModel(
+                        model: _model.buttonModel1,
+                        updateCallback: () => safeSetState(() {}),
+                        child: Button37Widget(
+                          content: 'Try Again',
+                          icon: Icon(
+                            Icons.refresh_rounded,
+                            color: Colors.white,
+                            size: 16.0,
+                          ),
+                          iconPresent: true,
+                          iconEndPresent: false,
+                          variant: 'primary',
+                          size: 'large',
+                          fullWidth: false,
+                          loading: false,
+                          disabled: false,
                         ),
-                        iconPresent: true,
-                        iconEndPresent: false,
-                        variant: 'primary',
-                        size: 'large',
-                        fullWidth: false,
-                        loading: false,
-                        disabled: false,
                       ),
-                    ),
-                    wrapWithModel(
-                      model: _model.buttonModel2,
-                      updateCallback: () => safeSetState(() {}),
-                      child: Button37Widget(
-                        content: 'Back to Dashboard',
-                        iconPresent: false,
-                        iconEndPresent: false,
-                        variant: 'outline',
-                        size: 'large',
-                        fullWidth: false,
-                        loading: false,
-                        disabled: false,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.goNamed(AHomePageWidget.routeName);
+                      },
+                      child: wrapWithModel(
+                        model: _model.buttonModel2,
+                        updateCallback: () => safeSetState(() {}),
+                        child: Button37Widget(
+                          content: 'Back to Dashboard',
+                          iconPresent: false,
+                          iconEndPresent: false,
+                          variant: 'outline',
+                          size: 'large',
+                          fullWidth: false,
+                          loading: false,
+                          disabled: false,
+                        ),
                       ),
                     ),
                   ].divide(SizedBox(height: 16.0)),
@@ -183,23 +194,32 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
                                             .bodySmallIsCustom,
                                   ),
                             ),
-                            Text(
-                              'Contact Support',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodySmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.underline,
-                                    lineHeight: 1.4,
-                                    useGoogleFonts:
-                                        !FlutterFlowTheme.of(context)
-                                            .bodySmallIsCustom,
-                                  ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.goNamed(KContactWidget.routeName);
+                              },
+                              child: Text(
+                                'Contact Support',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodySmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline,
+                                      lineHeight: 1.4,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodySmallIsCustom,
+                                    ),
+                              ),
                             ),
                           ].divide(SizedBox(width: 4.0)),
                         ),

@@ -125,21 +125,55 @@ class _GConfirmationSuccessWidgetState
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               32.0, 0.0, 32.0, 0.0),
-                          child: Text(
-                            'Thank you for your purchase. Your order #8492 has been placed and is being processed.',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyLarge
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyLargeFamily,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  letterSpacing: 0.0,
-                                  lineHeight: 1.5,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .bodyLargeIsCustom,
+                          child: RichText(
+                            textScaler: MediaQuery.of(context).textScaler,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text:
+                                      'Thank you for your purchase. Your order #',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyLargeFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
+                                        lineHeight: 1.5,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyLargeIsCustom,
+                                      ),
                                 ),
+                                TextSpan(
+                                  text: valueOrDefault<String>(
+                                    _model.order?.orderNumber,
+                                    '0000',
+                                  ),
+                                  style: TextStyle(),
+                                ),
+                                TextSpan(
+                                  text:
+                                      ' has been placed and is being processed.',
+                                  style: TextStyle(),
+                                )
+                              ],
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyLargeFamily,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    letterSpacing: 0.0,
+                                    lineHeight: 1.5,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyLargeIsCustom,
+                                  ),
+                            ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                         Padding(
@@ -304,18 +338,27 @@ class _GConfirmationSuccessWidgetState
                                                       .toString(),
                                                 ),
                                               ),
-                                              wrapWithModel(
-                                                model: _model
-                                                    .orderSummaryItemModel2,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: OrderSummaryItemWidget(
-                                                  label: 'Motor Shaft Cut fee',
-                                                  value: _model.order
-                                                      ?.totalsSnap.motorSLFees
-                                                      .toString(),
+                                              if ((_model.order?.totalsSnap
+                                                          .motorSLFees !=
+                                                      null) &&
+                                                  (_model.order?.totalsSnap
+                                                          .motorSLFees !=
+                                                      0.0))
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .orderSummaryItemModel2,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: OrderSummaryItemWidget(
+                                                    label:
+                                                        'Motor Shaft Cut fee',
+                                                    value: _model
+                                                        .order
+                                                        ?.totalsSnap
+                                                        .motorSLFees
+                                                        .toString(),
+                                                  ),
                                                 ),
-                                              ),
                                               wrapWithModel(
                                                 model: _model
                                                     .orderSummaryItemModel3,

@@ -304,7 +304,7 @@ class MobileTypography extends Typography {
   TextStyle get headlineMedium => GoogleFonts.archivoBlack(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
-        fontSize: 28.0,
+        fontSize: 24.0,
         height: 1.1,
       );
   String get headlineSmallFamily => 'Archivo Black';

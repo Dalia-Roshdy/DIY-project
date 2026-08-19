@@ -12,7 +12,7 @@ class GTrackAndFindMyOrderWidget extends StatefulWidget {
   const GTrackAndFindMyOrderWidget({super.key});
 
   static String routeName = 'G_Track_and_find_my_order';
-  static String routePath = '/gTrackAndFindMyOrder';
+  static String routePath = '/orders';
 
   @override
   State<GTrackAndFindMyOrderWidget> createState() =>

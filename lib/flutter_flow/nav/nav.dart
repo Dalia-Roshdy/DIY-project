@@ -8,6 +8,7 @@ import '/backend/schema/enums/enums.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -190,11 +191,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: BDiagnosisCopyWidget.routeName,
-          path: BDiagnosisCopyWidget.routePath,
-          builder: (context, params) => BDiagnosisCopyWidget(),
-        ),
-        FFRoute(
           name: CLibraryVideoFlowCopyWidget.routeName,
           path: CLibraryVideoFlowCopyWidget.routePath,
           builder: (context, params) => CLibraryVideoFlowCopyWidget(
@@ -203,16 +199,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.DocumentReference,
               isList: false,
               collectionNamePath: ['DiagnosisVideo'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: DSelectProductRepairCopyWidget.routeName,
-          path: DSelectProductRepairCopyWidget.routePath,
-          builder: (context, params) => DSelectProductRepairCopyWidget(
-            part: params.getParam<Parts>(
-              'part',
-              ParamType.Enum,
             ),
           ),
         )
@@ -402,15 +388,17 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? isWeb
-                  ? Container()
-                  : Container(
-                      color: Colors.transparent,
-                      child: Image.asset(
-                        'assets/images/New_Screen_3_(Copy).png',
-                        fit: BoxFit.cover,
-                      ),
-                    )
+              ? Container(
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/New_Screen_3_(Copy).png',
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
               : page;
 
           final transitionInfo = state.transitionInfo;

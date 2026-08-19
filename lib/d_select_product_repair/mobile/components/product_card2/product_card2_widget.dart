@@ -1736,15 +1736,14 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                             '\$${widget.price?.toString()}',
                             maxLines: 1,
                             style: FlutterFlowTheme.of(context)
-                                .titleLarge
+                                .titleMedium
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .titleLargeFamily,
+                                      .titleMediumFamily,
                                   letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w900,
                                   lineHeight: 1.2,
                                   useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .titleLargeIsCustom,
+                                      .titleMediumIsCustom,
                                 ),
                             overflow: TextOverflow.ellipsis,
                           ),

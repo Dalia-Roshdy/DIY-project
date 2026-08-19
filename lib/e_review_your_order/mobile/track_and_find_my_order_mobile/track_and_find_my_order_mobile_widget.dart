@@ -306,7 +306,7 @@ class _TrackAndFindMyOrderMobileWidgetState
                                   Icons.info_outline_rounded,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
-                                  size: 18.0,
+                                  size: 24.0,
                                 ),
                                 Expanded(
                                   flex: 1,
@@ -320,6 +320,7 @@ class _TrackAndFindMyOrderMobileWidgetState
                                                   .bodySmallFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
+                                          fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           lineHeight: 1.5,
                                           useGoogleFonts:

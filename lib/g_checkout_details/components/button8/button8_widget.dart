@@ -231,7 +231,7 @@ class _Button8WidgetState extends State<Button8Widget> {
                                 return FlutterFlowTheme.of(context).onPrimary;
                               }
                             }(),
-                            fontSize: 18.0,
+                            fontSize: 14.0,
                             letterSpacing: 0.0,
                             lineHeight: 1.3,
                             useGoogleFonts: !FlutterFlowTheme.of(context)

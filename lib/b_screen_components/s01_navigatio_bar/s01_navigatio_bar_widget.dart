@@ -1,3 +1,4 @@
+import '/backend/schema/enums/enums.dart';
 import '/c_components/dialog_components/empty_cart_component/empty_cart_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -100,7 +101,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                               fontFamily: FlutterFlowTheme.of(context)
                                   .titleMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 18.0,
+                              fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w900,
                               lineHeight: 1.4,
@@ -175,7 +176,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           child: Icon(
                             Icons.shopping_cart_rounded,
                             color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24.0,
+                            size: 18.0,
                           ),
                         ),
                       ),
@@ -227,6 +228,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).titleSmallFamily,
+                            fontSize: 18.0,
                             letterSpacing: 0.0,
                             useGoogleFonts: !FlutterFlowTheme.of(context)
                                 .titleSmallIsCustom,
@@ -254,6 +256,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).titleSmallFamily,
+                            fontSize: 18.0,
                             letterSpacing: 0.0,
                             useGoogleFonts: !FlutterFlowTheme.of(context)
                                 .titleSmallIsCustom,
@@ -266,7 +269,15 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   ),
                   FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed(DSelectProductRepairWidget.routeName);
+                      context.pushNamed(
+                        DSelectProductRepairWidget.routeName,
+                        queryParameters: {
+                          'part': serializeParam(
+                            Parts.MOTOR,
+                            ParamType.Enum,
+                          ),
+                        }.withoutNulls,
+                      );
                     },
                     text: 'ORDER PARTS',
                     options: FFButtonOptions(
@@ -281,6 +292,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).titleSmallFamily,
+                            fontSize: 18.0,
                             letterSpacing: 0.0,
                             useGoogleFonts: !FlutterFlowTheme.of(context)
                                 .titleSmallIsCustom,
@@ -308,6 +320,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).titleSmallFamily,
+                            fontSize: 18.0,
                             letterSpacing: 0.0,
                             useGoogleFonts: !FlutterFlowTheme.of(context)
                                 .titleSmallIsCustom,
@@ -335,6 +348,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).titleSmallFamily,
+                            fontSize: 18.0,
                             letterSpacing: 0.0,
                             useGoogleFonts: !FlutterFlowTheme.of(context)
                                 .titleSmallIsCustom,

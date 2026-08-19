@@ -118,7 +118,6 @@ class _EnterManuallySerialNumberWidgetState
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineMediumFamily,
-                                  fontSize: 40.0,
                                   letterSpacing:
                                       MediaQuery.sizeOf(context).width <
                                               kBreakpointSmall
@@ -708,7 +707,7 @@ class _EnterManuallySerialNumberWidgetState
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 10.0),
+                                    0.0, 12.0, 0.0, 24.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -793,111 +792,115 @@ class _EnterManuallySerialNumberWidgetState
               ),
             ),
           ),
-          InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              if ((_model.textFieldMakeTextController.text != '') ||
-                  (_model.textFieldModelTextController.text != '')) {
-                FFAppState().acCustomer = AcCustomerDataStruct(
-                  acMake: _model.textFieldMakeTextController.text,
-                  acModel: _model.textFieldModelTextController.text,
-                  serialNumber: _model.textFieldSNTextController.text,
-                );
-              }
-              if (Navigator.of(context).canPop()) {
-                context.pop();
-              }
-              context.pushNamed(CLibraryVideoFlowWidget.routeName);
-            },
-            child: Container(
-              constraints: BoxConstraints(
-                maxHeight: 80.0,
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: FlutterFlowTheme.of(context).alternate,
-                  width: 1.0,
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 28.0),
+            child: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                if ((_model.textFieldMakeTextController.text != '') ||
+                    (_model.textFieldModelTextController.text != '')) {
+                  FFAppState().acCustomer = AcCustomerDataStruct(
+                    acMake: _model.textFieldMakeTextController.text,
+                    acModel: _model.textFieldModelTextController.text,
+                    serialNumber: _model.textFieldSNTextController.text,
+                  );
+                }
+                if (Navigator.of(context).canPop()) {
+                  context.pop();
+                }
+                context.pushNamed(CLibraryVideoFlowWidget.routeName);
+              },
+              child: Container(
+                constraints: BoxConstraints(
+                  maxHeight: 80.0,
                 ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Container(
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primary,
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                          ),
-                        ),
-                        child: MouseRegion(
-                          opaque: false,
-                          cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 10.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                AutoSizeText(
-                                  'START DIAGNOSIS',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .titleMediumFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.normal,
-                                        useGoogleFonts:
-                                            !FlutterFlowTheme.of(context)
-                                                .titleMediumIsCustom,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          onEnter: ((event) async {
-                            safeSetState(
-                                () => _model.mouseRegionHovered = true);
-                          }),
-                          onExit: ((event) async {
-                            safeSetState(
-                                () => _model.mouseRegionHovered = false);
-                          }),
-                        ),
-                      ),
-                    ),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: FlutterFlowTheme.of(context).alternate,
+                    width: 1.0,
                   ),
-                  if (responsiveVisibility(
-                    context: context,
-                    phone: false,
-                  ))
-                    Container(
-                      width: 60.0,
-                      height: 60.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
                       child: Align(
                         alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Icon(
-                          Icons.arrow_forward,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 50.0,
+                        child: Container(
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).primary,
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                            ),
+                          ),
+                          child: MouseRegion(
+                            opaque: false,
+                            cursor:
+                                SystemMouseCursors.click ?? MouseCursor.defer,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 10.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  AutoSizeText(
+                                    'START DIAGNOSIS',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onEnter: ((event) async {
+                              safeSetState(
+                                  () => _model.mouseRegionHovered = true);
+                            }),
+                            onExit: ((event) async {
+                              safeSetState(
+                                  () => _model.mouseRegionHovered = false);
+                            }),
+                          ),
                         ),
                       ),
                     ),
-                ],
+                    if (responsiveVisibility(
+                      context: context,
+                      phone: false,
+                    ))
+                      Container(
+                        width: 60.0,
+                        height: 60.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 50.0,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
           ),

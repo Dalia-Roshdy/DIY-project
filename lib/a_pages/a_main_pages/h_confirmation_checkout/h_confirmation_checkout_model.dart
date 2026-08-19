@@ -4,6 +4,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/g_confirmation_success/g_confirmation_success_widget.dart';
+import '/index.dart';
 import 'h_confirmation_checkout_widget.dart' show HConfirmationCheckoutWidget;
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,8 @@ class HConfirmationCheckoutModel
   ApiCallResponse? paymentJson;
   // Stores action output result for [Backend Call - Read Document] action in H-Confirmation_Checkout widget.
   OrdersRecord? orderUpdatedAct;
+  // Stores action output result for [Firestore Query - Query a collection] action in H-Confirmation_Checkout widget.
+  SettingsRecord? bcc;
   // Stores action output result for [Custom Action - buildOrderEmailHtml] action in H-Confirmation_Checkout widget.
   String? email;
   // Model for S01_NavigatioBar component.

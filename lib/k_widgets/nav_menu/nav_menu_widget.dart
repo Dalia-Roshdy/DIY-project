@@ -1,3 +1,4 @@
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -138,7 +139,15 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              context.goNamed(DSelectProductRepairWidget.routeName);
+              context.goNamed(
+                DSelectProductRepairWidget.routeName,
+                queryParameters: {
+                  'part': serializeParam(
+                    Parts.MOTOR,
+                    ParamType.Enum,
+                  ),
+                }.withoutNulls,
+              );
             },
             child: Container(
               width: double.infinity,

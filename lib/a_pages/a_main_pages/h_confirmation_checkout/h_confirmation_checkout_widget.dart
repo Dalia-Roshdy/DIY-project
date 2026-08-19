@@ -8,6 +8,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/g_confirmation_success/g_confirmation_success_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +47,7 @@ class _HConfirmationCheckoutWidgetState
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.cartPS = FFAppState().Cart;
       _model.orderAct = await OrdersRecord.getDocumentOnce(widget.orderId!);
-      if (_model.orderAct?.status == OrderStatus.submitted) {
+      if (_model.orderAct?.status == OrderStatus.paid) {
         _model.order = _model.orderAct;
         safeSetState(() {});
       } else {
@@ -90,6 +92,13 @@ class _HConfirmationCheckoutWidgetState
                 await OrdersRecord.getDocumentOnce(_model.orderAct!.reference);
             _model.order = _model.orderUpdatedAct;
             safeSetState(() {});
+            _model.bcc = await querySettingsRecordOnce(
+              queryBuilder: (settingsRecord) => settingsRecord.where(
+                'key',
+                isEqualTo: SettingKeys.super_admin.name,
+              ),
+              singleRecord: true,
+            ).then((s) => s.firstOrNull);
             _model.email = await actions.buildOrderEmailHtml(
               _model.orderUpdatedAct?.customerSnap.name,
               _model.orderUpdatedAct?.customerSnap.shippingAddress,
@@ -114,6 +123,7 @@ class _HConfirmationCheckoutWidgetState
                         create: true,
                       ),
                       ctime: getCurrentTimestamp,
+                      bcc: _model.bcc?.value,
                     ));
               }(),
             );
@@ -142,6 +152,8 @@ class _HConfirmationCheckoutWidgetState
               updatedAt: getCurrentTimestamp,
             ));
           }
+        } else {
+          context.goNamed(SomethingWentWrongWidget.routeName);
         }
       }
     });

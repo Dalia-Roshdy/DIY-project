@@ -426,56 +426,109 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                         ),
                                       ),
                                     ),
+                                    if (_model.zeroResult)
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          shape: BoxShape.rectangle,
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(16.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                Icons.info_outline_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24.0,
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                  'No orders found with these credentials. Please check your information and try again.',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMediumFamily,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontSize: 24.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        lineHeight: 1.5,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMediumIsCustom,
+                                                      ),
+                                                ),
+                                              ),
+                                            ].divide(SizedBox(width: 8.0)),
+                                          ),
+                                        ),
+                                      ),
                                   ].divide(SizedBox(height: 24.0)),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                        if (_model.zeroResult)
-                          Container(
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              shape: BoxShape.rectangle,
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 0.0, 0.0),
-                                    child: Icon(
-                                      Icons.info_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 32.0,
-                                    ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            shape: BoxShape.rectangle,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 8.0, 0.0, 0.0),
+                                  child: Icon(
+                                    Icons.info_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 32.0,
                                   ),
-                                  Text(
-                                    'To return returnable items, Please follow the email sent to you during payments at checkout.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmallFamily,
-                                          fontSize: 24.0,
-                                          letterSpacing: 0.0,
-                                          lineHeight: 1.5,
-                                          useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
-                                                  .bodySmallIsCustom,
-                                        ),
-                                  ),
-                                ].divide(SizedBox(width: 8.0)),
-                              ),
+                                ),
+                                Text(
+                                  'To return returnable items, Please follow the email sent to you during payments at checkout.',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodySmallFamily,
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                        lineHeight: 1.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 8.0)),
                             ),
                           ),
+                        ),
                         Container(
                           decoration: BoxDecoration(),
                           child: Visibility(

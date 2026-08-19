@@ -62,6 +62,7 @@ class _PaymentBadge3WidgetState extends State<PaymentBadge3Widget> {
             style: FlutterFlowTheme.of(context).labelSmall.override(
                   fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                   color: FlutterFlowTheme.of(context).secondaryText,
+                  fontSize: 12.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.bold,
                   lineHeight: 1.2,

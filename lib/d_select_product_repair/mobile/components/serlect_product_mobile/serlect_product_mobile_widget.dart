@@ -853,7 +853,10 @@ class _SerlectProductMobileWidgetState
                                                         controller: _model
                                                                 .dropDownRpmValueController ??=
                                                             FormFieldController<
-                                                                int>(null),
+                                                                int>(
+                                                          _model.dropDownRpmValue ??=
+                                                              null,
+                                                        ),
                                                         options: List<int>.from(
                                                             [825, 1075]),
                                                         optionLabels: [
@@ -1154,23 +1157,22 @@ class _SerlectProductMobileWidgetState
                                       _model.partsList = FFAppState()
                                           .MotorCardList
                                           .where((e) =>
-                                              ((e.motorCard.motorRpm == _model.dropDownRpmValue) ||
-                                                  (_model.dropDownRpmValue ==
-                                                      null) ||
-                                                  (_model.dropDownRpmValue ==
-                                                      0)) &&
+                                              ((_model.dropDownRpmValue == null) ||
+                                                  (e.motorCard.motorRpm ==
+                                                      _model
+                                                          .dropDownRpmValue)) &&
                                               (e.motorCard.motorVolt.toString() ==
                                                   _model
                                                       .textFieldVoltTextController
                                                       .text) &&
-                                              ((e.motorCard.motorRotation == _model.dropDownRotationValue) ||
-                                                  (_model.dropDownRotationValue == null ||
-                                                      _model.dropDownRotationValue ==
-                                                          '')) &&
-                                              (((e.motorCard.motorHpMin <= _model.dropDownHpValue!) &&
+                                              ((_model.dropDownRotationValue == null || _model.dropDownRotationValue == '') ||
+                                                  (e.motorCard.motorRotation ==
+                                                      _model
+                                                          .dropDownRotationValue)) &&
+                                              ((_model.dropDownHpValue == null) ||
+                                                  ((e.motorCard.motorHpMin <= _model.dropDownHpValue!) &&
                                                       (e.motorCard.motorHpMax >=
-                                                          _model.dropDownHpValue!)) ||
-                                                  (_model.dropDownHpValue == null)))
+                                                          _model.dropDownHpValue!))))
                                           .toList()
                                           .sortedList(keyOf: (e) => e.title, desc: false)
                                           .toList()
@@ -1190,18 +1192,17 @@ class _SerlectProductMobileWidgetState
                                       color:
                                           FlutterFlowTheme.of(context).primary,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
+                                          .labelSmall
                                           .override(
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMediumFamily,
+                                                    .labelSmallFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondary,
-                                            fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             useGoogleFonts:
                                                 !FlutterFlowTheme.of(context)
-                                                    .labelMediumIsCustom,
+                                                    .labelSmallIsCustom,
                                           ),
                                       elevation: 0.0,
                                       borderRadius: BorderRadius.circular(0.0),
@@ -1629,16 +1630,16 @@ class _SerlectProductMobileWidgetState
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
+                                      .labelSmall
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .labelMediumFamily,
+                                            .labelSmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
                                         letterSpacing: 0.0,
                                         useGoogleFonts:
                                             !FlutterFlowTheme.of(context)
-                                                .labelMediumIsCustom,
+                                                .labelSmallIsCustom,
                                       ),
                                   elevation: 0.0,
                                   borderRadius: BorderRadius.circular(0.0),
@@ -2428,16 +2429,16 @@ class _SerlectProductMobileWidgetState
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
+                                      .labelSmall
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .labelMediumFamily,
+                                            .labelSmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
                                         letterSpacing: 0.0,
                                         useGoogleFonts:
                                             !FlutterFlowTheme.of(context)
-                                                .labelMediumIsCustom,
+                                                .labelSmallIsCustom,
                                       ),
                                   elevation: 0.0,
                                   borderRadius: BorderRadius.circular(0.0),

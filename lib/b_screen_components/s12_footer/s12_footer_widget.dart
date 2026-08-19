@@ -84,7 +84,8 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(4.0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                4.0, 0.0, 4.0, 8.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
