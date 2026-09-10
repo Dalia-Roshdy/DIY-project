@@ -2,11 +2,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'industrial_badge_model.dart';
-export 'industrial_badge_model.dart';
+import 'industrial_badge02_model.dart';
+export 'industrial_badge02_model.dart';
 
-class IndustrialBadgeWidget extends StatefulWidget {
-  const IndustrialBadgeWidget({
+class IndustrialBadge02Widget extends StatefulWidget {
+  const IndustrialBadge02Widget({
     super.key,
     String? label,
   }) : this.label = label ?? 'SYSTEM_MANIFESTO_V1.0';
@@ -14,11 +14,12 @@ class IndustrialBadgeWidget extends StatefulWidget {
   final String label;
 
   @override
-  State<IndustrialBadgeWidget> createState() => _IndustrialBadgeWidgetState();
+  State<IndustrialBadge02Widget> createState() =>
+      _IndustrialBadge02WidgetState();
 }
 
-class _IndustrialBadgeWidgetState extends State<IndustrialBadgeWidget> {
-  late IndustrialBadgeModel _model;
+class _IndustrialBadge02WidgetState extends State<IndustrialBadge02Widget> {
+  late IndustrialBadge02Model _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -29,7 +30,7 @@ class _IndustrialBadgeWidgetState extends State<IndustrialBadgeWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => IndustrialBadgeModel());
+    _model = createModel(context, () => IndustrialBadge02Model());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -55,7 +56,7 @@ class _IndustrialBadgeWidgetState extends State<IndustrialBadgeWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
             child: Container(
               child: Text(
-                'OUR ROLE',
+                'YOUR ROLE',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.roboto(
                         fontWeight: FontWeight.bold,

@@ -35,6 +35,8 @@ class IAboutDektopModel extends FlutterFlowModel<IAboutDektopWidget> {
   late RoleItemModel roleItemModel5;
   // Model for RoleItem.
   late RoleItemModel roleItemModel6;
+  // Model for RoleItem.
+  late RoleItemModel roleItemModel7;
   // Model for LimitBadge.
   late LimitBadgeModel limitBadgeModel1;
   // Model for LimitBadge.
@@ -59,6 +61,7 @@ class IAboutDektopModel extends FlutterFlowModel<IAboutDektopWidget> {
     roleItemModel4 = createModel(context, () => RoleItemModel());
     roleItemModel5 = createModel(context, () => RoleItemModel());
     roleItemModel6 = createModel(context, () => RoleItemModel());
+    roleItemModel7 = createModel(context, () => RoleItemModel());
     limitBadgeModel1 = createModel(context, () => LimitBadgeModel());
     limitBadgeModel2 = createModel(context, () => LimitBadgeModel());
     limitBadgeModel3 = createModel(context, () => LimitBadgeModel());
@@ -80,6 +83,7 @@ class IAboutDektopModel extends FlutterFlowModel<IAboutDektopWidget> {
     roleItemModel4.dispose();
     roleItemModel5.dispose();
     roleItemModel6.dispose();
+    roleItemModel7.dispose();
     limitBadgeModel1.dispose();
     limitBadgeModel2.dispose();
     limitBadgeModel3.dispose();

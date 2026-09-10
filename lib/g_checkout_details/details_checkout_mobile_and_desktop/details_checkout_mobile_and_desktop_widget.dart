@@ -582,258 +582,274 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (_model.orderPS == null) {
-                                    _model.form01 = true;
-                                    if (_model.formKey.currentState == null ||
-                                        !_model.formKey.currentState!
-                                            .validate()) {
-                                      safeSetState(() => _model.form01 = false);
-                                      return;
+                                  if (_model.paymentInProgress == false) {
+                                    if (_model.orderPS == null) {
+                                      _model.form01 = true;
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
+                                        safeSetState(
+                                            () => _model.form01 = false);
+                                        return;
+                                      }
+                                      _model.paymentInProgress = true;
+                                      _model.linsACTC =
+                                          await actions.cartItemsToOrderLinesA(
+                                        FFAppState().Cart.cartItems.toList(),
+                                      );
+
+                                      var ordersRecordReference =
+                                          OrdersRecord.collection.doc();
+                                      await ordersRecordReference.set({
+                                        ...createOrdersRecordData(
+                                          createdAt: getCurrentTimestamp,
+                                          updatedAt: getCurrentTimestamp,
+                                          status: OrderStatus.submitted,
+                                          totalsSnap: createTotalSnapStruct(
+                                            subtotal:
+                                                FFAppState().Cart.subtotal,
+                                            shipping:
+                                                FFAppState().Cart.shipping,
+                                            tax: FFAppState().Cart.tax,
+                                            total: FFAppState().Cart.total,
+                                            motorSLFees:
+                                                FFAppState().Cart.motorSLFees,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          payment: createPaymentDataStruct(
+                                            provider: 'Strip',
+                                            currency: 'usd',
+                                            status: PaymentStatus.pending.name,
+                                            amountTotal:
+                                                FFAppState().Cart.total,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          customerSnap: createCustomerStruct(
+                                            email: _model.textFieldEmailModel
+                                                .inputTextController.text,
+                                            shippingAddress:
+                                                '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
+                                            phone: _model.textFieldPhoneModel
+                                                .inputTextController.text,
+                                            name: _model.textFieldNameModel
+                                                .inputTextController.text,
+                                            pin: _model.textFieldCardModel
+                                                .inputTextController.text,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          comment: FFAppState().Cart.comment,
+                                          acCustomer:
+                                              updateAcCustomerDataStruct(
+                                            FFAppState().acCustomer,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          orderNumber: (String var1) {
+                                            return 'TT-'
+                                                '${DateTime.now().day.toString().padLeft(2, '0')}'
+                                                '${DateTime.now().month.toString().padLeft(2, '0')}'
+                                                '-${var1.replaceAll(RegExp(r'\D'), '').substring(
+                                                      var1
+                                                              .replaceAll(
+                                                                  RegExp(r'\D'),
+                                                                  '')
+                                                              .length -
+                                                          4,
+                                                    )}'
+                                                '-${DateTime.now().hour.toString().padLeft(2, '0')}'
+                                                '${DateTime.now().minute.toString().padLeft(2, '0')}'
+                                                '${DateTime.now().second.toString().padLeft(2, '0')}';
+                                          }(_model.textFieldPhoneModel
+                                              .inputTextController.text),
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'lines':
+                                                getOrderLinesListFirestoreData(
+                                              _model.linsACTC,
+                                            ),
+                                          },
+                                        ),
+                                      });
+                                      _model.order =
+                                          OrdersRecord.getDocumentFromData({
+                                        ...createOrdersRecordData(
+                                          createdAt: getCurrentTimestamp,
+                                          updatedAt: getCurrentTimestamp,
+                                          status: OrderStatus.submitted,
+                                          totalsSnap: createTotalSnapStruct(
+                                            subtotal:
+                                                FFAppState().Cart.subtotal,
+                                            shipping:
+                                                FFAppState().Cart.shipping,
+                                            tax: FFAppState().Cart.tax,
+                                            total: FFAppState().Cart.total,
+                                            motorSLFees:
+                                                FFAppState().Cart.motorSLFees,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          payment: createPaymentDataStruct(
+                                            provider: 'Strip',
+                                            currency: 'usd',
+                                            status: PaymentStatus.pending.name,
+                                            amountTotal:
+                                                FFAppState().Cart.total,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          customerSnap: createCustomerStruct(
+                                            email: _model.textFieldEmailModel
+                                                .inputTextController.text,
+                                            shippingAddress:
+                                                '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
+                                            phone: _model.textFieldPhoneModel
+                                                .inputTextController.text,
+                                            name: _model.textFieldNameModel
+                                                .inputTextController.text,
+                                            pin: _model.textFieldCardModel
+                                                .inputTextController.text,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          comment: FFAppState().Cart.comment,
+                                          acCustomer:
+                                              updateAcCustomerDataStruct(
+                                            FFAppState().acCustomer,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          orderNumber: (String var1) {
+                                            return 'TT-'
+                                                '${DateTime.now().day.toString().padLeft(2, '0')}'
+                                                '${DateTime.now().month.toString().padLeft(2, '0')}'
+                                                '-${var1.replaceAll(RegExp(r'\D'), '').substring(
+                                                      var1
+                                                              .replaceAll(
+                                                                  RegExp(r'\D'),
+                                                                  '')
+                                                              .length -
+                                                          4,
+                                                    )}'
+                                                '-${DateTime.now().hour.toString().padLeft(2, '0')}'
+                                                '${DateTime.now().minute.toString().padLeft(2, '0')}'
+                                                '${DateTime.now().second.toString().padLeft(2, '0')}';
+                                          }(_model.textFieldPhoneModel
+                                              .inputTextController.text),
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'lines':
+                                                getOrderLinesListFirestoreData(
+                                              _model.linsACTC,
+                                            ),
+                                          },
+                                        ),
+                                      }, ordersRecordReference);
+                                      _model.orderPS = _model.order?.reference;
+                                    } else {
+                                      _model.form02 = true;
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
+                                        safeSetState(
+                                            () => _model.form02 = false);
+                                        return;
+                                      }
+                                      _model.paymentInProgress = true;
+                                      _model.linsACTU =
+                                          await actions.cartItemsToOrderLinesA(
+                                        FFAppState().Cart.cartItems.toList(),
+                                      );
+
+                                      await _model.orderPS!.update({
+                                        ...createOrdersRecordData(
+                                          updatedAt: getCurrentTimestamp,
+                                          customerSnap: createCustomerStruct(
+                                            email: _model.textFieldEmailModel
+                                                .inputTextController.text,
+                                            phone: _model.textFieldPhoneModel
+                                                .inputTextController.text,
+                                            shippingAddress:
+                                                '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
+                                            pin: _model.textFieldCardModel
+                                                .inputTextController.text,
+                                            name: _model.textFieldCardModel
+                                                .inputTextController.text,
+                                            clearUnsetFields: false,
+                                          ),
+                                          comment: FFAppState().Cart.comment,
+                                          acCustomer:
+                                              updateAcCustomerDataStruct(
+                                            FFAppState().acCustomer,
+                                            clearUnsetFields: false,
+                                          ),
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'lines':
+                                                getOrderLinesListFirestoreData(
+                                              _model.linsACTU,
+                                            ),
+                                          },
+                                        ),
+                                      });
                                     }
-                                    _model.linsACTC =
-                                        await actions.cartItemsToOrderLinesA(
-                                      FFAppState().Cart.cartItems.toList(),
-                                    );
 
-                                    var ordersRecordReference =
-                                        OrdersRecord.collection.doc();
-                                    await ordersRecordReference.set({
-                                      ...createOrdersRecordData(
-                                        createdAt: getCurrentTimestamp,
-                                        updatedAt: getCurrentTimestamp,
-                                        status: OrderStatus.submitted,
-                                        totalsSnap: createTotalSnapStruct(
-                                          subtotal: FFAppState().Cart.subtotal,
-                                          shipping: FFAppState().Cart.shipping,
-                                          tax: FFAppState().Cart.tax,
-                                          total: FFAppState().Cart.total,
-                                          motorSLFees:
-                                              FFAppState().Cart.motorSLFees,
-                                          clearUnsetFields: false,
-                                          create: true,
-                                        ),
-                                        payment: createPaymentDataStruct(
-                                          provider: 'Strip',
-                                          currency: 'usd',
-                                          status: PaymentStatus.pending.name,
-                                          amountTotal: FFAppState().Cart.total,
-                                          clearUnsetFields: false,
-                                          create: true,
-                                        ),
-                                        customerSnap: createCustomerStruct(
-                                          email: _model.textFieldEmailModel
-                                              .inputTextController.text,
-                                          shippingAddress:
-                                              '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
-                                          phone: _model.textFieldPhoneModel
-                                              .inputTextController.text,
-                                          name: _model.textFieldNameModel
-                                              .inputTextController.text,
-                                          pin: _model.textFieldCardModel
-                                              .inputTextController.text,
-                                          clearUnsetFields: false,
-                                          create: true,
-                                        ),
-                                        comment: FFAppState().Cart.comment,
-                                        acCustomer: updateAcCustomerDataStruct(
-                                          FFAppState().acCustomer,
-                                          clearUnsetFields: false,
-                                          create: true,
-                                        ),
-                                        orderNumber: (String var1) {
-                                          return 'TT-'
-                                              '${DateTime.now().day.toString().padLeft(2, '0')}'
-                                              '${DateTime.now().month.toString().padLeft(2, '0')}'
-                                              '-${var1.replaceAll(RegExp(r'\D'), '').substring(
-                                                    var1
-                                                            .replaceAll(
-                                                                RegExp(r'\D'),
-                                                                '')
-                                                            .length -
-                                                        4,
-                                                  )}'
-                                              '-${DateTime.now().hour.toString().padLeft(2, '0')}'
-                                              '${DateTime.now().minute.toString().padLeft(2, '0')}'
-                                              '${DateTime.now().second.toString().padLeft(2, '0')}';
-                                        }(_model.textFieldPhoneModel
-                                            .inputTextController.text),
-                                      ),
-                                      ...mapToFirestore(
-                                        {
-                                          'lines':
-                                              getOrderLinesListFirestoreData(
-                                            _model.linsACTC,
-                                          ),
-                                        },
-                                      ),
-                                    });
-                                    _model.order =
-                                        OrdersRecord.getDocumentFromData({
-                                      ...createOrdersRecordData(
-                                        createdAt: getCurrentTimestamp,
-                                        updatedAt: getCurrentTimestamp,
-                                        status: OrderStatus.submitted,
-                                        totalsSnap: createTotalSnapStruct(
-                                          subtotal: FFAppState().Cart.subtotal,
-                                          shipping: FFAppState().Cart.shipping,
-                                          tax: FFAppState().Cart.tax,
-                                          total: FFAppState().Cart.total,
-                                          motorSLFees:
-                                              FFAppState().Cart.motorSLFees,
-                                          clearUnsetFields: false,
-                                          create: true,
-                                        ),
-                                        payment: createPaymentDataStruct(
-                                          provider: 'Strip',
-                                          currency: 'usd',
-                                          status: PaymentStatus.pending.name,
-                                          amountTotal: FFAppState().Cart.total,
-                                          clearUnsetFields: false,
-                                          create: true,
-                                        ),
-                                        customerSnap: createCustomerStruct(
-                                          email: _model.textFieldEmailModel
-                                              .inputTextController.text,
-                                          shippingAddress:
-                                              '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
-                                          phone: _model.textFieldPhoneModel
-                                              .inputTextController.text,
-                                          name: _model.textFieldNameModel
-                                              .inputTextController.text,
-                                          pin: _model.textFieldCardModel
-                                              .inputTextController.text,
-                                          clearUnsetFields: false,
-                                          create: true,
-                                        ),
-                                        comment: FFAppState().Cart.comment,
-                                        acCustomer: updateAcCustomerDataStruct(
-                                          FFAppState().acCustomer,
-                                          clearUnsetFields: false,
-                                          create: true,
-                                        ),
-                                        orderNumber: (String var1) {
-                                          return 'TT-'
-                                              '${DateTime.now().day.toString().padLeft(2, '0')}'
-                                              '${DateTime.now().month.toString().padLeft(2, '0')}'
-                                              '-${var1.replaceAll(RegExp(r'\D'), '').substring(
-                                                    var1
-                                                            .replaceAll(
-                                                                RegExp(r'\D'),
-                                                                '')
-                                                            .length -
-                                                        4,
-                                                  )}'
-                                              '-${DateTime.now().hour.toString().padLeft(2, '0')}'
-                                              '${DateTime.now().minute.toString().padLeft(2, '0')}'
-                                              '${DateTime.now().second.toString().padLeft(2, '0')}';
-                                        }(_model.textFieldPhoneModel
-                                            .inputTextController.text),
-                                      ),
-                                      ...mapToFirestore(
-                                        {
-                                          'lines':
-                                              getOrderLinesListFirestoreData(
-                                            _model.linsACTC,
-                                          ),
-                                        },
-                                      ),
-                                    }, ordersRecordReference);
-                                    _model.orderPS = _model.order?.reference;
-                                  } else {
-                                    _model.form02 = true;
-                                    if (_model.formKey.currentState == null ||
-                                        !_model.formKey.currentState!
-                                            .validate()) {
-                                      safeSetState(() => _model.form02 = false);
-                                      return;
-                                    }
-                                    _model.linsACTU =
-                                        await actions.cartItemsToOrderLinesA(
-                                      FFAppState().Cart.cartItems.toList(),
-                                    );
-
-                                    await _model.orderPS!.update({
-                                      ...createOrdersRecordData(
-                                        updatedAt: getCurrentTimestamp,
-                                        customerSnap: createCustomerStruct(
-                                          email: _model.textFieldEmailModel
-                                              .inputTextController.text,
-                                          phone: _model.textFieldPhoneModel
-                                              .inputTextController.text,
-                                          shippingAddress:
-                                              '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
-                                          pin: _model.textFieldCardModel
-                                              .inputTextController.text,
-                                          name: _model.textFieldCardModel
-                                              .inputTextController.text,
-                                          clearUnsetFields: false,
-                                        ),
-                                        comment: FFAppState().Cart.comment,
-                                        acCustomer: updateAcCustomerDataStruct(
-                                          FFAppState().acCustomer,
-                                          clearUnsetFields: false,
-                                        ),
-                                      ),
-                                      ...mapToFirestore(
-                                        {
-                                          'lines':
-                                              getOrderLinesListFirestoreData(
-                                            _model.linsACTU,
-                                          ),
-                                        },
-                                      ),
-                                    });
-                                  }
-
-                                  final paymentResponse =
-                                      await processStripePayment(
-                                    context,
-                                    amount:
-                                        (FFAppState().Cart.total * 100).round(),
-                                    currency: 'usd',
-                                    customerEmail: _model.textFieldEmailModel
-                                        .inputTextController.text,
-                                    customerName: _model.textFieldNameModel
-                                        .inputTextController.text,
-                                    allowGooglePay: false,
-                                    allowApplePay: false,
-                                    themeStyle: ThemeMode.system,
-                                  );
-                                  if (paymentResponse.paymentId == null &&
-                                      paymentResponse.errorMessage != null) {
-                                    showSnackbar(
+                                    final paymentResponse =
+                                        await processStripePayment(
                                       context,
-                                      'Error: ${paymentResponse.errorMessage}',
+                                      amount: (FFAppState().Cart.total * 100)
+                                          .round(),
+                                      currency: 'USD',
+                                      customerEmail: _model.textFieldEmailModel
+                                          .inputTextController.text,
+                                      customerName: _model.textFieldNameModel
+                                          .inputTextController.text,
+                                      allowGooglePay: false,
+                                      allowApplePay: false,
+                                      themeStyle: ThemeMode.system,
                                     );
-                                  }
-                                  _model.paymentId =
-                                      paymentResponse.paymentId ?? '';
+                                    if (paymentResponse.paymentId == null &&
+                                        paymentResponse.errorMessage != null) {
+                                      showSnackbar(
+                                        context,
+                                        'Error: ${paymentResponse.errorMessage}',
+                                      );
+                                    }
+                                    _model.paymentId =
+                                        paymentResponse.paymentId ?? '';
 
-                                  await Future.delayed(
-                                    Duration(
-                                      milliseconds: 50,
-                                    ),
-                                  );
-                                  if (_model.paymentId != null &&
-                                      _model.paymentId != '') {
-                                    await _model.orderPS!
-                                        .update(createOrdersRecordData(
-                                      payment: createPaymentDataStruct(
-                                        paymentIntentId: _model.paymentId,
-                                        status: 'processing',
-                                        clearUnsetFields: false,
+                                    _model.paymentInProgress = false;
+                                    await Future.delayed(
+                                      Duration(
+                                        milliseconds: 50,
                                       ),
-                                    ));
-
-                                    context.goNamed(
-                                      HConfirmationCheckoutWidget.routeName,
-                                      queryParameters: {
-                                        'orderId': serializeParam(
-                                          _model.orderPS,
-                                          ParamType.DocumentReference,
-                                        ),
-                                      }.withoutNulls,
                                     );
+                                    if (_model.paymentId != null &&
+                                        _model.paymentId != '') {
+                                      await _model.orderPS!
+                                          .update(createOrdersRecordData(
+                                        payment: createPaymentDataStruct(
+                                          paymentIntentId: _model.paymentId,
+                                          status: 'processing',
+                                          clearUnsetFields: false,
+                                        ),
+                                      ));
+
+                                      context.goNamed(
+                                        HConfirmationCheckoutWidget.routeName,
+                                        queryParameters: {
+                                          'orderId': serializeParam(
+                                            _model.orderPS,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    }
                                   }
 
                                   safeSetState(() {});

@@ -104,23 +104,14 @@ class _TrackingStepWidgetState extends State<TrackingStepWidget> {
               alignment: AlignmentDirectional(0.0, 0.0),
               child: widget.icon!,
             ),
-            if (valueOrDefault<bool>(
-              valueOrDefault<bool>(
-                widget.last,
-                false,
-              )
-                  ? false
-                  : true,
-              true,
-            ))
-              Container(
-                width: 2.0,
-                height: 60.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).alternate,
-                  shape: BoxShape.rectangle,
-                ),
+            Container(
+              width: 2.0,
+              height: 60.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).alternate,
+                shape: BoxShape.rectangle,
               ),
+            ),
           ],
         ),
         Expanded(

@@ -49,12 +49,11 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
         key: scaffoldKey,
         resizeToAvoidBottomInset: false,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SingleChildScrollView(
-          primary: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Flexible(
+              child: Align(
                 alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
@@ -99,10 +98,55 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                           thickness: 1.0,
                           color: FlutterFlowTheme.of(context).primary,
                         ),
-                        wrapWithModel(
-                          model: _model.s05HomestartdiagnosisModel,
-                          updateCallback: () => safeSetState(() {}),
-                          child: S05HomestartdiagnosisWidget(),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0,
+                                valueOrDefault<double>(
+                                  () {
+                                    if (MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall) {
+                                      return 0.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointMedium) {
+                                      return 0.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointLarge) {
+                                      return 30.0;
+                                    } else {
+                                      return 20.0;
+                                    }
+                                  }(),
+                                  20.0,
+                                ),
+                                10.0,
+                                valueOrDefault<double>(
+                                  () {
+                                    if (MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall) {
+                                      return 0.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointMedium) {
+                                      return 0.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointLarge) {
+                                      return 10.0;
+                                    } else {
+                                      return 10.0;
+                                    }
+                                  }(),
+                                  10.0,
+                                )),
+                            child: wrapWithModel(
+                              model: _model.s05HomestartdiagnosisModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: S05HomestartdiagnosisWidget(),
+                            ),
+                          ),
                         ),
                         if (responsiveVisibility(
                           context: context,
@@ -120,22 +164,22 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
                   ),
                 ),
               ),
-            ]
-                .addToStart(SizedBox(
-                    height: valueOrDefault<double>(
-                  MediaQuery.sizeOf(context).width < kBreakpointSmall
-                      ? 32.0
-                      : 64.0,
-                  64.0,
-                )))
-                .addToEnd(SizedBox(
-                    height: valueOrDefault<double>(
-                  MediaQuery.sizeOf(context).width < kBreakpointSmall
-                      ? 16.0
-                      : 32.0,
-                  32.0,
-                ))),
-          ),
+            ),
+          ]
+              .addToStart(SizedBox(
+                  height: valueOrDefault<double>(
+                MediaQuery.sizeOf(context).width < kBreakpointSmall
+                    ? 32.0
+                    : 46.0,
+                46.0,
+              )))
+              .addToEnd(SizedBox(
+                  height: valueOrDefault<double>(
+                MediaQuery.sizeOf(context).width < kBreakpointSmall
+                    ? 16.0
+                    : 32.0,
+                32.0,
+              ))),
         ),
       ),
     );

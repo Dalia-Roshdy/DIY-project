@@ -110,7 +110,7 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, -1.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     valueOrDefault<double>(
@@ -148,8 +148,8 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
                                 MediaQuery.sizeOf(context).width <
                                         kBreakpointSmall
                                     ? 25.0
-                                    : 20.0,
-                                20.0,
+                                    : 15.0,
+                                15.0,
                               ),
                               decoration: BoxDecoration(
                                 border: Border.all(

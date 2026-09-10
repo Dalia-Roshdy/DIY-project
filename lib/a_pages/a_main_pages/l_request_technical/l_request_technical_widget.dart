@@ -95,109 +95,80 @@ class _LRequestTechnicalWidgetState extends State<LRequestTechnicalWidget> {
               children: [
                 Align(
                   alignment: AlignmentDirectional(0.0, -1.0),
-                  child: Container(
-                    width: double.infinity,
-                    constraints: BoxConstraints(
-                      maxWidth: 2000.0,
-                    ),
-                    decoration: BoxDecoration(),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 0.96,
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    width: 1.0,
-                                  ),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    wrapWithModel(
-                                      model: _model.s01NavigatioBarModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: S01NavigatioBarWidget(),
-                                    ),
-                                    Divider(
-                                      height: 1.0,
-                                      thickness: 1.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: valueOrDefault<double>(
-                                        MediaQuery.sizeOf(context).width <
-                                                kBreakpointSmall
-                                            ? 10.0
-                                            : 30.0,
-                                        30.0,
-                                      ),
-                                      decoration: BoxDecoration(),
-                                    ),
-                                    Divider(
-                                      height: 1.0,
-                                      thickness: 1.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).tertiary,
-                                    ),
-                                    wrapWithModel(
-                                      model: _model.s19RequestTechModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: S19RequestTechWidget(),
-                                    ),
-                                    Divider(
-                                      height: 1.0,
-                                      thickness: 1.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: valueOrDefault<double>(
-                                        MediaQuery.sizeOf(context).width <
-                                                kBreakpointSmall
-                                            ? 25.0
-                                            : 100.0,
-                                        100.0,
-                                      ),
-                                      decoration: BoxDecoration(),
-                                    ),
-                                    if (responsiveVisibility(
-                                      context: context,
-                                      phone: false,
-                                      tablet: false,
-                                      tabletLandscape: false,
-                                    ))
-                                      wrapWithModel(
-                                        model: _model.s12FooterModel,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: S12FooterWidget(),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ].divide(SizedBox(
-                                height: valueOrDefault<double>(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.96,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 1.0,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          wrapWithModel(
+                            model: _model.s01NavigatioBarModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: S01NavigatioBarWidget(),
+                          ),
+                          Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: valueOrDefault<double>(
                               MediaQuery.sizeOf(context).width <
                                       kBreakpointSmall
-                                  ? 25.0
-                                  : 50.0,
-                              50.0,
-                            ))),
+                                  ? 10.0
+                                  : 30.0,
+                              30.0,
+                            ),
+                            decoration: BoxDecoration(),
                           ),
-                        ),
+                          Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).tertiary,
+                          ),
+                          wrapWithModel(
+                            model: _model.s19RequestTechModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: S19RequestTechWidget(),
+                          ),
+                          Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: valueOrDefault<double>(
+                              MediaQuery.sizeOf(context).width <
+                                      kBreakpointSmall
+                                  ? 10.0
+                                  : 25.0,
+                              25.0,
+                            ),
+                            decoration: BoxDecoration(),
+                          ),
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                            tablet: false,
+                            tabletLandscape: false,
+                          ))
+                            wrapWithModel(
+                              model: _model.s12FooterModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: S12FooterWidget(),
+                            ),
+                        ],
                       ),
                     ),
                   ),
@@ -213,9 +184,9 @@ class _LRequestTechnicalWidgetState extends State<LRequestTechnicalWidget> {
                   .addToEnd(SizedBox(
                       height: valueOrDefault<double>(
                     MediaQuery.sizeOf(context).width < kBreakpointSmall
-                        ? 32.0
-                        : 64.0,
-                    64.0,
+                        ? 16.0
+                        : 32.0,
+                    32.0,
                   ))),
             ),
           ),

@@ -42,15 +42,16 @@ class _S05HomestartdiagnosisWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(-1.0, -1.0),
+      alignment: AlignmentDirectional(-1.0, 0.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (responsiveVisibility(
               context: context,
@@ -61,7 +62,7 @@ class _S05HomestartdiagnosisWidgetState
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   constraints: BoxConstraints(
-                    maxWidth: MediaQuery.sizeOf(context).width * 0.4,
+                    maxWidth: MediaQuery.sizeOf(context).width * 0.38,
                   ),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primary,
@@ -70,20 +71,7 @@ class _S05HomestartdiagnosisWidgetState
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        height: valueOrDefault<double>(
-                          () {
-                            if (MediaQuery.sizeOf(context).width <
-                                kBreakpointSmall) {
-                              return 12.0;
-                            } else if (MediaQuery.sizeOf(context).width <
-                                kBreakpointLarge) {
-                              return 25.0;
-                            } else {
-                              return 50.0;
-                            }
-                          }(),
-                          50.0,
-                        ),
+                        height: 25.0,
                         decoration: BoxDecoration(),
                       ),
                       Divider(
@@ -134,23 +122,7 @@ class _S05HomestartdiagnosisWidgetState
                                           MediaQuery.sizeOf(context).height *
                                               0.2,
                                       constraints: BoxConstraints(
-                                        maxHeight: valueOrDefault<double>(
-                                          () {
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width <
-                                                kBreakpointSmall) {
-                                              return 150.0;
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointLarge) {
-                                              return 150.0;
-                                            } else {
-                                              return 200.0;
-                                            }
-                                          }(),
-                                          200.0,
-                                        ),
+                                        maxHeight: 200.0,
                                       ),
                                       decoration: BoxDecoration(),
                                       child: Align(
@@ -168,14 +140,6 @@ class _S05HomestartdiagnosisWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondary,
-                                                letterSpacing:
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            kBreakpointSmall
-                                                        ? FFAppConstants
-                                                            .LetterSpacingM
-                                                        : FFAppConstants
-                                                            .LetterSpacingTD,
                                                 fontWeight: FontWeight.normal,
                                                 lineHeight: 1.0,
                                                 useGoogleFonts:
@@ -188,7 +152,7 @@ class _S05HomestartdiagnosisWidgetState
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 25.0, 0.0, 0.0),
+                                          0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         decoration: BoxDecoration(),
                                         child: Padding(
@@ -207,7 +171,7 @@ class _S05HomestartdiagnosisWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondary,
-                                                  fontSize: 28.0,
+                                                  fontSize: 24.0,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts:
                                                       !FlutterFlowTheme.of(
@@ -224,7 +188,7 @@ class _S05HomestartdiagnosisWidgetState
                                           MediaQuery.sizeOf(context).height *
                                               0.04,
                                       constraints: BoxConstraints(
-                                        maxHeight: 50.0,
+                                        maxHeight: 20.0,
                                       ),
                                       decoration: BoxDecoration(),
                                     ),
@@ -238,51 +202,11 @@ class _S05HomestartdiagnosisWidgetState
                                       alignment: AlignmentDirectional(1.0, 0.0),
                                       child: Container(
                                         constraints: BoxConstraints(
-                                          maxWidth: 170.0,
-                                          maxHeight: 170.0,
+                                          maxWidth: 150.0,
+                                          maxHeight: 150.0,
                                         ),
                                         decoration: BoxDecoration(),
                                         child: Container(
-                                          width: () {
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width <
-                                                kBreakpointSmall) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.4);
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointLarge) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.28);
-                                            } else {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.15);
-                                            }
-                                          }(),
-                                          height: () {
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width <
-                                                kBreakpointSmall) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.4);
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointLarge) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.28);
-                                            } else {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.15);
-                                            }
-                                          }(),
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
@@ -308,8 +232,8 @@ class _S05HomestartdiagnosisWidgetState
                                                           8.0),
                                                   child: Image.asset(
                                                     'assets/images/logopng.PNG',
-                                                    width: 150.0,
-                                                    height: 150.0,
+                                                    width: 130.0,
+                                                    height: 130.0,
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
@@ -337,20 +261,7 @@ class _S05HomestartdiagnosisWidgetState
                         color: FlutterFlowTheme.of(context).tertiary,
                       ),
                       Container(
-                        height: valueOrDefault<double>(
-                          () {
-                            if (MediaQuery.sizeOf(context).width <
-                                kBreakpointSmall) {
-                              return 12.0;
-                            } else if (MediaQuery.sizeOf(context).width <
-                                kBreakpointLarge) {
-                              return 25.0;
-                            } else {
-                              return 50.0;
-                            }
-                          }(),
-                          50.0,
-                        ),
+                        height: 30.0,
                         decoration: BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -373,17 +284,47 @@ class _S05HomestartdiagnosisWidgetState
               child: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      width: 1.0,
-                    ),
-                  ),
+                  decoration: BoxDecoration(),
                   child: Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          valueOrDefault<double>(
+                            () {
+                              if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointSmall) {
+                                return 0.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointMedium) {
+                                return 1.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointLarge) {
+                                return 20.0;
+                              } else {
+                                return 20.0;
+                              }
+                            }(),
+                            20.0,
+                          ),
+                          0.0,
+                          valueOrDefault<double>(
+                            () {
+                              if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointSmall) {
+                                return 0.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointMedium) {
+                                return 1.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  kBreakpointLarge) {
+                                return 20.0;
+                              } else {
+                                return 20.0;
+                              }
+                            }(),
+                            20.0,
+                          ),
+                          0.0),
                       child: wrapWithModel(
                         model: _model.enterManuallySerialNumberModel,
                         updateCallback: () => safeSetState(() {}),

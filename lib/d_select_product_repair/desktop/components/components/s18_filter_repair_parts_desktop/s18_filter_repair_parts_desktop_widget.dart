@@ -761,7 +761,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
-                                                  fontSize: 10.0,
+                                                  fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   lineHeight: 1.2,

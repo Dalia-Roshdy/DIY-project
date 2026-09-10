@@ -175,45 +175,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                           ),
                         ),
                       ),
-                      Container(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 0.0, 0.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              shape: BoxShape.rectangle,
-                              border: Border.all(
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                width: 2.0,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 4.0, 16.0, 4.0),
-                              child: Container(
-                                child: Text(
-                                  'DIAGNOSE_FAST.01',
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelSmall
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .labelSmallFamily,
-                                        fontSize: 18.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                        lineHeight: 1.2,
-                                        useGoogleFonts:
-                                            !FlutterFlowTheme.of(context)
-                                                .labelSmallIsCustom,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      Container(),
                     ],
                   ),
                 ),
@@ -526,6 +488,26 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                           ),
                                     ),
                                   ),
+                                  Container(
+                                    width: 600.0,
+                                    decoration: BoxDecoration(),
+                                    child: Text(
+                                      'Don\'t worry, we will teach you all you need to know.',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            color: Color(0xCCF2F2F2),
+                                            letterSpacing: 0.0,
+                                            lineHeight: 1.5,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
+                                          ),
+                                    ),
+                                  ),
                                 ].divide(SizedBox(height: 16.0)),
                               ),
                             ],
@@ -646,7 +628,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                   updateCallback: () => safeSetState(() {}),
                                   child: RoleItemWidget(
                                     content:
-                                        'DELIVER PARTS AND TOOLS QUICKLY AND AT A REASONABLE PRICE',
+                                        'HELP YOU DIAGNOSE YOUR BROKEN A/C STEP BY STEP',
                                     icon: Icon(
                                       Icons.arrow_forward,
                                       color: FlutterFlowTheme.of(context)
@@ -660,7 +642,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                   updateCallback: () => safeSetState(() {}),
                                   child: RoleItemWidget(
                                     content:
-                                        'SHOW YOU OTHER HANDY MEN AND A/C PROFESSIONALS WHO CAN HELP',
+                                        'DELIVER PARTS AND TOOLS QUICKLY AND AT A REASONABLE PRICE',
                                     icon: Icon(
                                       Icons.arrow_forward,
                                       color: FlutterFlowTheme.of(context)
@@ -674,7 +656,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                   updateCallback: () => safeSetState(() {}),
                                   child: RoleItemWidget(
                                     content:
-                                        'PROVIDE A PLATFORM FOR SHARING TECHNICAL KNOWLEDGE',
+                                        'SHOW YOU OTHER HANDY MEN AND A/C PROFESSIONALS WHO CAN HELP',
                                     icon: Icon(
                                       Icons.arrow_forward,
                                       color: FlutterFlowTheme.of(context)
@@ -685,6 +667,20 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                 ),
                                 wrapWithModel(
                                   model: _model.roleItemModel4,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: RoleItemWidget(
+                                    content:
+                                        'PROVIDE A PLATFORM FOR SHARING TECHNICAL KNOWLEDGE',
+                                    icon: Icon(
+                                      Icons.arrow_forward,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 18.0,
+                                    ),
+                                  ),
+                                ),
+                                wrapWithModel(
+                                  model: _model.roleItemModel5,
                                   updateCallback: () => safeSetState(() {}),
                                   child: RoleItemWidget(
                                     content:
@@ -759,7 +755,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 wrapWithModel(
-                                  model: _model.roleItemModel5,
+                                  model: _model.roleItemModel6,
                                   updateCallback: () => safeSetState(() {}),
                                   child: RoleItemWidget(
                                     content:
@@ -773,7 +769,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                   ),
                                 ),
                                 wrapWithModel(
-                                  model: _model.roleItemModel6,
+                                  model: _model.roleItemModel7,
                                   updateCallback: () => safeSetState(() {}),
                                   child: RoleItemWidget(
                                     content:

@@ -58,90 +58,73 @@ class _GTrackAndFindMyOrderWidgetState
               children: [
                 Align(
                   alignment: AlignmentDirectional(0.0, -1.0),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 0.96,
-                          decoration: BoxDecoration(),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: FlutterFlowTheme.of(context).primary,
-                                width: 1.0,
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.96,
+                      decoration: BoxDecoration(),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          wrapWithModel(
+                            model: _model.s01NavigatioBarModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: S01NavigatioBarWidget(),
+                          ),
+                          Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                            tablet: false,
+                            tabletLandscape: false,
+                          ))
+                            Expanded(
+                              child: wrapWithModel(
+                                model: _model.trackAndFindMyOrderModel,
+                                updateCallback: () => safeSetState(() {}),
+                                child: TrackAndFindMyOrderWidget(),
                               ),
                             ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                wrapWithModel(
-                                  model: _model.s01NavigatioBarModel,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: S01NavigatioBarWidget(),
-                                ),
-                                Divider(
-                                  height: 1.0,
-                                  thickness: 1.0,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                ),
-                                if (responsiveVisibility(
-                                  context: context,
-                                  phone: false,
-                                  tablet: false,
-                                  tabletLandscape: false,
-                                ))
-                                  Expanded(
-                                    child: wrapWithModel(
-                                      model: _model.trackAndFindMyOrderModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: TrackAndFindMyOrderWidget(),
-                                    ),
-                                  ),
-                                if (responsiveVisibility(
-                                  context: context,
-                                  tabletLandscape: false,
-                                  desktop: false,
-                                ))
-                                  wrapWithModel(
-                                    model:
-                                        _model.trackAndFindMyOrderMobileModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: TrackAndFindMyOrderMobileWidget(),
-                                  ),
-                                Container(
-                                  width: double.infinity,
-                                  height: valueOrDefault<double>(
-                                    MediaQuery.sizeOf(context).width <
-                                            kBreakpointSmall
-                                        ? 25.0
-                                        : 100.0,
-                                    100.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                  child: Visibility(
-                                    visible: responsiveVisibility(
-                                      context: context,
-                                      phone: false,
-                                    ),
-                                    child: wrapWithModel(
-                                      model: _model.s12FooterModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: S12FooterWidget(),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                          if (responsiveVisibility(
+                            context: context,
+                            tabletLandscape: false,
+                            desktop: false,
+                          ))
+                            wrapWithModel(
+                              model: _model.trackAndFindMyOrderMobileModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: TrackAndFindMyOrderMobileWidget(),
+                            ),
+                          Container(
+                            width: double.infinity,
+                            height: valueOrDefault<double>(
+                              MediaQuery.sizeOf(context).width <
+                                      kBreakpointSmall
+                                  ? 25.0
+                                  : 100.0,
+                              100.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).secondary,
+                            ),
+                            child: Visibility(
+                              visible: responsiveVisibility(
+                                context: context,
+                                phone: false,
+                              ),
+                              child: wrapWithModel(
+                                model: _model.s12FooterModel,
+                                updateCallback: () => safeSetState(() {}),
+                                child: S12FooterWidget(),
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ),

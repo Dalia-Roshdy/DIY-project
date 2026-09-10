@@ -189,21 +189,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['orders'],
             ),
           ),
-        ),
-        FFRoute(
-          name: CLibraryVideoFlowCopyWidget.routeName,
-          path: CLibraryVideoFlowCopyWidget.routePath,
-          builder: (context, params) => CLibraryVideoFlowCopyWidget(
-            currentVideoId: params.getParam(
-              'currentVideoId',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['DiagnosisVideo'],
-            ),
-          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
-      observers: [routeObserver],
+      observers: ffNavigatorObservers,
     );
 
 extension NavParamExtensions on Map<String, String?> {

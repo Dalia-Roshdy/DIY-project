@@ -25,6 +25,8 @@ class DetailsCheckoutMobileAndDesktopModel
   void updateLinesAtIndex(int index, Function(OrderLinesStruct) updateFn) =>
       lines[index] = updateFn(lines[index]);
 
+  bool paymentInProgress = false;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();

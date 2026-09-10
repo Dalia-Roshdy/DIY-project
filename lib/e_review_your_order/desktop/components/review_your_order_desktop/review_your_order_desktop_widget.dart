@@ -515,7 +515,7 @@ class _ReviewYourOrderDesktopWidgetState
                                                       ),
                                                       child: Checkbox(
                                                         value: _model
-                                                                .checkboxValueMap1[
+                                                                .checkboxValueMap[
                                                             toolsListDisplayItem] ??= FFAppState()
                                                                     .Cart
                                                                     .cartItems
@@ -531,7 +531,7 @@ class _ReviewYourOrderDesktopWidgetState
                                                         onChanged:
                                                             (newValue) async {
                                                           safeSetState(() =>
-                                                              _model.checkboxValueMap1[
+                                                              _model.checkboxValueMap[
                                                                       toolsListDisplayItem] =
                                                                   newValue!);
                                                           if (newValue!) {
@@ -777,7 +777,7 @@ class _ReviewYourOrderDesktopWidgetState
                                       is_total: false,
                                     ),
                                   ),
-                                  if ((_model.checkboxValue2 == true) ||
+                                  if ((_model.checkboxSlValue == true) ||
                                       (FFAppState().Cart.motorSLFees != 0.0))
                                     wrapWithModel(
                                       model: _model.summaryLineSlModel,
@@ -857,6 +857,10 @@ class _ReviewYourOrderDesktopWidgetState
                                                 : false,
                                     );
                                     await actions.calculateCartTotal();
+                                    safeSetState(() {
+                                      _model.checkboxSlValue =
+                                          FFAppState().Cart.motorSLEnabled;
+                                    });
 
                                     context.pushNamed(
                                         GSecurePaymentCheckoutWidget.routeName);
@@ -1066,7 +1070,7 @@ class _ReviewYourOrderDesktopWidgetState
                                                 .alternate,
                                       ),
                                       child: Checkbox(
-                                        value: _model.checkboxValue2 ??=
+                                        value: _model.checkboxSlValue ??=
                                             FFAppState()
                                                             .Cart
                                                             .motorSLComment !=
@@ -1084,7 +1088,7 @@ class _ReviewYourOrderDesktopWidgetState
                                             ? null
                                             : (newValue) async {
                                                 safeSetState(() =>
-                                                    _model.checkboxValue2 =
+                                                    _model.checkboxSlValue =
                                                         newValue!);
                                                 if (newValue!) {
                                                   FFAppState().updateCartStruct(
@@ -1150,89 +1154,120 @@ class _ReviewYourOrderDesktopWidgetState
                                     ),
                                   ],
                                 ),
-                                if (_model.checkboxValue2 ?? true)
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(12.0),
-                                      child: TextFormField(
-                                        controller: _model
-                                            .textFieldMessageSLTextController,
-                                        focusNode:
-                                            _model.textFieldMessageSLFocusNode,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          '_model.textFieldMessageSLTextController',
-                                          Duration(milliseconds: 100),
-                                          () async {
-                                            FFAppState().updateCartStruct(
-                                              (e) => e
-                                                ..motorSLComment = _model
-                                                    .textFieldMessageSLTextController
-                                                    .text
-                                                ..comment = _model
-                                                    .textFieldMessageCTextController
-                                                    .text,
-                                            );
-                                          },
+                                if (_model.checkboxSlValue ?? true)
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                          ),
                                         ),
-                                        autofocus: false,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          isDense: true,
-                                          hintText:
-                                              'Enter a custom Motor Shaft length.',
-                                          hintStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .labelSmall
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmallFamily,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts:
-                                                    !FlutterFlowTheme.of(
+                                        child: Padding(
+                                          padding: EdgeInsets.all(12.0),
+                                          child: TextFormField(
+                                            controller: _model
+                                                .textFieldMessageSLTextController,
+                                            focusNode: _model
+                                                .textFieldMessageSLFocusNode,
+                                            onChanged: (_) =>
+                                                EasyDebounce.debounce(
+                                              '_model.textFieldMessageSLTextController',
+                                              Duration(milliseconds: 100),
+                                              () async {
+                                                FFAppState().updateCartStruct(
+                                                  (e) => e
+                                                    ..motorSLComment = _model
+                                                        .textFieldMessageSLTextController
+                                                        .text
+                                                    ..comment = _model
+                                                        .textFieldMessageCTextController
+                                                        .text,
+                                                );
+                                              },
+                                            ),
+                                            autofocus: false,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              isDense: true,
+                                              hintText:
+                                                  'Enter a custom Motor Shaft length.',
+                                              hintStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelSmallFamily,
+                                                    color: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelSmallIsCustom,
-                                              ),
-                                          enabledBorder: InputBorder.none,
-                                          focusedBorder: InputBorder.none,
-                                          errorBorder: InputBorder.none,
-                                          focusedErrorBorder: InputBorder.none,
+                                                        .tertiary,
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelSmallIsCustom,
+                                                  ),
+                                              enabledBorder: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
+                                              errorBorder: InputBorder.none,
+                                              focusedErrorBorder:
+                                                  InputBorder.none,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontSize: 16.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallIsCustom,
+                                                ),
+                                            maxLines: null,
+                                            cursorColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            validator: _model
+                                                .textFieldMessageSLTextControllerValidator
+                                                .asValidator(context),
+                                          ),
                                         ),
+                                      ),
+                                      Text(
+                                        'You must enter the shaft length in inches.',
                                         style: FlutterFlowTheme.of(context)
-                                            .labelSmall
+                                            .bodyMedium
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelSmallFamily,
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontSize: 16.0,
+                                                      .primary20,
                                               letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
                                               useGoogleFonts:
                                                   !FlutterFlowTheme.of(context)
-                                                      .labelSmallIsCustom,
+                                                      .bodyMediumIsCustom,
                                             ),
-                                        maxLines: null,
-                                        cursorColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                        validator: _model
-                                            .textFieldMessageSLTextControllerValidator
-                                            .asValidator(context),
                                       ),
-                                    ),
+                                    ].divide(SizedBox(height: 6.0)),
                                   ),
                               ].divide(SizedBox(height: 16.0)),
                             ),

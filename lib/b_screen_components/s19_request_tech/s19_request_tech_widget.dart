@@ -113,6 +113,7 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
               context: context,
               phone: false,
               tablet: false,
+              tabletLandscape: false,
             ))
               Container(
                 width: MediaQuery.sizeOf(context).width < kBreakpointLarge
@@ -495,958 +496,997 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                       maxWidth: 935.0,
                     ),
                     decoration: BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          constraints: BoxConstraints(
-                            maxHeight: 96.0,
-                          ),
-                          decoration: BoxDecoration(),
-                          child: AutoSizeText(
-                            'Need a technician? We\'ll send one to you.',
-                            style: FlutterFlowTheme.of(context)
-                                .displayMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .displayMediumFamily,
-                                  letterSpacing:
-                                      MediaQuery.sizeOf(context).width <
-                                              kBreakpointSmall
-                                          ? FFAppConstants.LetterSpacingM
-                                          : FFAppConstants.LetterSpacingTD,
-                                  lineHeight: 1.0,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .displayMediumIsCustom,
-                                ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Align(
-                            alignment: AlignmentDirectional(0.0, -1.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 15.0, 0.0, 0.0),
-                              child: Container(
-                                width: double.infinity,
-                                constraints: BoxConstraints(
-                                  maxHeight: 697.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    width: 1.0,
+                    child: SingleChildScrollView(
+                      primary: false,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            constraints: BoxConstraints(
+                              maxHeight: 96.0,
+                            ),
+                            decoration: BoxDecoration(),
+                            child: AutoSizeText(
+                              'Need a technician? We\'ll send one to you.',
+                              style: FlutterFlowTheme.of(context)
+                                  .displayMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .displayMediumFamily,
+                                    letterSpacing:
+                                        MediaQuery.sizeOf(context).width <
+                                                kBreakpointSmall
+                                            ? FFAppConstants.LetterSpacingM
+                                            : FFAppConstants.LetterSpacingTD,
+                                    lineHeight: 1.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .displayMediumIsCustom,
                                   ),
-                                ),
-                                child: Form(
-                                  key: _model.formKey,
-                                  autovalidateMode: AutovalidateMode.disabled,
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Container(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.1,
-                                        constraints: BoxConstraints(
-                                          minHeight: 50.0,
-                                          maxHeight: valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 50.0
-                                                : 100.0,
-                                            100.0,
+                            ),
+                          ),
+                          Expanded(
+                            child: Align(
+                              alignment: AlignmentDirectional(0.0, -1.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 15.0, 0.0, 0.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  constraints: BoxConstraints(
+                                    maxHeight: 697.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    border: Border.all(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                  child: Form(
+                                    key: _model.formKey,
+                                    autovalidateMode: AutovalidateMode.disabled,
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.1,
+                                          constraints: BoxConstraints(
+                                            minHeight: 50.0,
+                                            maxHeight: valueOrDefault<double>(
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointSmall
+                                                  ? 50.0
+                                                  : 100.0,
+                                              100.0,
+                                            ),
                                           ),
-                                        ),
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              height: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Icon(
-                                                  Icons.account_box_sharp,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  size: valueOrDefault<double>(
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            kBreakpointSmall
-                                                        ? 25.0
-                                                        : 40.0,
-                                                    40.0,
+                                          decoration: BoxDecoration(),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                height: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.account_box_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size:
+                                                        valueOrDefault<double>(
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              kBreakpointSmall
+                                                          ? 25.0
+                                                          : 40.0,
+                                                      40.0,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            VerticalDivider(
-                                              width: 1.0,
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
+                                              VerticalDivider(
+                                                width: 1.0,
+                                                thickness: 1.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              5.0,
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              0.0),
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                        .textFieldNameTextController,
+                                                    focusNode: _model
+                                                        .textFieldNameFocusNode,
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.textFieldNameTextController',
+                                                      Duration(
+                                                          milliseconds: 100),
+                                                      () => safeSetState(() {}),
+                                                    ),
+                                                    autofocus: false,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      isDense: false,
+                                                      hintText: 'Name',
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
+                                                              ),
+                                                      enabledBorder:
+                                                          InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
+                                                      errorBorder:
+                                                          InputBorder.none,
+                                                      focusedErrorBorder:
+                                                          InputBorder.none,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmallIsCustom,
                                                         ),
-                                                        5.0,
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
-                                                        ),
-                                                        0.0),
-                                                child: TextFormField(
-                                                  controller: _model
-                                                      .textFieldNameTextController,
-                                                  focusNode: _model
-                                                      .textFieldNameFocusNode,
-                                                  onChanged: (_) =>
-                                                      EasyDebounce.debounce(
-                                                    '_model.textFieldNameTextController',
-                                                    Duration(milliseconds: 100),
-                                                    () => safeSetState(() {}),
-                                                  ),
-                                                  autofocus: false,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    isDense: false,
-                                                    hintText: 'Name',
-                                                    hintStyle:
+                                                    cursorColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .labelSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiary,
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              useGoogleFonts:
-                                                                  !FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallIsCustom,
-                                                            ),
-                                                    enabledBorder:
-                                                        InputBorder.none,
-                                                    focusedBorder:
-                                                        InputBorder.none,
-                                                    errorBorder:
-                                                        InputBorder.none,
-                                                    focusedErrorBorder:
-                                                        InputBorder.none,
+                                                            .primary,
+                                                    validator: _model
+                                                        .textFieldNameTextControllerValidator
+                                                        .asValidator(context),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmallIsCustom,
-                                                      ),
-                                                  cursorColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  validator: _model
-                                                      .textFieldNameTextControllerValidator
-                                                      .asValidator(context),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Divider(
-                                        height: 1.0,
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                      ),
-                                      Container(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.1,
-                                        constraints: BoxConstraints(
-                                          minHeight: 50.0,
-                                          maxHeight: valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 50.0
-                                                : 100.0,
-                                            100.0,
+                                            ],
                                           ),
                                         ),
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              height: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Icon(
-                                                  Icons.email_sharp,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  size: valueOrDefault<double>(
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            kBreakpointSmall
-                                                        ? 25.0
-                                                        : 40.0,
-                                                    40.0,
+                                        Divider(
+                                          height: 1.0,
+                                          thickness: 1.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                        ),
+                                        Container(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.1,
+                                          constraints: BoxConstraints(
+                                            minHeight: 50.0,
+                                            maxHeight: valueOrDefault<double>(
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointSmall
+                                                  ? 50.0
+                                                  : 100.0,
+                                              100.0,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                height: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.email_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size:
+                                                        valueOrDefault<double>(
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              kBreakpointSmall
+                                                          ? 25.0
+                                                          : 40.0,
+                                                      40.0,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            VerticalDivider(
-                                              width: 1.0,
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
+                                              VerticalDivider(
+                                                width: 1.0,
+                                                thickness: 1.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              0.0,
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              0.0),
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                        .textFieldEmailAddressTextController,
+                                                    focusNode: _model
+                                                        .textFieldEmailAddressFocusNode,
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.textFieldEmailAddressTextController',
+                                                      Duration(
+                                                          milliseconds: 100),
+                                                      () => safeSetState(() {}),
+                                                    ),
+                                                    autofocus: false,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      isDense: false,
+                                                      hintText: 'Email Address',
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
+                                                              ),
+                                                      enabledBorder:
+                                                          InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
+                                                      errorBorder:
+                                                          InputBorder.none,
+                                                      focusedErrorBorder:
+                                                          InputBorder.none,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmallIsCustom,
                                                         ),
-                                                        0.0,
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
-                                                        ),
-                                                        0.0),
-                                                child: TextFormField(
-                                                  controller: _model
-                                                      .textFieldEmailAddressTextController,
-                                                  focusNode: _model
-                                                      .textFieldEmailAddressFocusNode,
-                                                  onChanged: (_) =>
-                                                      EasyDebounce.debounce(
-                                                    '_model.textFieldEmailAddressTextController',
-                                                    Duration(milliseconds: 100),
-                                                    () => safeSetState(() {}),
-                                                  ),
-                                                  autofocus: false,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    isDense: false,
-                                                    hintText: 'Email Address',
-                                                    hintStyle:
+                                                    cursorColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .labelSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiary,
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              useGoogleFonts:
-                                                                  !FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallIsCustom,
-                                                            ),
-                                                    enabledBorder:
-                                                        InputBorder.none,
-                                                    focusedBorder:
-                                                        InputBorder.none,
-                                                    errorBorder:
-                                                        InputBorder.none,
-                                                    focusedErrorBorder:
-                                                        InputBorder.none,
+                                                            .primary,
+                                                    validator: _model
+                                                        .textFieldEmailAddressTextControllerValidator
+                                                        .asValidator(context),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmallIsCustom,
-                                                      ),
-                                                  cursorColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  validator: _model
-                                                      .textFieldEmailAddressTextControllerValidator
-                                                      .asValidator(context),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Divider(
-                                        height: 1.0,
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                      ),
-                                      Container(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.1,
-                                        constraints: BoxConstraints(
-                                          minHeight: 50.0,
-                                          maxHeight: valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 50.0
-                                                : 100.0,
-                                            100.0,
+                                            ],
                                           ),
                                         ),
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              height: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Icon(
-                                                  Icons.phone_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  size: valueOrDefault<double>(
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            kBreakpointSmall
-                                                        ? 25.0
-                                                        : 40.0,
-                                                    40.0,
+                                        Divider(
+                                          height: 1.0,
+                                          thickness: 1.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                        ),
+                                        Container(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.1,
+                                          constraints: BoxConstraints(
+                                            minHeight: 50.0,
+                                            maxHeight: valueOrDefault<double>(
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointSmall
+                                                  ? 50.0
+                                                  : 100.0,
+                                              100.0,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                height: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.phone_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size:
+                                                        valueOrDefault<double>(
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              kBreakpointSmall
+                                                          ? 25.0
+                                                          : 40.0,
+                                                      40.0,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            VerticalDivider(
-                                              width: 1.0,
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
+                                              VerticalDivider(
+                                                width: 1.0,
+                                                thickness: 1.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              0.0,
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              0.0),
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                        .textFieldPhoneTextController,
+                                                    focusNode: _model
+                                                        .textFieldPhoneFocusNode,
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.textFieldPhoneTextController',
+                                                      Duration(
+                                                          milliseconds: 100),
+                                                      () => safeSetState(() {}),
+                                                    ),
+                                                    autofocus: false,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      isDense: false,
+                                                      hintText: 'Phone',
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
+                                                              ),
+                                                      enabledBorder:
+                                                          InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
+                                                      errorBorder:
+                                                          InputBorder.none,
+                                                      focusedErrorBorder:
+                                                          InputBorder.none,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmallIsCustom,
                                                         ),
-                                                        0.0,
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
-                                                        ),
-                                                        0.0),
-                                                child: TextFormField(
-                                                  controller: _model
-                                                      .textFieldPhoneTextController,
-                                                  focusNode: _model
-                                                      .textFieldPhoneFocusNode,
-                                                  onChanged: (_) =>
-                                                      EasyDebounce.debounce(
-                                                    '_model.textFieldPhoneTextController',
-                                                    Duration(milliseconds: 100),
-                                                    () => safeSetState(() {}),
-                                                  ),
-                                                  autofocus: false,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    isDense: false,
-                                                    hintText: 'Phone',
-                                                    hintStyle:
+                                                    cursorColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .labelSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiary,
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              useGoogleFonts:
-                                                                  !FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallIsCustom,
-                                                            ),
-                                                    enabledBorder:
-                                                        InputBorder.none,
-                                                    focusedBorder:
-                                                        InputBorder.none,
-                                                    errorBorder:
-                                                        InputBorder.none,
-                                                    focusedErrorBorder:
-                                                        InputBorder.none,
+                                                            .primary,
+                                                    validator: _model
+                                                        .textFieldPhoneTextControllerValidator
+                                                        .asValidator(context),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmallIsCustom,
-                                                      ),
-                                                  cursorColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  validator: _model
-                                                      .textFieldPhoneTextControllerValidator
-                                                      .asValidator(context),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Divider(
-                                        height: 1.0,
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                      ),
-                                      Container(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.1,
-                                        constraints: BoxConstraints(
-                                          minHeight: 50.0,
-                                          maxHeight: valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 50.0
-                                                : 100.0,
-                                            100.0,
+                                            ],
                                           ),
                                         ),
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              height: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Icon(
-                                                  Icons.home,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  size: valueOrDefault<double>(
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            kBreakpointSmall
-                                                        ? 25.0
-                                                        : 40.0,
-                                                    40.0,
+                                        Divider(
+                                          height: 1.0,
+                                          thickness: 1.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                        ),
+                                        Container(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.1,
+                                          constraints: BoxConstraints(
+                                            minHeight: 50.0,
+                                            maxHeight: valueOrDefault<double>(
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointSmall
+                                                  ? 50.0
+                                                  : 100.0,
+                                              100.0,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                height: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.home,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size:
+                                                        valueOrDefault<double>(
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              kBreakpointSmall
+                                                          ? 25.0
+                                                          : 40.0,
+                                                      40.0,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            VerticalDivider(
-                                              width: 1.0,
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
+                                              VerticalDivider(
+                                                width: 1.0,
+                                                thickness: 1.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              0.0,
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              0.0),
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                        .textFieldAddressTextController,
+                                                    focusNode: _model
+                                                        .textFieldAddressFocusNode,
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.textFieldAddressTextController',
+                                                      Duration(
+                                                          milliseconds: 100),
+                                                      () => safeSetState(() {}),
+                                                    ),
+                                                    autofocus: false,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      isDense: false,
+                                                      hintText: 'Address',
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
+                                                              ),
+                                                      enabledBorder:
+                                                          InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
+                                                      errorBorder:
+                                                          InputBorder.none,
+                                                      focusedErrorBorder:
+                                                          InputBorder.none,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmallIsCustom,
                                                         ),
-                                                        0.0,
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
-                                                        ),
-                                                        0.0),
-                                                child: TextFormField(
-                                                  controller: _model
-                                                      .textFieldAddressTextController,
-                                                  focusNode: _model
-                                                      .textFieldAddressFocusNode,
-                                                  onChanged: (_) =>
-                                                      EasyDebounce.debounce(
-                                                    '_model.textFieldAddressTextController',
-                                                    Duration(milliseconds: 100),
-                                                    () => safeSetState(() {}),
-                                                  ),
-                                                  autofocus: false,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    isDense: false,
-                                                    hintText: 'Address',
-                                                    hintStyle:
+                                                    cursorColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .labelSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiary,
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              useGoogleFonts:
-                                                                  !FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallIsCustom,
-                                                            ),
-                                                    enabledBorder:
-                                                        InputBorder.none,
-                                                    focusedBorder:
-                                                        InputBorder.none,
-                                                    errorBorder:
-                                                        InputBorder.none,
-                                                    focusedErrorBorder:
-                                                        InputBorder.none,
+                                                            .primary,
+                                                    validator: _model
+                                                        .textFieldAddressTextControllerValidator
+                                                        .asValidator(context),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmallIsCustom,
-                                                      ),
-                                                  cursorColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  validator: _model
-                                                      .textFieldAddressTextControllerValidator
-                                                      .asValidator(context),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Divider(
-                                        height: 1.0,
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                      ),
-                                      Container(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.1,
-                                        constraints: BoxConstraints(
-                                          minHeight: 50.0,
-                                          maxHeight: valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 50.0
-                                                : 100.0,
-                                            100.0,
+                                            ],
                                           ),
                                         ),
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              height: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        kBreakpointSmall
-                                                    ? 50.0
-                                                    : (MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.1),
-                                                100.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Icon(
-                                                  Icons.edit_sharp,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  size: valueOrDefault<double>(
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            kBreakpointSmall
-                                                        ? 25.0
-                                                        : 40.0,
-                                                    40.0,
+                                        Divider(
+                                          height: 1.0,
+                                          thickness: 1.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                        ),
+                                        Container(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.1,
+                                          constraints: BoxConstraints(
+                                            minHeight: 50.0,
+                                            maxHeight: valueOrDefault<double>(
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointSmall
+                                                  ? 50.0
+                                                  : 100.0,
+                                              100.0,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                height: valueOrDefault<double>(
+                                                  MediaQuery.sizeOf(context)
+                                                              .width <
+                                                          kBreakpointSmall
+                                                      ? 50.0
+                                                      : (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.1),
+                                                  100.0,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.edit_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size:
+                                                        valueOrDefault<double>(
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              kBreakpointSmall
+                                                          ? 25.0
+                                                          : 40.0,
+                                                      40.0,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            VerticalDivider(
-                                              width: 1.0,
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
+                                              VerticalDivider(
+                                                width: 1.0,
+                                                thickness: 1.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              0.0,
+                                                              valueOrDefault<
+                                                                  double>(
+                                                                MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall
+                                                                    ? 25.0
+                                                                    : 50.0,
+                                                                50.0,
+                                                              ),
+                                                              0.0),
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                        .textFieldSubjectTextController,
+                                                    focusNode: _model
+                                                        .textFieldSubjectFocusNode,
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.textFieldSubjectTextController',
+                                                      Duration(
+                                                          milliseconds: 100),
+                                                      () => safeSetState(() {}),
+                                                    ),
+                                                    autofocus: false,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      isDense: false,
+                                                      hintText: 'Subject',
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
+                                                              ),
+                                                      enabledBorder:
+                                                          InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
+                                                      errorBorder:
+                                                          InputBorder.none,
+                                                      focusedErrorBorder:
+                                                          InputBorder.none,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmallIsCustom,
                                                         ),
-                                                        0.0,
-                                                        valueOrDefault<double>(
-                                                          MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  kBreakpointSmall
-                                                              ? 25.0
-                                                              : 50.0,
-                                                          50.0,
-                                                        ),
-                                                        0.0),
-                                                child: TextFormField(
-                                                  controller: _model
-                                                      .textFieldSubjectTextController,
-                                                  focusNode: _model
-                                                      .textFieldSubjectFocusNode,
-                                                  onChanged: (_) =>
-                                                      EasyDebounce.debounce(
-                                                    '_model.textFieldSubjectTextController',
-                                                    Duration(milliseconds: 100),
-                                                    () => safeSetState(() {}),
-                                                  ),
-                                                  autofocus: false,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    isDense: false,
-                                                    hintText: 'Subject',
-                                                    hintStyle:
+                                                    cursorColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .labelSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiary,
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              useGoogleFonts:
-                                                                  !FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallIsCustom,
-                                                            ),
-                                                    enabledBorder:
-                                                        InputBorder.none,
-                                                    focusedBorder:
-                                                        InputBorder.none,
-                                                    errorBorder:
-                                                        InputBorder.none,
-                                                    focusedErrorBorder:
-                                                        InputBorder.none,
+                                                            .primary,
+                                                    validator: _model
+                                                        .textFieldSubjectTextControllerValidator
+                                                        .asValidator(context),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmallIsCustom,
-                                                      ),
-                                                  cursorColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  validator: _model
-                                                      .textFieldSubjectTextControllerValidator
-                                                      .asValidator(context),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      Divider(
-                                        height: 1.0,
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: EdgeInsets.all(16.0),
-                                          child: TextFormField(
-                                            controller: _model
-                                                .textFieldMessageTextController,
-                                            focusNode: _model
-                                                .textFieldMessageFocusNode,
-                                            onChanged: (_) =>
-                                                EasyDebounce.debounce(
-                                              '_model.textFieldMessageTextController',
-                                              Duration(milliseconds: 100),
-                                              () => safeSetState(() {}),
-                                            ),
-                                            autofocus: false,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              hintText:
-                                                  'Describe the issue — when it started, what\'s not working.',
-                                              hintStyle: FlutterFlowTheme.of(
+                                        Divider(
+                                          height: 1.0,
+                                          thickness: 1.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                        ),
+                                        Flexible(
+                                          child: Padding(
+                                            padding: EdgeInsets.all(16.0),
+                                            child: TextFormField(
+                                              controller: _model
+                                                  .textFieldMessageTextController,
+                                              focusNode: _model
+                                                  .textFieldMessageFocusNode,
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                '_model.textFieldMessageTextController',
+                                                Duration(milliseconds: 100),
+                                                () => safeSetState(() {}),
+                                              ),
+                                              autofocus: false,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                isDense: true,
+                                                hintText:
+                                                    'Describe the issue — when it started, what\'s not working.',
+                                                hintStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .labelSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmallFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .tertiary,
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmallIsCustom,
+                                                    ),
+                                                enabledBorder: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
+                                                errorBorder: InputBorder.none,
+                                                focusedErrorBorder:
+                                                    InputBorder.none,
+                                              ),
+                                              style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
                                                   .override(
@@ -1456,303 +1496,287 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                             .labelSmallFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .tertiary,
-                                                    fontSize: 16.0,
+                                                        .primaryText,
                                                     letterSpacing: 0.0,
                                                     useGoogleFonts:
                                                         !FlutterFlowTheme.of(
                                                                 context)
                                                             .labelSmallIsCustom,
                                                   ),
-                                              enabledBorder: InputBorder.none,
-                                              focusedBorder: InputBorder.none,
-                                              errorBorder: InputBorder.none,
-                                              focusedErrorBorder:
-                                                  InputBorder.none,
+                                              maxLines: 10,
+                                              minLines: 3,
+                                              cursorColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              validator: _model
+                                                  .textFieldMessageTextControllerValidator
+                                                  .asValidator(context),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelSmall
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelSmallFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelSmallIsCustom,
-                                                ),
-                                            maxLines: 10,
-                                            cursorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            validator: _model
-                                                .textFieldMessageTextControllerValidator
-                                                .asValidator(context),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: MediaQuery.sizeOf(context).height * 0.05,
-                          decoration: BoxDecoration(),
-                        ),
-                        Container(
-                          height: MediaQuery.sizeOf(context).height * 0.1,
-                          constraints: BoxConstraints(
-                            minHeight: 50.0,
-                            maxHeight: valueOrDefault<double>(
-                              MediaQuery.sizeOf(context).width <
-                                      kBreakpointSmall
-                                  ? 50.0
-                                  : 100.0,
-                              100.0,
-                            ),
+                          Container(
+                            width: double.infinity,
+                            height: MediaQuery.sizeOf(context).height * 0.02,
+                            decoration: BoxDecoration(),
                           ),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
+                          Container(
+                            height: MediaQuery.sizeOf(context).height * 0.1,
+                            constraints: BoxConstraints(
+                              minHeight: 50.0,
+                              maxHeight: valueOrDefault<double>(
+                                MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall
+                                    ? 50.0
+                                    : 100.0,
+                                100.0,
+                              ),
                             ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  height: double.infinity,
-                                  constraints: BoxConstraints(
-                                    maxWidth: 617.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    border: Border.all(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: double.infinity,
+                                    constraints: BoxConstraints(
+                                      maxWidth: 617.0,
+                                    ),
+                                    decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                      ),
                                     ),
-                                  ),
-                                  child: MouseRegion(
-                                    opaque: false,
-                                    cursor: SystemMouseCursors.click ??
-                                        MouseCursor.defer,
-                                    child: Builder(
-                                      builder: (context) => Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 10.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            _model.form = true;
-                                            if (_model.formKey.currentState ==
-                                                    null ||
-                                                !_model.formKey.currentState!
-                                                    .validate()) {
-                                              safeSetState(
-                                                  () => _model.form = false);
-                                              return;
-                                            }
-                                            _model.admin =
-                                                await querySettingsRecordOnce(
-                                              queryBuilder: (settingsRecord) =>
-                                                  settingsRecord.where(
-                                                'key',
-                                                isEqualTo: SettingKeys
-                                                    .technical_admin.name,
-                                              ),
-                                              singleRecord: true,
-                                            ).then((s) => s.firstOrNull);
+                                    child: MouseRegion(
+                                      opaque: false,
+                                      cursor: SystemMouseCursors.click ??
+                                          MouseCursor.defer,
+                                      child: Builder(
+                                        builder: (context) => Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 10.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              _model.form = true;
+                                              if (_model.formKey.currentState ==
+                                                      null ||
+                                                  !_model.formKey.currentState!
+                                                      .validate()) {
+                                                safeSetState(
+                                                    () => _model.form = false);
+                                                return;
+                                              }
+                                              _model.admin =
+                                                  await querySettingsRecordOnce(
+                                                queryBuilder:
+                                                    (settingsRecord) =>
+                                                        settingsRecord.where(
+                                                  'key',
+                                                  isEqualTo: SettingKeys
+                                                      .technical_admin.name,
+                                                ),
+                                                singleRecord: true,
+                                              ).then((s) => s.firstOrNull);
 
-                                            var mailRecordReference =
-                                                MailRecord.collection.doc();
-                                            await mailRecordReference
-                                                .set(createMailRecordData(
-                                              to: _model.admin?.value,
-                                              message: createMessageStruct(
-                                                subject:
-                                                    'New Technical Support Request — ${_model.textFieldNameTextController.text}',
-                                                html:
-                                                    '<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\">   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">   <title>New Technical Support Request</title> </head> <body style=\"margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif;\">   <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">     <tr>       <td align=\"center\" style=\"padding:32px 16px;\">         <table width=\"580\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:8px;border:1px solid #e0e0e0;\">           <tr>             <td style=\"padding:32px 36px;\">                <h2 style=\"margin:0 0 6px;font-size:18px;font-weight:600;color:#111;\">New Technical Support Request</h2>               <p style=\"margin:0 0 24px;font-size:14px;color:#888;\">A user has requested a technician through the website.</p>                <div style=\"background:#f7f7f7;border-radius:6px;padding:16px 20px;margin-bottom:20px;font-size:14px;color:#333;line-height:1.8;\">                 <p style=\"margin:0 0 10px;\"><strong>Name:</strong><br>${_model.textFieldNameTextController.text}</p>  <p style=\"margin:0 0 10px;\"><strong>Email:</strong><br>${_model.textFieldEmailAddressTextController.text}</p>     <p style=\"margin:0 0 10px;\"><strong>Phone:</strong><br>${_model.textFieldPhoneTextController.text}</p>     <p style=\"margin:0 0 10px;\"><strong>Address:</strong><br>${_model.textFieldAddressTextController.text}</p>   <p style=\"margin:0 0 10px;\"><strong>Subject:</strong><br>${_model.textFieldSubjectTextController.text}</p>                 <p style=\"margin:0;\"><strong>Problem Description:</strong><br>${_model.textFieldMessageTextController.text}</p>     </div>  <p style=\"margin:0 0 8px;font-size:14px;color:#333;line-height:1.8;\">    <strong>Submitted at:</strong><br>${getCurrentTimestamp.toString()}  </p>                              <hr style=\"border:none;border-top:1px solid #e0e0e0;margin:24px 0 16px;\">               <p style=\"margin:0;font-size:12px;color:#aaa;text-align:center;\">This message was generated automatically by DIY AC Repair system.</p>              </td>           </tr>         </table>       </td>     </tr>   </table> </body> </html>',
-                                                clearUnsetFields: false,
-                                                create: true,
-                                              ),
-                                              ctime: getCurrentTimestamp,
-                                            ));
-                                            _model.mail =
-                                                MailRecord.getDocumentFromData(
-                                                    createMailRecordData(
-                                                      to: _model.admin?.value,
-                                                      message:
-                                                          createMessageStruct(
-                                                        subject:
-                                                            'New Technical Support Request — ${_model.textFieldNameTextController.text}',
-                                                        html:
-                                                            '<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\">   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">   <title>New Technical Support Request</title> </head> <body style=\"margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif;\">   <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">     <tr>       <td align=\"center\" style=\"padding:32px 16px;\">         <table width=\"580\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:8px;border:1px solid #e0e0e0;\">           <tr>             <td style=\"padding:32px 36px;\">                <h2 style=\"margin:0 0 6px;font-size:18px;font-weight:600;color:#111;\">New Technical Support Request</h2>               <p style=\"margin:0 0 24px;font-size:14px;color:#888;\">A user has requested a technician through the website.</p>                <div style=\"background:#f7f7f7;border-radius:6px;padding:16px 20px;margin-bottom:20px;font-size:14px;color:#333;line-height:1.8;\">                 <p style=\"margin:0 0 10px;\"><strong>Name:</strong><br>${_model.textFieldNameTextController.text}</p>  <p style=\"margin:0 0 10px;\"><strong>Email:</strong><br>${_model.textFieldEmailAddressTextController.text}</p>     <p style=\"margin:0 0 10px;\"><strong>Phone:</strong><br>${_model.textFieldPhoneTextController.text}</p>     <p style=\"margin:0 0 10px;\"><strong>Address:</strong><br>${_model.textFieldAddressTextController.text}</p>   <p style=\"margin:0 0 10px;\"><strong>Subject:</strong><br>${_model.textFieldSubjectTextController.text}</p>                 <p style=\"margin:0;\"><strong>Problem Description:</strong><br>${_model.textFieldMessageTextController.text}</p>     </div>  <p style=\"margin:0 0 8px;font-size:14px;color:#333;line-height:1.8;\">    <strong>Submitted at:</strong><br>${getCurrentTimestamp.toString()}  </p>                              <hr style=\"border:none;border-top:1px solid #e0e0e0;margin:24px 0 16px;\">               <p style=\"margin:0;font-size:12px;color:#aaa;text-align:center;\">This message was generated automatically by DIY AC Repair system.</p>              </td>           </tr>         </table>       </td>     </tr>   </table> </body> </html>',
-                                                        clearUnsetFields: false,
-                                                        create: true,
+                                              var mailRecordReference =
+                                                  MailRecord.collection.doc();
+                                              await mailRecordReference
+                                                  .set(createMailRecordData(
+                                                to: _model.admin?.value,
+                                                message: createMessageStruct(
+                                                  subject:
+                                                      'New Technical Support Request — ${_model.textFieldNameTextController.text}',
+                                                  html:
+                                                      '<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\">   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">   <title>New Technical Support Request</title> </head> <body style=\"margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif;\">   <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">     <tr>       <td align=\"center\" style=\"padding:32px 16px;\">         <table width=\"580\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:8px;border:1px solid #e0e0e0;\">           <tr>             <td style=\"padding:32px 36px;\">                <h2 style=\"margin:0 0 6px;font-size:18px;font-weight:600;color:#111;\">New Technical Support Request</h2>               <p style=\"margin:0 0 24px;font-size:14px;color:#888;\">A user has requested a technician through the website.</p>                <div style=\"background:#f7f7f7;border-radius:6px;padding:16px 20px;margin-bottom:20px;font-size:14px;color:#333;line-height:1.8;\">                 <p style=\"margin:0 0 10px;\"><strong>Name:</strong><br>${_model.textFieldNameTextController.text}</p>  <p style=\"margin:0 0 10px;\"><strong>Email:</strong><br>${_model.textFieldEmailAddressTextController.text}</p>     <p style=\"margin:0 0 10px;\"><strong>Phone:</strong><br>${_model.textFieldPhoneTextController.text}</p>     <p style=\"margin:0 0 10px;\"><strong>Address:</strong><br>${_model.textFieldAddressTextController.text}</p>   <p style=\"margin:0 0 10px;\"><strong>Subject:</strong><br>${_model.textFieldSubjectTextController.text}</p>                 <p style=\"margin:0;\"><strong>Problem Description:</strong><br>${_model.textFieldMessageTextController.text}</p>     </div>  <p style=\"margin:0 0 8px;font-size:14px;color:#333;line-height:1.8;\">    <strong>Submitted at:</strong><br>${getCurrentTimestamp.toString()}  </p>                              <hr style=\"border:none;border-top:1px solid #e0e0e0;margin:24px 0 16px;\">               <p style=\"margin:0;font-size:12px;color:#aaa;text-align:center;\">This message was generated automatically by DIY AC Repair system.</p>              </td>           </tr>         </table>       </td>     </tr>   </table> </body> </html>',
+                                                  clearUnsetFields: false,
+                                                  create: true,
+                                                ),
+                                                ctime: getCurrentTimestamp,
+                                              ));
+                                              _model.mail = MailRecord
+                                                  .getDocumentFromData(
+                                                      createMailRecordData(
+                                                        to: _model.admin?.value,
+                                                        message:
+                                                            createMessageStruct(
+                                                          subject:
+                                                              'New Technical Support Request — ${_model.textFieldNameTextController.text}',
+                                                          html:
+                                                              '<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\">   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">   <title>New Technical Support Request</title> </head> <body style=\"margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif;\">   <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">     <tr>       <td align=\"center\" style=\"padding:32px 16px;\">         <table width=\"580\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:8px;border:1px solid #e0e0e0;\">           <tr>             <td style=\"padding:32px 36px;\">                <h2 style=\"margin:0 0 6px;font-size:18px;font-weight:600;color:#111;\">New Technical Support Request</h2>               <p style=\"margin:0 0 24px;font-size:14px;color:#888;\">A user has requested a technician through the website.</p>                <div style=\"background:#f7f7f7;border-radius:6px;padding:16px 20px;margin-bottom:20px;font-size:14px;color:#333;line-height:1.8;\">                 <p style=\"margin:0 0 10px;\"><strong>Name:</strong><br>${_model.textFieldNameTextController.text}</p>  <p style=\"margin:0 0 10px;\"><strong>Email:</strong><br>${_model.textFieldEmailAddressTextController.text}</p>     <p style=\"margin:0 0 10px;\"><strong>Phone:</strong><br>${_model.textFieldPhoneTextController.text}</p>     <p style=\"margin:0 0 10px;\"><strong>Address:</strong><br>${_model.textFieldAddressTextController.text}</p>   <p style=\"margin:0 0 10px;\"><strong>Subject:</strong><br>${_model.textFieldSubjectTextController.text}</p>                 <p style=\"margin:0;\"><strong>Problem Description:</strong><br>${_model.textFieldMessageTextController.text}</p>     </div>  <p style=\"margin:0 0 8px;font-size:14px;color:#333;line-height:1.8;\">    <strong>Submitted at:</strong><br>${getCurrentTimestamp.toString()}  </p>                              <hr style=\"border:none;border-top:1px solid #e0e0e0;margin:24px 0 16px;\">               <p style=\"margin:0;font-size:12px;color:#aaa;text-align:center;\">This message was generated automatically by DIY AC Repair system.</p>              </td>           </tr>         </table>       </td>     </tr>   </table> </body> </html>',
+                                                          clearUnsetFields:
+                                                              false,
+                                                          create: true,
+                                                        ),
+                                                        ctime:
+                                                            getCurrentTimestamp,
                                                       ),
-                                                      ctime:
-                                                          getCurrentTimestamp,
-                                                    ),
-                                                    mailRecordReference);
-                                            await Future.wait([
-                                              Future(() async {
-                                                safeSetState(() {
-                                                  _model
-                                                      .textFieldMessageTextController
-                                                      ?.clear();
-                                                  _model
-                                                      .textFieldSubjectTextController
-                                                      ?.clear();
-                                                  _model
-                                                      .textFieldEmailAddressTextController
-                                                      ?.clear();
-                                                  _model
-                                                      .textFieldNameTextController
-                                                      ?.clear();
-                                                  _model
-                                                      .textFieldPhoneTextController
-                                                      ?.clear();
-                                                });
-                                              }),
-                                              Future(() async {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder: (dialogContext) {
-                                                    return Dialog(
-                                                      elevation: 0,
-                                                      insetPadding:
-                                                          EdgeInsets.zero,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      child:
-                                                          ContactUsSuccessDialogWidget(),
-                                                    );
-                                                  },
-                                                );
-                                              }),
-                                            ]);
+                                                      mailRecordReference);
+                                              await Future.wait([
+                                                Future(() async {
+                                                  safeSetState(() {
+                                                    _model
+                                                        .textFieldMessageTextController
+                                                        ?.clear();
+                                                    _model
+                                                        .textFieldSubjectTextController
+                                                        ?.clear();
+                                                    _model
+                                                        .textFieldEmailAddressTextController
+                                                        ?.clear();
+                                                    _model
+                                                        .textFieldNameTextController
+                                                        ?.clear();
+                                                    _model
+                                                        .textFieldPhoneTextController
+                                                        ?.clear();
+                                                  });
+                                                }),
+                                                Future(() async {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child:
+                                                            ContactUsSuccessDialogWidget(),
+                                                      );
+                                                    },
+                                                  );
+                                                }),
+                                              ]);
 
-                                            safeSetState(() {});
-                                          },
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              AutoSizeText(
-                                                'Request a Technician',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMediumFamily,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
-                                                      fontSize: 20.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMediumIsCustom,
-                                                    ),
-                                              ),
-                                            ],
+                                              safeSetState(() {});
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                AutoSizeText(
+                                                  'Request a Technician',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMediumFamily,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        fontSize: 20.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleMediumIsCustom,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
+                                      onEnter: ((event) async {
+                                        safeSetState(() =>
+                                            _model.mouseRegionHovered = true);
+                                        // Start Arrow Animation
+                                        if (animationsMap[
+                                                'iconOnActionTriggerAnimation'] !=
+                                            null) {
+                                          await animationsMap[
+                                                  'iconOnActionTriggerAnimation']!
+                                              .controller
+                                            ..reset()
+                                            ..repeat(reverse: true);
+                                        }
+                                      }),
+                                      onExit: ((event) async {
+                                        safeSetState(() =>
+                                            _model.mouseRegionHovered = false);
+                                        // Reset Arrow Animation
+                                        if (animationsMap[
+                                                'iconOnActionTriggerAnimation'] !=
+                                            null) {
+                                          animationsMap[
+                                                  'iconOnActionTriggerAnimation']!
+                                              .controller
+                                              .reset();
+                                        }
+                                      }),
                                     ),
-                                    onEnter: ((event) async {
-                                      safeSetState(() =>
-                                          _model.mouseRegionHovered = true);
-                                      // Start Arrow Animation
-                                      if (animationsMap[
-                                              'iconOnActionTriggerAnimation'] !=
-                                          null) {
-                                        await animationsMap[
-                                                'iconOnActionTriggerAnimation']!
-                                            .controller
-                                          ..reset()
-                                          ..repeat(reverse: true);
-                                      }
-                                    }),
-                                    onExit: ((event) async {
-                                      safeSetState(() =>
-                                          _model.mouseRegionHovered = false);
-                                      // Reset Arrow Animation
-                                      if (animationsMap[
-                                              'iconOnActionTriggerAnimation'] !=
-                                          null) {
-                                        animationsMap[
-                                                'iconOnActionTriggerAnimation']!
-                                            .controller
-                                            .reset();
-                                      }
-                                    }),
                                   ),
                                 ),
-                              ),
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                              ))
-                                Container(
-                                  width: valueOrDefault<double>(
-                                    MediaQuery.sizeOf(context).height * 0.1,
-                                    100.0,
-                                  ),
-                                  height: valueOrDefault<double>(
-                                    MediaQuery.sizeOf(context).height * 0.1,
-                                    100.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Icon(
-                                    Icons.arrow_forward,
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: valueOrDefault<double>(
-                                      MediaQuery.sizeOf(context).width <
-                                              kBreakpointSmall
-                                          ? 24.0
-                                          : 48.0,
-                                      48.0,
+                                if (responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                ))
+                                  Container(
+                                    width: valueOrDefault<double>(
+                                      MediaQuery.sizeOf(context).height * 0.1,
+                                      100.0,
                                     ),
-                                  ).animateOnActionTrigger(
-                                    animationsMap[
-                                        'iconOnActionTriggerAnimation']!,
+                                    height: valueOrDefault<double>(
+                                      MediaQuery.sizeOf(context).height * 0.1,
+                                      100.0,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: valueOrDefault<double>(
+                                        MediaQuery.sizeOf(context).width <
+                                                kBreakpointSmall
+                                            ? 24.0
+                                            : 48.0,
+                                        48.0,
+                                      ),
+                                    ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'iconOnActionTriggerAnimation']!,
+                                    ),
                                   ),
-                                ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -74,30 +74,27 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
           : (MediaQuery.sizeOf(context).width * 0.5),
       decoration: BoxDecoration(),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(12.0, 20.0, 12.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
-              child: Text(
-                'WE PROVIDE THE PARTS, TOOLS, AND KNOWLEDGE SO IT HELP YOU FIX YOUR A/C.',
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily:
-                          FlutterFlowTheme.of(context).headlineMediumFamily,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 40.0,
-                      letterSpacing:
-                          MediaQuery.sizeOf(context).width < kBreakpointSmall
-                              ? FFAppConstants.LetterSpacingM
-                              : FFAppConstants.LetterSpacingTD,
-                      lineHeight: 0.9,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
-                    ),
-              ),
+            Text(
+              'PROVIDING PARTS, TOOLS, AND KNOWLEDGE TO HELP YOU FIX YOUR A/C.',
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily:
+                        FlutterFlowTheme.of(context).headlineMediumFamily,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    fontSize: 34.0,
+                    letterSpacing:
+                        MediaQuery.sizeOf(context).width < kBreakpointSmall
+                            ? FFAppConstants.LetterSpacingM
+                            : FFAppConstants.LetterSpacingTD,
+                    lineHeight: 0.9,
+                    useGoogleFonts:
+                        !FlutterFlowTheme.of(context).headlineMediumIsCustom,
+                  ),
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 20.0),
@@ -123,110 +120,121 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                     width: 1.0,
                   ),
                 ),
-                child: Container(
-                  width: double.infinity,
-                  height: 180.0,
-                  child: CarouselSlider(
-                    items: [
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 20.0, 10.0, 20.0),
-                          child: AutoSizeText(
-                            'DIAGNOSE',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineLarge
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineLargeFamily,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .headlineLargeIsCustom,
-                                ),
+                child: Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 180.0,
+                    child: CarouselSlider(
+                      items: [
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 20.0, 10.0, 20.0),
+                            child: AutoSizeText(
+                              'DIAGNOSE',
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineLargeFamily,
+                                    letterSpacing: 2.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineLargeIsCustom,
+                                  ),
+                            ),
                           ),
                         ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 20.0, 10.0, 20.0),
-                          child: AutoSizeText(
-                            'QUICK DELIVERY',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .displayMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .displayMediumFamily,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .displayMediumIsCustom,
-                                ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 20.0, 10.0, 20.0),
+                            child: AutoSizeText(
+                              'QUICK DELIVERY',
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineLargeFamily,
+                                    letterSpacing: 2.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineLargeIsCustom,
+                                  ),
+                            ),
                           ),
                         ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 20.0, 10.0, 20.0),
-                          child: AutoSizeText(
-                            'PARTS 2 SPECS',
-                            style: FlutterFlowTheme.of(context)
-                                .displayLarge
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .displayLargeFamily,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .displayLargeIsCustom,
-                                ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 20.0, 10.0, 20.0),
+                            child: AutoSizeText(
+                              'PARTS TO YOUR SPECS',
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              minFontSize: 12.0,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineLargeFamily,
+                                    letterSpacing: 2.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineLargeIsCustom,
+                                  ),
+                            ),
                           ),
                         ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 20.0, 10.0, 20.0),
-                          child: AutoSizeText(
-                            'LOANER TOOLS',
-                            style: FlutterFlowTheme.of(context)
-                                .displayLarge
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .displayLargeFamily,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .displayLargeIsCustom,
-                                ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 20.0, 10.0, 20.0),
+                            child: AutoSizeText(
+                              'LOANER TOOLS',
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineLargeFamily,
+                                    letterSpacing: 2.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineLargeIsCustom,
+                                  ),
+                            ),
                           ),
                         ),
+                      ],
+                      carouselController: _model.carouselController ??=
+                          CarouselSliderController(),
+                      options: CarouselOptions(
+                        initialPage: 0,
+                        viewportFraction: 1.0,
+                        disableCenter: true,
+                        enlargeCenterPage: false,
+                        enlargeFactor: 0.0,
+                        enableInfiniteScroll: true,
+                        scrollDirection: Axis.vertical,
+                        autoPlay: true,
+                        autoPlayAnimationDuration: Duration(milliseconds: 400),
+                        autoPlayInterval: Duration(milliseconds: (400 + 4000)),
+                        autoPlayCurve: Curves.linear,
+                        pauseAutoPlayInFiniteScroll: true,
+                        onPageChanged: (index, _) =>
+                            _model.carouselCurrentIndex = index,
                       ),
-                    ],
-                    carouselController: _model.carouselController ??=
-                        CarouselSliderController(),
-                    options: CarouselOptions(
-                      initialPage: 0,
-                      viewportFraction: 1.0,
-                      disableCenter: true,
-                      enlargeCenterPage: false,
-                      enlargeFactor: 0.0,
-                      enableInfiniteScroll: true,
-                      scrollDirection: Axis.vertical,
-                      autoPlay: true,
-                      autoPlayAnimationDuration: Duration(milliseconds: 400),
-                      autoPlayInterval: Duration(milliseconds: (400 + 4000)),
-                      autoPlayCurve: Curves.linear,
-                      pauseAutoPlayInFiniteScroll: true,
-                      onPageChanged: (index, _) =>
-                          _model.carouselCurrentIndex = index,
                     ),
                   ),
                 ),
@@ -247,8 +255,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                     ),
                   ),
                   TextSpan(
-                    text:
-                        ', choose the right parts, and get it done — faster and cheaper',
+                    text: ' - faster and cheaper.',
                     style: TextStyle(),
                   )
                 ],
@@ -265,25 +272,13 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
             ),
             Container(
               width: double.infinity,
-              height: valueOrDefault<double>(
-                () {
-                  if (MediaQuery.sizeOf(context).width <= kBreakpointSmall) {
-                    return 50.0;
-                  } else if (MediaQuery.sizeOf(context).width <
-                      kBreakpointLarge) {
-                    return 10.0;
-                  } else {
-                    return 10.0;
-                  }
-                }(),
-                10.0,
-              ),
+              height: 50.0,
               decoration: BoxDecoration(),
             ),
             Align(
               alignment: AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 5.0),
+                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 40.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -300,7 +295,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                     child: Align(
                       alignment: AlignmentDirectional(-1.0, 0.0),
                       child: MouseRegion(
-                        opaque: false,
+                        opaque: true,
                         cursor: SystemMouseCursors.click ?? MouseCursor.defer,
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(

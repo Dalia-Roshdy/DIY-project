@@ -135,7 +135,9 @@ class _SerlectProductMobileWidgetState
                       _model.selectedPartCS?.name,
                       'MOTOR',
                     ),
-                    style: TextStyle(),
+                    style: TextStyle(
+                      fontSize: 32.0,
+                    ),
                   )
                 ],
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -793,7 +795,7 @@ class _SerlectProductMobileWidgetState
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 8.0),
                                                   child: Text(
-                                                    'RPM;',
+                                                    'RPM:',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1715,8 +1717,7 @@ class _SerlectProductMobileWidgetState
                                                 AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      24.0, 0.0, 0.0, 8.0),
+                                                  .fromSTEB(0.0, 0.0, 0.0, 8.0),
                                               child: Text(
                                                 'MFD 1:',
                                                 style: FlutterFlowTheme.of(
@@ -1877,7 +1878,7 @@ class _SerlectProductMobileWidgetState
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 8.0),
                                               child: Text(
-                                                'Single Vs Dual:',
+                                                'Single vs Dual:',
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium

@@ -88,29 +88,25 @@ class _TextField18WidgetState extends State<TextField18Widget> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (valueOrDefault<bool>(
-            widget.labelPresent,
-            false,
-          ))
-            Text(
-              widget.label,
-              style: FlutterFlowTheme.of(context).labelMedium.override(
-                    fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                    color: valueOrDefault<Color>(
-                      valueOrDefault<bool>(
-                        widget.error,
-                        false,
-                      )
-                          ? FlutterFlowTheme.of(context).error
-                          : FlutterFlowTheme.of(context).primaryText,
-                      FlutterFlowTheme.of(context).primaryText,
-                    ),
-                    letterSpacing: 0.0,
-                    lineHeight: 1.2,
-                    useGoogleFonts:
-                        !FlutterFlowTheme.of(context).labelMediumIsCustom,
+          Text(
+            widget.label,
+            style: FlutterFlowTheme.of(context).labelMedium.override(
+                  fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                  color: valueOrDefault<Color>(
+                    valueOrDefault<bool>(
+                      widget.error,
+                      false,
+                    )
+                        ? FlutterFlowTheme.of(context).error
+                        : FlutterFlowTheme.of(context).primaryText,
+                    FlutterFlowTheme.of(context).primaryText,
                   ),
-            ),
+                  letterSpacing: 0.0,
+                  lineHeight: 1.2,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).labelMediumIsCustom,
+                ),
+          ),
           Container(
             height: 65.0,
             decoration: BoxDecoration(
@@ -359,11 +355,7 @@ class _TextField18WidgetState extends State<TextField18Widget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    if (valueOrDefault<bool>(
-                      widget.leadingIconPresent,
-                      true,
-                    ))
-                      widget.leadingIcon!,
+                    widget.leadingIcon!,
                     Expanded(
                       flex: 1,
                       child: Align(
@@ -454,39 +446,31 @@ class _TextField18WidgetState extends State<TextField18Widget> {
                         ),
                       ),
                     ),
-                    if (valueOrDefault<bool>(
-                      widget.trailingIconPresent,
-                      false,
-                    ))
-                      widget.trailingIcon!,
+                    widget.trailingIcon!,
                   ].divide(SizedBox(width: 4.0)),
                 ),
               ),
             ),
           ),
-          if (valueOrDefault<bool>(
-            widget.helperPresent,
-            false,
-          ))
-            Text(
-              widget.helper,
-              style: FlutterFlowTheme.of(context).bodySmall.override(
-                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                    color: valueOrDefault<Color>(
-                      valueOrDefault<bool>(
-                        widget.error,
-                        false,
-                      )
-                          ? FlutterFlowTheme.of(context).error
-                          : FlutterFlowTheme.of(context).secondaryText,
-                      FlutterFlowTheme.of(context).secondaryText,
-                    ),
-                    letterSpacing: 0.0,
-                    lineHeight: 1.5,
-                    useGoogleFonts:
-                        !FlutterFlowTheme.of(context).bodySmallIsCustom,
+          Text(
+            widget.helper,
+            style: FlutterFlowTheme.of(context).bodySmall.override(
+                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                  color: valueOrDefault<Color>(
+                    valueOrDefault<bool>(
+                      widget.error,
+                      false,
+                    )
+                        ? FlutterFlowTheme.of(context).error
+                        : FlutterFlowTheme.of(context).secondaryText,
+                    FlutterFlowTheme.of(context).secondaryText,
                   ),
-            ),
+                  letterSpacing: 0.0,
+                  lineHeight: 1.5,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                ),
+          ),
         ].divide(SizedBox(height: 6.0)),
       ),
     );

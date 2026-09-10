@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/c_components/dialog_components/done_with_diagnosis_dialog/done_with_diagnosis_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -154,24 +155,6 @@ class _CVideoDiagnosisMobileWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 12.0),
                           child: Text(
-                            'Questions:',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  fontSize: 18.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w800,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .bodyMediumIsCustom,
-                                ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 12.0),
-                          child: Text(
                             valueOrDefault<String>(
                               widget.videoRecord?.videoQuestion,
                               'Q.Text',
@@ -270,85 +253,116 @@ class _CVideoDiagnosisMobileWidgetState
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                               ),
-                              FFButtonWidget(
-                                onPressed: (_model.radioButtonValue == null ||
-                                        _model.radioButtonValue == '')
-                                    ? null
-                                    : () async {
-                                        if (_model.selectedOption?.actionType ==
-                                            ActionType.showVideo) {
-                                          await widget.onNextVideo?.call(
-                                            _model.selectedOption!.nextStepKey!,
-                                          );
-                                          _model.selectedOption = null;
-                                          _model.radioButtonValueController
-                                              ?.reset();
-                                        } else if (_model
-                                                .selectedOption?.actionType ==
-                                            ActionType.navigate) {
+                              Builder(
+                                builder: (context) => FFButtonWidget(
+                                  onPressed: (_model.radioButtonValue == null ||
+                                          _model.radioButtonValue == '')
+                                      ? null
+                                      : () async {
                                           if (_model
-                                                  .selectedOption?.targetPage ==
-                                              TargetPage.contactUs) {
-                                            context.pushNamed(
-                                                KContactWidget.routeName);
+                                                  .selectedOption?.actionType ==
+                                              ActionType.showVideo) {
+                                            await widget.onNextVideo?.call(
+                                              _model
+                                                  .selectedOption!.nextStepKey!,
+                                            );
+                                            _model.selectedOption = null;
+                                            _model.radioButtonValueController
+                                                ?.reset();
                                           } else if (_model
-                                                  .selectedOption?.targetPage ==
-                                              TargetPage.needAssistant) {
-                                            context.pushNamed(
-                                                LRequestTechnicalWidget
-                                                    .routeName);
+                                                  .selectedOption?.actionType ==
+                                              ActionType.navigate) {
+                                            if (_model.selectedOption
+                                                    ?.targetPage ==
+                                                TargetPage.contactUs) {
+                                              context.pushNamed(
+                                                  KContactWidget.routeName);
+                                            } else if (_model.selectedOption
+                                                    ?.targetPage ==
+                                                TargetPage.needAssistant) {
+                                              context.pushNamed(
+                                                  LRequestTechnicalWidget
+                                                      .routeName);
+                                            } else if (_model.selectedOption
+                                                    ?.targetPage ==
+                                                TargetPage.diagnosis) {
+                                              context.pushNamed(
+                                                  BDiagnosisWidget.routeName);
+                                            }
                                           } else if (_model
-                                                  .selectedOption?.targetPage ==
-                                              TargetPage.diagnosis) {
-                                            context.pushNamed(
-                                                BDiagnosisWidget.routeName);
+                                                  .selectedOption?.actionType ==
+                                              ActionType.navigateWithData) {
+                                            if (_model.selectedOption
+                                                    ?.targetPage ==
+                                                TargetPage.google) {
+                                              await showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child:
+                                                        DoneWithDiagnosisDialogWidget(),
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              context.pushNamed(
+                                                DSelectProductRepairWidget
+                                                    .routeName,
+                                                queryParameters: {
+                                                  'part': serializeParam(
+                                                    _model.selectedOption
+                                                        ?.targetPartType,
+                                                    ParamType.Enum,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            }
                                           }
-                                        } else if (_model
-                                                .selectedOption?.actionType ==
-                                            ActionType.navigateWithData) {
-                                          context.pushNamed(
-                                            DSelectProductRepairWidget
-                                                .routeName,
-                                            queryParameters: {
-                                              'part': serializeParam(
-                                                _model.selectedOption
-                                                    ?.targetPartType,
-                                                ParamType.Enum,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        }
-                                      },
-                                text: 'Proceed',
-                                icon: Icon(
-                                  Icons.arrow_forward_sharp,
-                                  size: 15.0,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 0.0, 16.0, 0.0),
-                                  iconAlignment: IconAlignment.end,
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .labelMediumFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts:
-                                            !FlutterFlowTheme.of(context)
-                                                .labelMediumIsCustom,
-                                      ),
-                                  elevation: 0.0,
-                                  borderRadius: BorderRadius.circular(0.0),
-                                  disabledColor: FlutterFlowTheme.of(context)
-                                      .secondaryText,
+                                        },
+                                  text: 'Proceed',
+                                  icon: Icon(
+                                    Icons.arrow_forward_sharp,
+                                    size: 15.0,
+                                  ),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    iconAlignment: IconAlignment.end,
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMediumFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .labelMediumIsCustom,
+                                        ),
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(0.0),
+                                    disabledColor: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                  ),
                                 ),
                               ),
                             ],

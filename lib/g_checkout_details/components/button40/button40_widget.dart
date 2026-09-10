@@ -318,11 +318,7 @@ class _Button40WidgetState extends State<Button40Widget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    if (valueOrDefault<bool>(
-                      widget.iconPresent,
-                      true,
-                    ))
-                      widget.icon!,
+                    widget.icon!,
                     Text(
                       'CONTACT',
                       maxLines: 1,
@@ -370,64 +366,51 @@ class _Button40WidgetState extends State<Button40Widget> {
                           ),
                       overflow: TextOverflow.clip,
                     ),
-                    if (valueOrDefault<bool>(
-                      widget.iconEndPresent,
-                      false,
-                    ))
-                      widget.iconEnd!,
+                    widget.iconEnd!,
                   ].divide(SizedBox(width: 8.0)),
                 ),
               ),
             ),
-            if (valueOrDefault<bool>(
-              valueOrDefault<bool>(
-                widget.loading,
-                false,
-              )
-                  ? true
-                  : false,
-              false,
-            ))
-              CircularPercentIndicator(
-                percent: 0.0,
-                radius: 7.0,
-                lineWidth: 2.0,
-                animation: true,
-                animateFromLastPercent: true,
-                progressColor: valueOrDefault<Color>(
-                  () {
-                    if (valueOrDefault<String>(
-                          widget.variant,
-                          'primary',
-                        ) ==
-                        'secondary') {
-                      return Colors.white;
-                    } else if (valueOrDefault<String>(
-                          widget.variant,
-                          'primary',
-                        ) ==
-                        'outline') {
-                      return FlutterFlowTheme.of(context).primaryText;
-                    } else if (valueOrDefault<String>(
-                          widget.variant,
-                          'primary',
-                        ) ==
-                        'ghost') {
-                      return FlutterFlowTheme.of(context).primary;
-                    } else if (valueOrDefault<String>(
-                          widget.variant,
-                          'primary',
-                        ) ==
-                        'destructive') {
-                      return Colors.white;
-                    } else {
-                      return Colors.white;
-                    }
-                  }(),
-                  Colors.white,
-                ),
-                backgroundColor: FlutterFlowTheme.of(context).alternate,
+            CircularPercentIndicator(
+              percent: 0.0,
+              radius: 7.0,
+              lineWidth: 2.0,
+              animation: true,
+              animateFromLastPercent: true,
+              progressColor: valueOrDefault<Color>(
+                () {
+                  if (valueOrDefault<String>(
+                        widget.variant,
+                        'primary',
+                      ) ==
+                      'secondary') {
+                    return Colors.white;
+                  } else if (valueOrDefault<String>(
+                        widget.variant,
+                        'primary',
+                      ) ==
+                      'outline') {
+                    return FlutterFlowTheme.of(context).primaryText;
+                  } else if (valueOrDefault<String>(
+                        widget.variant,
+                        'primary',
+                      ) ==
+                      'ghost') {
+                    return FlutterFlowTheme.of(context).primary;
+                  } else if (valueOrDefault<String>(
+                        widget.variant,
+                        'primary',
+                      ) ==
+                      'destructive') {
+                    return Colors.white;
+                  } else {
+                    return Colors.white;
+                  }
+                }(),
+                Colors.white,
               ),
+              backgroundColor: FlutterFlowTheme.of(context).alternate,
+            ),
           ],
         ),
       ),

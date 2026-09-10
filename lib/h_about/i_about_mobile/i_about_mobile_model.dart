@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/h_about/industrial_badge/industrial_badge_widget.dart';
+import '/h_about/industrial_badge02/industrial_badge02_widget.dart';
 import '/h_about/objective_card2/objective_card2_widget.dart';
 import '/h_about/scope_item2/scope_item2_widget.dart';
 import 'i_about_mobile_widget.dart' show IAboutMobileWidget;
@@ -19,9 +20,9 @@ class IAboutMobileModel extends FlutterFlowModel<IAboutMobileWidget> {
   // Model for ScopeItem.
   late ScopeItem2Model scopeItemModel3;
   // Model for IndustrialBadge.
-  late IndustrialBadgeModel industrialBadgeModel1;
-  // Model for IndustrialBadge.
-  late IndustrialBadgeModel industrialBadgeModel2;
+  late IndustrialBadgeModel industrialBadgeModel;
+  // Model for IndustrialBadge02 component.
+  late IndustrialBadge02Model industrialBadge02Model;
 
   @override
   void initState(BuildContext context) {
@@ -30,8 +31,9 @@ class IAboutMobileModel extends FlutterFlowModel<IAboutMobileWidget> {
     scopeItemModel1 = createModel(context, () => ScopeItem2Model());
     scopeItemModel2 = createModel(context, () => ScopeItem2Model());
     scopeItemModel3 = createModel(context, () => ScopeItem2Model());
-    industrialBadgeModel1 = createModel(context, () => IndustrialBadgeModel());
-    industrialBadgeModel2 = createModel(context, () => IndustrialBadgeModel());
+    industrialBadgeModel = createModel(context, () => IndustrialBadgeModel());
+    industrialBadge02Model =
+        createModel(context, () => IndustrialBadge02Model());
   }
 
   @override
@@ -41,7 +43,7 @@ class IAboutMobileModel extends FlutterFlowModel<IAboutMobileWidget> {
     scopeItemModel1.dispose();
     scopeItemModel2.dispose();
     scopeItemModel3.dispose();
-    industrialBadgeModel1.dispose();
-    industrialBadgeModel2.dispose();
+    industrialBadgeModel.dispose();
+    industrialBadge02Model.dispose();
   }
 }

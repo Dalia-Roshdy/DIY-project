@@ -28,11 +28,9 @@ class ReviewYourOrderDesktopModel
   // Model for PartRowCopy component.
   late PartRowCopyModel partRowCopyModel;
   // State field(s) for Checkbox widget.
-  Map<ItemsRecord, bool> checkboxValueMap1 = {};
-  List<ItemsRecord> get checkboxCheckedItems1 => checkboxValueMap1.entries
-      .where((e) => e.value)
-      .map((e) => e.key)
-      .toList();
+  Map<ItemsRecord, bool> checkboxValueMap = {};
+  List<ItemsRecord> get checkboxCheckedItems =>
+      checkboxValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
 
   // Model for SummaryLine.
   late SummaryLineModel summaryLineModel1;
@@ -46,8 +44,8 @@ class ReviewYourOrderDesktopModel
   late SummaryLineTotalModel summaryLineTotalModel;
   // Model for Button.
   late Button5Model buttonModel;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue2;
+  // State field(s) for Checkbox-sl widget.
+  bool? checkboxSlValue;
   // State field(s) for TextField-Message-SL widget.
   FocusNode? textFieldMessageSLFocusNode;
   TextEditingController? textFieldMessageSLTextController;

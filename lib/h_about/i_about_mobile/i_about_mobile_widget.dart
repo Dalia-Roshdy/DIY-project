@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/h_about/industrial_badge/industrial_badge_widget.dart';
+import '/h_about/industrial_badge02/industrial_badge02_widget.dart';
 import '/h_about/objective_card2/objective_card2_widget.dart';
 import '/h_about/scope_item2/scope_item2_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -60,17 +61,20 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'WHO ARE\nWE?',
-                  style: FlutterFlowTheme.of(context).displayMedium.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).displayMediumFamily,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        letterSpacing: 0.0,
-                        lineHeight: 1.05,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).displayMediumIsCustom,
-                      ),
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: Text(
+                    'WHO ARE\nWE?',
+                    style: FlutterFlowTheme.of(context).displayMedium.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).displayMediumFamily,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          letterSpacing: 0.0,
+                          lineHeight: 1.05,
+                          useGoogleFonts: !FlutterFlowTheme.of(context)
+                              .displayMediumIsCustom,
+                        ),
+                  ),
                 ),
                 Text(
                   'Broken AC is a big inconvenience due to its repair cost and time it takes to fix it. We are a startup company with the objective of helping you fix simple issues in your own A/C quickly and cheaper.',
@@ -324,6 +328,20 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                     .bodySmallIsCustom,
                               ),
                         ),
+                        Text(
+                          'Don\'t worry, we will teach you all you need to know.',
+                          style: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodySmallFamily,
+                                color: Color(0xB3FFFFFF),
+                                letterSpacing: 0.0,
+                                lineHeight: 1.5,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodySmallIsCustom,
+                              ),
+                        ),
                       ].divide(SizedBox(height: 8.0)),
                     ),
                     Column(
@@ -358,6 +376,21 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                             title: 'THE CONTACTOR',
                           ),
                         ),
+                        Text(
+                          'Don\'t worry, we will teach you all you need to know.',
+                          style: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodySmallFamily,
+                                color: Color(0xB3FFFFFF),
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
+                                lineHeight: 1.5,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodySmallIsCustom,
+                              ),
+                        ),
                       ].divide(SizedBox(height: 16.0)),
                     ),
                   ].divide(SizedBox(height: 24.0)),
@@ -378,7 +411,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     wrapWithModel(
-                      model: _model.industrialBadgeModel1,
+                      model: _model.industrialBadgeModel,
                       updateCallback: () => safeSetState(() {}),
                       child: IndustrialBadgeWidget(
                         label: 'OUR_ROLE_MANIFESTO',
@@ -402,6 +435,37 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.arrow_forward_rounded,
+                                    size: 16.0,
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text(
+                                      'HELP YOU DIAGNOSE YOUR BROKEN A/C STEP BY STEP',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelSmallFamily,
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            lineHeight: 1.2,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelSmallIsCustom,
+                                          ),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(width: 16.0)),
+                              ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -508,11 +572,9 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     wrapWithModel(
-                      model: _model.industrialBadgeModel2,
+                      model: _model.industrialBadge02Model,
                       updateCallback: () => safeSetState(() {}),
-                      child: IndustrialBadgeWidget(
-                        label: 'YOUR_ROLE_ACTION',
-                      ),
+                      child: IndustrialBadge02Widget(),
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -607,6 +669,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .labelMediumFamily,
+                                      fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w900,
                                       lineHeight: 1.2,
@@ -657,7 +720,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .displaySmallFamily,
                                       color: FlutterFlowTheme.of(context).error,
-                                      fontSize: 32.0,
+                                      fontSize: 24.0,
                                       letterSpacing: 0.0,
                                       lineHeight: 1.1,
                                       useGoogleFonts:
@@ -702,7 +765,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .labelSmallFamily,
-                                                  fontSize: 14.0,
+                                                  fontSize: 12.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                   lineHeight: 1.2,
@@ -755,7 +818,7 @@ class _IAboutMobileWidgetState extends State<IAboutMobileWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .labelSmallFamily,
-                                                  fontSize: 14.0,
+                                                  fontSize: 12.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                   lineHeight: 1.2,

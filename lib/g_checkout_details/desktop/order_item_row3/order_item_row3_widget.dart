@@ -113,62 +113,55 @@ class _OrderItemRow3WidgetState extends State<OrderItemRow3Widget> {
                                     .bodySmallIsCustom,
                               ),
                         ),
-                        if (valueOrDefault<bool>(
-                          widget.guide,
-                          true,
-                        ))
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                4.0, 0.0, 4.0, 0.0),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              4.0, 0.0, 4.0, 0.0),
+                          child: Container(
                             child: Container(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  border: Border.all(
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    width: 1.0,
-                                  ),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 1.0,
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 4.0, 8.0, 4.0),
-                                  child: Container(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.menu_book_rounded,
-                                          size: 14.0,
-                                        ),
-                                        Text(
-                                          'GUIDE INCLUDED',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelSmall
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmallFamily,
-                                                fontSize: 18.0,
-                                                letterSpacing: 0.0,
-                                                lineHeight: 1.2,
-                                                useGoogleFonts:
-                                                    !FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmallIsCustom,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 4.0)),
-                                    ),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 4.0, 8.0, 4.0),
+                                child: Container(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.menu_book_rounded,
+                                        size: 14.0,
+                                      ),
+                                      Text(
+                                        'GUIDE INCLUDED',
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelSmall
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmallFamily,
+                                              fontSize: 18.0,
+                                              letterSpacing: 0.0,
+                                              lineHeight: 1.2,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelSmallIsCustom,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(width: 4.0)),
                                   ),
                                 ),
                               ),
                             ),
                           ),
+                        ),
                       ].divide(SizedBox(height: 4.0)),
                     ),
                   ),

@@ -104,23 +104,14 @@ class _TrackingStep2WidgetState extends State<TrackingStep2Widget> {
               alignment: AlignmentDirectional(0.0, 0.0),
               child: widget.icon!,
             ),
-            if (valueOrDefault<bool>(
-              valueOrDefault<bool>(
-                widget.last,
-                false,
-              )
-                  ? false
-                  : true,
-              true,
-            ))
-              Container(
-                width: 2.0,
-                height: 60.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).alternate,
-                  shape: BoxShape.rectangle,
-                ),
+            Container(
+              width: 2.0,
+              height: 60.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).alternate,
+                shape: BoxShape.rectangle,
               ),
+            ),
           ],
         ),
         Expanded(
@@ -236,34 +227,23 @@ class _TrackingStep2WidgetState extends State<TrackingStep2Widget> {
                   ),
                 ],
               ),
-              if (valueOrDefault<bool>(
+              Text(
                 valueOrDefault<String>(
-                          widget.desc,
-                          'order_verified_and_processed_for_fulfillment',
-                        ) ==
-                        'empty'
-                    ? false
-                    : true,
-                true,
-              ))
-                Text(
-                  valueOrDefault<String>(
-                    widget.desc,
-                    'order_verified_and_processed_for_fulfillment',
-                  ),
-                  maxLines: 2,
-                  style: FlutterFlowTheme.of(context).bodySmall.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).bodySmallFamily,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        fontSize: 8.0,
-                        letterSpacing: 0.0,
-                        lineHeight: 1.5,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).bodySmallIsCustom,
-                      ),
-                  overflow: TextOverflow.ellipsis,
+                  widget.desc,
+                  'order_verified_and_processed_for_fulfillment',
                 ),
+                maxLines: 2,
+                style: FlutterFlowTheme.of(context).bodySmall.override(
+                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                      fontSize: 8.0,
+                      letterSpacing: 0.0,
+                      lineHeight: 1.5,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                    ),
+                overflow: TextOverflow.ellipsis,
+              ),
             ],
           ),
         ),
