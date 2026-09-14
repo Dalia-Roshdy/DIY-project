@@ -400,7 +400,7 @@ class _TrackAndFindMyOrderMobileWidgetState
                                 color: FlutterFlowTheme.of(context).primary,
                                 size: 24.0,
                               ),
-                              idNum: 'ORD-88291',
+                              idNum: ordersListMItem.orderNumber,
                               items: 'Replacement Capacitor, Service Valve Set',
                               status: ordersListMItem.status?.name,
                               totalAmount: ordersListMItem.totalsSnap.total,

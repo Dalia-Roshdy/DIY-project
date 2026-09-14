@@ -104,6 +104,46 @@ class _OrderCard2WidgetState extends State<OrderCard2Widget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Align(
+                          alignment: AlignmentDirectional(1.0, -1.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primary,
+                              shape: BoxShape.rectangle,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 4.0, 8.0, 4.0),
+                              child: Container(
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    widget.status,
+                                    'DELIVERED',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.outfit(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: Colors.white,
+                                        fontSize: 10.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                        lineHeight: 1.5,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,70 +157,20 @@ class _OrderCard2WidgetState extends State<OrderCard2Widget> {
                                 Text(
                                   widget.idNum,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .labelSmall
                                       .override(
-                                        font: GoogleFonts.archivoBlack(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelSmallFamily,
                                         fontSize: 18.0,
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FontWeight.w600,
                                         lineHeight: 1.1,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelSmallIsCustom,
                                       ),
                                 ),
                               ].divide(SizedBox(height: 0.0)),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 4.0, 8.0, 4.0),
-                                child: Container(
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      widget.status,
-                                      'DELIVERED',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.outfit(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: Colors.white,
-                                          fontSize: 10.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                          lineHeight: 1.5,
-                                        ),
-                                  ),
-                                ),
-                              ),
                             ),
                           ],
                         ),

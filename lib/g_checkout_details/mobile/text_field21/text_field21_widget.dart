@@ -356,7 +356,7 @@ class _TextField21WidgetState extends State<TextField21Widget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  widget.leadingIcon!,
+                  if (widget.leadingIconPresent) widget.leadingIcon!,
                   Expanded(
                     flex: 1,
                     child: Padding(
@@ -446,7 +446,7 @@ class _TextField21WidgetState extends State<TextField21Widget> {
                       ),
                     ),
                   ),
-                  widget.trailingIcon!,
+                  if (widget.trailingIconPresent) widget.trailingIcon!,
                 ],
               ),
             ),

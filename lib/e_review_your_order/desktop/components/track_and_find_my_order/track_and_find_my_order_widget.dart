@@ -46,12 +46,12 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
     return SingleChildScrollView(
       primary: false,
       child: Column(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(48.0, 32.0, 48.0, 32.0),
+            padding: EdgeInsets.all(24.0),
             child: Container(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -364,6 +364,9 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                   fullWidth: false,
                                   loading: false,
                                   disabled: false,
+                                  iconEnd: Icon(
+                                    Icons.search_sharp,
+                                  ),
                                 ),
                               ),
                             ),
@@ -649,6 +652,9 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                       fullWidth: false,
                                       loading: false,
                                       disabled: false,
+                                      iconEnd: Icon(
+                                        Icons.chat_bubble,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -664,7 +670,7 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                             .primaryText,
                                         size: 16.0,
                                       ),
-                                      iconPresent: true,
+                                      iconPresent: false,
                                       iconEndPresent: false,
                                       variant: 'outline',
                                       size: 'medium',

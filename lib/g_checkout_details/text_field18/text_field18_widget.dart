@@ -355,7 +355,7 @@ class _TextField18WidgetState extends State<TextField18Widget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    widget.leadingIcon!,
+                    if (widget.leadingIconPresent) widget.leadingIcon!,
                     Expanded(
                       flex: 1,
                       child: Align(
@@ -446,7 +446,7 @@ class _TextField18WidgetState extends State<TextField18Widget> {
                         ),
                       ),
                     ),
-                    widget.trailingIcon!,
+                    if (widget.trailingIconPresent) widget.trailingIcon!,
                   ].divide(SizedBox(width: 4.0)),
                 ),
               ),

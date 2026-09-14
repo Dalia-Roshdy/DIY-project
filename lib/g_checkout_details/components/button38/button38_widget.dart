@@ -318,7 +318,7 @@ class _Button38WidgetState extends State<Button38Widget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    widget.icon!,
+                    if (widget.iconPresent) widget.icon!,
                     Text(
                       valueOrDefault<String>(
                         widget.content,
@@ -369,51 +369,52 @@ class _Button38WidgetState extends State<Button38Widget> {
                           ),
                       overflow: TextOverflow.clip,
                     ),
-                    widget.iconEnd!,
+                    if (widget.iconEndPresent) widget.iconEnd!,
                   ].divide(SizedBox(width: 8.0)),
                 ),
               ),
             ),
-            CircularPercentIndicator(
-              percent: 0.0,
-              radius: 7.0,
-              lineWidth: 2.0,
-              animation: true,
-              animateFromLastPercent: true,
-              progressColor: valueOrDefault<Color>(
-                () {
-                  if (valueOrDefault<String>(
-                        widget.variant,
-                        'primary',
-                      ) ==
-                      'secondary') {
-                    return Colors.white;
-                  } else if (valueOrDefault<String>(
-                        widget.variant,
-                        'primary',
-                      ) ==
-                      'outline') {
-                    return FlutterFlowTheme.of(context).primaryText;
-                  } else if (valueOrDefault<String>(
-                        widget.variant,
-                        'primary',
-                      ) ==
-                      'ghost') {
-                    return FlutterFlowTheme.of(context).primary;
-                  } else if (valueOrDefault<String>(
-                        widget.variant,
-                        'primary',
-                      ) ==
-                      'destructive') {
-                    return Colors.white;
-                  } else {
-                    return Colors.white;
-                  }
-                }(),
-                Colors.white,
+            if (false)
+              CircularPercentIndicator(
+                percent: 0.0,
+                radius: 7.0,
+                lineWidth: 2.0,
+                animation: true,
+                animateFromLastPercent: true,
+                progressColor: valueOrDefault<Color>(
+                  () {
+                    if (valueOrDefault<String>(
+                          widget.variant,
+                          'primary',
+                        ) ==
+                        'secondary') {
+                      return Colors.white;
+                    } else if (valueOrDefault<String>(
+                          widget.variant,
+                          'primary',
+                        ) ==
+                        'outline') {
+                      return FlutterFlowTheme.of(context).primaryText;
+                    } else if (valueOrDefault<String>(
+                          widget.variant,
+                          'primary',
+                        ) ==
+                        'ghost') {
+                      return FlutterFlowTheme.of(context).primary;
+                    } else if (valueOrDefault<String>(
+                          widget.variant,
+                          'primary',
+                        ) ==
+                        'destructive') {
+                      return Colors.white;
+                    } else {
+                      return Colors.white;
+                    }
+                  }(),
+                  Colors.white,
+                ),
+                backgroundColor: FlutterFlowTheme.of(context).alternate,
               ),
-              backgroundColor: FlutterFlowTheme.of(context).alternate,
-            ),
           ],
         ),
       ),

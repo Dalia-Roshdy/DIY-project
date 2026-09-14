@@ -63,7 +63,12 @@ class _GTrackAndFindMyOrderWidgetState
                         EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.96,
-                      decoration: BoxDecoration(),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 1.0,
+                        ),
+                      ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
