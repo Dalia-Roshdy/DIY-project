@@ -2,6 +2,7 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/schema/enums/enums.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/app_events/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

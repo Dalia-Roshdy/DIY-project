@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/c_components/dialog_components/empty_cart_component/empty_cart_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,7 +8,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/k_widgets/nav_menu/nav_menu_widget.dart';
 import '/index.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 's01_navigatio_bar_model.dart';
 export 's01_navigatio_bar_model.dart';
@@ -32,6 +35,17 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => S01NavigatioBarModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.trial = await queryOrdersRecordOnce(
+        queryBuilder: (ordersRecord) => ordersRecord.where(
+          'orderNumber',
+          isEqualTo: 'TT-0909-7777-224323',
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -70,7 +84,18 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.goNamed(AHomePageWidget.routeName);
+                  if (Navigator.of(context).canPop()) {
+                    context.pop();
+                  }
+                  context.pushNamed(
+                    HOrderTrackingWidget.routeName,
+                    queryParameters: {
+                      'orderId': serializeParam(
+                        _model.trial?.reference,
+                        ParamType.DocumentReference,
+                      ),
+                    }.withoutNulls,
+                  );
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.max,

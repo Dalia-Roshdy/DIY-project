@@ -12,6 +12,7 @@ class OrderItemRow3Widget extends StatefulWidget {
     String? name,
     String? price,
     String? sku,
+    this.qty,
   })  : this.guide = guide ?? true,
         this.imgDesc = imgDesc ??
             'https://dimg.dreamflow.cloud/v1/image/ac%20capacitor%20part',
@@ -24,6 +25,7 @@ class OrderItemRow3Widget extends StatefulWidget {
   final String name;
   final String price;
   final String sku;
+  final int? qty;
 
   @override
   State<OrderItemRow3Widget> createState() => _OrderItemRow3WidgetState();
@@ -113,55 +115,6 @@ class _OrderItemRow3WidgetState extends State<OrderItemRow3Widget> {
                                     .bodySmallIsCustom,
                               ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              4.0, 0.0, 4.0, 0.0),
-                          child: Container(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  width: 1.0,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 4.0, 8.0, 4.0),
-                                child: Container(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.menu_book_rounded,
-                                        size: 14.0,
-                                      ),
-                                      Text(
-                                        'GUIDE INCLUDED',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmallFamily,
-                                              fontSize: 18.0,
-                                              letterSpacing: 0.0,
-                                              lineHeight: 1.2,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .labelSmallIsCustom,
-                                            ),
-                                      ),
-                                    ].divide(SizedBox(width: 4.0)),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
                       ].divide(SizedBox(height: 4.0)),
                     ),
                   ),
@@ -170,7 +123,41 @@ class _OrderItemRow3WidgetState extends State<OrderItemRow3Widget> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: '\$',
+                          text: 'Qty: ',
+                          style: TextStyle(),
+                        ),
+                        TextSpan(
+                          text: widget.qty!.toString(),
+                          style: FlutterFlowTheme.of(context)
+                              .titleMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleMediumFamily,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                                lineHeight: 1.2,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleMediumIsCustom,
+                              ),
+                        )
+                      ],
+                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleMediumFamily,
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
+                            lineHeight: 1.2,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleMediumIsCustom,
+                          ),
+                    ),
+                  ),
+                  RichText(
+                    textScaler: MediaQuery.of(context).textScaler,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Price/unit\$ ',
                           style: TextStyle(),
                         ),
                         TextSpan(
@@ -183,7 +170,7 @@ class _OrderItemRow3WidgetState extends State<OrderItemRow3Widget> {
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleMediumFamily,
-                                fontSize: 24.0,
+                                fontSize: 20.0,
                                 letterSpacing: 0.0,
                                 lineHeight: 1.2,
                                 useGoogleFonts: !FlutterFlowTheme.of(context)
@@ -194,7 +181,7 @@ class _OrderItemRow3WidgetState extends State<OrderItemRow3Widget> {
                       style: FlutterFlowTheme.of(context).titleMedium.override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).titleMediumFamily,
-                            fontSize: 24.0,
+                            fontSize: 18.0,
                             letterSpacing: 0.0,
                             lineHeight: 1.2,
                             useGoogleFonts: !FlutterFlowTheme.of(context)
@@ -202,7 +189,7 @@ class _OrderItemRow3WidgetState extends State<OrderItemRow3Widget> {
                           ),
                     ),
                   ),
-                ].divide(SizedBox(width: 16.0)),
+                ].divide(SizedBox(width: 30.0)).addToEnd(SizedBox(width: 30.0)),
               ),
             ),
           ),

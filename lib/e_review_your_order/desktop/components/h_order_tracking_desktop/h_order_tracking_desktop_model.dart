@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/components/button40/button40_widget.dart';
-import '/g_checkout_details/desktop/order_item_row3/order_item_row3_widget.dart';
 import '/g_checkout_details/desktop/tracking_step/tracking_step_widget.dart';
 import 'h_order_tracking_desktop_widget.dart' show HOrderTrackingDesktopWidget;
 import 'package:flutter/material.dart';
@@ -24,8 +23,6 @@ class HOrderTrackingDesktopModel
   late TrackingStepModel trackingStepModel3;
   // Model for TrackingStep.
   late TrackingStepModel trackingStepModel4;
-  // Model for OrderItemRow.
-  late OrderItemRow3Model orderItemRowModel2;
 
   @override
   void initState(BuildContext context) {
@@ -34,7 +31,6 @@ class HOrderTrackingDesktopModel
     trackingStepModel2 = createModel(context, () => TrackingStepModel());
     trackingStepModel3 = createModel(context, () => TrackingStepModel());
     trackingStepModel4 = createModel(context, () => TrackingStepModel());
-    orderItemRowModel2 = createModel(context, () => OrderItemRow3Model());
   }
 
   @override
@@ -44,6 +40,5 @@ class HOrderTrackingDesktopModel
     trackingStepModel2.dispose();
     trackingStepModel3.dispose();
     trackingStepModel4.dispose();
-    orderItemRowModel2.dispose();
   }
 }

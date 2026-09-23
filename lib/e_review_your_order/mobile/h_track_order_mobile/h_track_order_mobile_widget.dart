@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/components/button41/button41_widget.dart';
@@ -56,77 +57,133 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(24.0),
+      padding: EdgeInsets.all(5.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Order Tracking',
-                style: FlutterFlowTheme.of(context).displaySmall.override(
-                      fontFamily:
-                          FlutterFlowTheme.of(context).displaySmallFamily,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 28.0,
-                      letterSpacing: 0.0,
-                      lineHeight: 1.1,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).displaySmallIsCustom,
-                    ),
-              ),
-              RichText(
-                textScaler: MediaQuery.of(context).textScaler,
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Placed on ',
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).bodySmallFamily,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            letterSpacing: 0.0,
-                            lineHeight: 1.5,
-                            useGoogleFonts:
-                                !FlutterFlowTheme.of(context).bodySmallIsCustom,
-                          ),
-                    ),
-                    TextSpan(
-                      text:
-                          dateTimeFormat("yMMMd", _model.orderMCS!.createdAt!),
-                      style: TextStyle(),
-                    ),
-                    TextSpan(
-                      text: ' • ',
-                      style: TextStyle(),
-                    ),
-                    TextSpan(
-                      text: 'Last Updated on ',
-                      style: TextStyle(),
-                    ),
-                    TextSpan(
-                      text:
-                          dateTimeFormat("yMMMd", _model.orderMCS!.updatedAt!),
-                      style: TextStyle(),
-                    )
-                  ],
-                  style: FlutterFlowTheme.of(context).bodySmall.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).bodySmallFamily,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        letterSpacing: 0.0,
-                        lineHeight: 1.5,
-                        useGoogleFonts:
-                            !FlutterFlowTheme.of(context).bodySmallIsCustom,
-                      ),
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: (FFCrossAxisAlignment.start).flutterValue,
+              textBaseline: TextBaseline.alphabetic,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                  child: Text(
+                    'Track Your Order',
+                    style: FlutterFlowTheme.of(context).displaySmall.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).displaySmallFamily,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          fontSize: 28.0,
+                          letterSpacing: 0.0,
+                          lineHeight: 1.1,
+                          useGoogleFonts: !FlutterFlowTheme.of(context)
+                              .displaySmallIsCustom,
+                        ),
+                  ),
                 ),
-              ),
-            ].divide(SizedBox(height: 4.0)),
+                RichText(
+                  textScaler: MediaQuery.of(context).textScaler,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Order # ',
+                        style: FlutterFlowTheme.of(context).bodyLarge.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyLargeFamily,
+                              fontSize: 16.0,
+                              letterSpacing: 0.0,
+                              lineHeight: 1.5,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyLargeIsCustom,
+                            ),
+                      ),
+                      TextSpan(
+                        text: valueOrDefault<String>(
+                          _model.orderMCS?.orderNumber,
+                          'order',
+                        ),
+                        style: TextStyle(),
+                      )
+                    ],
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyLargeFamily,
+                          fontSize: 16.0,
+                          letterSpacing: 0.0,
+                          lineHeight: 1.5,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyLargeIsCustom,
+                        ),
+                  ),
+                ),
+                RichText(
+                  textScaler: MediaQuery.of(context).textScaler,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Placed on ',
+                        style: FlutterFlowTheme.of(context).bodySmall.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodySmallFamily,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
+                              lineHeight: 1.5,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodySmallIsCustom,
+                            ),
+                      ),
+                      TextSpan(
+                        text: dateTimeFormat(
+                            "yMMMd", _model.orderMCS!.createdAt!),
+                        style: TextStyle(),
+                      )
+                    ],
+                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodySmallFamily,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          fontSize: 12.0,
+                          letterSpacing: 0.0,
+                          lineHeight: 1.5,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                        ),
+                  ),
+                ),
+                RichText(
+                  textScaler: MediaQuery.of(context).textScaler,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Last Updated on ',
+                        style: TextStyle(),
+                      ),
+                      TextSpan(
+                        text: dateTimeFormat(
+                            "yMMMd", _model.orderMCS!.updatedAt!),
+                        style: TextStyle(),
+                      )
+                    ],
+                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodySmallFamily,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          fontSize: 12.0,
+                          letterSpacing: 0.0,
+                          lineHeight: 1.5,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                        ),
+                  ),
+                ),
+              ].divide(SizedBox(height: 5.0)),
+            ),
           ),
           if (false)
             Container(
@@ -260,46 +317,23 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          24.0, 16.0, 24.0, 16.0),
-                      child: Container(
-                        child: RichText(
-                          textScaler: MediaQuery.of(context).textScaler,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'ITEMS IN THIS ORDER (',
-                                style: FlutterFlowTheme.of(context)
-                                    .labelLarge
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .labelLargeFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      letterSpacing: 0.0,
-                                      lineHeight: 1.2,
-                                      useGoogleFonts:
-                                          !FlutterFlowTheme.of(context)
-                                              .labelLargeIsCustom,
-                                    ),
-                              ),
-                              TextSpan(
-                                text: valueOrDefault<String>(
-                                  _model.orderMCS?.lines.length.toString(),
-                                  '0',
-                                ),
-                                style: TextStyle(),
-                              ),
-                              TextSpan(
-                                text: ')',
-                                style: TextStyle(),
-                              )
-                            ],
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: RichText(
+                      textScaler: MediaQuery.of(context).textScaler,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'ITEMS IN THIS ORDER (',
                             style: FlutterFlowTheme.of(context)
                                 .labelLarge
                                 .override(
@@ -307,24 +341,41 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                                       .labelLargeFamily,
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   lineHeight: 1.2,
                                   useGoogleFonts: !FlutterFlowTheme.of(context)
                                       .labelLargeIsCustom,
                                 ),
                           ),
-                        ),
+                          TextSpan(
+                            text: valueOrDefault<String>(
+                              _model.orderMCS?.lines.length.toString(),
+                              '0',
+                            ),
+                            style: TextStyle(
+                              fontSize: 14.0,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ')',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                            ),
+                          )
+                        ],
+                        style: FlutterFlowTheme.of(context).labelLarge.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).labelLargeFamily,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
+                              lineHeight: 1.2,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .labelLargeIsCustom,
+                            ),
                       ),
                     ),
-                    Container(
-                      width: 261.9,
-                      height: 1.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).alternate,
-                        shape: BoxShape.rectangle,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 Builder(
                   builder: (context) {
@@ -343,6 +394,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                           price: itemsItem.unitPrice.toString(),
                           sku:
                               '${itemsItem.lineId} | ${itemsItem.returnPolicySnapshot.returnable ? 'Returnable | ' : ''}${itemsItem.specType} | ${itemsItem.qty.toString()}',
+                          qty: itemsItem.qty,
                         );
                       }),
                     );
@@ -392,13 +444,14 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                           size: 18.0,
                         ),
                         Text(
-                          'SHIPPING ADDRESS',
+                          'SHIPPING TO',
                           style: FlutterFlowTheme.of(context)
                               .labelLarge
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .labelLargeFamily,
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 14.0,
                                 letterSpacing: 0.0,
                                 lineHeight: 1.2,
                                 useGoogleFonts: !FlutterFlowTheme.of(context)
@@ -406,6 +459,24 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                               ),
                         ),
                       ].divide(SizedBox(width: 8.0)),
+                    ),
+                    Text(
+                      valueOrDefault<String>(
+                        _model.orderMCS?.customerSnap.name,
+                        'name',
+                      ),
+                      textAlign: TextAlign.start,
+                      maxLines: 5,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            letterSpacing: 0.0,
+                            lineHeight: 1.5,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
+                          ),
+                      overflow: TextOverflow.visible,
                     ),
                     Text(
                       valueOrDefault<String>(
@@ -447,18 +518,21 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      'ORDER SUMMARY',
-                      style: FlutterFlowTheme.of(context).labelLarge.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).labelLargeFamily,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 14.0,
-                            letterSpacing: 0.0,
-                            lineHeight: 1.2,
-                            useGoogleFonts: !FlutterFlowTheme.of(context)
-                                .labelLargeIsCustom,
-                          ),
+                    Align(
+                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      child: Text(
+                        'ORDER SUMMARY',
+                        style: FlutterFlowTheme.of(context).labelLarge.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).labelLargeFamily,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 14.0,
+                              letterSpacing: 0.0,
+                              lineHeight: 1.2,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .labelLargeIsCustom,
+                            ),
+                      ),
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.min,
@@ -683,60 +757,6 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.credit_card_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 16.0,
-                        ),
-                        RichText(
-                          textScaler: MediaQuery.of(context).textScaler,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Paid using PIN ',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodySmall
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodySmallFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      letterSpacing: 0.0,
-                                      lineHeight: 1.5,
-                                      useGoogleFonts:
-                                          !FlutterFlowTheme.of(context)
-                                              .bodySmallIsCustom,
-                                    ),
-                              ),
-                              TextSpan(
-                                text: valueOrDefault<String>(
-                                  _model.orderMCS?.customerSnap.pin,
-                                  '0000',
-                                ),
-                                style: TextStyle(),
-                              )
-                            ],
-                            style: FlutterFlowTheme.of(context)
-                                .bodySmall
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodySmallFamily,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  letterSpacing: 0.0,
-                                  lineHeight: 1.5,
-                                  useGoogleFonts: !FlutterFlowTheme.of(context)
-                                      .bodySmallIsCustom,
-                                ),
-                          ),
-                        ),
-                      ].divide(SizedBox(width: 8.0)),
-                    ),
                   ].divide(SizedBox(height: 16.0)),
                 ),
               ),
@@ -772,7 +792,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                           ),
                     ),
                     Text(
-                      'Every part comes with a step-by-step video guide specifically for your AC model.',
+                      'Our team is here to help with any questions about your order, shipping, or installation',
                       style: FlutterFlowTheme.of(context).bodySmall.override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodySmallFamily,
@@ -789,21 +809,17 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed(CLibraryVideoFlowWidget.routeName);
+                        context.pushNamed(KContactWidget.routeName);
                       },
                       child: wrapWithModel(
                         model: _model.buttonModel,
                         updateCallback: () => safeSetState(() {}),
                         child: Button41Widget(
-                          content: 'Browse Video Guides',
-                          icon: Icon(
-                            Icons.play_circle_outline_rounded,
-                            color: FlutterFlowTheme.of(context).secondary,
-                            size: 16.0,
-                          ),
-                          iconPresent: true,
+                          content: 'Contact Support',
+                          icon: null,
+                          iconPresent: false,
                           iconEndPresent: false,
-                          variant: 'ghost',
+                          variant: '',
                           size: 'small',
                           fullWidth: false,
                           loading: false,
