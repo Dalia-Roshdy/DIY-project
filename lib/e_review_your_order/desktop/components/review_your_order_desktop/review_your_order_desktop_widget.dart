@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/c_components/dialog_components/must_enter_shaft_length/must_enter_shaft_length_widget.dart';
 import '/e_review_your_order/desktop/components/button5/button5_widget.dart';
 import '/e_review_your_order/desktop/components/part_row/part_row_widget.dart';
 import '/e_review_your_order/desktop/components/part_row_copy/part_row_copy_widget.dart';
@@ -834,60 +835,110 @@ class _ReviewYourOrderDesktopWidgetState
                               Container(
                                 height: 8.0,
                               ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (FFAppState().Cart.cartItems.isNotEmpty) {
-                                    FFAppState().updateCartStruct(
-                                      (e) => e
-                                        ..comment = _model
-                                            .textFieldMessageCTextController
-                                            .text
-                                        ..motorSLComment = _model
-                                            .textFieldMessageSLTextController
-                                            .text
-                                        ..motorSLEnabled =
-                                            _model.textFieldMessageSLTextController
-                                                            .text !=
-                                                        ''
-                                                ? true
-                                                : false,
-                                    );
-                                    await actions.calculateCartTotal();
-                                    safeSetState(() {
-                                      _model.checkboxSlValue =
-                                          FFAppState().Cart.motorSLEnabled;
-                                    });
+                              Builder(
+                                builder: (context) => InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (FFAppState()
+                                        .Cart
+                                        .cartItems
+                                        .isNotEmpty) {
+                                      if ((_model.checkboxSlValue == true) &&
+                                          (_model.textFieldMessageSLTextController
+                                                      .text ==
+                                                  '')) {
+                                        await showDialog(
+                                          barrierDismissible: false,
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child:
+                                                  MustEnterShaftLengthWidget(),
+                                            );
+                                          },
+                                        );
 
-                                    context.pushNamed(
-                                        GSecurePaymentCheckoutWidget.routeName);
-                                  }
-                                },
-                                child: wrapWithModel(
-                                  model: _model.buttonModel,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: Button5Widget(
-                                    content: 'Continue to Payment',
-                                    iconPresent: false,
-                                    iconEnd: Icon(
-                                      Icons.arrow_forward_rounded,
+                                        safeSetState(() {
+                                          _model
+                                              .textFieldMessageSLTextController
+                                              ?.text = '';
+                                          _model.textFieldMessageSLFocusNode
+                                              ?.requestFocus();
+                                          WidgetsBinding.instance
+                                              .addPostFrameCallback((_) {
+                                            _model.textFieldMessageSLTextController
+                                                    ?.selection =
+                                                TextSelection.collapsed(
+                                              offset: _model
+                                                  .textFieldMessageSLTextController!
+                                                  .text
+                                                  .length,
+                                            );
+                                          });
+                                        });
+                                      } else {
+                                        FFAppState().updateCartStruct(
+                                          (e) => e
+                                            ..comment = _model
+                                                .textFieldMessageCTextController
+                                                .text
+                                            ..motorSLComment = _model
+                                                .textFieldMessageSLTextController
+                                                .text
+                                            ..motorSLEnabled =
+                                                _model.textFieldMessageSLTextController
+                                                                .text !=
+                                                            ''
+                                                    ? true
+                                                    : false,
+                                        );
+                                        await actions.calculateCartTotal();
+                                        safeSetState(() {
+                                          _model.checkboxSlValue =
+                                              FFAppState().Cart.motorSLEnabled;
+                                        });
+
+                                        context.pushNamed(
+                                            GSecurePaymentCheckoutWidget
+                                                .routeName);
+                                      }
+                                    }
+                                  },
+                                  child: wrapWithModel(
+                                    model: _model.buttonModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: Button5Widget(
+                                      content: 'Continue to Payment',
+                                      iconPresent: false,
+                                      iconEnd: Icon(
+                                        Icons.arrow_forward_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .onPrimary,
+                                        size: 16.0,
+                                      ),
+                                      iconEndPresent: true,
                                       color: FlutterFlowTheme.of(context)
-                                          .onPrimary,
-                                      size: 16.0,
+                                          .primaryBackground,
+                                      bg: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      variant: 'primary',
+                                      size: 'large',
+                                      fullWidth: true,
+                                      loading: false,
+                                      disabled: false,
                                     ),
-                                    iconEndPresent: true,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    bg: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    variant: 'primary',
-                                    size: 'large',
-                                    fullWidth: true,
-                                    loading: false,
-                                    disabled: false,
                                   ),
                                 ),
                               ),

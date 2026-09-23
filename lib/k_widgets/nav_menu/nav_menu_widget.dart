@@ -174,33 +174,34 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             shape: BoxShape.rectangle,
           ),
         ),
-        Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(24.0, 64.0, 0.0, 0.0),
-          child: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              context.goNamed(GTrackAndFindMyOrderWidget.routeName);
-            },
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(),
-              child: Text(
-                'TRACK ORDERS',
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily:
-                          FlutterFlowTheme.of(context).headlineMediumFamily,
-                      letterSpacing: 0.0,
-                      lineHeight: 1.1,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
-                    ),
+        if (false)
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 64.0, 0.0, 0.0),
+            child: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                context.goNamed(GTrackAndFindMyOrderWidget.routeName);
+              },
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(),
+                child: Text(
+                  'TRACK ORDERS',
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                        letterSpacing: 0.0,
+                        lineHeight: 1.1,
+                        useGoogleFonts: !FlutterFlowTheme.of(context)
+                            .headlineMediumIsCustom,
+                      ),
+                ),
               ),
             ),
           ),
-        ),
         Container(
           width: 392.0,
           height: 1.0,

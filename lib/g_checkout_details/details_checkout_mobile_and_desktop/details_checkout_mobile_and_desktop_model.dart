@@ -52,12 +52,12 @@ class DetailsCheckoutMobileAndDesktopModel
   late TextField7Model textFieldStateModel;
   // Model for FormLabel.
   late FormLabel2Model formLabelModel6;
-  // Model for TextFieldCard.
-  late TextField7Model textFieldCardModel;
-  // Model for FormLabel.
-  late FormLabel2Model formLabelModel7;
   // Model for TextFieldPhone.
   late TextField7Model textFieldPhoneModel;
+  // Model for FormLabel.
+  late FormLabel2Model formLabelModel7;
+  // Model for TextFieldCard.
+  late TextField7Model textFieldCardModel;
   // Model for Button.
   late Button8Model buttonModel;
   // Stores action output result for [Validate Form] action in Button widget.
@@ -94,9 +94,9 @@ class DetailsCheckoutMobileAndDesktopModel
     formLabelModel5 = createModel(context, () => FormLabel2Model());
     textFieldStateModel = createModel(context, () => TextField7Model());
     formLabelModel6 = createModel(context, () => FormLabel2Model());
-    textFieldCardModel = createModel(context, () => TextField7Model());
-    formLabelModel7 = createModel(context, () => FormLabel2Model());
     textFieldPhoneModel = createModel(context, () => TextField7Model());
+    formLabelModel7 = createModel(context, () => FormLabel2Model());
+    textFieldCardModel = createModel(context, () => TextField7Model());
     buttonModel = createModel(context, () => Button8Model());
     paymentBadgeModel1 = createModel(context, () => PaymentBadge3Model());
     paymentBadgeModel2 = createModel(context, () => PaymentBadge3Model());
@@ -108,8 +108,7 @@ class DetailsCheckoutMobileAndDesktopModel
         _formTextFieldValidator3;
     textFieldCityModel.inputTextControllerValidator = _formTextFieldValidator4;
     textFieldStateModel.inputTextControllerValidator = _formTextFieldValidator5;
-    textFieldCardModel.inputTextControllerValidator = _formTextFieldValidator6;
-    textFieldPhoneModel.inputTextControllerValidator = _formTextFieldValidator7;
+    textFieldPhoneModel.inputTextControllerValidator = _formTextFieldValidator6;
   }
 
   @override
@@ -125,9 +124,9 @@ class DetailsCheckoutMobileAndDesktopModel
     formLabelModel5.dispose();
     textFieldStateModel.dispose();
     formLabelModel6.dispose();
-    textFieldCardModel.dispose();
-    formLabelModel7.dispose();
     textFieldPhoneModel.dispose();
+    formLabelModel7.dispose();
+    textFieldCardModel.dispose();
     buttonModel.dispose();
     paymentBadgeModel1.dispose();
     paymentBadgeModel2.dispose();
@@ -197,23 +196,6 @@ class DetailsCheckoutMobileAndDesktopModel
   }
 
   String? _formTextFieldValidator6(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'value is required';
-    }
-
-    if (val.length < 4) {
-      return 'Requires at least 4 characters.';
-    }
-    if (val.length > 4) {
-      return 'Maximum 4 characters allowed, currently ${val.length}.';
-    }
-    if (!RegExp('^[0-9]{4}\$').hasMatch(val)) {
-      return 'Must be exactly 4 digits.';
-    }
-    return null;
-  }
-
-  String? _formTextFieldValidator7(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Phone is required';
     }

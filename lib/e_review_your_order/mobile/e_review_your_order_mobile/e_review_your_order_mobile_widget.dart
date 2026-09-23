@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/c_components/dialog_components/must_enter_shaft_length/must_enter_shaft_length_widget.dart';
 import '/e_review_your_order/mobile/button6/button6_widget.dart';
 import '/e_review_your_order/mobile/part_row2/part_row2_widget.dart';
 import '/e_review_your_order/mobile/summary_row/summary_row_widget.dart';
@@ -1294,53 +1295,90 @@ class _EReviewYourOrderMobileWidgetState
                         Container(
                           height: 8.0,
                         ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            if (FFAppState().Cart.cartItems.isNotEmpty) {
-                              FFAppState().updateCartStruct(
-                                (e) => e
-                                  ..comment =
-                                      _model.textFieldMessageTextController.text
-                                  ..motorSLComment =
-                                      _model.textFieldSLTextController.text
-                                  ..motorSLEnabled =
+                        Builder(
+                          builder: (context) => InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if (FFAppState().Cart.cartItems.isNotEmpty) {
+                                if ((_model.checkboxSlValue == true) &&
+                                    (_model.textFieldSLTextController.text ==
+                                            '')) {
+                                  await showDialog(
+                                    barrierDismissible: false,
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: MustEnterShaftLengthWidget(),
+                                      );
+                                    },
+                                  );
+
+                                  safeSetState(() {
+                                    _model.textFieldSLTextController?.text = '';
+                                    _model.textFieldSLFocusNode?.requestFocus();
+                                    WidgetsBinding.instance
+                                        .addPostFrameCallback((_) {
                                       _model.textFieldSLTextController
+                                          ?.selection = TextSelection.collapsed(
+                                        offset: _model
+                                            .textFieldSLTextController!
+                                            .text
+                                            .length,
+                                      );
+                                    });
+                                  });
+                                } else {
+                                  FFAppState().updateCartStruct(
+                                    (e) => e
+                                      ..comment = _model
+                                          .textFieldMessageTextController.text
+                                      ..motorSLComment =
+                                          _model.textFieldSLTextController.text
+                                      ..motorSLEnabled = _model.textFieldSLTextController
                                                       .text !=
                                                   ''
                                           ? true
                                           : false,
-                              );
-                              await actions.calculateCartTotal();
-                              safeSetState(() {
-                                _model.checkboxSlValue =
-                                    FFAppState().Cart.motorSLEnabled;
-                              });
+                                  );
+                                  await actions.calculateCartTotal();
+                                  safeSetState(() {
+                                    _model.checkboxSlValue =
+                                        FFAppState().Cart.motorSLEnabled;
+                                  });
 
-                              context.pushNamed(
-                                  GSecurePaymentCheckoutWidget.routeName);
-                            }
-                          },
-                          child: wrapWithModel(
-                            model: _model.buttonModel,
-                            updateCallback: () => safeSetState(() {}),
-                            child: Button6Widget(
-                              content: 'Continue to Payment',
-                              icon_present: false,
-                              icon_end: Icon(
-                                Icons.arrow_forward_rounded,
-                                color: FlutterFlowTheme.of(context).onPrimary,
-                                size: 14.0,
+                                  context.pushNamed(
+                                      GSecurePaymentCheckoutWidget.routeName);
+                                }
+                              }
+                            },
+                            child: wrapWithModel(
+                              model: _model.buttonModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: Button6Widget(
+                                content: 'Continue to Payment',
+                                icon_present: false,
+                                icon_end: Icon(
+                                  Icons.arrow_forward_rounded,
+                                  color: FlutterFlowTheme.of(context).onPrimary,
+                                  size: 14.0,
+                                ),
+                                icon_end_present: true,
+                                variant: 'primary',
+                                size: 'large',
+                                full_width: true,
+                                loading: false,
+                                disabled: false,
                               ),
-                              icon_end_present: true,
-                              variant: 'primary',
-                              size: 'large',
-                              full_width: true,
-                              loading: false,
-                              disabled: false,
                             ),
                           ),
                         ),

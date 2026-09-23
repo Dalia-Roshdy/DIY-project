@@ -440,43 +440,6 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                 updateCallback: () =>
                                                     safeSetState(() {}),
                                                 child: FormLabel2Widget(
-                                                  label: 'PIN',
-                                                  isRequired: true,
-                                                ),
-                                              ),
-                                              wrapWithModel(
-                                                model:
-                                                    _model.textFieldCardModel,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: TextField7Widget(
-                                                  label: false,
-                                                  helper: false,
-                                                  hint: '0000',
-                                                  value: '',
-                                                  leading_icon_present: false,
-                                                  trailing_icon_present: false,
-                                                  variant: 'outlined',
-                                                  error: false,
-                                                ),
-                                              ),
-                                            ].divide(SizedBox(height: 8.0)),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                            children: [
-                                              wrapWithModel(
-                                                model: _model.formLabelModel7,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: FormLabel2Widget(
                                                   label: 'Phone Number',
                                                   isRequired: true,
                                                 ),
@@ -500,24 +463,64 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                             ].divide(SizedBox(height: 8.0)),
                                           ),
                                         ),
+                                        if (false)
+                                          Expanded(
+                                            flex: 1,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.stretch,
+                                              children: [
+                                                wrapWithModel(
+                                                  model: _model.formLabelModel7,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: FormLabel2Widget(
+                                                    label: 'PIN',
+                                                    isRequired: true,
+                                                  ),
+                                                ),
+                                                wrapWithModel(
+                                                  model:
+                                                      _model.textFieldCardModel,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: TextField7Widget(
+                                                    label: false,
+                                                    helper: false,
+                                                    hint: '0000',
+                                                    value: '0000',
+                                                    leading_icon_present: false,
+                                                    trailing_icon_present:
+                                                        false,
+                                                    variant: 'outlined',
+                                                    error: false,
+                                                  ),
+                                                ),
+                                              ].divide(SizedBox(height: 8.0)),
+                                            ),
+                                          ),
                                       ].divide(SizedBox(width: 16.0)),
                                     ),
-                                    Text(
-                                      'Please remember your details  (Email, phone, PIN) to track and find your order.',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: Color(0xFFB85757),
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts:
-                                                !FlutterFlowTheme.of(context)
-                                                    .bodyMediumIsCustom,
-                                          ),
-                                    ),
+                                    if (false)
+                                      Text(
+                                        'Please remember your details  (Email, phone, PIN) to track and find your order.',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color: Color(0xFFB85757),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
                                   ].divide(SizedBox(height: 16.0)),
                                 ),
                               ),

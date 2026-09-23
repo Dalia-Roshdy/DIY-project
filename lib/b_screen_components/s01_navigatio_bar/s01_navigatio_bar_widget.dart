@@ -303,34 +303,35 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                     ),
                     showLoadingIndicator: false,
                   ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      context.pushNamed(GTrackAndFindMyOrderWidget.routeName);
-                    },
-                    text: 'TRACK ORDERS',
-                    options: FFButtonOptions(
-                      height: double.infinity,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Colors.transparent,
-                      textStyle: FlutterFlowTheme.of(context)
-                          .titleSmall
-                          .override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).titleSmallFamily,
-                            fontSize: 18.0,
-                            letterSpacing: 0.0,
-                            useGoogleFonts: !FlutterFlowTheme.of(context)
-                                .titleSmallIsCustom,
-                          ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(0.0),
-                      hoverTextColor: FlutterFlowTheme.of(context).tertiary,
+                  if (false)
+                    FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed(GTrackAndFindMyOrderWidget.routeName);
+                      },
+                      text: 'TRACK ORDERS',
+                      options: FFButtonOptions(
+                        height: double.infinity,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Colors.transparent,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).titleSmallFamily,
+                              fontSize: 18.0,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .titleSmallIsCustom,
+                            ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(0.0),
+                        hoverTextColor: FlutterFlowTheme.of(context).tertiary,
+                      ),
+                      showLoadingIndicator: false,
                     ),
-                    showLoadingIndicator: false,
-                  ),
                   FFButtonWidget(
                     onPressed: () async {
                       context.pushNamed(KContactWidget.routeName);

@@ -441,7 +441,9 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                           'email',
                                           isEqualTo: _model
                                               .textFieldEmailAddressTextController
-                                              .text,
+                                              .text
+                                              .trim()
+                                              .toLowerCase(),
                                         ),
                                       );
                                       if (_model.count == 0) {
@@ -451,7 +453,9 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                             .set(createSubscriberRecordData(
                                           email: _model
                                               .textFieldEmailAddressTextController
-                                              .text,
+                                              .text
+                                              .trim()
+                                              .toLowerCase(),
                                           createdAt: getCurrentTimestamp,
                                         ));
                                         _model.subsDoc = SubscriberRecord
@@ -459,7 +463,9 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                                 createSubscriberRecordData(
                                                   email: _model
                                                       .textFieldEmailAddressTextController
-                                                      .text,
+                                                      .text
+                                                      .trim()
+                                                      .toLowerCase(),
                                                   createdAt:
                                                       getCurrentTimestamp,
                                                 ),
