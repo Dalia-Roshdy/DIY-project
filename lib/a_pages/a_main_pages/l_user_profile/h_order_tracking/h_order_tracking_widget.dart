@@ -94,11 +94,12 @@ class _HOrderTrackingWidgetState extends State<HOrderTrackingWidget> {
                             thickness: 1.0,
                             color: FlutterFlowTheme.of(context).primary,
                           ),
-                          if (responsiveVisibility(
-                            context: context,
-                            phone: false,
-                            tablet: false,
-                          ))
+                          if ((_model.order != null) &&
+                              responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                              ))
                             wrapWithModel(
                               model: _model.hOrderTrackingDesktopModel,
                               updateCallback: () => safeSetState(() {}),
@@ -106,18 +107,17 @@ class _HOrderTrackingWidgetState extends State<HOrderTrackingWidget> {
                                 orderPram: _model.order!,
                               ),
                             ),
-                          if (responsiveVisibility(
-                            context: context,
-                            tabletLandscape: false,
-                            desktop: false,
-                          ))
-                            Expanded(
-                              child: wrapWithModel(
-                                model: _model.hTrackOrderMobileModel,
-                                updateCallback: () => safeSetState(() {}),
-                                child: HTrackOrderMobileWidget(
-                                  orderPram: _model.order!,
-                                ),
+                          if ((_model.order != null) &&
+                              responsiveVisibility(
+                                context: context,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ))
+                            wrapWithModel(
+                              model: _model.hTrackOrderMobileModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: HTrackOrderMobileWidget(
+                                orderPram: _model.order!,
                               ),
                             ),
                           Container(
