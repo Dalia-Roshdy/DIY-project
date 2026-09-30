@@ -378,10 +378,13 @@ class _CVideoDiagnosisDesktopWidgetState
                                                   : () async {
                                                       logFirebaseEvent(
                                                           'C_VIDEO_DIAGNOSIS_DESKTOP_PROCEED_BTN_ON');
-                                                      if (_model.slectedOption
-                                                              ?.actionType ==
-                                                          ActionType
-                                                              .showVideo) {
+                                                      if ((_model.slectedOption
+                                                                  ?.actionType ==
+                                                              ActionType
+                                                                  .showVideo) &&
+                                                          (_model.slectedOption
+                                                                  ?.nextStepKey !=
+                                                              null)) {
                                                         logFirebaseEvent(
                                                             'Button_execute_callback');
                                                         await widget.onNextVideo
