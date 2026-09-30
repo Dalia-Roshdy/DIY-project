@@ -28,6 +28,7 @@ class _IAboutWidgetState extends State<IAboutWidget> {
     super.initState();
     _model = createModel(context, () => IAboutModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'I-About'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

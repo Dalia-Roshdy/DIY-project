@@ -3,6 +3,7 @@ import '/b_screen_components/s12_footer/s12_footer_widget.dart';
 import '/backend/backend.dart';
 import '/c_library_video/c_video_diagnosis_desktop/c_video_diagnosis_desktop_widget.dart';
 import '/c_library_video/c_video_diagnosis_mobile/c_video_diagnosis_mobile_widget.dart';
+import '/components/error_handler_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'c_library_video_flow_widget.dart' show CLibraryVideoFlowWidget;
 import 'package:flutter/material.dart';
@@ -39,6 +40,10 @@ class CLibraryVideoFlowModel extends FlutterFlowModel<CLibraryVideoFlowWidget> {
           int index, Function(DiagnosisVideoOptionRecord) updateFn) =>
       currentOptions[index] = updateFn(currentOptions[index]);
 
+  bool? hasError = false;
+
+  String? errorMessage;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - Read Document] action in C-Library_Video_Flow widget.
@@ -49,6 +54,8 @@ class CLibraryVideoFlowModel extends FlutterFlowModel<CLibraryVideoFlowWidget> {
   List<DiagnosisVideoOptionRecord>? initialOptions;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
+  // Model for errorHandler component.
+  late ErrorHandlerModel errorHandlerModel;
   // Model for C_Video_Diagnosis_mobile component.
   late CVideoDiagnosisMobileModel cVideoDiagnosisMobileModel;
   // Stores action output result for [Backend Call - Read Document] action in C_Video_Diagnosis_mobile widget.
@@ -71,6 +78,7 @@ class CLibraryVideoFlowModel extends FlutterFlowModel<CLibraryVideoFlowWidget> {
   @override
   void initState(BuildContext context) {
     s01NavigatioBarModel = createModel(context, () => S01NavigatioBarModel());
+    errorHandlerModel = createModel(context, () => ErrorHandlerModel());
     cVideoDiagnosisMobileModel =
         createModel(context, () => CVideoDiagnosisMobileModel());
     cVideoDiagnosisDesktopModel =
@@ -81,6 +89,7 @@ class CLibraryVideoFlowModel extends FlutterFlowModel<CLibraryVideoFlowWidget> {
   @override
   void dispose() {
     s01NavigatioBarModel.dispose();
+    errorHandlerModel.dispose();
     cVideoDiagnosisMobileModel.dispose();
     cVideoDiagnosisDesktopModel.dispose();
     s12FooterModel.dispose();

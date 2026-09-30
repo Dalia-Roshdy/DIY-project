@@ -29,8 +29,11 @@ class _AHomePageWidgetState extends State<AHomePageWidget> {
     super.initState();
     _model = createModel(context, () => AHomePageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'A-HomePage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('A_HOME_A-HomePage_ON_INIT_STATE');
+      logFirebaseEvent('A-HomePage_custom_action');
       await actions.getCartSettingAction();
     });
 

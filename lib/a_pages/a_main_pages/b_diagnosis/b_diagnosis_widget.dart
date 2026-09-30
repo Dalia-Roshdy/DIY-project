@@ -27,6 +27,7 @@ class _BDiagnosisWidgetState extends State<BDiagnosisWidget> {
     super.initState();
     _model = createModel(context, () => BDiagnosisModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'B-Diagnosis'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

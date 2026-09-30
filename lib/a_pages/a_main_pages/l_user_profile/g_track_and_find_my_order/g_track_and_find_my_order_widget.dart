@@ -30,6 +30,8 @@ class _GTrackAndFindMyOrderWidgetState
     super.initState();
     _model = createModel(context, () => GTrackAndFindMyOrderModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'G_Track_and_find_my_order'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

@@ -263,6 +263,8 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'MOTOR_CARD_COMP_Icon_14qcqnbz_ON_TAP');
                                 if (FFAppState()
                                         .Cart
                                         .cartItems
@@ -271,6 +273,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                         .toList()
                                         .length ==
                                     0) {
+                                  logFirebaseEvent('Icon_update_app_state');
                                   FFAppState().updateCartStruct(
                                     (e) => e
                                       ..updateCartItems(
@@ -287,6 +290,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                   );
                                   safeSetState(() {});
                                 } else {
+                                  logFirebaseEvent('Icon_custom_action');
                                   await actions.updatecartItemsAction(
                                     widget.itemId!,
                                     FFAppState()
@@ -301,6 +305,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                   );
                                 }
 
+                                logFirebaseEvent('Icon_alert_dialog');
                                 await showDialog(
                                   context: context,
                                   builder: (dialogContext) {

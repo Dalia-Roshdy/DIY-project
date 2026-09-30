@@ -93,6 +93,9 @@ class _AddCartSuccessDialogWidgetState
                       size: 24.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'ADD_CART_SUCCESS_DIALOG_close_rounded_IC');
+                      logFirebaseEvent('IconButton_close_dialog_drawer_etc');
                       Navigator.pop(context);
                     },
                   ),
@@ -140,12 +143,17 @@ class _AddCartSuccessDialogWidgetState
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'ADD_CART_SUCCESS_DIALOG_VIEW_CART_BTN_ON');
+                          logFirebaseEvent('Button_custom_action');
                           unawaited(
                             () async {
                               await actions.calculateCartTotal();
                             }(),
                           );
+                          logFirebaseEvent('Button_close_dialog_drawer_etc');
                           Navigator.pop(context);
+                          logFirebaseEvent('Button_navigate_to');
 
                           context.pushNamed(EReviewYourOrderWidget.routeName);
                         },

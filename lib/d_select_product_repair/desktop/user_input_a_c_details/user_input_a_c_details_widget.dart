@@ -32,19 +32,26 @@ class _UserInputACDetailsWidgetState extends State<UserInputACDetailsWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('USER_INPUT_A_C_DETAILS_User_Input_A_C_de');
       if (FFAppState().userAC.acMake != null) {
+        logFirebaseEvent('User_Input_A_C_details_backend_call');
         _model.acMake =
             await ACMakeRecord.getDocumentOnce(FFAppState().userAC.acMake!);
+        logFirebaseEvent('User_Input_A_C_details_update_component_');
         _model.userACMakeName = _model.acMake?.name;
+        logFirebaseEvent('User_Input_A_C_details_set_form_field');
         safeSetState(() {
           _model.textFieldMakeTextController?.text = _model.acMake!.name;
         });
       }
       if (FFAppState().userAC.acModel != null) {
+        logFirebaseEvent('User_Input_A_C_details_backend_call');
         _model.acModel =
             await ACModelRecord.getDocumentOnce(FFAppState().userAC.acModel!);
+        logFirebaseEvent('User_Input_A_C_details_update_component_');
         _model.userACModelName = _model.acModel?.name;
         safeSetState(() {});
+        logFirebaseEvent('User_Input_A_C_details_set_form_field');
         safeSetState(() {
           _model.textFieldModelTextController?.text = _model.acModel!.name;
         });
@@ -137,7 +144,11 @@ class _UserInputACDetailsWidgetState extends State<UserInputACDetailsWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'USER_INPUT_A_C_DETAILS_Text_kbvhf1pf_ON_');
+                                  logFirebaseEvent('Text_update_app_state');
                                   FFAppState().userAC = UserACStruct();
+                                  logFirebaseEvent('Text_navigate_to');
                                   if (Navigator.of(context).canPop()) {
                                     context.pop();
                                   }

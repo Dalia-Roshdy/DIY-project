@@ -36,8 +36,12 @@ class _GSecurePaymentCheckoutWidgetState
     super.initState();
     _model = createModel(context, () => GSecurePaymentCheckoutModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'G-Secure_payment_checkout'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('G_SECURE_PAYMENT_CHECKOUT_G-Secure_payme');
+      logFirebaseEvent('G-Secure_payment_checkout_firestore_quer');
       _model.tax = await querySettingsRecordOnce(
         queryBuilder: (settingsRecord) => settingsRecord.where(
           'key',
@@ -45,8 +49,10 @@ class _GSecurePaymentCheckoutWidgetState
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      logFirebaseEvent('G-Secure_payment_checkout_custom_action');
       await actions.calculateCartTotal();
       if (!loggedIn) {
+        logFirebaseEvent('G-Secure_payment_checkout_auth');
         GoRouter.of(context).prepareAuthEvent();
         final user = await authManager.signInAnonymously(context);
         if (user == null) {

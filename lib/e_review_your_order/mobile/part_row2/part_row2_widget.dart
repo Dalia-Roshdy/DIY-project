@@ -191,11 +191,17 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                           updateCount: (count) async {
                             safeSetState(
                                 () => _model.countControllerValue = count);
+                            logFirebaseEvent(
+                                'PART_ROW2_CountController_6jzxol3p_ON_FO');
+                            logFirebaseEvent('CountController_custom_action');
                             await actions.updatecartItemsAction(
                               widget.itemId!,
                               _model.countControllerValue!,
                             );
+                            logFirebaseEvent('CountController_custom_action');
                             await actions.calculateCartTotal();
+                            logFirebaseEvent(
+                                'CountController_rebuild_component');
                             _model.updatePage(() {});
                           },
                           stepSize: 1,
@@ -237,6 +243,9 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                           size: 20.0,
                         ),
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'PART_ROW2_COMP_delete_outline_ICN_ON_TAP');
+                          logFirebaseEvent('IconButton_alert_dialog');
                           await showDialog(
                             context: context,
                             builder: (dialogContext) {
@@ -253,6 +262,7 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                             },
                           );
 
+                          logFirebaseEvent('IconButton_navigate_to');
                           if (Navigator.of(context).canPop()) {
                             context.pop();
                           }

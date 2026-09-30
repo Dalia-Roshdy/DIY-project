@@ -427,6 +427,9 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'S11_SOCIALS_COMP_Row_maohcqud_ON_TAP');
+                                      logFirebaseEvent('Row_validate_form');
                                       _model.form = true;
                                       if (_model.formKey.currentState == null ||
                                           !_model.formKey.currentState!
@@ -434,6 +437,7 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                         safeSetState(() => _model.form = false);
                                         return;
                                       }
+                                      logFirebaseEvent('Row_firestore_query');
                                       _model.count =
                                           await querySubscriberRecordCount(
                                         queryBuilder: (subscriberRecord) =>
@@ -447,6 +451,8 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                         ),
                                       );
                                       if (_model.count == 0) {
+                                        logFirebaseEvent('Row_backend_call');
+
                                         var subscriberRecordReference =
                                             SubscriberRecord.collection.doc();
                                         await subscriberRecordReference
@@ -472,6 +478,9 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                                 subscriberRecordReference);
                                         await Future.wait([
                                           Future(() async {
+                                            logFirebaseEvent(
+                                                'Row_backend_call');
+
                                             var mailRecordReference =
                                                 MailRecord.collection.doc();
                                             await mailRecordReference
@@ -510,6 +519,8 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                                           getCurrentTimestamp,
                                                     ),
                                                     mailRecordReference);
+                                            logFirebaseEvent(
+                                                'Row_reset_form_fields');
                                             safeSetState(() {
                                               _model
                                                   .textFieldEmailAddressTextController
@@ -517,6 +528,8 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                             });
                                           }),
                                           Future(() async {
+                                            logFirebaseEvent(
+                                                'Row_alert_dialog');
                                             await showDialog(
                                               context: context,
                                               builder: (dialogContext) {
@@ -539,6 +552,8 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                           }),
                                         ]);
                                       } else {
+                                        logFirebaseEvent(
+                                            'Row_update_component_state');
                                         _model.errorMS =
                                             'This email is already subscribed.';
                                         safeSetState(() {});
@@ -604,7 +619,11 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                               onEnter: ((event) async {
                                 safeSetState(
                                     () => _model.mouseRegionHovered1 = true);
+                                logFirebaseEvent(
+                                    'S11_SOCIALS_MouseRegion_9xc56z0d_ON_TOGG');
                                 // Start Arrow Animation
+                                logFirebaseEvent(
+                                    'MouseRegion_StartArrowAnimation');
                                 if (animationsMap[
                                         'iconOnActionTriggerAnimation1'] !=
                                     null) {
@@ -618,7 +637,11 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                               onExit: ((event) async {
                                 safeSetState(
                                     () => _model.mouseRegionHovered1 = false);
+                                logFirebaseEvent(
+                                    'S11_SOCIALS_MouseRegion_9xc56z0d_ON_TOGG');
                                 // Reset Arrow Animation
+                                logFirebaseEvent(
+                                    'MouseRegion_ResetArrowAnimation');
                                 if (animationsMap[
                                         'iconOnActionTriggerAnimation1'] !=
                                     null) {
@@ -816,7 +839,11 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                             onEnter: ((event) async {
                               safeSetState(
                                   () => _model.mouseRegionHovered2 = true);
+                              logFirebaseEvent(
+                                  'S11_SOCIALS_MouseRegion_f6huic2e_ON_TOGG');
                               // Start MiniStar Animation
+                              logFirebaseEvent(
+                                  'MouseRegion_StartMiniStarAnimation');
                               if (animationsMap[
                                       'iconOnActionTriggerAnimation2'] !=
                                   null) {
@@ -829,7 +856,11 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                             onExit: ((event) async {
                               safeSetState(
                                   () => _model.mouseRegionHovered2 = false);
+                              logFirebaseEvent(
+                                  'S11_SOCIALS_MouseRegion_f6huic2e_ON_TOGG');
                               // Reset MiniStar Animation
+                              logFirebaseEvent(
+                                  'MouseRegion_ResetMiniStarAnimation');
                               if (animationsMap[
                                       'iconOnActionTriggerAnimation2'] !=
                                   null) {

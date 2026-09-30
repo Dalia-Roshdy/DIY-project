@@ -53,6 +53,8 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
+                logFirebaseEvent('NAV_MENU_COMP_Icon_ON_TAP');
+                logFirebaseEvent('Icon_close_dialog_drawer_etc');
                 Navigator.pop(context);
               },
               child: Icon(
@@ -71,6 +73,9 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              logFirebaseEvent('NAV_MENU_COMP_Text_ON_TAP');
+              logFirebaseEvent('Text_navigate_to');
+
               context.goNamed(AHomePageWidget.routeName);
             },
             child: Container(
@@ -105,6 +110,9 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              logFirebaseEvent('NAV_MENU_COMP_Text_ON_TAP');
+              logFirebaseEvent('Text_navigate_to');
+
               context.goNamed(IAboutWidget.routeName);
             },
             child: Container(
@@ -139,6 +147,9 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              logFirebaseEvent('NAV_MENU_COMP_Text_ON_TAP');
+              logFirebaseEvent('Text_navigate_to');
+
               context.goNamed(
                 DSelectProductRepairWidget.routeName,
                 queryParameters: {
@@ -183,6 +194,9 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
+                logFirebaseEvent('NAV_MENU_COMP_Text_ON_TAP');
+                logFirebaseEvent('Text_navigate_to');
+
                 context.goNamed(GTrackAndFindMyOrderWidget.routeName);
               },
               child: Container(
@@ -218,6 +232,9 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              logFirebaseEvent('NAV_MENU_COMP_Text_ON_TAP');
+              logFirebaseEvent('Text_navigate_to');
+
               context.goNamed(KContactWidget.routeName);
             },
             child: Container(

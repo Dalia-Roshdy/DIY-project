@@ -501,12 +501,16 @@ class _EnterManuallySerialNumberWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'ENTER_MANUALLY_SERIAL_NUMBER_Text_ogsf7f');
+                                  logFirebaseEvent('Text_reset_form_fields');
                                   safeSetState(() {
                                     _model.textFieldMakeTextController?.clear();
                                     _model.textFieldModelTextController
                                         ?.clear();
                                     _model.textFieldSNTextController?.clear();
                                   });
+                                  logFirebaseEvent('Text_update_app_state');
                                   FFAppState().acCustomer =
                                       AcCustomerDataStruct();
                                   safeSetState(() {});
@@ -544,6 +548,9 @@ class _EnterManuallySerialNumberWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'ENTER_MANUALLY_SERIAL_NUMBER_Text_l91ega');
+                                  logFirebaseEvent('Text_firestore_query');
                                   _model.videoidentify =
                                       await queryDiagnosisVideoRecordOnce(
                                     queryBuilder: (diagnosisVideoRecord) =>
@@ -553,8 +560,11 @@ class _EnterManuallySerialNumberWidgetState
                                     ),
                                     singleRecord: true,
                                   ).then((s) => s.firstOrNull);
+                                  logFirebaseEvent(
+                                      'Text_update_component_state');
                                   _model.videoID =
                                       _model.videoidentify?.reference;
+                                  logFirebaseEvent('Text_navigate_to');
 
                                   context.pushNamed(
                                     CLibraryVideoFlowWidget.routeName,
@@ -606,14 +616,17 @@ class _EnterManuallySerialNumberWidgetState
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
+                logFirebaseEvent('ENTER_MANUALLY_SERIAL_NUMBER_ResponsiveC');
                 if ((_model.textFieldMakeTextController.text != '') ||
                     (_model.textFieldModelTextController.text != '')) {
+                  logFirebaseEvent('ResponsiveContainer_update_app_state');
                   FFAppState().acCustomer = AcCustomerDataStruct(
                     acMake: _model.textFieldMakeTextController.text,
                     acModel: _model.textFieldModelTextController.text,
                     serialNumber: _model.textFieldSNTextController.text,
                   );
                 }
+                logFirebaseEvent('ResponsiveContainer_navigate_to');
                 if (Navigator.of(context).canPop()) {
                   context.pop();
                 }

@@ -1203,6 +1203,10 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
+                                            logFirebaseEvent(
+                                                'S10_CONTAC_US_COMP_Row_i790s5s0_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Row_validate_form');
                                             _model.form = true;
                                             if (_model.formKey.currentState ==
                                                     null ||
@@ -1212,6 +1216,8 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                   () => _model.form = false);
                                               return;
                                             }
+                                            logFirebaseEvent(
+                                                'Row_firestore_query');
                                             _model.admin =
                                                 await querySettingsRecordOnce(
                                               queryBuilder: (settingsRecord) =>
@@ -1222,6 +1228,8 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                               ),
                                               singleRecord: true,
                                             ).then((s) => s.firstOrNull);
+                                            logFirebaseEvent(
+                                                'Row_backend_call');
 
                                             var mailRecordReference =
                                                 MailRecord.collection.doc();
@@ -1257,6 +1265,8 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                     mailRecordReference);
                                             await Future.wait([
                                               Future(() async {
+                                                logFirebaseEvent(
+                                                    'Row_reset_form_fields');
                                                 safeSetState(() {
                                                   _model
                                                       .textFieldMessageTextController
@@ -1273,6 +1283,8 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                 });
                                               }),
                                               Future(() async {
+                                                logFirebaseEvent(
+                                                    'Row_alert_dialog');
                                                 await showDialog(
                                                   context: context,
                                                   builder: (dialogContext) {
@@ -1356,7 +1368,11 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                     onEnter: ((event) async {
                                       safeSetState(() =>
                                           _model.mouseRegionHovered = true);
+                                      logFirebaseEvent(
+                                          'S10_CONTAC_US_MouseRegion_047m8n4x_ON_TO');
                                       // Start Arrow Animation
+                                      logFirebaseEvent(
+                                          'MouseRegion_StartArrowAnimation');
                                       if (animationsMap[
                                               'iconOnActionTriggerAnimation'] !=
                                           null) {
@@ -1370,7 +1386,11 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                     onExit: ((event) async {
                                       safeSetState(() =>
                                           _model.mouseRegionHovered = false);
+                                      logFirebaseEvent(
+                                          'S10_CONTAC_US_MouseRegion_047m8n4x_ON_TO');
                                       // Reset Arrow Animation
+                                      logFirebaseEvent(
+                                          'MouseRegion_ResetArrowAnimation');
                                       if (animationsMap[
                                               'iconOnActionTriggerAnimation'] !=
                                           null) {

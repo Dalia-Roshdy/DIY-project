@@ -180,6 +180,10 @@ class _CVideoDiagnosisMobileWidgetState
                                 .toList(),
                             onChanged: (val) async {
                               safeSetState(() {});
+                              logFirebaseEvent(
+                                  'C_VIDEO_DIAGNOSIS_MOBILE_RadioButton_gqe');
+                              logFirebaseEvent(
+                                  'RadioButton_update_component_state');
                               _model.selectedOption = widget.videoOptions
                                   ?.where((e) =>
                                       e.buttonText == _model.radioButtonValue)
@@ -219,9 +223,15 @@ class _CVideoDiagnosisMobileWidgetState
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'C_VIDEO_DIAGNOSIS_MOBILE_BACK_BTN_ON_TAP');
+                                  logFirebaseEvent(
+                                      'Button_update_component_state');
                                   _model.selectedOption = null;
+                                  logFirebaseEvent('Button_reset_form_fields');
                                   _model.radioButtonValueController?.reset();
 
+                                  logFirebaseEvent('Button_execute_callback');
                                   await widget.onBack?.call();
                                 },
                                 text: 'Back',
@@ -259,14 +269,22 @@ class _CVideoDiagnosisMobileWidgetState
                                           _model.radioButtonValue == '')
                                       ? null
                                       : () async {
+                                          logFirebaseEvent(
+                                              'C_VIDEO_DIAGNOSIS_MOBILE_PROCEED_BTN_ON_');
                                           if (_model
                                                   .selectedOption?.actionType ==
                                               ActionType.showVideo) {
+                                            logFirebaseEvent(
+                                                'Button_execute_callback');
                                             await widget.onNextVideo?.call(
                                               _model
                                                   .selectedOption!.nextStepKey!,
                                             );
+                                            logFirebaseEvent(
+                                                'Button_update_component_state');
                                             _model.selectedOption = null;
+                                            logFirebaseEvent(
+                                                'Button_reset_form_fields');
                                             _model.radioButtonValueController
                                                 ?.reset();
                                           } else if (_model
@@ -275,17 +293,26 @@ class _CVideoDiagnosisMobileWidgetState
                                             if (_model.selectedOption
                                                     ?.targetPage ==
                                                 TargetPage.contactUs) {
+                                              logFirebaseEvent(
+                                                  'Button_navigate_to');
+
                                               context.pushNamed(
                                                   KContactWidget.routeName);
                                             } else if (_model.selectedOption
                                                     ?.targetPage ==
                                                 TargetPage.needAssistant) {
+                                              logFirebaseEvent(
+                                                  'Button_navigate_to');
+
                                               context.pushNamed(
                                                   LRequestTechnicalWidget
                                                       .routeName);
                                             } else if (_model.selectedOption
                                                     ?.targetPage ==
                                                 TargetPage.diagnosis) {
+                                              logFirebaseEvent(
+                                                  'Button_navigate_to');
+
                                               context.pushNamed(
                                                   BDiagnosisWidget.routeName);
                                             }
@@ -295,6 +322,8 @@ class _CVideoDiagnosisMobileWidgetState
                                             if (_model.selectedOption
                                                     ?.targetPage ==
                                                 TargetPage.google) {
+                                              logFirebaseEvent(
+                                                  'Button_alert_dialog');
                                               await showDialog(
                                                 barrierDismissible: false,
                                                 context: context,
@@ -317,6 +346,9 @@ class _CVideoDiagnosisMobileWidgetState
                                                 },
                                               );
                                             } else {
+                                              logFirebaseEvent(
+                                                  'Button_navigate_to');
+
                                               context.pushNamed(
                                                 DSelectProductRepairWidget
                                                     .routeName,

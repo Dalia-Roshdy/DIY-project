@@ -44,13 +44,18 @@ class _DSelectProductRepairWidgetState
     super.initState();
     _model = createModel(context, () => DSelectProductRepairModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'D-Select_Product_Repair'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('D_SELECT_PRODUCT_REPAIR_D-Select_Product');
       if (widget.part != null) {
+        logFirebaseEvent('D-Select_Product_Repair_update_page_stat');
         _model.selectedPart = widget.part;
         _model.partList = [];
         safeSetState(() {});
       } else {
+        logFirebaseEvent('D-Select_Product_Repair_update_page_stat');
         _model.selectedPart = Parts.MOTOR;
         _model.partList = [];
         safeSetState(() {});
@@ -58,8 +63,10 @@ class _DSelectProductRepairWidgetState
 
       if (_model.selectedPart == Parts.MOTOR) {
         if (!(FFAppState().MotorCardList.isNotEmpty)) {
+          logFirebaseEvent('D-Select_Product_Repair_custom_action');
           await actions.filterMotorItemsV2();
         }
+        logFirebaseEvent('D-Select_Product_Repair_update_page_stat');
         _model.partList = FFAppState()
             .MotorCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
@@ -68,8 +75,10 @@ class _DSelectProductRepairWidgetState
         safeSetState(() {});
       } else if (_model.selectedPart == Parts.CONTACTOR) {
         if (!(FFAppState().ContCardList.isNotEmpty)) {
+          logFirebaseEvent('D-Select_Product_Repair_custom_action');
           await actions.filterContactorItemsV2();
         }
+        logFirebaseEvent('D-Select_Product_Repair_update_page_stat');
         _model.partList = FFAppState()
             .ContCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
@@ -78,8 +87,10 @@ class _DSelectProductRepairWidgetState
         safeSetState(() {});
       } else if (_model.selectedPart == Parts.CAPACITOR) {
         if (!(FFAppState().CapacCardList.isNotEmpty)) {
+          logFirebaseEvent('D-Select_Product_Repair_custom_action');
           await actions.filterCapacitorItemsV2();
         }
+        logFirebaseEvent('D-Select_Product_Repair_update_page_stat');
         _model.partList = FFAppState()
             .CapacCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
@@ -258,15 +269,23 @@ class _DSelectProductRepairWidgetState
                                                   onMotorSelected:
                                                       (selectedPart, volt, hp,
                                                           rpm, rotation) async {
+                                                    logFirebaseEvent(
+                                                        'D_SELECT_PRODUCT_REPAIR_Container_hu0x8f');
+                                                    logFirebaseEvent(
+                                                        'S18_Filter_repair_parts_desktop_update_p');
                                                     _model.selectedPart =
                                                         Parts.MOTOR;
                                                     _model.partList = [];
                                                     if (!(FFAppState()
                                                         .MotorCardList
                                                         .isNotEmpty)) {
+                                                      logFirebaseEvent(
+                                                          'S18_Filter_repair_parts_desktop_custom_a');
                                                       await actions
                                                           .filterMotorItemsV2();
                                                     }
+                                                    logFirebaseEvent(
+                                                        'S18_Filter_repair_parts_desktop_update_p');
                                                     _model.partList = FFAppState()
                                                         .MotorCardList
                                                         .where((e) =>
@@ -301,6 +320,10 @@ class _DSelectProductRepairWidgetState
                                                   },
                                                   onContSelected: (amp, nop,
                                                       selectedPart) async {
+                                                    logFirebaseEvent(
+                                                        'D_SELECT_PRODUCT_REPAIR_Container_hu0x8f');
+                                                    logFirebaseEvent(
+                                                        'S18_Filter_repair_parts_desktop_update_p');
                                                     _model.partList = [];
                                                     _model.selectedPart =
                                                         Parts.CONTACTOR;
@@ -308,9 +331,13 @@ class _DSelectProductRepairWidgetState
                                                     if (!(FFAppState()
                                                         .ContCardList
                                                         .isNotEmpty)) {
+                                                      logFirebaseEvent(
+                                                          'S18_Filter_repair_parts_desktop_custom_a');
                                                       await actions
                                                           .filterContactorItemsV2();
                                                     }
+                                                    logFirebaseEvent(
+                                                        'S18_Filter_repair_parts_desktop_update_p');
                                                     _model.partList = FFAppState()
                                                         .ContCardList
                                                         .where((e) =>
@@ -337,6 +364,10 @@ class _DSelectProductRepairWidgetState
                                                   onCapatSelected:
                                                       (selectedPart, mfd1, mfd2,
                                                           type, shape) async {
+                                                    logFirebaseEvent(
+                                                        'D_SELECT_PRODUCT_REPAIR_Container_hu0x8f');
+                                                    logFirebaseEvent(
+                                                        'S18_Filter_repair_parts_desktop_update_p');
                                                     _model.partList = [];
                                                     _model.selectedPart =
                                                         Parts.CAPACITOR;
@@ -344,9 +375,13 @@ class _DSelectProductRepairWidgetState
                                                     if (!(FFAppState()
                                                         .CapacCardList
                                                         .isNotEmpty)) {
+                                                      logFirebaseEvent(
+                                                          'S18_Filter_repair_parts_desktop_custom_a');
                                                       await actions
                                                           .filterCapacitorItemsV2();
                                                     }
+                                                    logFirebaseEvent(
+                                                        'S18_Filter_repair_parts_desktop_update_p');
                                                     _model.partList =
                                                         FFAppState()
                                                             .CapacCardList

@@ -35,9 +35,14 @@ class _HOrderTrackingWidgetState extends State<HOrderTrackingWidget> {
     super.initState();
     _model = createModel(context, () => HOrderTrackingModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'H_Order_Tracking'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('H_ORDER_TRACKING_H_Order_Tracking_ON_INI');
+      logFirebaseEvent('H_Order_Tracking_backend_call');
       _model.orderAct1 = await OrdersRecord.getDocumentOnce(widget.orderId!);
+      logFirebaseEvent('H_Order_Tracking_update_page_state');
       _model.order = _model.orderAct1;
       safeSetState(() {});
     });
@@ -107,7 +112,7 @@ class _HOrderTrackingWidgetState extends State<HOrderTrackingWidget> {
                                 orderPram: _model.order!,
                               ),
                             ),
-                          if ((_model.order != null) &&
+                          if ((_model.orderAct1?.reference != null) &&
                               responsiveVisibility(
                                 context: context,
                                 tabletLandscape: false,

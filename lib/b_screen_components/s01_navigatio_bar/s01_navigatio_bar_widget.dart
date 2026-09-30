@@ -38,6 +38,8 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('S01_NAVIGATIO_BAR_S01_NavigatioBar_ON_IN');
+      logFirebaseEvent('S01_NavigatioBar_firestore_query');
       _model.trial = await queryOrdersRecordOnce(
         queryBuilder: (ordersRecord) => ordersRecord.where(
           'orderNumber',
@@ -84,18 +86,10 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  if (Navigator.of(context).canPop()) {
-                    context.pop();
-                  }
-                  context.pushNamed(
-                    HOrderTrackingWidget.routeName,
-                    queryParameters: {
-                      'orderId': serializeParam(
-                        _model.trial?.reference,
-                        ParamType.DocumentReference,
-                      ),
-                    }.withoutNulls,
-                  );
+                  logFirebaseEvent('S01_NAVIGATIO_BAR_COMP_Row_ON_TAP');
+                  logFirebaseEvent('Row_navigate_to');
+
+                  context.goNamed(AHomePageWidget.routeName);
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
@@ -179,10 +173,15 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'S01_NAVIGATIO_BAR_Icon_5eg826z3_ON_TAP');
                             if ((FFAppState().Cart.cartItems.isNotEmpty) ==
                                 true) {
+                              logFirebaseEvent('Icon_navigate_to');
+
                               context.goNamed(EReviewYourOrderWidget.routeName);
                             } else {
+                              logFirebaseEvent('Icon_alert_dialog');
                               await showDialog(
                                 context: context,
                                 builder: (dialogContext) {
@@ -238,6 +237,10 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                 children: [
                   FFButtonWidget(
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'S01_NAVIGATIO_BAR_Button-HomeBtn_ON_TAP');
+                      logFirebaseEvent('Button-HomeBtn_navigate_to');
+
                       context.goNamed(AHomePageWidget.routeName);
                     },
                     text: 'HOME',
@@ -266,6 +269,10 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   ),
                   FFButtonWidget(
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'S01_NAVIGATIO_BAR_Button-AboutBtn_ON_TAP');
+                      logFirebaseEvent('Button-AboutBtn_navigate_to');
+
                       context.pushNamed(IAboutWidget.routeName);
                     },
                     text: 'ABOUT',
@@ -294,6 +301,10 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   ),
                   FFButtonWidget(
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'S01_NAVIGATIO_BAR_Button-ServicesBtn_ON_');
+                      logFirebaseEvent('Button-ServicesBtn_navigate_to');
+
                       context.pushNamed(
                         DSelectProductRepairWidget.routeName,
                         queryParameters: {
@@ -331,6 +342,10 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   if (false)
                     FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'S01_NAVIGATIO_BAR_Button-ServicesBtn_ON_');
+                        logFirebaseEvent('Button-ServicesBtn_navigate_to');
+
                         context.pushNamed(GTrackAndFindMyOrderWidget.routeName);
                       },
                       text: 'TRACK ORDERS',
@@ -359,6 +374,10 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                     ),
                   FFButtonWidget(
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'S01_NAVIGATIO_BAR_Button-ContactBtn_ON_T');
+                      logFirebaseEvent('Button-ContactBtn_navigate_to');
+
                       context.pushNamed(KContactWidget.routeName);
                     },
                     text: 'CONTACT',
@@ -421,6 +440,8 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                     ),
                   ),
                   onPressed: () async {
+                    logFirebaseEvent('S01_NAVIGATIO_BAR_MenuBtn-Mobile_ON_TAP');
+                    logFirebaseEvent('MenuBtn-Mobile_alert_dialog');
                     await showAlignedDialog(
                       barrierColor:
                           FlutterFlowTheme.of(context).primaryBackground,
@@ -458,9 +479,13 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   size: 28.0,
                 ),
                 onPressed: () async {
+                  logFirebaseEvent('S01_NAVIGATIO_BAR_Button-Profile_ON_TAP');
                   if ((FFAppState().Cart.cartItems.isNotEmpty) == true) {
+                    logFirebaseEvent('Button-Profile_navigate_to');
+
                     context.goNamed(EReviewYourOrderWidget.routeName);
                   } else {
+                    logFirebaseEvent('Button-Profile_alert_dialog');
                     await showDialog(
                       context: context,
                       builder: (dialogContext) {

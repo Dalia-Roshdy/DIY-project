@@ -183,7 +183,9 @@ class _AsteriskWidgetState extends State<AsteriskWidget>
             ),
         onEnter: ((event) async {
           safeSetState(() => _model.mouseRegionHovered = true);
+          logFirebaseEvent('ASTERISK_MouseRegion_r1g849dk_ON_TOGGLE_');
           // Start Asterisk Animation
+          logFirebaseEvent('MouseRegion_StartAsteriskAnimation');
           if (animationsMap['stackOnActionTriggerAnimation'] != null) {
             await animationsMap['stackOnActionTriggerAnimation']!
                 .controller
@@ -192,7 +194,9 @@ class _AsteriskWidgetState extends State<AsteriskWidget>
         }),
         onExit: ((event) async {
           safeSetState(() => _model.mouseRegionHovered = false);
+          logFirebaseEvent('ASTERISK_MouseRegion_r1g849dk_ON_TOGGLE_');
           // Reset Asterisk Animation
+          logFirebaseEvent('MouseRegion_ResetAsteriskAnimation');
           if (animationsMap['stackOnActionTriggerAnimation'] != null) {
             animationsMap['stackOnActionTriggerAnimation']!.controller.reset();
           }

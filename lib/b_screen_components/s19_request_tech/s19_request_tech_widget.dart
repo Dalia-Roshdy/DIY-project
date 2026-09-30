@@ -1576,6 +1576,10 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'S19_REQUEST_TECH_Row_iuzg0qe6_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Row_validate_form');
                                               _model.form = true;
                                               if (_model.formKey.currentState ==
                                                       null ||
@@ -1585,6 +1589,8 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                     () => _model.form = false);
                                                 return;
                                               }
+                                              logFirebaseEvent(
+                                                  'Row_firestore_query');
                                               _model.admin =
                                                   await querySettingsRecordOnce(
                                                 queryBuilder:
@@ -1596,6 +1602,8 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                 ),
                                                 singleRecord: true,
                                               ).then((s) => s.firstOrNull);
+                                              logFirebaseEvent(
+                                                  'Row_backend_call');
 
                                               var mailRecordReference =
                                                   MailRecord.collection.doc();
@@ -1632,6 +1640,8 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                       mailRecordReference);
                                               await Future.wait([
                                                 Future(() async {
+                                                  logFirebaseEvent(
+                                                      'Row_reset_form_fields');
                                                   safeSetState(() {
                                                     _model
                                                         .textFieldMessageTextController
@@ -1651,6 +1661,8 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                   });
                                                 }),
                                                 Future(() async {
+                                                  logFirebaseEvent(
+                                                      'Row_alert_dialog');
                                                   await showDialog(
                                                     context: context,
                                                     builder: (dialogContext) {
@@ -1713,7 +1725,11 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                       onEnter: ((event) async {
                                         safeSetState(() =>
                                             _model.mouseRegionHovered = true);
+                                        logFirebaseEvent(
+                                            'S19_REQUEST_TECH_MouseRegion_bi45h107_ON');
                                         // Start Arrow Animation
+                                        logFirebaseEvent(
+                                            'MouseRegion_StartArrowAnimation');
                                         if (animationsMap[
                                                 'iconOnActionTriggerAnimation'] !=
                                             null) {
@@ -1727,7 +1743,11 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                       onExit: ((event) async {
                                         safeSetState(() =>
                                             _model.mouseRegionHovered = false);
+                                        logFirebaseEvent(
+                                            'S19_REQUEST_TECH_MouseRegion_bi45h107_ON');
                                         // Reset Arrow Animation
+                                        logFirebaseEvent(
+                                            'MouseRegion_ResetArrowAnimation');
                                         if (animationsMap[
                                                 'iconOnActionTriggerAnimation'] !=
                                             null) {

@@ -33,11 +33,14 @@ class _ContactUsSuccessDialogWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CONTACT_US_SUCCESS_DIALOG_Contact_us_Suc');
+      logFirebaseEvent('Contact_us_Success_Dialog_wait__delay');
       await Future.delayed(
         Duration(
           milliseconds: 6000,
         ),
       );
+      logFirebaseEvent('Contact_us_Success_Dialog_close_dialog_d');
       Navigator.pop(context);
     });
 
@@ -100,6 +103,9 @@ class _ContactUsSuccessDialogWidgetState
                       size: 24.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'CONTACT_US_SUCCESS_DIALOG_close_rounded_');
+                      logFirebaseEvent('IconButton_close_dialog_drawer_etc');
                       Navigator.pop(context);
                     },
                   ),

@@ -88,6 +88,9 @@ class _EmptyCartComponentWidgetState extends State<EmptyCartComponentWidget> {
                     size: 24.0,
                   ),
                   onPressed: () async {
+                    logFirebaseEvent(
+                        'EMPTY_CART_COMPONENT_close_rounded_ICN_O');
+                    logFirebaseEvent('IconButton_close_dialog_drawer_etc');
                     Navigator.pop(context);
                   },
                 ),
@@ -154,6 +157,10 @@ class _EmptyCartComponentWidgetState extends State<EmptyCartComponentWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(57.0, 0.0, 57.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    logFirebaseEvent(
+                        'EMPTY_CART_COMPONENT_ORDER_PARTS_BTN_ON_');
+                    logFirebaseEvent('Button_navigate_to');
+
                     context.pushNamed(DSelectProductRepairWidget.routeName);
                   },
                   text: 'ORDER PARTS',

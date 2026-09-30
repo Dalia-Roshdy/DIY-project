@@ -131,6 +131,9 @@ class _DeleteCartItemDialogWidgetState
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'DELETE_CART_ITEM_DIALOG_NO_BTN_ON_TAP');
+                          logFirebaseEvent('Button_close_dialog_drawer_etc');
                           Navigator.pop(context);
                         },
                         text: 'No',
@@ -167,6 +170,9 @@ class _DeleteCartItemDialogWidgetState
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'DELETE_CART_ITEM_DIALOG_YES_BTN_ON_TAP');
+                          logFirebaseEvent('Button_update_app_state');
                           FFAppState().updateCartStruct(
                             (e) => e
                               ..updateCartItems(
@@ -179,12 +185,15 @@ class _DeleteCartItemDialogWidgetState
                               ),
                           );
                           safeSetState(() {});
+                          logFirebaseEvent('Button_wait__delay');
                           await Future.delayed(
                             Duration(
                               milliseconds: 100,
                             ),
                           );
+                          logFirebaseEvent('Button_custom_action');
                           await actions.calculateCartTotal();
+                          logFirebaseEvent('Button_close_dialog_drawer_etc');
                           Navigator.pop(context);
                         },
                         text: 'Yes',

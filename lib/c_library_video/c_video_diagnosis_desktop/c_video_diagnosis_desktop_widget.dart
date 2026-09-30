@@ -236,6 +236,10 @@ class _CVideoDiagnosisDesktopWidgetState
                                                       .toList(),
                                                   onChanged: (val) async {
                                                     safeSetState(() {});
+                                                    logFirebaseEvent(
+                                                        'C_VIDEO_DIAGNOSIS_DESKTOP_RadioButton_3y');
+                                                    logFirebaseEvent(
+                                                        'RadioButton_update_component_state');
                                                     _model.slectedOption = widget
                                                         .videoOptions
                                                         ?.where((e) =>
@@ -299,10 +303,18 @@ class _CVideoDiagnosisDesktopWidgetState
                                         children: [
                                           FFButtonWidget(
                                             onPressed: () async {
+                                              logFirebaseEvent(
+                                                  'C_VIDEO_DIAGNOSIS_DESKTOP_BACK_BTN_ON_TA');
+                                              logFirebaseEvent(
+                                                  'Button_update_component_state');
                                               _model.slectedOption = null;
+                                              logFirebaseEvent(
+                                                  'Button_reset_form_fields');
                                               _model.radioButtonValueController
                                                   ?.reset();
 
+                                              logFirebaseEvent(
+                                                  'Button_execute_callback');
                                               await widget.onBack?.call();
                                             },
                                             text: 'Back',
@@ -364,17 +376,25 @@ class _CVideoDiagnosisDesktopWidgetState
                                                           '')
                                                   ? null
                                                   : () async {
+                                                      logFirebaseEvent(
+                                                          'C_VIDEO_DIAGNOSIS_DESKTOP_PROCEED_BTN_ON');
                                                       if (_model.slectedOption
                                                               ?.actionType ==
                                                           ActionType
                                                               .showVideo) {
+                                                        logFirebaseEvent(
+                                                            'Button_execute_callback');
                                                         await widget.onNextVideo
                                                             ?.call(
                                                           _model.slectedOption!
                                                               .nextStepKey!,
                                                         );
+                                                        logFirebaseEvent(
+                                                            'Button_update_component_state');
                                                         _model.slectedOption =
                                                             null;
+                                                        logFirebaseEvent(
+                                                            'Button_reset_form_fields');
                                                         _model
                                                             .radioButtonValueController
                                                             ?.reset();
@@ -386,6 +406,9 @@ class _CVideoDiagnosisDesktopWidgetState
                                                                 ?.targetPage ==
                                                             TargetPage
                                                                 .contactUs) {
+                                                          logFirebaseEvent(
+                                                              'Button_navigate_to');
+
                                                           context.pushNamed(
                                                               KContactWidget
                                                                   .routeName);
@@ -394,6 +417,9 @@ class _CVideoDiagnosisDesktopWidgetState
                                                                 ?.targetPage ==
                                                             TargetPage
                                                                 .needAssistant) {
+                                                          logFirebaseEvent(
+                                                              'Button_navigate_to');
+
                                                           context.pushNamed(
                                                               LRequestTechnicalWidget
                                                                   .routeName);
@@ -402,6 +428,9 @@ class _CVideoDiagnosisDesktopWidgetState
                                                                 ?.targetPage ==
                                                             TargetPage
                                                                 .diagnosis) {
+                                                          logFirebaseEvent(
+                                                              'Button_navigate_to');
+
                                                           context.pushNamed(
                                                               BDiagnosisWidget
                                                                   .routeName);
@@ -414,6 +443,8 @@ class _CVideoDiagnosisDesktopWidgetState
                                                         if (_model.slectedOption
                                                                 ?.targetPage ==
                                                             TargetPage.google) {
+                                                          logFirebaseEvent(
+                                                              'Button_alert_dialog');
                                                           await showDialog(
                                                             barrierDismissible:
                                                                 false,
@@ -440,6 +471,9 @@ class _CVideoDiagnosisDesktopWidgetState
                                                             },
                                                           );
                                                         } else {
+                                                          logFirebaseEvent(
+                                                              'Button_navigate_to');
+
                                                           context.pushNamed(
                                                             DSelectProductRepairWidget
                                                                 .routeName,

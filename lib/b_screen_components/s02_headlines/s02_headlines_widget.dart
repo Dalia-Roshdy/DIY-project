@@ -285,6 +285,10 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent(
+                        'S02_HEADLINES_Container-GetStartedBtn_ON');
+                    logFirebaseEvent('Container-GetStartedBtn_navigate_to');
+
                     context.goNamed(BDiagnosisWidget.routeName);
                   },
                   child: Container(
@@ -351,7 +355,10 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                         ),
                         onEnter: ((event) async {
                           safeSetState(() => _model.mouseRegionHovered = true);
+                          logFirebaseEvent(
+                              'S02_HEADLINES_MouseRegion_o2yogzte_ON_TO');
                           // Start Arrow Animation
+                          logFirebaseEvent('MouseRegion_StartArrowAnimation');
                           if (animationsMap['iconOnActionTriggerAnimation'] !=
                               null) {
                             await animationsMap['iconOnActionTriggerAnimation']!
@@ -362,7 +369,10 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                         }),
                         onExit: ((event) async {
                           safeSetState(() => _model.mouseRegionHovered = false);
+                          logFirebaseEvent(
+                              'S02_HEADLINES_MouseRegion_o2yogzte_ON_TO');
                           // Reset Arrow Animation
+                          logFirebaseEvent('MouseRegion_ResetArrowAnimation');
                           if (animationsMap['iconOnActionTriggerAnimation'] !=
                               null) {
                             animationsMap['iconOnActionTriggerAnimation']!

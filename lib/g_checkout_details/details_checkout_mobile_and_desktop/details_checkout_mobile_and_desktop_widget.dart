@@ -40,6 +40,8 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('DETAILS_CHECKOUT_MOBILE_AND_DESKTOP_Deta');
+      logFirebaseEvent('Details_Checkout_mobile_and_desktop_upda');
       _model.orderPS = null;
       _model.paymentidPS = null;
     });
@@ -585,8 +587,11 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'DETAILS_CHECKOUT_MOBILE_AND_DESKTOP_Butt');
                                   if (_model.paymentInProgress == false) {
                                     if (_model.orderPS == null) {
+                                      logFirebaseEvent('Button_validate_form');
                                       _model.form01 = true;
                                       if (_model.formKey.currentState == null ||
                                           !_model.formKey.currentState!
@@ -595,11 +600,15 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                             () => _model.form01 = false);
                                         return;
                                       }
+                                      logFirebaseEvent(
+                                          'Button_update_component_state');
                                       _model.paymentInProgress = true;
+                                      logFirebaseEvent('Button_custom_action');
                                       _model.linsACTC =
                                           await actions.cartItemsToOrderLinesA(
                                         FFAppState().Cart.cartItems.toList(),
                                       );
+                                      logFirebaseEvent('Button_backend_call');
 
                                       var ordersRecordReference =
                                           OrdersRecord.collection.doc();
@@ -752,8 +761,11 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           },
                                         ),
                                       }, ordersRecordReference);
+                                      logFirebaseEvent(
+                                          'Button_update_component_state');
                                       _model.orderPS = _model.order?.reference;
                                     } else {
+                                      logFirebaseEvent('Button_validate_form');
                                       _model.form02 = true;
                                       if (_model.formKey.currentState == null ||
                                           !_model.formKey.currentState!
@@ -762,11 +774,15 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                             () => _model.form02 = false);
                                         return;
                                       }
+                                      logFirebaseEvent(
+                                          'Button_update_component_state');
                                       _model.paymentInProgress = true;
+                                      logFirebaseEvent('Button_custom_action');
                                       _model.linsACTU =
                                           await actions.cartItemsToOrderLinesA(
                                         FFAppState().Cart.cartItems.toList(),
                                       );
+                                      logFirebaseEvent('Button_backend_call');
 
                                       await _model.orderPS!.update({
                                         ...createOrdersRecordData(
@@ -780,7 +796,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                 '${_model.textFieldAddressModel.inputTextController.text} / ${_model.textFieldCityModel.inputTextController.text} / ${_model.textFieldStateModel.inputTextController.text}',
                                             pin: _model.textFieldCardModel
                                                 .inputTextController.text,
-                                            name: _model.textFieldCardModel
+                                            name: _model.textFieldNameModel
                                                 .inputTextController.text,
                                             clearUnsetFields: false,
                                           ),
@@ -802,6 +818,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                       });
                                     }
 
+                                    logFirebaseEvent('Button_stripe_payment');
                                     final paymentResponse =
                                         await processStripePayment(
                                       context,
@@ -826,7 +843,10 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                     _model.paymentId =
                                         paymentResponse.paymentId ?? '';
 
+                                    logFirebaseEvent(
+                                        'Button_update_component_state');
                                     _model.paymentInProgress = false;
+                                    logFirebaseEvent('Button_wait__delay');
                                     await Future.delayed(
                                       Duration(
                                         milliseconds: 50,
@@ -834,6 +854,8 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                     );
                                     if (_model.paymentId != null &&
                                         _model.paymentId != '') {
+                                      logFirebaseEvent('Button_backend_call');
+
                                       await _model.orderPS!
                                           .update(createOrdersRecordData(
                                         payment: createPaymentDataStruct(
@@ -842,6 +864,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           clearUnsetFields: false,
                                         ),
                                       ));
+                                      logFirebaseEvent('Button_navigate_to');
 
                                       context.goNamed(
                                         HConfirmationCheckoutWidget.routeName,

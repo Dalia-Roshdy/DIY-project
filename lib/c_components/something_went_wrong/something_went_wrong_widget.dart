@@ -3,12 +3,18 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'something_went_wrong_model.dart';
 export 'something_went_wrong_model.dart';
 
 class SomethingWentWrongWidget extends StatefulWidget {
-  const SomethingWentWrongWidget({super.key});
+  const SomethingWentWrongWidget({
+    super.key,
+    this.message,
+    bool? showRetry,
+  }) : this.showRetry = showRetry ?? false;
+
+  final String? message;
+  final bool showRetry;
 
   static String routeName = 'Something_went_wrong';
   static String routePath = '/error';
@@ -28,6 +34,8 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
     super.initState();
     _model = createModel(context, () => SomethingWentWrongModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Something_went_wrong'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -49,7 +57,7 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Padding(
-          padding: EdgeInsets.all(48.0),
+          padding: EdgeInsets.all(30.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -59,21 +67,10 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
                 width: 280.0,
                 height: 280.0,
                 alignment: AlignmentDirectional(0.0, 0.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 36.0, 0.0, 0.0),
-                      child: Lottie.network(
-                        'https://dimg.dreamflow.cloud/v1/lottie/minimalist+error+warning+alert',
-                        width: 280.0,
-                        height: 180.0,
-                        fit: BoxFit.contain,
-                        animate: true,
-                      ),
-                    ),
-                  ],
+                child: Icon(
+                  Icons.cancel,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 105.0,
                 ),
               ),
               Column(
@@ -95,7 +92,7 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
                         ),
                   ),
                   Text(
-                    'We encountered an unexpected error. Please check your internet connection or try again later.',
+                    'We encountered an unexpected error. Please try again.',
                     textAlign: TextAlign.center,
                     maxLines: 3,
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
@@ -133,7 +130,7 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
                           ),
                           iconPresent: true,
                           iconEndPresent: false,
-                          variant: 'primary',
+                          variant: 'Primary',
                           size: 'large',
                           fullWidth: false,
                           loading: false,
@@ -146,13 +143,17 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'SOMETHING_WENT_WRONG_PAGE_Button_ON_TAP');
+                        logFirebaseEvent('Button_navigate_to');
+
                         context.goNamed(AHomePageWidget.routeName);
                       },
                       child: wrapWithModel(
                         model: _model.buttonModel2,
                         updateCallback: () => safeSetState(() {}),
                         child: Button37Widget(
-                          content: 'Back to Dashboard',
+                          content: 'Go Home',
                           iconPresent: false,
                           iconEndPresent: false,
                           variant: 'outline',
@@ -160,6 +161,9 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
                           fullWidth: false,
                           loading: false,
                           disabled: false,
+                          icon: Icon(
+                            Icons.home,
+                          ),
                         ),
                       ),
                     ),
@@ -200,6 +204,10 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'SOMETHING_WENT_WRONG_PAGE_Text_ON_TAP');
+                                logFirebaseEvent('Text_navigate_to');
+
                                 context.goNamed(KContactWidget.routeName);
                               },
                               child: Text(
@@ -228,7 +236,7 @@ class _SomethingWentWrongWidgetState extends State<SomethingWentWrongWidget> {
                   ),
                 ),
               ),
-            ].divide(SizedBox(height: 32.0)),
+            ].divide(SizedBox(height: 20.0)),
           ),
         ),
       ),

@@ -161,7 +161,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: SomethingWentWrongWidget.routeName,
           path: SomethingWentWrongWidget.routePath,
-          builder: (context, params) => SomethingWentWrongWidget(),
+          builder: (context, params) => SomethingWentWrongWidget(
+            message: params.getParam(
+              'message',
+              ParamType.String,
+            ),
+            showRetry: params.getParam(
+              'showRetry',
+              ParamType.bool,
+            ),
+          ),
         ),
         FFRoute(
           name: KContactWidget.routeName,

@@ -250,6 +250,8 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'PRODUCT_CARD2_COMP_Icon_zmyw5865_ON_TAP');
                                   if (FFAppState()
                                           .Cart
                                           .cartItems
@@ -258,6 +260,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                           .toList()
                                           .length ==
                                       0) {
+                                    logFirebaseEvent('Icon_update_app_state');
                                     FFAppState().updateCartStruct(
                                       (e) => e
                                         ..updateCartItems(
@@ -274,6 +277,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                     );
                                     safeSetState(() {});
                                   } else {
+                                    logFirebaseEvent('Icon_custom_action');
                                     await actions.updatecartItemsAction(
                                       widget.itemId!,
                                       FFAppState()
@@ -288,6 +292,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                     );
                                   }
 
+                                  logFirebaseEvent('Icon_alert_dialog');
                                   await showDialog(
                                     context: context,
                                     builder: (dialogContext) {

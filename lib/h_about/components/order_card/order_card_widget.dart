@@ -206,6 +206,9 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  logFirebaseEvent('ORDER_CARD_COMP_Button_ON_TAP');
+                  logFirebaseEvent('Button_navigate_to');
+
                   context.pushNamed(
                     HOrderTrackingWidget.routeName,
                     queryParameters: {

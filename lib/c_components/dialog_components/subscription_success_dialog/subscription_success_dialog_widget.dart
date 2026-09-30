@@ -33,11 +33,14 @@ class _SubscriptionSuccessDialogWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SUBSCRIPTION_SUCCESS_DIALOG_Subscription');
+      logFirebaseEvent('Subscription_Success_Dialog_wait__delay');
       await Future.delayed(
         Duration(
           milliseconds: 6000,
         ),
       );
+      logFirebaseEvent('Subscription_Success_Dialog_close_dialog');
       Navigator.pop(context);
     });
 
@@ -100,6 +103,9 @@ class _SubscriptionSuccessDialogWidgetState
                       size: 24.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'SUBSCRIPTION_SUCCESS_DIALOG_close_rounde');
+                      logFirebaseEvent('IconButton_close_dialog_drawer_etc');
                       Navigator.pop(context);
                     },
                   ),

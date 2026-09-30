@@ -33,12 +33,16 @@ class _UnsubscribeWidgetState extends State<UnsubscribeWidget> {
     super.initState();
     _model = createModel(context, () => UnsubscribeModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'unsubscribe'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('UNSUBSCRIBE_unsubscribe_ON_INIT_STATE');
       if (widget.subscriberId != null) {
+        logFirebaseEvent('unsubscribe_backend_call');
         _model.subscDoc =
             await SubscriberRecord.getDocumentOnce(widget.subscriberId!);
         if (_model.subscDoc?.reference != null) {
+          logFirebaseEvent('unsubscribe_backend_call');
           await _model.subscDoc!.reference.delete();
         }
       }

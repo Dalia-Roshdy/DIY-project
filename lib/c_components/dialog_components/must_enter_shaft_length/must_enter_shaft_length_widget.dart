@@ -117,6 +117,9 @@ class _MustEnterShaftLengthWidgetState
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'MUST_ENTER_SHAFT_LENGTH_OK_BTN_ON_TAP');
+                          logFirebaseEvent('Button_close_dialog_drawer_etc');
                           Navigator.pop(context);
                         },
                         text: 'OK',

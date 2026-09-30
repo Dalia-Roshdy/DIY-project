@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/components/button40/button40_widget.dart';
 import '/g_checkout_details/desktop/tracking_step/tracking_step_widget.dart';
@@ -7,10 +6,6 @@ import 'package:flutter/material.dart';
 
 class HOrderTrackingDesktopModel
     extends FlutterFlowModel<HOrderTrackingDesktopWidget> {
-  ///  Local state fields for this component.
-
-  OrdersRecord? orderDCS;
-
   ///  State fields for stateful widgets in this component.
 
   // Model for Button.

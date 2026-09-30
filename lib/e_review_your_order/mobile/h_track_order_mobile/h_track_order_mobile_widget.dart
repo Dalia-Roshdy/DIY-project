@@ -7,7 +7,6 @@ import '/g_checkout_details/desktop/order_item_row4/order_item_row4_widget.dart'
 import '/g_checkout_details/mobile/tracking_step2/tracking_step2_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'h_track_order_mobile_model.dart';
 export 'h_track_order_mobile_model.dart';
 
@@ -37,12 +36,6 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HTrackOrderMobileModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.orderMCS = widget.orderPram;
-      safeSetState(() {});
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -104,10 +97,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                             ),
                       ),
                       TextSpan(
-                        text: valueOrDefault<String>(
-                          _model.orderMCS?.orderNumber,
-                          'order',
-                        ),
+                        text: widget.orderPram!.orderNumber,
                         style: TextStyle(),
                       )
                     ],
@@ -140,7 +130,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                       ),
                       TextSpan(
                         text: dateTimeFormat(
-                            "yMMMd", _model.orderMCS!.createdAt!),
+                            "yMMMd", widget.orderPram!.createdAt!),
                         style: TextStyle(),
                       )
                     ],
@@ -166,7 +156,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                       ),
                       TextSpan(
                         text: dateTimeFormat(
-                            "yMMMd", _model.orderMCS!.updatedAt!),
+                            "yMMMd", widget.orderPram!.updatedAt!),
                         style: TextStyle(),
                       )
                     ],
@@ -350,7 +340,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                           ),
                           TextSpan(
                             text: valueOrDefault<String>(
-                              _model.orderMCS?.lines.length.toString(),
+                              widget.orderPram?.lines.length.toString(),
                               '0',
                             ),
                             style: TextStyle(
@@ -379,7 +369,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                 ),
                 Builder(
                   builder: (context) {
-                    final items = _model.orderMCS?.lines.toList() ?? [];
+                    final items = widget.orderPram?.lines.toList() ?? [];
 
                     return Column(
                       mainAxisSize: MainAxisSize.min,
@@ -462,7 +452,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                     ),
                     Text(
                       valueOrDefault<String>(
-                        _model.orderMCS?.customerSnap.name,
+                        widget.orderPram?.customerSnap.name,
                         'name',
                       ),
                       textAlign: TextAlign.start,
@@ -480,8 +470,8 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                     ),
                     Text(
                       valueOrDefault<String>(
-                        _model.orderMCS?.customerSnap.shippingAddress,
-                        '7832 Cloud Runner Lane',
+                        widget.orderPram?.customerSnap.shippingAddress,
+                        'address',
                       ),
                       textAlign: TextAlign.start,
                       maxLines: 5,
@@ -562,7 +552,11 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                             ),
                             Text(
                               valueOrDefault<String>(
-                                '\$${_model.orderMCS?.totalsSnap.subtotal.toString()}',
+                                '\$${valueOrDefault<String>(
+                                  widget.orderPram?.totalsSnap.subtotal
+                                      .toString(),
+                                  '0',
+                                )}',
                                 '\$87.14',
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -581,7 +575,7 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                             ),
                           ],
                         ),
-                        if (_model.orderMCS!.totalsSnap.motorSLFees > 0.0)
+                        if (widget.orderPram!.totalsSnap.motorSLFees > 0.0)
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -605,7 +599,11 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                               ),
                               Text(
                                 valueOrDefault<String>(
-                                  '\$${_model.orderMCS?.totalsSnap.motorSLFees.toString()}',
+                                  '\$${valueOrDefault<String>(
+                                    widget.orderPram?.totalsSnap.motorSLFees
+                                        .toString(),
+                                    '0',
+                                  )}',
                                   '\$87.14',
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -647,7 +645,11 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                             ),
                             Text(
                               valueOrDefault<String>(
-                                '\$${_model.orderMCS?.totalsSnap.shipping.toString()}',
+                                '\$${valueOrDefault<String>(
+                                  widget.orderPram?.totalsSnap.shipping
+                                      .toString(),
+                                  '0',
+                                )}',
                                 '\$87.14',
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -689,7 +691,11 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                             ),
                             Text(
                               valueOrDefault<String>(
-                                '\$${_model.orderMCS?.totalsSnap.tax.toString()}',
+                                '\$${valueOrDefault<String>(
+                                  widget.orderPram?.totalsSnap.tax
+                                      .toString(),
+                                  '0',
+                                )}',
                                 '\$87.14',
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -739,7 +745,10 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            '\$${_model.orderMCS?.totalsSnap.total.toString()}',
+                            '\$${valueOrDefault<String>(
+                              widget.orderPram?.totalsSnap.total.toString(),
+                              '0',
+                            )}',
                             '\$87.14',
                           ),
                           style: FlutterFlowTheme.of(context)
@@ -809,6 +818,10 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'H_TRACK_ORDER_MOBILE_COMP_Button_ON_TAP');
+                        logFirebaseEvent('Button_navigate_to');
+
                         context.pushNamed(KContactWidget.routeName);
                       },
                       child: wrapWithModel(

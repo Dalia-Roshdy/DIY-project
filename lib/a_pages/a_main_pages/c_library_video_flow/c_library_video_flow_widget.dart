@@ -3,6 +3,7 @@ import '/b_screen_components/s12_footer/s12_footer_widget.dart';
 import '/backend/backend.dart';
 import '/c_library_video/c_video_diagnosis_desktop/c_video_diagnosis_desktop_widget.dart';
 import '/c_library_video/c_video_diagnosis_mobile/c_video_diagnosis_mobile_widget.dart';
+import '/components/error_handler_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:collection/collection.dart';
@@ -37,16 +38,33 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
     super.initState();
     _model = createModel(context, () => CLibraryVideoFlowModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'C-Library_Video_Flow'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('C_LIBRARY_VIDEO_FLOW_C-Library_Video_Flo');
+      logFirebaseEvent('C-Library_Video_Flow_update_page_state');
       _model.isLoading = true;
+      _model.hasError = false;
+      _model.currentValue = null;
+      _model.currentOptions = [];
+      _model.selectedOption = null;
       safeSetState(() {});
       if (widget.currentVideoId != null) {
+        logFirebaseEvent('C-Library_Video_Flow_backend_call');
         _model.passedVideo =
             await DiagnosisVideoRecord.getDocumentOnce(widget.currentVideoId!);
-        _model.currentValue = _model.passedVideo;
-        safeSetState(() {});
+        if (_model.passedVideo?.reference != null) {
+          logFirebaseEvent('C-Library_Video_Flow_update_page_state');
+          _model.currentValue = _model.passedVideo;
+        } else {
+          logFirebaseEvent('C-Library_Video_Flow_update_page_state');
+          _model.hasError = true;
+          _model.isLoading = false;
+          safeSetState(() {});
+        }
       } else {
+        logFirebaseEvent('C-Library_Video_Flow_firestore_query');
         _model.startPoint = await queryDiagnosisVideoRecordOnce(
           queryBuilder: (diagnosisVideoRecord) => diagnosisVideoRecord.where(
             'isStart',
@@ -54,22 +72,35 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
           ),
           singleRecord: true,
         ).then((s) => s.firstOrNull);
-        _model.currentValue = _model.startPoint;
-        safeSetState(() {});
+        if (_model.passedVideo?.reference != null) {
+          logFirebaseEvent('C-Library_Video_Flow_update_page_state');
+          _model.currentValue = _model.startPoint;
+        } else {
+          logFirebaseEvent('C-Library_Video_Flow_update_page_state');
+          _model.hasError = true;
+          _model.isLoading = false;
+          safeSetState(() {});
+        }
       }
 
-      _model.initialOptions = await queryDiagnosisVideoOptionRecordOnce(
-        queryBuilder: (diagnosisVideoOptionRecord) => diagnosisVideoOptionRecord
-            .where(
-              'diagnosisVideoRef',
-              isEqualTo: _model.currentValue?.reference,
-            )
-            .orderBy('displayOrder'),
-      );
-      _model.currentOptions =
-          _model.initialOptions!.toList().cast<DiagnosisVideoOptionRecord>();
-      _model.isLoading = false;
-      safeSetState(() {});
+      if (_model.hasError == false) {
+        logFirebaseEvent('C-Library_Video_Flow_firestore_query');
+        _model.initialOptions = await queryDiagnosisVideoOptionRecordOnce(
+          queryBuilder: (diagnosisVideoOptionRecord) =>
+              diagnosisVideoOptionRecord
+                  .where(
+                    'diagnosisVideoRef',
+                    isEqualTo: _model.currentValue?.reference,
+                  )
+                  .orderBy('displayOrder'),
+        );
+        logFirebaseEvent('C-Library_Video_Flow_update_page_state');
+        _model.currentOptions =
+            _model.initialOptions!.toList().cast<DiagnosisVideoOptionRecord>();
+        logFirebaseEvent('C-Library_Video_Flow_update_page_state');
+        _model.isLoading = false;
+        safeSetState(() {});
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -167,8 +198,19 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                           ),
                                     ),
                                   ),
+                                if (_model.hasError == true)
+                                  Expanded(
+                                    child: wrapWithModel(
+                                      model: _model.errorHandlerModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: ErrorHandlerWidget(
+                                        retryAction: () async {},
+                                      ),
+                                    ),
+                                  ),
                                 if (((_model.currentValue != null) &&
-                                        !_model.isLoading) &&
+                                        !_model.isLoading &&
+                                        (_model.hasError == false)) &&
                                     responsiveVisibility(
                                       context: context,
                                       tabletLandscape: false,
@@ -184,12 +226,20 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                         videoRecord: _model.currentValue!,
                                         videoOptions: _model.currentOptions,
                                         onNextVideo: (nextVideoRef) async {
+                                          logFirebaseEvent(
+                                              'C_LIBRARY_VIDEO_FLOW_Container_8605sgqj_');
+                                          logFirebaseEvent(
+                                              'C_Video_Diagnosis_mobile_update_page_sta');
                                           _model.isLoading = true;
                                           safeSetState(() {});
+                                          logFirebaseEvent(
+                                              'C_Video_Diagnosis_mobile_backend_call');
                                           _model.loadedNextVideo =
                                               await DiagnosisVideoRecord
                                                   .getDocumentOnce(
                                                       nextVideoRef);
+                                          logFirebaseEvent(
+                                              'C_Video_Diagnosis_mobile_firestore_query');
                                           _model.nextOptions =
                                               await queryDiagnosisVideoOptionRecordOnce(
                                             queryBuilder:
@@ -206,8 +256,12 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                           if (_model.loadedNextVideo
                                                   ?.reference !=
                                               null) {
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_update_page_sta');
                                             _model.addToList(
                                                 _model.currentValue!);
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_update_page_sta');
                                             _model.currentValue =
                                                 _model.loadedNextVideo;
                                             _model.currentOptions = _model
@@ -215,9 +269,13 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                 .toList()
                                                 .cast<
                                                     DiagnosisVideoOptionRecord>();
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_update_page_sta');
                                             _model.isLoading = false;
                                             safeSetState(() {});
                                           } else {
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_show_snack_bar');
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
                                               SnackBar(
@@ -243,11 +301,19 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                           safeSetState(() {});
                                         },
                                         onBack: () async {
+                                          logFirebaseEvent(
+                                              'C_LIBRARY_VIDEO_FLOW_Container_8605sgqj_');
                                           if (_model.list.isNotEmpty) {
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_update_page_sta');
                                             _model.isLoading = true;
                                             safeSetState(() {});
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_update_page_sta');
                                             _model.currentValue =
                                                 _model.list.lastOrNull;
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_firestore_query');
                                             _model.previousOptions =
                                                 await queryDiagnosisVideoOptionRecordOnce(
                                               queryBuilder:
@@ -263,16 +329,24 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                           .orderBy(
                                                               'displayOrder'),
                                             );
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_update_page_sta');
                                             _model.removeFromList(
                                                 _model.list.lastOrNull!);
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_update_page_sta');
                                             _model.currentOptions = _model
                                                 .previousOptions!
                                                 .toList()
                                                 .cast<
                                                     DiagnosisVideoOptionRecord>();
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_update_page_sta');
                                             _model.isLoading = false;
                                             safeSetState(() {});
                                           } else {
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_mobile_navigate_back');
                                             context.safePop();
                                           }
 
@@ -282,7 +356,8 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                     ),
                                   ),
                                 if (((_model.currentValue?.reference != null) &&
-                                        !_model.isLoading) &&
+                                        !_model.isLoading &&
+                                        (_model.hasError == false)) &&
                                     responsiveVisibility(
                                       context: context,
                                       phone: false,
@@ -292,7 +367,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                     alignment: AlignmentDirectional(-1.0, -1.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 48.0),
+                                          0.0, 0.0, 0.0, 10.0),
                                       child: wrapWithModel(
                                         model:
                                             _model.cVideoDiagnosisDesktopModel,
@@ -303,12 +378,20 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                           videoRecord: _model.currentValue!,
                                           videoOptions: _model.currentOptions,
                                           onNextVideo: (nextVideoRef) async {
+                                            logFirebaseEvent(
+                                                'C_LIBRARY_VIDEO_FLOW_Container_h8ctwrgf_');
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_desktop_update_page_st');
                                             _model.isLoading = true;
                                             safeSetState(() {});
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_desktop_backend_call');
                                             _model.loadedNextVideoweb =
                                                 await DiagnosisVideoRecord
                                                     .getDocumentOnce(
                                                         nextVideoRef);
+                                            logFirebaseEvent(
+                                                'C_Video_Diagnosis_desktop_firestore_quer');
                                             _model.nextOptiondesktop =
                                                 await queryDiagnosisVideoOptionRecordOnce(
                                               queryBuilder:
@@ -325,8 +408,12 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                             if (_model.loadedNextVideoweb
                                                     ?.reference !=
                                                 null) {
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_update_page_st');
                                               _model.addToList(
                                                   _model.currentValue!);
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_update_page_st');
                                               _model.currentValue =
                                                   _model.loadedNextVideoweb;
                                               _model.currentOptions = _model
@@ -334,9 +421,13 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                   .toList()
                                                   .cast<
                                                       DiagnosisVideoOptionRecord>();
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_update_page_st');
                                               _model.isLoading = false;
                                               safeSetState(() {});
                                             } else {
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_show_snack_bar');
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
                                                 SnackBar(
@@ -362,11 +453,19 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                             safeSetState(() {});
                                           },
                                           onBack: () async {
+                                            logFirebaseEvent(
+                                                'C_LIBRARY_VIDEO_FLOW_Container_h8ctwrgf_');
                                             if (_model.list.isNotEmpty) {
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_update_page_st');
                                               _model.isLoading = true;
                                               safeSetState(() {});
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_update_page_st');
                                               _model.currentValue =
                                                   _model.list.lastOrNull;
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_firestore_quer');
                                               _model.previousOptionsdesktop =
                                                   await queryDiagnosisVideoOptionRecordOnce(
                                                 queryBuilder:
@@ -382,16 +481,24 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                             .orderBy(
                                                                 'displayOrder'),
                                               );
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_update_page_st');
                                               _model.removeFromList(
                                                   _model.list.lastOrNull!);
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_update_page_st');
                                               _model.currentOptions = _model
                                                   .previousOptionsdesktop!
                                                   .toList()
                                                   .cast<
                                                       DiagnosisVideoOptionRecord>();
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_update_page_st');
                                               _model.isLoading = false;
                                               safeSetState(() {});
                                             } else {
+                                              logFirebaseEvent(
+                                                  'C_Video_Diagnosis_desktop_navigate_back');
                                               context.safePop();
                                             }
 

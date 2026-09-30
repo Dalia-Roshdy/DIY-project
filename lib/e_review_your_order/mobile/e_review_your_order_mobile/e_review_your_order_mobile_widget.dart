@@ -45,12 +45,15 @@ class _EReviewYourOrderMobileWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('E_REVIEW_YOUR_ORDER_MOBILE_E_Review_your');
       if ((_model.toolsCS.isNotEmpty) == false) {
+        logFirebaseEvent('E_Review_your_order_mobile_wait__delay');
         await Future.delayed(
           Duration(
             milliseconds: 500,
           ),
         );
+        logFirebaseEvent('E_Review_your_order_mobile_update_compon');
         _model.toolsCS = widget.toolsC!.toList().cast<ItemsRecord>();
         _model.updatePage(() {});
       }
@@ -562,6 +565,10 @@ class _EReviewYourOrderMobileWidgetState
                                                           toolsListDisplayItem] =
                                                       newValue!);
                                                   if (newValue!) {
+                                                    logFirebaseEvent(
+                                                        'E_REVIEW_YOUR_ORDER_MOBILE_Checkbox-tool');
+                                                    logFirebaseEvent(
+                                                        'Checkbox-tool_update_app_state');
                                                     FFAppState()
                                                         .updateCartStruct(
                                                       (e) => e
@@ -596,10 +603,18 @@ class _EReviewYourOrderMobileWidgetState
                                                           )),
                                                         ),
                                                     );
+                                                    logFirebaseEvent(
+                                                        'Checkbox-tool_custom_action');
                                                     await actions
                                                         .calculateCartTotal();
+                                                    logFirebaseEvent(
+                                                        'Checkbox-tool_rebuild_component');
                                                     _model.updatePage(() {});
                                                   } else {
+                                                    logFirebaseEvent(
+                                                        'E_REVIEW_YOUR_ORDER_MOBILE_Checkbox-tool');
+                                                    logFirebaseEvent(
+                                                        'Checkbox-tool_update_app_state');
                                                     FFAppState()
                                                         .updateCartStruct(
                                                       (e) => e
@@ -616,8 +631,12 @@ class _EReviewYourOrderMobileWidgetState
                                                         ),
                                                     );
                                                     _model.updatePage(() {});
+                                                    logFirebaseEvent(
+                                                        'Checkbox-tool_custom_action');
                                                     await actions
                                                         .calculateCartTotal();
+                                                    logFirebaseEvent(
+                                                        'Checkbox-tool_rebuild_component');
                                                     _model.updatePage(() {});
                                                   }
                                                 },
@@ -880,20 +899,34 @@ class _EReviewYourOrderMobileWidgetState
                                             safeSetState(() => _model
                                                 .checkboxSlValue = newValue!);
                                             if (newValue!) {
+                                              logFirebaseEvent(
+                                                  'E_REVIEW_YOUR_ORDER_MOBILE_Checkbox-sl_O');
+                                              logFirebaseEvent(
+                                                  'Checkbox-sl_update_app_state');
                                               FFAppState().updateCartStruct(
                                                 (e) => e..motorSLEnabled = true,
                                               );
                                               safeSetState(() {});
+                                              logFirebaseEvent(
+                                                  'Checkbox-sl_custom_action');
                                               await actions
                                                   .calculateCartTotal();
+                                              logFirebaseEvent(
+                                                  'Checkbox-sl_rebuild_component');
                                               safeSetState(() {});
                                             } else {
+                                              logFirebaseEvent(
+                                                  'E_REVIEW_YOUR_ORDER_MOBILE_Checkbox-sl_O');
+                                              logFirebaseEvent(
+                                                  'Checkbox-sl_update_app_state');
                                               FFAppState().updateCartStruct(
                                                 (e) => e
                                                   ..motorSLComment = null
                                                   ..motorSLFees = null
                                                   ..motorSLEnabled = false,
                                               );
+                                              logFirebaseEvent(
+                                                  'Checkbox-sl_reset_form_fields');
                                               safeSetState(() {
                                                 _model.textFieldSLTextController
                                                         ?.text =
@@ -901,8 +934,12 @@ class _EReviewYourOrderMobileWidgetState
                                                         .Cart
                                                         .motorSLComment;
                                               });
+                                              logFirebaseEvent(
+                                                  'Checkbox-sl_custom_action');
                                               await actions
                                                   .calculateCartTotal();
+                                              logFirebaseEvent(
+                                                  'Checkbox-sl_rebuild_component');
                                               _model.updatePage(() {});
                                             }
                                           },
@@ -954,6 +991,10 @@ class _EReviewYourOrderMobileWidgetState
                                           '_model.textFieldSLTextController',
                                           Duration(milliseconds: 100),
                                           () async {
+                                            logFirebaseEvent(
+                                                'E_REVIEW_YOUR_ORDER_MOBILE_TextField-SL_');
+                                            logFirebaseEvent(
+                                                'TextField-SL_update_app_state');
                                             FFAppState().updateCartStruct(
                                               (e) => e
                                                 ..motorSLComment = _model
@@ -1099,6 +1140,10 @@ class _EReviewYourOrderMobileWidgetState
                                 '_model.textFieldMessageTextController',
                                 Duration(milliseconds: 100),
                                 () async {
+                                  logFirebaseEvent(
+                                      'E_REVIEW_YOUR_ORDER_MOBILE_TextField-Mes');
+                                  logFirebaseEvent(
+                                      'TextField-Message_update_app_state');
                                   FFAppState().updateCartStruct(
                                     (e) => e
                                       ..motorSLComment =
@@ -1302,10 +1347,13 @@ class _EReviewYourOrderMobileWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'E_REVIEW_YOUR_ORDER_MOBILE_Button_ON_TAP');
                               if (FFAppState().Cart.cartItems.isNotEmpty) {
                                 if ((_model.checkboxSlValue == true) &&
                                     (_model.textFieldSLTextController.text ==
                                             '')) {
+                                  logFirebaseEvent('Button_alert_dialog');
                                   await showDialog(
                                     barrierDismissible: false,
                                     context: context,
@@ -1323,6 +1371,7 @@ class _EReviewYourOrderMobileWidgetState
                                     },
                                   );
 
+                                  logFirebaseEvent('Button_set_form_field');
                                   safeSetState(() {
                                     _model.textFieldSLTextController?.text = '';
                                     _model.textFieldSLFocusNode?.requestFocus();
@@ -1338,6 +1387,7 @@ class _EReviewYourOrderMobileWidgetState
                                     });
                                   });
                                 } else {
+                                  logFirebaseEvent('Button_update_app_state');
                                   FFAppState().updateCartStruct(
                                     (e) => e
                                       ..comment = _model
@@ -1350,11 +1400,14 @@ class _EReviewYourOrderMobileWidgetState
                                           ? true
                                           : false,
                                   );
+                                  logFirebaseEvent('Button_custom_action');
                                   await actions.calculateCartTotal();
+                                  logFirebaseEvent('Button_set_form_field');
                                   safeSetState(() {
                                     _model.checkboxSlValue =
                                         FFAppState().Cart.motorSLEnabled;
                                   });
+                                  logFirebaseEvent('Button_navigate_to');
 
                                   context.pushNamed(
                                       GSecurePaymentCheckoutWidget.routeName);

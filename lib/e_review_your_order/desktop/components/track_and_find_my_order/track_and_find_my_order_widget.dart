@@ -309,12 +309,16 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'TRACK_AND_FIND_MY_ORDER_Button_ON_TAP');
+                                logFirebaseEvent('Button_validate_form');
                                 _model.formval = true;
                                 if (_model.formKey.currentState == null ||
                                     !_model.formKey.currentState!.validate()) {
                                   safeSetState(() => _model.formval = false);
                                   return;
                                 }
+                                logFirebaseEvent('Button_firestore_query');
                                 _model.orderList = await queryOrdersRecordOnce(
                                   queryBuilder: (ordersRecord) => ordersRecord
                                       .where(
@@ -334,13 +338,19 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                       )
                                       .orderBy('createdAt', descending: true),
                                 );
+                                logFirebaseEvent(
+                                    'Button_update_component_state');
                                 _model.orders = _model.orderList!
                                     .toList()
                                     .cast<OrdersRecord>();
                                 if (_model.orders.length > 0) {
+                                  logFirebaseEvent(
+                                      'Button_update_component_state');
                                   _model.zeroResult = false;
                                   _model.updatePage(() {});
                                 } else {
+                                  logFirebaseEvent(
+                                      'Button_update_component_state');
                                   _model.zeroResult = true;
                                   _model.updatePage(() {});
                                 }
@@ -633,6 +643,10 @@ class _TrackAndFindMyOrderWidgetState extends State<TrackAndFindMyOrderWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'TRACK_AND_FIND_MY_ORDER_Button_ON_TAP');
+                                    logFirebaseEvent('Button_navigate_to');
+
                                     context.pushNamed(KContactWidget.routeName);
                                   },
                                   child: wrapWithModel(

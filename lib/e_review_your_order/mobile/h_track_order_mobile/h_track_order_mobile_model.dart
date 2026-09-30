@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/components/button41/button41_widget.dart';
 import '/g_checkout_details/desktop/order_item_row4/order_item_row4_widget.dart';
@@ -7,10 +6,6 @@ import 'h_track_order_mobile_widget.dart' show HTrackOrderMobileWidget;
 import 'package:flutter/material.dart';
 
 class HTrackOrderMobileModel extends FlutterFlowModel<HTrackOrderMobileWidget> {
-  ///  Local state fields for this component.
-
-  OrdersRecord? orderMCS;
-
   ///  State fields for stateful widgets in this component.
 
   // Model for TrackingStep.

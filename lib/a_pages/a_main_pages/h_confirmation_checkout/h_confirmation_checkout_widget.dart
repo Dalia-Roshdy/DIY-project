@@ -43,14 +43,21 @@ class _HConfirmationCheckoutWidgetState
     super.initState();
     _model = createModel(context, () => HConfirmationCheckoutModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'H-Confirmation_Checkout'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('H_CONFIRMATION_CHECKOUT_H-Confirmation_C');
+      logFirebaseEvent('H-Confirmation_Checkout_update_page_stat');
       _model.cartPS = FFAppState().Cart;
+      logFirebaseEvent('H-Confirmation_Checkout_backend_call');
       _model.orderAct = await OrdersRecord.getDocumentOnce(widget.orderId!);
       if (_model.orderAct?.status == OrderStatus.paid) {
+        logFirebaseEvent('H-Confirmation_Checkout_update_page_stat');
         _model.order = _model.orderAct;
         safeSetState(() {});
       } else {
+        logFirebaseEvent('H-Confirmation_Checkout_backend_call');
         _model.paymentJson = await PaymentsGroup.getPaymentByIdCall.call(
           paymentIntentId: _model.orderAct?.payment.paymentIntentId,
         );
@@ -60,6 +67,8 @@ class _HConfirmationCheckoutWidgetState
                 (_model.paymentJson?.jsonBody ?? ''),
               ) ==
               PaymentStatus.succeeded.name) {
+            logFirebaseEvent('H-Confirmation_Checkout_backend_call');
+
             await _model.orderAct!.reference.update(createOrdersRecordData(
               payment: createPaymentDataStruct(
                 paymentIntentId: PaymentsGroup.getPaymentByIdCall.paymentId(
@@ -88,10 +97,13 @@ class _HConfirmationCheckoutWidgetState
               status: OrderStatus.paid,
               updatedAt: getCurrentTimestamp,
             ));
+            logFirebaseEvent('H-Confirmation_Checkout_backend_call');
             _model.orderUpdatedAct =
                 await OrdersRecord.getDocumentOnce(_model.orderAct!.reference);
+            logFirebaseEvent('H-Confirmation_Checkout_update_page_stat');
             _model.order = _model.orderUpdatedAct;
             safeSetState(() {});
+            logFirebaseEvent('H-Confirmation_Checkout_firestore_query');
             _model.bcc = await querySettingsRecordOnce(
               queryBuilder: (settingsRecord) => settingsRecord.where(
                 'key',
@@ -99,6 +111,7 @@ class _HConfirmationCheckoutWidgetState
               ),
               singleRecord: true,
             ).then((s) => s.firstOrNull);
+            logFirebaseEvent('H-Confirmation_Checkout_custom_action');
             _model.email = await actions.buildOrderEmailHtml(
               _model.orderUpdatedAct?.customerSnap.name,
               _model.orderUpdatedAct?.customerSnap.shippingAddress,
@@ -110,6 +123,7 @@ class _HConfirmationCheckoutWidgetState
               _model.orderUpdatedAct!.totalsSnap.total,
               _model.cartPS!.cartItems.toList(),
             );
+            logFirebaseEvent('H-Confirmation_Checkout_backend_call');
             unawaited(
               () async {
                 await MailRecord.collection.doc().set(createMailRecordData(
@@ -127,9 +141,12 @@ class _HConfirmationCheckoutWidgetState
                     ));
               }(),
             );
+            logFirebaseEvent('H-Confirmation_Checkout_update_app_state');
             FFAppState().Cart = CartStruct();
             safeSetState(() {});
           } else {
+            logFirebaseEvent('H-Confirmation_Checkout_backend_call');
+
             await _model.orderAct!.reference.update(createOrdersRecordData(
               payment: createPaymentDataStruct(
                 paymentIntentId: PaymentsGroup.getPaymentByIdCall.paymentId(
@@ -153,7 +170,17 @@ class _HConfirmationCheckoutWidgetState
             ));
           }
         } else {
-          context.goNamed(SomethingWentWrongWidget.routeName);
+          logFirebaseEvent('H-Confirmation_Checkout_navigate_to');
+
+          context.goNamed(
+            SomethingWentWrongWidget.routeName,
+            queryParameters: {
+              'message': serializeParam(
+                '',
+                ParamType.String,
+              ),
+            }.withoutNulls,
+          );
         }
       }
     });

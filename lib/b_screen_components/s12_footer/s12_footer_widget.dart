@@ -72,6 +72,10 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'S12_FOOTER_Container_mmvn8aj0_ON_TAP');
+                          logFirebaseEvent('Container_navigate_to');
+
                           context.pushNamed(AHomePageWidget.routeName);
                         },
                         child: Container(
@@ -121,6 +125,11 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                               return [
                                 () => FFButtonWidget(
                                       onPressed: () async {
+                                        logFirebaseEvent(
+                                            'S12_FOOTER_COMP_Button-HomeBtn_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Button-HomeBtn_navigate_to');
+
                                         context
                                             .goNamed(AHomePageWidget.routeName);
                                       },
@@ -170,6 +179,11 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                                     ),
                                 () => FFButtonWidget(
                                       onPressed: () async {
+                                        logFirebaseEvent(
+                                            'S12_FOOTER_COMP_Button-AboutBtn_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Button-AboutBtn_navigate_to');
+
                                         context
                                             .pushNamed(IAboutWidget.routeName);
                                       },
@@ -219,6 +233,11 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                                     ),
                                 () => FFButtonWidget(
                                       onPressed: () async {
+                                        logFirebaseEvent(
+                                            'S12_FOOTER_Button-ServicesBtn_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Button-ServicesBtn_navigate_to');
+
                                         context.pushNamed(
                                             DSelectProductRepairWidget
                                                 .routeName);
@@ -269,6 +288,11 @@ class _S12FooterWidgetState extends State<S12FooterWidget> {
                                     ),
                                 () => FFButtonWidget(
                                       onPressed: () async {
+                                        logFirebaseEvent(
+                                            'S12_FOOTER_COMP_Button-ContactBtn_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Button-ContactBtn_navigate_to');
+
                                         context.pushNamed(
                                             KContactWidget.routeName);
                                       },

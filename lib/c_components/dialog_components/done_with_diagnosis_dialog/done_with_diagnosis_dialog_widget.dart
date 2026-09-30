@@ -122,7 +122,11 @@ class _DoneWithDiagnosisDialogWidgetState
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'DONE_WITH_DIAGNOSIS_DIALOG_HOME_BTN_ON_T');
+                          logFirebaseEvent('Button_close_dialog_drawer_etc');
                           Navigator.pop(context);
+                          logFirebaseEvent('Button_navigate_to');
 
                           context.goNamed(AHomePageWidget.routeName);
                         },

@@ -32,28 +32,36 @@ class _LRequestTechnicalWidgetState extends State<LRequestTechnicalWidget> {
     super.initState();
     _model = createModel(context, () => LRequestTechnicalModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'L-Request_Technical'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('L_REQUEST_TECHNICAL_L-Request_Technical_');
       if (!(FFAppState().acMakeList.isNotEmpty) ||
           !(FFAppState().acModelList.isNotEmpty)) {
+        logFirebaseEvent('L-Request_Technical_firestore_query');
         _model.acMakeAct = await queryACMakeRecordOnce(
           queryBuilder: (aCMakeRecord) => aCMakeRecord.where(
             'approved',
             isEqualTo: true,
           ),
         );
+        logFirebaseEvent('L-Request_Technical_firestore_query');
         _model.acModelAct = await queryACModelRecordOnce(
           queryBuilder: (aCModelRecord) => aCModelRecord.where(
             'approved',
             isEqualTo: true,
           ),
         );
+        logFirebaseEvent('L-Request_Technical_custom_action');
         _model.acMakeMap = await actions.mapACMakeToDto(
           _model.acMakeAct!.toList(),
         );
+        logFirebaseEvent('L-Request_Technical_custom_action');
         _model.acModelMap = await actions.mapACModelToDto(
           _model.acModelAct!.toList(),
         );
+        logFirebaseEvent('L-Request_Technical_update_app_state');
         FFAppState().acMakeList = _model.acMakeMap!
             .sortedList(keyOf: (e) => e.name, desc: false)
             .toList()

@@ -49,11 +49,14 @@ class _S18FilterRepairPartsDesktopWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('S18_FILTER_REPAIR_PARTS_DESKTOP_S18_Filt');
+      logFirebaseEvent('S18_Filter_repair_parts_desktop_wait__de');
       await Future.delayed(
         Duration(
           milliseconds: 30,
         ),
       );
+      logFirebaseEvent('S18_Filter_repair_parts_desktop_update_c');
       _model.selectedPart = widget.selectedPartPram;
       safeSetState(() {});
     });
@@ -135,9 +138,15 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     0.0, 14.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'S18_FILTER_REPAIR_PARTS_DESKTOP_Motor_ON');
                                     if (_model.selectedPart != Parts.MOTOR) {
+                                      logFirebaseEvent(
+                                          'Motor_update_component_state');
                                       _model.selectedPart = Parts.MOTOR;
                                       _model.updatePage(() {});
+                                      logFirebaseEvent(
+                                          'Motor_reset_form_fields');
                                       _model.dropDownHpValueController?.reset();
                                       _model.dropDownHpValue = null;
                                       _model.dropDownRotationValueController
@@ -147,6 +156,8 @@ class _S18FilterRepairPartsDesktopWidgetState
                                           ?.reset();
                                       _model.dropDownRpmValue = null;
 
+                                      logFirebaseEvent(
+                                          'Motor_execute_callback');
                                       await widget.onMotorSelected?.call(
                                         _model.selectedPart?.name,
                                         230,
@@ -217,10 +228,16 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     0.0, 14.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'S18_FILTER_REPAIR_PARTS_DESKTOP_Contract');
                                     if (_model.selectedPart !=
                                         Parts.CONTACTOR) {
+                                      logFirebaseEvent(
+                                          'Contractor_update_component_state');
                                       _model.selectedPart = Parts.CONTACTOR;
                                       _model.updatePage(() {});
+                                      logFirebaseEvent(
+                                          'Contractor_reset_form_fields');
                                       safeSetState(() {
                                         _model.dropDownAmpValueController
                                             ?.reset();
@@ -229,6 +246,8 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             ?.reset();
                                         _model.dropDownNopValue = null;
                                       });
+                                      logFirebaseEvent(
+                                          'Contractor_execute_callback');
                                       await widget.onContSelected?.call(
                                         _model.dropDownAmpValue != null
                                             ? _model.dropDownAmpValue
@@ -295,10 +314,16 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     0.0, 14.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'S18_FILTER_REPAIR_PARTS_DESKTOP_Capacito');
                                     if (_model.selectedPart !=
                                         Parts.CAPACITOR) {
+                                      logFirebaseEvent(
+                                          'Capacitor_update_component_state');
                                       _model.selectedPart = Parts.CAPACITOR;
                                       _model.updatePage(() {});
+                                      logFirebaseEvent(
+                                          'Capacitor_reset_form_fields');
                                       safeSetState(() {
                                         _model.dropDownMFD1ValueController
                                             ?.reset();
@@ -312,6 +337,8 @@ class _S18FilterRepairPartsDesktopWidgetState
                                         _model.dDShapValueController?.reset();
                                         _model.dDShapValue = null;
                                       });
+                                      logFirebaseEvent(
+                                          'Capacitor_execute_callback');
                                       await widget.onCapatSelected?.call(
                                         Parts.CAPACITOR.name,
                                         _model.dropDownMFD1Value != null
@@ -863,6 +890,10 @@ class _S18FilterRepairPartsDesktopWidgetState
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        logFirebaseEvent(
+                                            'S18_FILTER_REPAIR_PARTS_DESKTOP_Text_ypb');
+                                        logFirebaseEvent(
+                                            'Text_reset_form_fields');
                                         _model.dropDownHpValueController
                                             ?.reset();
                                         _model.dropDownHpValue = null;
@@ -873,6 +904,8 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             ?.reset();
                                         _model.dropDownRpmValue = null;
 
+                                        logFirebaseEvent(
+                                            'Text_execute_callback');
                                         await widget.onMotorSelected?.call(
                                           _model.selectedPart?.name,
                                           230,
@@ -918,6 +951,9 @@ class _S18FilterRepairPartsDesktopWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'S18_FILTER_REPAIR_PARTS_DESKTOP_Button_O');
+                                    logFirebaseEvent('Button_execute_callback');
                                     await widget.onMotorSelected?.call(
                                       _model.selectedPart?.name,
                                       230,
@@ -1189,12 +1225,16 @@ class _S18FilterRepairPartsDesktopWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'S18_FILTER_REPAIR_PARTS_DESKTOP_Text_y4o');
+                                  logFirebaseEvent('Text_reset_form_fields');
                                   safeSetState(() {
                                     _model.dropDownAmpValueController?.reset();
                                     _model.dropDownAmpValue = null;
                                     _model.dropDownNopValueController?.reset();
                                     _model.dropDownNopValue = null;
                                   });
+                                  logFirebaseEvent('Text_execute_callback');
                                   await widget.onContSelected?.call(
                                     _model.dropDownAmpValue != null
                                         ? _model.dropDownAmpValue?.toDouble()
@@ -1230,6 +1270,9 @@ class _S18FilterRepairPartsDesktopWidgetState
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'S18_FILTER_REPAIR_PARTS_DESKTOP_Button_O');
+                                logFirebaseEvent('Button_execute_callback');
                                 await widget.onContSelected?.call(
                                   _model.dropDownAmpValue != null
                                       ? _model.dropDownAmpValue?.toDouble()
@@ -1759,6 +1802,9 @@ class _S18FilterRepairPartsDesktopWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'S18_FILTER_REPAIR_PARTS_DESKTOP_Text_lvy');
+                                  logFirebaseEvent('Text_reset_form_fields');
                                   safeSetState(() {
                                     _model.dropDownMFD1ValueController?.reset();
                                     _model.dropDownMFD1Value = null;
@@ -1769,6 +1815,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                     _model.dDShapValueController?.reset();
                                     _model.dDShapValue = null;
                                   });
+                                  logFirebaseEvent('Text_execute_callback');
                                   await widget.onCapatSelected?.call(
                                     Parts.CAPACITOR.name,
                                     _model.dropDownMFD1Value != null
@@ -1812,6 +1859,9 @@ class _S18FilterRepairPartsDesktopWidgetState
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'S18_FILTER_REPAIR_PARTS_DESKTOP_Button_O');
+                                logFirebaseEvent('Button_execute_callback');
                                 await widget.onCapatSelected?.call(
                                   Parts.CAPACITOR.name,
                                   _model.dropDownMFD1Value != null

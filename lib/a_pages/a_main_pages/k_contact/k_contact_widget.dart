@@ -32,28 +32,35 @@ class _KContactWidgetState extends State<KContactWidget> {
     super.initState();
     _model = createModel(context, () => KContactModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'K-Contact'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('K_CONTACT_PAGE_K-Contact_ON_INIT_STATE');
       if (!(FFAppState().acMakeList.isNotEmpty) ||
           !(FFAppState().acModelList.isNotEmpty)) {
+        logFirebaseEvent('K-Contact_firestore_query');
         _model.acMakeAct = await queryACMakeRecordOnce(
           queryBuilder: (aCMakeRecord) => aCMakeRecord.where(
             'approved',
             isEqualTo: true,
           ),
         );
+        logFirebaseEvent('K-Contact_firestore_query');
         _model.acModelAct = await queryACModelRecordOnce(
           queryBuilder: (aCModelRecord) => aCModelRecord.where(
             'approved',
             isEqualTo: true,
           ),
         );
+        logFirebaseEvent('K-Contact_custom_action');
         _model.acMakeMap = await actions.mapACMakeToDto(
           _model.acMakeAct!.toList(),
         );
+        logFirebaseEvent('K-Contact_custom_action');
         _model.acModelMap = await actions.mapACModelToDto(
           _model.acModelAct!.toList(),
         );
+        logFirebaseEvent('K-Contact_update_app_state');
         FFAppState().acMakeList = _model.acMakeMap!
             .sortedList(keyOf: (e) => e.name, desc: false)
             .toList()

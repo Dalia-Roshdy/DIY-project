@@ -87,6 +87,9 @@ class _SuccessDialogWidgetState extends State<SuccessDialogWidget> {
                       size: 24.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'SUCCESS_DIALOG_close_rounded_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_close_dialog_drawer_etc');
                       Navigator.pop(context);
                     },
                   ),

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../auth_manager.dart';
+import '../../flutter_flow/flutter_flow_util.dart';
 
 import 'anonymous_auth.dart';
 import 'apple_auth.dart';
@@ -55,6 +56,7 @@ class FirebaseAuthManager extends AuthManager
 
   @override
   Future signOut() {
+    logFirebaseEvent("SIGN_OUT");
     return FirebaseAuth.instance.signOut();
   }
 
@@ -65,6 +67,7 @@ class FirebaseAuthManager extends AuthManager
         print('Error: delete user attempted with no logged in user!');
         return;
       }
+      logFirebaseEvent("DELETE_USER");
       await currentUser?.delete();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'requires-recent-login') {
@@ -323,6 +326,7 @@ class FirebaseAuthManager extends AuthManager
   ) async {
     try {
       final userCredential = await signInFunc();
+      logFirebaseAuthEvent(userCredential?.user, authProvider);
       return userCredential == null
           ? null
           : DIYACWebFirebaseUser.fromUserCredential(userCredential);

@@ -45,18 +45,23 @@ class _SerlectProductMobileWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SERLECT_PRODUCT_MOBILE_Serlect_Product_M');
+      logFirebaseEvent('Serlect_Product_Mobile_wait__delay');
       await Future.delayed(
         Duration(
           milliseconds: 30,
         ),
       );
+      logFirebaseEvent('Serlect_Product_Mobile_update_component_');
       _model.selectedPartCS = widget.selectedPartPram;
       _model.partsList = [];
       _model.updatePage(() {});
       if (_model.selectedPartCS == Parts.MOTOR) {
         if (!(FFAppState().MotorCardList.isNotEmpty)) {
+          logFirebaseEvent('Serlect_Product_Mobile_custom_action');
           await actions.filterMotorItemsV2();
         }
+        logFirebaseEvent('Serlect_Product_Mobile_update_component_');
         _model.partsList = FFAppState()
             .MotorCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
@@ -65,8 +70,10 @@ class _SerlectProductMobileWidgetState
         safeSetState(() {});
       } else if (_model.selectedPartCS == Parts.CONTACTOR) {
         if (!(FFAppState().ContCardList.isNotEmpty)) {
+          logFirebaseEvent('Serlect_Product_Mobile_custom_action');
           await actions.filterContactorItemsV2();
         }
+        logFirebaseEvent('Serlect_Product_Mobile_update_component_');
         _model.partsList = FFAppState()
             .ContCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
@@ -75,8 +82,10 @@ class _SerlectProductMobileWidgetState
         safeSetState(() {});
       } else if (_model.selectedPartCS == Parts.CAPACITOR) {
         if (!(FFAppState().CapacCardList.isNotEmpty)) {
+          logFirebaseEvent('Serlect_Product_Mobile_custom_action');
           await actions.filterCapacitorItemsV2();
         }
+        logFirebaseEvent('Serlect_Product_Mobile_update_component_');
         _model.partsList = FFAppState()
             .CapacCardList
             .sortedList(keyOf: (e) => e.title, desc: false)
@@ -216,10 +225,14 @@ class _SerlectProductMobileWidgetState
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'SERLECT_PRODUCT_MOBILE_FilterItem_ON_TAP');
                       if (_model.selectedPartCS != Parts.MOTOR) {
                         if (!(FFAppState().MotorCardList.isNotEmpty)) {
+                          logFirebaseEvent('FilterItem_custom_action');
                           await actions.filterMotorItemsV2();
                         }
+                        logFirebaseEvent('FilterItem_reset_form_fields');
                         _model.dropDownHpValueController?.reset();
                         _model.dropDownHpValue = null;
                         _model.dropDownRpmValueController?.reset();
@@ -239,6 +252,7 @@ class _SerlectProductMobileWidgetState
                         _model.dropDownShapeValueController?.reset();
                         _model.dropDownShapeValue = null;
 
+                        logFirebaseEvent('FilterItem_update_component_state');
                         _model.selectedPartCS = Parts.MOTOR;
                         _model.partsList = FFAppState()
                             .MotorCardList
@@ -267,10 +281,14 @@ class _SerlectProductMobileWidgetState
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent(
+                        'SERLECT_PRODUCT_MOBILE_FilterItem_ON_TAP');
                     if (_model.selectedPartCS != Parts.CAPACITOR) {
                       if (!(FFAppState().CapacCardList.isNotEmpty)) {
+                        logFirebaseEvent('FilterItem_custom_action');
                         await actions.filterCapacitorItemsV2();
                       }
+                      logFirebaseEvent('FilterItem_reset_form_fields');
                       _model.dropDownHpValueController?.reset();
                       _model.dropDownHpValue = null;
                       _model.dropDownRotationValueController?.reset();
@@ -290,6 +308,7 @@ class _SerlectProductMobileWidgetState
                       _model.dropDownMFD2ValueController?.reset();
                       _model.dropDownMFD2Value = null;
 
+                      logFirebaseEvent('FilterItem_update_component_state');
                       _model.selectedPartCS = Parts.CAPACITOR;
                       _model.partsList = FFAppState()
                           .CapacCardList
@@ -319,10 +338,14 @@ class _SerlectProductMobileWidgetState
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'SERLECT_PRODUCT_MOBILE_FilterItem_ON_TAP');
                       if (_model.selectedPartCS != Parts.CONTACTOR) {
                         if (!(FFAppState().ContCardList.isNotEmpty)) {
+                          logFirebaseEvent('FilterItem_custom_action');
                           await actions.filterContactorItemsV2();
                         }
+                        logFirebaseEvent('FilterItem_reset_form_fields');
                         _model.dropDownHpValueController?.reset();
                         _model.dropDownHpValue = null;
                         _model.dropDownRpmValueController?.reset();
@@ -342,6 +365,7 @@ class _SerlectProductMobileWidgetState
                         _model.dropDownNopValueController?.reset();
                         _model.dropDownNopValue = null;
 
+                        logFirebaseEvent('FilterItem_update_component_state');
                         _model.selectedPartCS = Parts.CONTACTOR;
                         _model.partsList = FFAppState()
                             .ContCardList
@@ -1086,6 +1110,10 @@ class _SerlectProductMobileWidgetState
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        logFirebaseEvent(
+                                            'SERLECT_PRODUCT_MOBILE_Text_7mxq8l38_ON_');
+                                        logFirebaseEvent(
+                                            'Text_reset_form_fields');
                                         _model.dropDownHpValueController
                                             ?.reset();
                                         _model.dropDownHpValue = null;
@@ -1114,6 +1142,8 @@ class _SerlectProductMobileWidgetState
                                             ?.reset();
                                         _model.dropDownShapeValue = null;
 
+                                        logFirebaseEvent(
+                                            'Text_update_component_state');
                                         _model.selectedPartCS = Parts.MOTOR;
                                         _model.partsList = FFAppState()
                                             .MotorCardList
@@ -1151,11 +1181,17 @@ class _SerlectProductMobileWidgetState
                                       0.0, 0.0, 0.0, 12.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'SERLECT_PRODUCT_MOBILE_FILTER_BTN_ON_TAP');
                                       if (!(FFAppState()
                                           .MotorCardList
                                           .isNotEmpty)) {
+                                        logFirebaseEvent(
+                                            'Button_custom_action');
                                         await actions.filterMotorItemsV2();
                                       }
+                                      logFirebaseEvent(
+                                          'Button_update_component_state');
                                       _model.partsList = FFAppState()
                                           .MotorCardList
                                           .where((e) =>
@@ -1544,6 +1580,9 @@ class _SerlectProductMobileWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'SERLECT_PRODUCT_MOBILE_Text_vw0qbrwb_ON_');
+                                    logFirebaseEvent('Text_reset_form_fields');
                                     _model.dropDownHpValueController?.reset();
                                     _model.dropDownHpValue = null;
                                     _model.dropDownRpmValueController?.reset();
@@ -1565,6 +1604,8 @@ class _SerlectProductMobileWidgetState
                                     _model.dropDownNopValueController?.reset();
                                     _model.dropDownNopValue = null;
 
+                                    logFirebaseEvent(
+                                        'Text_update_component_state');
                                     _model.selectedPartCS = Parts.CONTACTOR;
                                     _model.partsList = FFAppState()
                                         .ContCardList
@@ -1600,9 +1641,14 @@ class _SerlectProductMobileWidgetState
                                   0.0, 12.0, 0.0, 12.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'SERLECT_PRODUCT_MOBILE_FILTER_BTN_ON_TAP');
                                   if (!(FFAppState().ContCardList.isNotEmpty)) {
+                                    logFirebaseEvent('Button_custom_action');
                                     await actions.filterContactorItemsV2();
                                   }
+                                  logFirebaseEvent(
+                                      'Button_update_component_state');
                                   _model.partsList = FFAppState()
                                       .ContCardList
                                       .where((e) =>
@@ -2331,6 +2377,9 @@ class _SerlectProductMobileWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'SERLECT_PRODUCT_MOBILE_Text_nl3au4da_ON_');
+                                    logFirebaseEvent('Text_reset_form_fields');
                                     _model.dropDownHpValueController?.reset();
                                     _model.dropDownHpValue = null;
                                     _model.dropDownRotationValueController
@@ -2352,6 +2401,8 @@ class _SerlectProductMobileWidgetState
                                     _model.dropDownMFD2ValueController?.reset();
                                     _model.dropDownMFD2Value = null;
 
+                                    logFirebaseEvent(
+                                        'Text_update_component_state');
                                     _model.selectedPartCS = Parts.CAPACITOR;
                                     _model.partsList = FFAppState()
                                         .CapacCardList
@@ -2387,11 +2438,16 @@ class _SerlectProductMobileWidgetState
                                   0.0, 12.0, 0.0, 12.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'SERLECT_PRODUCT_MOBILE_FILTER_BTN_ON_TAP');
                                   if (!(FFAppState()
                                       .CapacCardList
                                       .isNotEmpty)) {
+                                    logFirebaseEvent('Button_custom_action');
                                     await actions.filterCapacitorItemsV2();
                                   }
+                                  logFirebaseEvent(
+                                      'Button_update_component_state');
                                   _model.partsList = FFAppState()
                                       .CapacCardList
                                       .where((e) =>

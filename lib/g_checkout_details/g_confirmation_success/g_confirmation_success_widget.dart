@@ -40,6 +40,8 @@ class _GConfirmationSuccessWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('G_CONFIRMATION_SUCCESS_G_Confirmation_Su');
+      logFirebaseEvent('G_Confirmation_Success_update_component_');
       _model.order = widget.order;
       safeSetState(() {});
     });
@@ -615,6 +617,11 @@ class _GConfirmationSuccessWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'G_CONFIRMATION_SUCCESS_Button_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Button_navigate_to');
+
                                           context.pushNamed(
                                               AHomePageWidget.routeName);
                                         },

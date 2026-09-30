@@ -216,6 +216,9 @@ class _TrackAndFindMyOrderMobileWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'TRACK_AND_FIND_MY_ORDER_MOBILE_Button_ON');
+                                  logFirebaseEvent('Button_validate_form');
                                   _model.formval = true;
                                   if (_model.formKey.currentState == null ||
                                       !_model.formKey.currentState!
@@ -223,6 +226,7 @@ class _TrackAndFindMyOrderMobileWidgetState
                                     safeSetState(() => _model.formval = false);
                                     return;
                                   }
+                                  logFirebaseEvent('Button_firestore_query');
                                   _model.orderList =
                                       await queryOrdersRecordOnce(
                                     queryBuilder: (ordersRecord) => ordersRecord
@@ -243,13 +247,19 @@ class _TrackAndFindMyOrderMobileWidgetState
                                         )
                                         .orderBy('createdAt', descending: true),
                                   );
+                                  logFirebaseEvent(
+                                      'Button_update_component_state');
                                   _model.orderListM = _model.orderList!
                                       .toList()
                                       .cast<OrdersRecord>();
                                   if (_model.orderListM.length > 0) {
+                                    logFirebaseEvent(
+                                        'Button_update_component_state');
                                     _model.zeroResult = false;
                                     safeSetState(() {});
                                   } else {
+                                    logFirebaseEvent(
+                                        'Button_update_component_state');
                                     _model.zeroResult = true;
                                     safeSetState(() {});
                                   }
@@ -476,6 +486,10 @@ class _TrackAndFindMyOrderMobileWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'TRACK_AND_FIND_MY_ORDER_MOBILE_Button_ON');
+                                  logFirebaseEvent('Button_navigate_to');
+
                                   context.pushNamed(KContactWidget.routeName);
                                 },
                                 child: wrapWithModel(

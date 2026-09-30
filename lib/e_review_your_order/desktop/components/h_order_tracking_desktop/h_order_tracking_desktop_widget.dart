@@ -7,7 +7,6 @@ import '/g_checkout_details/desktop/order_item_row3/order_item_row3_widget.dart'
 import '/g_checkout_details/desktop/tracking_step/tracking_step_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'h_order_tracking_desktop_model.dart';
 export 'h_order_tracking_desktop_model.dart';
 
@@ -38,12 +37,6 @@ class _HOrderTrackingDesktopWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => HOrderTrackingDesktopModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.orderDCS = widget.orderPram;
-      safeSetState(() {});
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -128,8 +121,8 @@ class _HOrderTrackingDesktopWidgetState
                                       ),
                                       TextSpan(
                                         text: valueOrDefault<String>(
-                                          _model.orderDCS?.orderNumber,
-                                          'DIY 000',
+                                          widget.orderPram?.orderNumber,
+                                          'DIY 1234',
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -171,7 +164,7 @@ class _HOrderTrackingDesktopWidgetState
                                       decoration: BoxDecoration(),
                                       child: Text(
                                         valueOrDefault<String>(
-                                          _model.orderDCS?.status?.name,
+                                          widget.orderPram?.status?.name,
                                           'status',
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -219,7 +212,7 @@ class _HOrderTrackingDesktopWidgetState
                                   ),
                                   TextSpan(
                                     text: dateTimeFormat(
-                                        "yMMMd", _model.orderDCS!.createdAt!),
+                                        "yMMMd", widget.orderPram!.createdAt!),
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
@@ -232,7 +225,7 @@ class _HOrderTrackingDesktopWidgetState
                                   ),
                                   TextSpan(
                                     text: dateTimeFormat(
-                                        "yMMMd", _model.orderDCS!.updatedAt!),
+                                        "yMMMd", widget.orderPram!.updatedAt!),
                                     style: TextStyle(),
                                   )
                                 ],
@@ -262,6 +255,10 @@ class _HOrderTrackingDesktopWidgetState
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'H_ORDER_TRACKING_DESKTOP_Button_ON_TAP');
+                            logFirebaseEvent('Button_navigate_to');
+
                             context.pushNamed(KContactWidget.routeName);
                           },
                           child: wrapWithModel(
@@ -504,7 +501,7 @@ class _HOrderTrackingDesktopWidgetState
                                             ),
                                             TextSpan(
                                               text: valueOrDefault<String>(
-                                                _model.orderDCS?.lines.length
+                                                widget.orderPram?.lines.length
                                                     .toString(),
                                                 '0',
                                               ),
@@ -535,7 +532,7 @@ class _HOrderTrackingDesktopWidgetState
                                   Builder(
                                     builder: (context) {
                                       final items =
-                                          _model.orderDCS?.lines.toList() ??
+                                          widget.orderPram?.lines.toList() ??
                                               [];
 
                                       return Column(
@@ -620,7 +617,7 @@ class _HOrderTrackingDesktopWidgetState
                                     ),
                                     Text(
                                       valueOrDefault<String>(
-                                        _model.orderDCS?.customerSnap.name,
+                                        widget.orderPram?.customerSnap.name,
                                         'name',
                                       ),
                                       maxLines: 4,
@@ -642,9 +639,9 @@ class _HOrderTrackingDesktopWidgetState
                                     ),
                                     Text(
                                       valueOrDefault<String>(
-                                        _model.orderDCS?.customerSnap
+                                        widget.orderPram?.customerSnap
                                             .shippingAddress,
-                                        'Frosty Valley, TX 75001',
+                                        'address',
                                       ),
                                       maxLines: 4,
                                       style: FlutterFlowTheme.of(context)
@@ -744,10 +741,10 @@ class _HOrderTrackingDesktopWidgetState
                                               ),
                                               Text(
                                                 '\$${valueOrDefault<String>(
-                                                  _model.orderDCS?.totalsSnap
+                                                  widget.orderPram?.totalsSnap
                                                       .subtotal
                                                       .toString(),
-                                                  '74.99',
+                                                  '0',
                                                 )}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -767,8 +764,11 @@ class _HOrderTrackingDesktopWidgetState
                                               ),
                                             ],
                                           ),
-                                          if (_model.orderDCS!.totalsSnap
-                                                  .motorSLFees >
+                                          if (valueOrDefault<double>(
+                                                widget.orderPram?.totalsSnap
+                                                    .motorSLFees,
+                                                0.0,
+                                              ) >
                                               0.0)
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -802,10 +802,12 @@ class _HOrderTrackingDesktopWidgetState
                                                 ),
                                                 Text(
                                                   '\$${valueOrDefault<String>(
-                                                    _model.orderDCS?.totalsSnap
+                                                    widget
+                                                        .orderPram
+                                                        ?.totalsSnap
                                                         .motorSLFees
                                                         .toString(),
-                                                    '74.99',
+                                                    '0',
                                                   )}',
                                                   style:
                                                       FlutterFlowTheme.of(
@@ -857,10 +859,10 @@ class _HOrderTrackingDesktopWidgetState
                                               ),
                                               Text(
                                                 '\$${valueOrDefault<String>(
-                                                  _model
-                                                      .orderDCS?.totalsSnap.tax
+                                                  widget.orderPram?.totalsSnap
+                                                      .shipping
                                                       .toString(),
-                                                  '74.99',
+                                                  '0',
                                                 )}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -911,10 +913,10 @@ class _HOrderTrackingDesktopWidgetState
                                               ),
                                               Text(
                                                 '\$${valueOrDefault<String>(
-                                                  _model.orderDCS?.totalsSnap
-                                                      .shipping
+                                                  widget.orderPram?.totalsSnap
+                                                      .tax
                                                       .toString(),
-                                                  '74.99',
+                                                  '0',
                                                 )}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -973,9 +975,10 @@ class _HOrderTrackingDesktopWidgetState
                                           ),
                                           Text(
                                             '\$${valueOrDefault<String>(
-                                              _model.orderDCS?.totalsSnap.total
+                                              widget
+                                                  .orderPram?.totalsSnap.total
                                                   .toString(),
-                                              '74.99',
+                                              '0',
                                             )}',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleLarge
@@ -1053,6 +1056,10 @@ class _HOrderTrackingDesktopWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'H_ORDER_TRACKING_DESKTOP_COMP_Row_ON_TAP');
+                                          logFirebaseEvent('Row_navigate_to');
+
                                           context.pushNamed(
                                               KContactWidget.routeName);
                                         },

@@ -35,9 +35,14 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
     super.initState();
     _model = createModel(context, () => EReviewYourOrderModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'E-Review_Your_Order'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('E_REVIEW_YOUR_ORDER_E-Review_Your_Order_');
       if (!(FFAppState().Cart.cartItems.isNotEmpty)) {
+        logFirebaseEvent('E-Review_Your_Order_navigate_to');
+
         context.goNamed(
           DSelectProductRepairWidget.routeName,
           queryParameters: {
@@ -49,19 +54,23 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
         );
       }
       if (!(_model.tools.isNotEmpty)) {
+        logFirebaseEvent('E-Review_Your_Order_firestore_query');
         _model.toolACT = await queryItemsRecordOnce(
           queryBuilder: (itemsRecord) => itemsRecord.where(
             'hasMiscId',
             isEqualTo: true,
           ),
         );
+        logFirebaseEvent('E-Review_Your_Order_update_page_state');
         _model.tools = _model.toolACT!
             .where((e) => e.qtyOnHand > 0)
             .toList()
             .toList()
             .cast<ItemsRecord>();
       }
+      logFirebaseEvent('E-Review_Your_Order_custom_action');
       await actions.calculateCartTotal();
+      logFirebaseEvent('E-Review_Your_Order_rebuild_page');
       safeSetState(() {});
     });
 

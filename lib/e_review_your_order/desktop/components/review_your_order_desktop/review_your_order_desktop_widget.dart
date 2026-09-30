@@ -48,12 +48,15 @@ class _ReviewYourOrderDesktopWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('REVIEW_YOUR_ORDER_DESKTOP_Review_Your_Or');
       if ((_model.toolsList.isNotEmpty) == false) {
+        logFirebaseEvent('Review_Your_Order_Desktop_wait__delay');
         await Future.delayed(
           Duration(
             milliseconds: 700,
           ),
         );
+        logFirebaseEvent('Review_Your_Order_Desktop_update_compone');
         _model.toolsList = widget.toolsCS!.toList().cast<ItemsRecord>();
         safeSetState(() {});
       }
@@ -536,6 +539,10 @@ class _ReviewYourOrderDesktopWidgetState
                                                                       toolsListDisplayItem] =
                                                                   newValue!);
                                                           if (newValue!) {
+                                                            logFirebaseEvent(
+                                                                'REVIEW_YOUR_ORDER_DESKTOP_Checkbox_ON_TO');
+                                                            logFirebaseEvent(
+                                                                'Checkbox_update_app_state');
                                                             FFAppState()
                                                                 .updateCartStruct(
                                                               (e) => e
@@ -567,11 +574,19 @@ class _ReviewYourOrderDesktopWidgetState
                                                                 ),
                                                             );
                                                             safeSetState(() {});
+                                                            logFirebaseEvent(
+                                                                'Checkbox_custom_action');
                                                             await actions
                                                                 .calculateCartTotal();
+                                                            logFirebaseEvent(
+                                                                'Checkbox_rebuild_component');
                                                             _model.updatePage(
                                                                 () {});
                                                           } else {
+                                                            logFirebaseEvent(
+                                                                'REVIEW_YOUR_ORDER_DESKTOP_Checkbox_ON_TO');
+                                                            logFirebaseEvent(
+                                                                'Checkbox_update_app_state');
                                                             FFAppState()
                                                                 .updateCartStruct(
                                                               (e) => e
@@ -587,8 +602,12 @@ class _ReviewYourOrderDesktopWidgetState
                                                                       .firstOrNull),
                                                                 ),
                                                             );
+                                                            logFirebaseEvent(
+                                                                'Checkbox_custom_action');
                                                             await actions
                                                                 .calculateCartTotal();
+                                                            logFirebaseEvent(
+                                                                'Checkbox_rebuild_component');
                                                             _model.updatePage(
                                                                 () {});
                                                           }
@@ -842,6 +861,8 @@ class _ReviewYourOrderDesktopWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'REVIEW_YOUR_ORDER_DESKTOP_Button_ON_TAP');
                                     if (FFAppState()
                                         .Cart
                                         .cartItems
@@ -850,6 +871,7 @@ class _ReviewYourOrderDesktopWidgetState
                                           (_model.textFieldMessageSLTextController
                                                       .text ==
                                                   '')) {
+                                        logFirebaseEvent('Button_alert_dialog');
                                         await showDialog(
                                           barrierDismissible: false,
                                           context: context,
@@ -870,6 +892,8 @@ class _ReviewYourOrderDesktopWidgetState
                                           },
                                         );
 
+                                        logFirebaseEvent(
+                                            'Button_set_form_field');
                                         safeSetState(() {
                                           _model
                                               .textFieldMessageSLTextController
@@ -889,6 +913,8 @@ class _ReviewYourOrderDesktopWidgetState
                                           });
                                         });
                                       } else {
+                                        logFirebaseEvent(
+                                            'Button_update_app_state');
                                         FFAppState().updateCartStruct(
                                           (e) => e
                                             ..comment = _model
@@ -904,11 +930,16 @@ class _ReviewYourOrderDesktopWidgetState
                                                     ? true
                                                     : false,
                                         );
+                                        logFirebaseEvent(
+                                            'Button_custom_action');
                                         await actions.calculateCartTotal();
+                                        logFirebaseEvent(
+                                            'Button_set_form_field');
                                         safeSetState(() {
                                           _model.checkboxSlValue =
                                               FFAppState().Cart.motorSLEnabled;
                                         });
+                                        logFirebaseEvent('Button_navigate_to');
 
                                         context.pushNamed(
                                             GSecurePaymentCheckoutWidget
@@ -1142,24 +1173,40 @@ class _ReviewYourOrderDesktopWidgetState
                                                     _model.checkboxSlValue =
                                                         newValue!);
                                                 if (newValue!) {
+                                                  logFirebaseEvent(
+                                                      'REVIEW_YOUR_ORDER_DESKTOP_Checkbox-sl_ON');
+                                                  logFirebaseEvent(
+                                                      'Checkbox-sl_update_app_state');
                                                   FFAppState().updateCartStruct(
                                                     (e) => e
                                                       ..motorSLEnabled = true,
                                                   );
+                                                  logFirebaseEvent(
+                                                      'Checkbox-sl_custom_action');
                                                   await actions
                                                       .calculateCartTotal();
+                                                  logFirebaseEvent(
+                                                      'Checkbox-sl_wait__delay');
                                                   await Future.delayed(
                                                     Duration(
                                                       milliseconds: 100,
                                                     ),
                                                   );
+                                                  logFirebaseEvent(
+                                                      'Checkbox-sl_rebuild_component');
                                                   _model.updatePage(() {});
                                                 } else {
+                                                  logFirebaseEvent(
+                                                      'REVIEW_YOUR_ORDER_DESKTOP_Checkbox-sl_ON');
+                                                  logFirebaseEvent(
+                                                      'Checkbox-sl_update_app_state');
                                                   FFAppState().updateCartStruct(
                                                     (e) => e
                                                       ..motorSLComment = null
                                                       ..motorSLEnabled = false,
                                                   );
+                                                  logFirebaseEvent(
+                                                      'Checkbox-sl_reset_form_fields');
                                                   safeSetState(() {
                                                     _model.textFieldMessageSLTextController
                                                             ?.text =
@@ -1167,13 +1214,19 @@ class _ReviewYourOrderDesktopWidgetState
                                                             .Cart
                                                             .motorSLComment;
                                                   });
+                                                  logFirebaseEvent(
+                                                      'Checkbox-sl_custom_action');
                                                   await actions
                                                       .calculateCartTotal();
+                                                  logFirebaseEvent(
+                                                      'Checkbox-sl_wait__delay');
                                                   await Future.delayed(
                                                     Duration(
                                                       milliseconds: 100,
                                                     ),
                                                   );
+                                                  logFirebaseEvent(
+                                                      'Checkbox-sl_rebuild_component');
                                                   _model.updatePage(() {});
                                                 }
                                               },
@@ -1232,6 +1285,10 @@ class _ReviewYourOrderDesktopWidgetState
                                               '_model.textFieldMessageSLTextController',
                                               Duration(milliseconds: 100),
                                               () async {
+                                                logFirebaseEvent(
+                                                    'REVIEW_YOUR_ORDER_DESKTOP_TextField-Mess');
+                                                logFirebaseEvent(
+                                                    'TextField-Message-SL_update_app_state');
                                                 FFAppState().updateCartStruct(
                                                   (e) => e
                                                     ..motorSLComment = _model
@@ -1378,6 +1435,10 @@ class _ReviewYourOrderDesktopWidgetState
                                       '_model.textFieldMessageCTextController',
                                       Duration(milliseconds: 100),
                                       () async {
+                                        logFirebaseEvent(
+                                            'REVIEW_YOUR_ORDER_DESKTOP_TextField-Mess');
+                                        logFirebaseEvent(
+                                            'TextField-Message-C_update_app_state');
                                         FFAppState().updateCartStruct(
                                           (e) => e
                                             ..motorSLComment = _model
@@ -1465,9 +1526,13 @@ class _ReviewYourOrderDesktopWidgetState
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'REVIEW_YOUR_ORDER_DESKTOP_SAVE_BTN_ON_TA');
                                       if (_model.textFieldMessageCTextController
                                                   .text !=
                                               '') {
+                                        logFirebaseEvent(
+                                            'Button_update_app_state');
                                         FFAppState().updateCartStruct(
                                           (e) => e
                                             ..comment = _model
