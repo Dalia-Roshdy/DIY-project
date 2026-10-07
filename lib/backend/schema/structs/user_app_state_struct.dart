@@ -157,8 +157,13 @@ class UserAppStateStruct extends FFFirebaseStruct {
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([displayName, email, address, phone, pin]);
+  int get hashCode => const ListEquality().hash([
+        displayName,
+        email,
+        const ListEquality().hash(address),
+        phone,
+        const ListEquality().hash(pin)
+      ]);
 }
 
 UserAppStateStruct createUserAppStateStruct({

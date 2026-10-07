@@ -35,6 +35,11 @@ class MailRecord extends FirestoreRecord {
   String get bcc => _bcc ?? '';
   bool hasBcc() => _bcc != null;
 
+  // "replyTo" field.
+  String? _replyTo;
+  String get replyTo => _replyTo ?? '';
+  bool hasReplyTo() => _replyTo != null;
+
   void _initializeFields() {
     _to = snapshotData['to'] as String?;
     _message = snapshotData['message'] is MessageStruct
@@ -42,6 +47,7 @@ class MailRecord extends FirestoreRecord {
         : MessageStruct.maybeFromMap(snapshotData['message']);
     _ctime = snapshotData['ctime'] as DateTime?;
     _bcc = snapshotData['bcc'] as String?;
+    _replyTo = snapshotData['replyTo'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -73,8 +79,7 @@ class MailRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is MailRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is MailRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createMailRecordData({
@@ -82,6 +87,7 @@ Map<String, dynamic> createMailRecordData({
   MessageStruct? message,
   DateTime? ctime,
   String? bcc,
+  String? replyTo,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -89,6 +95,7 @@ Map<String, dynamic> createMailRecordData({
       'message': MessageStruct().toMap(),
       'ctime': ctime,
       'bcc': bcc,
+      'replyTo': replyTo,
     }.withoutNulls,
   );
 
@@ -106,12 +113,13 @@ class MailRecordDocumentEquality implements Equality<MailRecord> {
     return e1?.to == e2?.to &&
         e1?.message == e2?.message &&
         e1?.ctime == e2?.ctime &&
-        e1?.bcc == e2?.bcc;
+        e1?.bcc == e2?.bcc &&
+        e1?.replyTo == e2?.replyTo;
   }
 
   @override
-  int hash(MailRecord? e) =>
-      const ListEquality().hash([e?.to, e?.message, e?.ctime, e?.bcc]);
+  int hash(MailRecord? e) => const ListEquality()
+      .hash([e?.to, e?.message, e?.ctime, e?.bcc, e?.replyTo]);
 
   @override
   bool isValidKey(Object? o) => o is MailRecord;

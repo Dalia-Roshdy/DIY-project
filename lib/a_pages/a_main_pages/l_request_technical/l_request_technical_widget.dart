@@ -154,17 +154,23 @@ class _LRequestTechnicalWidgetState extends State<LRequestTechnicalWidget> {
                             thickness: 1.0,
                             color: FlutterFlowTheme.of(context).primary,
                           ),
-                          Container(
-                            width: double.infinity,
-                            height: valueOrDefault<double>(
-                              MediaQuery.sizeOf(context).width <
-                                      kBreakpointSmall
-                                  ? 10.0
-                                  : 25.0,
-                              25.0,
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                            tablet: false,
+                            tabletLandscape: false,
+                          ))
+                            Container(
+                              width: double.infinity,
+                              height: valueOrDefault<double>(
+                                MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall
+                                    ? 10.0
+                                    : 25.0,
+                                25.0,
+                              ),
+                              decoration: BoxDecoration(),
                             ),
-                            decoration: BoxDecoration(),
-                          ),
                           if (responsiveVisibility(
                             context: context,
                             phone: false,

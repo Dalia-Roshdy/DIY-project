@@ -60,8 +60,7 @@ class SettingsRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is SettingsRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is SettingsRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createSettingsRecordData({

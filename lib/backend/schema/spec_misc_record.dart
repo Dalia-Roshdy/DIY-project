@@ -90,8 +90,7 @@ class SpecMiscRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is SpecMiscRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is SpecMiscRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createSpecMiscRecordData({

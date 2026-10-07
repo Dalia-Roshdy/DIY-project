@@ -268,7 +268,7 @@ class PartCardDTOStruct extends FFFirebaseStruct {
         title,
         desc,
         price,
-        image,
+        const ListEquality().hash(image),
         motorCard,
         capacitorCard,
         contactorCard

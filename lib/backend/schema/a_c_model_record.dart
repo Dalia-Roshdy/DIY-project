@@ -127,8 +127,7 @@ class ACModelRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is ACModelRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is ACModelRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createACModelRecordData({
@@ -195,7 +194,7 @@ class ACModelRecordDocumentEquality implements Equality<ACModelRecord> {
         e?.contactorSpecId,
         e?.compressorMicroFarad,
         e?.capacitorShape,
-        e?.image,
+        const ListEquality().hash(e?.image),
         e?.approved,
         e?.lastUpdatedBy,
         e?.lastUpdatedAt,

@@ -204,8 +204,7 @@ class MotorSpecRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is MotorSpecRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is MotorSpecRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createMotorSpecRecordData({
@@ -320,7 +319,7 @@ class MotorSpecRecordDocumentEquality implements Equality<MotorSpecRecord> {
         e?.mountingNotes,
         e?.lastUpdatedAt,
         e?.lastUpdatedBy,
-        e?.searchableKeywords,
+        const ListEquality().hash(e?.searchableKeywords),
         e?.desc,
         e?.wireLength,
         e?.rotationDirection,

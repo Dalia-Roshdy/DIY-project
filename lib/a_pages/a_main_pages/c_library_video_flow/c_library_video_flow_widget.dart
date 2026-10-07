@@ -200,7 +200,10 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                           ),
                                     ),
                                   ),
-                                if (_model.hasError == true)
+                                if (valueOrDefault<bool>(
+                                  _model.hasError,
+                                  false,
+                                ))
                                   wrapWithModel(
                                     model: _model.errorHandlerModel,
                                     updateCallback: () => safeSetState(() {}),
@@ -301,7 +304,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                               ),
                                             );
                                           }
-                                        
+
                                           safeSetState(() {});
                                         },
                                         onBack: () async {
@@ -395,8 +398,11 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                     .getDocumentOnce(
                                                         nextVideoRef);
                                             if (_model.loadedNextVideoweb
-                                                    ?.reference !=
-                                                null) {
+                                                        ?.videoUrl !=
+                                                    null &&
+                                                _model.loadedNextVideoweb
+                                                        ?.videoUrl !=
+                                                    '') {
                                               logFirebaseEvent(
                                                   'C_Video_Diagnosis_desktop_firestore_quer');
                                               _model.nextOptiondesktop =
@@ -433,6 +439,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                               logFirebaseEvent(
                                                   'C_Video_Diagnosis_desktop_update_page_st');
                                               _model.isLoading = false;
+                                              _model.hasError = true;
                                               safeSetState(() {});
                                               logFirebaseEvent(
                                                   'C_Video_Diagnosis_desktop_show_snack_bar');
@@ -457,7 +464,7 @@ class _CLibraryVideoFlowWidgetState extends State<CLibraryVideoFlowWidget> {
                                                 ),
                                               );
                                             }
-                                          
+
                                             safeSetState(() {});
                                           },
                                           onBack: () async {

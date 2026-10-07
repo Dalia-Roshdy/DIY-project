@@ -2,115 +2,115 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /user/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /ACMake/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /ACModel/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /FanSpec/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /ContactorSpec/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /Misc/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /SpecMisc/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /Items/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /orders/{document} {
       allow create: if true;
       allow read: if true;
       allow write: if true;
-      allow delete: if true;
+      allow delete: if false;
     }
 
     match /mail/{document} {
       allow create: if true;
-      allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow read: if false;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /MotorSpec/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /CapacitorSpec/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /subscriber/{document} {
       allow create: if true;
       allow read: if true;
-      allow write: if true;
+      allow write: if false;
       allow delete: if true;
     }
 
     match /settings/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /DiagnosisVideo/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /diagnosisVideoOption/{document} {
-      allow create: if true;
+      allow create: if false;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
   }
 }

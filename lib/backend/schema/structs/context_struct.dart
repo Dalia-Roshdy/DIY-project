@@ -153,8 +153,13 @@ class ContextStruct extends FFFirebaseStruct {
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([acMakeId, acModelId, serialNumber, selectedParts, source]);
+  int get hashCode => const ListEquality().hash([
+        acMakeId,
+        acModelId,
+        serialNumber,
+        const ListEquality().hash(selectedParts),
+        source
+      ]);
 }
 
 ContextStruct createContextStruct({

@@ -97,8 +97,7 @@ class FanSpecRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is FanSpecRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is FanSpecRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createFanSpecRecordData({

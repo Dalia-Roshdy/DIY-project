@@ -245,8 +245,7 @@ class ItemsRecord extends FirestoreRecord {
 
   @override
   bool operator ==(other) =>
-      other is ItemsRecord &&
-      reference.path.hashCode == other.reference.path.hashCode;
+      other is ItemsRecord && reference.path == other.reference.path;
 }
 
 Map<String, dynamic> createItemsRecordData({
@@ -370,7 +369,7 @@ class ItemsRecordDocumentEquality implements Equality<ItemsRecord> {
         e?.contactorSpecId,
         e?.miscId,
         e?.partNumber,
-        e?.alternatePartNumbers,
+        const ListEquality().hash(e?.alternatePartNumbers),
         e?.make,
         e?.model,
         e?.description,
@@ -378,7 +377,7 @@ class ItemsRecordDocumentEquality implements Equality<ItemsRecord> {
         e?.height,
         e?.width,
         e?.depth,
-        e?.commonIssues,
+        const ListEquality().hash(e?.commonIssues),
         e?.qtyOnHand,
         e?.qtyReserved,
         e?.qtyIncoming,

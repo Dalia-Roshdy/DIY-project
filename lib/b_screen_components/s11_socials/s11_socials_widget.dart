@@ -487,13 +487,15 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                                 .set(createMailRecordData(
                                               to: _model
                                                   .textFieldEmailAddressTextController
-                                                  .text,
+                                                  .text
+                                                  .trim()
+                                                  .toLowerCase(),
                                               message: createMessageStruct(
                                                 subject:
-                                                    'Welcome to DIY AC Repair Newsletter 🎉',
+                                                    'Welcome to DIY AC Repair',
                                                 text: 'DIY AC Repair',
                                                 html:
-                                                    '<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\"> </head> <body style=\"font-family: Arial, sans-serif; background-color:#f6f8fa; margin:0; padding:0;\">      <div style=\"max-width:500px; margin:40px auto; background:#ffffff; border-radius:8px; padding:30px; text-align:center;\">          <h2 style=\"color:#333;\">Welcome to DIY AC Repair :tada:</h2>          <p style=\"color:#555;\">       Hello,     </p>      <p style=\"color:#555;\">       You’ve successfully subscribed to the <strong>DIY AC Repair</strong> newsletter.     </p>      <p style=\"color:#555;\">       You’ll now receive helpful tips, repair guides, and updates to keep your AC running smoothly.     </p>      <a href=\"https://d-i-y-a-cweb-23yv9j.flutterflow.app/\"         style=\"display:inline-block; margin-top:20px; padding:12px 20px; background-color:#4a90e2; color:#ffffff; text-decoration:none; border-radius:4px;\">        Visit DIY AC Repair     </a>      <p style=\"color:#999; font-size:12px; margin-top:30px;\">       If you no longer wish to receive these emails, you can        <a \" style=\"color:#4a90e2;\"  href=\"https://d-i-y-a-cweb-23yv9j.flutterflow.app/unsubscribe?subscriberId=${_model.subsDoc?.reference.id}\">unsubscribe here</a>.     </p>    </div>  </body> </html>',
+                                                    '<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\">   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">   <title>Welcome to DIY AC Repair</title> </head>  <body style=\"margin:0;padding:0;background-color:#f3f5f7;font-family:Arial,Helvetica,sans-serif;\">  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"        style=\"background-color:#f3f5f7;\">   <tr>     <td align=\"center\" style=\"padding:32px 16px;\">        <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"              style=\"max-width:600px;background-color:#ffffff;border:1px solid #e1e5e9;border-radius:8px;overflow:hidden;\">          <tr>           <td style=\"background-color:#17324d;padding:28px 32px;text-align:center;\">              <img               src=\"https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/t5ennlgc4nkz/logopng.PNG\"               alt=\"DIY AC Repair\"               width=\"150\"               style=\"display:block;width:150px;max-width:100%;height:auto;margin:0 auto 18px;border:0;\"             >              <h1 style=\"margin:0;color:#ffffff;font-size:22px;line-height:1.3;\">               Welcome to DIY AC Repair             </h1>              <p style=\"margin:8px 0 0;color:#dce6ef;font-size:14px;line-height:1.5;\">               Your newsletter subscription is active.             </p>            </td>         </tr>          <tr>           <td style=\"padding:32px;text-align:center;\">              <p style=\"margin:0 0 16px;color:#1f2933;font-size:16px;line-height:1.7;\">               Thank you for subscribing to the DIY AC Repair newsletter.             </p>              <p style=\"margin:0 0 26px;color:#66717c;font-size:14px;line-height:1.7;\">               You’ll receive helpful AC maintenance tips, repair guidance and important updates from our team.             </p>              <a href=\"https://d-i-y-a-cweb-23yv9j.flutterflow.app\"                style=\"display:inline-block;padding:13px 24px;background-color:#2474a8;color:#ffffff;text-decoration:none;border-radius:5px;font-size:14px;font-weight:bold;\">               Visit DIY AC Repair             </a>              <hr style=\"border:none;border-top:1px solid #e7ebef;margin:32px 0 22px;\">              <p style=\"margin:0;color:#84909b;font-size:12px;line-height:1.7;\">               You received this email because you subscribed through the DIY AC Repair website.             </p>              <p style=\"margin:12px 0 0;color:#84909b;font-size:12px;line-height:1.7;\">               If you no longer wish to receive these emails,               <a href=\"https://d-i-y-a-cweb-23yv9j.flutterflow.app/unsubscribe?subscriberId=${_model.subsDoc?.reference.id}\"                  style=\"color:#2474a8;text-decoration:underline;\">                 unsubscribe here               </a>.             </p>            </td>         </tr>          <tr>           <td style=\"padding:18px 32px;background-color:#f7f9fb;border-top:1px solid #e7ebef;text-align:center;\">             <p style=\"margin:0;color:#84909b;font-size:12px;\">               DIY AC Repair             </p>           </td>         </tr>        </table>      </td>   </tr> </table>  </body> </html>',
                                                 clearUnsetFields: false,
                                                 create: true,
                                               ),
@@ -504,14 +506,16 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                                     createMailRecordData(
                                                       to: _model
                                                           .textFieldEmailAddressTextController
-                                                          .text,
+                                                          .text
+                                                          .trim()
+                                                          .toLowerCase(),
                                                       message:
                                                           createMessageStruct(
                                                         subject:
-                                                            'Welcome to DIY AC Repair Newsletter 🎉',
+                                                            'Welcome to DIY AC Repair',
                                                         text: 'DIY AC Repair',
                                                         html:
-                                                            '<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\"> </head> <body style=\"font-family: Arial, sans-serif; background-color:#f6f8fa; margin:0; padding:0;\">      <div style=\"max-width:500px; margin:40px auto; background:#ffffff; border-radius:8px; padding:30px; text-align:center;\">          <h2 style=\"color:#333;\">Welcome to DIY AC Repair :tada:</h2>          <p style=\"color:#555;\">       Hello,     </p>      <p style=\"color:#555;\">       You’ve successfully subscribed to the <strong>DIY AC Repair</strong> newsletter.     </p>      <p style=\"color:#555;\">       You’ll now receive helpful tips, repair guides, and updates to keep your AC running smoothly.     </p>      <a href=\"https://d-i-y-a-cweb-23yv9j.flutterflow.app/\"         style=\"display:inline-block; margin-top:20px; padding:12px 20px; background-color:#4a90e2; color:#ffffff; text-decoration:none; border-radius:4px;\">        Visit DIY AC Repair     </a>      <p style=\"color:#999; font-size:12px; margin-top:30px;\">       If you no longer wish to receive these emails, you can        <a \" style=\"color:#4a90e2;\"  href=\"https://d-i-y-a-cweb-23yv9j.flutterflow.app/unsubscribe?subscriberId=${_model.subsDoc?.reference.id}\">unsubscribe here</a>.     </p>    </div>  </body> </html>',
+                                                            '<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\">   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">   <title>Welcome to DIY AC Repair</title> </head>  <body style=\"margin:0;padding:0;background-color:#f3f5f7;font-family:Arial,Helvetica,sans-serif;\">  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"        style=\"background-color:#f3f5f7;\">   <tr>     <td align=\"center\" style=\"padding:32px 16px;\">        <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"              style=\"max-width:600px;background-color:#ffffff;border:1px solid #e1e5e9;border-radius:8px;overflow:hidden;\">          <tr>           <td style=\"background-color:#17324d;padding:28px 32px;text-align:center;\">              <img               src=\"https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/t5ennlgc4nkz/logopng.PNG\"               alt=\"DIY AC Repair\"               width=\"150\"               style=\"display:block;width:150px;max-width:100%;height:auto;margin:0 auto 18px;border:0;\"             >              <h1 style=\"margin:0;color:#ffffff;font-size:22px;line-height:1.3;\">               Welcome to DIY AC Repair             </h1>              <p style=\"margin:8px 0 0;color:#dce6ef;font-size:14px;line-height:1.5;\">               Your newsletter subscription is active.             </p>            </td>         </tr>          <tr>           <td style=\"padding:32px;text-align:center;\">              <p style=\"margin:0 0 16px;color:#1f2933;font-size:16px;line-height:1.7;\">               Thank you for subscribing to the DIY AC Repair newsletter.             </p>              <p style=\"margin:0 0 26px;color:#66717c;font-size:14px;line-height:1.7;\">               You’ll receive helpful AC maintenance tips, repair guidance and important updates from our team.             </p>              <a href=\"https://d-i-y-a-cweb-23yv9j.flutterflow.app\"                style=\"display:inline-block;padding:13px 24px;background-color:#2474a8;color:#ffffff;text-decoration:none;border-radius:5px;font-size:14px;font-weight:bold;\">               Visit DIY AC Repair             </a>              <hr style=\"border:none;border-top:1px solid #e7ebef;margin:32px 0 22px;\">              <p style=\"margin:0;color:#84909b;font-size:12px;line-height:1.7;\">               You received this email because you subscribed through the DIY AC Repair website.             </p>              <p style=\"margin:12px 0 0;color:#84909b;font-size:12px;line-height:1.7;\">               If you no longer wish to receive these emails,               <a href=\"https://d-i-y-a-cweb-23yv9j.flutterflow.app/unsubscribe?subscriberId=${_model.subsDoc?.reference.id}\"                  style=\"color:#2474a8;text-decoration:underline;\">                 unsubscribe here               </a>.             </p>            </td>         </tr>          <tr>           <td style=\"padding:18px 32px;background-color:#f7f9fb;border-top:1px solid #e7ebef;text-align:center;\">             <p style=\"margin:0;color:#84909b;font-size:12px;\">               DIY AC Repair             </p>           </td>         </tr>        </table>      </td>   </tr> </table>  </body> </html>',
                                                         clearUnsetFields: false,
                                                         create: true,
                                                       ),
@@ -790,25 +794,29 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       FaIcon(
-                                        FontAwesomeIcons.instagram,
+                                        FaIconData(
+                                            FontAwesomeIcons.instagram.data),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 60.0,
                                       ),
                                       FaIcon(
-                                        FontAwesomeIcons.facebook,
+                                        FaIconData(
+                                            FontAwesomeIcons.facebook.data),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 54.0,
                                       ),
                                       FaIcon(
-                                        FontAwesomeIcons.twitter,
+                                        FaIconData(
+                                            FontAwesomeIcons.twitter.data),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 60.0,
                                       ),
                                       FaIcon(
-                                        FontAwesomeIcons.linkedin,
+                                        FaIconData(
+                                            FontAwesomeIcons.linkedin.data),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 60.0,

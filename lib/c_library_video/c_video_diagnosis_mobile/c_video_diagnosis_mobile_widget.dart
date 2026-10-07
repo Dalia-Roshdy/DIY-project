@@ -271,9 +271,12 @@ class _CVideoDiagnosisMobileWidgetState
                                       : () async {
                                           logFirebaseEvent(
                                               'C_VIDEO_DIAGNOSIS_MOBILE_PROCEED_BTN_ON_');
-                                          if (_model
-                                                  .selectedOption?.actionType ==
-                                              ActionType.showVideo) {
+                                          if ((_model.selectedOption
+                                                      ?.actionType ==
+                                                  ActionType.showVideo) &&
+                                              (_model.selectedOption
+                                                      ?.nextStepKey !=
+                                                  null)) {
                                             logFirebaseEvent(
                                                 'Button_execute_callback');
                                             await widget.onNextVideo?.call(

@@ -249,7 +249,7 @@ class CartStruct extends FFFirebaseStruct {
 
   @override
   int get hashCode => const ListEquality().hash([
-        cartItems,
+        const ListEquality().hash(cartItems),
         subtotal,
         shipping,
         tax,

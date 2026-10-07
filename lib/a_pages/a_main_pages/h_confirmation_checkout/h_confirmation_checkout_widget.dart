@@ -6,7 +6,6 @@ import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_checkout_details/g_confirmation_success/g_confirmation_success_widget.dart';
-import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:collection/collection.dart';
@@ -122,25 +121,36 @@ class _HConfirmationCheckoutWidgetState
               _model.orderUpdatedAct!.totalsSnap.tax,
               _model.orderUpdatedAct!.totalsSnap.total,
               _model.cartPS!.cartItems.toList(),
+              valueOrDefault<String>(
+                _model.orderUpdatedAct?.orderNumber,
+                'Order Number',
+              ),
+              '',
+              'https://d-i-y-a-cweb-23yv9j.flutterflow.app/',
+              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/t5ennlgc4nkz/logopng.PNG',
+              valueOrDefault<String>(
+                _model.bcc?.value,
+                'Our Admin',
+              ),
             );
             logFirebaseEvent('H-Confirmation_Checkout_backend_call');
-            unawaited(
-              () async {
-                await MailRecord.collection.doc().set(createMailRecordData(
-                      to: _model.orderUpdatedAct?.customerSnap.email,
-                      message: updateMessageStruct(
-                        MessageStruct(
-                          subject: 'Order Confirmed – DIY AC Repair',
-                          html: _model.email,
-                        ),
-                        clearUnsetFields: false,
-                        create: true,
-                      ),
-                      ctime: getCurrentTimestamp,
-                      bcc: _model.bcc?.value,
-                    ));
-              }(),
-            );
+
+            await MailRecord.collection.doc().set(createMailRecordData(
+                  to: _model.orderUpdatedAct?.customerSnap.email,
+                  message: updateMessageStruct(
+                    MessageStruct(
+                      subject: 'Order Confirmed – ${valueOrDefault<String>(
+                        _model.orderUpdatedAct?.orderNumber,
+                        'Your Order',
+                      )}',
+                      html: _model.email,
+                    ),
+                    clearUnsetFields: false,
+                    create: true,
+                  ),
+                  ctime: getCurrentTimestamp,
+                  bcc: _model.bcc?.value,
+                ));
             logFirebaseEvent('H-Confirmation_Checkout_update_app_state');
             FFAppState().Cart = CartStruct();
             safeSetState(() {});
