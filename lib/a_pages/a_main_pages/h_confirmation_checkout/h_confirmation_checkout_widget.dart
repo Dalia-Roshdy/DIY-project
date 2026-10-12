@@ -125,7 +125,7 @@ class _HConfirmationCheckoutWidgetState
                 _model.orderUpdatedAct?.orderNumber,
                 'Order Number',
               ),
-              '',
+              widget.orderId?.id,
               'https://d-i-y-a-cweb-23yv9j.flutterflow.app/',
               'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-i-y-a-cweb-23yv9j/assets/t5ennlgc4nkz/logopng.PNG',
               valueOrDefault<String>(

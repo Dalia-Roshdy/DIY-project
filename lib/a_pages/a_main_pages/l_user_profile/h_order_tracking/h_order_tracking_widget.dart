@@ -19,7 +19,7 @@ class HOrderTrackingWidget extends StatefulWidget {
   final DocumentReference? orderId;
 
   static String routeName = 'H_Order_Tracking';
-  static String routePath = '/track-order';
+  static String routePath = '/trackMyOrder';
 
   @override
   State<HOrderTrackingWidget> createState() => _HOrderTrackingWidgetState();

@@ -794,29 +794,41 @@ class _S11SocialsWidgetState extends State<S11SocialsWidget>
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       FaIcon(
-                                        FaIconData(
-                                            FontAwesomeIcons.instagram.data),
+                                        FaIconData(const IconData(
+                                            /* instagram */ 0xf16d,
+                                            fontFamily: 'FontAwesomeBrands',
+                                            fontPackage:
+                                                'font_awesome_flutter')),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 60.0,
                                       ),
                                       FaIcon(
-                                        FaIconData(
-                                            FontAwesomeIcons.facebook.data),
+                                        FaIconData(const IconData(
+                                            /* facebook */ 0xf09a,
+                                            fontFamily: 'FontAwesomeBrands',
+                                            fontPackage:
+                                                'font_awesome_flutter')),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 54.0,
                                       ),
                                       FaIcon(
-                                        FaIconData(
-                                            FontAwesomeIcons.twitter.data),
+                                        FaIconData(const IconData(
+                                            /* twitter */ 0xf099,
+                                            fontFamily: 'FontAwesomeBrands',
+                                            fontPackage:
+                                                'font_awesome_flutter')),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 60.0,
                                       ),
                                       FaIcon(
-                                        FaIconData(
-                                            FontAwesomeIcons.linkedin.data),
+                                        FaIconData(const IconData(
+                                            /* linkedin */ 0xf08c,
+                                            fontFamily: 'FontAwesomeBrands',
+                                            fontPackage:
+                                                'font_awesome_flutter')),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 60.0,
