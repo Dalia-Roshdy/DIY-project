@@ -274,22 +274,14 @@ class _TextField7WidgetState extends State<TextField7Widget> {
                         errorBorder: InputBorder.none,
                         focusedErrorBorder: InputBorder.none,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: FlutterFlowTheme.of(context).labelSmall.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodyMediumFamily,
-                            color: () {
-                              if (widget.variant == 'filled') {
-                                return FlutterFlowTheme.of(context).primaryText;
-                              } else if (widget.variant == 'ghost') {
-                                return FlutterFlowTheme.of(context).primaryText;
-                              } else {
-                                return FlutterFlowTheme.of(context).primaryText;
-                              }
-                            }(),
+                                FlutterFlowTheme.of(context).labelSmallFamily,
                             letterSpacing: 0.0,
-                            lineHeight: 1.5,
+                            fontWeight: FontWeight.w500,
+                            lineHeight: 1.2,
                             useGoogleFonts: !FlutterFlowTheme.of(context)
-                                .bodyMediumIsCustom,
+                                .labelSmallIsCustom,
                           ),
                       validator: _model.inputTextControllerValidator
                           .asValidator(context),

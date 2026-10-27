@@ -1617,7 +1617,6 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                               replyTo: _model
                                                   .textFieldEmailAddressTextController
                                                   .text,
-                                              bcc: 'daroshdy@gmail.com',
                                             ));
                                             _model.mail =
                                                 MailRecord.getDocumentFromData(
@@ -1661,7 +1660,6 @@ class _S19RequestTechWidgetState extends State<S19RequestTechWidget>
                                                       replyTo: _model
                                                           .textFieldEmailAddressTextController
                                                           .text,
-                                                      bcc: 'daroshdy@gmail.com',
                                                     ),
                                                     mailRecordReference);
                                             await Future.wait([

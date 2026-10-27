@@ -225,77 +225,56 @@ class _HConfirmationCheckoutWidgetState
               children: [
                 Align(
                   alignment: AlignmentDirectional(0.0, -1.0),
-                  child: Container(
-                    width: double.infinity,
-                    constraints: BoxConstraints(
-                      maxWidth: 2000.0,
-                    ),
-                    decoration: BoxDecoration(),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 0.96,
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    width: 1.0,
-                                  ),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    wrapWithModel(
-                                      model: _model.s01NavigatioBarModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: S01NavigatioBarWidget(),
-                                    ),
-                                    Divider(
-                                      height: 1.0,
-                                      thickness: 1.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                    ),
-                                    if (_model.order?.reference != null)
-                                      wrapWithModel(
-                                        model: _model.gConfirmationSuccessModel,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: GConfirmationSuccessWidget(
-                                          order: _model.order!,
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                                tablet: false,
-                                tabletLandscape: false,
-                              ))
-                                wrapWithModel(
-                                  model: _model.s12FooterModel,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: S12FooterWidget(),
-                                ),
-                            ].divide(SizedBox(
-                                height: valueOrDefault<double>(
-                              MediaQuery.sizeOf(context).width <
-                                      kBreakpointSmall
-                                  ? 25.0
-                                  : 50.0,
-                              50.0,
-                            ))),
-                          ),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          width: 1.0,
                         ),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          wrapWithModel(
+                            model: _model.s01NavigatioBarModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: S01NavigatioBarWidget(),
+                          ),
+                          Divider(
+                            height: 1.0,
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
+                          if (_model.order?.reference != null)
+                            wrapWithModel(
+                              model: _model.gConfirmationSuccessModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: GConfirmationSuccessWidget(
+                                order: _model.order!,
+                              ),
+                            ),
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                            tablet: false,
+                            tabletLandscape: false,
+                          ))
+                            wrapWithModel(
+                              model: _model.s12FooterModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: S12FooterWidget(),
+                            ),
+                        ].divide(SizedBox(
+                            height: valueOrDefault<double>(
+                          MediaQuery.sizeOf(context).width < kBreakpointSmall
+                              ? 25.0
+                              : 50.0,
+                          50.0,
+                        ))),
                       ),
                     ),
                   ),

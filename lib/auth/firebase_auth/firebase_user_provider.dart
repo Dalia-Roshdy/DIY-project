@@ -24,11 +24,9 @@ class DIYACWebFirebaseUser extends BaseAuthUser {
 
   @override
   Future? updateEmail(String email) async {
-    try {
-      await user?.updateEmail(email);
-    } catch (_) {
-      await user?.verifyBeforeUpdateEmail(email);
-    }
+    final targetUser = user;
+    if (targetUser == null) return;
+    await targetUser.verifyBeforeUpdateEmail(email);
   }
 
   @override
@@ -70,6 +68,7 @@ Stream<BaseAuthUser> dIYACWebFirebaseUserStream() => FirebaseAuth.instance
         .map<BaseAuthUser>(
       (user) {
         currentUser = DIYACWebFirebaseUser(user);
+
         return currentUser!;
       },
     );

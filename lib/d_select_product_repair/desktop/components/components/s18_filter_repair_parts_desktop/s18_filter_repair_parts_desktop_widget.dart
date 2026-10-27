@@ -777,7 +777,7 @@ class _S18FilterRepairPartsDesktopWidgetState
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Rotation :',
+                                            'Rotation 🛈 :',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
                                                 .override(

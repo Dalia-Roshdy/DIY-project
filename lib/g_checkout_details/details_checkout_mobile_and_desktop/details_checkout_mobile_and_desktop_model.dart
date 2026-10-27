@@ -27,9 +27,13 @@ class DetailsCheckoutMobileAndDesktopModel
 
   bool paymentInProgress = false;
 
+  String returnPolicy = 'Return Policy';
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Firestore Query - Query a collection] action in Details_Checkout_mobile_and_desktop widget.
+  SettingsRecord? returpolicyAction;
   // Model for FormLabel.
   late FormLabel2Model formLabelModel1;
   // Model for TextFieldName.
@@ -52,14 +56,24 @@ class DetailsCheckoutMobileAndDesktopModel
   late TextField7Model textFieldStateModel;
   // Model for FormLabel.
   late FormLabel2Model formLabelModel6;
+  // Model for TextFieldZip.
+  late TextField7Model textFieldZipModel;
+  // Model for FormLabel.
+  late FormLabel2Model formLabelModel7;
   // Model for TextFieldPhone.
   late TextField7Model textFieldPhoneModel;
   // Model for FormLabel.
-  late FormLabel2Model formLabelModel7;
+  late FormLabel2Model formLabelModel8;
   // Model for TextFieldCard.
   late TextField7Model textFieldCardModel;
   // Model for Button.
   late Button8Model buttonModel;
+  // Stores action output result for [Validate Form] action in Button widget.
+  bool? checkData;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  DeliveryZipCodesRecord? zipRecord;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  DeliveryZipCodesRecord? createinactivezip;
   // Stores action output result for [Validate Form] action in Button widget.
   bool? form01;
   // Stores action output result for [Custom Action - cartItemsToOrderLinesA] action in Button widget.
@@ -94,8 +108,10 @@ class DetailsCheckoutMobileAndDesktopModel
     formLabelModel5 = createModel(context, () => FormLabel2Model());
     textFieldStateModel = createModel(context, () => TextField7Model());
     formLabelModel6 = createModel(context, () => FormLabel2Model());
-    textFieldPhoneModel = createModel(context, () => TextField7Model());
+    textFieldZipModel = createModel(context, () => TextField7Model());
     formLabelModel7 = createModel(context, () => FormLabel2Model());
+    textFieldPhoneModel = createModel(context, () => TextField7Model());
+    formLabelModel8 = createModel(context, () => FormLabel2Model());
     textFieldCardModel = createModel(context, () => TextField7Model());
     buttonModel = createModel(context, () => Button8Model());
     paymentBadgeModel1 = createModel(context, () => PaymentBadge3Model());
@@ -108,7 +124,7 @@ class DetailsCheckoutMobileAndDesktopModel
         _formTextFieldValidator3;
     textFieldCityModel.inputTextControllerValidator = _formTextFieldValidator4;
     textFieldStateModel.inputTextControllerValidator = _formTextFieldValidator5;
-    textFieldPhoneModel.inputTextControllerValidator = _formTextFieldValidator6;
+    textFieldZipModel.inputTextControllerValidator = _formTextFieldValidator6;
   }
 
   @override
@@ -124,8 +140,10 @@ class DetailsCheckoutMobileAndDesktopModel
     formLabelModel5.dispose();
     textFieldStateModel.dispose();
     formLabelModel6.dispose();
-    textFieldPhoneModel.dispose();
+    textFieldZipModel.dispose();
     formLabelModel7.dispose();
+    textFieldPhoneModel.dispose();
+    formLabelModel8.dispose();
     textFieldCardModel.dispose();
     buttonModel.dispose();
     paymentBadgeModel1.dispose();
@@ -197,13 +215,16 @@ class DetailsCheckoutMobileAndDesktopModel
 
   String? _formTextFieldValidator6(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Phone is required';
+      return 'ZIP Code is required';
     }
 
     if (val.length < 5) {
       return 'Requires at least 5 characters.';
     }
 
+    if (!RegExp('^\\d{5}\$').hasMatch(val)) {
+      return 'Valid ZIP Code is required';
+    }
     return null;
   }
 }

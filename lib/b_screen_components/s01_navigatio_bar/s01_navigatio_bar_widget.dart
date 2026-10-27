@@ -161,7 +161,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                   desktop: false,
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -175,12 +175,22 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           onTap: () async {
                             logFirebaseEvent(
                                 'S01_NAVIGATIO_BAR_Icon_5eg826z3_ON_TAP');
-                            if ((FFAppState().Cart.cartItems.isNotEmpty) ==
+                            if ((FFAppState()
+                                    .Cart
+                                    .cartItems
+                                    .where((e) => e.specType != Parts.TOOL.name)
+                                    .toList()
+                                    .isNotEmpty) ==
                                 true) {
                               logFirebaseEvent('Icon_navigate_to');
 
                               context.goNamed(EReviewYourOrderWidget.routeName);
                             } else {
+                              logFirebaseEvent('Icon_update_app_state');
+                              FFAppState().updateCartStruct(
+                                (e) => e..cartItems = [],
+                              );
+                              safeSetState(() {});
                               logFirebaseEvent('Icon_alert_dialog');
                               await showDialog(
                                 context: context,
@@ -200,7 +210,7 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                           child: Icon(
                             Icons.shopping_cart_rounded,
                             color: FlutterFlowTheme.of(context).primaryText,
-                            size: 18.0,
+                            size: 20.0,
                           ),
                         ),
                       ),
@@ -480,11 +490,22 @@ class _S01NavigatioBarWidgetState extends State<S01NavigatioBarWidget> {
                 ),
                 onPressed: () async {
                   logFirebaseEvent('S01_NAVIGATIO_BAR_Button-Profile_ON_TAP');
-                  if ((FFAppState().Cart.cartItems.isNotEmpty) == true) {
+                  if ((FFAppState()
+                          .Cart
+                          .cartItems
+                          .where((e) => e.specType != Parts.TOOL.name)
+                          .toList()
+                          .isNotEmpty) ==
+                      true) {
                     logFirebaseEvent('Button-Profile_navigate_to');
 
                     context.goNamed(EReviewYourOrderWidget.routeName);
                   } else {
+                    logFirebaseEvent('Button-Profile_update_app_state');
+                    FFAppState().updateCartStruct(
+                      (e) => e..cartItems = [],
+                    );
+                    safeSetState(() {});
                     logFirebaseEvent('Button-Profile_alert_dialog');
                     await showDialog(
                       context: context,

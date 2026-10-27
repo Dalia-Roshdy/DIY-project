@@ -50,6 +50,8 @@ enum TargetPage {
 
 enum MotorRotationDirection {
   Reversible,
+  ClockWise,
+  CounterClockWise,
 }
 
 enum CapacitorShape {

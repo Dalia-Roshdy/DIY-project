@@ -215,27 +215,15 @@ class _Button8WidgetState extends State<Button8Widget> {
                         'Pay Securely Now',
                       ),
                       maxLines: 1,
-                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                      style: FlutterFlowTheme.of(context).labelSmall.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).labelMediumFamily,
-                            color: () {
-                              if (widget.variant == 'secondary') {
-                                return FlutterFlowTheme.of(context).onSecondary;
-                              } else if (widget.variant == 'outline') {
-                                return FlutterFlowTheme.of(context).primaryText;
-                              } else if (widget.variant == 'ghost') {
-                                return FlutterFlowTheme.of(context).primary;
-                              } else if (widget.variant == 'destructive') {
-                                return FlutterFlowTheme.of(context).onError;
-                              } else {
-                                return FlutterFlowTheme.of(context).onPrimary;
-                              }
-                            }(),
-                            fontSize: 14.0,
+                                FlutterFlowTheme.of(context).labelSmallFamily,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             letterSpacing: 0.0,
                             lineHeight: 1.3,
                             useGoogleFonts: !FlutterFlowTheme.of(context)
-                                .labelMediumIsCustom,
+                                .labelSmallIsCustom,
                           ),
                       overflow: TextOverflow.clip,
                     ),

@@ -4,6 +4,7 @@ import '/c_components/dialog_components/must_enter_shaft_length/must_enter_shaft
 import '/e_review_your_order/mobile/button6/button6_widget.dart';
 import '/e_review_your_order/mobile/part_row2/part_row2_widget.dart';
 import '/e_review_your_order/mobile/summary_row/summary_row_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -19,9 +20,13 @@ class EReviewYourOrderMobileWidget extends StatefulWidget {
   const EReviewYourOrderMobileWidget({
     super.key,
     this.toolsC,
-  });
+    required this.deliveryRule,
+    String? returnPolicy,
+  }) : this.returnPolicy = returnPolicy ?? '';
 
   final List<ItemsRecord>? toolsC;
+  final String? deliveryRule;
+  final String returnPolicy;
 
   @override
   State<EReviewYourOrderMobileWidget> createState() =>
@@ -50,7 +55,7 @@ class _EReviewYourOrderMobileWidgetState
         logFirebaseEvent('E_Review_your_order_mobile_wait__delay');
         await Future.delayed(
           Duration(
-            milliseconds: 500,
+            milliseconds: 700,
           ),
         );
         logFirebaseEvent('E_Review_your_order_mobile_update_compon');
@@ -94,9 +99,9 @@ class _EReviewYourOrderMobileWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(24.0),
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 10.0),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -124,6 +129,41 @@ class _EReviewYourOrderMobileWidgetState
                         useGoogleFonts:
                             !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: (FFCrossAxisAlignment.start).flutterValue,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                      child: Icon(
+                        Icons.info_sharp,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 24.0,
+                      ),
+                    ),
+                    Flexible(
+                      child: Text(
+                        valueOrDefault<String>(
+                          widget.returnPolicy,
+                          'Return Policy',
+                        ),
+                        textAlign: TextAlign.start,
+                        maxLines: 6,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
+                              lineHeight: 1.5,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
+                            ),
+                      ),
+                    ),
+                  ],
                 ),
               ].divide(SizedBox(height: 8.0)),
             ),
@@ -1498,24 +1538,32 @@ class _EReviewYourOrderMobileWidgetState
                                             .secondaryText,
                                         size: 16.0,
                                       ),
-                                      Text(
-                                        'Free delivery expected by Oct 24th',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmallFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 10.0,
-                                              letterSpacing: 0.0,
-                                              lineHeight: 1.2,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .labelSmallIsCustom,
-                                            ),
+                                      Flexible(
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            widget.deliveryRule,
+                                            'Delivery Instruction',
+                                          ),
+                                          maxLines: 5,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelSmall
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmallFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 10.0,
+                                                letterSpacing: 0.0,
+                                                lineHeight: 1.2,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmallIsCustom,
+                                              ),
+                                          overflow: TextOverflow.visible,
+                                        ),
                                       ),
                                     ].divide(SizedBox(width: 16.0)),
                                   ),

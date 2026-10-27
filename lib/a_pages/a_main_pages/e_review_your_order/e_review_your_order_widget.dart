@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,17 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('E_REVIEW_YOUR_ORDER_E-Review_Your_Order_');
-      if (!(FFAppState().Cart.cartItems.isNotEmpty)) {
+      if (!(FFAppState()
+          .Cart
+          .cartItems
+          .where((e) => e.specType != Parts.TOOL.name)
+          .toList()
+          .isNotEmpty)) {
+        logFirebaseEvent('E-Review_Your_Order_update_app_state');
+        FFAppState().updateCartStruct(
+          (e) => e..cartItems = [],
+        );
+        safeSetState(() {});
         logFirebaseEvent('E-Review_Your_Order_navigate_to');
 
         context.goNamed(
@@ -70,7 +81,25 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
       }
       logFirebaseEvent('E-Review_Your_Order_custom_action');
       await actions.calculateCartTotal();
-      logFirebaseEvent('E-Review_Your_Order_rebuild_page');
+      logFirebaseEvent('E-Review_Your_Order_firestore_query');
+      _model.deliveryInstruction = await querySettingsRecordOnce(
+        queryBuilder: (settingsRecord) => settingsRecord.where(
+          'key',
+          isEqualTo: 'delivery_instruction',
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      logFirebaseEvent('E-Review_Your_Order_firestore_query');
+      _model.returnPolicyrule = await querySettingsRecordOnce(
+        queryBuilder: (settingsRecord) => settingsRecord.where(
+          'key',
+          isEqualTo: 'return_policy',
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      logFirebaseEvent('E-Review_Your_Order_update_page_state');
+      _model.deliveryInstrction = _model.deliveryInstruction?.value;
+      _model.returnPolicy = _model.returnPolicyrule!.value;
       safeSetState(() {});
     });
 
@@ -161,6 +190,9 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
                                         updateOnChange: true,
                                         child: ReviewYourOrderDesktopWidget(
                                           toolsCS: _model.tools,
+                                          deliveryRule:
+                                              _model.deliveryInstrction!,
+                                          returnPolicy: _model.returnPolicy,
                                         ),
                                       ),
                                     Divider(
@@ -181,6 +213,9 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
                                             safeSetState(() {}),
                                         child: EReviewYourOrderMobileWidget(
                                           toolsC: _model.tools,
+                                          deliveryRule:
+                                              _model.deliveryInstrction!,
+                                          returnPolicy: _model.returnPolicy,
                                         ),
                                       ),
                                   ],

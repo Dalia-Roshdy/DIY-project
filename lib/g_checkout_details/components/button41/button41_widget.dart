@@ -387,7 +387,7 @@ class _Button41WidgetState extends State<Button41Widget> {
                           'primary',
                         ) ==
                         'secondary') {
-                      return Colors.white;
+                      return FlutterFlowTheme.of(context).info;
                     } else if (valueOrDefault<String>(
                           widget.variant,
                           'primary',
@@ -405,12 +405,12 @@ class _Button41WidgetState extends State<Button41Widget> {
                           'primary',
                         ) ==
                         'destructive') {
-                      return Colors.white;
+                      return FlutterFlowTheme.of(context).info;
                     } else {
-                      return Colors.white;
+                      return FlutterFlowTheme.of(context).info;
                     }
                   }(),
-                  Colors.white,
+                  FlutterFlowTheme.of(context).info,
                 ),
                 backgroundColor: FlutterFlowTheme.of(context).alternate,
               ),

@@ -965,7 +965,7 @@ class _SerlectProductMobileWidgetState
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 8.0),
                                                   child: Text(
-                                                    'Rotational Direction:',
+                                                    'Rotational 🛈:',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium

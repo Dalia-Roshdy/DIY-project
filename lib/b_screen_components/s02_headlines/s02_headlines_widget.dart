@@ -1,3 +1,4 @@
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -77,7 +78,7 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
         padding: EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: (FFMainAxisAlignment.spaceAround).flutterValue,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(

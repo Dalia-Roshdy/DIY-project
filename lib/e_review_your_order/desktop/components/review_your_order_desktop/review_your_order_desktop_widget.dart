@@ -6,6 +6,7 @@ import '/e_review_your_order/desktop/components/part_row/part_row_widget.dart';
 import '/e_review_your_order/desktop/components/part_row_copy/part_row_copy_widget.dart';
 import '/e_review_your_order/desktop/components/summary_line/summary_line_widget.dart';
 import '/e_review_your_order/desktop/components/summary_line_total/summary_line_total_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -22,9 +23,13 @@ class ReviewYourOrderDesktopWidget extends StatefulWidget {
   const ReviewYourOrderDesktopWidget({
     super.key,
     this.toolsCS,
+    required this.deliveryRule,
+    required this.returnPolicy,
   });
 
   final List<ItemsRecord>? toolsCS;
+  final String? deliveryRule;
+  final String? returnPolicy;
 
   @override
   State<ReviewYourOrderDesktopWidget> createState() =>
@@ -58,7 +63,7 @@ class _ReviewYourOrderDesktopWidgetState
         );
         logFirebaseEvent('Review_Your_Order_Desktop_update_compone');
         _model.toolsList = widget.toolsCS!.toList().cast<ItemsRecord>();
-        safeSetState(() {});
+        _model.updatePage(() {});
       }
     });
 
@@ -124,6 +129,44 @@ class _ReviewYourOrderDesktopWidgetState
                           useGoogleFonts:
                               !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                         ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment:
+                        (FFCrossAxisAlignment.start).flutterValue,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                        child: Icon(
+                          Icons.info,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
+                        ),
+                      ),
+                      Flexible(
+                        child: Text(
+                          valueOrDefault<String>(
+                            widget.returnPolicy,
+                            'Return Policy',
+                          ),
+                          maxLines: 6,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyLarge
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyLargeFamily,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                letterSpacing: 0.0,
+                                lineHeight: 1.2,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyLargeIsCustom,
+                              ),
+                        ),
+                      ),
+                    ],
                   ),
                 ].divide(SizedBox(height: 4.0)),
               ),
@@ -1057,26 +1100,35 @@ class _ReviewYourOrderDesktopWidgetState
                                                       .primary,
                                               size: 20.0,
                                             ),
-                                            Text(
-                                              'Ships within 24 hours from US warehouse',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodySmall
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodySmallFamily,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    letterSpacing: 0.0,
-                                                    lineHeight: 1.4,
-                                                    useGoogleFonts:
-                                                        !FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodySmallIsCustom,
-                                                  ),
+                                            Flexible(
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  widget.deliveryRule,
+                                                  'Delivery Instruction',
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                maxLines: 5,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodySmall
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmallFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      letterSpacing: 0.0,
+                                                      lineHeight: 1.4,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmallIsCustom,
+                                                    ),
+                                                overflow: TextOverflow.visible,
+                                              ),
                                             ),
                                           ].divide(SizedBox(width: 8.0)),
                                         ),

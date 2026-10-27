@@ -1255,7 +1255,6 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                               replyTo: _model
                                                   .textFieldEmailAddressTextController
                                                   .text,
-                                              bcc: 'daroshdy@gmail.com',
                                             ));
                                             _model.mail =
                                                 MailRecord.getDocumentFromData(
@@ -1287,7 +1286,6 @@ class _S10ContacUsWidgetState extends State<S10ContacUsWidget>
                                                       replyTo: _model
                                                           .textFieldEmailAddressTextController
                                                           .text,
-                                                      bcc: 'daroshdy@gmail.com',
                                                     ),
                                                     mailRecordReference);
                                             await Future.wait([

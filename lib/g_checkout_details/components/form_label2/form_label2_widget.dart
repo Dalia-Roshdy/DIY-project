@@ -56,35 +56,30 @@ class _FormLabel2WidgetState extends State<FormLabel2Widget> {
                   widget.label,
                   'Full Name',
                 ),
-                style: FlutterFlowTheme.of(context).labelLarge.override(
-                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                      color: FlutterFlowTheme.of(context).primaryText,
+                style: FlutterFlowTheme.of(context).labelSmall.override(
+                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                       letterSpacing: 0.0,
-                      fontWeight: FontWeight.w600,
-                      lineHeight: 1.3,
+                      lineHeight: 1.0,
                       useGoogleFonts:
-                          !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                          !FlutterFlowTheme.of(context).labelSmallIsCustom,
                     ),
               ),
               TextSpan(
                 text: widget.isRequired! ? ' *' : '  ',
-                style: TextStyle(
-                  color: widget.isRequired!
-                      ? FlutterFlowTheme.of(context).redColor
-                      : FlutterFlowTheme.of(context).primaryText,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14.0,
-                ),
+                style: FlutterFlowTheme.of(context).labelSmall.override(
+                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                      letterSpacing: 0.0,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                    ),
               )
             ],
-            style: FlutterFlowTheme.of(context).labelLarge.override(
-                  fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                  color: FlutterFlowTheme.of(context).primaryText,
+            style: FlutterFlowTheme.of(context).labelMedium.override(
+                  fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                   letterSpacing: 0.0,
-                  fontWeight: FontWeight.w600,
                   lineHeight: 1.3,
                   useGoogleFonts:
-                      !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                      !FlutterFlowTheme.of(context).labelMediumIsCustom,
                 ),
           ),
         ),

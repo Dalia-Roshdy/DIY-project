@@ -657,7 +657,8 @@ class _HTrackOrderMobileWidgetState extends State<HTrackOrderMobileWidget> {
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodyMediumFamily,
-                                    color: Colors.black,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     lineHeight: 1.5,

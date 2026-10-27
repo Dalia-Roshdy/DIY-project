@@ -82,9 +82,9 @@ class _GConfirmationSuccessWidgetState
                       children: [
                         Lottie.network(
                           'https://dimg.dreamflow.cloud/v1/lottie/success+checkmark+celebration',
-                          width: 200.0,
-                          height: 200.0,
-                          fit: BoxFit.contain,
+                          width: 150.0,
+                          height: 150.0,
+                          fit: BoxFit.cover,
                           repeat: false,
                           animate: true,
                         ),
@@ -110,23 +110,29 @@ class _GConfirmationSuccessWidgetState
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
-                          'ORDER SUCCESSFUL',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context)
-                              .headlineLarge
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .headlineLargeFamily,
-                                letterSpacing: 0.0,
-                                lineHeight: 1.1,
-                                useGoogleFonts: !FlutterFlowTheme.of(context)
-                                    .headlineLargeIsCustom,
-                              ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          child: Text(
+                            'ORDER SUCCESSFUL',
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            style: FlutterFlowTheme.of(context)
+                                .headlineLarge
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineLargeFamily,
+                                  letterSpacing: 0.0,
+                                  lineHeight: 1.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineLargeIsCustom,
+                                ),
+                            overflow: TextOverflow.visible,
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              32.0, 0.0, 32.0, 0.0),
+                              16.0, 0.0, 16.0, 0.0),
                           child: RichText(
                             textScaler: MediaQuery.of(context).textScaler,
                             text: TextSpan(
@@ -179,103 +185,103 @@ class _GConfirmationSuccessWidgetState
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(32.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Container(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
-                                  constraints: BoxConstraints(
-                                    maxWidth: 600.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFFFF8F8),
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    shape: BoxShape.rectangle,
-                                    border: Border.all(
-                                      color: Color(0x33D32F2F),
-                                      width: 1.0,
+                                if (false)
+                                  Container(
+                                    constraints: BoxConstraints(
+                                      maxWidth: 600.0,
                                     ),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(24.0),
-                                    child: Container(
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Icon(
-                                            Icons.warning_amber_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            size: 24.0,
-                                          ),
-                                          Expanded(
-                                            flex: 1,
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Refund/Return Policy Warning',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelLargeFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        letterSpacing: 0.0,
-                                                        lineHeight: 1.3,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelLargeIsCustom,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  'Electrical components and opened refrigerant kits are non-returnable once the security seal is broken. Please verify part compatibility before installation.',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodySmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        letterSpacing: 0.0,
-                                                        lineHeight: 1.4,
-                                                        useGoogleFonts:
-                                                            !FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodySmallIsCustom,
-                                                      ),
-                                                ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFFFF8F8),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      shape: BoxShape.rectangle,
+                                      border: Border.all(
+                                        color: Color(0x33D32F2F),
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(24.0),
+                                      child: Container(
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Icon(
+                                              Icons.warning_amber_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              size: 24.0,
                                             ),
-                                          ),
-                                        ].divide(SizedBox(width: 16.0)),
+                                            Expanded(
+                                              flex: 1,
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'Refund/Return Policy Warning',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLargeFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          letterSpacing: 0.0,
+                                                          lineHeight: 1.3,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelLargeIsCustom,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    'Electrical components and opened refrigerant kits are non-returnable once the security seal is broken. Please verify part compatibility before installation.',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          letterSpacing: 0.0,
+                                                          lineHeight: 1.4,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodySmallIsCustom,
+                                                        ),
+                                                  ),
+                                                ].divide(SizedBox(height: 4.0)),
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(width: 16.0)),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
                                 Container(
                                   constraints: BoxConstraints(
                                     maxWidth: 600.0,
@@ -583,7 +589,7 @@ class _GConfirmationSuccessWidgetState
                                   ),
                                 ),
                                 Container(
-                                  width: 400.0,
+                                  width: double.infinity,
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,

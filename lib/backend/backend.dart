@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 
 import 'schema/util/firestore_util.dart';
 
@@ -18,9 +18,10 @@ import 'schema/subscriber_record.dart';
 import 'schema/settings_record.dart';
 import 'schema/diagnosis_video_record.dart';
 import 'schema/diagnosis_video_option_record.dart';
+import 'schema/delivery_zip_codes_record.dart';
 
 export 'dart:async' show StreamSubscription;
-export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
+export 'package:cloud_firestore/cloud_firestore.dart' hide Order, Type;
 export 'package:firebase_core/firebase_core.dart';
 export 'schema/index.dart';
 export 'schema/util/firestore_util.dart';
@@ -42,6 +43,7 @@ export 'schema/subscriber_record.dart';
 export 'schema/settings_record.dart';
 export 'schema/diagnosis_video_record.dart';
 export 'schema/diagnosis_video_option_record.dart';
+export 'schema/delivery_zip_codes_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -630,6 +632,43 @@ Future<List<DiagnosisVideoOptionRecord>> queryDiagnosisVideoOptionRecordOnce({
     queryCollectionOnce(
       DiagnosisVideoOptionRecord.collection,
       DiagnosisVideoOptionRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query DeliveryZipCodesRecords (as a Stream and as a Future).
+Future<int> queryDeliveryZipCodesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      DeliveryZipCodesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<DeliveryZipCodesRecord>> queryDeliveryZipCodesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      DeliveryZipCodesRecord.collection,
+      DeliveryZipCodesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<DeliveryZipCodesRecord>> queryDeliveryZipCodesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      DeliveryZipCodesRecord.collection,
+      DeliveryZipCodesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

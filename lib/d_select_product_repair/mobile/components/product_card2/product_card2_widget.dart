@@ -215,7 +215,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           letterSpacing: 0.0,
-                                          lineHeight: 1.4,
+                                          lineHeight: 2.0,
                                           useGoogleFonts:
                                               !FlutterFlowTheme.of(context)
                                                   .bodySmallIsCustom,
@@ -224,7 +224,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                   ),
                                   if (widget.type == Parts.MOTOR.name)
                                     Text(
-                                      '* We can cut it to your specific length',
+                                      '* We can cut the shaft to your specific length',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -235,6 +235,26 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                                 .error,
                                             fontSize: 10.0,
                                             letterSpacing: 0.0,
+                                            lineHeight: 2.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
+                                          ),
+                                    ),
+                                  if (widget.type == Parts.MOTOR.name)
+                                    Text(
+                                      'ⓘ  Shaft end - with the shaft pointing toward you.',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 10.0,
+                                            letterSpacing: 0.0,
+                                            lineHeight: 2.0,
                                             useGoogleFonts:
                                                 !FlutterFlowTheme.of(context)
                                                     .bodyMediumIsCustom,
@@ -871,7 +891,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Rotation',
+                                'Rotation ⓘ',
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(

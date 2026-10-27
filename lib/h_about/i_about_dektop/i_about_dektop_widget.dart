@@ -851,7 +851,7 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                 children: [
                                   Icon(
                                     Icons.warning_rounded,
-                                    color: Colors.white,
+                                    color: FlutterFlowTheme.of(context).info,
                                     size: 20.0,
                                   ),
                                   Text(
@@ -862,7 +862,8 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
                                                   .labelSmallFamily,
-                                          color: Colors.white,
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                           lineHeight: 1.2,
@@ -961,7 +962,9 @@ class _IAboutDektopWidgetState extends State<IAboutDektopWidget> {
                                                 fontFamily:
                                                     FlutterFlowTheme.of(context)
                                                         .labelSmallFamily,
-                                                color: Colors.white,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                                 lineHeight: 1.2,

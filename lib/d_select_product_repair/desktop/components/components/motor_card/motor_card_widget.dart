@@ -226,13 +226,13 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .fontStyle,
-                                      lineHeight: 1.4,
+                                      lineHeight: 2.0,
                                     ),
                                 overflow: TextOverflow.ellipsis,
                               ),
                               if (widget.type == Parts.MOTOR.name)
                                 Text(
-                                  '* We can cut it to your specific length',
+                                  '* We can cut the shaft to your specific length',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -242,6 +242,25 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                                             FlutterFlowTheme.of(context).error,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
+                                        lineHeight: 2.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
+                                      ),
+                                ),
+                              if (widget.type == Parts.MOTOR.name)
+                                Text(
+                                  'ⓘ  Shaft end - with the shaft pointing toward you',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 12.0,
+                                        letterSpacing: 0.0,
+                                        lineHeight: 2.0,
                                         useGoogleFonts:
                                             !FlutterFlowTheme.of(context)
                                                 .bodyMediumIsCustom,
@@ -929,7 +948,7 @@ class _MotorCardWidgetState extends State<MotorCardWidget> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Rotation',
+                              'Rotationⓘ',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

@@ -21,10 +21,18 @@ class EReviewYourOrderModel extends FlutterFlowModel<EReviewYourOrderWidget> {
   void updateToolsAtIndex(int index, Function(ItemsRecord) updateFn) =>
       tools[index] = updateFn(tools[index]);
 
+  String? deliveryInstrction = 'Delivery Instructions';
+
+  String returnPolicy = 'Return Policy';
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
   List<ItemsRecord>? toolACT;
+  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
+  SettingsRecord? deliveryInstruction;
+  // Stores action output result for [Firestore Query - Query a collection] action in E-Review_Your_Order widget.
+  SettingsRecord? returnPolicyrule;
   // Model for S01_NavigatioBar component.
   late S01NavigatioBarModel s01NavigatioBarModel;
   // Model for Review_Your_Order_Desktop component.

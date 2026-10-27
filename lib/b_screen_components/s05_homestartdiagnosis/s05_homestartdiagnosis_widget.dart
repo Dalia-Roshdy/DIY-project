@@ -1,4 +1,5 @@
 import '/b_diagnosis/enter_manually_serial_number/enter_manually_serial_number_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -48,10 +49,12 @@ class _S05HomestartdiagnosisWidgetState
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
         ),
+        alignment: AlignmentDirectional(-1.0, 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: (FFCrossAxisAlignment.center).flutterValue,
+          textBaseline: TextBaseline.alphabetic,
           children: [
             if (responsiveVisibility(
               context: context,
@@ -280,11 +283,11 @@ class _S05HomestartdiagnosisWidgetState
                 ),
               ),
             Flexible(
-              flex: 1,
               child: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   decoration: BoxDecoration(),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
