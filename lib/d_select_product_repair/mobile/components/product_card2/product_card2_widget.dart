@@ -243,7 +243,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                                     ),
                                   if (widget.type == Parts.MOTOR.name)
                                     Text(
-                                      'ⓘ  Shaft end - with the shaft pointing toward you.',
+                                      '**  Shaft end - with the shaft pointing toward you.',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -891,7 +891,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Rotation ⓘ',
+                                'Rotation **',
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(

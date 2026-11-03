@@ -839,7 +839,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                   shippingAddress:
                                                       '${_model.textFieldAddressModel.inputTextController.text}, ${_model.textFieldCityModel.inputTextController.text}, ${_model.textFieldStateModel.inputTextController.text} ${_model.textFieldZipModel.inputTextController.text}',
                                                   phone: _model
-                                                      .textFieldZipModel
+                                                      .textFieldPhoneModel
                                                       .inputTextController
                                                       .text,
                                                   name: _model
@@ -930,7 +930,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                   shippingAddress:
                                                       '${_model.textFieldAddressModel.inputTextController.text}, ${_model.textFieldCityModel.inputTextController.text}, ${_model.textFieldStateModel.inputTextController.text} ${_model.textFieldZipModel.inputTextController.text}',
                                                   phone: _model
-                                                      .textFieldZipModel
+                                                      .textFieldPhoneModel
                                                       .inputTextController
                                                       .text,
                                                   name: _model
@@ -1019,7 +1019,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                       .inputTextController
                                                       .text,
                                                   phone: _model
-                                                      .textFieldZipModel
+                                                      .textFieldPhoneModel
                                                       .inputTextController
                                                       .text,
                                                   shippingAddress:
