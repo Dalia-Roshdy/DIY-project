@@ -74,16 +74,10 @@ class DetailsCheckoutMobileAndDesktopModel
   DeliveryZipCodesRecord? zipRecord;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   DeliveryZipCodesRecord? createinactivezip;
-  // Stores action output result for [Validate Form] action in Button widget.
-  bool? form01;
   // Stores action output result for [Custom Action - cartItemsToOrderLinesA] action in Button widget.
-  List<OrderLinesStruct>? linsACTC;
+  List<OrderLinesStruct>? convertedOrderLines;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   OrdersRecord? order;
-  // Stores action output result for [Validate Form] action in Button widget.
-  bool? form02;
-  // Stores action output result for [Custom Action - cartItemsToOrderLinesA] action in Button widget.
-  List<OrderLinesStruct>? linsACTU;
   // Stores action output result for [Stripe Payment] action in Button widget.
   String? paymentId;
   // Model for PaymentBadge.

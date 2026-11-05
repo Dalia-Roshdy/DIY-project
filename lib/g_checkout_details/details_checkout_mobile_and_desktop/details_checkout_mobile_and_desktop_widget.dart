@@ -686,6 +686,10 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                         _model.checkData = false;
                                       }
                                       if (_model.checkData == false) {
+                                        logFirebaseEvent(
+                                            'Button_update_component_state');
+                                        _model.paymentInProgress = false;
+                                        _model.updatePage(() {});
                                         logFirebaseEvent('Button_alert_dialog');
                                         await showDialog(
                                           context: context,
@@ -705,6 +709,10 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           },
                                         );
                                       } else {
+                                        logFirebaseEvent(
+                                            'Button_update_component_state');
+                                        _model.paymentInProgress = true;
+                                        _model.updatePage(() {});
                                         logFirebaseEvent(
                                             'Button_firestore_query');
                                         _model.zipRecord =
@@ -745,6 +753,10 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                       ),
                                                       deliveryZipCodesRecordReference);
                                           logFirebaseEvent(
+                                              'Button_update_component_state');
+                                          _model.paymentInProgress = false;
+                                          _model.updatePage(() {});
+                                          logFirebaseEvent(
                                               'Button_alert_dialog');
                                           await showDialog(
                                             context: context,
@@ -768,30 +780,17 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                 _model.zipRecord?.zipCode !=
                                                     '') &&
                                             _model.zipRecord!.isActive) {
+                                          logFirebaseEvent(
+                                              'Button_custom_action');
+                                          _model.convertedOrderLines =
+                                              await actions
+                                                  .cartItemsToOrderLinesA(
+                                            FFAppState()
+                                                .Cart
+                                                .cartItems
+                                                .toList(),
+                                          );
                                           if (_model.orderPS == null) {
-                                            logFirebaseEvent(
-                                                'Button_validate_form');
-                                            _model.form01 = true;
-                                            if (_model.formKey.currentState ==
-                                                    null ||
-                                                !_model.formKey.currentState!
-                                                    .validate()) {
-                                              safeSetState(
-                                                  () => _model.form01 = false);
-                                              return;
-                                            }
-                                            logFirebaseEvent(
-                                                'Button_update_component_state');
-                                            _model.paymentInProgress = true;
-                                            logFirebaseEvent(
-                                                'Button_custom_action');
-                                            _model.linsACTC = await actions
-                                                .cartItemsToOrderLinesA(
-                                              FFAppState()
-                                                  .Cart
-                                                  .cartItems
-                                                  .toList(),
-                                            );
                                             logFirebaseEvent(
                                                 'Button_backend_call');
 
@@ -882,7 +881,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                 {
                                                   'lines':
                                                       getOrderLinesListFirestoreData(
-                                                    _model.linsACTC,
+                                                    _model.convertedOrderLines,
                                                   ),
                                                 },
                                               ),
@@ -973,7 +972,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                 {
                                                   'lines':
                                                       getOrderLinesListFirestoreData(
-                                                    _model.linsACTC,
+                                                    _model.convertedOrderLines,
                                                   ),
                                                 },
                                               ),
@@ -983,29 +982,6 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                             _model.orderPS =
                                                 _model.order?.reference;
                                           } else {
-                                            logFirebaseEvent(
-                                                'Button_validate_form');
-                                            _model.form02 = true;
-                                            if (_model.formKey.currentState ==
-                                                    null ||
-                                                !_model.formKey.currentState!
-                                                    .validate()) {
-                                              safeSetState(
-                                                  () => _model.form02 = false);
-                                              return;
-                                            }
-                                            logFirebaseEvent(
-                                                'Button_update_component_state');
-                                            _model.paymentInProgress = true;
-                                            logFirebaseEvent(
-                                                'Button_custom_action');
-                                            _model.linsACTU = await actions
-                                                .cartItemsToOrderLinesA(
-                                              FFAppState()
-                                                  .Cart
-                                                  .cartItems
-                                                  .toList(),
-                                            );
                                             logFirebaseEvent(
                                                 'Button_backend_call');
 
@@ -1044,7 +1020,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                                 {
                                                   'lines':
                                                       getOrderLinesListFirestoreData(
-                                                    _model.linsACTU,
+                                                    _model.convertedOrderLines,
                                                   ),
                                                 },
                                               ),
@@ -1087,13 +1063,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           logFirebaseEvent(
                                               'Button_update_component_state');
                                           _model.paymentInProgress = false;
-                                          logFirebaseEvent(
-                                              'Button_wait__delay');
-                                          await Future.delayed(
-                                            Duration(
-                                              milliseconds: 50,
-                                            ),
-                                          );
+                                          _model.updatePage(() {});
                                           if (_model.paymentId != null &&
                                               _model.paymentId != '') {
                                             logFirebaseEvent(
@@ -1124,6 +1094,10 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           }
                                         } else {
                                           logFirebaseEvent(
+                                              'Button_update_component_state');
+                                          _model.paymentInProgress = false;
+                                          _model.updatePage(() {});
+                                          logFirebaseEvent(
                                               'Button_alert_dialog');
                                           await showDialog(
                                             context: context,
@@ -1152,7 +1126,12 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                     model: _model.buttonModel,
                                     updateCallback: () => safeSetState(() {}),
                                     child: Button8Widget(
-                                      content: 'Pay Securely Now',
+                                      content: valueOrDefault<String>(
+                                        _model.paymentInProgress == true
+                                            ? 'Processing...'
+                                            : 'Pay Securely Now',
+                                        'Pay Securely Now',
+                                      ),
                                       icon: Icon(
                                         Icons.lock_rounded,
                                         color: FlutterFlowTheme.of(context)
@@ -1165,7 +1144,7 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                       size: 'large',
                                       fullWidth: true,
                                       loading: false,
-                                      disabled: false,
+                                      disabled: _model.paymentInProgress,
                                     ),
                                   ),
                                 ),

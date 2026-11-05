@@ -51,17 +51,6 @@ class _EReviewYourOrderMobileWidgetState
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('E_REVIEW_YOUR_ORDER_MOBILE_E_Review_your');
-      if ((_model.toolsCS.isNotEmpty) == false) {
-        logFirebaseEvent('E_Review_your_order_mobile_wait__delay');
-        await Future.delayed(
-          Duration(
-            milliseconds: 700,
-          ),
-        );
-        logFirebaseEvent('E_Review_your_order_mobile_update_compon');
-        _model.toolsCS = widget.toolsC!.toList().cast<ItemsRecord>();
-        _model.updatePage(() {});
-      }
     });
 
     _model.textFieldSLTextController ??=
@@ -534,7 +523,12 @@ class _EReviewYourOrderMobileWidgetState
                           ),
                           Builder(
                             builder: (context) {
-                              final toolsListDisplay = _model.toolsCS.toList();
+                              final toolsListDisplay = widget.toolsC
+                                      ?.sortedList(
+                                          keyOf: (e) => e.description,
+                                          desc: false)
+                                      .toList() ??
+                                  [];
 
                               return Column(
                                 mainAxisSize: MainAxisSize.max,
