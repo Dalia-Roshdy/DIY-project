@@ -74,6 +74,8 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             highlightColor: Colors.transparent,
             onTap: () async {
               logFirebaseEvent('NAV_MENU_COMP_Text_ON_TAP');
+              logFirebaseEvent('Text_close_dialog_drawer_etc');
+              Navigator.pop(context);
               logFirebaseEvent('Text_navigate_to');
 
               context.goNamed(AHomePageWidget.routeName);
@@ -111,6 +113,8 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             highlightColor: Colors.transparent,
             onTap: () async {
               logFirebaseEvent('NAV_MENU_COMP_Text_ON_TAP');
+              logFirebaseEvent('Text_close_dialog_drawer_etc');
+              Navigator.pop(context);
               logFirebaseEvent('Text_navigate_to');
 
               context.goNamed(IAboutWidget.routeName);
@@ -148,6 +152,8 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             highlightColor: Colors.transparent,
             onTap: () async {
               logFirebaseEvent('NAV_MENU_COMP_Text_ON_TAP');
+              logFirebaseEvent('Text_close_dialog_drawer_etc');
+              Navigator.pop(context);
               logFirebaseEvent('Text_navigate_to');
 
               context.goNamed(
@@ -233,6 +239,8 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
             highlightColor: Colors.transparent,
             onTap: () async {
               logFirebaseEvent('NAV_MENU_COMP_Text_ON_TAP');
+              logFirebaseEvent('Text_close_dialog_drawer_etc');
+              Navigator.pop(context);
               logFirebaseEvent('Text_navigate_to');
 
               context.goNamed(KContactWidget.routeName);

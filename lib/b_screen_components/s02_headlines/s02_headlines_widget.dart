@@ -271,6 +271,38 @@ class _S02HeadlinesWidgetState extends State<S02HeadlinesWidget>
                     ),
               ),
             ),
+            RichText(
+              textScaler: MediaQuery.of(context).textScaler,
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'To know nore about ',
+                    style: TextStyle(),
+                  ),
+                  TextSpan(
+                    text: 'Supported ZIP ',
+                    style: GoogleFonts.archivoBlack(
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'CLICK HERE',
+                    style: TextStyle(
+                      color: FlutterFlowTheme.of(context).accent1,
+                    ),
+                  )
+                ],
+                style: FlutterFlowTheme.of(context).labelMedium.override(
+                      fontFamily:
+                          FlutterFlowTheme.of(context).labelMediumFamily,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontSize: 24.0,
+                      letterSpacing: 0.0,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).labelMediumIsCustom,
+                    ),
+              ),
+            ),
             Container(
               width: double.infinity,
               height: 50.0,

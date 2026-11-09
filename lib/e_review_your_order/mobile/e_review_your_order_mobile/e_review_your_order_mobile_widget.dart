@@ -51,6 +51,9 @@ class _EReviewYourOrderMobileWidgetState
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('E_REVIEW_YOUR_ORDER_MOBILE_E_Review_your');
+      logFirebaseEvent('E_Review_your_order_mobile_update_compon');
+      _model.toolsCS = widget.toolsC!.toList().cast<ItemsRecord>();
+      _model.updatePage(() {});
     });
 
     _model.textFieldSLTextController ??=
@@ -424,7 +427,7 @@ class _EReviewYourOrderMobileWidgetState
             padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 16.0),
             child: Container(
               child: Visibility(
-                visible: (_model.toolsCS.isNotEmpty) == true,
+                visible: widget.toolsC!.length > 0,
                 child: Container(
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -437,151 +440,140 @@ class _EReviewYourOrderMobileWidgetState
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(14.0, 24.0, 14.0, 24.0),
-                    child: Container(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  decoration: BoxDecoration(),
-                                  child: Text(
-                                    'Recommended Items to add to order',
+                        EdgeInsetsDirectional.fromSTEB(10.0, 24.0, 10.0, 10.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Recommended Items to add to order',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 13.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
+                                  ),
+                              overflow: TextOverflow.visible,
+                            ),
+                            RichText(
+                              textScaler: MediaQuery.of(context).textScaler,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '✲ ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14.0,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text:
+                                        'Refundable once returned within 7 days',
                                     style: FlutterFlowTheme.of(context)
-                                        .titleSmall
+                                        .bodyMedium
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily,
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 13.0,
+                                              .primary20,
+                                          fontSize: 12.0,
                                           letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
+                                          fontWeight: FontWeight.w500,
                                           useGoogleFonts:
                                               !FlutterFlowTheme.of(context)
-                                                  .titleSmallIsCustom,
+                                                  .bodyMediumIsCustom,
                                         ),
-                                    overflow: TextOverflow.visible,
-                                  ),
-                                ),
-                              ),
-                              RichText(
-                                textScaler: MediaQuery.of(context).textScaler,
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: '✲ ',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14.0,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text:
-                                          'Refundable once returned within 7 days',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary20,
-                                            fontSize: 12.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
-                                            useGoogleFonts:
-                                                !FlutterFlowTheme.of(context)
-                                                    .bodyMediumIsCustom,
-                                          ),
-                                    )
-                                  ],
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyMediumFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary20,
-                                        fontSize: 12.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                        useGoogleFonts:
-                                            !FlutterFlowTheme.of(context)
-                                                .bodyMediumIsCustom,
-                                      ),
-                                ),
-                              ),
-                            ].divide(SizedBox(height: 4.0)),
-                          ),
-                          Builder(
-                            builder: (context) {
-                              final toolsListDisplay = widget.toolsC
-                                      ?.sortedList(
-                                          keyOf: (e) => e.description,
-                                          desc: false)
-                                      .toList() ??
-                                  [];
-
-                              return Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: List.generate(toolsListDisplay.length,
-                                    (toolsListDisplayIndex) {
-                                  final toolsListDisplayItem =
-                                      toolsListDisplay[toolsListDisplayIndex];
-                                  return Container(
-                                    decoration: BoxDecoration(
+                                  )
+                                ],
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 1.0,
-                                      ),
+                                          .primary20,
+                                      fontSize: 12.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 12.0, 8.0, 12.0),
-                                      child: Container(
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Theme(
-                                              data: ThemeData(
-                                                checkboxTheme:
-                                                    CheckboxThemeData(
-                                                  visualDensity:
-                                                      VisualDensity.compact,
-                                                  materialTapTargetSize:
-                                                      MaterialTapTargetSize
-                                                          .shrinkWrap,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            4.0),
-                                                  ),
-                                                ),
-                                                unselectedWidgetColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
+                              ),
+                            ),
+                          ].divide(SizedBox(height: 4.0)),
+                        ),
+                        Builder(
+                          builder: (context) {
+                            final toolsListDisplay = widget.toolsC
+                                    ?.sortedList(
+                                        keyOf: (e) => e.description,
+                                        desc: false)
+                                    .toList() ??
+                                [];
+
+                            return Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: List.generate(toolsListDisplay.length,
+                                  (toolsListDisplayIndex) {
+                                final toolsListDisplayItem =
+                                    toolsListDisplay[toolsListDisplayIndex];
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    border: Border.all(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8.0, 10.0, 8.0, 10.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Theme(
+                                          data: ThemeData(
+                                            checkboxTheme: CheckboxThemeData(
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              materialTapTargetSize:
+                                                  MaterialTapTargetSize
+                                                      .shrinkWrap,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4.0),
                                               ),
-                                              child: Checkbox(
-                                                value: _model
-                                                        .checkboxToolValueMap[
-                                                    toolsListDisplayItem] ??= FFAppState()
+                                            ),
+                                            unselectedWidgetColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryText,
+                                          ),
+                                          child: Checkbox(
+                                            value: _model.checkboxToolValueMap[
+                                                    toolsListDisplayItem] ??=
+                                                FFAppState()
                                                             .Cart
                                                             .cartItems
                                                             .where((e) =>
@@ -593,238 +585,218 @@ class _EReviewYourOrderMobileWidgetState
                                                         1
                                                     ? true
                                                     : false,
-                                                onChanged: (newValue) async {
-                                                  safeSetState(() => _model
-                                                              .checkboxToolValueMap[
-                                                          toolsListDisplayItem] =
-                                                      newValue!);
-                                                  if (newValue!) {
-                                                    logFirebaseEvent(
-                                                        'E_REVIEW_YOUR_ORDER_MOBILE_Checkbox-tool');
-                                                    logFirebaseEvent(
-                                                        'Checkbox-tool_update_app_state');
-                                                    FFAppState()
-                                                        .updateCartStruct(
-                                                      (e) => e
-                                                        ..updateCartItems(
-                                                          (e) => e.add(
-                                                              CartItemStruct(
-                                                            itemId:
-                                                                toolsListDisplayItem
-                                                                    .reference,
-                                                            title:
-                                                                toolsListDisplayItem
-                                                                    .description,
-                                                            specType:
-                                                                Parts.TOOL.name,
-                                                            desc:
-                                                                toolsListDisplayItem
-                                                                    .description,
-                                                            price: (toolsListDisplayItem
-                                                                            .discountPrice !=
-                                                                        null) &&
-                                                                    (toolsListDisplayItem
-                                                                            .discountPrice >
-                                                                        0.0)
-                                                                ? toolsListDisplayItem
-                                                                    .discountPrice
-                                                                : toolsListDisplayItem
-                                                                    .salePrice,
-                                                            qty: 1,
-                                                            isReturnable:
-                                                                toolsListDisplayItem
-                                                                    .isReturnable,
-                                                          )),
+                                            onChanged: (newValue) async {
+                                              safeSetState(() => _model
+                                                          .checkboxToolValueMap[
+                                                      toolsListDisplayItem] =
+                                                  newValue!);
+                                              if (newValue!) {
+                                                logFirebaseEvent(
+                                                    'E_REVIEW_YOUR_ORDER_MOBILE_Checkbox-tool');
+                                                logFirebaseEvent(
+                                                    'Checkbox-tool_update_app_state');
+                                                FFAppState().updateCartStruct(
+                                                  (e) => e
+                                                    ..updateCartItems(
+                                                      (e) =>
+                                                          e.add(CartItemStruct(
+                                                        itemId:
+                                                            toolsListDisplayItem
+                                                                .reference,
+                                                        title:
+                                                            toolsListDisplayItem
+                                                                .description,
+                                                        specType:
+                                                            Parts.TOOL.name,
+                                                        desc:
+                                                            toolsListDisplayItem
+                                                                .description,
+                                                        price: (toolsListDisplayItem
+                                                                        .discountPrice !=
+                                                                    null) &&
+                                                                (toolsListDisplayItem
+                                                                        .discountPrice >
+                                                                    0.0)
+                                                            ? toolsListDisplayItem
+                                                                .discountPrice
+                                                            : toolsListDisplayItem
+                                                                .salePrice,
+                                                        qty: 1,
+                                                        isReturnable:
+                                                            toolsListDisplayItem
+                                                                .isReturnable,
+                                                      )),
+                                                    ),
+                                                );
+                                                logFirebaseEvent(
+                                                    'Checkbox-tool_custom_action');
+                                                await actions
+                                                    .calculateCartTotal();
+                                                logFirebaseEvent(
+                                                    'Checkbox-tool_rebuild_component');
+                                                _model.updatePage(() {});
+                                              } else {
+                                                logFirebaseEvent(
+                                                    'E_REVIEW_YOUR_ORDER_MOBILE_Checkbox-tool');
+                                                logFirebaseEvent(
+                                                    'Checkbox-tool_update_app_state');
+                                                FFAppState().updateCartStruct(
+                                                  (e) => e
+                                                    ..updateCartItems(
+                                                      (e) => e.remove(FFAppState()
+                                                          .Cart
+                                                          .cartItems
+                                                          .where((e) =>
+                                                              e.itemId ==
+                                                              toolsListDisplayItem
+                                                                  .reference)
+                                                          .toList()
+                                                          .firstOrNull),
+                                                    ),
+                                                );
+                                                _model.updatePage(() {});
+                                                logFirebaseEvent(
+                                                    'Checkbox-tool_custom_action');
+                                                await actions
+                                                    .calculateCartTotal();
+                                                logFirebaseEvent(
+                                                    'Checkbox-tool_rebuild_component');
+                                                _model.updatePage(() {});
+                                              }
+                                            },
+                                            side: (FlutterFlowTheme.of(context)
+                                                        .secondaryText !=
+                                                    null)
+                                                ? BorderSide(
+                                                    width: 2,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                  )
+                                                : null,
+                                            activeColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            checkColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Expanded(
+                                                flex: 1,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    toolsListDisplayItem
+                                                        .description,
+                                                    maxLines: 1,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 10.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          lineHeight: 1.5,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
-                                                    );
-                                                    logFirebaseEvent(
-                                                        'Checkbox-tool_custom_action');
-                                                    await actions
-                                                        .calculateCartTotal();
-                                                    logFirebaseEvent(
-                                                        'Checkbox-tool_rebuild_component');
-                                                    _model.updatePage(() {});
-                                                  } else {
-                                                    logFirebaseEvent(
-                                                        'E_REVIEW_YOUR_ORDER_MOBILE_Checkbox-tool');
-                                                    logFirebaseEvent(
-                                                        'Checkbox-tool_update_app_state');
-                                                    FFAppState()
-                                                        .updateCartStruct(
-                                                      (e) => e
-                                                        ..updateCartItems(
-                                                          (e) => e.remove(FFAppState()
-                                                              .Cart
-                                                              .cartItems
-                                                              .where((e) =>
-                                                                  e.itemId ==
-                                                                  toolsListDisplayItem
-                                                                      .reference)
-                                                              .toList()
-                                                              .firstOrNull),
+                                                    overflow:
+                                                        TextOverflow.visible,
+                                                  ),
+                                                ),
+                                              ),
+                                              if (toolsListDisplayItem
+                                                  .isReturnable)
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    '✲ ',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary20,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          lineHeight: 1.5,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
-                                                    );
-                                                    _model.updatePage(() {});
-                                                    logFirebaseEvent(
-                                                        'Checkbox-tool_custom_action');
-                                                    await actions
-                                                        .calculateCartTotal();
-                                                    logFirebaseEvent(
-                                                        'Checkbox-tool_rebuild_component');
-                                                    _model.updatePage(() {});
-                                                  }
-                                                },
-                                                side: (FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondaryText !=
-                                                        null)
-                                                    ? BorderSide(
-                                                        width: 2,
+                                                  ),
+                                                ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child: Text(
+                                                  '\$${(toolsListDisplayItem.discountPrice != null) && (toolsListDisplayItem.discountPrice > 0.0) ? toolsListDisplayItem.discountPrice.toString() : toolsListDisplayItem.salePrice.toString()}',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryText,
-                                                      )
-                                                    : null,
-                                                activeColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                checkColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        toolsListDisplayItem
-                                                            .description,
-                                                        maxLines: 1,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              fontSize: 10.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              lineHeight: 1.5,
-                                                              useGoogleFonts:
-                                                                  !FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumIsCustom,
-                                                            ),
-                                                        overflow: TextOverflow
-                                                            .visible,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  if (toolsListDisplayItem
-                                                      .isReturnable)
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        '✲ ',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary20,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  lineHeight:
-                                                                      1.5,
-                                                                  useGoogleFonts:
-                                                                      !FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMediumIsCustom,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 4.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      '\$${(toolsListDisplayItem.discountPrice != null) && (toolsListDisplayItem.discountPrice > 0.0) ? toolsListDisplayItem.discountPrice.toString() : toolsListDisplayItem.salePrice.toString()}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
                                                                 .primaryText,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            lineHeight: 1.5,
-                                                            useGoogleFonts:
-                                                                !FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumIsCustom,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ].divide(SizedBox(width: 16.0)),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        lineHeight: 1.5,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
+                                                      ),
+                                                ),
                                               ),
-                                            ),
-                                          ].divide(SizedBox(width: 8.0)),
+                                            ].divide(SizedBox(width: 16.0)),
+                                          ),
                                         ),
-                                      ),
+                                      ].divide(SizedBox(width: 8.0)),
                                     ),
-                                  );
-                                }).divide(SizedBox(height: 12.0)),
-                              );
-                            },
-                          ),
-                        ].divide(SizedBox(height: 16.0)),
-                      ),
+                                  ),
+                                );
+                              }).divide(SizedBox(height: 12.0)),
+                            );
+                          },
+                        ),
+                      ].divide(SizedBox(height: 16.0)),
                     ),
                   ),
                 ),

@@ -54,17 +54,9 @@ class _ReviewYourOrderDesktopWidgetState
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('REVIEW_YOUR_ORDER_DESKTOP_Review_Your_Or');
-      if ((_model.toolsList.isNotEmpty) == false) {
-        logFirebaseEvent('Review_Your_Order_Desktop_wait__delay');
-        await Future.delayed(
-          Duration(
-            milliseconds: 700,
-          ),
-        );
-        logFirebaseEvent('Review_Your_Order_Desktop_update_compone');
-        _model.toolsList = widget.toolsCS!.toList().cast<ItemsRecord>();
-        _model.updatePage(() {});
-      }
+      logFirebaseEvent('Review_Your_Order_Desktop_update_compone');
+      _model.toolsList = widget.toolsCS!.toList().cast<ItemsRecord>();
+      _model.updatePage(() {});
     });
 
     _model.textFieldMessageSLTextController ??=
@@ -364,7 +356,7 @@ class _ReviewYourOrderDesktopWidgetState
                         ),
                       ),
                     ),
-                    if ((_model.toolsList.isNotEmpty) == true)
+                    if (widget.toolsCS!.length > 0)
                       Material(
                         color: Colors.transparent,
                         elevation: 2.0,
@@ -496,8 +488,12 @@ class _ReviewYourOrderDesktopWidgetState
                                   ),
                                   Builder(
                                     builder: (context) {
-                                      final toolsListDisplay =
-                                          _model.toolsList.toList();
+                                      final toolsListDisplay = widget.toolsCS
+                                              ?.sortedList(
+                                                  keyOf: (e) => e.description,
+                                                  desc: false)
+                                              .toList() ??
+                                          [];
 
                                       return Column(
                                         mainAxisSize: MainAxisSize.min,

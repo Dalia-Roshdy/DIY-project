@@ -25,9 +25,15 @@ class DeliveryZipCodesRecord extends FirestoreRecord {
   bool get isActive => _isActive ?? false;
   bool hasIsActive() => _isActive != null;
 
+  // "nearestLocker" field.
+  bool? _nearestLocker;
+  bool get nearestLocker => _nearestLocker ?? false;
+  bool hasNearestLocker() => _nearestLocker != null;
+
   void _initializeFields() {
     _zipCode = snapshotData['zipCode'] as String?;
     _isActive = snapshotData['isActive'] as bool?;
+    _nearestLocker = snapshotData['nearestLocker'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -67,11 +73,13 @@ class DeliveryZipCodesRecord extends FirestoreRecord {
 Map<String, dynamic> createDeliveryZipCodesRecordData({
   String? zipCode,
   bool? isActive,
+  bool? nearestLocker,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'zipCode': zipCode,
       'isActive': isActive,
+      'nearestLocker': nearestLocker,
     }.withoutNulls,
   );
 
@@ -84,12 +92,14 @@ class DeliveryZipCodesRecordDocumentEquality
 
   @override
   bool equals(DeliveryZipCodesRecord? e1, DeliveryZipCodesRecord? e2) {
-    return e1?.zipCode == e2?.zipCode && e1?.isActive == e2?.isActive;
+    return e1?.zipCode == e2?.zipCode &&
+        e1?.isActive == e2?.isActive &&
+        e1?.nearestLocker == e2?.nearestLocker;
   }
 
   @override
   int hash(DeliveryZipCodesRecord? e) =>
-      const ListEquality().hash([e?.zipCode, e?.isActive]);
+      const ListEquality().hash([e?.zipCode, e?.isActive, e?.nearestLocker]);
 
   @override
   bool isValidKey(Object? o) => o is DeliveryZipCodesRecord;

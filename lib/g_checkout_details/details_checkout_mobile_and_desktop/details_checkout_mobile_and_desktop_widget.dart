@@ -1061,6 +1061,13 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                               paymentResponse.paymentId ?? '';
 
                                           logFirebaseEvent(
+                                              'Button_wait__delay');
+                                          await Future.delayed(
+                                            Duration(
+                                              milliseconds: 700,
+                                            ),
+                                          );
+                                          logFirebaseEvent(
                                               'Button_update_component_state');
                                           _model.paymentInProgress = false;
                                           _model.updatePage(() {});
