@@ -1028,6 +1028,9 @@ class _DetailsCheckoutMobileAndDesktopWidgetState
                                           }
 
                                           logFirebaseEvent(
+                                              'Button_custom_action');
+                                          await actions.lockZoom();
+                                          logFirebaseEvent(
                                               'Button_stripe_payment');
                                           final paymentResponse =
                                               await processStripePayment(

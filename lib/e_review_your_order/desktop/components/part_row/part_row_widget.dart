@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'part_row_model.dart';
@@ -254,6 +253,7 @@ class _PartRowWidgetState extends State<PartRowWidget> {
                             logFirebaseEvent('PART_ROW_COMP_delete_ON_TAP');
                             logFirebaseEvent('delete_alert_dialog');
                             await showDialog(
+                              barrierDismissible: false,
                               context: context,
                               builder: (dialogContext) {
                                 return Dialog(
@@ -268,12 +268,6 @@ class _PartRowWidgetState extends State<PartRowWidget> {
                                 );
                               },
                             );
-
-                            logFirebaseEvent('delete_navigate_to');
-                            if (Navigator.of(context).canPop()) {
-                              context.pop();
-                            }
-                            context.pushNamed(EReviewYourOrderWidget.routeName);
                           },
                         ),
                       ),

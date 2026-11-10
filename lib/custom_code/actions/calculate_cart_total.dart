@@ -18,8 +18,21 @@ Future<void> calculateCartTotal() {
   final cart = FFAppState().Cart;
   final settings = FFAppState().CartSetting;
 
-  double subtotal = 0.0;
   final items = cart.cartItems;
+  if (items.isEmpty) {
+    FFAppState().updateCartStruct((c) => c
+      ..subtotal = 0.0
+      ..shipping = 0.0
+      ..tax = 0.0
+      ..total = 0.0
+      ..motorSLFees = 0.0
+      ..motorSLEnabled = false
+      ..motorSLComment = null);
+
+    return Future.value();
+  }
+
+  double subtotal = 0.0;
   final n = items.length;
   bool hasMotor = false;
 
@@ -39,7 +52,7 @@ Future<void> calculateCartTotal() {
   String? motorSLComment;
 
   if (!hasMotor) {
-    motorSL = 0;
+    motorSL = 0.0;
     motorSLEnabled = false;
     motorSLComment = null;
   } else {

@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'part_row2_model.dart';
 export 'part_row2_model.dart';
@@ -247,6 +246,7 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                               'PART_ROW2_COMP_delete_outline_ICN_ON_TAP');
                           logFirebaseEvent('IconButton_alert_dialog');
                           await showDialog(
+                            barrierDismissible: false,
                             context: context,
                             builder: (dialogContext) {
                               return Dialog(
@@ -261,12 +261,6 @@ class _PartRow2WidgetState extends State<PartRow2Widget> {
                               );
                             },
                           );
-
-                          logFirebaseEvent('IconButton_navigate_to');
-                          if (Navigator.of(context).canPop()) {
-                            context.pop();
-                          }
-                          context.pushNamed(EReviewYourOrderWidget.routeName);
                         },
                       ),
                     ),

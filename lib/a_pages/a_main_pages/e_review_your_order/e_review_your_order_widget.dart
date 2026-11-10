@@ -71,6 +71,8 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
           isEqualTo: Parts.TOOL.name,
         ),
       );
+      logFirebaseEvent('E-Review_Your_Order_custom_action');
+      await actions.calculateCartTotal();
       logFirebaseEvent('E-Review_Your_Order_update_page_state');
       _model.tools = _model.toolACT!
           .where((e) => e.qtyOnHand > 0)
@@ -78,8 +80,6 @@ class _EReviewYourOrderWidgetState extends State<EReviewYourOrderWidget> {
           .toList()
           .cast<ItemsRecord>();
       safeSetState(() {});
-      logFirebaseEvent('E-Review_Your_Order_custom_action');
-      await actions.calculateCartTotal();
       logFirebaseEvent('E-Review_Your_Order_firestore_query');
       _model.deliveryInstruction = await querySettingsRecordOnce(
         queryBuilder: (settingsRecord) => settingsRecord.where(

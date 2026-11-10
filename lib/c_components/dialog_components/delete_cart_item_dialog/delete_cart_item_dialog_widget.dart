@@ -1,7 +1,10 @@
+import '/backend/schema/enums/enums.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -185,16 +188,30 @@ class _DeleteCartItemDialogWidgetState
                               ),
                           );
                           safeSetState(() {});
-                          logFirebaseEvent('Button_wait__delay');
-                          await Future.delayed(
-                            Duration(
-                              milliseconds: 100,
-                            ),
-                          );
                           logFirebaseEvent('Button_custom_action');
                           await actions.calculateCartTotal();
-                          logFirebaseEvent('Button_close_dialog_drawer_etc');
-                          Navigator.pop(context);
+                          if (!(FFAppState()
+                              .Cart
+                              .cartItems
+                              .where((e) => e.specType != Parts.TOOL.name)
+                              .toList()
+                              .isNotEmpty)) {
+                            logFirebaseEvent('Button_close_dialog_drawer_etc');
+                            Navigator.pop(context);
+                            logFirebaseEvent('Button_update_app_state');
+                            FFAppState().Cart = CartStruct();
+                            logFirebaseEvent('Button_custom_action');
+                            await actions.calculateCartTotal();
+                            logFirebaseEvent('Button_navigate_to');
+                            if (Navigator.of(context).canPop()) {
+                              context.pop();
+                            }
+                            context.pushNamed(
+                                DSelectProductRepairWidget.routeName);
+                          } else {
+                            logFirebaseEvent('Button_close_dialog_drawer_etc');
+                            Navigator.pop(context);
+                          }
                         },
                         text: 'Yes',
                         options: FFButtonOptions(
